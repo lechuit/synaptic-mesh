@@ -34,6 +34,10 @@ const commands = [
     args: [resolve(packageRoot, 'tests/receipt-transform-regression.mjs')],
   },
   {
+    id: 'authority-laundering-regression-tests',
+    args: [resolve(packageRoot, 'tests/authority-laundering-regression.mjs')],
+  },
+  {
     id: 'cli-validator-tests',
     args: [resolve(packageRoot, 'tests/cli-validator.mjs')],
   },
@@ -83,6 +87,7 @@ const fixtureParity = readJson('implementation/synaptic-mesh-shadow-v0/evidence/
 const normalizedSummary = readJson('implementation/synaptic-mesh-shadow-v0/evidence/normalized-fixture-summary.out.json');
 const transformRegression = readJson('implementation/synaptic-mesh-shadow-v0/evidence/receipt-transform-regression.out.json');
 const cliValidator = readJson('implementation/synaptic-mesh-shadow-v0/evidence/cli-validator.out.json');
+const authorityLaundering = readJson('implementation/synaptic-mesh-shadow-v0/evidence/authority-laundering-regression.out.json');
 const syntheticHandoff = readJson('implementation/synaptic-mesh-shadow-v0/evidence/synthetic-handoff-examples.out.json');
 const partialDegrade = readJson('implementation/synaptic-mesh-shadow-v0/evidence/partial-receipt-degrade.out.json');
 
@@ -92,12 +97,13 @@ const unsafeAllowSignals = [
 ];
 if (Number(transformRegression?.summary?.unsafeAllows ?? 0) !== 0) unsafeAllowSignals.push('receipt-transform-regression');
 if (Number(cliValidator?.summary?.unsafeAllows ?? 0) !== 0) unsafeAllowSignals.push('cli-validator');
+if (Number(authorityLaundering?.summary?.unsafeAllows ?? 0) !== 0) unsafeAllowSignals.push('authority-laundering-regression');
 if (Number(syntheticHandoff?.summary?.unsafeAllows ?? 0) !== 0) unsafeAllowSignals.push('synthetic-handoff-examples');
 if (Number(partialDegrade?.summary?.unsafeAllows ?? 0) !== 0) unsafeAllowSignals.push('partial-receipt-degrade');
 
 const summary = {
   artifact: 'T-synaptic-mesh-review-local-runner-v0',
-  timestamp: '2026-05-06T19:33:00Z',
+  timestamp: new Date().toISOString(),
   verdict: rows.every((row) => row.pass) && unsafeAllowSignals.length === 0 ? 'pass' : 'fail',
   commands: rows.length,
   passCommands: rows.filter((row) => row.pass).length,
@@ -107,6 +113,7 @@ const summary = {
   normalizedFixtureCount: normalizedSummary?.summary?.normalizedFixtureCount ?? null,
   transformRegressionVerdict: transformRegression?.summary?.verdict ?? null,
   cliValidatorVerdict: cliValidator?.summary?.verdict ?? null,
+  authorityLaunderingVerdict: authorityLaundering?.summary?.verdict ?? null,
   syntheticHandoffVerdict: syntheticHandoff?.summary?.verdict ?? null,
   partialReceiptDegradeVerdict: partialDegrade?.summary?.verdict ?? null,
   unsafeAllowSignals,

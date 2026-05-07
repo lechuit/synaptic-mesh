@@ -38,7 +38,7 @@ npm --prefix implementation/synaptic-mesh-shadow-v0 run review:local
 
 Expected:
 
-- review-local pass 11/11;
+- review-local pass 12/12;
 - fixture parity 15/15;
 - unsafe allow signals 0;
 - source fixture mutation false.

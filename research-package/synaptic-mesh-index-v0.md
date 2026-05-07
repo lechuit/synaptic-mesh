@@ -81,7 +81,7 @@ synaptic-mesh/
 |---|---|---|
 | `research-package/T-synaptic-mesh-repro-suite-manifest-v0.md` | Reproducibility manifest | Complete; points to canonical 15-fixture set. |
 | `implementation/synaptic-mesh-shadow-v0/fixtures/manifest.json` | Canonical fixture manifest | Complete. |
-| `implementation/synaptic-mesh-shadow-v0/evidence/review-local.out.json` | One-command review evidence | Fresh rerun pass: 11/11 commands. |
+| `implementation/synaptic-mesh-shadow-v0/evidence/review-local.out.json` | One-command review evidence | Fresh rerun pass: 12/12 commands. |
 | `implementation/synaptic-mesh-shadow-v0/evidence/fixture-parity.out.json` | Fixture parity evidence | Pass 15/15. |
 | `implementation/synaptic-mesh-shadow-v0/evidence/normalized-fixture-summary.out.json` | Normalized summary evidence | Complete over 15 fixtures. |
 | `implementation/synaptic-mesh-shadow-v0/evidence/cli-validator.out.json` | CLI behavior evidence | Pass; unsafe allows 0. |
@@ -121,7 +121,7 @@ synaptic-mesh/
 | `research-package/T-synaptic-mesh-tier-c-live-doc-check-v0.md` | Tier C live-doc landscape check | Complete; R08/R16/R17/R18 checked live, access date recorded, R18 redirect updated. |
 | `research-package/T-synaptic-mesh-final-metadata-bibtex-style-v0.md` | Final active bibliography metadata/style | Complete for local publication review; active 15-ref set aligned. |
 | `research-package/T-synaptic-mesh-final-claim-audit-v0.md` | Final conservative claim audit | Complete; paper language aligned with quote-check and landscape constraints. |
-| `research-package/T-synaptic-mesh-publication-reproducibility-rerun-v0.md` | Publication-readiness reproducibility rerun | Complete; 11/11 commands, 15/15 fixture parity, unsafe allow signals 0. |
+| `research-package/T-synaptic-mesh-publication-reproducibility-rerun-v0.md` | Publication-readiness reproducibility rerun | Complete; 12/12 commands, 15/15 fixture parity, unsafe allow signals 0. |
 | `research-package/T-synaptic-mesh-public-private-boundary-audit-v0.md` | Public/private boundary audit | Complete for public-facing surface; private operator/path traces redacted. |
 | `research-package/T-synaptic-mesh-human-review-package-final-v0.md` | Final human-review packet | Complete; local publication-review checkpoint reached and human decision required. |
 
@@ -149,7 +149,7 @@ Expected current gate snapshot:
 ```json
 {
   "reviewLocalVerdict": "pass",
-  "commands": "11/11",
+  "commands": "12/12",
   "fixtureParity": "15/15",
   "normalizedSummaryFixtures": 15,
   "unsafeAllowSignals": 0,
@@ -161,7 +161,7 @@ Expected current gate snapshot:
 
 | Gate | Current result | Evidence file |
 |---|---:|---|
-| Review-local runner | 11/11 commands pass | `implementation/synaptic-mesh-shadow-v0/evidence/review-local.out.json` |
+| Review-local runner | 12/12 commands pass | `implementation/synaptic-mesh-shadow-v0/evidence/review-local.out.json` |
 | Fixture parity | 15/15 pass | `implementation/synaptic-mesh-shadow-v0/evidence/fixture-parity.out.json` |
 | Normalized summary | 15 fixtures | `implementation/synaptic-mesh-shadow-v0/evidence/normalized-fixture-summary.out.json` |
 | CLI validator | pass, unsafe allows 0 | `implementation/synaptic-mesh-shadow-v0/evidence/cli-validator.out.json` |

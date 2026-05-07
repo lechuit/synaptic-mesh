@@ -42,7 +42,7 @@ From this bundle root:
 npm --prefix implementation/synaptic-mesh-shadow-v0 run review:local
 ```
 
-Expected current result: 11/11 commands pass, fixture parity 15/15, unsafe allow signals 0, source fixture mutation false.
+Expected current result: 12/12 commands pass, fixture parity 15/15, unsafe allow signals 0, source fixture mutation false.
 
 ## Citation/source policy
 

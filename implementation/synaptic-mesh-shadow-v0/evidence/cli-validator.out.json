@@ -44,7 +44,8 @@
       "expectedDecision": "ask_human",
       "pass": true,
       "reasons": [
-        "action requires human or is unknown/sensitive: publish"
+        "action requires human or is unknown/sensitive: publish",
+        "receipt next allowed action contains sensitive effect: publish"
       ],
       "unsafeAllow": false
     },

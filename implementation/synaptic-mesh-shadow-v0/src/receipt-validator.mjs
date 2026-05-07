@@ -5,6 +5,7 @@ const LOCAL_SCOPE_PATTERN = /^(local|local_only|shadow|local_shadow|local_doc|re
 const CURRENT_FRESHNESS_PATTERN = /^(current|fresh|same_run)$/i;
 const RESTRICTIVE_PROMOTION_PATTERN = /(no_|human|manual|shadow|local)/i;
 const SENSITIVE_SCOPE_PATTERN = /(external|runtime|config|delete|publish|production|canary|l2|operational|telegram|email|network)/i;
+const RESTRICTIVE_LINEAGE_PATTERN = /(human_required|requires_human|denied|forbid|forbidden|revoked|stale|sealed|private|external|publish|runtime|config|delete|l2|operational|canary|production)/i;
 
 export function validateCompactReceiptForAction(input, options = {}) {
   const parsed = typeof input === 'string' ? parseCompactReceipt(input) : cloneParsed(input);
@@ -28,6 +29,8 @@ export function validateCompactReceiptForAction(input, options = {}) {
   if (authority.effectScope && SENSITIVE_SCOPE_PATTERN.test(authority.effectScope)) reasons.push(`scope contains sensitive effect: ${authority.effectScope}`);
   if (authority.promotionBoundary && !RESTRICTIVE_PROMOTION_PATTERN.test(authority.promotionBoundary)) reasons.push(`promotion boundary is not restrictive: ${authority.promotionBoundary}`);
   if (authority.negativeBoundary && SENSITIVE_SCOPE_PATTERN.test(authority.negativeBoundary) === false) reasons.push('negative boundary does not explicitly exclude sensitive effects');
+  if (authority.lineageReceipt && authority.lineageReceipt !== 'none' && RESTRICTIVE_LINEAGE_PATTERN.test(authority.lineageReceipt)) reasons.push(`lineage receipt is not clear: ${authority.lineageReceipt}`);
+  if (authority.nextAllowedAction && SENSITIVE_SCOPE_PATTERN.test(authority.nextAllowedAction)) reasons.push(`receipt next allowed action contains sensitive effect: ${authority.nextAllowedAction}`);
 
   if (actionRequiresHuman(action)) {
     return finish(parsed, DECISIONS.ASK_HUMAN, [`action requires human or is unknown/sensitive: ${action.verb ?? 'unknown'}`, ...reasons]);

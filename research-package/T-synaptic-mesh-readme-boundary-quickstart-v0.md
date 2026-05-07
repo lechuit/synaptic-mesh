@@ -84,7 +84,7 @@ The README now records the observed review-local gates:
 ```json
 {
   "reviewLocalVerdict": "pass",
-  "commands": "11/11",
+  "commands": "12/12",
   "fixtureParity": "15/15",
   "normalizedSummaryFixtures": 15,
   "unsafeAllowSignals": 0,
@@ -118,7 +118,7 @@ sourceArtifactId: T-synaptic-mesh-readme-boundary-quickstart-v0
 sourceArtifactPath: research-package/T-synaptic-mesh-readme-boundary-quickstart-v0.md
 producedAt: 2026-05-06T19:40:00Z
 receiverFreshness: current
-registryDigest: sha256:readme-boundary-quickstart-review-local-pass-commands10-fixture15-normalized15-unsafe0
+registryDigest: sha256:readme-boundary-quickstart-review-local-pass-commands12-fixture15-normalized15-unsafe0
 policyChecksum: sha256:local-docs-only-no-runtime-no-config-no-memory-no-external-no-delete-no-publish
 lineage: successor_of_T-synaptic-mesh-review-local-runner-v0
 validation: npm_review_local_pass_after_readme_update

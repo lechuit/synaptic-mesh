@@ -1,7 +1,14 @@
 import assert from 'node:assert/strict';
+import { mkdir, writeFile } from 'node:fs/promises';
+import { dirname, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { validateCompactReceiptForAction } from '../src/receipt-validator.mjs';
 
 const artifact = 'T-synaptic-mesh-receipt-transform-regression-v0';
+const here = dirname(fileURLToPath(import.meta.url));
+const packageRoot = resolve(here, '..');
+const evidencePath = resolve(packageRoot, 'evidence/receipt-transform-regression.out.json');
+
 const expectedSource = {
   sourceArtifactId: 'T-synaptic-mesh-minimum-functional-reference-scope-v0',
   sourceArtifactPath: 'research-package/T-synaptic-mesh-minimum-functional-reference-scope-v0.md',
@@ -136,4 +143,7 @@ const summary = {
   sourceFixtureMutation: false,
 };
 
-console.log(JSON.stringify({ summary, expectedSource, results }, null, 2));
+const output = { summary, expectedSource, results };
+await mkdir(dirname(evidencePath), { recursive: true });
+await writeFile(evidencePath, `${JSON.stringify(output, null, 2)}\n`);
+console.log(JSON.stringify(output, null, 2));
