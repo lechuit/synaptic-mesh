@@ -3,10 +3,10 @@
     "artifact": "T-synaptic-mesh-receiver-policy-adapter-contracts-v0",
     "timestamp": "2026-05-07T15:05:00.000Z",
     "verdict": "pass",
-    "totalCases": 35,
-    "passCases": 35,
+    "totalCases": 41,
+    "passCases": 41,
     "allowLocalShadowCases": 5,
-    "fetchAbstainCases": 13,
+    "fetchAbstainCases": 19,
     "askHumanCases": 17,
     "unsafeAllows": 0,
     "adapterContracts": [
@@ -858,6 +858,150 @@
         },
         "hasReceiverFreshnessPolicy": false,
         "hasSourceFreshnessPolicy": false
+      }
+    },
+    {
+      "id": "generic-observed-source-digest-mismatch-fetches",
+      "adapterId": "generic-receiver-policy-adapter-v0",
+      "framework": "generic",
+      "decision": "fetch_abstain",
+      "reasons": [
+        "receipt digest does not match observed source digest"
+      ],
+      "mapped": {
+        "hasReceipt": true,
+        "expectedSource": {
+          "sourceArtifactId": "T-synaptic-mesh-receiver-policy-adapter-contracts-v0",
+          "sourceArtifactPath": "research-package/T-synaptic-mesh-receiver-policy-adapter-contracts-v0.md",
+          "sourceDigest": "sha256:receiver-policy-adapter-contracts-v0"
+        },
+        "proposedAction": {
+          "verb": "write_doc",
+          "target": "local-note.md",
+          "riskTier": "low_local"
+        },
+        "hasReceiverFreshnessPolicy": false,
+        "hasSourceFreshnessPolicy": true
+      }
+    },
+    {
+      "id": "langgraph-like-observed-source-digest-mismatch-fetches",
+      "adapterId": "langgraph-like-receiver-policy-contract-v0",
+      "framework": "langgraph-like",
+      "decision": "fetch_abstain",
+      "reasons": [
+        "receipt digest does not match observed source digest"
+      ],
+      "mapped": {
+        "hasReceipt": true,
+        "expectedSource": {
+          "sourceArtifactId": "T-synaptic-mesh-receiver-policy-adapter-contracts-v0",
+          "sourceArtifactPath": "research-package/T-synaptic-mesh-receiver-policy-adapter-contracts-v0.md",
+          "sourceDigest": "sha256:receiver-policy-adapter-contracts-v0"
+        },
+        "proposedAction": {
+          "verb": "run_local_test",
+          "target": "implementation/synaptic-mesh-shadow-v0",
+          "riskTier": "low_local"
+        },
+        "hasReceiverFreshnessPolicy": false,
+        "hasSourceFreshnessPolicy": true
+      }
+    },
+    {
+      "id": "autogen-like-observed-source-digest-mismatch-fetches",
+      "adapterId": "autogen-like-receiver-policy-contract-v0",
+      "framework": "autogen-like",
+      "decision": "fetch_abstain",
+      "reasons": [
+        "receipt digest does not match observed source digest"
+      ],
+      "mapped": {
+        "hasReceipt": true,
+        "expectedSource": {
+          "sourceArtifactId": "T-synaptic-mesh-receiver-policy-adapter-contracts-v0",
+          "sourceArtifactPath": "research-package/T-synaptic-mesh-receiver-policy-adapter-contracts-v0.md",
+          "sourceDigest": "sha256:receiver-policy-adapter-contracts-v0"
+        },
+        "proposedAction": {
+          "verb": "write_doc",
+          "target": "local-summary.md",
+          "riskTier": "low_local"
+        },
+        "hasReceiverFreshnessPolicy": false,
+        "hasSourceFreshnessPolicy": true
+      }
+    },
+    {
+      "id": "crewai-like-observed-source-digest-mismatch-fetches",
+      "adapterId": "crewai-like-receiver-policy-contract-v0",
+      "framework": "crewai-like",
+      "decision": "fetch_abstain",
+      "reasons": [
+        "receipt digest does not match observed source digest"
+      ],
+      "mapped": {
+        "hasReceipt": true,
+        "expectedSource": {
+          "sourceArtifactId": "T-synaptic-mesh-receiver-policy-adapter-contracts-v0",
+          "sourceArtifactPath": "research-package/T-synaptic-mesh-receiver-policy-adapter-contracts-v0.md",
+          "sourceDigest": "sha256:receiver-policy-adapter-contracts-v0"
+        },
+        "proposedAction": {
+          "verb": "prepare_draft",
+          "target": "local-task-note.md",
+          "riskTier": "low_local"
+        },
+        "hasReceiverFreshnessPolicy": false,
+        "hasSourceFreshnessPolicy": true
+      }
+    },
+    {
+      "id": "semantic-kernel-like-observed-source-digest-mismatch-fetches",
+      "adapterId": "semantic-kernel-like-receiver-policy-contract-v0",
+      "framework": "semantic-kernel-like",
+      "decision": "fetch_abstain",
+      "reasons": [
+        "receipt digest does not match observed source digest"
+      ],
+      "mapped": {
+        "hasReceipt": true,
+        "expectedSource": {
+          "sourceArtifactId": "T-synaptic-mesh-receiver-policy-adapter-contracts-v0",
+          "sourceArtifactPath": "research-package/T-synaptic-mesh-receiver-policy-adapter-contracts-v0.md",
+          "sourceDigest": "sha256:receiver-policy-adapter-contracts-v0"
+        },
+        "proposedAction": {
+          "verb": "run_local_test",
+          "target": "local-validator",
+          "riskTier": "low_local"
+        },
+        "hasReceiverFreshnessPolicy": false,
+        "hasSourceFreshnessPolicy": true
+      }
+    },
+    {
+      "id": "mcp-like-observed-source-digest-mismatch-fetches",
+      "adapterId": "mcp-like-receiver-policy-contract-v0",
+      "framework": "mcp-like",
+      "decision": "fetch_abstain",
+      "reasons": [
+        "receipt digest does not match observed source digest"
+      ],
+      "mapped": {
+        "hasReceipt": true,
+        "expectedSource": {
+          "sourceArtifactId": "T-synaptic-mesh-receiver-policy-adapter-contracts-v0",
+          "sourceArtifactPath": "research-package/T-synaptic-mesh-receiver-policy-adapter-contracts-v0.md",
+          "sourceDigest": "sha256:receiver-policy-adapter-contracts-v0"
+        },
+        "proposedAction": {
+          "verb": "write_doc",
+          "target": "local-mcp-note.md",
+          "riskTier": "low_local"
+        },
+        "hasReceiverFreshnessPolicy": false,
+        "hasSourceFreshnessPolicy": true
       }
     },
     {
