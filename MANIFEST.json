@@ -1,7 +1,7 @@
 {
   "bundle": "synaptic-mesh",
-  "version": "0.1.2",
-  "generated": "2026-05-07T17:58:08Z",
+  "version": "0.1.3",
+  "generated": "2026-05-07T18:02:00Z",
   "status": "hardening_release_candidate_not_runtime_ready",
   "repository": "https://github.com/lechuit/synaptic-mesh",
   "license": "Apache-2.0 for code; CC BY 4.0 for docs/prose unless otherwise noted",
@@ -41,8 +41,8 @@
     },
     {
       "path": "docs/repo-structure.md",
-      "bytes": 2660,
-      "sha256": "a6e57eeff6d542331250ee29141fe098a5877569886f747e4f32b6cc7df6125e"
+      "bytes": 2831,
+      "sha256": "444e237a952acbe03f4c7e8437a3e146db006c74de42c23acf25e093b9e3d243"
     },
     {
       "path": "evidence/publication-reproducibility-rerun/cli-validator.out.json",
@@ -161,8 +161,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/package.json",
-      "bytes": 3841,
-      "sha256": "3a21028b852552cca525a63399a006c02ca49ac446272fb89f923b881087ef5b"
+      "bytes": 3890,
+      "sha256": "5c9b00a535087a447eaee1507713ab549bf50c8b31143a0bbec6141de3a48629"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/README.md",
@@ -178,6 +178,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/src/action-policy.mjs",
       "bytes": 3017,
       "sha256": "aa4c84c2c93096b1ae010406eddd733907ff3a445545016e783b408517cd109b"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/src/adapters/review-local-io.mjs",
+      "bytes": 1037,
+      "sha256": "684f0af168e11bcc68d60ed9959ff8e4cd11aa7971019dca99d5c4e7d58ed825"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/decision-engine.mjs",
@@ -286,8 +291,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/review-local.mjs",
-      "bytes": 6786,
-      "sha256": "6fae6a97dcdd055df63b190577407569329e05e97b86630968d1d7622443311b"
+      "bytes": 6316,
+      "sha256": "d619a5032db411b8e8d5558a1b2fb4625e5c069e0eafe2b48a1b69fd472cea00"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/smoke.mjs",

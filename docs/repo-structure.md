@@ -22,8 +22,8 @@ Synaptic Mesh keeps protocol, implementation, research, and evidence separate so
 
 1. Prefer adding new protocol contracts under `specs/` before implementation-specific fixtures depend on them.
 2. Keep receiver policy core logic in `src/` pure: it should classify/evaluate packet data without filesystem, CLI, network, or evidence writes.
-3. Keep IO at the edges: CLIs in `bin/`, contract/evidence writers in `tests/`, and historical outputs under `evidence/` or `runs/`.
-4. Add adapter/framework mappings as narrow ports that translate framework packet shapes into the stable receiver-policy input shape.
+3. Keep IO at the edges: CLIs in `bin/`, contract/evidence writers in `tests/`, small filesystem/process adapters in `src/adapters/`, and historical outputs under `evidence/` or `runs/`.
+4. Add adapter/framework mappings as narrow ports that translate framework packet shapes into the stable receiver-policy input shape; test runners may also use narrow adapters when that prevents orchestration IO from leaking into policy/core modules.
 5. Avoid large file moves in behavior PRs. If a migration is needed, do it in a dedicated layout PR with manifest/evidence regeneration.
 6. Keep `MANIFEST.json` current with tracked repository files; `npm run verify:manifest`, `npm run check`, and `npm run review:local` should fail when tracked file bytes or hashes drift.
 
