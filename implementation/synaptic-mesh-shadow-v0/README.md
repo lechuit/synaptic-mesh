@@ -34,12 +34,13 @@ The reference currently covers:
 - fixture parity over the canonical local fixture set;
 - normalized fixture summary output;
 - RouteDecision schema, threat-model mapping, and wrong-route oracle fixture evidence;
+- deterministic local benchmark/overhead evidence comparing representation strategies (fixture proxy only, no live LLM/API calls);
 - one-command local review evidence.
 
 Current local gates observed in `evidence/review-local.out.json`:
 
 - review-local verdict: `pass`;
-- commands: `20/20` passing;
+- commands: `21/21` passing;
 - fixture parity: `15/15` passing;
 - normalized summary fixtures: `15`;
 - unsafe allow signals: `0`;
@@ -141,6 +142,7 @@ Key files:
 - `authority-laundering-regression.out.json` — adversarial laundering regression cases;
 - `route-decision-schema.out.json` — RouteDecision schema shape-validation evidence;
 - `receipt-schema.out.json` — strict local-shadow structured Receipt schema shape-validation evidence; not semantic proof or runtime authorization;
+- `authority-overhead-benchmark.out.json` — deterministic local fixture proxy benchmark comparing naive summary, full context, simple receipt, and AuthorityEnvelope representations; not a production benchmark;
 - `threat-model-routes.out.json` — threat-model actor/capability to expected route mapping evidence;
 - `route-decision-wrong-routes.out.json` — adversarial wrong-route oracle fixture evidence; not a classifier or runtime semantic parser;
 - `receiver-policy-adapter-contracts.out.json` — framework-shaped receiver adapter contract cases;

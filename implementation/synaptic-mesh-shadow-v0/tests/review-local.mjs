@@ -81,6 +81,10 @@ const commands = [
     args: [resolve(packageRoot, 'tests/partial-receipt-degrade.mjs')],
   },
   {
+    id: 'authority-overhead-benchmark-tests',
+    args: [resolve(packageRoot, 'tests/authority-overhead-benchmark.mjs')],
+  },
+  {
     id: 'fixture-parity-harness',
     args: [resolve(packageRoot, 'tests/fixture-parity.mjs')],
   },
@@ -107,6 +111,7 @@ const receiverAdapterContracts = readEvidenceJson('implementation/synaptic-mesh-
 const actionPolicyContracts = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/action-policy-contracts.out.json');
 const syntheticHandoff = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/synthetic-handoff-examples.out.json');
 const partialDegrade = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/partial-receipt-degrade.out.json');
+const authorityBenchmark = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/authority-overhead-benchmark.out.json');
 
 const unsafeAllowSignals = [
   ...(fixtureParity?.summary?.nonRegressionUnsafeAllowFixtures ?? []),
@@ -123,6 +128,7 @@ if (Number(receiverAdapterContracts?.summary?.unsafeAllows ?? 0) !== 0) unsafeAl
 if (Number(actionPolicyContracts?.summary?.unsafeAllows ?? 0) !== 0) unsafeAllowSignals.push('action-policy-contracts');
 if (Number(syntheticHandoff?.summary?.unsafeAllows ?? 0) !== 0) unsafeAllowSignals.push('synthetic-handoff-examples');
 if (Number(partialDegrade?.summary?.unsafeAllows ?? 0) !== 0) unsafeAllowSignals.push('partial-receipt-degrade');
+if (authorityBenchmark?.summary?.verdict !== 'pass') unsafeAllowSignals.push('authority-overhead-benchmark');
 
 const summary = {
   artifact: 'T-synaptic-mesh-review-local-runner-v0',
@@ -151,6 +157,9 @@ const summary = {
   actionPolicyContractsVerdict: actionPolicyContracts?.summary?.verdict ?? null,
   syntheticHandoffVerdict: syntheticHandoff?.summary?.verdict ?? null,
   partialReceiptDegradeVerdict: partialDegrade?.summary?.verdict ?? null,
+  authorityOverheadBenchmarkVerdict: authorityBenchmark?.summary?.verdict ?? null,
+  authorityOverheadBenchmarkCaseCount: authorityBenchmark?.summary?.caseCount ?? null,
+  authorityOverheadBenchmarkModes: authorityBenchmark?.summary?.modes ?? null,
   unsafeAllowSignals,
   sourceFixtureMutation: false,
 };

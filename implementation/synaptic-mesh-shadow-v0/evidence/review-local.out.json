@@ -3,8 +3,8 @@
     "artifact": "T-synaptic-mesh-review-local-runner-v0",
     "timestamp": "2026-05-07T15:05:00.000Z",
     "verdict": "pass",
-    "commands": 20,
-    "passCommands": 20,
+    "commands": 21,
+    "passCommands": 21,
     "failedCommands": [],
     "fixtureCount": 15,
     "fixtureParityVerdict": "pass",
@@ -26,6 +26,14 @@
     "actionPolicyContractsVerdict": "pass",
     "syntheticHandoffVerdict": "pass",
     "partialReceiptDegradeVerdict": "pass",
+    "authorityOverheadBenchmarkVerdict": "pass",
+    "authorityOverheadBenchmarkCaseCount": 6,
+    "authorityOverheadBenchmarkModes": [
+      "naive_summary",
+      "full_context",
+      "simple_receipt",
+      "authority_envelope"
+    ],
     "unsafeAllowSignals": [],
     "sourceFixtureMutation": false
   },
@@ -152,6 +160,13 @@
     {
       "id": "partial-receipt-degrade-tests",
       "command": "node implementation/synaptic-mesh-shadow-v0/tests/partial-receipt-degrade.mjs",
+      "status": 0,
+      "pass": true,
+      "stderr": ""
+    },
+    {
+      "id": "authority-overhead-benchmark-tests",
+      "command": "node implementation/synaptic-mesh-shadow-v0/tests/authority-overhead-benchmark.mjs",
       "status": 0,
       "pass": true,
       "stderr": ""

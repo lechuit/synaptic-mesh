@@ -8,10 +8,11 @@ Status: baseline shadow-gates release candidate / public review package update. 
 - Added adversarial wrong-route fixtures for memory-claim laundering, hidden promotion, stale policy windows, replayed receipts, nested authority, free-text action tampering, external prose, and ambiguous verbs.
 - Kept CI scoped to the local shadow package; it does not add runtime/framework integration, MCP/A2A integration, tool execution, or enforcement behavior.
 - Preserved deterministic local evidence expectations for review runs.
+- Added a deterministic local authority overhead benchmark comparing naive summaries, full context, simple receipts, and AuthorityEnvelope-shaped records without live LLM/API calls or runtime integration.
 
 ## Validation snapshot
 
-- review-local: pass 20/20
+- review-local: pass 21/21
 - receiver adapter contracts: pass 59/59
 - fixture parity: 15/15
 - unsafe allow signals: 0
@@ -20,6 +21,7 @@ Status: baseline shadow-gates release candidate / public review package update. 
 - Threat-model route mapping: pass 11/11 mappings, 2 explicit known gaps
 - RouteDecision wrong-route oracle fixtures: pass 9/9 fixtures, no classifier/runtime semantics
 - Receipt schema: pass 1 valid and 4 invalid/adversarial fixtures, shape validation only
+- Authority overhead benchmark: pass 6 fixtures across 4 representation modes, fixture proxy only
 
 ## Compatibility note
 
