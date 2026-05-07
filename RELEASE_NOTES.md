@@ -10,8 +10,8 @@ Status: baseline shadow-gates release candidate / public review package update. 
 
 ## Validation snapshot
 
-- review-local: pass 13/13
-- receiver adapter contracts: pass 53/53
+- review-local: pass 17/17
+- receiver adapter contracts: pass 59/59
 - fixture parity: 15/15
 - unsafe allow signals: 0
 - source fixture mutation: false

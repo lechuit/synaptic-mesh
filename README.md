@@ -45,7 +45,7 @@ From this bundle root:
 npm --prefix implementation/synaptic-mesh-shadow-v0 run review:local
 ```
 
-Expected current result: 13/13 commands pass, fixture parity 15/15, unsafe allow signals 0, source fixture mutation false.
+Expected current result: 17/17 commands pass, fixture parity 15/15, unsafe allow signals 0, source fixture mutation false.
 
 For adapter-shaped contract coverage specifically:
 
@@ -53,7 +53,7 @@ For adapter-shaped contract coverage specifically:
 npm --prefix implementation/synaptic-mesh-shadow-v0 run test:receiver-adapters
 ```
 
-Expected current result: 53/53 cases pass, unsafe allows 0.
+Expected current result: 59/59 cases pass, unsafe allows 0.
 
 ## Citation/source policy
 

@@ -38,6 +38,21 @@ function assertNotIncludes(text, forbidden, label) {
   assert(!text.includes(forbidden), `${label} must not include stale ${JSON.stringify(forbidden)}`);
 }
 
+function countLabel(passed, total) {
+  return `${passed}/${total}`;
+}
+
+function assertOptionalCountMatches(text, pattern, expectedCount, label, description) {
+  const match = text.match(pattern);
+  if (!match) return;
+
+  const actualCount = countLabel(Number(match.groups.passed), Number(match.groups.total));
+  assert(
+    actualCount === expectedCount,
+    `${label} ${description} count ${actualCount} must match current evidence ${expectedCount}; remove the exact count if it is not intended to be release-pinned`,
+  );
+}
+
 const repoRoot = runGit(['rev-parse', '--show-toplevel']);
 const expectedPackageRoot = path.join(repoRoot, 'implementation/synaptic-mesh-shadow-v0');
 const packageRoot = process.cwd();
@@ -52,6 +67,7 @@ const packageJson = readJson(path.join(packageRoot, 'package.json'));
 const readme = readFileSync(path.join(repoRoot, 'README.md'), 'utf8');
 const releaseNotes = readFileSync(path.join(repoRoot, 'RELEASE_NOTES.md'), 'utf8');
 const releaseChecklist = readFileSync(path.join(repoRoot, 'docs/release-checklist.md'), 'utf8');
+const shadowReadme = readFileSync(path.join(packageRoot, 'README.md'), 'utf8');
 
 const releaseVersion = manifest.version;
 const releaseTag = `v${releaseVersion}`;
@@ -82,6 +98,49 @@ const reviewEvidence = readJson(path.join(packageRoot, 'evidence/review-local.ou
 assert(reviewEvidence?.summary?.verdict === 'pass', 'review-local evidence verdict must be pass');
 assert(reviewEvidence?.summary?.sourceFixtureMutation === false, 'review-local evidence must report sourceFixtureMutation: false');
 assert((reviewEvidence?.summary?.unsafeAllowSignals ?? []).length === 0, 'review-local evidence must report zero unsafe allow signals');
+
+const receiverAdapterEvidence = readJson(path.join(packageRoot, 'evidence/receiver-policy-adapter-contracts.out.json'));
+assert(receiverAdapterEvidence?.summary?.verdict === 'pass', 'receiver adapter evidence verdict must be pass');
+assert(receiverAdapterEvidence?.summary?.unsafeAllows === 0, 'receiver adapter evidence must report unsafeAllows: 0');
+
+const reviewLocalCount = countLabel(reviewEvidence.summary.passCommands, reviewEvidence.summary.commands);
+const receiverAdapterCount = countLabel(receiverAdapterEvidence.summary.passCases, receiverAdapterEvidence.summary.totalCases);
+
+assertOptionalCountMatches(
+  readme,
+  /Expected current result:\s*(?<passed>\d+)\/(?<total>\d+) commands pass/,
+  reviewLocalCount,
+  'README.md',
+  'review-local',
+);
+assertOptionalCountMatches(
+  releaseNotes,
+  /review-local:\s*pass\s+(?<passed>\d+)\/(?<total>\d+)/,
+  reviewLocalCount,
+  'RELEASE_NOTES.md',
+  'review-local',
+);
+assertOptionalCountMatches(
+  shadowReadme,
+  /commands:\s*`(?<passed>\d+)\/(?<total>\d+)` passing/,
+  reviewLocalCount,
+  'implementation/synaptic-mesh-shadow-v0/README.md',
+  'review-local',
+);
+assertOptionalCountMatches(
+  readme,
+  /Expected current result:\s*(?<passed>\d+)\/(?<total>\d+) cases pass/,
+  receiverAdapterCount,
+  'README.md',
+  'receiver adapter contracts',
+);
+assertOptionalCountMatches(
+  releaseNotes,
+  /receiver adapter contracts:\s*pass\s+(?<passed>\d+)\/(?<total>\d+)/,
+  receiverAdapterCount,
+  'RELEASE_NOTES.md',
+  'receiver adapter contracts',
+);
 
 console.log(JSON.stringify({
   status: 'pass',
