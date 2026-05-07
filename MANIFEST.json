@@ -271,8 +271,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/parser-normalization-evidence.out.json",
-      "bytes": 4640,
-      "sha256": "fce3c3b3a1bd7d97a6be7b88dcf037870d2b5013f485611e5e955a1cf7afd276"
+      "bytes": 4618,
+      "sha256": "682bc7f0c197d7c353b2d2eebb34a49166a5d80146d20cdbd34dd6450f0d7d36"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/partial-receipt-degrade.out.json",
@@ -496,8 +496,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/parser-normalization-evidence.mjs",
-      "bytes": 13220,
-      "sha256": "288f9f3181ad9bde894ebacc4d87cee9c7e5b41f86004d872e45d6f496d7c472"
+      "bytes": 13198,
+      "sha256": "afa4b783382481eabe4e6dfeb9fb9d490a938ad6e66af40cf5b41f4a6b2afaa7"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/partial-receipt-degrade.mjs",

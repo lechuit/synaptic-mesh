@@ -123,7 +123,7 @@
     "parser_evidence_is_hand_authored_fixture_evidence_not_live_parser_robustness",
     "no_classifier_runtime_enforcement_or_tool_authorization_added",
     "route_decision_input_hash_binds_fixture_input_but_is_not_cryptographic_authority",
-    "real_flow_replay_and_live_shadow_observer_are_not_implemented_yet"
+    "live_shadow_observer_is_not_implemented_yet"
   ],
   "validationErrors": [],
   "boundary": [
