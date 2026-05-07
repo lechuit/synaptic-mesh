@@ -1,20 +1,21 @@
-# Synaptic Mesh v0.1.1
+# Synaptic Mesh v0.1.2
 
-Status: hardening release candidate `v0.1.1`; **not runtime-ready**; **not production/canary/enforcement-ready**.
+Status: adapter-contract hardening release candidate `v0.1.2`; **not runtime-ready**; **not production/canary/enforcement-ready**.
 
 ## What this is
 
-A public release-candidate review package for Synaptic Mesh / Multi-Agent Memory Authority Protocol: a protocol proposal for preserving authority/status/boundary receipts through multi-agent memory transforms.
+A public review package for Synaptic Mesh / Multi-Agent Memory Authority Protocol: a protocol proposal for preserving authority/status/boundary receipts through multi-agent memory transforms.
 
 ## Compatibility / scope
 
 Synaptic Mesh is intended to be **framework-agnostic**: the protocol idea should apply to any agent stack that retrieves, summarizes, compresses, or hands off memory-derived context.
 
-Current v0.1.1 status is narrower:
+Current v0.1.2 status is narrower:
 
 - validated with the included local shadow workflow;
 - shipped as a standalone reference package and fixture suite, not integrated with any production/runtime host;
-- includes contract-shaped generic, LangGraph-like, and AutoGen-like receiver adapter tests for portability review;
+- includes contract-shaped receiver adapter tests for Generic, LangGraph-like, AutoGen-like, CrewAI-like, Semantic Kernel-like, and MCP-like packet shapes;
+- expands fail-closed coverage for duplicate authority fields, sensitive verb aliases, and receiver-observed source mismatch by digest/mtime/run-id;
 - no real LangGraph, AutoGen, CrewAI, Semantic Kernel, MCP, or runtime host adapters are included yet;
 - real adapter work is a future track and should preserve the same runtime/non-goal boundaries.
 
@@ -27,6 +28,7 @@ Included:
 - local shadow/reference implementation: `implementation/synaptic-mesh-shadow-v0/`
 - bibliography and review artifacts: `research-package/`
 - reproducibility snapshot: `evidence/`
+- hardening roundup: `HARDENING_ROUNDUP.md`
 
 ## What this is not
 
@@ -45,6 +47,14 @@ npm --prefix implementation/synaptic-mesh-shadow-v0 run review:local
 
 Expected current result: 13/13 commands pass, fixture parity 15/15, unsafe allow signals 0, source fixture mutation false.
 
+For adapter-shaped contract coverage specifically:
+
+```bash
+npm --prefix implementation/synaptic-mesh-shadow-v0 run test:receiver-adapters
+```
+
+Expected current result: 53/53 cases pass, unsafe allows 0.
+
 ## Citation/source policy
 
 The bundle includes quote-check reports and bibliography metadata. It intentionally excludes raw downloaded source PDFs/HTML caches; reviewers should retrieve primary sources from their official URLs/DOIs if needed.
@@ -61,4 +71,4 @@ The most useful feedback right now is tracked in these starter issues:
 
 ## Runtime boundary
 
-Runtime/tooling integration requires a separate explicit maintainer approval track. This RC is for protocol, citation, fixture, and reference-implementation review only.
+Runtime/tooling integration requires a separate explicit maintainer approval track. This package is for protocol, citation, fixture, and reference-implementation review only.
