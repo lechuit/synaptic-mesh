@@ -18,6 +18,7 @@ const releaseGateScripts = [
   'test:authority-benchmark',
   'test:adversarial-generator',
   'test:raw-parser-adversarial',
+  'test:parser-normalization-evidence',
 ];
 
 function runGit(args, options = {}) {

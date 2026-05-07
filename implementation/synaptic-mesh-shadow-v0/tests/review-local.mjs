@@ -93,6 +93,10 @@ const commands = [
     args: [resolve(packageRoot, 'tests/raw-parser-adversarial.mjs')],
   },
   {
+    id: 'parser-normalization-evidence-tests',
+    args: [resolve(packageRoot, 'tests/parser-normalization-evidence.mjs')],
+  },
+  {
     id: 'fixture-parity-harness',
     args: [resolve(packageRoot, 'tests/fixture-parity.mjs')],
   },
@@ -122,6 +126,7 @@ const partialDegrade = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/
 const authorityBenchmark = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/authority-overhead-benchmark.out.json');
 const adversarialGenerator = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/adversarial-fixture-generator.out.json');
 const rawParserAdversarial = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/raw-parser-adversarial.out.json');
+const parserNormalizationEvidence = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/parser-normalization-evidence.out.json');
 
 const unsafeAllowSignals = [
   ...(fixtureParity?.summary?.nonRegressionUnsafeAllowFixtures ?? []),
@@ -141,6 +146,7 @@ if (Number(partialDegrade?.summary?.unsafeAllows ?? 0) !== 0) unsafeAllowSignals
 if (authorityBenchmark?.summary?.verdict !== 'pass') unsafeAllowSignals.push('authority-overhead-benchmark');
 if (adversarialGenerator?.summary?.verdict !== 'pass') unsafeAllowSignals.push('adversarial-fixture-generator');
 if (rawParserAdversarial?.summary?.verdict !== 'pass') unsafeAllowSignals.push('raw-parser-adversarial');
+if (parserNormalizationEvidence?.summary?.verdict !== 'pass') unsafeAllowSignals.push('parser-normalization-evidence');
 
 const summary = {
   artifact: 'T-synaptic-mesh-review-local-runner-v0',
@@ -176,6 +182,9 @@ const summary = {
   adversarialGeneratedFixtureCount: adversarialGenerator?.summary?.generatedFixtures ?? null,
   rawParserAdversarialVerdict: rawParserAdversarial?.summary?.verdict ?? null,
   rawParserAdversarialFixtureCount: rawParserAdversarial?.summary?.fixtureCount ?? null,
+  parserNormalizationEvidenceVerdict: parserNormalizationEvidence?.summary?.verdict ?? null,
+  parserNormalizationEvidenceFixtureCount: parserNormalizationEvidence?.summary?.fixtureCount ?? null,
+  parserNormalizationEvidenceHashBoundRate: parserNormalizationEvidence?.summary?.routeDecisionInputHashBoundRate ?? null,
   unsafeAllowSignals,
   sourceFixtureMutation: false,
 };
