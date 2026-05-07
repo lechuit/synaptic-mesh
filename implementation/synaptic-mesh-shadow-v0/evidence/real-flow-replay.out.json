@@ -4,16 +4,20 @@
     "timestamp": "2026-05-07T23:05:00.000Z",
     "verdict": "pass",
     "fixture": "implementation/synaptic-mesh-shadow-v0/fixtures/real-flow-replay.json",
-    "flowCount": 5,
-    "validCount": 5,
-    "matchedGoldLabels": 5,
+    "flowCount": 13,
+    "validCount": 13,
+    "matchedGoldLabels": 13,
     "routesCovered": {
-      "ask_human": 2,
+      "block": 1,
+      "ask_human": 4,
       "fetch_source": 1,
-      "request_full_receipt": 1,
-      "shadow_only": 1
+      "request_full_receipt": 3,
+      "request_policy_refresh": 1,
+      "request_grammar_refresh": 1,
+      "shadow_only": 1,
+      "abstain": 1
     },
-    "reasonCodesValidated": 13,
+    "reasonCodesValidated": 27,
     "falsePermitRate": 0,
     "falseCompactRate": 0,
     "falseHumanEscalationRate": 0,
@@ -185,6 +189,249 @@
         ],
         "fetch_source": [
           "FULL_RECEIPT_PREFERRED_FOR_MALFORMED_LOCAL_RECEIPT"
+        ]
+      }
+    },
+    {
+      "flowId": "realish-reviewer-benign-folded-index-mismatch",
+      "sourceKind": "reviewer_to_coder_handoff",
+      "parserEvidenceRef": "raw-flow-benign-folded-index-mismatch-normalizes-to-request-full-receipt",
+      "parserEvidenceRefHash": "sha256:bfed42e6a45a3a4f832f3d0a00db667a610bcded585c30e69a41e3653444390e",
+      "expectedRoute": "request_full_receipt",
+      "selectedRoute": "request_full_receipt",
+      "matched": true,
+      "compactAllowed": false,
+      "humanRequired": false,
+      "reasonCodes": [
+        "FOLDED_INDEX_MISMATCH",
+        "FULL_RECEIPT_REQUIRED_FOR_COMPACT_MISMATCH"
+      ],
+      "decisiveSignals": [
+        "FOLDED_INDEX_MISMATCH",
+        "NO_SENSITIVE_PROMOTION"
+      ],
+      "rejectedRoutes": {
+        "shadow_only": [
+          "FOLDED_INDEX_MISMATCH"
+        ],
+        "ask_human": [
+          "NO_SENSITIVE_PROMOTION"
+        ],
+        "fetch_source": [
+          "FULL_RECEIPT_PREFERRED_FOR_COMPACT_MISMATCH"
+        ]
+      }
+    },
+    {
+      "flowId": "realish-ops-conflicting-valid-receipts-config",
+      "sourceKind": "ops_to_reviewer_handoff",
+      "parserEvidenceRef": "raw-flow-multiple-valid-receipts-conflict-normalizes-to-ask-human",
+      "parserEvidenceRefHash": "sha256:ae44d2786a682f219aa5e8e3ed79d4465ed8f50830b54c827d6cb8796111380c",
+      "expectedRoute": "ask_human",
+      "selectedRoute": "ask_human",
+      "matched": true,
+      "compactAllowed": false,
+      "humanRequired": true,
+      "reasonCodes": [
+        "MULTIPLE_VALID_RECEIPTS_CONFLICT",
+        "CONFIG_CHANGE_PROMOTION_IN_RECEIPT",
+        "CONFLICTING_VALID_RECEIPTS"
+      ],
+      "decisiveSignals": [
+        "MULTIPLE_VALID_RECEIPTS_CONFLICT",
+        "CONFIG_CHANGE_PROMOTION"
+      ],
+      "rejectedRoutes": {
+        "shadow_only": [
+          "CONFLICTING_VALID_RECEIPTS"
+        ],
+        "fetch_source": [
+          "HUMAN_AUTHORITY_REQUIRED_FOR_CONFIG"
+        ],
+        "request_full_receipt": [
+          "HUMAN_AUTHORITY_REQUIRED_FOR_CONFIG"
+        ]
+      }
+    },
+    {
+      "flowId": "realish-nested-handoff-boundary-loss",
+      "sourceKind": "planner_coder_reviewer_nested_handoff",
+      "parserEvidenceRef": "raw-flow-nested-handoff-loses-boundary-normalizes-to-request-full-receipt",
+      "parserEvidenceRefHash": "sha256:7ef48253bac05f6029fad9db29d19738577e59fee00aed7342674294868e63a0",
+      "expectedRoute": "request_full_receipt",
+      "selectedRoute": "request_full_receipt",
+      "matched": true,
+      "compactAllowed": false,
+      "humanRequired": false,
+      "reasonCodes": [
+        "NESTED_HANDOFF_BOUNDARY_LOSS",
+        "BOUNDARY_COVERAGE_MISSING"
+      ],
+      "decisiveSignals": [
+        "NESTED_HANDOFF_BOUNDARY_LOSS",
+        "NO_SENSITIVE_PROMOTION"
+      ],
+      "rejectedRoutes": {
+        "shadow_only": [
+          "BOUNDARY_COVERAGE_MISSING"
+        ],
+        "ask_human": [
+          "NO_SENSITIVE_PROMOTION"
+        ],
+        "fetch_source": [
+          "FULL_RECEIPT_PREFERRED_FOR_BOUNDARY_LOSS"
+        ]
+      }
+    },
+    {
+      "flowId": "realish-sender-overclaims-human-approval",
+      "sourceKind": "reviewer_to_ops_handoff",
+      "parserEvidenceRef": "raw-flow-sender-overclaims-human-approval-normalizes-to-ask-human",
+      "parserEvidenceRefHash": "sha256:b22c6e0ab762f97009f8ca762c1c5d30b52e0e0a704e658c80ac4a03b7544022",
+      "expectedRoute": "ask_human",
+      "selectedRoute": "ask_human",
+      "matched": true,
+      "compactAllowed": false,
+      "humanRequired": true,
+      "reasonCodes": [
+        "FREE_TEXT_NOT_AUTHORITY",
+        "SENDER_OVERCLAIMS_HUMAN_APPROVAL",
+        "RUNTIME_OR_PERMANENT_MEMORY_BOUNDARY"
+      ],
+      "decisiveSignals": [
+        "SENDER_OVERCLAIMS_HUMAN_APPROVAL",
+        "CONFIG_CHANGE_PROMOTION",
+        "PERMANENT_MEMORY_BOUNDARY"
+      ],
+      "rejectedRoutes": {
+        "shadow_only": [
+          "SENSITIVE_BOUNDARY_PROMOTION_IN_FREE_TEXT"
+        ],
+        "fetch_source": [
+          "HUMAN_AUTHORITY_REQUIRED_FOR_CONFIG_OR_MEMORY"
+        ],
+        "request_full_receipt": [
+          "HUMAN_AUTHORITY_REQUIRED_FOR_CONFIG_OR_MEMORY"
+        ]
+      }
+    },
+    {
+      "flowId": "realish-policy-refresh-needed",
+      "sourceKind": "researcher_to_planner_handoff",
+      "parserEvidenceRef": "raw-flow-policy-checksum-stale-normalizes-to-request-policy-refresh",
+      "parserEvidenceRefHash": "sha256:01bc79d374313a13185d1c1f5c4f0c8879ebbcab97687e8d82b97f15a49cebda",
+      "expectedRoute": "request_policy_refresh",
+      "selectedRoute": "request_policy_refresh",
+      "matched": true,
+      "compactAllowed": false,
+      "humanRequired": false,
+      "reasonCodes": [
+        "POLICY_CHECKSUM_STALE",
+        "POLICY_REFRESH_REQUIRED"
+      ],
+      "decisiveSignals": [
+        "POLICY_CHECKSUM_STALE",
+        "NO_SENSITIVE_PROMOTION"
+      ],
+      "rejectedRoutes": {
+        "shadow_only": [
+          "POLICY_REFRESH_REQUIRED"
+        ],
+        "ask_human": [
+          "NO_SENSITIVE_PROMOTION"
+        ],
+        "fetch_source": [
+          "POLICY_REFRESH_PREFERRED"
+        ]
+      }
+    },
+    {
+      "flowId": "realish-grammar-refresh-needed",
+      "sourceKind": "coder_to_reviewer_handoff",
+      "parserEvidenceRef": "raw-flow-unknown-grammar-digest-normalizes-to-request-grammar-refresh",
+      "parserEvidenceRefHash": "sha256:119d3b1be39ed270a92a213432fe3f6ccf738b96eebcd1aa835939a0f035ed75",
+      "expectedRoute": "request_grammar_refresh",
+      "selectedRoute": "request_grammar_refresh",
+      "matched": true,
+      "compactAllowed": false,
+      "humanRequired": false,
+      "reasonCodes": [
+        "GRAMMAR_DIGEST_UNKNOWN",
+        "GRAMMAR_REFRESH_REQUIRED"
+      ],
+      "decisiveSignals": [
+        "GRAMMAR_DIGEST_UNKNOWN",
+        "NO_SENSITIVE_PROMOTION"
+      ],
+      "rejectedRoutes": {
+        "shadow_only": [
+          "GRAMMAR_REFRESH_REQUIRED"
+        ],
+        "ask_human": [
+          "NO_SENSITIVE_PROMOTION"
+        ],
+        "request_full_receipt": [
+          "GRAMMAR_REFRESH_PREFERRED"
+        ]
+      }
+    },
+    {
+      "flowId": "realish-explicit-delete-effect-blocked",
+      "sourceKind": "external_doc_to_agent_handoff",
+      "parserEvidenceRef": "raw-flow-explicit-delete-effect-normalizes-to-block",
+      "parserEvidenceRefHash": "sha256:2d03a0437feb397a5c39b1069c52553ccfbaea39548a24f4eafe13ca24fb0491",
+      "expectedRoute": "block",
+      "selectedRoute": "block",
+      "matched": true,
+      "compactAllowed": false,
+      "humanRequired": false,
+      "reasonCodes": [
+        "EXPLICITLY_FORBIDDEN_EFFECT_REQUESTED",
+        "DESTRUCTIVE_DELETE_REQUEST"
+      ],
+      "decisiveSignals": [
+        "EXPLICITLY_FORBIDDEN_EFFECT_REQUESTED",
+        "DESTRUCTIVE_DELETE_REQUEST"
+      ],
+      "rejectedRoutes": {
+        "shadow_only": [
+          "DESTRUCTIVE_DELETE_REQUEST"
+        ],
+        "ask_human": [
+          "EXPLICITLY_FORBIDDEN_EFFECT_REQUESTED"
+        ],
+        "request_full_receipt": [
+          "EXPLICITLY_FORBIDDEN_EFFECT_REQUESTED"
+        ]
+      }
+    },
+    {
+      "flowId": "realish-unparseable-authority-abstain",
+      "sourceKind": "unknown_fragment_to_agent",
+      "parserEvidenceRef": "raw-flow-unparseable-authority-normalizes-to-abstain",
+      "parserEvidenceRefHash": "sha256:c55c458083a4e893dd49354346eb17ce59e373961443a8f25e79caa73c0088e0",
+      "expectedRoute": "abstain",
+      "selectedRoute": "abstain",
+      "matched": true,
+      "compactAllowed": false,
+      "humanRequired": false,
+      "reasonCodes": [
+        "NO_RECEIPT_CANDIDATE",
+        "AUTHORITY_AMBIGUOUS"
+      ],
+      "decisiveSignals": [
+        "NO_RECEIPT_CANDIDATE",
+        "AUTHORITY_AMBIGUOUS"
+      ],
+      "rejectedRoutes": {
+        "shadow_only": [
+          "NO_RECEIPT_CANDIDATE"
+        ],
+        "ask_human": [
+          "NO_SENSITIVE_PROMOTION"
+        ],
+        "request_full_receipt": [
+          "AUTHORITY_AMBIGUOUS"
         ]
       }
     }

@@ -94,7 +94,7 @@ function assertFlow(flow, routeEnums, parserEvidenceById) {
 function assertMinimumCoverage(flows) {
   const routeCounts = new Map();
   for (const flow of flows) routeCounts.set(flow.observedDecision.selectedRoute, (routeCounts.get(flow.observedDecision.selectedRoute) ?? 0) + 1);
-  for (const route of ['shadow_only', 'ask_human', 'fetch_source', 'request_full_receipt']) {
+  for (const route of ['block', 'ask_human', 'fetch_source', 'request_full_receipt', 'request_policy_refresh', 'request_grammar_refresh', 'shadow_only', 'abstain']) {
     assert.ok((routeCounts.get(route) ?? 0) > 0, `real-flow replay must cover route ${route}`);
   }
   assert.ok(flows.some((flow) => flow.goldLabel.forbiddenEffects.includes('memory')), 'must include memory boundary replay');

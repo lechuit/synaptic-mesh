@@ -33,7 +33,7 @@ The reference currently covers:
 - synthetic handoff examples;
 - fixture parity over the canonical local fixture set;
 - normalized fixture summary output;
-- RouteDecision schema, threat-model mapping, wrong-route oracle fixture evidence, generated adversarial fixture variants, raw/parser adversarial fixture pressure, parser normalization evidence, and offline real-flow replay evidence;
+- RouteDecision schema, threat-model mapping, wrong-route oracle fixture evidence, generated adversarial fixture variants, raw/parser adversarial fixture pressure, parser normalization evidence across all canonical routes, and offline real-flow replay evidence;
 - deterministic local benchmark/overhead evidence comparing representation strategies (fixture proxy only, no live LLM/API calls);
 - one-command local review evidence.
 

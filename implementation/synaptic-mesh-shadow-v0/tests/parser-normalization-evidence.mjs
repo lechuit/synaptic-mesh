@@ -95,11 +95,25 @@ function assertMinimumCoverage(records) {
     'raw-flow-stale-source-normalizes-to-fetch-source',
     'raw-flow-folded-index-mismatch-normalizes-to-ask-human',
     'raw-flow-malformed-local-receipt-normalizes-to-request-full-receipt',
+    'raw-flow-benign-folded-index-mismatch-normalizes-to-request-full-receipt',
+    'raw-flow-multiple-valid-receipts-conflict-normalizes-to-ask-human',
+    'raw-flow-nested-handoff-loses-boundary-normalizes-to-request-full-receipt',
+    'raw-flow-sender-overclaims-human-approval-normalizes-to-ask-human',
+    'raw-flow-policy-checksum-stale-normalizes-to-request-policy-refresh',
+    'raw-flow-unknown-grammar-digest-normalizes-to-request-grammar-refresh',
+    'raw-flow-explicit-delete-effect-normalizes-to-block',
+    'raw-flow-unparseable-authority-normalizes-to-abstain',
   ]) assert.ok(byId.has(id), `missing required parser normalization case ${id}`);
 
+  const routes = new Set(records.map((record) => record.expectedRouteDecision.selectedRoute));
+  for (const route of ['block', 'ask_human', 'fetch_source', 'request_full_receipt', 'request_policy_refresh', 'request_grammar_refresh', 'shadow_only', 'abstain']) {
+    assert.ok(routes.has(route), `parser normalization evidence must cover canonical route ${route}`);
+  }
   assert.equal(byId.get('raw-flow-free-text-config-promotion-normalizes-to-ask-human').expectedRouteDecision.selectedRoute, 'ask_human');
   assert.equal(byId.get('raw-flow-stale-source-normalizes-to-fetch-source').expectedRouteDecision.selectedRoute, 'fetch_source');
   assert.equal(byId.get('raw-flow-malformed-local-receipt-normalizes-to-request-full-receipt').expectedRouteDecision.selectedRoute, 'request_full_receipt');
+  assert.equal(byId.get('raw-flow-policy-checksum-stale-normalizes-to-request-policy-refresh').expectedRouteDecision.selectedRoute, 'request_policy_refresh');
+  assert.equal(byId.get('raw-flow-unknown-grammar-digest-normalizes-to-request-grammar-refresh').expectedRouteDecision.selectedRoute, 'request_grammar_refresh');
 }
 
 const fixture = JSON.parse(await readFile(fixturePath, 'utf8'));
