@@ -3,8 +3,8 @@
     "artifact": "T-synaptic-mesh-review-local-runner-v0",
     "timestamp": "2026-05-07T15:05:00.000Z",
     "verdict": "pass",
-    "commands": 21,
-    "passCommands": 21,
+    "commands": 22,
+    "passCommands": 22,
     "failedCommands": [],
     "fixtureCount": 15,
     "fixtureParityVerdict": "pass",
@@ -34,6 +34,8 @@
       "simple_receipt",
       "authority_envelope"
     ],
+    "adversarialFixtureGeneratorVerdict": "pass",
+    "adversarialGeneratedFixtureCount": 9,
     "unsafeAllowSignals": [],
     "sourceFixtureMutation": false
   },
@@ -167,6 +169,13 @@
     {
       "id": "authority-overhead-benchmark-tests",
       "command": "node implementation/synaptic-mesh-shadow-v0/tests/authority-overhead-benchmark.mjs",
+      "status": 0,
+      "pass": true,
+      "stderr": ""
+    },
+    {
+      "id": "adversarial-fixture-generator-tests",
+      "command": "node implementation/synaptic-mesh-shadow-v0/tests/adversarial-fixture-generator.mjs",
       "status": 0,
       "pass": true,
       "stderr": ""
