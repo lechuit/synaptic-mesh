@@ -45,7 +45,7 @@ From this bundle root:
 npm --prefix implementation/synaptic-mesh-shadow-v0 run review:local
 ```
 
-Expected current result: 17/17 commands pass, fixture parity 15/15, unsafe allow signals 0, source fixture mutation false.
+Expected current result: 18/18 commands pass, fixture parity 15/15, RouteDecision schema 17/17 fixture records, unsafe allow signals 0, source fixture mutation false.
 
 For adapter-shaped contract coverage specifically:
 

@@ -53,6 +53,10 @@ const commands = [
     args: [resolve(packageRoot, 'tests/authority-claim-routes-fixtures.mjs')],
   },
   {
+    id: 'route-decision-schema-tests',
+    args: [resolve(packageRoot, 'tests/route-decision-schema.mjs')],
+  },
+  {
     id: 'receiver-policy-adapter-contract-tests',
     args: [resolve(packageRoot, 'tests/receiver-policy-adapter-contracts.mjs')],
   },
@@ -88,6 +92,7 @@ const transformRegression = readEvidenceJson('implementation/synaptic-mesh-shado
 const cliValidator = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/cli-validator.out.json');
 const authorityLaundering = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/authority-laundering-regression.out.json');
 const authorityClaimRoutes = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/authority-claim-routes-fixtures.out.json');
+const routeDecisionSchema = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/route-decision-schema.out.json');
 const receiverAdapterContracts = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/receiver-policy-adapter-contracts.out.json');
 const actionPolicyContracts = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/action-policy-contracts.out.json');
 const syntheticHandoff = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/synthetic-handoff-examples.out.json');
@@ -101,6 +106,7 @@ if (Number(transformRegression?.summary?.unsafeAllows ?? 0) !== 0) unsafeAllowSi
 if (Number(cliValidator?.summary?.unsafeAllows ?? 0) !== 0) unsafeAllowSignals.push('cli-validator');
 if (Number(authorityLaundering?.summary?.unsafeAllows ?? 0) !== 0) unsafeAllowSignals.push('authority-laundering-regression');
 if (Number(authorityClaimRoutes?.summary?.unsafeAllows ?? 0) !== 0) unsafeAllowSignals.push('authority-claim-routes-fixtures');
+if (routeDecisionSchema?.summary?.verdict !== 'pass') unsafeAllowSignals.push('route-decision-schema');
 if (Number(receiverAdapterContracts?.summary?.unsafeAllows ?? 0) !== 0) unsafeAllowSignals.push('receiver-policy-adapter-contracts');
 if (Number(actionPolicyContracts?.summary?.unsafeAllows ?? 0) !== 0) unsafeAllowSignals.push('action-policy-contracts');
 if (Number(syntheticHandoff?.summary?.unsafeAllows ?? 0) !== 0) unsafeAllowSignals.push('synthetic-handoff-examples');
@@ -122,6 +128,8 @@ const summary = {
   authorityClaimRoutesVerdict: authorityClaimRoutes?.summary?.verdict ?? null,
   authorityClaimRouteCount: authorityClaimRoutes?.summary?.routeCount ?? null,
   authorityBoundaryCount: authorityClaimRoutes?.summary?.boundaryCount ?? null,
+  routeDecisionSchemaVerdict: routeDecisionSchema?.summary?.verdict ?? null,
+  routeDecisionSchemaValidCount: routeDecisionSchema?.summary?.validCount ?? null,
   receiverAdapterContractsVerdict: receiverAdapterContracts?.summary?.verdict ?? null,
   actionPolicyContractsVerdict: actionPolicyContracts?.summary?.verdict ?? null,
   syntheticHandoffVerdict: syntheticHandoff?.summary?.verdict ?? null,

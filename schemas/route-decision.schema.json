@@ -1,0 +1,127 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/lechuit/synaptic-mesh/schemas/route-decision.schema.json",
+  "title": "RouteDecision evidence record",
+  "description": "Local shadow-only schema for normalized RouteDecision evidence extracted from AuthorityEnvelope/authority-route fixtures. This validates decision shape and stable evidence fields, not semantic classifier correctness or runtime authorization.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "selectedRoute",
+    "humanRequired",
+    "reasonCodes",
+    "rejectedRoutes",
+    "decisiveSignals",
+    "actionIntent",
+    "actionEffect",
+    "authorityLevel",
+    "boundaryCoverage"
+  ],
+  "properties": {
+    "selectedRoute": {
+      "type": "string",
+      "enum": [
+        "block",
+        "ask_human",
+        "fetch_source",
+        "request_full_receipt",
+        "request_policy_refresh",
+        "request_grammar_refresh",
+        "shadow_only",
+        "abstain"
+      ]
+    },
+    "humanRequired": {
+      "type": "boolean"
+    },
+    "reasonCodes": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Z0-9_]+$"
+      }
+    },
+    "rejectedRoutes": {
+      "type": "object",
+      "minProperties": 1,
+      "propertyNames": {
+        "enum": [
+          "block",
+          "ask_human",
+          "fetch_source",
+          "request_full_receipt",
+          "request_policy_refresh",
+          "request_grammar_refresh",
+          "shadow_only",
+          "abstain"
+        ]
+      },
+      "additionalProperties": {
+        "oneOf": [
+          {
+            "type": "string",
+            "pattern": "^[A-Z0-9_]+$"
+          },
+          {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Z0-9_]+$"
+            }
+          }
+        ]
+      }
+    },
+    "decisiveSignals": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Z0-9_]+$"
+      }
+    },
+    "actionIntent": {
+      "type": "string",
+      "pattern": "^[a-z0-9_]+$"
+    },
+    "actionEffect": {
+      "type": "string",
+      "enum": [
+        "text_only",
+        "filesystem_write",
+        "config_change",
+        "runtime_execution",
+        "permanent_memory_write",
+        "external_publication"
+      ]
+    },
+    "authorityLevel": {
+      "type": "string",
+      "enum": [
+        "read_only",
+        "local_shadow",
+        "memory_candidate",
+        "shared_memory",
+        "permanent_memory",
+        "config_change",
+        "runtime_tool",
+        "external_publication"
+      ]
+    },
+    "boundaryCoverage": {
+      "type": "string",
+      "enum": ["missing", "partial", "complete"]
+    },
+    "verificationFailureMode": {
+      "type": "string",
+      "pattern": "^[a-z0-9_]+$"
+    },
+    "humanReason": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

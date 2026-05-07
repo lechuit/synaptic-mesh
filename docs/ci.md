@@ -11,6 +11,7 @@ The baseline job runs from `implementation/synaptic-mesh-shadow-v0` and executes
 5. `npm run test:action-policy`
 6. `npm run test:authority-routes`
 7. `npm run test:authority-envelope`
+8. `npm run test:route-decision-schema`
 
 The workflow uploads the generated shadow evidence JSON files and `MANIFEST.json` as a `shadow-baseline-evidence` artifact for review. Review evidence records commands with a stable `node` label so local and GitHub runners do not diverge only because of host-specific executable paths.
 
@@ -18,4 +19,4 @@ The workflow uploads the generated shadow evidence JSON files and `MANIFEST.json
 
 These gates are local-shadow validation only. Passing CI does **not** mean the project is runtime-ready, does **not** enforce authorization in production, and does **not** imply MCP/A2A integration, tool execution, or protocol-standard status.
 
-The CI baseline is intended to preserve reproducibility for the existing fixtures, manifest, local review runner, action-policy contracts, receiver adapters, authority routes, and PR26 authority-envelope checks.
+The CI baseline is intended to preserve reproducibility for the existing fixtures, manifest, local review runner, action-policy contracts, receiver adapters, authority routes, PR26 authority-envelope checks, and RouteDecision schema evidence.

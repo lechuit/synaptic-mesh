@@ -66,6 +66,8 @@ Example shape:
 
 Free text may accompany route decisions for humans, but tests should key on stable `reasonCodes`, `decisiveSignals`, `selectedRoute`, and `rejectedRoutes`.
 
+The first formal schema is `schemas/route-decision.schema.json`, documented in `docs/concepts/route-decision-v0.md`. It validates the normalized RouteDecision evidence record extracted from these fixtures, including `humanRequired`, intent/effect separation, and boundary coverage metadata. This remains shape validation only; it does not prove semantic route correctness or add runtime enforcement.
+
 ## Non-goals and guardrails
 
 Do **not** treat this concept object as permission to start integrations. PR26 explicitly does not do, promise, or prepare hidden runtime hooks for:
