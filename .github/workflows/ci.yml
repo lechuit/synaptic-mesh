@@ -58,6 +58,9 @@ jobs:
       - name: RouteDecision wrong-route oracle evidence
         run: npm run test:route-decision-wrong-routes
 
+      - name: Receipt schema evidence
+        run: npm run test:receipt-schema
+
       - name: Upload shadow evidence
         if: always()
         uses: actions/upload-artifact@v4

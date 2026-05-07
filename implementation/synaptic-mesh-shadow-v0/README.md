@@ -78,6 +78,7 @@ npm run test:transform
 npm run test:cli
 npm run test:handoff
 npm run test:compression
+npm run test:receipt-schema
 npm run review:local
 ```
 
@@ -139,6 +140,7 @@ Key files:
 - `receipt-transform-regression.out.json` — transform regression cases;
 - `authority-laundering-regression.out.json` — adversarial laundering regression cases;
 - `route-decision-schema.out.json` — RouteDecision schema shape-validation evidence;
+- `receipt-schema.out.json` — strict local-shadow structured Receipt schema shape-validation evidence; not semantic proof or runtime authorization;
 - `threat-model-routes.out.json` — threat-model actor/capability to expected route mapping evidence;
 - `route-decision-wrong-routes.out.json` — adversarial wrong-route oracle fixture evidence; not a classifier or runtime semantic parser;
 - `receiver-policy-adapter-contracts.out.json` — framework-shaped receiver adapter contract cases;
