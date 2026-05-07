@@ -1,7 +1,7 @@
 {
   "bundle": "synaptic-mesh",
   "version": "0.1.1",
-  "generated": "2026-05-07T16:35:00Z",
+  "generated": "2026-05-07T16:45:00Z",
   "status": "hardening_release_candidate_not_runtime_ready",
   "repository": "https://github.com/lechuit/synaptic-mesh",
   "license": "Apache-2.0 for code; CC BY 4.0 for docs/prose unless otherwise noted",
@@ -161,8 +161,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/receiver-policy-adapter-contracts.out.json",
-      "bytes": 27061,
-      "sha256": "e5e21be6665c72ce6e19655fb09c881df4131b797267bc2ae67cfa9445081a76"
+      "bytes": 32416,
+      "sha256": "ad12e9e65c97ceac5b8280fe30fc8f6bdd180f84810b7e28d75b05a7a3559b83"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/review-local.out.json",
@@ -236,8 +236,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/types.mjs",
-      "bytes": 1333,
-      "sha256": "0a92cd4f76bbd3e73d77a48389da4dc3bf38dfcb755dab45d24ee85540ac46e4"
+      "bytes": 1558,
+      "sha256": "71a40fa8486850f6620e0108467194df1ed04df6e048958c9e5f90b29c3f6e5d"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/authority-laundering-regression.mjs",
@@ -296,8 +296,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/receiver-policy-adapter-contracts.mjs",
-      "bytes": 16959,
-      "sha256": "3928ce5726b8f05b48ce44d99f78b0d5cda01f4c05cbd8d4f548b11c41cdf90b"
+      "bytes": 19239,
+      "sha256": "61c5791de104113b9d0a84dd871d702306f91452b3119e235f9159fd6cec47f1"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/review-local.mjs",
@@ -686,8 +686,8 @@
     },
     {
       "path": "specs/framework-adapter-matrix-v0.md",
-      "bytes": 4569,
-      "sha256": "fe73290bd95ed204e54093b7efaa29b512b08015f092bd4eab3c9829f8c15c76"
+      "bytes": 4558,
+      "sha256": "5e2a2a0af7f8a3e44f135c829e51ab994d39390695f515b1cdcc930609297882"
     },
     {
       "path": "specs/memory-authority-receipt-v0.md",

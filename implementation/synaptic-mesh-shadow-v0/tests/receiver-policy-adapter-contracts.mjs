@@ -437,6 +437,66 @@ const cases = [
     reason: /duplicate receipt field: SRC/,
   },
   {
+    id: 'generic-http-request-alias-asks-human',
+    adapter: genericAdapter,
+    packet: {
+      packetId: 'generic-http-alias-1',
+      receipt,
+      expectedSource,
+      proposedAction: { verb: 'http_request', target: 'api', riskTier: 'low_local' },
+    },
+    expected: 'ask_human',
+    reason: /action requires human/,
+  },
+  {
+    id: 'langgraph-like-update-settings-alias-asks-human',
+    adapter: langGraphLikeAdapter,
+    packet: {
+      nodeState: { packetId: 'lg-update-settings-alias-1', memoryReceipt: receipt, expectedSource },
+      nextToolCall: { verb: 'update_settings', target: 'runtime-settings', riskTier: 'low_local' },
+    },
+    expected: 'ask_human',
+    reason: /action requires human/,
+  },
+  {
+    id: 'autogen-like-message-send-alias-asks-human',
+    adapter: autogenLikeAdapter,
+    packet: {
+      message: { id: 'ag-message-send-alias-1', metadata: { compactAuthorityReceipt: receipt, expectedSource } },
+      proposedReplyAction: { verb: 'message_send', target: 'external-chat', riskTier: 'low_local' },
+    },
+    expected: 'ask_human',
+    reason: /action requires human/,
+  },
+  {
+    id: 'crewai-like-remove-file-alias-asks-human',
+    adapter: crewAiLikeAdapter,
+    packet: {
+      task: { id: 'crew-remove-file-alias-1', context: { authorityReceipt: receipt, expectedSource }, nextAction: { verb: 'remove_file', target: 'workspace-file', riskTier: 'low_local' } },
+    },
+    expected: 'ask_human',
+    reason: /action requires human/,
+  },
+  {
+    id: 'semantic-kernel-like-install-runtime-hook-alias-asks-human',
+    adapter: semanticKernelLikeAdapter,
+    packet: {
+      plannerState: { id: 'sk-runtime-hook-alias-1', memory: { authorityReceipt: receipt, expectedSource } },
+      plannedFunctionCall: { verb: 'install_runtime_hook', target: 'agent-runtime', riskTier: 'low_local' },
+    },
+    expected: 'ask_human',
+    reason: /action requires human/,
+  },
+  {
+    id: 'mcp-like-release-publish-alias-asks-human',
+    adapter: mcpLikeAdapter,
+    packet: {
+      request: { id: 'mcp-release-publish-alias-1', metadata: { authorityReceipt: receipt, expectedSource }, toolCall: { verb: 'release_publish', target: 'registry', riskTier: 'low_local' } },
+    },
+    expected: 'ask_human',
+    reason: /action requires human/,
+  },
+  {
     id: 'autogen-like-prose-metadata-does-not-authorize-sensitive-action',
     adapter: autogenLikeAdapter,
     packet: {
