@@ -95,6 +95,11 @@
       "sha256": "17c846e11015cbec99e3506e1cbe5f6645f246de723a5660c60e12951ef4613f"
     },
     {
+      "path": "design-notes/adapter-boundary-langgraph-mcp-v0.md",
+      "bytes": 6301,
+      "sha256": "36821f5be961e1f8dcbfe8b8c321b804ee3c1336bde0ca2dc6a06fde428d1b0d"
+    },
+    {
       "path": "design-notes/scalable-design-patterns-v0.md",
       "bytes": 1078,
       "sha256": "2aa0bd6bee2c8f926a1a2e3414f32f194881d273947b5fdf0eede0938ba54f60"
@@ -146,8 +151,8 @@
     },
     {
       "path": "docs/repo-structure.md",
-      "bytes": 3355,
-      "sha256": "2f50a59cdbb6073e031cd8126eee1e12a0f03dad647db7c87cc31dcd0946f443"
+      "bytes": 3557,
+      "sha256": "a45f80046cc533745918a2fff381ee9d74b55a7b0a958f644eac6fe6edf4a4eb"
     },
     {
       "path": "docs/threat-model-v0.md",
