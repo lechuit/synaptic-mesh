@@ -33,14 +33,14 @@ The reference currently covers:
 - synthetic handoff examples;
 - fixture parity over the canonical local fixture set;
 - normalized fixture summary output;
-- RouteDecision schema, threat-model mapping, wrong-route oracle fixture evidence, and generated adversarial fixture variants;
+- RouteDecision schema, threat-model mapping, wrong-route oracle fixture evidence, generated adversarial fixture variants, and raw/parser adversarial fixture pressure;
 - deterministic local benchmark/overhead evidence comparing representation strategies (fixture proxy only, no live LLM/API calls);
 - one-command local review evidence.
 
 Current local gates observed in `evidence/review-local.out.json`:
 
 - review-local verdict: `pass`;
-- commands: `22/22` passing;
+- commands: `23/23` passing;
 - fixture parity: `15/15` passing;
 - normalized summary fixtures: `15`;
 - unsafe allow signals: `0`;
@@ -81,6 +81,7 @@ npm run test:handoff
 npm run test:compression
 npm run test:receipt-schema
 npm run test:adversarial-generator
+npm run test:raw-parser-adversarial
 npm run review:local
 ```
 
@@ -147,6 +148,7 @@ Key files:
 - `threat-model-routes.out.json` — threat-model actor/capability to expected route mapping evidence;
 - `route-decision-wrong-routes.out.json` — adversarial wrong-route oracle fixture evidence; not a classifier or runtime semantic parser;
 - `adversarial-fixture-generator.out.json` — deterministic generated variants derived from source wrong-route oracles; not semantic proof or replacement oracles;
+- `raw-parser-adversarial.out.json` — raw/prose/receipt parser-pressure fixture evidence; not semantic parser robustness proof or runtime authorization;
 - `receiver-policy-adapter-contracts.out.json` — framework-shaped receiver adapter contract cases;
 - `cli-validator.out.json` — CLI behavior cases;
 - `synthetic-handoff-examples.out.json` — synthetic handoff cases;
