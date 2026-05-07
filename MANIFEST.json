@@ -1,7 +1,7 @@
 {
   "bundle": "synaptic-mesh",
   "version": "0.1.3",
-  "generated": "2026-05-07T20:10:00Z",
+  "generated": "2026-05-07T20:27:24Z",
   "status": "hardening_release_candidate_not_runtime_ready",
   "repository": "https://github.com/lechuit/synaptic-mesh",
   "license": "Apache-2.0 for code; CC BY 4.0 for docs/prose unless otherwise noted",
@@ -131,8 +131,8 @@
     },
     {
       "path": "docs/release-checklist.md",
-      "bytes": 2543,
-      "sha256": "c0e9d5d20baf7a90eba5c7ffc7156fb42f40b0ca281f0b20dcdeaa2bda7ee963"
+      "bytes": 3008,
+      "sha256": "f26016743d46eb66461055b1e579d129022b18af8faf845b7634fe83f65ef7ba"
     },
     {
       "path": "docs/repo-structure.md",
@@ -851,8 +851,8 @@
     },
     {
       "path": "tools/release-check.mjs",
-      "bytes": 6391,
-      "sha256": "03e3a3b023a0534ee2810e955ae51027327b8f81114ea3bc1525e029f4b42062"
+      "bytes": 7875,
+      "sha256": "8ebf570a108d461f54a89193562e5bc6586aeaba06f67da1af8b3d79d86000dc"
     },
     {
       "path": "tools/verify-manifest.mjs",
