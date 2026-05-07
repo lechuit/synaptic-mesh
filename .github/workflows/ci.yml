@@ -49,6 +49,9 @@ jobs:
       - name: Authority envelope PR26 fixtures
         run: npm run test:authority-envelope
 
+      - name: RouteDecision schema evidence
+        run: npm run test:route-decision-schema
+
       - name: Upload shadow evidence
         if: always()
         uses: actions/upload-artifact@v4

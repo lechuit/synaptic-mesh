@@ -5,12 +5,13 @@ Synaptic Mesh keeps protocol, implementation, research, and evidence separate so
 ## Current top-level layout
 
 - `specs/` — protocol contracts and stable schema-facing documentation.
+- `schemas/` — formal JSON schemas for local shadow evidence records; currently limited to RouteDecision shape validation.
 - `implementation/synaptic-mesh-shadow-v0/` — local shadow implementation, fixtures, tests, and generated evidence for the current adapter contract package.
 - `research-package/` — public research notes, review worksheets, blocker ledgers, and citation support.
 - `runs/` — experiment-specific artifacts kept immutable enough for reproduction.
 - `evidence/` — top-level reproducibility snapshots that are intentionally separate from implementation-local evidence.
 - `paper/` — manuscript-oriented material.
-- `docs/` — repository operation and layout guidance that does not define protocol authority. ADRs live under `docs/adr/`.
+- `docs/` — repository operation and layout guidance that does not define protocol authority. ADRs live under `docs/adr/`; concept notes live under `docs/concepts/`.
 - `design-notes/` — short implementation design notes for changes that should stay smaller than a full spec.
 - `tools/` — repo-local validation utilities, including the package-wired manifest verification guard.
 
@@ -18,6 +19,7 @@ Synaptic Mesh keeps protocol, implementation, research, and evidence separate so
 
 - [ADR 0001: Shadow receiver architecture](adr/0001-shadow-receiver-architecture.md) documents the pure core, strategy registry, contract-first evidence, manifest guard, and review-gate decisions now used by the local shadow implementation.
 - [ADR 0002: Authority claim model](adr/0002-authority-claim-model.md) documents the local shadow authority-claim taxonomy, receiver verification rule, and boundary that keeps sender labels from becoming authority.
+- [RouteDecision schema v0](concepts/route-decision-v0.md) documents the first formal schema and its local shadow shape-validation boundary.
 
 ## Scaling rules
 
