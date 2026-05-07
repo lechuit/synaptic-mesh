@@ -12,6 +12,18 @@ export const LOCAL_ACTION_VERBS = new Set([
   'create_local_fixture',
 ]);
 
+
+export const AMBIGUOUS_ACTION_VERBS = new Set([
+  'tool_call',
+  'invoke',
+  'execute',
+  'dispatch',
+  'function_call',
+  'handoff',
+  'delegate',
+  'agent_action',
+]);
+
 export const HUMAN_REQUIRED_VERBS = new Set([
   'send_external',
   'http_request',
@@ -54,6 +66,7 @@ export function missingFields(object, fields = REQUIRED_RECEIPT_FIELDS) {
 export function classifyAction(action = {}) {
   const verb = action.verb ?? 'unknown';
   if (HUMAN_REQUIRED_VERBS.has(verb)) return { riskTier: 'sensitive', requiresHuman: true };
+  if (AMBIGUOUS_ACTION_VERBS.has(verb)) return { riskTier: 'ambiguous', requiresHuman: true };
   if (LOCAL_ACTION_VERBS.has(verb) && action.riskTier !== 'sensitive') return { riskTier: action.riskTier ?? 'low_local', requiresHuman: false };
   return { riskTier: 'unknown', requiresHuman: true };
 }

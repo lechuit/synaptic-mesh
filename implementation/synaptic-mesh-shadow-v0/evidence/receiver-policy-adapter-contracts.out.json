@@ -3,11 +3,11 @@
     "artifact": "T-synaptic-mesh-receiver-policy-adapter-contracts-v0",
     "timestamp": "2026-05-07T15:05:00.000Z",
     "verdict": "pass",
-    "totalCases": 53,
-    "passCases": 53,
+    "totalCases": 59,
+    "passCases": 59,
     "allowLocalShadowCases": 5,
     "fetchAbstainCases": 31,
-    "askHumanCases": 17,
+    "askHumanCases": 23,
     "unsafeAllows": 0,
     "adapterContracts": [
       "generic-receiver-policy-adapter-v0",
@@ -1298,6 +1298,150 @@
         },
         "hasReceiverFreshnessPolicy": false,
         "hasSourceFreshnessPolicy": true
+      }
+    },
+    {
+      "id": "generic-ambiguous-tool-call-asks-human",
+      "adapterId": "generic-receiver-policy-adapter-v0",
+      "framework": "generic",
+      "decision": "ask_human",
+      "reasons": [
+        "action requires human because verb is ambiguous: tool_call"
+      ],
+      "mapped": {
+        "hasReceipt": true,
+        "expectedSource": {
+          "sourceArtifactId": "T-synaptic-mesh-receiver-policy-adapter-contracts-v0",
+          "sourceArtifactPath": "research-package/T-synaptic-mesh-receiver-policy-adapter-contracts-v0.md",
+          "sourceDigest": "sha256:receiver-policy-adapter-contracts-v0"
+        },
+        "proposedAction": {
+          "verb": "tool_call",
+          "target": "unclassified-tool",
+          "riskTier": "low_local"
+        },
+        "hasReceiverFreshnessPolicy": false,
+        "hasSourceFreshnessPolicy": false
+      }
+    },
+    {
+      "id": "langgraph-like-ambiguous-invoke-asks-human",
+      "adapterId": "langgraph-like-receiver-policy-contract-v0",
+      "framework": "langgraph-like",
+      "decision": "ask_human",
+      "reasons": [
+        "action requires human because verb is ambiguous: invoke"
+      ],
+      "mapped": {
+        "hasReceipt": true,
+        "expectedSource": {
+          "sourceArtifactId": "T-synaptic-mesh-receiver-policy-adapter-contracts-v0",
+          "sourceArtifactPath": "research-package/T-synaptic-mesh-receiver-policy-adapter-contracts-v0.md",
+          "sourceDigest": "sha256:receiver-policy-adapter-contracts-v0"
+        },
+        "proposedAction": {
+          "verb": "invoke",
+          "target": "graph-node",
+          "riskTier": "low_local"
+        },
+        "hasReceiverFreshnessPolicy": false,
+        "hasSourceFreshnessPolicy": false
+      }
+    },
+    {
+      "id": "autogen-like-ambiguous-dispatch-asks-human",
+      "adapterId": "autogen-like-receiver-policy-contract-v0",
+      "framework": "autogen-like",
+      "decision": "ask_human",
+      "reasons": [
+        "action requires human because verb is ambiguous: dispatch"
+      ],
+      "mapped": {
+        "hasReceipt": true,
+        "expectedSource": {
+          "sourceArtifactId": "T-synaptic-mesh-receiver-policy-adapter-contracts-v0",
+          "sourceArtifactPath": "research-package/T-synaptic-mesh-receiver-policy-adapter-contracts-v0.md",
+          "sourceDigest": "sha256:receiver-policy-adapter-contracts-v0"
+        },
+        "proposedAction": {
+          "verb": "dispatch",
+          "target": "agent-route",
+          "riskTier": "low_local"
+        },
+        "hasReceiverFreshnessPolicy": false,
+        "hasSourceFreshnessPolicy": false
+      }
+    },
+    {
+      "id": "crewai-like-ambiguous-delegate-asks-human",
+      "adapterId": "crewai-like-receiver-policy-contract-v0",
+      "framework": "crewai-like",
+      "decision": "ask_human",
+      "reasons": [
+        "action requires human because verb is ambiguous: delegate"
+      ],
+      "mapped": {
+        "hasReceipt": true,
+        "expectedSource": {
+          "sourceArtifactId": "T-synaptic-mesh-receiver-policy-adapter-contracts-v0",
+          "sourceArtifactPath": "research-package/T-synaptic-mesh-receiver-policy-adapter-contracts-v0.md",
+          "sourceDigest": "sha256:receiver-policy-adapter-contracts-v0"
+        },
+        "proposedAction": {
+          "verb": "delegate",
+          "target": "crew-task",
+          "riskTier": "low_local"
+        },
+        "hasReceiverFreshnessPolicy": false,
+        "hasSourceFreshnessPolicy": false
+      }
+    },
+    {
+      "id": "semantic-kernel-like-ambiguous-function-call-asks-human",
+      "adapterId": "semantic-kernel-like-receiver-policy-contract-v0",
+      "framework": "semantic-kernel-like",
+      "decision": "ask_human",
+      "reasons": [
+        "action requires human because verb is ambiguous: function_call"
+      ],
+      "mapped": {
+        "hasReceipt": true,
+        "expectedSource": {
+          "sourceArtifactId": "T-synaptic-mesh-receiver-policy-adapter-contracts-v0",
+          "sourceArtifactPath": "research-package/T-synaptic-mesh-receiver-policy-adapter-contracts-v0.md",
+          "sourceDigest": "sha256:receiver-policy-adapter-contracts-v0"
+        },
+        "proposedAction": {
+          "verb": "function_call",
+          "target": "planner-function",
+          "riskTier": "low_local"
+        },
+        "hasReceiverFreshnessPolicy": false,
+        "hasSourceFreshnessPolicy": false
+      }
+    },
+    {
+      "id": "mcp-like-ambiguous-agent-action-asks-human",
+      "adapterId": "mcp-like-receiver-policy-contract-v0",
+      "framework": "mcp-like",
+      "decision": "ask_human",
+      "reasons": [
+        "action requires human because verb is ambiguous: agent_action"
+      ],
+      "mapped": {
+        "hasReceipt": true,
+        "expectedSource": {
+          "sourceArtifactId": "T-synaptic-mesh-receiver-policy-adapter-contracts-v0",
+          "sourceArtifactPath": "research-package/T-synaptic-mesh-receiver-policy-adapter-contracts-v0.md",
+          "sourceDigest": "sha256:receiver-policy-adapter-contracts-v0"
+        },
+        "proposedAction": {
+          "verb": "agent_action",
+          "target": "server-tool",
+          "riskTier": "low_local"
+        },
+        "hasReceiverFreshnessPolicy": false,
+        "hasSourceFreshnessPolicy": false
       }
     },
     {

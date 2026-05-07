@@ -78,7 +78,7 @@ Receiver rule:
 
 ## Current local contract coverage
 
-`implementation/synaptic-mesh-shadow-v0/tests/receiver-policy-adapter-contracts.mjs` currently exercises all rows above as contract-shaped packet mappings. It covers representative fail-closed cases across the matrix: missing receipts/metadata, duplicate authority fields, source mismatch, receiver-observed source digest/mtime/run-id mismatch, missing digest, stale receipt, delegated publish/config/delete, external send, sensitive verb aliases, and framework/server prose that claims an action is safe.
+`implementation/synaptic-mesh-shadow-v0/tests/receiver-policy-adapter-contracts.mjs` currently exercises all rows above as contract-shaped packet mappings. It covers representative fail-closed cases across the matrix: missing receipts/metadata, duplicate authority fields, source mismatch, receiver-observed source digest/mtime/run-id mismatch, missing digest, stale receipt, delegated publish/config/delete, external send, sensitive verb aliases, and framework/server prose that claims an action is safe; and ambiguous framework action names that require explicit receiver classification.
 
 The coverage is intentionally contract-level. It does not prove real framework integration or runtime enforcement.
 

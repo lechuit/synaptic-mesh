@@ -1,4 +1,4 @@
-import { DECISIONS, HUMAN_REQUIRED_VERBS, LOCAL_ACTION_VERBS } from './types.mjs';
+import { AMBIGUOUS_ACTION_VERBS, DECISIONS, HUMAN_REQUIRED_VERBS, LOCAL_ACTION_VERBS } from './types.mjs';
 import { parseCompactReceipt, RECEIPT_FIELD_ALIASES, REQUIRED_COMPACT_RECEIPT_FIELDS } from './receipt-parser.mjs';
 
 const LOCAL_SCOPE_PATTERN = /^(local|local_only|shadow|local_shadow|local_doc|report)(?:[_-].*)?$/i;
@@ -33,7 +33,7 @@ export function validateCompactReceiptForAction(input, options = {}) {
   if (authority.nextAllowedAction && SENSITIVE_SCOPE_PATTERN.test(authority.nextAllowedAction)) reasons.push(`receipt next allowed action contains sensitive effect: ${authority.nextAllowedAction}`);
 
   if (actionRequiresHuman(action)) {
-    return finish(parsed, DECISIONS.ASK_HUMAN, [`action requires human or is unknown/sensitive: ${action.verb ?? 'unknown'}`, ...reasons]);
+    return finish(parsed, DECISIONS.ASK_HUMAN, [`${humanRequiredReason(action)}`, ...reasons]);
   }
 
   if (reasons.length) return finish(parsed, DECISIONS.FETCH_ABSTAIN, reasons);
@@ -107,9 +107,16 @@ function validateProducedAtFreshness(producedAt, policy) {
 
 function actionRequiresHuman(action = {}) {
   if (HUMAN_REQUIRED_VERBS.has(action.verb)) return true;
+  if (AMBIGUOUS_ACTION_VERBS.has(action.verb)) return true;
   if (!LOCAL_ACTION_VERBS.has(action.verb)) return true;
   if (action.riskTier === 'sensitive') return true;
   return false;
+}
+
+function humanRequiredReason(action = {}) {
+  const verb = action.verb ?? 'unknown';
+  if (AMBIGUOUS_ACTION_VERBS.has(verb)) return `action requires human because verb is ambiguous: ${verb}`;
+  return `action requires human or is unknown/sensitive: ${verb}`;
 }
 
 function finish(parsed, decision, reasons) {
