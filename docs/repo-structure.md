@@ -17,6 +17,7 @@ Synaptic Mesh keeps protocol, implementation, research, and evidence separate so
 ## Architecture decisions
 
 - [ADR 0001: Shadow receiver architecture](adr/0001-shadow-receiver-architecture.md) documents the pure core, strategy registry, contract-first evidence, manifest guard, and review-gate decisions now used by the local shadow implementation.
+- [ADR 0002: Authority claim model](adr/0002-authority-claim-model.md) documents the local shadow authority-claim taxonomy, receiver verification rule, and boundary that keeps sender labels from becoming authority.
 
 ## Scaling rules
 
