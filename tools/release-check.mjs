@@ -14,6 +14,7 @@ const releaseGateScripts = [
   'test:route-decision-schema',
   'test:threat-model-routes',
   'test:route-decision-wrong-routes',
+  'test:receipt-schema',
 ];
 
 function runGit(args, options = {}) {

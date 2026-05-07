@@ -33,6 +33,7 @@ It runs:
 - `npm run test:route-decision-schema`
 - `npm run test:threat-model-routes`
 - `npm run test:route-decision-wrong-routes`
+- `npm run test:receipt-schema`
 
 For auditability, keep the individual gate names visible in PR notes even when `release:check` is the command reviewers run.
 
@@ -40,6 +41,7 @@ For auditability, keep the individual gate names visible in PR notes even when `
 
 - Confirm `MANIFEST.json` verifies after all tracked file changes.
 - Confirm local evidence is deterministic unless explicitly opting into fresh timestamps.
+- Confirm Receipt schema evidence remains local-shadow shape validation only; schema success is not proof of source authenticity, freshness truth, policy correctness, or runtime authorization.
 - Confirm source fixtures are not mutated by the review run (`sourceFixtureMutation: false` in local review evidence).
 - Confirm release-check output remains local-only and does not call network services or runtime tools.
 

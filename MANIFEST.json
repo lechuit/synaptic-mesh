@@ -1,7 +1,7 @@
 {
   "bundle": "synaptic-mesh",
   "version": "0.1.3",
-  "generated": "2026-05-07T20:27:24Z",
+  "generated": "2026-05-07T20:35:00Z",
   "status": "hardening_release_candidate_not_runtime_ready",
   "repository": "https://github.com/lechuit/synaptic-mesh",
   "license": "Apache-2.0 for code; CC BY 4.0 for docs/prose unless otherwise noted",
@@ -11,8 +11,8 @@
   "files": [
     {
       "path": ".github/workflows/ci.yml",
-      "bytes": 1754,
-      "sha256": "8dd89de8d231306b19e60e9218cb72e45d18fd065034152894bbe032381d111c"
+      "bytes": 1834,
+      "sha256": "3d8f30947a920671de8c81d4601126b44aec92284a13dc7249e60adc6eaf64a5"
     },
     {
       "path": ".gitignore",
@@ -81,8 +81,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 3633,
-      "sha256": "77ba50658175d26ec1356fba434d8b40f1d574255fd9be93abfae2f5b5821817"
+      "bytes": 3828,
+      "sha256": "4ecd2693aa1ad586a16d3e0d7bc8ebdc274f66ac06c53dd2e4f4c13c32a8ce3f"
     },
     {
       "path": "RELEASE_CANDIDATE.md",
@@ -91,8 +91,8 @@
     },
     {
       "path": "RELEASE_NOTES.md",
-      "bytes": 2340,
-      "sha256": "37ea2017137193e2355e18d0d817f9e148d43c351e30c227c845672aa98ecaca"
+      "bytes": 2454,
+      "sha256": "50099a03a45ce01ff84176d6027a29ba3271feae70630368a04fcfc9bbe4688a"
     },
     {
       "path": "design-notes/scalable-design-patterns-v0.md",
@@ -131,8 +131,8 @@
     },
     {
       "path": "docs/release-checklist.md",
-      "bytes": 3008,
-      "sha256": "f26016743d46eb66461055b1e579d129022b18af8faf845b7634fe83f65ef7ba"
+      "bytes": 3233,
+      "sha256": "ca2f3e63c9451cd64ffa6058dd4f57b830b37dd0d40c0bc86bb4016437304748"
     },
     {
       "path": "docs/repo-structure.md",
@@ -181,8 +181,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/README.md",
-      "bytes": 6068,
-      "sha256": "1cb96842135897f06fc6807bd177fe9ea8068f3777070426c928e52c91033dc1"
+      "bytes": 6246,
+      "sha256": "4a24f11634e5348e3b1eeaec54b605789532a0668fae3ba22e50cf226d4385ca"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/bin/validate-receipt.mjs",
@@ -228,6 +228,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/partial-receipt-degrade.out.json",
       "bytes": 5728,
       "sha256": "8fddbe73c403ce63243cbcae2c6dcc2cdf86881b90ea3e421731677cb31f96b9"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/receipt-schema.out.json",
+      "bytes": 3345,
+      "sha256": "f29ea38dddc716cb715189186501444d8769acd48e8739e693fe6aaf6377517d"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/receipt-transform-regression.out.json",
@@ -285,6 +290,11 @@
       "sha256": "7e762ff92cc3c78db252f98f28f1bce46e5f0cce61b67ad18c18400dee81430f"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/fixtures/receipts.json",
+      "bytes": 6528,
+      "sha256": "2c20850dbcfb5e5fc6c578d23309d9541c2826072fd1faf617366fea624d57f6"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/fixtures/route-decision-wrong-routes.json",
       "bytes": 20671,
       "sha256": "d767f0e21802dd5d5054abd474d9404541c56d12c0a2d133da64c47d01701971"
@@ -296,8 +306,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/package.json",
-      "bytes": 4587,
-      "sha256": "cb59f29758ef45dfe0c2e639b29a134169fe64037c87cc8d807de3db087d95fd"
+      "bytes": 4688,
+      "sha256": "566d3f5d60bb277329baa97e0ad21e1717919f07e3f2689cc9732378e9a90d10"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/action-context-packet.mjs",
@@ -418,6 +428,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/tests/receipt-parser-validator.mjs",
       "bytes": 3507,
       "sha256": "fb50ec7e74d79c36568fba6b988f64a1fd52512fe1d9a68d6cff273b461a134a"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/receipt-schema.mjs",
+      "bytes": 7949,
+      "sha256": "4fb86d297c5e988be2ad3eaba96e1dcd0a1f2f0c6b8f8a72edf752d4ab993fc9"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/receipt-transform-regression.mjs",
@@ -820,14 +835,19 @@
       "sha256": "a7001f3ff3244fb0cb575647b6f8a747785bc064ed7796f9f3be874cba79f7ae"
     },
     {
+      "path": "schemas/receipt.schema.json",
+      "bytes": 4129,
+      "sha256": "a5a129a6925ec72b0712f69deff8bbf3cc787c426b16ed735cf21ede94761347"
+    },
+    {
       "path": "schemas/route-decision.schema.json",
       "bytes": 3057,
       "sha256": "998416ec806a888dfd218549351f0948bdde827a51501743a08d7e954b79fcb1"
     },
     {
       "path": "specs/README.md",
-      "bytes": 2725,
-      "sha256": "f5cf5bbcce067a599c8bd9aec354e28d11e3b975a8e3b9e3d6b7ed787d724fe1"
+      "bytes": 2909,
+      "sha256": "67ee8f2ff5799ee87dd04c784f4e90485b5f1fea73af2d0101b0ce3c44fc30e4"
     },
     {
       "path": "specs/compressed-temporal-receipt-v0.md",
@@ -851,8 +871,8 @@
     },
     {
       "path": "tools/release-check.mjs",
-      "bytes": 7875,
-      "sha256": "8ebf570a108d461f54a89193562e5bc6586aeaba06f67da1af8b3d79d86000dc"
+      "bytes": 7900,
+      "sha256": "01dc3cdfb2914e65d87859e5be4554cb4e566b593bb9092285b08c2b66ab6247"
     },
     {
       "path": "tools/verify-manifest.mjs",
