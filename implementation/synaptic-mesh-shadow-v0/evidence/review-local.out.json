@@ -3,8 +3,8 @@
     "artifact": "T-synaptic-mesh-review-local-runner-v0",
     "timestamp": "2026-05-07T15:05:00.000Z",
     "verdict": "pass",
-    "commands": 25,
-    "passCommands": 25,
+    "commands": 26,
+    "passCommands": 26,
     "failedCommands": [],
     "fixtureCount": 15,
     "fixtureParityVerdict": "pass",
@@ -45,6 +45,11 @@
     "realFlowReplayFlowCount": 13,
     "realFlowReplayFalsePermitRate": 0,
     "realFlowReplayFalseCompactRate": 0,
+    "routeClassifierShadowVerdict": "pass",
+    "routeClassifierShadowFixtureCount": 13,
+    "routeClassifierShadowMismatchCount": 0,
+    "routeClassifierShadowFalsePermitRate": 0,
+    "routeClassifierShadowFalseCompactRate": 0,
     "unsafeAllowSignals": [],
     "sourceFixtureMutation": false
   },
@@ -206,6 +211,13 @@
     {
       "id": "real-flow-replay-tests",
       "command": "node implementation/synaptic-mesh-shadow-v0/tests/real-flow-replay.mjs",
+      "status": 0,
+      "pass": true,
+      "stderr": ""
+    },
+    {
+      "id": "route-classifier-shadow-tests",
+      "command": "node implementation/synaptic-mesh-shadow-v0/tests/route-classifier-shadow.mjs",
       "status": 0,
       "pass": true,
       "stderr": ""

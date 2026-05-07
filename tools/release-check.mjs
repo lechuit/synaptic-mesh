@@ -20,6 +20,7 @@ const releaseGateScripts = [
   'test:raw-parser-adversarial',
   'test:parser-normalization-evidence',
   'test:real-flow-replay',
+  'test:route-classifier-shadow',
 ];
 
 function runGit(args, options = {}) {

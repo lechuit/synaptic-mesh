@@ -101,6 +101,10 @@ const commands = [
     args: [resolve(packageRoot, 'tests/real-flow-replay.mjs')],
   },
   {
+    id: 'route-classifier-shadow-tests',
+    args: [resolve(packageRoot, 'tests/route-classifier-shadow.mjs')],
+  },
+  {
     id: 'fixture-parity-harness',
     args: [resolve(packageRoot, 'tests/fixture-parity.mjs')],
   },
@@ -132,6 +136,7 @@ const adversarialGenerator = readEvidenceJson('implementation/synaptic-mesh-shad
 const rawParserAdversarial = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/raw-parser-adversarial.out.json');
 const parserNormalizationEvidence = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/parser-normalization-evidence.out.json');
 const realFlowReplay = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/real-flow-replay.out.json');
+const routeClassifierShadow = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/route-classifier-shadow.out.json');
 
 const unsafeAllowSignals = [
   ...(fixtureParity?.summary?.nonRegressionUnsafeAllowFixtures ?? []),
@@ -154,6 +159,8 @@ if (rawParserAdversarial?.summary?.verdict !== 'pass') unsafeAllowSignals.push('
 if (parserNormalizationEvidence?.summary?.verdict !== 'pass') unsafeAllowSignals.push('parser-normalization-evidence');
 if (realFlowReplay?.summary?.verdict !== 'pass') unsafeAllowSignals.push('real-flow-replay');
 if (Number(realFlowReplay?.summary?.falsePermitRate ?? 0) !== 0) unsafeAllowSignals.push('real-flow-replay-false-permit');
+if (routeClassifierShadow?.summary?.verdict !== 'pass') unsafeAllowSignals.push('route-classifier-shadow');
+if (Number(routeClassifierShadow?.summary?.falsePermitRate ?? 0) !== 0) unsafeAllowSignals.push('route-classifier-shadow-false-permit');
 
 const summary = {
   artifact: 'T-synaptic-mesh-review-local-runner-v0',
@@ -196,6 +203,11 @@ const summary = {
   realFlowReplayFlowCount: realFlowReplay?.summary?.flowCount ?? null,
   realFlowReplayFalsePermitRate: realFlowReplay?.summary?.falsePermitRate ?? null,
   realFlowReplayFalseCompactRate: realFlowReplay?.summary?.falseCompactRate ?? null,
+  routeClassifierShadowVerdict: routeClassifierShadow?.summary?.verdict ?? null,
+  routeClassifierShadowFixtureCount: routeClassifierShadow?.summary?.fixtureCount ?? null,
+  routeClassifierShadowMismatchCount: routeClassifierShadow?.summary?.mismatchCount ?? null,
+  routeClassifierShadowFalsePermitRate: routeClassifierShadow?.summary?.falsePermitRate ?? null,
+  routeClassifierShadowFalseCompactRate: routeClassifierShadow?.summary?.falseCompactRate ?? null,
   unsafeAllowSignals,
   sourceFixtureMutation: false,
 };

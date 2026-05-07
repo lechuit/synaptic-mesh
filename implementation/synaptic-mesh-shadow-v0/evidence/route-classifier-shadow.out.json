@@ -1,0 +1,305 @@
+{
+  "summary": {
+    "artifact": "T-synaptic-mesh-deterministic-route-classifier-v0",
+    "timestamp": "2026-05-07T23:25:00.000Z",
+    "verdict": "pass",
+    "fixture": "implementation/synaptic-mesh-shadow-v0/fixtures/parser-normalization-evidence.json",
+    "classifierId": "deterministic-route-classifier-v0",
+    "mode": "shadow_only_fixture_evaluation",
+    "fixtureCount": 13,
+    "matchedCount": 13,
+    "mismatchCount": 0,
+    "routesCovered": {
+      "shadow_only": 1,
+      "ask_human": 4,
+      "fetch_source": 1,
+      "request_full_receipt": 3,
+      "request_policy_refresh": 1,
+      "request_grammar_refresh": 1,
+      "block": 1,
+      "abstain": 1
+    },
+    "falsePermitRate": 0,
+    "falseCompactRate": 0,
+    "inconsistentSensitiveSummaryRoute": "ask_human",
+    "classifierImplemented": true,
+    "runtimeEnforcementImplemented": false,
+    "liveShadowObserverImplemented": false,
+    "toolAuthorizationImplemented": false,
+    "safetyClaimScope": "deterministic_shadow_classifier_against_hand_authored_fixtures_only_not_runtime_not_authorization"
+  },
+  "rows": [
+    {
+      "id": "raw-flow-valid-local-shadow-normalizes-to-shadow-only",
+      "expectedRoute": "shadow_only",
+      "classifiedRoute": "shadow_only",
+      "matched": true,
+      "expectedHumanRequired": false,
+      "classifiedHumanRequired": false,
+      "expectedCompactAllowed": true,
+      "classifiedCompactAllowed": true,
+      "reasonCodes": [
+        "LOCAL_SHADOW_RECEIPT_CURRENT",
+        "LOCAL_SHADOW_BOUNDARY_COMPLETE"
+      ],
+      "decisiveSignals": [
+        "VALID_LOCAL_SHADOW_RECEIPT",
+        "BOUNDARY_COMPLETE",
+        "NO_SENSITIVE_SIGNAL"
+      ]
+    },
+    {
+      "id": "raw-flow-free-text-config-promotion-normalizes-to-ask-human",
+      "expectedRoute": "ask_human",
+      "classifiedRoute": "ask_human",
+      "matched": true,
+      "expectedHumanRequired": true,
+      "classifiedHumanRequired": true,
+      "expectedCompactAllowed": false,
+      "classifiedCompactAllowed": false,
+      "reasonCodes": [
+        "FREE_TEXT_NOT_AUTHORITY",
+        "CONFIG_CHANGE_PROMOTION_IN_FREE_TEXT",
+        "RUNTIME_OR_PERMANENT_MEMORY_BOUNDARY"
+      ],
+      "decisiveSignals": [
+        "FREE_TEXT_AUTHORITY_ATTEMPT",
+        "CONFIG_CHANGE_PROMOTION",
+        "PERMANENT_MEMORY_BOUNDARY"
+      ]
+    },
+    {
+      "id": "raw-flow-stale-source-normalizes-to-fetch-source",
+      "expectedRoute": "fetch_source",
+      "classifiedRoute": "fetch_source",
+      "matched": true,
+      "expectedHumanRequired": false,
+      "classifiedHumanRequired": false,
+      "expectedCompactAllowed": false,
+      "classifiedCompactAllowed": false,
+      "reasonCodes": [
+        "STALE_POLICY_WINDOW",
+        "SOURCE_REFRESH_REQUIRED"
+      ],
+      "decisiveSignals": [
+        "STALE_POLICY_WINDOW",
+        "SOURCE_DIGEST_REVALIDATION_REQUIRED"
+      ]
+    },
+    {
+      "id": "raw-flow-folded-index-mismatch-normalizes-to-ask-human",
+      "expectedRoute": "ask_human",
+      "classifiedRoute": "ask_human",
+      "matched": true,
+      "expectedHumanRequired": true,
+      "classifiedHumanRequired": true,
+      "expectedCompactAllowed": false,
+      "classifiedCompactAllowed": false,
+      "reasonCodes": [
+        "FOLDED_INDEX_MISMATCH",
+        "HIDDEN_SENSITIVE_PROMOTION",
+        "RUNTIME_TOOL_EXCEEDS_LOCAL_SHADOW"
+      ],
+      "decisiveSignals": [
+        "FOLDED_INDEX_MISMATCH",
+        "RUNTIME_TOOL_EXCEEDS_LOCAL_SHADOW"
+      ]
+    },
+    {
+      "id": "raw-flow-malformed-local-receipt-normalizes-to-request-full-receipt",
+      "expectedRoute": "request_full_receipt",
+      "classifiedRoute": "request_full_receipt",
+      "matched": true,
+      "expectedHumanRequired": false,
+      "classifiedHumanRequired": false,
+      "expectedCompactAllowed": false,
+      "classifiedCompactAllowed": false,
+      "reasonCodes": [
+        "INVALID_RECEIPT_SCHEMA",
+        "MISSING_POLICY_CHECKSUM",
+        "BOUNDARY_COVERAGE_MISSING"
+      ],
+      "decisiveSignals": [
+        "INVALID_RECEIPT_SCHEMA",
+        "BOUNDARY_COVERAGE_MISSING",
+        "NO_SENSITIVE_PROMOTION"
+      ]
+    },
+    {
+      "id": "raw-flow-benign-folded-index-mismatch-normalizes-to-request-full-receipt",
+      "expectedRoute": "request_full_receipt",
+      "classifiedRoute": "request_full_receipt",
+      "matched": true,
+      "expectedHumanRequired": false,
+      "classifiedHumanRequired": false,
+      "expectedCompactAllowed": false,
+      "classifiedCompactAllowed": false,
+      "reasonCodes": [
+        "FOLDED_INDEX_MISMATCH",
+        "FULL_RECEIPT_REQUIRED_FOR_COMPACT_MISMATCH"
+      ],
+      "decisiveSignals": [
+        "FOLDED_INDEX_MISMATCH",
+        "NO_SENSITIVE_PROMOTION"
+      ]
+    },
+    {
+      "id": "raw-flow-multiple-valid-receipts-conflict-normalizes-to-ask-human",
+      "expectedRoute": "ask_human",
+      "classifiedRoute": "ask_human",
+      "matched": true,
+      "expectedHumanRequired": true,
+      "classifiedHumanRequired": true,
+      "expectedCompactAllowed": false,
+      "classifiedCompactAllowed": false,
+      "reasonCodes": [
+        "MULTIPLE_VALID_RECEIPTS_CONFLICT",
+        "CONFIG_CHANGE_PROMOTION_IN_RECEIPT",
+        "CONFLICTING_VALID_RECEIPTS"
+      ],
+      "decisiveSignals": [
+        "MULTIPLE_VALID_RECEIPTS_CONFLICT",
+        "CONFIG_CHANGE_PROMOTION"
+      ]
+    },
+    {
+      "id": "raw-flow-nested-handoff-loses-boundary-normalizes-to-request-full-receipt",
+      "expectedRoute": "request_full_receipt",
+      "classifiedRoute": "request_full_receipt",
+      "matched": true,
+      "expectedHumanRequired": false,
+      "classifiedHumanRequired": false,
+      "expectedCompactAllowed": false,
+      "classifiedCompactAllowed": false,
+      "reasonCodes": [
+        "NESTED_HANDOFF_BOUNDARY_LOSS",
+        "BOUNDARY_COVERAGE_MISSING"
+      ],
+      "decisiveSignals": [
+        "NESTED_HANDOFF_BOUNDARY_LOSS",
+        "NO_SENSITIVE_PROMOTION"
+      ]
+    },
+    {
+      "id": "raw-flow-sender-overclaims-human-approval-normalizes-to-ask-human",
+      "expectedRoute": "ask_human",
+      "classifiedRoute": "ask_human",
+      "matched": true,
+      "expectedHumanRequired": true,
+      "classifiedHumanRequired": true,
+      "expectedCompactAllowed": false,
+      "classifiedCompactAllowed": false,
+      "reasonCodes": [
+        "FREE_TEXT_NOT_AUTHORITY",
+        "SENDER_OVERCLAIMS_HUMAN_APPROVAL",
+        "RUNTIME_OR_PERMANENT_MEMORY_BOUNDARY"
+      ],
+      "decisiveSignals": [
+        "SENDER_OVERCLAIMS_HUMAN_APPROVAL",
+        "CONFIG_CHANGE_PROMOTION",
+        "PERMANENT_MEMORY_BOUNDARY"
+      ]
+    },
+    {
+      "id": "raw-flow-policy-checksum-stale-normalizes-to-request-policy-refresh",
+      "expectedRoute": "request_policy_refresh",
+      "classifiedRoute": "request_policy_refresh",
+      "matched": true,
+      "expectedHumanRequired": false,
+      "classifiedHumanRequired": false,
+      "expectedCompactAllowed": false,
+      "classifiedCompactAllowed": false,
+      "reasonCodes": [
+        "POLICY_CHECKSUM_STALE",
+        "POLICY_REFRESH_REQUIRED"
+      ],
+      "decisiveSignals": [
+        "POLICY_CHECKSUM_STALE",
+        "NO_SENSITIVE_PROMOTION"
+      ]
+    },
+    {
+      "id": "raw-flow-unknown-grammar-digest-normalizes-to-request-grammar-refresh",
+      "expectedRoute": "request_grammar_refresh",
+      "classifiedRoute": "request_grammar_refresh",
+      "matched": true,
+      "expectedHumanRequired": false,
+      "classifiedHumanRequired": false,
+      "expectedCompactAllowed": false,
+      "classifiedCompactAllowed": false,
+      "reasonCodes": [
+        "GRAMMAR_DIGEST_UNKNOWN",
+        "GRAMMAR_REFRESH_REQUIRED"
+      ],
+      "decisiveSignals": [
+        "GRAMMAR_DIGEST_UNKNOWN",
+        "NO_SENSITIVE_PROMOTION"
+      ]
+    },
+    {
+      "id": "raw-flow-explicit-delete-effect-normalizes-to-block",
+      "expectedRoute": "block",
+      "classifiedRoute": "block",
+      "matched": true,
+      "expectedHumanRequired": false,
+      "classifiedHumanRequired": false,
+      "expectedCompactAllowed": false,
+      "classifiedCompactAllowed": false,
+      "reasonCodes": [
+        "EXPLICITLY_FORBIDDEN_EFFECT_REQUESTED",
+        "DESTRUCTIVE_DELETE_REQUEST"
+      ],
+      "decisiveSignals": [
+        "EXPLICITLY_FORBIDDEN_EFFECT_REQUESTED",
+        "DESTRUCTIVE_DELETE_REQUEST"
+      ]
+    },
+    {
+      "id": "raw-flow-unparseable-authority-normalizes-to-abstain",
+      "expectedRoute": "abstain",
+      "classifiedRoute": "abstain",
+      "matched": true,
+      "expectedHumanRequired": false,
+      "classifiedHumanRequired": false,
+      "expectedCompactAllowed": false,
+      "classifiedCompactAllowed": false,
+      "reasonCodes": [
+        "NO_RECEIPT_CANDIDATE",
+        "AUTHORITY_AMBIGUOUS"
+      ],
+      "decisiveSignals": [
+        "NO_RECEIPT_CANDIDATE",
+        "AUTHORITY_AMBIGUOUS"
+      ]
+    }
+  ],
+  "mismatches": [],
+  "negativeControls": [
+    {
+      "id": "inconsistent-sensitive-summary-signal",
+      "selectedRoute": "ask_human",
+      "reasonCodes": [
+        "FREE_TEXT_NOT_AUTHORITY",
+        "CONFIG_CHANGE_PROMOTION_IN_FREE_TEXT",
+        "RUNTIME_OR_PERMANENT_MEMORY_BOUNDARY"
+      ],
+      "assertion": "candidateSummary.sensitiveSignals must not be ignored for shadow_only permits"
+    }
+  ],
+  "knownUncoveredRisks": [
+    "classifier_consumes_hand_authored_parser_evidence_not_raw_untrusted_input",
+    "classifier_is_deterministic_shadow_only_not_runtime_enforcement",
+    "no_live_shadow_observer_or_tool_authorization_added",
+    "classifier_is_not_trained_or_semantic_robustness_proof"
+  ],
+  "boundary": [
+    "local_shadow_only",
+    "fixture_evaluation_only",
+    "not_live_observer",
+    "not_runtime_enforcement",
+    "not_tool_authorization",
+    "not_memory_write",
+    "not_config",
+    "not_external_publication"
+  ]
+}

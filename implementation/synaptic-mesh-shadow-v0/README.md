@@ -33,14 +33,14 @@ The reference currently covers:
 - synthetic handoff examples;
 - fixture parity over the canonical local fixture set;
 - normalized fixture summary output;
-- RouteDecision schema, threat-model mapping, wrong-route oracle fixture evidence, generated adversarial fixture variants, raw/parser adversarial fixture pressure, parser normalization evidence across all canonical routes, and offline real-flow replay evidence;
+- RouteDecision schema, threat-model mapping, wrong-route oracle fixture evidence, generated adversarial fixture variants, raw/parser adversarial fixture pressure, parser normalization evidence across all canonical routes, offline real-flow replay evidence, and deterministic route classifier shadow evidence;
 - deterministic local benchmark/overhead evidence comparing representation strategies (fixture proxy only, no live LLM/API calls);
 - one-command local review evidence.
 
 Current local gates observed in `evidence/review-local.out.json`:
 
 - review-local verdict: `pass`;
-- commands: `25/25` passing;
+- commands: `26/26` passing;
 - fixture parity: `15/15` passing;
 - normalized summary fixtures: `15`;
 - unsafe allow signals: `0`;
@@ -152,7 +152,8 @@ Key files:
 - `adversarial-fixture-generator.out.json` — deterministic generated variants derived from source wrong-route oracles; not semantic proof or replacement oracles;
 - `raw-parser-adversarial.out.json` — raw/prose/receipt parser-pressure fixture evidence; not semantic parser robustness proof or runtime authorization;
 - `parser-normalization-evidence.out.json` — raw handoff to `parserEvidence` / route-decision input fixture evidence; not a classifier, live parser, runtime authorization, or live shadow observer;
-- `real-flow-replay.out.json` — naturalistic handoff replay evidence with gold labels, parserEvidence hash binding, scorecard, and audit log; not live traffic, an automatic receiver decision, a classifier, runtime authorization, or live shadow observer;
+- `real-flow-replay.out.json` — naturalistic handoff replay evidence with gold labels, parserEvidence hash binding, scorecard, and audit log; not live traffic, an automatic receiver decision, runtime authorization, or live shadow observer;
+- `route-classifier-shadow.out.json` — deterministic route classifier shadow evidence over parserEvidence fixtures; not raw parsing, live observation, runtime enforcement, tool authorization, or publication readiness;
 - `receiver-policy-adapter-contracts.out.json` — framework-shaped receiver adapter contract cases;
 - `cli-validator.out.json` — CLI behavior cases;
 - `synthetic-handoff-examples.out.json` — synthetic handoff cases;

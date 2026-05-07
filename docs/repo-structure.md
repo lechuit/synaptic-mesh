@@ -24,6 +24,7 @@ Synaptic Mesh keeps protocol, implementation, research, and evidence separate so
 - [Coverage matrix](coverage-matrix.md) separates covered, partial, pending, and out-of-scope claims before release decisions.
 - [Parser normalization evidence](parser-normalization-evidence.md) documents the local-shadow bridge from raw handoffs to auditable `parserEvidence` / route-decision input shape.
 - [Offline real-flow replay](real-flow-replay.md) documents naturalistic handoff replay with gold labels, scorecards, and audit logs without live observer behavior.
+- [Deterministic route classifier](deterministic-route-classifier.md) documents the shadow-only classifier over parser evidence fixtures.
 - [Adapter boundary for LangGraph and MCP v0](../design-notes/adapter-boundary-langgraph-mcp-v0.md) documents future adapter boundaries, prerequisites, and non-goals without adding runtime integration.
 
 ## Scaling rules
