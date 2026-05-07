@@ -3,8 +3,8 @@
     "artifact": "T-synaptic-mesh-review-local-runner-v0",
     "timestamp": "2026-05-07T15:05:00.000Z",
     "verdict": "pass",
-    "commands": 23,
-    "passCommands": 23,
+    "commands": 24,
+    "passCommands": 24,
     "failedCommands": [],
     "fixtureCount": 15,
     "fixtureParityVerdict": "pass",
@@ -38,6 +38,9 @@
     "adversarialGeneratedFixtureCount": 9,
     "rawParserAdversarialVerdict": "pass",
     "rawParserAdversarialFixtureCount": 9,
+    "parserNormalizationEvidenceVerdict": "pass",
+    "parserNormalizationEvidenceFixtureCount": 5,
+    "parserNormalizationEvidenceHashBoundRate": 1,
     "unsafeAllowSignals": [],
     "sourceFixtureMutation": false
   },
@@ -185,6 +188,13 @@
     {
       "id": "raw-parser-adversarial-tests",
       "command": "node implementation/synaptic-mesh-shadow-v0/tests/raw-parser-adversarial.mjs",
+      "status": 0,
+      "pass": true,
+      "stderr": ""
+    },
+    {
+      "id": "parser-normalization-evidence-tests",
+      "command": "node implementation/synaptic-mesh-shadow-v0/tests/parser-normalization-evidence.mjs",
       "status": 0,
       "pass": true,
       "stderr": ""

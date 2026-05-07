@@ -70,6 +70,9 @@ jobs:
       - name: Raw/parser adversarial fixture evidence
         run: npm run test:raw-parser-adversarial
 
+      - name: Parser normalization evidence
+        run: npm run test:parser-normalization-evidence
+
       - name: Upload shadow evidence
         if: always()
         uses: actions/upload-artifact@v4

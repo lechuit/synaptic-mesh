@@ -11,8 +11,8 @@
   "files": [
     {
       "path": ".github/workflows/ci.yml",
-      "bytes": 2139,
-      "sha256": "ad4972f44d2019cd405ae7a02f828f5935e88aa70ba061a87854584525ffd9a3"
+      "bytes": 2240,
+      "sha256": "3476b3000e477a120a6938064d7e830e5699176fb3aab36d04742f4bebf4e351"
     },
     {
       "path": ".gitignore",
@@ -76,8 +76,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 4653,
-      "sha256": "55e6f702f7a0c3572edc6baa157033901e5b76e10b209b2d5b238fde9cbc3d68"
+      "bytes": 4864,
+      "sha256": "ccabb7c18ba7d0caf8aa6474989ef34481e99eee2157b15349ef99eb69c29683"
     },
     {
       "path": "RELEASE_CANDIDATE.md",
@@ -86,8 +86,8 @@
     },
     {
       "path": "RELEASE_NOTES.md",
-      "bytes": 3177,
-      "sha256": "133d1fc66738495e8dca98044c13d07fd040dbf4a7eb9854a1eb64ea0e9397b6"
+      "bytes": 3300,
+      "sha256": "c977a76e2dbed8490d795a71b1a7c40d4c7ad5222eedc34315314df67900e4aa"
     },
     {
       "path": "design-notes/adapter-boundary-langgraph-mcp-v0.md",
@@ -141,8 +141,13 @@
     },
     {
       "path": "docs/coverage-matrix.md",
-      "bytes": 4429,
-      "sha256": "6d501dc071b2c514d4d45bff8b3278036f53f4c8e4fdf1389a460572c5ada369"
+      "bytes": 4712,
+      "sha256": "da4860a4315747e47b41206f219ffa25b016a9986e9330eee49dee3ce2a0e6f6"
+    },
+    {
+      "path": "docs/parser-normalization-evidence.md",
+      "bytes": 1613,
+      "sha256": "f54c00f4ee6d2f66aae9761275d4b310ef54a825e568b5da342cd1d08837ea4b"
     },
     {
       "path": "docs/raw-parser-adversarial.md",
@@ -156,13 +161,13 @@
     },
     {
       "path": "docs/release-checklist.md",
-      "bytes": 3974,
-      "sha256": "445c7b5f9c8db6d057cd8f810cf78fec25a0e6e628485c9c05fb22f840977965"
+      "bytes": 4389,
+      "sha256": "0c972f99eb79f4e27d37176a30853a24ebc383f4559995ac7955630f269d9bdd"
     },
     {
       "path": "docs/repo-structure.md",
-      "bytes": 3893,
-      "sha256": "bae4b164d36ccd6249e9edfcdce98126257ff027be30a3ef9ab3fbe888695e87"
+      "bytes": 4090,
+      "sha256": "71a43cc33ae6699203cbe7489d5a083ba701ec96662dd4b26705343a68b9dba7"
     },
     {
       "path": "docs/threat-model-v0.md",
@@ -206,8 +211,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/README.md",
-      "bytes": 7060,
-      "sha256": "4ec777c2419c2229c1d0b6257cbfed66ff4635eb0b22a897cddc838eac1346d4"
+      "bytes": 7333,
+      "sha256": "5fca8f0bede33b2ab8ee5b4b6f95f86ca376545e08f614cc3cd54c7ab7f47b4e"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/bin/validate-receipt.mjs",
@@ -260,6 +265,11 @@
       "sha256": "321b6a59ffa1201067c356c98868f01bd92d1828fb98afde7a953e37b4ec4db7"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/parser-normalization-evidence.out.json",
+      "bytes": 4640,
+      "sha256": "fce3c3b3a1bd7d97a6be7b88dcf037870d2b5013f485611e5e955a1cf7afd276"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/partial-receipt-degrade.out.json",
       "bytes": 5728,
       "sha256": "8fddbe73c403ce63243cbcae2c6dcc2cdf86881b90ea3e421731677cb31f96b9"
@@ -286,8 +296,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/review-local.out.json",
-      "bytes": 6582,
-      "sha256": "ea441190763ef6c94ee6333dd6004d45a66be8f405897f1d355e4d52c393a875"
+      "bytes": 6959,
+      "sha256": "18ab5c4bef0b184b3dcd9b8eefc07aa71aa4ac8307116fd2c28459a41affdfc9"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/route-decision-schema.out.json",
@@ -340,6 +350,11 @@
       "sha256": "7e762ff92cc3c78db252f98f28f1bce46e5f0cce61b67ad18c18400dee81430f"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/fixtures/parser-normalization-evidence.json",
+      "bytes": 11220,
+      "sha256": "cc2244b2b813b45b705f8c78d2e756be1cbe9c79be874a454bd47a733505187a"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/fixtures/raw-parser-adversarial.json",
       "bytes": 19424,
       "sha256": "014bc6507037d55811fe16ba51c8d76f65b12bc267eab345a711b95ad4c5f609"
@@ -361,8 +376,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/package.json",
-      "bytes": 5085,
-      "sha256": "9e4483f490b2b47a716aff52bd480e56ca46a00c40d1aaa16414c7707d890259"
+      "bytes": 5231,
+      "sha256": "3d31475e6f24178c99527fe479917b6d6065ed6093ccab8c637d090486a45a18"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/action-context-packet.mjs",
@@ -465,6 +480,11 @@
       "sha256": "7169d11cec9dad5b7b95ce3d92d16ec18774d7421fcbaae5131bfd015619feee"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/parser-normalization-evidence.mjs",
+      "bytes": 13220,
+      "sha256": "288f9f3181ad9bde894ebacc4d87cee9c7e5b41f86004d872e45d6f496d7c472"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/partial-receipt-degrade.mjs",
       "bytes": 7103,
       "sha256": "e9d4557033171c6862f990e3f26eaf6da65931355a30cdd1d9e6e9ab2f41da10"
@@ -516,8 +536,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/review-local.mjs",
-      "bytes": 10326,
-      "sha256": "2251fb5f965b59308ff9ba9779d881994574ee3567db4c3f9aa75351fbb2f281"
+      "bytes": 11042,
+      "sha256": "7990415dad1fd8ad3141001bc0f2b94159453e6835f9b5d2183138eeefe0e546"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/route-decision-schema.mjs",
@@ -905,6 +925,11 @@
       "sha256": "a7001f3ff3244fb0cb575647b6f8a747785bc064ed7796f9f3be874cba79f7ae"
     },
     {
+      "path": "schemas/parser-evidence.schema.json",
+      "bytes": 2028,
+      "sha256": "2dfd0ac9e9f4ec86d493bad1b0fc9494a78b896251a295dea86c64aafc7d2ecd"
+    },
+    {
       "path": "schemas/receipt.schema.json",
       "bytes": 4129,
       "sha256": "a5a129a6925ec72b0712f69deff8bbf3cc787c426b16ed735cf21ede94761347"
@@ -941,8 +966,8 @@
     },
     {
       "path": "tools/release-check.mjs",
-      "bytes": 7995,
-      "sha256": "5051c62d726c1dc9e2e33ad9af12d06fbe52aa5aa7b71bac016d0db40df57d25"
+      "bytes": 8035,
+      "sha256": "94c3a8804aec11860f0ac82b2a104c4a182141dc8b709e17bfb81a0de3ea084c"
     },
     {
       "path": "tools/verify-manifest.mjs",

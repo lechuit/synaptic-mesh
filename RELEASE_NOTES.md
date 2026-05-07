@@ -14,7 +14,7 @@ Status: baseline shadow-gates release candidate / public review package update. 
 
 ## Validation snapshot
 
-- review-local: pass 23/23
+- review-local: pass 24/24
 - receiver adapter contracts: pass 59/59
 - fixture parity: 15/15
 - unsafe allow signals: 0
@@ -26,6 +26,7 @@ Status: baseline shadow-gates release candidate / public review package update. 
 - Authority overhead benchmark: pass 6 fixtures across 4 representation modes, fixture proxy only
 - Adversarial fixture generator: pass 9/9 generated fixtures, oracle-derived expectations only
 - Raw/parser adversarial fixtures: pass 9/9 raw fixture/parser-pressure cases, annotation validation only
+- Parser normalization evidence: pass 5/5 raw handoff normalization cases, parserEvidence shape/input-hash validation only
 
 ## Compatibility note
 

@@ -5,7 +5,7 @@ Synaptic Mesh keeps protocol, implementation, research, and evidence separate so
 ## Current top-level layout
 
 - `specs/` — protocol contracts and stable schema-facing documentation.
-- `schemas/` — formal JSON schemas for local shadow evidence records; currently limited to RouteDecision shape validation.
+- `schemas/` — formal JSON schemas for local shadow evidence records; currently includes RouteDecision and ParserEvidence shape validation.
 - `implementation/synaptic-mesh-shadow-v0/` — local shadow implementation, fixtures, tests, and generated evidence for the current adapter contract package.
 - `research-package/` — public research notes, review worksheets, blocker ledgers, and citation support.
 - `runs/` — experiment-specific artifacts kept immutable enough for reproduction.
@@ -22,6 +22,7 @@ Synaptic Mesh keeps protocol, implementation, research, and evidence separate so
 - [RouteDecision schema v0](concepts/route-decision-v0.md) documents the first formal schema and its local shadow shape-validation boundary.
 - [Reason code vocabulary](reason-codes.md) documents current stable reason-code categories and representative codes without turning them into runtime authority.
 - [Coverage matrix](coverage-matrix.md) separates covered, partial, pending, and out-of-scope claims before release decisions.
+- [Parser normalization evidence](parser-normalization-evidence.md) documents the local-shadow bridge from raw handoffs to auditable `parserEvidence` / route-decision input shape.
 - [Adapter boundary for LangGraph and MCP v0](../design-notes/adapter-boundary-langgraph-mcp-v0.md) documents future adapter boundaries, prerequisites, and non-goals without adding runtime integration.
 
 ## Scaling rules
