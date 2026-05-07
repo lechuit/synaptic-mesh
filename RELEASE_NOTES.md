@@ -1,15 +1,17 @@
-# Release Notes — Synaptic Mesh v0.1.0-rc1
+# Release Notes — Synaptic Mesh v0.1.1
 
-## Highlights
+Status: hardening release candidate / public review package update. Not runtime-ready; not production/canary/enforcement-ready.
 
-- Conservative paper draft ready for public release-candidate review.
-- Local specs included for memory authority receipts and compressed temporal receipts.
-- Shadow/reference implementation included with one-command review runner.
-- Curated 15-fixture reproducibility set included.
-- Tier A/B quote-check completed; R11 downgraded/disabled pending source-exact access.
-- Tier C docs live-checked as landscape-only.
-- Active 15-reference bibliography aligned and normalized.
-- Public/private redaction scan passed in the reviewed bundle.
+## Highlights since v0.1.0-rc1
+
+- Added adversarial authority-laundering regression fixtures.
+- Added duplicate receipt-field detection so later duplicate fields cannot launder earlier unsafe values.
+- Added receiver-side checks for restrictive lineage events and sensitive `ACT` smuggling.
+- Added unicode-confusable and encoded sensitive-scope regression coverage.
+- Added a contract-only receiver policy adapter module.
+- Added generic, LangGraph-like, and AutoGen-like packet mapping tests into the receiver-side validator.
+- Clarified historical reproducibility snapshots versus current live review evidence.
+- Kept runtime/framework integration explicitly out of scope.
 
 ## Validation snapshot
 
@@ -20,7 +22,7 @@
 
 ## Compatibility note
 
-Synaptic Mesh is intended as a framework-agnostic protocol. v0.1.0-rc1 is currently validated in a local shadow workflow and ships as a standalone reference package; framework adapters are not included yet.
+Synaptic Mesh remains a framework-agnostic protocol proposal. v0.1.1 adds contract-shaped adapter tests for portability review, but does not ship real LangGraph, AutoGen, CrewAI, Semantic Kernel, MCP, or runtime host adapters. Real runtime adapters remain future work.
 
 ## Operational non-release status
 
