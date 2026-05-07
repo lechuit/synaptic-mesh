@@ -17,6 +17,7 @@ const releaseGateScripts = [
   'test:receipt-schema',
   'test:authority-benchmark',
   'test:adversarial-generator',
+  'test:raw-parser-adversarial',
 ];
 
 function runGit(args, options = {}) {

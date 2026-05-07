@@ -89,6 +89,10 @@ const commands = [
     args: [resolve(packageRoot, 'tests/adversarial-fixture-generator.mjs')],
   },
   {
+    id: 'raw-parser-adversarial-tests',
+    args: [resolve(packageRoot, 'tests/raw-parser-adversarial.mjs')],
+  },
+  {
     id: 'fixture-parity-harness',
     args: [resolve(packageRoot, 'tests/fixture-parity.mjs')],
   },
@@ -117,6 +121,7 @@ const syntheticHandoff = readEvidenceJson('implementation/synaptic-mesh-shadow-v
 const partialDegrade = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/partial-receipt-degrade.out.json');
 const authorityBenchmark = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/authority-overhead-benchmark.out.json');
 const adversarialGenerator = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/adversarial-fixture-generator.out.json');
+const rawParserAdversarial = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/raw-parser-adversarial.out.json');
 
 const unsafeAllowSignals = [
   ...(fixtureParity?.summary?.nonRegressionUnsafeAllowFixtures ?? []),
@@ -135,6 +140,7 @@ if (Number(syntheticHandoff?.summary?.unsafeAllows ?? 0) !== 0) unsafeAllowSigna
 if (Number(partialDegrade?.summary?.unsafeAllows ?? 0) !== 0) unsafeAllowSignals.push('partial-receipt-degrade');
 if (authorityBenchmark?.summary?.verdict !== 'pass') unsafeAllowSignals.push('authority-overhead-benchmark');
 if (adversarialGenerator?.summary?.verdict !== 'pass') unsafeAllowSignals.push('adversarial-fixture-generator');
+if (rawParserAdversarial?.summary?.verdict !== 'pass') unsafeAllowSignals.push('raw-parser-adversarial');
 
 const summary = {
   artifact: 'T-synaptic-mesh-review-local-runner-v0',
@@ -168,6 +174,8 @@ const summary = {
   authorityOverheadBenchmarkModes: authorityBenchmark?.summary?.modes ?? null,
   adversarialFixtureGeneratorVerdict: adversarialGenerator?.summary?.verdict ?? null,
   adversarialGeneratedFixtureCount: adversarialGenerator?.summary?.generatedFixtures ?? null,
+  rawParserAdversarialVerdict: rawParserAdversarial?.summary?.verdict ?? null,
+  rawParserAdversarialFixtureCount: rawParserAdversarial?.summary?.fixtureCount ?? null,
   unsafeAllowSignals,
   sourceFixtureMutation: false,
 };

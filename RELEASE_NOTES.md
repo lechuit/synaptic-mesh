@@ -4,16 +4,17 @@ Status: baseline shadow-gates release candidate / public review package update. 
 
 ## Highlights since v0.1.2
 
-- Added GitHub Actions baseline gates for manifest verification, syntax checks, receiver adapter contracts, local shadow review, action-policy contracts, authority route fixtures, authority-envelope fixtures, RouteDecision schema evidence, threat-model route mapping evidence, RouteDecision wrong-route oracle evidence, and Receipt schema evidence.
+- Added GitHub Actions baseline gates for manifest verification, syntax checks, receiver adapter contracts, local shadow review, action-policy contracts, authority route fixtures, authority-envelope fixtures, RouteDecision schema evidence, threat-model route mapping evidence, RouteDecision wrong-route oracle evidence, Receipt schema evidence, and raw/parser adversarial evidence.
 - Added adversarial wrong-route fixtures for memory-claim laundering, hidden promotion, stale policy windows, replayed receipts, nested authority, free-text action tampering, external prose, and ambiguous verbs.
 - Kept CI scoped to the local shadow package; it does not add runtime/framework integration, MCP/A2A integration, tool execution, or enforcement behavior.
 - Preserved deterministic local evidence expectations for review runs.
 - Added a deterministic local authority overhead benchmark comparing naive summaries, full context, simple receipts, and AuthorityEnvelope-shaped records without live LLM/API calls or runtime integration.
 - Added a deterministic adversarial fixture generator that derives variants from existing RouteDecision wrong-route oracles and preserves source expected routes/reason codes.
+- Added raw/parser adversarial fixture coverage for untrusted prose, hidden dangerous receipts, malformed receipts, free-text action tampering, conflicting receipts, and stale/replayed policy windows.
 
 ## Validation snapshot
 
-- review-local: pass 22/22
+- review-local: pass 23/23
 - receiver adapter contracts: pass 59/59
 - fixture parity: 15/15
 - unsafe allow signals: 0
@@ -24,6 +25,7 @@ Status: baseline shadow-gates release candidate / public review package update. 
 - Receipt schema: pass 1 valid and 4 invalid/adversarial fixtures, shape validation only
 - Authority overhead benchmark: pass 6 fixtures across 4 representation modes, fixture proxy only
 - Adversarial fixture generator: pass 9/9 generated fixtures, oracle-derived expectations only
+- Raw/parser adversarial fixtures: pass 9/9 raw fixture/parser-pressure cases, annotation validation only
 
 ## Compatibility note
 
