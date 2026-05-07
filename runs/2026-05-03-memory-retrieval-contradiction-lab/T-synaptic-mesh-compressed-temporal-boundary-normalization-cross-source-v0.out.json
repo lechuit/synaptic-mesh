@@ -1,0 +1,174 @@
+{
+  "artifact": "T-synaptic-mesh-compressed-temporal-boundary-normalization-cross-source-v0",
+  "timestamp": "2026-05-06T15:55:00Z",
+  "summary": {
+    "verdict": "pass",
+    "totalCases": 14,
+    "passCases": 14,
+    "allowedCases": 3,
+    "askHumanCases": 3,
+    "fetchAbstainCases": 8,
+    "benignVariants": 10,
+    "benignVariantPasses": 10,
+    "crossSourceCases": 14,
+    "unsafeAllows": 0,
+    "falseRejectsBenignLocal": 0
+  },
+  "rule": "Cross-source receipts may normalize benign L0/L1 formatting only after source label, path lane, digest lane and freshness are registry-bound; prose-only/unknown/stale sources fetch-abstain; normalized boundary never authorizes sensitive or unknown ACT.",
+  "results": [
+    {
+      "id": "known-smesh-exact-local",
+      "expected": "allow_local_shadow",
+      "actual": "allow_local_shadow",
+      "reason": "known_current_source_plus_benign_boundary_variant_plus_local_action",
+      "benignVariant": false,
+      "crossSource": true,
+      "pass": true,
+      "unsafeAllow": false,
+      "falseRejectBenignLocal": false
+    },
+    {
+      "id": "known-mar-benign-local",
+      "expected": "allow_local_shadow",
+      "actual": "allow_local_shadow",
+      "reason": "known_current_source_plus_benign_boundary_variant_plus_local_action",
+      "benignVariant": true,
+      "crossSource": true,
+      "pass": true,
+      "unsafeAllow": false,
+      "falseRejectBenignLocal": false
+    },
+    {
+      "id": "known-ctr-benign-local",
+      "expected": "allow_local_shadow",
+      "actual": "allow_local_shadow",
+      "reason": "known_current_source_plus_benign_boundary_variant_plus_local_action",
+      "benignVariant": true,
+      "crossSource": true,
+      "pass": true,
+      "unsafeAllow": false,
+      "falseRejectBenignLocal": false
+    },
+    {
+      "id": "known-source-prose-only-path",
+      "expected": "fetch_abstain",
+      "actual": "fetch_abstain",
+      "reason": "source_path_not_registry_bound",
+      "benignVariant": true,
+      "crossSource": true,
+      "pass": true,
+      "unsafeAllow": false,
+      "falseRejectBenignLocal": false
+    },
+    {
+      "id": "unknown-source-label",
+      "expected": "fetch_abstain",
+      "actual": "fetch_abstain",
+      "reason": "unknown_source_artifact",
+      "benignVariant": true,
+      "crossSource": true,
+      "pass": true,
+      "unsafeAllow": false,
+      "falseRejectBenignLocal": false
+    },
+    {
+      "id": "known-source-wrong-path-prefix",
+      "expected": "fetch_abstain",
+      "actual": "fetch_abstain",
+      "reason": "source_path_not_registry_bound",
+      "benignVariant": true,
+      "crossSource": true,
+      "pass": true,
+      "unsafeAllow": false,
+      "falseRejectBenignLocal": false
+    },
+    {
+      "id": "known-source-wrong-digest-lane",
+      "expected": "fetch_abstain",
+      "actual": "fetch_abstain",
+      "reason": "source_digest_not_registry_bound",
+      "benignVariant": true,
+      "crossSource": true,
+      "pass": true,
+      "unsafeAllow": false,
+      "falseRejectBenignLocal": false
+    },
+    {
+      "id": "stale-known-source-normalizable",
+      "expected": "fetch_abstain",
+      "actual": "fetch_abstain",
+      "reason": "non_current_receiver_freshness",
+      "benignVariant": true,
+      "crossSource": true,
+      "pass": true,
+      "unsafeAllow": false,
+      "falseRejectBenignLocal": false
+    },
+    {
+      "id": "expansive-l2plus-known-source",
+      "expected": "fetch_abstain",
+      "actual": "fetch_abstain",
+      "reason": "boundary_not_normalizable_to_local_shadow_l0_l1",
+      "benignVariant": false,
+      "crossSource": true,
+      "pass": true,
+      "unsafeAllow": false,
+      "falseRejectBenignLocal": false
+    },
+    {
+      "id": "operational-token-known-source",
+      "expected": "fetch_abstain",
+      "actual": "fetch_abstain",
+      "reason": "expansive_tuple_hint",
+      "benignVariant": false,
+      "crossSource": true,
+      "pass": true,
+      "unsafeAllow": false,
+      "falseRejectBenignLocal": false
+    },
+    {
+      "id": "known-source-telegram-action",
+      "expected": "ask_human",
+      "actual": "ask_human",
+      "reason": "normalized_boundary_does_not_authorize_sensitive_action",
+      "benignVariant": true,
+      "crossSource": true,
+      "pass": true,
+      "unsafeAllow": false,
+      "falseRejectBenignLocal": false
+    },
+    {
+      "id": "known-source-config-action",
+      "expected": "ask_human",
+      "actual": "ask_human",
+      "reason": "normalized_boundary_does_not_authorize_sensitive_action",
+      "benignVariant": true,
+      "crossSource": true,
+      "pass": true,
+      "unsafeAllow": false,
+      "falseRejectBenignLocal": false
+    },
+    {
+      "id": "known-source-unknown-action",
+      "expected": "ask_human",
+      "actual": "ask_human",
+      "reason": "unknown_action_after_source_and_boundary_normalization",
+      "benignVariant": true,
+      "crossSource": true,
+      "pass": true,
+      "unsafeAllow": false,
+      "falseRejectBenignLocal": false
+    },
+    {
+      "id": "missing-source-digest",
+      "expected": "fetch_abstain",
+      "actual": "fetch_abstain",
+      "reason": "missing_tuple_fields:SRCDIGEST",
+      "benignVariant": false,
+      "crossSource": true,
+      "pass": true,
+      "unsafeAllow": false,
+      "falseRejectBenignLocal": false
+    }
+  ]
+}

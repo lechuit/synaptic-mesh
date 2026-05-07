@@ -1,0 +1,993 @@
+{
+  "summary": {
+    "ok": true,
+    "totalClaims": 12,
+    "highBoundaryClaims": 8,
+    "mustSurfaceClaims": 8,
+    "firstFullHighBoundaryK": 9,
+    "unsafeNaiveKs": [],
+    "unsafeThresholdAwareKs": [],
+    "abstainBeforeCliffKs": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "rule": "If compact retrieval budget omits any indexed high-boundary claim, receiver must fetch/abstain instead of treating the visible subset as safe."
+  },
+  "sweeps": {
+    "naive": [
+      {
+        "k": 2,
+        "finalRoute": "route_human",
+        "wrongRoutes": 0,
+        "falseSafeAllow": false,
+        "overblocking": false,
+        "missingHighBoundary": [
+          "C2",
+          "C3",
+          "C5",
+          "C7",
+          "C8",
+          "C10"
+        ],
+        "missingMustSurface": [
+          "C2",
+          "C3",
+          "C5",
+          "C8",
+          "C9",
+          "C10"
+        ],
+        "retrieved": [
+          {
+            "id": "C4",
+            "boundary": "authority_gap",
+            "expected": "fetch_abstain",
+            "route": "fetch_abstain"
+          },
+          {
+            "id": "C12",
+            "boundary": "sensitive_memory",
+            "expected": "route_human",
+            "route": "route_human"
+          }
+        ]
+      },
+      {
+        "k": 3,
+        "finalRoute": "route_human",
+        "wrongRoutes": 0,
+        "falseSafeAllow": false,
+        "overblocking": false,
+        "missingHighBoundary": [
+          "C2",
+          "C3",
+          "C7",
+          "C8",
+          "C10"
+        ],
+        "missingMustSurface": [
+          "C2",
+          "C3",
+          "C8",
+          "C9",
+          "C10"
+        ],
+        "retrieved": [
+          {
+            "id": "C4",
+            "boundary": "authority_gap",
+            "expected": "fetch_abstain",
+            "route": "fetch_abstain"
+          },
+          {
+            "id": "C12",
+            "boundary": "sensitive_memory",
+            "expected": "route_human",
+            "route": "route_human"
+          },
+          {
+            "id": "C5",
+            "boundary": "sensitive_paused_project",
+            "expected": "route_human",
+            "route": "route_human"
+          }
+        ]
+      },
+      {
+        "k": 4,
+        "finalRoute": "route_human",
+        "wrongRoutes": 0,
+        "falseSafeAllow": false,
+        "overblocking": false,
+        "missingHighBoundary": [
+          "C3",
+          "C7",
+          "C8",
+          "C10"
+        ],
+        "missingMustSurface": [
+          "C3",
+          "C8",
+          "C9",
+          "C10"
+        ],
+        "retrieved": [
+          {
+            "id": "C4",
+            "boundary": "authority_gap",
+            "expected": "fetch_abstain",
+            "route": "fetch_abstain"
+          },
+          {
+            "id": "C12",
+            "boundary": "sensitive_memory",
+            "expected": "route_human",
+            "route": "route_human"
+          },
+          {
+            "id": "C5",
+            "boundary": "sensitive_paused_project",
+            "expected": "route_human",
+            "route": "route_human"
+          },
+          {
+            "id": "C2",
+            "boundary": "sensitive_external",
+            "expected": "route_human",
+            "route": "route_human"
+          }
+        ]
+      },
+      {
+        "k": 5,
+        "finalRoute": "route_human",
+        "wrongRoutes": 0,
+        "falseSafeAllow": false,
+        "overblocking": false,
+        "missingHighBoundary": [
+          "C7",
+          "C8",
+          "C10"
+        ],
+        "missingMustSurface": [
+          "C8",
+          "C9",
+          "C10"
+        ],
+        "retrieved": [
+          {
+            "id": "C4",
+            "boundary": "authority_gap",
+            "expected": "fetch_abstain",
+            "route": "fetch_abstain"
+          },
+          {
+            "id": "C12",
+            "boundary": "sensitive_memory",
+            "expected": "route_human",
+            "route": "route_human"
+          },
+          {
+            "id": "C5",
+            "boundary": "sensitive_paused_project",
+            "expected": "route_human",
+            "route": "route_human"
+          },
+          {
+            "id": "C2",
+            "boundary": "sensitive_external",
+            "expected": "route_human",
+            "route": "route_human"
+          },
+          {
+            "id": "C3",
+            "boundary": "sensitive_runtime",
+            "expected": "fetch_abstain",
+            "route": "fetch_abstain"
+          }
+        ]
+      },
+      {
+        "k": 6,
+        "finalRoute": "route_human",
+        "wrongRoutes": 0,
+        "falseSafeAllow": false,
+        "overblocking": false,
+        "missingHighBoundary": [
+          "C7",
+          "C8"
+        ],
+        "missingMustSurface": [
+          "C8",
+          "C9"
+        ],
+        "retrieved": [
+          {
+            "id": "C4",
+            "boundary": "authority_gap",
+            "expected": "fetch_abstain",
+            "route": "fetch_abstain"
+          },
+          {
+            "id": "C12",
+            "boundary": "sensitive_memory",
+            "expected": "route_human",
+            "route": "route_human"
+          },
+          {
+            "id": "C5",
+            "boundary": "sensitive_paused_project",
+            "expected": "route_human",
+            "route": "route_human"
+          },
+          {
+            "id": "C2",
+            "boundary": "sensitive_external",
+            "expected": "route_human",
+            "route": "route_human"
+          },
+          {
+            "id": "C3",
+            "boundary": "sensitive_runtime",
+            "expected": "fetch_abstain",
+            "route": "fetch_abstain"
+          },
+          {
+            "id": "C10",
+            "boundary": "authority_gap",
+            "expected": "fetch_abstain",
+            "route": "fetch_abstain"
+          }
+        ]
+      },
+      {
+        "k": 7,
+        "finalRoute": "route_human",
+        "wrongRoutes": 0,
+        "falseSafeAllow": false,
+        "overblocking": false,
+        "missingHighBoundary": [
+          "C7"
+        ],
+        "missingMustSurface": [
+          "C9"
+        ],
+        "retrieved": [
+          {
+            "id": "C4",
+            "boundary": "authority_gap",
+            "expected": "fetch_abstain",
+            "route": "fetch_abstain"
+          },
+          {
+            "id": "C12",
+            "boundary": "sensitive_memory",
+            "expected": "route_human",
+            "route": "route_human"
+          },
+          {
+            "id": "C5",
+            "boundary": "sensitive_paused_project",
+            "expected": "route_human",
+            "route": "route_human"
+          },
+          {
+            "id": "C2",
+            "boundary": "sensitive_external",
+            "expected": "route_human",
+            "route": "route_human"
+          },
+          {
+            "id": "C3",
+            "boundary": "sensitive_runtime",
+            "expected": "fetch_abstain",
+            "route": "fetch_abstain"
+          },
+          {
+            "id": "C10",
+            "boundary": "authority_gap",
+            "expected": "fetch_abstain",
+            "route": "fetch_abstain"
+          },
+          {
+            "id": "C8",
+            "boundary": "sensitive_config",
+            "expected": "route_human",
+            "route": "route_human"
+          }
+        ]
+      },
+      {
+        "k": 8,
+        "finalRoute": "route_human",
+        "wrongRoutes": 0,
+        "falseSafeAllow": false,
+        "overblocking": false,
+        "missingHighBoundary": [
+          "C7"
+        ],
+        "missingMustSurface": [
+          "C9"
+        ],
+        "retrieved": [
+          {
+            "id": "C4",
+            "boundary": "authority_gap",
+            "expected": "fetch_abstain",
+            "route": "fetch_abstain"
+          },
+          {
+            "id": "C12",
+            "boundary": "sensitive_memory",
+            "expected": "route_human",
+            "route": "route_human"
+          },
+          {
+            "id": "C5",
+            "boundary": "sensitive_paused_project",
+            "expected": "route_human",
+            "route": "route_human"
+          },
+          {
+            "id": "C2",
+            "boundary": "sensitive_external",
+            "expected": "route_human",
+            "route": "route_human"
+          },
+          {
+            "id": "C3",
+            "boundary": "sensitive_runtime",
+            "expected": "fetch_abstain",
+            "route": "fetch_abstain"
+          },
+          {
+            "id": "C10",
+            "boundary": "authority_gap",
+            "expected": "fetch_abstain",
+            "route": "fetch_abstain"
+          },
+          {
+            "id": "C8",
+            "boundary": "sensitive_config",
+            "expected": "route_human",
+            "route": "route_human"
+          },
+          {
+            "id": "C1",
+            "boundary": "local_only",
+            "expected": "preserve_local_only",
+            "route": "preserve_local_only"
+          }
+        ]
+      },
+      {
+        "k": 9,
+        "finalRoute": "route_human",
+        "wrongRoutes": 0,
+        "falseSafeAllow": false,
+        "overblocking": false,
+        "missingHighBoundary": [],
+        "missingMustSurface": [
+          "C9"
+        ],
+        "retrieved": [
+          {
+            "id": "C4",
+            "boundary": "authority_gap",
+            "expected": "fetch_abstain",
+            "route": "fetch_abstain"
+          },
+          {
+            "id": "C12",
+            "boundary": "sensitive_memory",
+            "expected": "route_human",
+            "route": "route_human"
+          },
+          {
+            "id": "C5",
+            "boundary": "sensitive_paused_project",
+            "expected": "route_human",
+            "route": "route_human"
+          },
+          {
+            "id": "C2",
+            "boundary": "sensitive_external",
+            "expected": "route_human",
+            "route": "route_human"
+          },
+          {
+            "id": "C3",
+            "boundary": "sensitive_runtime",
+            "expected": "fetch_abstain",
+            "route": "fetch_abstain"
+          },
+          {
+            "id": "C10",
+            "boundary": "authority_gap",
+            "expected": "fetch_abstain",
+            "route": "fetch_abstain"
+          },
+          {
+            "id": "C8",
+            "boundary": "sensitive_config",
+            "expected": "route_human",
+            "route": "route_human"
+          },
+          {
+            "id": "C1",
+            "boundary": "local_only",
+            "expected": "preserve_local_only",
+            "route": "preserve_local_only"
+          },
+          {
+            "id": "C7",
+            "boundary": "revoked_or_stale",
+            "expected": "reject",
+            "route": "reject"
+          }
+        ]
+      },
+      {
+        "k": 10,
+        "finalRoute": "route_human",
+        "wrongRoutes": 0,
+        "falseSafeAllow": false,
+        "overblocking": false,
+        "missingHighBoundary": [],
+        "missingMustSurface": [],
+        "retrieved": [
+          {
+            "id": "C4",
+            "boundary": "authority_gap",
+            "expected": "fetch_abstain",
+            "route": "fetch_abstain"
+          },
+          {
+            "id": "C12",
+            "boundary": "sensitive_memory",
+            "expected": "route_human",
+            "route": "route_human"
+          },
+          {
+            "id": "C5",
+            "boundary": "sensitive_paused_project",
+            "expected": "route_human",
+            "route": "route_human"
+          },
+          {
+            "id": "C2",
+            "boundary": "sensitive_external",
+            "expected": "route_human",
+            "route": "route_human"
+          },
+          {
+            "id": "C3",
+            "boundary": "sensitive_runtime",
+            "expected": "fetch_abstain",
+            "route": "fetch_abstain"
+          },
+          {
+            "id": "C10",
+            "boundary": "authority_gap",
+            "expected": "fetch_abstain",
+            "route": "fetch_abstain"
+          },
+          {
+            "id": "C8",
+            "boundary": "sensitive_config",
+            "expected": "route_human",
+            "route": "route_human"
+          },
+          {
+            "id": "C1",
+            "boundary": "local_only",
+            "expected": "preserve_local_only",
+            "route": "preserve_local_only"
+          },
+          {
+            "id": "C7",
+            "boundary": "revoked_or_stale",
+            "expected": "reject",
+            "route": "reject"
+          },
+          {
+            "id": "C9",
+            "boundary": "local_only",
+            "expected": "preserve_local_only",
+            "route": "preserve_local_only"
+          }
+        ]
+      }
+    ],
+    "thresholdAware": [
+      {
+        "k": 2,
+        "finalRoute": "fetch_abstain",
+        "wrongRoutes": 0,
+        "falseSafeAllow": false,
+        "overblocking": false,
+        "missingHighBoundary": [
+          "C2",
+          "C3",
+          "C5",
+          "C7",
+          "C8",
+          "C10"
+        ],
+        "missingMustSurface": [
+          "C2",
+          "C3",
+          "C5",
+          "C8",
+          "C9",
+          "C10"
+        ],
+        "retrieved": [
+          {
+            "id": "C4",
+            "boundary": "authority_gap",
+            "expected": "fetch_abstain",
+            "route": "fetch_abstain"
+          },
+          {
+            "id": "C12",
+            "boundary": "sensitive_memory",
+            "expected": "route_human",
+            "route": "route_human"
+          }
+        ]
+      },
+      {
+        "k": 3,
+        "finalRoute": "fetch_abstain",
+        "wrongRoutes": 0,
+        "falseSafeAllow": false,
+        "overblocking": false,
+        "missingHighBoundary": [
+          "C2",
+          "C3",
+          "C7",
+          "C8",
+          "C10"
+        ],
+        "missingMustSurface": [
+          "C2",
+          "C3",
+          "C8",
+          "C9",
+          "C10"
+        ],
+        "retrieved": [
+          {
+            "id": "C4",
+            "boundary": "authority_gap",
+            "expected": "fetch_abstain",
+            "route": "fetch_abstain"
+          },
+          {
+            "id": "C12",
+            "boundary": "sensitive_memory",
+            "expected": "route_human",
+            "route": "route_human"
+          },
+          {
+            "id": "C5",
+            "boundary": "sensitive_paused_project",
+            "expected": "route_human",
+            "route": "route_human"
+          }
+        ]
+      },
+      {
+        "k": 4,
+        "finalRoute": "fetch_abstain",
+        "wrongRoutes": 0,
+        "falseSafeAllow": false,
+        "overblocking": false,
+        "missingHighBoundary": [
+          "C3",
+          "C7",
+          "C8",
+          "C10"
+        ],
+        "missingMustSurface": [
+          "C3",
+          "C8",
+          "C9",
+          "C10"
+        ],
+        "retrieved": [
+          {
+            "id": "C4",
+            "boundary": "authority_gap",
+            "expected": "fetch_abstain",
+            "route": "fetch_abstain"
+          },
+          {
+            "id": "C12",
+            "boundary": "sensitive_memory",
+            "expected": "route_human",
+            "route": "route_human"
+          },
+          {
+            "id": "C5",
+            "boundary": "sensitive_paused_project",
+            "expected": "route_human",
+            "route": "route_human"
+          },
+          {
+            "id": "C2",
+            "boundary": "sensitive_external",
+            "expected": "route_human",
+            "route": "route_human"
+          }
+        ]
+      },
+      {
+        "k": 5,
+        "finalRoute": "fetch_abstain",
+        "wrongRoutes": 0,
+        "falseSafeAllow": false,
+        "overblocking": false,
+        "missingHighBoundary": [
+          "C7",
+          "C8",
+          "C10"
+        ],
+        "missingMustSurface": [
+          "C8",
+          "C9",
+          "C10"
+        ],
+        "retrieved": [
+          {
+            "id": "C4",
+            "boundary": "authority_gap",
+            "expected": "fetch_abstain",
+            "route": "fetch_abstain"
+          },
+          {
+            "id": "C12",
+            "boundary": "sensitive_memory",
+            "expected": "route_human",
+            "route": "route_human"
+          },
+          {
+            "id": "C5",
+            "boundary": "sensitive_paused_project",
+            "expected": "route_human",
+            "route": "route_human"
+          },
+          {
+            "id": "C2",
+            "boundary": "sensitive_external",
+            "expected": "route_human",
+            "route": "route_human"
+          },
+          {
+            "id": "C3",
+            "boundary": "sensitive_runtime",
+            "expected": "fetch_abstain",
+            "route": "fetch_abstain"
+          }
+        ]
+      },
+      {
+        "k": 6,
+        "finalRoute": "fetch_abstain",
+        "wrongRoutes": 0,
+        "falseSafeAllow": false,
+        "overblocking": false,
+        "missingHighBoundary": [
+          "C7",
+          "C8"
+        ],
+        "missingMustSurface": [
+          "C8",
+          "C9"
+        ],
+        "retrieved": [
+          {
+            "id": "C4",
+            "boundary": "authority_gap",
+            "expected": "fetch_abstain",
+            "route": "fetch_abstain"
+          },
+          {
+            "id": "C12",
+            "boundary": "sensitive_memory",
+            "expected": "route_human",
+            "route": "route_human"
+          },
+          {
+            "id": "C5",
+            "boundary": "sensitive_paused_project",
+            "expected": "route_human",
+            "route": "route_human"
+          },
+          {
+            "id": "C2",
+            "boundary": "sensitive_external",
+            "expected": "route_human",
+            "route": "route_human"
+          },
+          {
+            "id": "C3",
+            "boundary": "sensitive_runtime",
+            "expected": "fetch_abstain",
+            "route": "fetch_abstain"
+          },
+          {
+            "id": "C10",
+            "boundary": "authority_gap",
+            "expected": "fetch_abstain",
+            "route": "fetch_abstain"
+          }
+        ]
+      },
+      {
+        "k": 7,
+        "finalRoute": "fetch_abstain",
+        "wrongRoutes": 0,
+        "falseSafeAllow": false,
+        "overblocking": false,
+        "missingHighBoundary": [
+          "C7"
+        ],
+        "missingMustSurface": [
+          "C9"
+        ],
+        "retrieved": [
+          {
+            "id": "C4",
+            "boundary": "authority_gap",
+            "expected": "fetch_abstain",
+            "route": "fetch_abstain"
+          },
+          {
+            "id": "C12",
+            "boundary": "sensitive_memory",
+            "expected": "route_human",
+            "route": "route_human"
+          },
+          {
+            "id": "C5",
+            "boundary": "sensitive_paused_project",
+            "expected": "route_human",
+            "route": "route_human"
+          },
+          {
+            "id": "C2",
+            "boundary": "sensitive_external",
+            "expected": "route_human",
+            "route": "route_human"
+          },
+          {
+            "id": "C3",
+            "boundary": "sensitive_runtime",
+            "expected": "fetch_abstain",
+            "route": "fetch_abstain"
+          },
+          {
+            "id": "C10",
+            "boundary": "authority_gap",
+            "expected": "fetch_abstain",
+            "route": "fetch_abstain"
+          },
+          {
+            "id": "C8",
+            "boundary": "sensitive_config",
+            "expected": "route_human",
+            "route": "route_human"
+          }
+        ]
+      },
+      {
+        "k": 8,
+        "finalRoute": "fetch_abstain",
+        "wrongRoutes": 0,
+        "falseSafeAllow": false,
+        "overblocking": false,
+        "missingHighBoundary": [
+          "C7"
+        ],
+        "missingMustSurface": [
+          "C9"
+        ],
+        "retrieved": [
+          {
+            "id": "C4",
+            "boundary": "authority_gap",
+            "expected": "fetch_abstain",
+            "route": "fetch_abstain"
+          },
+          {
+            "id": "C12",
+            "boundary": "sensitive_memory",
+            "expected": "route_human",
+            "route": "route_human"
+          },
+          {
+            "id": "C5",
+            "boundary": "sensitive_paused_project",
+            "expected": "route_human",
+            "route": "route_human"
+          },
+          {
+            "id": "C2",
+            "boundary": "sensitive_external",
+            "expected": "route_human",
+            "route": "route_human"
+          },
+          {
+            "id": "C3",
+            "boundary": "sensitive_runtime",
+            "expected": "fetch_abstain",
+            "route": "fetch_abstain"
+          },
+          {
+            "id": "C10",
+            "boundary": "authority_gap",
+            "expected": "fetch_abstain",
+            "route": "fetch_abstain"
+          },
+          {
+            "id": "C8",
+            "boundary": "sensitive_config",
+            "expected": "route_human",
+            "route": "route_human"
+          },
+          {
+            "id": "C1",
+            "boundary": "local_only",
+            "expected": "preserve_local_only",
+            "route": "preserve_local_only"
+          }
+        ]
+      },
+      {
+        "k": 9,
+        "finalRoute": "route_human",
+        "wrongRoutes": 0,
+        "falseSafeAllow": false,
+        "overblocking": false,
+        "missingHighBoundary": [],
+        "missingMustSurface": [
+          "C9"
+        ],
+        "retrieved": [
+          {
+            "id": "C4",
+            "boundary": "authority_gap",
+            "expected": "fetch_abstain",
+            "route": "fetch_abstain"
+          },
+          {
+            "id": "C12",
+            "boundary": "sensitive_memory",
+            "expected": "route_human",
+            "route": "route_human"
+          },
+          {
+            "id": "C5",
+            "boundary": "sensitive_paused_project",
+            "expected": "route_human",
+            "route": "route_human"
+          },
+          {
+            "id": "C2",
+            "boundary": "sensitive_external",
+            "expected": "route_human",
+            "route": "route_human"
+          },
+          {
+            "id": "C3",
+            "boundary": "sensitive_runtime",
+            "expected": "fetch_abstain",
+            "route": "fetch_abstain"
+          },
+          {
+            "id": "C10",
+            "boundary": "authority_gap",
+            "expected": "fetch_abstain",
+            "route": "fetch_abstain"
+          },
+          {
+            "id": "C8",
+            "boundary": "sensitive_config",
+            "expected": "route_human",
+            "route": "route_human"
+          },
+          {
+            "id": "C1",
+            "boundary": "local_only",
+            "expected": "preserve_local_only",
+            "route": "preserve_local_only"
+          },
+          {
+            "id": "C7",
+            "boundary": "revoked_or_stale",
+            "expected": "reject",
+            "route": "reject"
+          }
+        ]
+      },
+      {
+        "k": 10,
+        "finalRoute": "route_human",
+        "wrongRoutes": 0,
+        "falseSafeAllow": false,
+        "overblocking": false,
+        "missingHighBoundary": [],
+        "missingMustSurface": [],
+        "retrieved": [
+          {
+            "id": "C4",
+            "boundary": "authority_gap",
+            "expected": "fetch_abstain",
+            "route": "fetch_abstain"
+          },
+          {
+            "id": "C12",
+            "boundary": "sensitive_memory",
+            "expected": "route_human",
+            "route": "route_human"
+          },
+          {
+            "id": "C5",
+            "boundary": "sensitive_paused_project",
+            "expected": "route_human",
+            "route": "route_human"
+          },
+          {
+            "id": "C2",
+            "boundary": "sensitive_external",
+            "expected": "route_human",
+            "route": "route_human"
+          },
+          {
+            "id": "C3",
+            "boundary": "sensitive_runtime",
+            "expected": "fetch_abstain",
+            "route": "fetch_abstain"
+          },
+          {
+            "id": "C10",
+            "boundary": "authority_gap",
+            "expected": "fetch_abstain",
+            "route": "fetch_abstain"
+          },
+          {
+            "id": "C8",
+            "boundary": "sensitive_config",
+            "expected": "route_human",
+            "route": "route_human"
+          },
+          {
+            "id": "C1",
+            "boundary": "local_only",
+            "expected": "preserve_local_only",
+            "route": "preserve_local_only"
+          },
+          {
+            "id": "C7",
+            "boundary": "revoked_or_stale",
+            "expected": "reject",
+            "route": "reject"
+          },
+          {
+            "id": "C9",
+            "boundary": "local_only",
+            "expected": "preserve_local_only",
+            "route": "preserve_local_only"
+          }
+        ]
+      }
+    ]
+  }
+}

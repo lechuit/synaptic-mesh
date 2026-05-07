@@ -1,0 +1,129 @@
+{
+  "artifact": "T-synaptic-mesh-temporal-precedence-compressed-handoff-v0",
+  "timestamp": "2026-05-06T15:08:00Z",
+  "summary": {
+    "verdict": "pass",
+    "totalCases": 10,
+    "passCases": 10,
+    "allowedCases": 2,
+    "failClosedCases": 6,
+    "askHumanCases": 2,
+    "unsafeAllows": 0,
+    "falseRejectsForValidLocal": 0
+  },
+  "requiredFields": [
+    "receiptId",
+    "sourceArtifactPath",
+    "producedAt",
+    "receiverFreshness",
+    "coverageDecision",
+    "promotionBoundary",
+    "noForbiddenEffects",
+    "scope",
+    "nextAllowedAction",
+    "latestRestrictiveEvent",
+    "temporalOrderKnown"
+  ],
+  "results": [
+    {
+      "id": "fresh-two-hop-local-report",
+      "expected": "allow_local_shadow",
+      "actual": "allow_local_shadow",
+      "pass": true,
+      "packetDigest": "sha256:AR-20260506-1500Z-SynapticMeshReceiptTemporalPrecedence-v0.1:none:true:local_report:hop2",
+      "latestRestrictiveEvent": "none",
+      "temporalOrderKnown": true,
+      "requestedAction": "local_report"
+    },
+    {
+      "id": "later-restrictive-event-survives-two-hop",
+      "expected": "fetch_abstain",
+      "actual": "fetch_abstain",
+      "pass": true,
+      "packetDigest": "sha256:AR-20260506-1500Z-SynapticMeshReceiptTemporalPrecedence-v0.1:superseded_fetch_abstain:true:local_report:hop2",
+      "latestRestrictiveEvent": "superseded_fetch_abstain",
+      "temporalOrderKnown": true,
+      "requestedAction": "local_report"
+    },
+    {
+      "id": "optimistic-prose-cannot-revive-after-restrictive",
+      "expected": "fetch_abstain",
+      "actual": "fetch_abstain",
+      "pass": true,
+      "packetDigest": "sha256:AR-20260506-1500Z-SynapticMeshReceiptTemporalPrecedence-v0.1:revoked:true:local_report:hop2",
+      "latestRestrictiveEvent": "revoked",
+      "temporalOrderKnown": true,
+      "requestedAction": "local_report"
+    },
+    {
+      "id": "ambiguous-temporal-order-fetches",
+      "expected": "fetch_abstain",
+      "actual": "fetch_abstain",
+      "pass": true,
+      "packetDigest": "sha256:AR-20260506-1500Z-SynapticMeshReceiptTemporalPrecedence-v0.1:none:false:local_report:hop2",
+      "latestRestrictiveEvent": "none",
+      "temporalOrderKnown": false,
+      "requestedAction": "local_report"
+    },
+    {
+      "id": "sensitive-action-asks-human-even-with-complete-packet",
+      "expected": "ask_human",
+      "actual": "ask_human",
+      "pass": true,
+      "packetDigest": "sha256:AR-20260506-1500Z-SynapticMeshReceiptTemporalPrecedence-v0.1:none:true:telegram_external_message:hop2",
+      "latestRestrictiveEvent": "none",
+      "temporalOrderKnown": true,
+      "requestedAction": "telegram_external_message"
+    },
+    {
+      "id": "missing-source-path-after-compression-fetches",
+      "expected": "fetch_abstain",
+      "actual": "fetch_abstain",
+      "pass": true,
+      "packetDigest": "sha256:AR-20260506-1500Z-SynapticMeshReceiptTemporalPrecedence-v0.1:none:true:local_report:hop2",
+      "latestRestrictiveEvent": "none",
+      "temporalOrderKnown": true,
+      "requestedAction": "local_report"
+    },
+    {
+      "id": "lost-restrictive-event-field-fetches",
+      "expected": "fetch_abstain",
+      "actual": "fetch_abstain",
+      "pass": true,
+      "packetDigest": "sha256:AR-20260506-1500Z-SynapticMeshReceiptTemporalPrecedence-v0.1:missing:true:local_report:hop2",
+      "latestRestrictiveEvent": "missing",
+      "temporalOrderKnown": true,
+      "requestedAction": "local_report"
+    },
+    {
+      "id": "stale-produced-at-fetches",
+      "expected": "fetch_abstain",
+      "actual": "fetch_abstain",
+      "pass": true,
+      "packetDigest": "sha256:AR-20260506-1500Z-SynapticMeshReceiptTemporalPrecedence-v0.1:none:true:local_report:hop2",
+      "latestRestrictiveEvent": "none",
+      "temporalOrderKnown": true,
+      "requestedAction": "local_report"
+    },
+    {
+      "id": "local-diagnostic-valid",
+      "expected": "allow_local_shadow",
+      "actual": "allow_local_shadow",
+      "pass": true,
+      "packetDigest": "sha256:AR-20260506-1500Z-SynapticMeshReceiptTemporalPrecedence-v0.1:none:true:local_diagnostic:hop2",
+      "latestRestrictiveEvent": "none",
+      "temporalOrderKnown": true,
+      "requestedAction": "local_diagnostic"
+    },
+    {
+      "id": "unknown-action-asks-human",
+      "expected": "ask_human",
+      "actual": "ask_human",
+      "pass": true,
+      "packetDigest": "sha256:AR-20260506-1500Z-SynapticMeshReceiptTemporalPrecedence-v0.1:none:true:promote_to_canary:hop2",
+      "latestRestrictiveEvent": "none",
+      "temporalOrderKnown": true,
+      "requestedAction": "promote_to_canary"
+    }
+  ]
+}

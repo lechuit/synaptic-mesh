@@ -1,0 +1,116 @@
+{
+  "summary": {
+    "artifact": "T-synaptic-mesh-source-spoofing-nested-handoff-fixture-v0",
+    "timestamp": "2026-05-06T17:52:00Z",
+    "verdict": "pass",
+    "total": 8,
+    "passCases": 8,
+    "unsafeAllows": 0,
+    "falseRejectsForValidLocal": 0,
+    "askHumanCases": 1,
+    "fetchAbstainCases": 6,
+    "allowLocalShadowCases": 1,
+    "coverage": [
+      "similar source IDs / alias collisions",
+      "wrong path under known-looking source label",
+      "wrong digest under known-looking source label",
+      "nested handoff without bound parent path/digest",
+      "nested handoff parent digest mismatch",
+      "stale inherited receipt",
+      "sensitive action asks human even with known source",
+      "valid known/current/local source control"
+    ]
+  },
+  "knownSources": [
+    {
+      "sourceArtifactId": "T-synaptic-mesh-fixture-parity-harness-v0",
+      "sourceArtifactPath": "research-package/T-synaptic-mesh-fixture-parity-harness-v0.md",
+      "registryDigest": "sha256:fixture-parity-12of12-nodecheck0-missing0-gate0-nonreg-unsafe0",
+      "freshness": "current",
+      "allowedNextAction": "T-synaptic-mesh-source-spoofing-nested-handoff-fixture-v0"
+    }
+  ],
+  "results": [
+    {
+      "id": "valid-known-current-local-control",
+      "expected": "allow_local_shadow",
+      "actual": "allow_local_shadow",
+      "pass": true,
+      "reasons": [
+        "known current source path/digest and local-only boundary validated"
+      ]
+    },
+    {
+      "id": "source-alias-collision-similar-id",
+      "expected": "fetch_abstain",
+      "actual": "fetch_abstain",
+      "pass": true,
+      "reasons": [
+        "unknown sourceArtifactId: T-synaptic-mesh-fixture-parity-hamess-v0"
+      ]
+    },
+    {
+      "id": "known-label-wrong-path",
+      "expected": "fetch_abstain",
+      "actual": "fetch_abstain",
+      "pass": true,
+      "reasons": [
+        "source path mismatch for known sourceArtifactId"
+      ]
+    },
+    {
+      "id": "known-label-wrong-digest",
+      "expected": "fetch_abstain",
+      "actual": "fetch_abstain",
+      "pass": true,
+      "reasons": [
+        "registryDigest mismatch for known sourceArtifactId/path"
+      ]
+    },
+    {
+      "id": "nested-handoff-unbound-parent",
+      "expected": "fetch_abstain",
+      "actual": "fetch_abstain",
+      "pass": true,
+      "reasons": [
+        "nested handoff lacks bound parent path/digest"
+      ]
+    },
+    {
+      "id": "nested-handoff-wrong-parent-digest",
+      "expected": "fetch_abstain",
+      "actual": "fetch_abstain",
+      "pass": true,
+      "reasons": [
+        "nested parent digest mismatch"
+      ]
+    },
+    {
+      "id": "nested-handoff-stale-inherited-receipt",
+      "expected": "fetch_abstain",
+      "actual": "fetch_abstain",
+      "pass": true,
+      "reasons": [
+        "nested inherited freshness is stale"
+      ]
+    },
+    {
+      "id": "sensitive-action-known-source-still-human",
+      "expected": "ask_human",
+      "actual": "ask_human",
+      "pass": true,
+      "reasons": [
+        "sensitive or unknown action: promote_memory"
+      ]
+    }
+  ],
+  "boundary": {
+    "mode": "L0/L1 local fixture only",
+    "noRuntimeIntegration": true,
+    "noConfigChanges": true,
+    "noMemoryPromotion": true,
+    "noExternalEffects": true,
+    "noDelete": true,
+    "l2PlusRequiresHuman": true
+  }
+}

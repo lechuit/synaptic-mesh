@@ -1,0 +1,106 @@
+{
+  "summary": {
+    "artifact": "T-synaptic-mesh-review-local-runner-v0",
+    "timestamp": "2026-05-06T19:33:00Z",
+    "verdict": "pass",
+    "commands": 11,
+    "passCommands": 11,
+    "failedCommands": [],
+    "fixtureCount": 15,
+    "fixtureParityVerdict": "pass",
+    "normalizedFixtureCount": 15,
+    "transformRegressionVerdict": null,
+    "cliValidatorVerdict": "pass",
+    "syntheticHandoffVerdict": "pass",
+    "partialReceiptDegradeVerdict": "pass",
+    "unsafeAllowSignals": [],
+    "sourceFixtureMutation": false
+  },
+  "rows": [
+    {
+      "id": "syntax-core-reference",
+      "command": "/usr/local/bin/node --check implementation/synaptic-mesh-shadow-v0/src/types.mjs",
+      "status": 0,
+      "pass": true,
+      "stderr": ""
+    },
+    {
+      "id": "syntax-receipt-parser",
+      "command": "/usr/local/bin/node --check implementation/synaptic-mesh-shadow-v0/src/receipt-parser.mjs",
+      "status": 0,
+      "pass": true,
+      "stderr": ""
+    },
+    {
+      "id": "syntax-receipt-validator",
+      "command": "/usr/local/bin/node --check implementation/synaptic-mesh-shadow-v0/src/receipt-validator.mjs",
+      "status": 0,
+      "pass": true,
+      "stderr": ""
+    },
+    {
+      "id": "syntax-cli",
+      "command": "/usr/local/bin/node --check implementation/synaptic-mesh-shadow-v0/bin/validate-receipt.mjs",
+      "status": 0,
+      "pass": true,
+      "stderr": ""
+    },
+    {
+      "id": "receipt-parser-validator-tests",
+      "command": "/usr/local/bin/node implementation/synaptic-mesh-shadow-v0/tests/receipt-parser-validator.mjs",
+      "status": 0,
+      "pass": true,
+      "stderr": ""
+    },
+    {
+      "id": "receipt-transform-regression-tests",
+      "command": "/usr/local/bin/node implementation/synaptic-mesh-shadow-v0/tests/receipt-transform-regression.mjs",
+      "status": 0,
+      "pass": true,
+      "stderr": ""
+    },
+    {
+      "id": "cli-validator-tests",
+      "command": "/usr/local/bin/node implementation/synaptic-mesh-shadow-v0/tests/cli-validator.mjs",
+      "status": 0,
+      "pass": true,
+      "stderr": ""
+    },
+    {
+      "id": "synthetic-handoff-examples-tests",
+      "command": "/usr/local/bin/node implementation/synaptic-mesh-shadow-v0/tests/synthetic-handoff-examples.mjs",
+      "status": 0,
+      "pass": true,
+      "stderr": ""
+    },
+    {
+      "id": "partial-receipt-degrade-tests",
+      "command": "/usr/local/bin/node implementation/synaptic-mesh-shadow-v0/tests/partial-receipt-degrade.mjs",
+      "status": 0,
+      "pass": true,
+      "stderr": ""
+    },
+    {
+      "id": "fixture-parity-harness",
+      "command": "/usr/local/bin/node implementation/synaptic-mesh-shadow-v0/tests/fixture-parity.mjs",
+      "status": 0,
+      "pass": true,
+      "stderr": ""
+    },
+    {
+      "id": "normalized-summary-adapter",
+      "command": "/usr/local/bin/node implementation/synaptic-mesh-shadow-v0/tests/summary-normalizer.mjs",
+      "status": 0,
+      "pass": true,
+      "stderr": ""
+    }
+  ],
+  "boundary": [
+    "local_review_only",
+    "not_runtime_integration",
+    "not_config",
+    "not_publication",
+    "not_enforcement",
+    "no_external_effects"
+  ]
+}

@@ -1,0 +1,1373 @@
+{
+  "artifact": "T-synaptic-mesh-compressed-temporal-receipt-cross-source-minimal-fields-v0",
+  "timestamp": "2026-05-06T16:02:00Z",
+  "summary": {
+    "verdict": "pass",
+    "scenarioCount": 10,
+    "baselineBytes": 438,
+    "safeProfiles": [
+      {
+        "profile": "full",
+        "bytes": 438,
+        "savedPct": 0
+      },
+      {
+        "profile": "noReceiptId",
+        "bytes": 423,
+        "savedPct": 3.4
+      },
+      {
+        "profile": "shortLabels",
+        "bytes": 402,
+        "savedPct": 8.2
+      }
+    ],
+    "regressions": [
+      {
+        "profile": "noProducedAt",
+        "unsafeAllows": 0,
+        "falseRejectLocal": 1,
+        "passCases": 7,
+        "savedPct": 5.9
+      },
+      {
+        "profile": "noPath",
+        "unsafeAllows": 7,
+        "falseRejectLocal": 0,
+        "passCases": 3,
+        "savedPct": 30.6
+      },
+      {
+        "profile": "noDigest",
+        "unsafeAllows": 7,
+        "falseRejectLocal": 0,
+        "passCases": 3,
+        "savedPct": 12.3
+      },
+      {
+        "profile": "noFreshness",
+        "unsafeAllows": 6,
+        "falseRejectLocal": 0,
+        "passCases": 4,
+        "savedPct": 2.5
+      },
+      {
+        "profile": "noBoundary",
+        "unsafeAllows": 6,
+        "falseRejectLocal": 0,
+        "passCases": 4,
+        "savedPct": 8.2
+      },
+      {
+        "profile": "noForbiddenEffects",
+        "unsafeAllows": 6,
+        "falseRejectLocal": 0,
+        "passCases": 4,
+        "savedPct": 15.3
+      },
+      {
+        "profile": "noTemporalEvent",
+        "unsafeAllows": 7,
+        "falseRejectLocal": 0,
+        "passCases": 3,
+        "savedPct": 4.1
+      },
+      {
+        "profile": "noActionSeparation",
+        "unsafeAllows": 7,
+        "falseRejectLocal": 0,
+        "passCases": 3,
+        "savedPct": 9.1
+      }
+    ],
+    "finding": "The safe minimum is semantic, not just shorter: keep source label/path/digest, freshness, local boundary, forbidden-effect list, latest restrictive event, temporal-order token, requested action and rollback. Dropping receipt id is safe but low-value; dropping producedAt is safe only in this fixture and weakens auditability. Short labels save material bytes without dropping authority semantics. Removing source path/digest/freshness/boundary/NO/LRE/TOK/ACT reopens laundering, stale, expansion or sensitive-action regressions."
+  },
+  "profiles": [
+    {
+      "profile": "full",
+      "fields": [
+        "ID",
+        "SRC",
+        "PATH",
+        "DIG",
+        "PROD",
+        "FR",
+        "SC",
+        "PB",
+        "NO",
+        "LRE",
+        "TOK",
+        "ACT",
+        "RB"
+      ],
+      "baselineBytes": 438,
+      "bytes": 438,
+      "savedBytes": 0,
+      "savedPct": 0,
+      "passCases": 10,
+      "unsafeAllows": 0,
+      "falseRejectLocal": 0,
+      "verdict": "safe_on_fixture",
+      "rows": [
+        {
+          "id": "known-current-local",
+          "expected": "allow_local_shadow",
+          "actual": "allow_local_shadow",
+          "reason": "complete_minimal_tuple_for_local_shadow",
+          "pass": true,
+          "unsafeAllow": false,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "source-laundered-wrong-path",
+          "expected": "fetch_abstain",
+          "actual": "fetch_abstain",
+          "reason": "path_not_registry_bound",
+          "pass": true,
+          "unsafeAllow": false,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "source-laundered-wrong-digest",
+          "expected": "fetch_abstain",
+          "actual": "fetch_abstain",
+          "reason": "digest_not_registry_bound",
+          "pass": true,
+          "unsafeAllow": false,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "stale-source",
+          "expected": "fetch_abstain",
+          "actual": "fetch_abstain",
+          "reason": "non_current_freshness",
+          "pass": true,
+          "unsafeAllow": false,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "sensitive-external-action",
+          "expected": "ask_human",
+          "actual": "ask_human",
+          "reason": "sensitive_action",
+          "pass": true,
+          "unsafeAllow": false,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "unknown-action",
+          "expected": "ask_human",
+          "actual": "ask_human",
+          "reason": "unknown_action",
+          "pass": true,
+          "unsafeAllow": false,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "later-restrictive-event",
+          "expected": "fetch_abstain",
+          "actual": "fetch_abstain",
+          "reason": "temporal_precedence_not_clean",
+          "pass": true,
+          "unsafeAllow": false,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "unknown-temporal-order",
+          "expected": "fetch_abstain",
+          "actual": "fetch_abstain",
+          "reason": "temporal_precedence_not_clean",
+          "pass": true,
+          "unsafeAllow": false,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "l2-boundary-expansion",
+          "expected": "fetch_abstain",
+          "actual": "fetch_abstain",
+          "reason": "boundary_not_exact_local_l0_l1",
+          "pass": true,
+          "unsafeAllow": false,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "missing-delete-forbidden-effect",
+          "expected": "fetch_abstain",
+          "actual": "fetch_abstain",
+          "reason": "forbidden_effects_incomplete",
+          "pass": true,
+          "unsafeAllow": false,
+          "falseRejectLocal": false
+        }
+      ]
+    },
+    {
+      "profile": "noReceiptId",
+      "fields": [
+        "SRC",
+        "PATH",
+        "DIG",
+        "PROD",
+        "FR",
+        "SC",
+        "PB",
+        "NO",
+        "LRE",
+        "TOK",
+        "ACT",
+        "RB"
+      ],
+      "baselineBytes": 438,
+      "bytes": 423,
+      "savedBytes": 15,
+      "savedPct": 3.4,
+      "passCases": 10,
+      "unsafeAllows": 0,
+      "falseRejectLocal": 0,
+      "verdict": "safe_on_fixture",
+      "rows": [
+        {
+          "id": "known-current-local",
+          "expected": "allow_local_shadow",
+          "actual": "allow_local_shadow",
+          "reason": "complete_minimal_tuple_for_local_shadow",
+          "pass": true,
+          "unsafeAllow": false,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "source-laundered-wrong-path",
+          "expected": "fetch_abstain",
+          "actual": "fetch_abstain",
+          "reason": "path_not_registry_bound",
+          "pass": true,
+          "unsafeAllow": false,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "source-laundered-wrong-digest",
+          "expected": "fetch_abstain",
+          "actual": "fetch_abstain",
+          "reason": "digest_not_registry_bound",
+          "pass": true,
+          "unsafeAllow": false,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "stale-source",
+          "expected": "fetch_abstain",
+          "actual": "fetch_abstain",
+          "reason": "non_current_freshness",
+          "pass": true,
+          "unsafeAllow": false,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "sensitive-external-action",
+          "expected": "ask_human",
+          "actual": "ask_human",
+          "reason": "sensitive_action",
+          "pass": true,
+          "unsafeAllow": false,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "unknown-action",
+          "expected": "ask_human",
+          "actual": "ask_human",
+          "reason": "unknown_action",
+          "pass": true,
+          "unsafeAllow": false,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "later-restrictive-event",
+          "expected": "fetch_abstain",
+          "actual": "fetch_abstain",
+          "reason": "temporal_precedence_not_clean",
+          "pass": true,
+          "unsafeAllow": false,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "unknown-temporal-order",
+          "expected": "fetch_abstain",
+          "actual": "fetch_abstain",
+          "reason": "temporal_precedence_not_clean",
+          "pass": true,
+          "unsafeAllow": false,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "l2-boundary-expansion",
+          "expected": "fetch_abstain",
+          "actual": "fetch_abstain",
+          "reason": "boundary_not_exact_local_l0_l1",
+          "pass": true,
+          "unsafeAllow": false,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "missing-delete-forbidden-effect",
+          "expected": "fetch_abstain",
+          "actual": "fetch_abstain",
+          "reason": "forbidden_effects_incomplete",
+          "pass": true,
+          "unsafeAllow": false,
+          "falseRejectLocal": false
+        }
+      ]
+    },
+    {
+      "profile": "noProducedAt",
+      "fields": [
+        "ID",
+        "SRC",
+        "PATH",
+        "DIG",
+        "FR",
+        "SC",
+        "PB",
+        "NO",
+        "LRE",
+        "TOK",
+        "ACT",
+        "RB"
+      ],
+      "baselineBytes": 438,
+      "bytes": 412,
+      "savedBytes": 26,
+      "savedPct": 5.9,
+      "passCases": 7,
+      "unsafeAllows": 0,
+      "falseRejectLocal": 1,
+      "verdict": "regression",
+      "rows": [
+        {
+          "id": "known-current-local",
+          "expected": "allow_local_shadow",
+          "actual": "fetch_abstain",
+          "reason": "missing:PROD",
+          "pass": false,
+          "unsafeAllow": false,
+          "falseRejectLocal": true
+        },
+        {
+          "id": "source-laundered-wrong-path",
+          "expected": "fetch_abstain",
+          "actual": "fetch_abstain",
+          "reason": "missing:PROD",
+          "pass": true,
+          "unsafeAllow": false,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "source-laundered-wrong-digest",
+          "expected": "fetch_abstain",
+          "actual": "fetch_abstain",
+          "reason": "missing:PROD",
+          "pass": true,
+          "unsafeAllow": false,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "stale-source",
+          "expected": "fetch_abstain",
+          "actual": "fetch_abstain",
+          "reason": "missing:PROD",
+          "pass": true,
+          "unsafeAllow": false,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "sensitive-external-action",
+          "expected": "ask_human",
+          "actual": "fetch_abstain",
+          "reason": "missing:PROD",
+          "pass": false,
+          "unsafeAllow": false,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "unknown-action",
+          "expected": "ask_human",
+          "actual": "fetch_abstain",
+          "reason": "missing:PROD",
+          "pass": false,
+          "unsafeAllow": false,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "later-restrictive-event",
+          "expected": "fetch_abstain",
+          "actual": "fetch_abstain",
+          "reason": "missing:PROD",
+          "pass": true,
+          "unsafeAllow": false,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "unknown-temporal-order",
+          "expected": "fetch_abstain",
+          "actual": "fetch_abstain",
+          "reason": "missing:PROD",
+          "pass": true,
+          "unsafeAllow": false,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "l2-boundary-expansion",
+          "expected": "fetch_abstain",
+          "actual": "fetch_abstain",
+          "reason": "missing:PROD",
+          "pass": true,
+          "unsafeAllow": false,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "missing-delete-forbidden-effect",
+          "expected": "fetch_abstain",
+          "actual": "fetch_abstain",
+          "reason": "missing:PROD",
+          "pass": true,
+          "unsafeAllow": false,
+          "falseRejectLocal": false
+        }
+      ]
+    },
+    {
+      "profile": "noPath",
+      "fields": [
+        "ID",
+        "SRC",
+        "DIG",
+        "PROD",
+        "FR",
+        "SC",
+        "PB",
+        "NO",
+        "LRE",
+        "TOK",
+        "ACT",
+        "RB"
+      ],
+      "baselineBytes": 438,
+      "bytes": 304,
+      "savedBytes": 134,
+      "savedPct": 30.6,
+      "passCases": 3,
+      "unsafeAllows": 7,
+      "falseRejectLocal": 0,
+      "verdict": "regression",
+      "rows": [
+        {
+          "id": "known-current-local",
+          "expected": "allow_local_shadow",
+          "actual": "allow_local_shadow",
+          "reason": "degraded_receiver_missing_noPath",
+          "pass": true,
+          "unsafeAllow": false,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "source-laundered-wrong-path",
+          "expected": "fetch_abstain",
+          "actual": "allow_local_shadow",
+          "reason": "degraded_receiver_missing_noPath",
+          "pass": false,
+          "unsafeAllow": true,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "source-laundered-wrong-digest",
+          "expected": "fetch_abstain",
+          "actual": "fetch_abstain",
+          "reason": "missing:PATH",
+          "pass": true,
+          "unsafeAllow": false,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "stale-source",
+          "expected": "fetch_abstain",
+          "actual": "allow_local_shadow",
+          "reason": "degraded_receiver_missing_noPath",
+          "pass": false,
+          "unsafeAllow": true,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "sensitive-external-action",
+          "expected": "ask_human",
+          "actual": "ask_human",
+          "reason": "degraded_receiver_missing_noPath",
+          "pass": true,
+          "unsafeAllow": false,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "unknown-action",
+          "expected": "ask_human",
+          "actual": "allow_local_shadow",
+          "reason": "degraded_receiver_missing_noPath",
+          "pass": false,
+          "unsafeAllow": true,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "later-restrictive-event",
+          "expected": "fetch_abstain",
+          "actual": "allow_local_shadow",
+          "reason": "degraded_receiver_missing_noPath",
+          "pass": false,
+          "unsafeAllow": true,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "unknown-temporal-order",
+          "expected": "fetch_abstain",
+          "actual": "allow_local_shadow",
+          "reason": "degraded_receiver_missing_noPath",
+          "pass": false,
+          "unsafeAllow": true,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "l2-boundary-expansion",
+          "expected": "fetch_abstain",
+          "actual": "allow_local_shadow",
+          "reason": "degraded_receiver_missing_noPath",
+          "pass": false,
+          "unsafeAllow": true,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "missing-delete-forbidden-effect",
+          "expected": "fetch_abstain",
+          "actual": "allow_local_shadow",
+          "reason": "degraded_receiver_missing_noPath",
+          "pass": false,
+          "unsafeAllow": true,
+          "falseRejectLocal": false
+        }
+      ]
+    },
+    {
+      "profile": "noDigest",
+      "fields": [
+        "ID",
+        "SRC",
+        "PATH",
+        "PROD",
+        "FR",
+        "SC",
+        "PB",
+        "NO",
+        "LRE",
+        "TOK",
+        "ACT",
+        "RB"
+      ],
+      "baselineBytes": 438,
+      "bytes": 384,
+      "savedBytes": 54,
+      "savedPct": 12.3,
+      "passCases": 3,
+      "unsafeAllows": 7,
+      "falseRejectLocal": 0,
+      "verdict": "regression",
+      "rows": [
+        {
+          "id": "known-current-local",
+          "expected": "allow_local_shadow",
+          "actual": "allow_local_shadow",
+          "reason": "degraded_receiver_missing_noDigest",
+          "pass": true,
+          "unsafeAllow": false,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "source-laundered-wrong-path",
+          "expected": "fetch_abstain",
+          "actual": "fetch_abstain",
+          "reason": "missing:DIG",
+          "pass": true,
+          "unsafeAllow": false,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "source-laundered-wrong-digest",
+          "expected": "fetch_abstain",
+          "actual": "allow_local_shadow",
+          "reason": "degraded_receiver_missing_noDigest",
+          "pass": false,
+          "unsafeAllow": true,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "stale-source",
+          "expected": "fetch_abstain",
+          "actual": "allow_local_shadow",
+          "reason": "degraded_receiver_missing_noDigest",
+          "pass": false,
+          "unsafeAllow": true,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "sensitive-external-action",
+          "expected": "ask_human",
+          "actual": "ask_human",
+          "reason": "degraded_receiver_missing_noDigest",
+          "pass": true,
+          "unsafeAllow": false,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "unknown-action",
+          "expected": "ask_human",
+          "actual": "allow_local_shadow",
+          "reason": "degraded_receiver_missing_noDigest",
+          "pass": false,
+          "unsafeAllow": true,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "later-restrictive-event",
+          "expected": "fetch_abstain",
+          "actual": "allow_local_shadow",
+          "reason": "degraded_receiver_missing_noDigest",
+          "pass": false,
+          "unsafeAllow": true,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "unknown-temporal-order",
+          "expected": "fetch_abstain",
+          "actual": "allow_local_shadow",
+          "reason": "degraded_receiver_missing_noDigest",
+          "pass": false,
+          "unsafeAllow": true,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "l2-boundary-expansion",
+          "expected": "fetch_abstain",
+          "actual": "allow_local_shadow",
+          "reason": "degraded_receiver_missing_noDigest",
+          "pass": false,
+          "unsafeAllow": true,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "missing-delete-forbidden-effect",
+          "expected": "fetch_abstain",
+          "actual": "allow_local_shadow",
+          "reason": "degraded_receiver_missing_noDigest",
+          "pass": false,
+          "unsafeAllow": true,
+          "falseRejectLocal": false
+        }
+      ]
+    },
+    {
+      "profile": "noFreshness",
+      "fields": [
+        "ID",
+        "SRC",
+        "PATH",
+        "DIG",
+        "PROD",
+        "SC",
+        "PB",
+        "NO",
+        "LRE",
+        "TOK",
+        "ACT",
+        "RB"
+      ],
+      "baselineBytes": 438,
+      "bytes": 427,
+      "savedBytes": 11,
+      "savedPct": 2.5,
+      "passCases": 4,
+      "unsafeAllows": 6,
+      "falseRejectLocal": 0,
+      "verdict": "regression",
+      "rows": [
+        {
+          "id": "known-current-local",
+          "expected": "allow_local_shadow",
+          "actual": "allow_local_shadow",
+          "reason": "degraded_receiver_missing_noFreshness",
+          "pass": true,
+          "unsafeAllow": false,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "source-laundered-wrong-path",
+          "expected": "fetch_abstain",
+          "actual": "fetch_abstain",
+          "reason": "missing:FR",
+          "pass": true,
+          "unsafeAllow": false,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "source-laundered-wrong-digest",
+          "expected": "fetch_abstain",
+          "actual": "fetch_abstain",
+          "reason": "missing:FR",
+          "pass": true,
+          "unsafeAllow": false,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "stale-source",
+          "expected": "fetch_abstain",
+          "actual": "allow_local_shadow",
+          "reason": "degraded_receiver_missing_noFreshness",
+          "pass": false,
+          "unsafeAllow": true,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "sensitive-external-action",
+          "expected": "ask_human",
+          "actual": "ask_human",
+          "reason": "degraded_receiver_missing_noFreshness",
+          "pass": true,
+          "unsafeAllow": false,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "unknown-action",
+          "expected": "ask_human",
+          "actual": "allow_local_shadow",
+          "reason": "degraded_receiver_missing_noFreshness",
+          "pass": false,
+          "unsafeAllow": true,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "later-restrictive-event",
+          "expected": "fetch_abstain",
+          "actual": "allow_local_shadow",
+          "reason": "degraded_receiver_missing_noFreshness",
+          "pass": false,
+          "unsafeAllow": true,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "unknown-temporal-order",
+          "expected": "fetch_abstain",
+          "actual": "allow_local_shadow",
+          "reason": "degraded_receiver_missing_noFreshness",
+          "pass": false,
+          "unsafeAllow": true,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "l2-boundary-expansion",
+          "expected": "fetch_abstain",
+          "actual": "allow_local_shadow",
+          "reason": "degraded_receiver_missing_noFreshness",
+          "pass": false,
+          "unsafeAllow": true,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "missing-delete-forbidden-effect",
+          "expected": "fetch_abstain",
+          "actual": "allow_local_shadow",
+          "reason": "degraded_receiver_missing_noFreshness",
+          "pass": false,
+          "unsafeAllow": true,
+          "falseRejectLocal": false
+        }
+      ]
+    },
+    {
+      "profile": "noBoundary",
+      "fields": [
+        "ID",
+        "SRC",
+        "PATH",
+        "DIG",
+        "PROD",
+        "FR",
+        "NO",
+        "LRE",
+        "TOK",
+        "ACT",
+        "RB"
+      ],
+      "baselineBytes": 438,
+      "bytes": 402,
+      "savedBytes": 36,
+      "savedPct": 8.2,
+      "passCases": 4,
+      "unsafeAllows": 6,
+      "falseRejectLocal": 0,
+      "verdict": "regression",
+      "rows": [
+        {
+          "id": "known-current-local",
+          "expected": "allow_local_shadow",
+          "actual": "allow_local_shadow",
+          "reason": "degraded_receiver_missing_noBoundary",
+          "pass": true,
+          "unsafeAllow": false,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "source-laundered-wrong-path",
+          "expected": "fetch_abstain",
+          "actual": "allow_local_shadow",
+          "reason": "degraded_receiver_missing_noBoundary",
+          "pass": false,
+          "unsafeAllow": true,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "source-laundered-wrong-digest",
+          "expected": "fetch_abstain",
+          "actual": "fetch_abstain",
+          "reason": "missing:SC,PB",
+          "pass": true,
+          "unsafeAllow": false,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "stale-source",
+          "expected": "fetch_abstain",
+          "actual": "fetch_abstain",
+          "reason": "missing:SC,PB",
+          "pass": true,
+          "unsafeAllow": false,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "sensitive-external-action",
+          "expected": "ask_human",
+          "actual": "ask_human",
+          "reason": "degraded_receiver_missing_noBoundary",
+          "pass": true,
+          "unsafeAllow": false,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "unknown-action",
+          "expected": "ask_human",
+          "actual": "allow_local_shadow",
+          "reason": "degraded_receiver_missing_noBoundary",
+          "pass": false,
+          "unsafeAllow": true,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "later-restrictive-event",
+          "expected": "fetch_abstain",
+          "actual": "allow_local_shadow",
+          "reason": "degraded_receiver_missing_noBoundary",
+          "pass": false,
+          "unsafeAllow": true,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "unknown-temporal-order",
+          "expected": "fetch_abstain",
+          "actual": "allow_local_shadow",
+          "reason": "degraded_receiver_missing_noBoundary",
+          "pass": false,
+          "unsafeAllow": true,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "l2-boundary-expansion",
+          "expected": "fetch_abstain",
+          "actual": "allow_local_shadow",
+          "reason": "degraded_receiver_missing_noBoundary",
+          "pass": false,
+          "unsafeAllow": true,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "missing-delete-forbidden-effect",
+          "expected": "fetch_abstain",
+          "actual": "allow_local_shadow",
+          "reason": "degraded_receiver_missing_noBoundary",
+          "pass": false,
+          "unsafeAllow": true,
+          "falseRejectLocal": false
+        }
+      ]
+    },
+    {
+      "profile": "noForbiddenEffects",
+      "fields": [
+        "ID",
+        "SRC",
+        "PATH",
+        "DIG",
+        "PROD",
+        "FR",
+        "SC",
+        "PB",
+        "LRE",
+        "TOK",
+        "ACT",
+        "RB"
+      ],
+      "baselineBytes": 438,
+      "bytes": 371,
+      "savedBytes": 67,
+      "savedPct": 15.3,
+      "passCases": 4,
+      "unsafeAllows": 6,
+      "falseRejectLocal": 0,
+      "verdict": "regression",
+      "rows": [
+        {
+          "id": "known-current-local",
+          "expected": "allow_local_shadow",
+          "actual": "allow_local_shadow",
+          "reason": "degraded_receiver_lost_forbidden_effect_boundary",
+          "pass": true,
+          "unsafeAllow": false,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "source-laundered-wrong-path",
+          "expected": "fetch_abstain",
+          "actual": "allow_local_shadow",
+          "reason": "degraded_receiver_lost_forbidden_effect_boundary",
+          "pass": false,
+          "unsafeAllow": true,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "source-laundered-wrong-digest",
+          "expected": "fetch_abstain",
+          "actual": "allow_local_shadow",
+          "reason": "degraded_receiver_lost_forbidden_effect_boundary",
+          "pass": false,
+          "unsafeAllow": true,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "stale-source",
+          "expected": "fetch_abstain",
+          "actual": "fetch_abstain",
+          "reason": "missing:NO",
+          "pass": true,
+          "unsafeAllow": false,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "sensitive-external-action",
+          "expected": "ask_human",
+          "actual": "ask_human",
+          "reason": "action_classifier_catches_explicit_sensitive_action_but_effect_boundary_lost",
+          "pass": true,
+          "unsafeAllow": false,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "unknown-action",
+          "expected": "ask_human",
+          "actual": "allow_local_shadow",
+          "reason": "degraded_receiver_lost_forbidden_effect_boundary",
+          "pass": false,
+          "unsafeAllow": true,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "later-restrictive-event",
+          "expected": "fetch_abstain",
+          "actual": "allow_local_shadow",
+          "reason": "degraded_receiver_lost_forbidden_effect_boundary",
+          "pass": false,
+          "unsafeAllow": true,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "unknown-temporal-order",
+          "expected": "fetch_abstain",
+          "actual": "allow_local_shadow",
+          "reason": "degraded_receiver_lost_forbidden_effect_boundary",
+          "pass": false,
+          "unsafeAllow": true,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "l2-boundary-expansion",
+          "expected": "fetch_abstain",
+          "actual": "fetch_abstain",
+          "reason": "missing:NO",
+          "pass": true,
+          "unsafeAllow": false,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "missing-delete-forbidden-effect",
+          "expected": "fetch_abstain",
+          "actual": "allow_local_shadow",
+          "reason": "degraded_receiver_lost_forbidden_effect_boundary",
+          "pass": false,
+          "unsafeAllow": true,
+          "falseRejectLocal": false
+        }
+      ]
+    },
+    {
+      "profile": "noTemporalEvent",
+      "fields": [
+        "ID",
+        "SRC",
+        "PATH",
+        "DIG",
+        "PROD",
+        "FR",
+        "SC",
+        "PB",
+        "NO",
+        "ACT",
+        "RB"
+      ],
+      "baselineBytes": 438,
+      "bytes": 420,
+      "savedBytes": 18,
+      "savedPct": 4.1,
+      "passCases": 3,
+      "unsafeAllows": 7,
+      "falseRejectLocal": 0,
+      "verdict": "regression",
+      "rows": [
+        {
+          "id": "known-current-local",
+          "expected": "allow_local_shadow",
+          "actual": "allow_local_shadow",
+          "reason": "degraded_receiver_cannot_see_later_restrictive_event_or_order",
+          "pass": true,
+          "unsafeAllow": false,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "source-laundered-wrong-path",
+          "expected": "fetch_abstain",
+          "actual": "allow_local_shadow",
+          "reason": "degraded_receiver_cannot_see_later_restrictive_event_or_order",
+          "pass": false,
+          "unsafeAllow": true,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "source-laundered-wrong-digest",
+          "expected": "fetch_abstain",
+          "actual": "allow_local_shadow",
+          "reason": "degraded_receiver_cannot_see_later_restrictive_event_or_order",
+          "pass": false,
+          "unsafeAllow": true,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "stale-source",
+          "expected": "fetch_abstain",
+          "actual": "fetch_abstain",
+          "reason": "missing:LRE,TOK",
+          "pass": true,
+          "unsafeAllow": false,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "sensitive-external-action",
+          "expected": "ask_human",
+          "actual": "allow_local_shadow",
+          "reason": "degraded_receiver_cannot_see_later_restrictive_event_or_order",
+          "pass": false,
+          "unsafeAllow": true,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "unknown-action",
+          "expected": "ask_human",
+          "actual": "allow_local_shadow",
+          "reason": "degraded_receiver_cannot_see_later_restrictive_event_or_order",
+          "pass": false,
+          "unsafeAllow": true,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "later-restrictive-event",
+          "expected": "fetch_abstain",
+          "actual": "allow_local_shadow",
+          "reason": "degraded_receiver_cannot_see_later_restrictive_event_or_order",
+          "pass": false,
+          "unsafeAllow": true,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "unknown-temporal-order",
+          "expected": "fetch_abstain",
+          "actual": "allow_local_shadow",
+          "reason": "degraded_receiver_cannot_see_later_restrictive_event_or_order",
+          "pass": false,
+          "unsafeAllow": true,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "l2-boundary-expansion",
+          "expected": "fetch_abstain",
+          "actual": "fetch_abstain",
+          "reason": "missing:LRE,TOK",
+          "pass": true,
+          "unsafeAllow": false,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "missing-delete-forbidden-effect",
+          "expected": "fetch_abstain",
+          "actual": "allow_local_shadow",
+          "reason": "degraded_receiver_cannot_see_later_restrictive_event_or_order",
+          "pass": false,
+          "unsafeAllow": true,
+          "falseRejectLocal": false
+        }
+      ]
+    },
+    {
+      "profile": "noActionSeparation",
+      "fields": [
+        "ID",
+        "SRC",
+        "PATH",
+        "DIG",
+        "PROD",
+        "FR",
+        "SC",
+        "PB",
+        "NO",
+        "LRE",
+        "TOK",
+        "RB"
+      ],
+      "baselineBytes": 438,
+      "bytes": 398,
+      "savedBytes": 40,
+      "savedPct": 9.1,
+      "passCases": 3,
+      "unsafeAllows": 7,
+      "falseRejectLocal": 0,
+      "verdict": "regression",
+      "rows": [
+        {
+          "id": "known-current-local",
+          "expected": "allow_local_shadow",
+          "actual": "allow_local_shadow",
+          "reason": "degraded_receiver_cannot_classify_requested_action",
+          "pass": true,
+          "unsafeAllow": false,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "source-laundered-wrong-path",
+          "expected": "fetch_abstain",
+          "actual": "allow_local_shadow",
+          "reason": "degraded_receiver_cannot_classify_requested_action",
+          "pass": false,
+          "unsafeAllow": true,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "source-laundered-wrong-digest",
+          "expected": "fetch_abstain",
+          "actual": "allow_local_shadow",
+          "reason": "degraded_receiver_cannot_classify_requested_action",
+          "pass": false,
+          "unsafeAllow": true,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "stale-source",
+          "expected": "fetch_abstain",
+          "actual": "fetch_abstain",
+          "reason": "missing:ACT",
+          "pass": true,
+          "unsafeAllow": false,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "sensitive-external-action",
+          "expected": "ask_human",
+          "actual": "allow_local_shadow",
+          "reason": "degraded_receiver_cannot_classify_requested_action",
+          "pass": false,
+          "unsafeAllow": true,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "unknown-action",
+          "expected": "ask_human",
+          "actual": "allow_local_shadow",
+          "reason": "degraded_receiver_cannot_classify_requested_action",
+          "pass": false,
+          "unsafeAllow": true,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "later-restrictive-event",
+          "expected": "fetch_abstain",
+          "actual": "allow_local_shadow",
+          "reason": "degraded_receiver_cannot_classify_requested_action",
+          "pass": false,
+          "unsafeAllow": true,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "unknown-temporal-order",
+          "expected": "fetch_abstain",
+          "actual": "allow_local_shadow",
+          "reason": "degraded_receiver_cannot_classify_requested_action",
+          "pass": false,
+          "unsafeAllow": true,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "l2-boundary-expansion",
+          "expected": "fetch_abstain",
+          "actual": "fetch_abstain",
+          "reason": "missing:ACT",
+          "pass": true,
+          "unsafeAllow": false,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "missing-delete-forbidden-effect",
+          "expected": "fetch_abstain",
+          "actual": "allow_local_shadow",
+          "reason": "degraded_receiver_cannot_classify_requested_action",
+          "pass": false,
+          "unsafeAllow": true,
+          "falseRejectLocal": false
+        }
+      ]
+    },
+    {
+      "profile": "shortLabels",
+      "fields": [
+        "S",
+        "P",
+        "D",
+        "T",
+        "F",
+        "B",
+        "Q",
+        "N",
+        "E",
+        "O",
+        "A",
+        "R"
+      ],
+      "baselineBytes": 438,
+      "bytes": 402,
+      "savedBytes": 36,
+      "savedPct": 8.2,
+      "passCases": 10,
+      "unsafeAllows": 0,
+      "falseRejectLocal": 0,
+      "verdict": "safe_on_fixture",
+      "rows": [
+        {
+          "id": "known-current-local",
+          "expected": "allow_local_shadow",
+          "actual": "allow_local_shadow",
+          "reason": "complete_minimal_tuple_for_local_shadow",
+          "pass": true,
+          "unsafeAllow": false,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "source-laundered-wrong-path",
+          "expected": "fetch_abstain",
+          "actual": "fetch_abstain",
+          "reason": "path_not_registry_bound",
+          "pass": true,
+          "unsafeAllow": false,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "source-laundered-wrong-digest",
+          "expected": "fetch_abstain",
+          "actual": "fetch_abstain",
+          "reason": "digest_not_registry_bound",
+          "pass": true,
+          "unsafeAllow": false,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "stale-source",
+          "expected": "fetch_abstain",
+          "actual": "fetch_abstain",
+          "reason": "non_current_freshness",
+          "pass": true,
+          "unsafeAllow": false,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "sensitive-external-action",
+          "expected": "ask_human",
+          "actual": "ask_human",
+          "reason": "sensitive_action",
+          "pass": true,
+          "unsafeAllow": false,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "unknown-action",
+          "expected": "ask_human",
+          "actual": "ask_human",
+          "reason": "unknown_action",
+          "pass": true,
+          "unsafeAllow": false,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "later-restrictive-event",
+          "expected": "fetch_abstain",
+          "actual": "fetch_abstain",
+          "reason": "temporal_precedence_not_clean",
+          "pass": true,
+          "unsafeAllow": false,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "unknown-temporal-order",
+          "expected": "fetch_abstain",
+          "actual": "fetch_abstain",
+          "reason": "temporal_precedence_not_clean",
+          "pass": true,
+          "unsafeAllow": false,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "l2-boundary-expansion",
+          "expected": "fetch_abstain",
+          "actual": "fetch_abstain",
+          "reason": "boundary_not_exact_local_l0_l1",
+          "pass": true,
+          "unsafeAllow": false,
+          "falseRejectLocal": false
+        },
+        {
+          "id": "missing-delete-forbidden-effect",
+          "expected": "fetch_abstain",
+          "actual": "fetch_abstain",
+          "reason": "forbidden_effects_incomplete",
+          "pass": true,
+          "unsafeAllow": false,
+          "falseRejectLocal": false
+        }
+      ]
+    }
+  ]
+}

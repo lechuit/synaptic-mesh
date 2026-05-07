@@ -1,0 +1,149 @@
+{
+  "summary": {
+    "artifact": "T-synaptic-mesh-cross-agent-conflict-quarantine-fixture-v0",
+    "timestamp": "2026-05-06T17:49:00Z",
+    "verdict": "pass",
+    "total": 8,
+    "passCases": 8,
+    "unsafeAllows": 0,
+    "falseRejectsForValidLocal": 0,
+    "rawClaimLeaks": 0,
+    "askHumanCases": 3,
+    "fetchAbstainCases": 4,
+    "allowLocalShadowCases": 1,
+    "coverage": [
+      "valid same-team source-bound redaction allow",
+      "private conflict owner mismatch quarantine",
+      "wrong-team conflict quarantine",
+      "global claim contradicted by sealed/private source asks human",
+      "sealed conflict asks human",
+      "unresolved conflict fetch-abstain",
+      "missing source-bound redaction fetch-abstain",
+      "external/non-local action asks human"
+    ]
+  },
+  "results": [
+    {
+      "id": "valid-same-team-source-bound-redaction-control",
+      "expected": "allow_local_shadow",
+      "actual": "allow_local_shadow",
+      "pass": true,
+      "leakedRawClaim": false,
+      "exposedShape": [
+        "pointer",
+        "sourceBinding",
+        "summary"
+      ],
+      "reasons": [
+        "same-team resolved conflict has source-bound redaction summary"
+      ]
+    },
+    {
+      "id": "private-conflict-discovered-by-agent-a-requested-by-agent-b",
+      "expected": "fetch_abstain",
+      "actual": "fetch_abstain",
+      "pass": true,
+      "leakedRawClaim": false,
+      "exposedShape": [
+        "pointer",
+        "summary"
+      ],
+      "reasons": [
+        "private conflict owner mismatch: agent-a != agent-b"
+      ]
+    },
+    {
+      "id": "team-radar-conflict-requested-by-team-finance",
+      "expected": "fetch_abstain",
+      "actual": "fetch_abstain",
+      "pass": true,
+      "leakedRawClaim": false,
+      "exposedShape": [
+        "pointer",
+        "summary"
+      ],
+      "reasons": [
+        "team conflict boundary mismatch: radar != finance"
+      ]
+    },
+    {
+      "id": "global-claim-contradicted-by-sealed-source",
+      "expected": "ask_human",
+      "actual": "ask_human",
+      "pass": true,
+      "leakedRawClaim": false,
+      "exposedShape": [
+        "pointer",
+        "summary"
+      ],
+      "reasons": [
+        "global claim is contradicted by private/sealed source; expose pointer only and require human arbitration"
+      ]
+    },
+    {
+      "id": "sealed-conflict-requested-for-local-fixture",
+      "expected": "ask_human",
+      "actual": "ask_human",
+      "pass": true,
+      "leakedRawClaim": false,
+      "exposedShape": [
+        "pointer",
+        "summary"
+      ],
+      "reasons": [
+        "sealed/sensitive conflict cannot be exposed through cross-agent summary"
+      ]
+    },
+    {
+      "id": "unresolved-conflict-pointer-without-resolution",
+      "expected": "fetch_abstain",
+      "actual": "fetch_abstain",
+      "pass": true,
+      "leakedRawClaim": false,
+      "exposedShape": [
+        "pointer",
+        "summary"
+      ],
+      "reasons": [
+        "conflict status is unresolved"
+      ]
+    },
+    {
+      "id": "same-team-conflict-missing-source-bound-redaction",
+      "expected": "fetch_abstain",
+      "actual": "fetch_abstain",
+      "pass": true,
+      "leakedRawClaim": false,
+      "exposedShape": [
+        "pointer",
+        "summary"
+      ],
+      "reasons": [
+        "missing source-bound redaction summary"
+      ]
+    },
+    {
+      "id": "unsafe-action-even-with-valid-redacted-conflict",
+      "expected": "ask_human",
+      "actual": "ask_human",
+      "pass": true,
+      "leakedRawClaim": false,
+      "exposedShape": [
+        "pointer",
+        "summary"
+      ],
+      "reasons": [
+        "non-local or unknown action requires human approval"
+      ]
+    }
+  ],
+  "boundary": {
+    "mode": "L0/L1 local fixture only",
+    "noRuntimeIntegration": true,
+    "noConfigChanges": true,
+    "noMemoryPromotion": true,
+    "noExternalEffects": true,
+    "noDelete": true,
+    "l2PlusRequiresHuman": true
+  }
+}

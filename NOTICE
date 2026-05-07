@@ -1,0 +1,7 @@
+Synaptic Mesh
+Copyright 2026 Gabriel Peña
+
+Code and protocol reference implementation: Apache-2.0.
+Paper, specs, documentation, and research-package prose: CC BY 4.0 unless otherwise noted.
+
+This release candidate is a research artifact. It is not runtime/tooling integration, production certification, canary/enforcement approval, or L2+ operational approval.

@@ -1,0 +1,87 @@
+{
+  "summary": {
+    "verdict": "pass",
+    "totalCases": 9,
+    "passCases": 9,
+    "allowedCases": 2,
+    "failClosedCases": 6,
+    "askHumanCases": 1,
+    "unsafeAllows": 0,
+    "falseRejectsForValidLocal": 0,
+    "blockedReasons": {
+      "receipt_stale_or_future": 1,
+      "ledger_id_mismatch": 1,
+      "source_path_mismatch": 2,
+      "retrieval_index_digest_mismatch": 1,
+      "route_family_coverage_mismatch": 1,
+      "sensitive_action_not_authorized_by_receipt": 1
+    }
+  },
+  "conclusion": "Coverage receipts can stay compact only if source-bound: ledger id, source path, retrieval index digest, route-family coverage, and freshness must all match the current run; sensitive actions still require a human.",
+  "receiptDigest": "5497f1ebe2ab3169",
+  "results": [
+    {
+      "id": "exact_current_source_bound_receipt",
+      "expect": "allow_local_shadow",
+      "decision": "allow_local_shadow",
+      "reason": "fresh_exact_source_bound_receipt",
+      "pass": true
+    },
+    {
+      "id": "stale_receipt_fails_closed",
+      "expect": "fetch_abstain",
+      "decision": "fetch_abstain",
+      "reason": "receipt_stale_or_future",
+      "pass": true
+    },
+    {
+      "id": "ledger_id_mismatch_fails_closed",
+      "expect": "fetch_abstain",
+      "decision": "fetch_abstain",
+      "reason": "ledger_id_mismatch",
+      "pass": true
+    },
+    {
+      "id": "source_path_swap_fails_closed",
+      "expect": "fetch_abstain",
+      "decision": "fetch_abstain",
+      "reason": "source_path_mismatch",
+      "pass": true
+    },
+    {
+      "id": "retrieval_index_digest_mismatch_fails_closed",
+      "expect": "fetch_abstain",
+      "decision": "fetch_abstain",
+      "reason": "retrieval_index_digest_mismatch",
+      "pass": true
+    },
+    {
+      "id": "route_family_coverage_mismatch_fails_closed",
+      "expect": "fetch_abstain",
+      "decision": "fetch_abstain",
+      "reason": "route_family_coverage_mismatch",
+      "pass": true
+    },
+    {
+      "id": "complete_counts_wrong_source_cannot_allow",
+      "expect": "fetch_abstain",
+      "decision": "fetch_abstain",
+      "reason": "source_path_mismatch",
+      "pass": true
+    },
+    {
+      "id": "sensitive_requested_action_asks_human",
+      "expect": "ask_human",
+      "decision": "ask_human",
+      "reason": "sensitive_action_not_authorized_by_receipt",
+      "pass": true
+    },
+    {
+      "id": "local_diagnostic_report_allowed",
+      "expect": "allow_local_shadow",
+      "decision": "allow_local_shadow",
+      "reason": "fresh_exact_source_bound_receipt",
+      "pass": true
+    }
+  ]
+}
