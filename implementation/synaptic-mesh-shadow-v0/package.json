@@ -30,6 +30,7 @@
     "test:source-freshness-profile-interaction-matrix": "node tests/source-freshness-profile-interaction-matrix.mjs",
     "test:source-profile-summary-drift": "node tests/source-profile-summary-drift.mjs",
     "test:authority-routes": "node tests/authority-claim-routes-fixtures.mjs",
-    "test:authority-envelope": "node tests/authority-envelope-pr26.mjs"
+    "test:authority-envelope": "node tests/authority-envelope-pr26.mjs",
+    "release:check": "node ../../tools/release-check.mjs"
   }
 }

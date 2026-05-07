@@ -1,7 +1,7 @@
 {
   "bundle": "synaptic-mesh",
   "version": "0.1.3",
-  "generated": "2026-05-07T19:08:00Z",
+  "generated": "2026-05-07T19:14:39Z",
   "status": "hardening_release_candidate_not_runtime_ready",
   "repository": "https://github.com/lechuit/synaptic-mesh",
   "license": "Apache-2.0 for code; CC BY 4.0 for docs/prose unless otherwise noted",
@@ -81,8 +81,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 3386,
-      "sha256": "dd72c9f4b1e9978168e6231a96e4aff45fc2a3e742a97e2ea5884473b2e9cc68"
+      "bytes": 3381,
+      "sha256": "8c8d15da904ea917226cba89ad13de0efaccde505df45000e8a27d725a81822b"
     },
     {
       "path": "RELEASE_CANDIDATE.md",
@@ -91,8 +91,8 @@
     },
     {
       "path": "RELEASE_NOTES.md",
-      "bytes": 2114,
-      "sha256": "e652703914a4f1324769f594684842e4c4e25dd7b0fc6aa6c5560ddf51b68a12"
+      "bytes": 1797,
+      "sha256": "3cbcb25437378870be2cfdfc7ed6f757cdf962df4a4fa39b4ff78fcc0ee1f6c6"
     },
     {
       "path": "design-notes/scalable-design-patterns-v0.md",
@@ -123,6 +123,11 @@
       "path": "docs/ci.md",
       "bytes": 1206,
       "sha256": "5ad4014bd3a2d15107fc1f8605401c10ab18e1d161d17a8fb1187f4e57be6032"
+    },
+    {
+      "path": "docs/release-checklist.md",
+      "bytes": 2422,
+      "sha256": "b9147acca3a3a09b8506005701d7385c1905b51c019386a1f058d4153feafd65"
     },
     {
       "path": "docs/repo-structure.md",
@@ -172,7 +177,7 @@
     {
       "path": "implementation/synaptic-mesh-shadow-v0/README.md",
       "bytes": 5652,
-      "sha256": "adafb766d25e7571b40549e5481f258271d53970601299c8746b67fda25d5bda"
+      "sha256": "3f5f89833ab81369fa75c849d2c236749812f0902feee70450de3983e6119915"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/bin/validate-receipt.mjs",
@@ -261,8 +266,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/package.json",
-      "bytes": 4150,
-      "sha256": "1b25a1b0742ee65848a8682b09b86e0cbf6a5f7281c7ec72477df3eaf8d027c3"
+      "bytes": 4209,
+      "sha256": "ddd0f0ef571e96144734498c8334888fbb22144e1ccdaf4d75f337dda71be47a"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/action-context-packet.mjs",
@@ -793,6 +798,11 @@
       "path": "specs/synaptic-mesh-memory-authority-v0.md",
       "bytes": 6791,
       "sha256": "5b649da3dedf544cd61ac7b9fc16c3391fd02d44368a3f4fa187bceff4bdfc02"
+    },
+    {
+      "path": "tools/release-check.mjs",
+      "bytes": 6291,
+      "sha256": "a68b40b39052669b1db4b3a1529c263fdb45362efda9913ec2daa71e6d520199"
     },
     {
       "path": "tools/verify-manifest.mjs",
