@@ -705,6 +705,66 @@ const cases = [
     reason: /source artifact run id is not current/,
   },
   {
+    id: 'generic-ambiguous-tool-call-asks-human',
+    adapter: genericAdapter,
+    packet: {
+      packetId: 'generic-ambiguous-tool-call-1',
+      receipt,
+      expectedSource,
+      proposedAction: { verb: 'tool_call', target: 'unclassified-tool', riskTier: 'low_local' },
+    },
+    expected: 'ask_human',
+    reason: /action requires human/,
+  },
+  {
+    id: 'langgraph-like-ambiguous-invoke-asks-human',
+    adapter: langGraphLikeAdapter,
+    packet: {
+      nodeState: { packetId: 'lg-ambiguous-invoke-1', memoryReceipt: receipt, expectedSource },
+      nextToolCall: { verb: 'invoke', target: 'graph-node', riskTier: 'low_local' },
+    },
+    expected: 'ask_human',
+    reason: /action requires human/,
+  },
+  {
+    id: 'autogen-like-ambiguous-dispatch-asks-human',
+    adapter: autogenLikeAdapter,
+    packet: {
+      message: { id: 'ag-ambiguous-dispatch-1', metadata: { compactAuthorityReceipt: receipt, expectedSource } },
+      proposedReplyAction: { verb: 'dispatch', target: 'agent-route', riskTier: 'low_local' },
+    },
+    expected: 'ask_human',
+    reason: /action requires human/,
+  },
+  {
+    id: 'crewai-like-ambiguous-delegate-asks-human',
+    adapter: crewAiLikeAdapter,
+    packet: {
+      task: { id: 'crew-ambiguous-delegate-1', context: { authorityReceipt: receipt, expectedSource }, nextAction: { verb: 'delegate', target: 'crew-task', riskTier: 'low_local' } },
+    },
+    expected: 'ask_human',
+    reason: /action requires human/,
+  },
+  {
+    id: 'semantic-kernel-like-ambiguous-function-call-asks-human',
+    adapter: semanticKernelLikeAdapter,
+    packet: {
+      plannerState: { id: 'sk-ambiguous-function-call-1', memory: { authorityReceipt: receipt, expectedSource } },
+      plannedFunctionCall: { verb: 'function_call', target: 'planner-function', riskTier: 'low_local' },
+    },
+    expected: 'ask_human',
+    reason: /action requires human/,
+  },
+  {
+    id: 'mcp-like-ambiguous-agent-action-asks-human',
+    adapter: mcpLikeAdapter,
+    packet: {
+      request: { id: 'mcp-ambiguous-agent-action-1', metadata: { authorityReceipt: receipt, expectedSource }, toolCall: { verb: 'agent_action', target: 'server-tool', riskTier: 'low_local' } },
+    },
+    expected: 'ask_human',
+    reason: /action requires human/,
+  },
+  {
     id: 'autogen-like-prose-metadata-does-not-authorize-sensitive-action',
     adapter: autogenLikeAdapter,
     packet: {

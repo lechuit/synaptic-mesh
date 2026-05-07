@@ -1,4 +1,4 @@
-import { DECISIONS, HUMAN_REQUIRED_VERBS, LOCAL_ACTION_VERBS } from './types.mjs';
+import { AMBIGUOUS_ACTION_VERBS, DECISIONS, HUMAN_REQUIRED_VERBS, LOCAL_ACTION_VERBS } from './types.mjs';
 import { parseCompactReceipt, RECEIPT_FIELD_ALIASES, REQUIRED_COMPACT_RECEIPT_FIELDS } from './receipt-parser.mjs';
 
 const LOCAL_SCOPE_PATTERN = /^(local|local_only|shadow|local_shadow|local_doc|report)(?:[_-].*)?$/i;
@@ -107,6 +107,7 @@ function validateProducedAtFreshness(producedAt, policy) {
 
 function actionRequiresHuman(action = {}) {
   if (HUMAN_REQUIRED_VERBS.has(action.verb)) return true;
+  if (AMBIGUOUS_ACTION_VERBS.has(action.verb)) return true;
   if (!LOCAL_ACTION_VERBS.has(action.verb)) return true;
   if (action.riskTier === 'sensitive') return true;
   return false;

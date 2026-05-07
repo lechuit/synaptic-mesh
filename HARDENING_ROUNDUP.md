@@ -47,4 +47,4 @@ The useful claim is narrower: the local shadow package now has stronger contract
 
 1. Add more source-observation mismatch variants after real receiver observation formats are clearer.
 2. Add a compact duplicate-field coverage table once more variants are covered per framework shape.
-3. Add fixture examples for ambiguous framework action names and require explicit receiver classification before local allow.
+3. Expand ambiguous framework action-name fixtures as real adapter vocabularies become clearer.
