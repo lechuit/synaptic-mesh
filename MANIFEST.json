@@ -1,7 +1,7 @@
 {
   "bundle": "synaptic-mesh",
   "version": "0.1.3",
-  "generated": "2026-05-07T20:35:00Z",
+  "generated": "2026-05-07T20:45:00Z",
   "status": "hardening_release_candidate_not_runtime_ready",
   "repository": "https://github.com/lechuit/synaptic-mesh",
   "license": "Apache-2.0 for code; CC BY 4.0 for docs/prose unless otherwise noted",
@@ -11,8 +11,8 @@
   "files": [
     {
       "path": ".github/workflows/ci.yml",
-      "bytes": 1834,
-      "sha256": "3d8f30947a920671de8c81d4601126b44aec92284a13dc7249e60adc6eaf64a5"
+      "bytes": 1933,
+      "sha256": "dc72a715c3fe21842ef80341ace6281c43461db360346ce84b5234178618a579"
     },
     {
       "path": ".gitignore",
@@ -81,8 +81,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 3828,
-      "sha256": "4ecd2693aa1ad586a16d3e0d7bc8ebdc274f66ac06c53dd2e4f4c13c32a8ce3f"
+      "bytes": 4055,
+      "sha256": "9e4b4387b74e3ae9d4258d8db0b5f8615873863a65bdc2432e02190a54ec019c"
     },
     {
       "path": "RELEASE_CANDIDATE.md",
@@ -91,8 +91,8 @@
     },
     {
       "path": "RELEASE_NOTES.md",
-      "bytes": 2454,
-      "sha256": "50099a03a45ce01ff84176d6027a29ba3271feae70630368a04fcfc9bbe4688a"
+      "bytes": 2757,
+      "sha256": "69c3ebc32d441a12057157d8509c187fcbc981796f5392aee6813eb79ac62fec"
     },
     {
       "path": "design-notes/scalable-design-patterns-v0.md",
@@ -120,6 +120,11 @@
       "sha256": "0ad5b6ea79acd1e72d266902dbfe187a7cb9e47ee2c7da21993ad9cd39db57a9"
     },
     {
+      "path": "docs/benchmarks.md",
+      "bytes": 2794,
+      "sha256": "21a252fa705ec70d709bf5dc1e6b9c6b0a7d5adda6fd74118b9d2e568f40fed0"
+    },
+    {
       "path": "docs/ci.md",
       "bytes": 1315,
       "sha256": "692e2d2e99368c16d316c34f5cad8f3c7a7fdf5d35ba493c730f3b749b34f05d"
@@ -131,8 +136,8 @@
     },
     {
       "path": "docs/release-checklist.md",
-      "bytes": 3233,
-      "sha256": "ca2f3e63c9451cd64ffa6058dd4f57b830b37dd0d40c0bc86bb4016437304748"
+      "bytes": 3460,
+      "sha256": "59a9fe6831583fb0e2c5f4877fe19bafaba1eb1d2a442372e9cd1d545829d783"
     },
     {
       "path": "docs/repo-structure.md",
@@ -181,8 +186,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/README.md",
-      "bytes": 6246,
-      "sha256": "4a24f11634e5348e3b1eeaec54b605789532a0668fae3ba22e50cf226d4385ca"
+      "bytes": 6589,
+      "sha256": "d44e3b1e4ba7597ab6485b379719977c33319877363cbb13f25bb740136682c1"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/bin/validate-receipt.mjs",
@@ -208,6 +213,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/authority-laundering-regression.out.json",
       "bytes": 2820,
       "sha256": "a772e52c8a7d76c2532e5af08c80eb654f021ae635ad9893a50d993ea96a4abd"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/authority-overhead-benchmark.out.json",
+      "bytes": 19325,
+      "sha256": "0df219ca072fffe8aedd06a074688ea7f03e87bf2c4295f46ef6b3e721603cb2"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/cli-validator.out.json",
@@ -246,8 +256,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/review-local.out.json",
-      "bytes": 5502,
-      "sha256": "4034d828d8db12109efd7643a7019f5bca0f76289a4bb4e6efe22933f87631f7"
+      "bytes": 5965,
+      "sha256": "9d25e335e4206cf5deb5757088cdd3d3fb18e96949555ae38011f5fb854f80ff"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/route-decision-schema.out.json",
@@ -285,6 +295,11 @@
       "sha256": "55fd623a71105701e6dba5de966bb5b9870e83f34b877051132f82d2bdeada13"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/fixtures/authority-overhead-benchmark-cases.json",
+      "bytes": 16531,
+      "sha256": "81c84d844fb368a60f81683bb2378b88fd251ee371087f9091031d6e36d64e59"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/fixtures/manifest.json",
       "bytes": 1355,
       "sha256": "7e762ff92cc3c78db252f98f28f1bce46e5f0cce61b67ad18c18400dee81430f"
@@ -306,8 +321,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/package.json",
-      "bytes": 4688,
-      "sha256": "566d3f5d60bb277329baa97e0ad21e1717919f07e3f2689cc9732378e9a90d10"
+      "bytes": 4822,
+      "sha256": "4a19ca22fac13a524069d8543ffe83e45ac616bd78c4523a1743237087bc1d8d"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/action-context-packet.mjs",
@@ -385,6 +400,11 @@
       "sha256": "311015edd46667109d691150235bdf47a03775e67c29d524b90b789d9970af93"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/authority-overhead-benchmark.mjs",
+      "bytes": 13602,
+      "sha256": "68ebcfd8d8340716db4ddfd2a57bf9a883c544877d4c5e85f47093a2b0693a6e"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/cli-validator.mjs",
       "bytes": 4289,
       "sha256": "c12267a8d617a73d236b62140bdd44b5b5db92188ba034d04a47fa84805cfaae"
@@ -446,8 +466,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/review-local.mjs",
-      "bytes": 8616,
-      "sha256": "4e0dcbbbff06e8538f13cd2fc881de3d2b95c253902fb11ee9245ea0c2eaff69"
+      "bytes": 9240,
+      "sha256": "52528d8070338268eae32a8a0209498bca4d3fb99ecffaa19d5f315b6e75414c"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/route-decision-schema.mjs",
@@ -871,8 +891,8 @@
     },
     {
       "path": "tools/release-check.mjs",
-      "bytes": 7900,
-      "sha256": "01dc3cdfb2914e65d87859e5be4554cb4e566b593bb9092285b08c2b66ab6247"
+      "bytes": 7930,
+      "sha256": "eada30518e74c2400c561eb8492f4b7fa2304413924480a469f773c1f0524815"
     },
     {
       "path": "tools/verify-manifest.mjs",
