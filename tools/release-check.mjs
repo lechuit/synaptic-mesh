@@ -29,6 +29,27 @@ function readJson(filePath) {
   return JSON.parse(readFileSync(filePath, 'utf8'));
 }
 
+function parseArgs(argv) {
+  const parsed = { target: undefined };
+  for (let index = 0; index < argv.length; index += 1) {
+    const arg = argv[index];
+    if (arg === '--target') {
+      const value = argv[index + 1];
+      if (!value || value.startsWith('--')) throw new Error('--target requires a v-prefixed semver tag value');
+      parsed.target = value;
+      index += 1;
+      continue;
+    }
+    if (arg.startsWith('--target=')) {
+      parsed.target = arg.slice('--target='.length);
+      if (!parsed.target) throw new Error('--target requires a v-prefixed semver tag value');
+      continue;
+    }
+    throw new Error(`Unknown release:check argument: ${arg}`);
+  }
+  return parsed;
+}
+
 function assert(condition, message) {
   if (!condition) throw new Error(message);
 }
@@ -56,6 +77,16 @@ function assertOptionalCountMatches(text, pattern, expectedCount, label, descrip
   );
 }
 
+function currentPublishedRelease() {
+  try {
+    const tag = runGit(['describe', '--tags', '--abbrev=0', '--match', 'v[0-9]*']);
+    return tag || null;
+  } catch {
+    return null;
+  }
+}
+
+const args = parseArgs(process.argv.slice(2));
 const repoRoot = runGit(['rev-parse', '--show-toplevel']);
 const expectedPackageRoot = path.join(repoRoot, 'implementation/synaptic-mesh-shadow-v0');
 const packageRoot = process.cwd();
@@ -72,19 +103,25 @@ const releaseNotes = readFileSync(path.join(repoRoot, 'RELEASE_NOTES.md'), 'utf8
 const releaseChecklist = readFileSync(path.join(repoRoot, 'docs/release-checklist.md'), 'utf8');
 const shadowReadme = readFileSync(path.join(packageRoot, 'README.md'), 'utf8');
 
-const releaseVersion = manifest.version;
-const releaseTag = `v${releaseVersion}`;
-const staleVersions = ['v0.1.2', '0.1.2'].filter((version) => version !== releaseTag && version !== releaseVersion);
+const manifestVersion = manifest.version;
+const manifestReleaseTag = `v${manifestVersion}`;
+const releaseTarget = args.target ?? manifestReleaseTag;
+const publishedRelease = currentPublishedRelease();
+const staleVersions = ['v0.1.2', '0.1.2'].filter((version) => version !== manifestReleaseTag && version !== manifestVersion);
 
-assert(/^\d+\.\d+\.\d+$/.test(releaseVersion), `MANIFEST.json version must be semver-like; got ${releaseVersion}`);
+assert(/^\d+\.\d+\.\d+$/.test(manifestVersion), `MANIFEST.json version must be semver-like; got ${manifestVersion}`);
+assert(/^v\d+\.\d+\.\d+$/.test(releaseTarget), `release target must be a v-prefixed semver tag such as v0.1.4; got ${releaseTarget}`);
+if (!args.target) {
+  console.warn(`release:check defaulting --target to MANIFEST.json version ${manifestReleaseTag}; pass -- --target vX.Y.Z for release/tag verification.`);
+}
 assert(packageJson.private === true, 'shadow package must remain private for release checks');
 assert(packageJson.version === '0.0.0-local', 'shadow package version must remain 0.0.0-local unless publication scope changes');
 assert(packageJson.scripts?.['release:check'] === 'node ../../tools/release-check.mjs', 'package.json must wire npm run release:check to ../../tools/release-check.mjs');
 
-assertIncludes(readme, `# Synaptic Mesh ${releaseTag}`, 'README.md');
-assertIncludes(readme, `release candidate \`${releaseTag}\``, 'README.md');
-assertIncludes(readme, `Current ${releaseTag} status is narrower`, 'README.md');
-assertIncludes(releaseNotes, `# Release Notes — Synaptic Mesh ${releaseTag}`, 'RELEASE_NOTES.md');
+assertIncludes(readme, `# Synaptic Mesh ${manifestReleaseTag}`, 'README.md');
+assertIncludes(readme, `release candidate \`${manifestReleaseTag}\``, 'README.md');
+assertIncludes(readme, `Current ${manifestReleaseTag} status is narrower`, 'README.md');
+assertIncludes(releaseNotes, `# Release Notes — Synaptic Mesh ${manifestReleaseTag}`, 'RELEASE_NOTES.md');
 assertIncludes(releaseChecklist, 'npm run release:check', 'docs/release-checklist.md');
 assertIncludes(releaseChecklist, 'no runtime integration', 'docs/release-checklist.md');
 assertIncludes(releaseChecklist, 'no production, canary, enforcement, or safety-certification claims', 'docs/release-checklist.md');
@@ -147,7 +184,9 @@ assertOptionalCountMatches(
 
 console.log(JSON.stringify({
   status: 'pass',
-  releaseTarget: releaseTag,
+  currentPublishedRelease: publishedRelease,
+  releaseTarget,
+  manifestReleaseTarget: manifestReleaseTag,
   packageRoot: path.relative(repoRoot, packageRoot),
   gates: releaseGateScripts,
   boundary: [

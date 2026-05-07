@@ -5,8 +5,9 @@ Use this checklist before opening a release PR or drafting a GitHub release. It 
 ## Version and target consistency
 
 - Confirm `MANIFEST.json` has the intended public review package version.
-- Confirm the root `README.md` title, status line, and current-status wording match the manifest release target.
-- Confirm `RELEASE_NOTES.md` names the same release target and describes only changes that are already in the repository.
+- Confirm the root `README.md` title, status line, and current-status wording match the manifest public review package version.
+- Confirm `RELEASE_NOTES.md` names the same manifest version and describes only changes that are already in the repository.
+- Confirm the release/tag target explicitly with `release:check -- --target vX.Y.Z` when validating a release candidate or already-published GitHub release.
 - Confirm `implementation/synaptic-mesh-shadow-v0/package.json` remains the private local shadow package (`0.0.0-local`) unless a separate maintainer decision changes package publication scope.
 
 ## Local gates
@@ -15,10 +16,12 @@ Run release gates from the package directory:
 
 ```bash
 cd implementation/synaptic-mesh-shadow-v0
-npm run release:check
+npm run release:check -- --target v0.1.4
 ```
 
-`release:check` verifies the manifest and runs the release-critical local gates:
+`release:check` verifies the manifest/docs package version, reports the explicit `releaseTarget`, reports the local Git `currentPublishedRelease` when available, and runs the release-critical local gates. If `--target` is omitted, it defaults to the manifest version and prints a warning so release PRs do not silently inherit a stale target.
+
+It runs:
 
 - `npm run verify:manifest`
 - `npm run check`
