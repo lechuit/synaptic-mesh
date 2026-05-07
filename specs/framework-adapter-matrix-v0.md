@@ -84,6 +84,5 @@ The coverage is intentionally contract-level. It does not prove real framework i
 
 ## Next proposed tests
 
-- Add per-framework source-observation mismatch cases using receiver-observed digest/mtime.
 - Add duplicate field variants beyond `SRC` (`SCOPE`, `NO`, `ACT`, `SRCDIGEST`) per framework shape.
 - Add source-observation mismatch fixtures after real receiver observation formats are clearer.
