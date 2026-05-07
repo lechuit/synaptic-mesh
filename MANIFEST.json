@@ -1,7 +1,7 @@
 {
   "bundle": "synaptic-mesh",
-  "version": "0.1.1",
-  "generated": "2026-05-07T17:05:00Z",
+  "version": "0.1.2",
+  "generated": "2026-05-07T17:10:00Z",
   "status": "hardening_release_candidate_not_runtime_ready",
   "repository": "https://github.com/lechuit/synaptic-mesh",
   "license": "Apache-2.0 for code; CC BY 4.0 for docs/prose unless otherwise noted",
@@ -22,7 +22,7 @@
     {
       "path": "CITATION.cff",
       "bytes": 342,
-      "sha256": "2b85f9c4fb5f535aa317b6637d9cbab77230cdcb666efd77637298b6846dffb0"
+      "sha256": "0d13247f5c7c66e0da69f043e44b2d9bbc98a0156883f17becc81a93b3d95511"
     },
     {
       "path": "CONTRIBUTING.md",
@@ -76,18 +76,18 @@
     },
     {
       "path": "README.md",
-      "bytes": 2944,
-      "sha256": "8f5da5fd3599b8a08dd89fb72a241ec3e3a23334f17cdc008349ce94b203331d"
+      "bytes": 3386,
+      "sha256": "dd72c9f4b1e9978168e6231a96e4aff45fc2a3e742a97e2ea5884473b2e9cc68"
     },
     {
       "path": "RELEASE_CANDIDATE.md",
-      "bytes": 1303,
-      "sha256": "911d06b2c153937b79f074d56566772cbe8a85ad7d73ae6f210cc6aedd9ee853"
+      "bytes": 1670,
+      "sha256": "e7244c1c4b2cf56a02e5fe9b38fe5921b93b82ac86e81411e59ae8dd1b063fa1"
     },
     {
       "path": "RELEASE_NOTES.md",
-      "bytes": 1944,
-      "sha256": "0d13db37b6c74466f002c1ef38965d12b0c2428ad3785080bc389a35585ea2c4"
+      "bytes": 2114,
+      "sha256": "e652703914a4f1324769f594684842e4c4e25dd7b0fc6aa6c5560ddf51b68a12"
     },
     {
       "path": "evidence/publication-reproducibility-rerun/cli-validator.out.json",
