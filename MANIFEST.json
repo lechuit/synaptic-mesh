@@ -1,11 +1,11 @@
 {
   "bundle": "synaptic-mesh",
-  "version": "0.1.5",
-  "generated": "2026-05-07T20:55:00Z",
-  "status": "hardening_release_candidate_not_runtime_ready",
+  "version": "0.1.6",
+  "generated": "2026-05-07T23:50:00Z",
+  "status": "real_flow_scorecard_release_candidate_not_runtime_ready",
   "repository": "https://github.com/lechuit/synaptic-mesh",
   "license": "Apache-2.0 for code; CC BY 4.0 for docs/prose unless otherwise noted",
-  "reproducibility": "expected_pass_ci_baseline_shadow_gates_no_classifier_no_runtime",
+  "reproducibility": "expected_pass_local_shadow_gates_real_flow_scorecard_no_runtime",
   "rawSourceCache": "excluded",
   "runtimeBoundary": "ci_baseline_local_shadow_validation_only_no_runtime_integration_no_mcp_a2a_no_authorization_no_tool_execution",
   "files": [
@@ -76,8 +76,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 5348,
-      "sha256": "7716655ed6064860d5183018a919ed10227cb052dc6b0e209a606a14c26aaaac"
+      "bytes": 5354,
+      "sha256": "8143e1cc543a41b5e87f5db7b5dc5e9117a0e18e9ab04e21a5fa25844e3ccc9b"
     },
     {
       "path": "RELEASE_CANDIDATE.md",
@@ -86,8 +86,8 @@
     },
     {
       "path": "RELEASE_NOTES.md",
-      "bytes": 3728,
-      "sha256": "bf44267dfdf5bd3a3bb8ad6837a0ed840ea55c8c8cf8aeb3dcb55c871d2bb014"
+      "bytes": 3840,
+      "sha256": "58cdb33ffe0cb395d405be3072fd20614b9301c20e845688de89f80a40282736"
     },
     {
       "path": "design-notes/adapter-boundary-langgraph-mcp-v0.md",
@@ -142,7 +142,7 @@
     {
       "path": "docs/coverage-matrix.md",
       "bytes": 5384,
-      "sha256": "05fc52624ffa5db59215513664cb62a32e06bc481f8392683a7adbe475e1d5d5"
+      "sha256": "54ed9fb077750d2b78a1f1a573d0c21ec9e1e591a3464551ef33e6056af9907b"
     },
     {
       "path": "docs/deterministic-route-classifier.md",
@@ -172,7 +172,7 @@
     {
       "path": "docs/release-checklist.md",
       "bytes": 5255,
-      "sha256": "c3873b9102ec01e524af79d0211f090b20f4c0899e996f533567605e5bb380d5"
+      "sha256": "f526d238348643d1d9e00dbeefa73da7a7c4c49c5a602abb6d1ad6709cab2cd5"
     },
     {
       "path": "docs/repo-structure.md",
