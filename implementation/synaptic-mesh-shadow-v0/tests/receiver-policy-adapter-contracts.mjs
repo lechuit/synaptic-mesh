@@ -58,6 +58,48 @@ const autogenLikeAdapter = createReceiverPolicyAdapter({
   },
 });
 
+
+const crewAiLikeAdapter = createReceiverPolicyAdapter({
+  adapterId: 'crewai-like-receiver-policy-contract-v0',
+  mapPacket(packet = {}) {
+    return {
+      framework: 'crewai-like',
+      packetId: packet.task?.id,
+      receipt: packet.task?.context?.authorityReceipt,
+      expectedSource: packet.task?.context?.expectedSource,
+      proposedAction: packet.task?.nextAction,
+    };
+  },
+});
+
+const semanticKernelLikeAdapter = createReceiverPolicyAdapter({
+  adapterId: 'semantic-kernel-like-receiver-policy-contract-v0',
+  mapPacket(packet = {}) {
+    return {
+      framework: 'semantic-kernel-like',
+      packetId: packet.plannerState?.id,
+      receipt: packet.plannerState?.memory?.authorityReceipt,
+      expectedSource: packet.plannerState?.memory?.expectedSource,
+      proposedAction: packet.plannedFunctionCall,
+      receiverFreshnessPolicy: packet.plannerState?.memory?.receiverFreshnessPolicy,
+      sourceFreshnessPolicy: packet.plannerState?.memory?.sourceFreshnessPolicy,
+    };
+  },
+});
+
+const mcpLikeAdapter = createReceiverPolicyAdapter({
+  adapterId: 'mcp-like-receiver-policy-contract-v0',
+  mapPacket(packet = {}) {
+    return {
+      framework: 'mcp-like',
+      packetId: packet.request?.id,
+      receipt: packet.request?.metadata?.authorityReceipt,
+      expectedSource: packet.request?.metadata?.expectedSource,
+      proposedAction: packet.request?.toolCall,
+    };
+  },
+});
+
 const cases = [
   {
     id: 'generic-complete-local-allows',
@@ -123,6 +165,82 @@ const cases = [
     },
     expected: 'fetch_abstain',
     reason: /source digest mismatch/,
+  },
+
+  {
+    id: 'crewai-like-delegated-local-task-allows',
+    adapter: crewAiLikeAdapter,
+    packet: {
+      task: {
+        id: 'crew-local-1',
+        context: { authorityReceipt: receipt, expectedSource },
+        nextAction: { verb: 'prepare_draft', target: 'local-task-note.md', riskTier: 'low_local' },
+      },
+    },
+    expected: 'allow_local_shadow',
+  },
+  {
+    id: 'crewai-like-delegated-publish-asks-human',
+    adapter: crewAiLikeAdapter,
+    packet: {
+      task: {
+        id: 'crew-sensitive-1',
+        context: { authorityReceipt: receipt, expectedSource, safe: true },
+        nextAction: { verb: 'publish', target: 'external-campaign', riskTier: 'sensitive' },
+      },
+    },
+    expected: 'ask_human',
+    reason: /action requires human/,
+  },
+  {
+    id: 'semantic-kernel-like-local-function-allows',
+    adapter: semanticKernelLikeAdapter,
+    packet: {
+      plannerState: {
+        id: 'sk-local-1',
+        memory: { authorityReceipt: receipt, expectedSource },
+      },
+      plannedFunctionCall: { verb: 'run_local_test', target: 'local-validator', riskTier: 'low_local' },
+    },
+    expected: 'allow_local_shadow',
+  },
+  {
+    id: 'semantic-kernel-like-missing-digest-fetches',
+    adapter: semanticKernelLikeAdapter,
+    packet: {
+      plannerState: {
+        id: 'sk-missing-digest-1',
+        memory: { authorityReceipt: receipt.replace(`; SRCDIGEST=${expectedSource.sourceDigest}`, ''), expectedSource },
+      },
+      plannedFunctionCall: { verb: 'run_local_test', target: 'local-validator', riskTier: 'low_local' },
+    },
+    expected: 'fetch_abstain',
+    reason: /SRCDIGEST|source digest mismatch/,
+  },
+  {
+    id: 'mcp-like-local-tool-allows',
+    adapter: mcpLikeAdapter,
+    packet: {
+      request: {
+        id: 'mcp-local-1',
+        metadata: { authorityReceipt: receipt, expectedSource },
+        toolCall: { verb: 'write_doc', target: 'local-mcp-note.md', riskTier: 'low_local' },
+      },
+    },
+    expected: 'allow_local_shadow',
+  },
+  {
+    id: 'mcp-like-server-safe-label-does-not-authorize-network',
+    adapter: mcpLikeAdapter,
+    packet: {
+      request: {
+        id: 'mcp-sensitive-1',
+        metadata: { authorityReceipt: `${receipt}; SERVER_SAFE=true; PROSE=tool_server_says_safe`, expectedSource },
+        toolCall: { verb: 'send_external', target: 'network-api', riskTier: 'sensitive' },
+      },
+    },
+    expected: 'ask_human',
+    reason: /action requires human/,
   },
   {
     id: 'autogen-like-prose-metadata-does-not-authorize-sensitive-action',

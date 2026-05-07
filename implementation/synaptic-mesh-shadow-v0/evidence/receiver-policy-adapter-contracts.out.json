@@ -3,21 +3,27 @@
     "artifact": "T-synaptic-mesh-receiver-policy-adapter-contracts-v0",
     "timestamp": "2026-05-07T15:05:00.000Z",
     "verdict": "pass",
-    "totalCases": 6,
-    "passCases": 6,
-    "allowLocalShadowCases": 2,
-    "fetchAbstainCases": 2,
-    "askHumanCases": 2,
+    "totalCases": 12,
+    "passCases": 12,
+    "allowLocalShadowCases": 5,
+    "fetchAbstainCases": 3,
+    "askHumanCases": 4,
     "unsafeAllows": 0,
     "adapterContracts": [
       "generic-receiver-policy-adapter-v0",
       "langgraph-like-receiver-policy-contract-v0",
-      "autogen-like-receiver-policy-contract-v0"
+      "autogen-like-receiver-policy-contract-v0",
+      "crewai-like-receiver-policy-contract-v0",
+      "semantic-kernel-like-receiver-policy-contract-v0",
+      "mcp-like-receiver-policy-contract-v0"
     ],
     "frameworkProfiles": [
       "generic",
       "langgraph-like",
-      "autogen-like"
+      "autogen-like",
+      "crewai-like",
+      "semantic-kernel-like",
+      "mcp-like"
     ],
     "boundary": [
       "contract_only",
@@ -146,6 +152,151 @@
           "verb": "write_doc",
           "target": "local-summary.md",
           "riskTier": "low_local"
+        },
+        "hasReceiverFreshnessPolicy": false,
+        "hasSourceFreshnessPolicy": false
+      }
+    },
+    {
+      "id": "crewai-like-delegated-local-task-allows",
+      "adapterId": "crewai-like-receiver-policy-contract-v0",
+      "framework": "crewai-like",
+      "decision": "allow_local_shadow",
+      "reasons": [
+        "compact receipt is current, source-matched, local-only, and action is low-risk local"
+      ],
+      "mapped": {
+        "hasReceipt": true,
+        "expectedSource": {
+          "sourceArtifactId": "T-synaptic-mesh-receiver-policy-adapter-contracts-v0",
+          "sourceArtifactPath": "research-package/T-synaptic-mesh-receiver-policy-adapter-contracts-v0.md",
+          "sourceDigest": "sha256:receiver-policy-adapter-contracts-v0"
+        },
+        "proposedAction": {
+          "verb": "prepare_draft",
+          "target": "local-task-note.md",
+          "riskTier": "low_local"
+        },
+        "hasReceiverFreshnessPolicy": false,
+        "hasSourceFreshnessPolicy": false
+      }
+    },
+    {
+      "id": "crewai-like-delegated-publish-asks-human",
+      "adapterId": "crewai-like-receiver-policy-contract-v0",
+      "framework": "crewai-like",
+      "decision": "ask_human",
+      "reasons": [
+        "action requires human or is unknown/sensitive: publish"
+      ],
+      "mapped": {
+        "hasReceipt": true,
+        "expectedSource": {
+          "sourceArtifactId": "T-synaptic-mesh-receiver-policy-adapter-contracts-v0",
+          "sourceArtifactPath": "research-package/T-synaptic-mesh-receiver-policy-adapter-contracts-v0.md",
+          "sourceDigest": "sha256:receiver-policy-adapter-contracts-v0"
+        },
+        "proposedAction": {
+          "verb": "publish",
+          "target": "external-campaign",
+          "riskTier": "sensitive"
+        },
+        "hasReceiverFreshnessPolicy": false,
+        "hasSourceFreshnessPolicy": false
+      }
+    },
+    {
+      "id": "semantic-kernel-like-local-function-allows",
+      "adapterId": "semantic-kernel-like-receiver-policy-contract-v0",
+      "framework": "semantic-kernel-like",
+      "decision": "allow_local_shadow",
+      "reasons": [
+        "compact receipt is current, source-matched, local-only, and action is low-risk local"
+      ],
+      "mapped": {
+        "hasReceipt": true,
+        "expectedSource": {
+          "sourceArtifactId": "T-synaptic-mesh-receiver-policy-adapter-contracts-v0",
+          "sourceArtifactPath": "research-package/T-synaptic-mesh-receiver-policy-adapter-contracts-v0.md",
+          "sourceDigest": "sha256:receiver-policy-adapter-contracts-v0"
+        },
+        "proposedAction": {
+          "verb": "run_local_test",
+          "target": "local-validator",
+          "riskTier": "low_local"
+        },
+        "hasReceiverFreshnessPolicy": false,
+        "hasSourceFreshnessPolicy": false
+      }
+    },
+    {
+      "id": "semantic-kernel-like-missing-digest-fetches",
+      "adapterId": "semantic-kernel-like-receiver-policy-contract-v0",
+      "framework": "semantic-kernel-like",
+      "decision": "fetch_abstain",
+      "reasons": [
+        "missing compact authority fields: SRCDIGEST",
+        "source digest mismatch"
+      ],
+      "mapped": {
+        "hasReceipt": true,
+        "expectedSource": {
+          "sourceArtifactId": "T-synaptic-mesh-receiver-policy-adapter-contracts-v0",
+          "sourceArtifactPath": "research-package/T-synaptic-mesh-receiver-policy-adapter-contracts-v0.md",
+          "sourceDigest": "sha256:receiver-policy-adapter-contracts-v0"
+        },
+        "proposedAction": {
+          "verb": "run_local_test",
+          "target": "local-validator",
+          "riskTier": "low_local"
+        },
+        "hasReceiverFreshnessPolicy": false,
+        "hasSourceFreshnessPolicy": false
+      }
+    },
+    {
+      "id": "mcp-like-local-tool-allows",
+      "adapterId": "mcp-like-receiver-policy-contract-v0",
+      "framework": "mcp-like",
+      "decision": "allow_local_shadow",
+      "reasons": [
+        "compact receipt is current, source-matched, local-only, and action is low-risk local"
+      ],
+      "mapped": {
+        "hasReceipt": true,
+        "expectedSource": {
+          "sourceArtifactId": "T-synaptic-mesh-receiver-policy-adapter-contracts-v0",
+          "sourceArtifactPath": "research-package/T-synaptic-mesh-receiver-policy-adapter-contracts-v0.md",
+          "sourceDigest": "sha256:receiver-policy-adapter-contracts-v0"
+        },
+        "proposedAction": {
+          "verb": "write_doc",
+          "target": "local-mcp-note.md",
+          "riskTier": "low_local"
+        },
+        "hasReceiverFreshnessPolicy": false,
+        "hasSourceFreshnessPolicy": false
+      }
+    },
+    {
+      "id": "mcp-like-server-safe-label-does-not-authorize-network",
+      "adapterId": "mcp-like-receiver-policy-contract-v0",
+      "framework": "mcp-like",
+      "decision": "ask_human",
+      "reasons": [
+        "action requires human or is unknown/sensitive: send_external"
+      ],
+      "mapped": {
+        "hasReceipt": true,
+        "expectedSource": {
+          "sourceArtifactId": "T-synaptic-mesh-receiver-policy-adapter-contracts-v0",
+          "sourceArtifactPath": "research-package/T-synaptic-mesh-receiver-policy-adapter-contracts-v0.md",
+          "sourceDigest": "sha256:receiver-policy-adapter-contracts-v0"
+        },
+        "proposedAction": {
+          "verb": "send_external",
+          "target": "network-api",
+          "riskTier": "sensitive"
         },
         "hasReceiverFreshnessPolicy": false,
         "hasSourceFreshnessPolicy": false
