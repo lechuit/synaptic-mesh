@@ -1,14 +1,19 @@
 {
   "bundle": "synaptic-mesh",
   "version": "0.1.3",
-  "generated": "2026-05-07T18:52:00Z",
+  "generated": "2026-05-07T19:08:00Z",
   "status": "hardening_release_candidate_not_runtime_ready",
   "repository": "https://github.com/lechuit/synaptic-mesh",
   "license": "Apache-2.0 for code; CC BY 4.0 for docs/prose unless otherwise noted",
-  "reproducibility": "expected_pass_authority_routes_and_authority_envelope_pr26_fixture_guards_no_classifier_no_runtime",
+  "reproducibility": "expected_pass_ci_baseline_shadow_gates_no_classifier_no_runtime",
   "rawSourceCache": "excluded",
-  "runtimeBoundary": "authority_envelope_pr26_local_shadow_evaluation_object_no_runtime_integration_no_mcp_a2a_no_authorization",
+  "runtimeBoundary": "ci_baseline_local_shadow_validation_only_no_runtime_integration_no_mcp_a2a_no_authorization_no_tool_execution",
   "files": [
+    {
+      "path": ".github/workflows/ci.yml",
+      "bytes": 1453,
+      "sha256": "63729b94d07b6718ee87a38e9eb45fe3f53e38c15a60636787d1d31d7dc5ee3a"
+    },
     {
       "path": ".gitignore",
       "bytes": 42,
@@ -113,6 +118,11 @@
       "path": "docs/authority-envelope-pr26.md",
       "bytes": 5782,
       "sha256": "c308a91fc005f12e5dc7ddf4121ab50a4da2a91bd560099f8a1f25aa87ac3e59"
+    },
+    {
+      "path": "docs/ci.md",
+      "bytes": 1206,
+      "sha256": "5ad4014bd3a2d15107fc1f8605401c10ab18e1d161d17a8fb1187f4e57be6032"
     },
     {
       "path": "docs/repo-structure.md",
@@ -221,8 +231,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/review-local.out.json",
-      "bytes": 4821,
-      "sha256": "fa295b4b5bb2026477fb17f41b9dccad00ecbc03275794b54f97963cae3c9f96"
+      "bytes": 4566,
+      "sha256": "31ebae74a5c6a1c64a836e868afd5d5e4e0ffbc6347d08fb8eceedf99f7aabd7"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/synthetic-handoff-examples.out.json",
@@ -266,8 +276,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/adapters/review-local-io.mjs",
-      "bytes": 1037,
-      "sha256": "684f0af168e11bcc68d60ed9959ff8e4cd11aa7971019dca99d5c4e7d58ed825"
+      "bytes": 1027,
+      "sha256": "6ab8250250341032e1a282c06b7dca0934e80cf5e71d970ca9000b13ee67b6f7"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/decision-engine.mjs",

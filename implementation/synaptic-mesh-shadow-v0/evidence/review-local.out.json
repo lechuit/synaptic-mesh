@@ -25,119 +25,119 @@
   "rows": [
     {
       "id": "syntax-action-policy",
-      "command": "/usr/local/bin/node --check implementation/synaptic-mesh-shadow-v0/src/action-policy.mjs",
+      "command": "node --check implementation/synaptic-mesh-shadow-v0/src/action-policy.mjs",
       "status": 0,
       "pass": true,
       "stderr": ""
     },
     {
       "id": "syntax-core-reference",
-      "command": "/usr/local/bin/node --check implementation/synaptic-mesh-shadow-v0/src/types.mjs",
+      "command": "node --check implementation/synaptic-mesh-shadow-v0/src/types.mjs",
       "status": 0,
       "pass": true,
       "stderr": ""
     },
     {
       "id": "syntax-action-policy-contracts",
-      "command": "/usr/local/bin/node --check implementation/synaptic-mesh-shadow-v0/tests/action-policy-contracts.mjs",
+      "command": "node --check implementation/synaptic-mesh-shadow-v0/tests/action-policy-contracts.mjs",
       "status": 0,
       "pass": true,
       "stderr": ""
     },
     {
       "id": "syntax-receipt-parser",
-      "command": "/usr/local/bin/node --check implementation/synaptic-mesh-shadow-v0/src/receipt-parser.mjs",
+      "command": "node --check implementation/synaptic-mesh-shadow-v0/src/receipt-parser.mjs",
       "status": 0,
       "pass": true,
       "stderr": ""
     },
     {
       "id": "syntax-receipt-validator",
-      "command": "/usr/local/bin/node --check implementation/synaptic-mesh-shadow-v0/src/receipt-validator.mjs",
+      "command": "node --check implementation/synaptic-mesh-shadow-v0/src/receipt-validator.mjs",
       "status": 0,
       "pass": true,
       "stderr": ""
     },
     {
       "id": "syntax-cli",
-      "command": "/usr/local/bin/node --check implementation/synaptic-mesh-shadow-v0/bin/validate-receipt.mjs",
+      "command": "node --check implementation/synaptic-mesh-shadow-v0/bin/validate-receipt.mjs",
       "status": 0,
       "pass": true,
       "stderr": ""
     },
     {
       "id": "action-policy-contract-tests",
-      "command": "/usr/local/bin/node implementation/synaptic-mesh-shadow-v0/tests/action-policy-contracts.mjs",
+      "command": "node implementation/synaptic-mesh-shadow-v0/tests/action-policy-contracts.mjs",
       "status": 0,
       "pass": true,
       "stderr": ""
     },
     {
       "id": "receipt-parser-validator-tests",
-      "command": "/usr/local/bin/node implementation/synaptic-mesh-shadow-v0/tests/receipt-parser-validator.mjs",
+      "command": "node implementation/synaptic-mesh-shadow-v0/tests/receipt-parser-validator.mjs",
       "status": 0,
       "pass": true,
       "stderr": ""
     },
     {
       "id": "receipt-transform-regression-tests",
-      "command": "/usr/local/bin/node implementation/synaptic-mesh-shadow-v0/tests/receipt-transform-regression.mjs",
+      "command": "node implementation/synaptic-mesh-shadow-v0/tests/receipt-transform-regression.mjs",
       "status": 0,
       "pass": true,
       "stderr": ""
     },
     {
       "id": "authority-laundering-regression-tests",
-      "command": "/usr/local/bin/node implementation/synaptic-mesh-shadow-v0/tests/authority-laundering-regression.mjs",
+      "command": "node implementation/synaptic-mesh-shadow-v0/tests/authority-laundering-regression.mjs",
       "status": 0,
       "pass": true,
       "stderr": ""
     },
     {
       "id": "authority-claim-route-fixtures-tests",
-      "command": "/usr/local/bin/node implementation/synaptic-mesh-shadow-v0/tests/authority-claim-routes-fixtures.mjs",
+      "command": "node implementation/synaptic-mesh-shadow-v0/tests/authority-claim-routes-fixtures.mjs",
       "status": 0,
       "pass": true,
       "stderr": ""
     },
     {
       "id": "receiver-policy-adapter-contract-tests",
-      "command": "/usr/local/bin/node implementation/synaptic-mesh-shadow-v0/tests/receiver-policy-adapter-contracts.mjs",
+      "command": "node implementation/synaptic-mesh-shadow-v0/tests/receiver-policy-adapter-contracts.mjs",
       "status": 0,
       "pass": true,
       "stderr": ""
     },
     {
       "id": "cli-validator-tests",
-      "command": "/usr/local/bin/node implementation/synaptic-mesh-shadow-v0/tests/cli-validator.mjs",
+      "command": "node implementation/synaptic-mesh-shadow-v0/tests/cli-validator.mjs",
       "status": 0,
       "pass": true,
       "stderr": ""
     },
     {
       "id": "synthetic-handoff-examples-tests",
-      "command": "/usr/local/bin/node implementation/synaptic-mesh-shadow-v0/tests/synthetic-handoff-examples.mjs",
+      "command": "node implementation/synaptic-mesh-shadow-v0/tests/synthetic-handoff-examples.mjs",
       "status": 0,
       "pass": true,
       "stderr": ""
     },
     {
       "id": "partial-receipt-degrade-tests",
-      "command": "/usr/local/bin/node implementation/synaptic-mesh-shadow-v0/tests/partial-receipt-degrade.mjs",
+      "command": "node implementation/synaptic-mesh-shadow-v0/tests/partial-receipt-degrade.mjs",
       "status": 0,
       "pass": true,
       "stderr": ""
     },
     {
       "id": "fixture-parity-harness",
-      "command": "/usr/local/bin/node implementation/synaptic-mesh-shadow-v0/tests/fixture-parity.mjs",
+      "command": "node implementation/synaptic-mesh-shadow-v0/tests/fixture-parity.mjs",
       "status": 0,
       "pass": true,
       "stderr": ""
     },
     {
       "id": "normalized-summary-adapter",
-      "command": "/usr/local/bin/node implementation/synaptic-mesh-shadow-v0/tests/summary-normalizer.mjs",
+      "command": "node implementation/synaptic-mesh-shadow-v0/tests/summary-normalizer.mjs",
       "status": 0,
       "pass": true,
       "stderr": ""
