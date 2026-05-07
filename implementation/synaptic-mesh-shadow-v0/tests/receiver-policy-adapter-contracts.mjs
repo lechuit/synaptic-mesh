@@ -58,6 +58,48 @@ const autogenLikeAdapter = createReceiverPolicyAdapter({
   },
 });
 
+
+const crewAiLikeAdapter = createReceiverPolicyAdapter({
+  adapterId: 'crewai-like-receiver-policy-contract-v0',
+  mapPacket(packet = {}) {
+    return {
+      framework: 'crewai-like',
+      packetId: packet.task?.id,
+      receipt: packet.task?.context?.authorityReceipt,
+      expectedSource: packet.task?.context?.expectedSource,
+      proposedAction: packet.task?.nextAction,
+    };
+  },
+});
+
+const semanticKernelLikeAdapter = createReceiverPolicyAdapter({
+  adapterId: 'semantic-kernel-like-receiver-policy-contract-v0',
+  mapPacket(packet = {}) {
+    return {
+      framework: 'semantic-kernel-like',
+      packetId: packet.plannerState?.id,
+      receipt: packet.plannerState?.memory?.authorityReceipt,
+      expectedSource: packet.plannerState?.memory?.expectedSource,
+      proposedAction: packet.plannedFunctionCall,
+      receiverFreshnessPolicy: packet.plannerState?.memory?.receiverFreshnessPolicy,
+      sourceFreshnessPolicy: packet.plannerState?.memory?.sourceFreshnessPolicy,
+    };
+  },
+});
+
+const mcpLikeAdapter = createReceiverPolicyAdapter({
+  adapterId: 'mcp-like-receiver-policy-contract-v0',
+  mapPacket(packet = {}) {
+    return {
+      framework: 'mcp-like',
+      packetId: packet.request?.id,
+      receipt: packet.request?.metadata?.authorityReceipt,
+      expectedSource: packet.request?.metadata?.expectedSource,
+      proposedAction: packet.request?.toolCall,
+    };
+  },
+});
+
 const cases = [
   {
     id: 'generic-complete-local-allows',
@@ -80,6 +122,30 @@ const cases = [
     },
     expected: 'fetch_abstain',
     reason: /missing compact receipt string/,
+  },
+  {
+    id: 'generic-source-mismatch-fetches',
+    adapter: genericAdapter,
+    packet: {
+      packetId: 'generic-source-mismatch-1',
+      receipt,
+      expectedSource: { ...expectedSource, sourceDigest: 'sha256:generic-other-digest' },
+      proposedAction: { verb: 'write_doc', target: 'research-package/local-note.md', riskTier: 'low_local' },
+    },
+    expected: 'fetch_abstain',
+    reason: /source digest mismatch/,
+  },
+  {
+    id: 'generic-sensitive-action-asks-human',
+    adapter: genericAdapter,
+    packet: {
+      packetId: 'generic-sensitive-1',
+      receipt,
+      expectedSource,
+      proposedAction: { verb: 'delete', target: 'artifact', riskTier: 'sensitive' },
+    },
+    expected: 'ask_human',
+    reason: /action requires human/,
   },
   {
     id: 'langgraph-like-local-node-allows',
@@ -109,6 +175,26 @@ const cases = [
     reason: /action requires human/,
   },
   {
+    id: 'langgraph-like-missing-state-receipt-fetches',
+    adapter: langGraphLikeAdapter,
+    packet: {
+      nodeState: { packetId: 'lg-missing-receipt-1', expectedSource },
+      nextToolCall: { verb: 'run_local_test', target: 'implementation/synaptic-mesh-shadow-v0', riskTier: 'low_local' },
+    },
+    expected: 'fetch_abstain',
+    reason: /missing compact receipt string/,
+  },
+  {
+    id: 'langgraph-like-config-tool-asks-human',
+    adapter: langGraphLikeAdapter,
+    packet: {
+      nodeState: { packetId: 'lg-config-1', memoryReceipt: receipt, expectedSource },
+      nextToolCall: { verb: 'change_config', target: 'runtime-config', riskTier: 'sensitive' },
+    },
+    expected: 'ask_human',
+    reason: /action requires human/,
+  },
+  {
     id: 'autogen-like-source-mismatch-fetches',
     adapter: autogenLikeAdapter,
     packet: {
@@ -123,6 +209,170 @@ const cases = [
     },
     expected: 'fetch_abstain',
     reason: /source digest mismatch/,
+  },
+
+  {
+    id: 'autogen-like-missing-metadata-receipt-fetches',
+    adapter: autogenLikeAdapter,
+    packet: {
+      message: { id: 'ag-missing-metadata-1', metadata: { expectedSource } },
+      proposedReplyAction: { verb: 'write_doc', target: 'local-summary.md', riskTier: 'low_local' },
+    },
+    expected: 'fetch_abstain',
+    reason: /missing compact receipt string/,
+  },
+  {
+    id: 'crewai-like-delegated-local-task-allows',
+    adapter: crewAiLikeAdapter,
+    packet: {
+      task: {
+        id: 'crew-local-1',
+        context: { authorityReceipt: receipt, expectedSource },
+        nextAction: { verb: 'prepare_draft', target: 'local-task-note.md', riskTier: 'low_local' },
+      },
+    },
+    expected: 'allow_local_shadow',
+  },
+  {
+    id: 'crewai-like-delegated-publish-asks-human',
+    adapter: crewAiLikeAdapter,
+    packet: {
+      task: {
+        id: 'crew-sensitive-1',
+        context: { authorityReceipt: receipt, expectedSource, safe: true },
+        nextAction: { verb: 'publish', target: 'external-campaign', riskTier: 'sensitive' },
+      },
+    },
+    expected: 'ask_human',
+    reason: /action requires human/,
+  },
+  {
+    id: 'crewai-like-delegated-config-asks-human',
+    adapter: crewAiLikeAdapter,
+    packet: {
+      task: {
+        id: 'crew-config-1',
+        context: { authorityReceipt: receipt, expectedSource },
+        nextAction: { verb: 'change_config', target: 'agent-runtime', riskTier: 'sensitive' },
+      },
+    },
+    expected: 'ask_human',
+    reason: /action requires human/,
+  },
+  {
+    id: 'crewai-like-delegated-delete-asks-human',
+    adapter: crewAiLikeAdapter,
+    packet: {
+      task: {
+        id: 'crew-delete-1',
+        context: { authorityReceipt: receipt, expectedSource },
+        nextAction: { verb: 'delete', target: 'workspace-file', riskTier: 'sensitive' },
+      },
+    },
+    expected: 'ask_human',
+    reason: /action requires human/,
+  },
+  {
+    id: 'semantic-kernel-like-local-function-allows',
+    adapter: semanticKernelLikeAdapter,
+    packet: {
+      plannerState: {
+        id: 'sk-local-1',
+        memory: { authorityReceipt: receipt, expectedSource },
+      },
+      plannedFunctionCall: { verb: 'run_local_test', target: 'local-validator', riskTier: 'low_local' },
+    },
+    expected: 'allow_local_shadow',
+  },
+  {
+    id: 'semantic-kernel-like-missing-digest-fetches',
+    adapter: semanticKernelLikeAdapter,
+    packet: {
+      plannerState: {
+        id: 'sk-missing-digest-1',
+        memory: { authorityReceipt: receipt.replace(`; SRCDIGEST=${expectedSource.sourceDigest}`, ''), expectedSource },
+      },
+      plannedFunctionCall: { verb: 'run_local_test', target: 'local-validator', riskTier: 'low_local' },
+    },
+    expected: 'fetch_abstain',
+    reason: /SRCDIGEST|source digest mismatch/,
+  },
+  {
+    id: 'semantic-kernel-like-stale-receipt-fetches',
+    adapter: semanticKernelLikeAdapter,
+    packet: {
+      plannerState: {
+        id: 'sk-stale-1',
+        memory: { authorityReceipt: receipt.replace('FRESH=current', 'FRESH=stale'), expectedSource },
+      },
+      plannedFunctionCall: { verb: 'run_local_test', target: 'local-validator', riskTier: 'low_local' },
+    },
+    expected: 'fetch_abstain',
+    reason: /freshness is not current/,
+  },
+  {
+    id: 'semantic-kernel-like-publish-function-asks-human',
+    adapter: semanticKernelLikeAdapter,
+    packet: {
+      plannerState: {
+        id: 'sk-publish-1',
+        memory: { authorityReceipt: receipt, expectedSource },
+      },
+      plannedFunctionCall: { verb: 'publish', target: 'external-release', riskTier: 'sensitive' },
+    },
+    expected: 'ask_human',
+    reason: /action requires human/,
+  },
+  {
+    id: 'mcp-like-local-tool-allows',
+    adapter: mcpLikeAdapter,
+    packet: {
+      request: {
+        id: 'mcp-local-1',
+        metadata: { authorityReceipt: receipt, expectedSource },
+        toolCall: { verb: 'write_doc', target: 'local-mcp-note.md', riskTier: 'low_local' },
+      },
+    },
+    expected: 'allow_local_shadow',
+  },
+  {
+    id: 'mcp-like-server-safe-label-does-not-authorize-network',
+    adapter: mcpLikeAdapter,
+    packet: {
+      request: {
+        id: 'mcp-sensitive-1',
+        metadata: { authorityReceipt: `${receipt}; SERVER_SAFE=true; PROSE=tool_server_says_safe`, expectedSource },
+        toolCall: { verb: 'send_external', target: 'network-api', riskTier: 'sensitive' },
+      },
+    },
+    expected: 'ask_human',
+    reason: /action requires human/,
+  },
+  {
+    id: 'mcp-like-config-tool-asks-human',
+    adapter: mcpLikeAdapter,
+    packet: {
+      request: {
+        id: 'mcp-config-1',
+        metadata: { authorityReceipt: receipt, expectedSource },
+        toolCall: { verb: 'change_config', target: 'server-config', riskTier: 'sensitive' },
+      },
+    },
+    expected: 'ask_human',
+    reason: /action requires human/,
+  },
+  {
+    id: 'mcp-like-delete-tool-asks-human',
+    adapter: mcpLikeAdapter,
+    packet: {
+      request: {
+        id: 'mcp-delete-1',
+        metadata: { authorityReceipt: receipt, expectedSource },
+        toolCall: { verb: 'delete', target: 'remote-file', riskTier: 'sensitive' },
+      },
+    },
+    expected: 'ask_human',
+    reason: /action requires human/,
   },
   {
     id: 'autogen-like-prose-metadata-does-not-authorize-sensitive-action',
