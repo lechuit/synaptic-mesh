@@ -9,7 +9,7 @@ Status: real-flow scorecard release candidate / public review package update. No
 - Added raw/parser adversarial fixture coverage for untrusted prose, hidden dangerous receipts, malformed receipts, free-text action tampering, conflicting receipts, and stale/replayed policy windows.
 - Added deterministic adversarial fixture generation from existing wrong-route oracles while preserving source expected routes/reason codes.
 - Added deterministic local authority-overhead benchmark evidence comparing naive summaries, full context, simple receipts, and AuthorityEnvelope-shaped records without live LLM/API calls or runtime integration.
-- Expanded offline real-flow replay from 13 to 24 cases and added a classifier-vs-replay scorecard while keeping `observedDecision` as fixture oracle, not classifier output.
+- Expanded offline real-flow replay from 13 to 24 cases and added a classifier-vs-gold scorecard; `observedDecision` is deprecated metadata and scorecards compare `classifierDecision` against `goldDecision`.
 - Kept CI scoped to the local shadow package; this release does not add runtime/framework integration, MCP/A2A integration, tool execution, memory writes, publication, or enforcement behavior.
 
 ## Validation snapshot

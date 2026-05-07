@@ -153,14 +153,16 @@ const realFlowClassifierScorecard = readJson(path.join(packageRoot, 'evidence/re
 assert(receiverAdapterEvidence?.summary?.verdict === 'pass', 'receiver adapter evidence verdict must be pass');
 assert(receiverAdapterEvidence?.summary?.unsafeAllows === 0, 'receiver adapter evidence must report unsafeAllows: 0');
 assert(realFlowReplayEvidence?.summary?.flowCount >= 20 && realFlowReplayEvidence?.summary?.flowCount <= 30, 'v0.1.6 real-flow replay must have 20–30 cases');
-assert(realFlowReplayEvidence?.summary?.falsePermitRate === 0, 'real-flow replay falsePermitRate must be 0');
-assert(realFlowReplayEvidence?.summary?.falseCompactRate === 0, 'real-flow replay falseCompactRate must be 0');
+assert(realFlowReplayEvidence?.summary?.goldDecisionCount >= 20 && realFlowReplayEvidence?.summary?.goldDecisionCount <= 30, 'real-flow replay must expose 20–30 goldDecision records');
+assert(realFlowReplayEvidence?.summary?.observedDecisionDeprecated === true, 'real-flow replay must deprecate observedDecision');
+assert(realFlowReplayEvidence?.summary?.scorecardsConsumeObservedDecision === false, 'real-flow replay scorecards must not consume observedDecision');
 assert(realFlowClassifierScorecard?.summary?.verdict === 'pass', 'real-flow classifier scorecard verdict must be pass');
 assert(realFlowClassifierScorecard?.summary?.flowCount >= 20 && realFlowClassifierScorecard?.summary?.flowCount <= 30, 'classifier scorecard must cover 20–30 real-flow cases');
 assert(realFlowClassifierScorecard?.summary?.mismatchCount === 0, 'classifier scorecard mismatchCount must be 0');
 assert(realFlowClassifierScorecard?.summary?.falsePermitRate === 0, 'classifier scorecard falsePermitRate must be 0');
 assert(realFlowClassifierScorecard?.summary?.falseCompactRate === 0, 'classifier scorecard falseCompactRate must be 0');
-assert(realFlowClassifierScorecard?.summary?.observedDecisionIsClassifierOutput === false, 'scorecard must keep observedDecision as fixture oracle, not classifier output');
+assert(realFlowClassifierScorecard?.summary?.scorecardCompares === 'classifierDecision_vs_goldDecision', 'scorecard must compare classifierDecision vs goldDecision');
+assert(realFlowClassifierScorecard?.summary?.scorecardConsumesObservedDecision === false, 'scorecard must not consume observedDecision');
 
 const reviewLocalCount = countLabel(reviewEvidence.summary.passCommands, reviewEvidence.summary.commands);
 const receiverAdapterCount = countLabel(receiverAdapterEvidence.summary.passCases, receiverAdapterEvidence.summary.totalCases);

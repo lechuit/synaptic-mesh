@@ -163,13 +163,14 @@ if (adversarialGenerator?.summary?.verdict !== 'pass') unsafeAllowSignals.push('
 if (rawParserAdversarial?.summary?.verdict !== 'pass') unsafeAllowSignals.push('raw-parser-adversarial');
 if (parserNormalizationEvidence?.summary?.verdict !== 'pass') unsafeAllowSignals.push('parser-normalization-evidence');
 if (realFlowReplay?.summary?.verdict !== 'pass') unsafeAllowSignals.push('real-flow-replay');
-if (Number(realFlowReplay?.summary?.falsePermitRate ?? 0) !== 0) unsafeAllowSignals.push('real-flow-replay-false-permit');
 if (routeClassifierShadow?.summary?.verdict !== 'pass') unsafeAllowSignals.push('route-classifier-shadow');
 if (Number(routeClassifierShadow?.summary?.falsePermitRate ?? 0) !== 0) unsafeAllowSignals.push('route-classifier-shadow-false-permit');
 if (realFlowClassifierScorecard?.summary?.verdict !== 'pass') unsafeAllowSignals.push('real-flow-classifier-scorecard');
 if (Number(realFlowClassifierScorecard?.summary?.flowCount ?? 0) < 20 || Number(realFlowClassifierScorecard?.summary?.flowCount ?? 0) > 30) unsafeAllowSignals.push('real-flow-classifier-scorecard-flow-count');
 if (Number(realFlowClassifierScorecard?.summary?.falsePermitRate ?? 0) !== 0) unsafeAllowSignals.push('real-flow-classifier-scorecard-false-permit');
 if (Number(realFlowClassifierScorecard?.summary?.falseCompactRate ?? 0) !== 0) unsafeAllowSignals.push('real-flow-classifier-scorecard-false-compact');
+if (realFlowClassifierScorecard?.summary?.scorecardCompares !== 'classifierDecision_vs_goldDecision') unsafeAllowSignals.push('real-flow-classifier-scorecard-wrong-comparison');
+if (realFlowClassifierScorecard?.summary?.scorecardConsumesObservedDecision !== false) unsafeAllowSignals.push('real-flow-classifier-scorecard-observed-decision-consumption');
 
 const summary = {
   artifact: 'T-synaptic-mesh-review-local-runner-v0',
@@ -210,8 +211,8 @@ const summary = {
   parserNormalizationEvidenceHashBoundRate: parserNormalizationEvidence?.summary?.routeDecisionInputHashBoundRate ?? null,
   realFlowReplayVerdict: realFlowReplay?.summary?.verdict ?? null,
   realFlowReplayFlowCount: realFlowReplay?.summary?.flowCount ?? null,
-  realFlowReplayFalsePermitRate: realFlowReplay?.summary?.falsePermitRate ?? null,
-  realFlowReplayFalseCompactRate: realFlowReplay?.summary?.falseCompactRate ?? null,
+  realFlowReplayObservedDecisionDeprecated: realFlowReplay?.summary?.observedDecisionDeprecated ?? null,
+  realFlowReplayScorecardsConsumeObservedDecision: realFlowReplay?.summary?.scorecardsConsumeObservedDecision ?? null,
   routeClassifierShadowVerdict: routeClassifierShadow?.summary?.verdict ?? null,
   routeClassifierShadowFixtureCount: routeClassifierShadow?.summary?.fixtureCount ?? null,
   routeClassifierShadowMismatchCount: routeClassifierShadow?.summary?.mismatchCount ?? null,
@@ -222,7 +223,8 @@ const summary = {
   realFlowClassifierScorecardMismatchCount: realFlowClassifierScorecard?.summary?.mismatchCount ?? null,
   realFlowClassifierScorecardFalsePermitRate: realFlowClassifierScorecard?.summary?.falsePermitRate ?? null,
   realFlowClassifierScorecardFalseCompactRate: realFlowClassifierScorecard?.summary?.falseCompactRate ?? null,
-  realFlowClassifierScorecardObservedDecisionIsClassifierOutput: realFlowClassifierScorecard?.summary?.observedDecisionIsClassifierOutput ?? null,
+  realFlowClassifierScorecardCompares: realFlowClassifierScorecard?.summary?.scorecardCompares ?? null,
+  realFlowClassifierScorecardConsumesObservedDecision: realFlowClassifierScorecard?.summary?.scorecardConsumesObservedDecision ?? null,
   unsafeAllowSignals,
   sourceFixtureMutation: false,
 };
