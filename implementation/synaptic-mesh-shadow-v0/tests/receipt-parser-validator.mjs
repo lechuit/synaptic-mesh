@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { parseCompactReceipt } from '../src/receipt-parser.mjs';
 import { validateCompactReceiptForAction } from '../src/receipt-validator.mjs';
 
-const baseReceipt = 'SRC=T-synaptic-mesh-minimum-functional-reference-scope-v0; SRCPATH=research-package/T-synaptic-mesh-minimum-functional-reference-scope-v0.md; SRCDIGEST=sha256:abc123; PROD=2026-05-06T19:10:00Z; FRESH=current; SCOPE=local_shadow; PB=no_memory_write_human_confirmation_required; NO=external_runtime_config_delete_publish_l2; LRE=successor_of_scope_v0; TOK=budget_1k; ACT=create_local_fixture; NOTE=unknown_metadata_preserved';
+const baseReceipt = 'SRC=T-synaptic-mesh-minimum-functional-reference-scope-v0; SRCPATH=research-package/T-synaptic-mesh-minimum-functional-reference-scope-v0.md; SRCDIGEST=sha256:abc123; PROD=2026-05-06T19:10:00Z; FRESH=current; SCOPE=local_shadow; PB=no_memory_write_human_confirmation_required; NO=external_runtime_config_delete_publish_l2; LRE=none; TOK=budget_1k; ACT=create_local_fixture; NOTE=unknown_metadata_preserved';
 
 const parsed = parseCompactReceipt(baseReceipt);
 assert.equal(parsed.ok, true);

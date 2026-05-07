@@ -35,7 +35,7 @@ Snapshot evidence copied for the publication-review package:
 | Gate | Result |
 |---|---:|
 | Overall verdict | `pass` |
-| Commands passed | `11/11` |
+| Commands passed | `12/12` |
 | Failed commands | `0` |
 | Fixture count | `15` |
 | Fixture parity verdict | `pass` |
@@ -51,7 +51,7 @@ Snapshot evidence copied for the publication-review package:
 
 The local shadow reference package remains green after the publication-readiness paper/bibliography/doc updates:
 
-- 11/11 review-local commands pass.
+- 12/12 review-local commands pass.
 - Fixture parity remains 15/15.
 - Unsafe allow signals remain 0.
 - Source fixture mutation remains false.
@@ -71,7 +71,7 @@ Remaining publication blockers:
 
 ## Exit verdict
 
-`T-synaptic-mesh-publication-reproducibility-rerun-v0`: **pass / local reproducibility gate rerun captured: 11/11 commands, fixture parity 15/15, unsafe allow signals 0, source fixture mutation false**.
+`T-synaptic-mesh-publication-reproducibility-rerun-v0`: **pass / local reproducibility gate rerun captured: 12/12 commands, fixture parity 15/15, unsafe allow signals 0, source fixture mutation false**.
 
 Next safe block: `T-synaptic-mesh-public-private-boundary-audit-v0` — scan publishable package/paper docs for private operator/path traces, stale internal instructions, and release-boundary issues; no publication/runtime/config/memory/delete.
 
@@ -83,10 +83,10 @@ sourceArtifactId: T-synaptic-mesh-publication-reproducibility-rerun-v0
 sourceArtifactPath: research-package/T-synaptic-mesh-publication-reproducibility-rerun-v0.md
 producedAt: 2026-05-07T02:44:00Z
 receiverFreshness: current
-registryDigest: sha256:reviewlocal11of11-fixture15-unsafe0-sourcemutationfalse-publication-repro-snapshot
+registryDigest: sha256:reviewlocal12of12-fixture15-unsafe0-sourcemutationfalse-publication-repro-snapshot
 policyChecksum: sha256:local-test-evidence-capture-only-no-publish-no-runtime-no-config-no-memory-no-delete
 lineage: successor_of_T-synaptic-mesh-final-claim-audit-v0
-validation: review_local_pass_11of11_fixture_parity_15of15_unsafe_allow_0_source_mutation_false
+validation: review_local_pass_12of12_fixture_parity_15of15_unsafe_allow_0_source_mutation_false
 safetyResult: local_test_capture_only_publication_and_runtime_still_blocked
 usabilityResult: reproducibility_gate_closed_for_local_publication_review
 riskTier: low_local

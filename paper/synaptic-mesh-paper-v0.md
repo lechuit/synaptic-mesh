@@ -267,7 +267,7 @@ The research package now includes a local-only minimum functional reference spin
 - a one-command local review runner;
 - a README boundary quickstart.
 
-Current local gate snapshot from the package index: review-local `11/11`, fixture parity `15/15`, normalized summary `15`, unsafe allow signals `0`, and source fixture mutation `false`. This is useful evidence that the paper's receipt discipline can be made executable in a small local shadow reference. It is not evidence of production readiness, scalability, usability, or safety as an enforcement system.
+Current local gate snapshot from the package index: review-local `12/12`, fixture parity `15/15`, normalized summary `15`, unsafe allow signals `0`, and source fixture mutation `false`. This is useful evidence that the paper's receipt discipline can be made executable in a small local shadow reference. It is not evidence of production readiness, scalability, usability, or safety as an enforcement system.
 
 ## Limitations
 

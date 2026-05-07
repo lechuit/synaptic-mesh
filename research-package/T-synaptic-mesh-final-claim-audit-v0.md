@@ -29,7 +29,7 @@ Updated `paper/synaptic-mesh-paper-v0.md` to make claims more conservative:
 6. Problem statement now says retrieval relevance does not “by itself answer” the authority question.
 7. Policy-engine wording now says a final decision needs adequate memory lineage, avoiding unsupported claims about OPA limitations.
 8. Related-work intro no longer says citations are placeholders; it reflects Tier A/B quote-check and Tier C landscape-only status.
-9. Local gate snapshot corrected from `10/10` to `11/11`.
+9. Local gate snapshot corrected from `10/10` to `11/11`; current package snapshot is now `12/12` after authority-laundering regressions were added.
 10. Limitations updated: related work has local quote-check support but still needs final venue/editorial review.
 11. Publication checklist now marks related-work citation support complete for local publication review while preserving final review as pending.
 12. End recommendation updated away from stale redaction/citation-check target toward reproducibility and public/private boundary gates.
@@ -53,7 +53,7 @@ Local claim-audit checks passed:
 
 ```text
 stale placeholder phrase removed: true
-old review-local 10/10 snapshot removed: true
+old review-local 10/10 and 11/11 snapshots superseded: true
 R11 active citation removed: true
 old Vertex AI Memory Bank wording removed: true
 Tier A/B quote-check status reflected: true

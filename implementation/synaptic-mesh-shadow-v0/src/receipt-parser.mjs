@@ -32,6 +32,7 @@ export function parseCompactReceipt(input = '') {
     pairs += 1;
     const rawKey = match[1].trim();
     const rawValue = stripQuotes(match[2].trim());
+    if (Object.hasOwn(fields, rawKey)) errors.push(`duplicate receipt field: ${rawKey}`);
     fields[rawKey] = rawValue;
     const mapped = RECEIPT_FIELD_ALIASES[rawKey];
     if (mapped) authority[mapped] = rawValue;

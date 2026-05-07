@@ -38,7 +38,7 @@ The reference currently covers:
 Current local gates observed in `evidence/review-local.out.json`:
 
 - review-local verdict: `pass`;
-- commands: `11/11` passing;
+- commands: `12/12` passing;
 - fixture parity: `15/15` passing;
 - normalized summary fixtures: `15`;
 - unsafe allow signals: `0`;
@@ -132,6 +132,7 @@ Key files:
 - `review-local.out.json` — one-command local review summary;
 - `receipt-parser-validator.out.json` — parser/validator cases;
 - `receipt-transform-regression.out.json` — transform regression cases;
+- `authority-laundering-regression.out.json` — adversarial laundering regression cases;
 - `cli-validator.out.json` — CLI behavior cases;
 - `synthetic-handoff-examples.out.json` — synthetic handoff cases;
 - `partial-receipt-degrade.out.json` — partial receipt fail-closed behavior;

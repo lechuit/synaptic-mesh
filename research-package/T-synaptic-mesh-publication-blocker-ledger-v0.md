@@ -26,7 +26,7 @@ This ledger is intentionally conservative. It does **not** authorize publication
 
 | Area | Status | Notes |
 |---|---|---|
-| Local reference evidence | `green_local_shadow` | review-local `11/11`, fixture parity `15/15`, unsafe allow signals `0` from current handoff history. |
+| Local reference evidence | `green_local_shadow` | review-local `12/12`, fixture parity `15/15`, unsafe allow signals `0` from current handoff history. |
 | Private path redaction | `pass_local` | README/index private absolute paths already fixed. |
 | Citation ID linkage | `pass_local_after_r11_downgrade` | paper uses 15 active IDs; bibliography has 15 active IDs; missing `0`; unused `0`; R06/R09 intentionally unassigned; R11 disabled pending source-exact access. |
 | Bibliography draft | `pass_for_local_publication_review` | Active 15-ref BibTeX set normalized after R11 downgrade/R18 update; target-venue formatting remains later. |
@@ -95,7 +95,7 @@ This ledger is intentionally conservative. It does **not** authorize publication
 - Completed:
   - reran `npm --prefix implementation/synaptic-mesh-shadow-v0 run review:local`;
   - captured log and evidence snapshot;
-  - verified 11/11 commands, fixture parity 15/15, unsafe allow signals 0, source fixture mutation false.
+  - verified 12/12 commands, fixture parity 15/15, unsafe allow signals 0, source fixture mutation false.
 - Remaining caution: rerun again if code/fixtures change before publication.
 
 ### B07 — Public/private boundary audit
