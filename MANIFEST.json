@@ -1,6 +1,6 @@
 {
   "bundle": "synaptic-mesh",
-  "version": "0.1.3",
+  "version": "0.1.5",
   "generated": "2026-05-07T20:55:00Z",
   "status": "hardening_release_candidate_not_runtime_ready",
   "repository": "https://github.com/lechuit/synaptic-mesh",
@@ -77,7 +77,7 @@
     {
       "path": "README.md",
       "bytes": 4653,
-      "sha256": "695495c6889711b8d1e2efb8fb258aff21e44b95318ab366fc168fc3b1eb8cba"
+      "sha256": "55e6f702f7a0c3572edc6baa157033901e5b76e10b209b2d5b238fde9cbc3d68"
     },
     {
       "path": "RELEASE_CANDIDATE.md",
@@ -86,8 +86,8 @@
     },
     {
       "path": "RELEASE_NOTES.md",
-      "bytes": 3367,
-      "sha256": "841736487305ec7fbc0bfc898d0690c81c987b2a95dbd621fb964b1c8a3bff16"
+      "bytes": 3177,
+      "sha256": "133d1fc66738495e8dca98044c13d07fd040dbf4a7eb9854a1eb64ea0e9397b6"
     },
     {
       "path": "design-notes/adapter-boundary-langgraph-mcp-v0.md",
@@ -157,7 +157,7 @@
     {
       "path": "docs/release-checklist.md",
       "bytes": 3974,
-      "sha256": "0193f5d4987a71aa363578fca2286508f01e58fadde982f4f28a0b8494996ea7"
+      "sha256": "445c7b5f9c8db6d057cd8f810cf78fec25a0e6e628485c9c05fb22f840977965"
     },
     {
       "path": "docs/repo-structure.md",
