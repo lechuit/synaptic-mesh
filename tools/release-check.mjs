@@ -21,6 +21,7 @@ const releaseGateScripts = [
   'test:parser-normalization-evidence',
   'test:real-flow-replay',
   'test:route-classifier-shadow',
+  'test:real-flow-classifier-scorecard',
 ];
 
 function runGit(args, options = {}) {
@@ -147,8 +148,19 @@ assert(reviewEvidence?.summary?.sourceFixtureMutation === false, 'review-local e
 assert((reviewEvidence?.summary?.unsafeAllowSignals ?? []).length === 0, 'review-local evidence must report zero unsafe allow signals');
 
 const receiverAdapterEvidence = readJson(path.join(packageRoot, 'evidence/receiver-policy-adapter-contracts.out.json'));
+const realFlowReplayEvidence = readJson(path.join(packageRoot, 'evidence/real-flow-replay.out.json'));
+const realFlowClassifierScorecard = readJson(path.join(packageRoot, 'evidence/real-flow-classifier-scorecard.out.json'));
 assert(receiverAdapterEvidence?.summary?.verdict === 'pass', 'receiver adapter evidence verdict must be pass');
 assert(receiverAdapterEvidence?.summary?.unsafeAllows === 0, 'receiver adapter evidence must report unsafeAllows: 0');
+assert(realFlowReplayEvidence?.summary?.flowCount >= 20 && realFlowReplayEvidence?.summary?.flowCount <= 30, 'v0.1.6 real-flow replay must have 20–30 cases');
+assert(realFlowReplayEvidence?.summary?.falsePermitRate === 0, 'real-flow replay falsePermitRate must be 0');
+assert(realFlowReplayEvidence?.summary?.falseCompactRate === 0, 'real-flow replay falseCompactRate must be 0');
+assert(realFlowClassifierScorecard?.summary?.verdict === 'pass', 'real-flow classifier scorecard verdict must be pass');
+assert(realFlowClassifierScorecard?.summary?.flowCount >= 20 && realFlowClassifierScorecard?.summary?.flowCount <= 30, 'classifier scorecard must cover 20–30 real-flow cases');
+assert(realFlowClassifierScorecard?.summary?.mismatchCount === 0, 'classifier scorecard mismatchCount must be 0');
+assert(realFlowClassifierScorecard?.summary?.falsePermitRate === 0, 'classifier scorecard falsePermitRate must be 0');
+assert(realFlowClassifierScorecard?.summary?.falseCompactRate === 0, 'classifier scorecard falseCompactRate must be 0');
+assert(realFlowClassifierScorecard?.summary?.observedDecisionIsClassifierOutput === false, 'scorecard must keep observedDecision as fixture oracle, not classifier output');
 
 const reviewLocalCount = countLabel(reviewEvidence.summary.passCommands, reviewEvidence.summary.commands);
 const receiverAdapterCount = countLabel(receiverAdapterEvidence.summary.passCases, receiverAdapterEvidence.summary.totalCases);

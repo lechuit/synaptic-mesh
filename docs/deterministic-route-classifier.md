@@ -14,6 +14,7 @@ Current gate:
 ```bash
 cd implementation/synaptic-mesh-shadow-v0
 npm run test:route-classifier-shadow
+npm run test:real-flow-classifier-scorecard
 ```
 
 ## What it does
@@ -23,7 +24,8 @@ npm run test:route-classifier-shadow
 - emits reason codes, decisive signals, rejected routes, and explicit classifier boundary metadata;
 - compares classified routes against parser-normalization expected decisions;
 - reports false-permit and false-compact rates;
-- includes a negative control proving `candidateSummary.sensitiveSignals` cannot be ignored for `shadow_only` permits.
+- includes a negative control proving `candidateSummary.sensitiveSignals` cannot be ignored for `shadow_only` permits;
+- includes a 24-case real-flow scorecard that compares classifier output against offline gold labels while preserving `observedDecision` as fixture oracle, not classifier output.
 
 ## What it does not do
 

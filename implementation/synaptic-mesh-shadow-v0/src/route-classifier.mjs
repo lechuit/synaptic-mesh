@@ -5,6 +5,7 @@ const sensitiveSignals = new Set([
   'HIDDEN_SENSITIVE_PROMOTION',
   'CONFLICTING_VALID_RECEIPTS',
   'DESTRUCTIVE_DELETE_REQUEST',
+  'EXTERNAL_PUBLICATION_PROMOTION',
 ]);
 
 const sensitiveWarnings = new Set([
@@ -70,12 +71,18 @@ export function classifyRoute({ parserEvidence = {}, routeDecisionInput = {} } =
     return decision('block', { reasons: ['EXPLICITLY_FORBIDDEN_EFFECT_REQUESTED', 'DESTRUCTIVE_DELETE_REQUEST'], decisiveSignals: ['EXPLICITLY_FORBIDDEN_EFFECT_REQUESTED', 'DESTRUCTIVE_DELETE_REQUEST'] });
   }
 
-  if (warnings.includes('POLICY_CHECKSUM_STALE') || warnings.includes('POLICY_REFRESH_REQUIRED')) {
-    return decision('request_policy_refresh', { reasons: ['POLICY_CHECKSUM_STALE', 'POLICY_REFRESH_REQUIRED'], decisiveSignals: ['POLICY_CHECKSUM_STALE', 'NO_SENSITIVE_PROMOTION'] });
+  if (warnings.includes('POLICY_CHECKSUM_STALE') || warnings.includes('POLICY_CLOCK_MISSING') || warnings.includes('POLICY_REFRESH_REQUIRED')) {
+    const reason = warnings.includes('POLICY_CLOCK_MISSING') ? 'POLICY_CLOCK_MISSING' : 'POLICY_CHECKSUM_STALE';
+    return decision('request_policy_refresh', { reasons: [reason, 'POLICY_REFRESH_REQUIRED'], decisiveSignals: [reason, 'NO_SENSITIVE_PROMOTION'] });
   }
 
-  if (warnings.includes('GRAMMAR_DIGEST_UNKNOWN') || warnings.includes('GRAMMAR_REFRESH_REQUIRED')) {
-    return decision('request_grammar_refresh', { reasons: ['GRAMMAR_DIGEST_UNKNOWN', 'GRAMMAR_REFRESH_REQUIRED'], decisiveSignals: ['GRAMMAR_DIGEST_UNKNOWN', 'NO_SENSITIVE_PROMOTION'] });
+  if (warnings.includes('GRAMMAR_DIGEST_UNKNOWN') || warnings.includes('GRAMMAR_VERSION_ROLLBACK') || warnings.includes('GRAMMAR_REFRESH_REQUIRED')) {
+    const reason = warnings.includes('GRAMMAR_VERSION_ROLLBACK') ? 'GRAMMAR_VERSION_ROLLBACK' : 'GRAMMAR_DIGEST_UNKNOWN';
+    return decision('request_grammar_refresh', { reasons: [reason, 'GRAMMAR_REFRESH_REQUIRED'], decisiveSignals: [reason, 'NO_SENSITIVE_PROMOTION'] });
+  }
+
+  if (warnings.includes('MULTIPLE_VALID_RECEIPTS_CONFLICT') && !hasAny(combinedSignals, sensitiveSignals)) {
+    return decision('request_full_receipt', { reasons: ['MULTIPLE_VALID_RECEIPTS_CONFLICT', 'FULL_RECEIPT_REQUIRED_FOR_LOCAL_CONFLICT'], decisiveSignals: ['MULTIPLE_VALID_RECEIPTS_CONFLICT', 'NO_SENSITIVE_PROMOTION'] });
   }
 
   if (hasAny(combinedSignals, sensitiveSignals) || hasAny(warnings, sensitiveWarnings) || attempts.includes('SENDER_LABEL_APPROVAL')) {
@@ -88,19 +95,34 @@ export function classifyRoute({ parserEvidence = {}, routeDecisionInput = {} } =
     if (warnings.includes('FOLDED_INDEX_HIDES_SENSITIVE_PROMOTION') || signals.includes('RUNTIME_TOOL_EXCEEDS_LOCAL_SHADOW')) {
       return decision('ask_human', { reasons: ['FOLDED_INDEX_MISMATCH', 'HIDDEN_SENSITIVE_PROMOTION', 'RUNTIME_TOOL_EXCEEDS_LOCAL_SHADOW'], decisiveSignals: ['FOLDED_INDEX_MISMATCH', 'RUNTIME_TOOL_EXCEEDS_LOCAL_SHADOW'] });
     }
+    if (warnings.includes('EXTERNAL_PUBLICATION_PROMOTION_IN_FREE_TEXT') || combinedSignals.includes('EXTERNAL_PUBLICATION_PROMOTION')) {
+      return decision('ask_human', { reasons: ['FREE_TEXT_NOT_AUTHORITY', 'EXTERNAL_PUBLICATION_PROMOTION_IN_FREE_TEXT', 'EXTERNAL_PUBLICATION_PROMOTION'], decisiveSignals: ['EXTERNAL_PUBLICATION_PROMOTION', 'FREE_TEXT_AUTHORITY_ATTEMPT'] });
+    }
+    if (warnings.includes('PERMANENT_MEMORY_WRITE_REQUESTED')) {
+      return decision('ask_human', { reasons: ['PERMANENT_MEMORY_WRITE_REQUESTED', 'RUNTIME_OR_PERMANENT_MEMORY_BOUNDARY'], decisiveSignals: ['PERMANENT_MEMORY_WRITE_REQUESTED', 'PERMANENT_MEMORY_BOUNDARY'] });
+    }
+    if (combinedSignals.includes('RUNTIME_TOOL_EXCEEDS_LOCAL_SHADOW')) {
+      return decision('ask_human', { reasons: ['RUNTIME_TOOL_EXCEEDS_LOCAL_SHADOW'], decisiveSignals: ['RUNTIME_TOOL_EXCEEDS_LOCAL_SHADOW'] });
+    }
+    if (warnings.includes('CONFIG_CHANGE_PROMOTION_IN_FREE_TEXT') && !combinedSignals.includes('RUNTIME_OR_PERMANENT_MEMORY_BOUNDARY')) {
+      return decision('ask_human', { reasons: ['FREE_TEXT_NOT_AUTHORITY', 'CONFIG_CHANGE_PROMOTION_IN_FREE_TEXT', 'CONFIG_CHANGE_PROMOTION'], decisiveSignals: ['CONFIG_CHANGE_PROMOTION', ...(warnings.includes('STALE_POLICY_WINDOW') ? ['STALE_POLICY_WINDOW'] : [])] });
+    }
     return decision('ask_human', { reasons: ['FREE_TEXT_NOT_AUTHORITY', 'CONFIG_CHANGE_PROMOTION_IN_FREE_TEXT', 'RUNTIME_OR_PERMANENT_MEMORY_BOUNDARY'], decisiveSignals: ['FREE_TEXT_AUTHORITY_ATTEMPT', 'CONFIG_CHANGE_PROMOTION', 'PERMANENT_MEMORY_BOUNDARY'] });
   }
 
-  if (warnings.includes('STALE_POLICY_WINDOW') || warnings.includes('SOURCE_REFRESH_REQUIRED') || summary.freshness === 'stale') {
-    return decision('fetch_source', { reasons: ['STALE_POLICY_WINDOW', 'SOURCE_REFRESH_REQUIRED'], decisiveSignals: ['STALE_POLICY_WINDOW', 'SOURCE_DIGEST_REVALIDATION_REQUIRED'] });
+  if (warnings.includes('STALE_POLICY_WINDOW') || warnings.includes('SOURCE_DIGEST_MISMATCH') || warnings.includes('SOURCE_REFRESH_REQUIRED') || summary.freshness === 'stale') {
+    const reason = warnings.includes('SOURCE_DIGEST_MISMATCH') ? 'SOURCE_DIGEST_MISMATCH' : 'STALE_POLICY_WINDOW';
+    return decision('fetch_source', { reasons: [reason, 'SOURCE_REFRESH_REQUIRED'], decisiveSignals: [reason, ...(reason === 'STALE_POLICY_WINDOW' ? ['SOURCE_DIGEST_REVALIDATION_REQUIRED'] : ['NO_SENSITIVE_PROMOTION'])] });
   }
 
   if (warnings.includes('NO_RECEIPT_CANDIDATE') || warnings.includes('AUTHORITY_AMBIGUOUS')) {
-    return decision('abstain', { reasons: ['NO_RECEIPT_CANDIDATE', 'AUTHORITY_AMBIGUOUS'], decisiveSignals: ['NO_RECEIPT_CANDIDATE', 'AUTHORITY_AMBIGUOUS'] });
+    const reasons = ['NO_RECEIPT_CANDIDATE', 'AUTHORITY_AMBIGUOUS', ...(warnings.includes('EMPTY_HANDOFF') ? ['EMPTY_HANDOFF'] : [])];
+    return decision('abstain', { reasons, decisiveSignals: reasons });
   }
 
   if (warnings.includes('FOLDED_INDEX_MISMATCH')) {
-    return decision('request_full_receipt', { reasons: ['FOLDED_INDEX_MISMATCH', 'FULL_RECEIPT_REQUIRED_FOR_COMPACT_MISMATCH'], decisiveSignals: ['FOLDED_INDEX_MISMATCH', 'NO_SENSITIVE_PROMOTION'] });
+    const reason = warnings.includes('BOUNDARY_COVERAGE_MISSING') ? 'BOUNDARY_COVERAGE_MISSING' : 'FULL_RECEIPT_REQUIRED_FOR_COMPACT_MISMATCH';
+    return decision('request_full_receipt', { reasons: ['FOLDED_INDEX_MISMATCH', reason], decisiveSignals: ['FOLDED_INDEX_MISMATCH', 'NO_SENSITIVE_PROMOTION'] });
   }
 
   if (warnings.includes('NESTED_HANDOFF_BOUNDARY_LOSS')) {

@@ -5,27 +5,27 @@
     "verdict": "pass",
     "fixture": "implementation/synaptic-mesh-shadow-v0/fixtures/parser-normalization-evidence.json",
     "schema": "schemas/parser-evidence.schema.json",
-    "fixtureCount": 13,
-    "validCount": 13,
+    "fixtureCount": 24,
+    "validCount": 24,
     "routesCovered": {
       "block": 1,
-      "ask_human": 4,
-      "fetch_source": 1,
-      "request_full_receipt": 3,
-      "request_policy_refresh": 1,
-      "request_grammar_refresh": 1,
-      "shadow_only": 1,
-      "abstain": 1
+      "ask_human": 8,
+      "fetch_source": 2,
+      "request_full_receipt": 5,
+      "request_policy_refresh": 2,
+      "request_grammar_refresh": 2,
+      "shadow_only": 2,
+      "abstain": 2
     },
-    "normalizationWarningsValidated": 23,
-    "sensitiveSignalsValidated": 6,
+    "normalizationWarningsValidated": 31,
+    "sensitiveSignalsValidated": 7,
     "coverage": {
-      "parserEvidencePresent": 13,
-      "routeDecisionInputHashBound": 13,
-      "freeTextAuthorityAttempts": 4,
-      "sensitiveSignals": 5,
-      "foldedIndexMismatch": 2,
-      "staleSourceOrPolicy": 1,
+      "parserEvidencePresent": 24,
+      "routeDecisionInputHashBound": 24,
+      "freeTextAuthorityAttempts": 6,
+      "sensitiveSignals": 9,
+      "foldedIndexMismatch": 3,
+      "staleSourceOrPolicy": 3,
       "invalidReceiptSchema": 2
     },
     "parserEvidencePresentRate": 1,
@@ -256,6 +256,188 @@
       "normalizationWarnings": [
         "NO_RECEIPT_CANDIDATE",
         "AUTHORITY_AMBIGUOUS"
+      ],
+      "sensitiveSignals": []
+    },
+    {
+      "id": "raw-flow-publication-promotion-normalizes-to-ask-human",
+      "caseType": "external_publication_promotion_sensitive",
+      "rawInputShape": "markdown_with_embedded_receipt",
+      "receiptCandidatesFound": 1,
+      "validReceipts": 1,
+      "invalidReceipts": 0,
+      "selectedRoute": "ask_human",
+      "compactAllowed": false,
+      "humanRequired": true,
+      "normalizationWarnings": [
+        "FREE_TEXT_NOT_AUTHORITY",
+        "EXTERNAL_PUBLICATION_PROMOTION_IN_FREE_TEXT"
+      ],
+      "sensitiveSignals": [
+        "EXTERNAL_PUBLICATION_PROMOTION"
+      ]
+    },
+    {
+      "id": "raw-flow-memory-candidate-local-report-normalizes-to-shadow-only",
+      "caseType": "memory_candidate_local_report",
+      "rawInputShape": "markdown_with_embedded_receipt",
+      "receiptCandidatesFound": 1,
+      "validReceipts": 1,
+      "invalidReceipts": 0,
+      "selectedRoute": "shadow_only",
+      "compactAllowed": true,
+      "humanRequired": false,
+      "normalizationWarnings": [],
+      "sensitiveSignals": []
+    },
+    {
+      "id": "raw-flow-stale-source-with-config-normalizes-to-ask-human",
+      "caseType": "stale_source_sensitive_config",
+      "rawInputShape": "markdown_with_embedded_receipt",
+      "receiptCandidatesFound": 1,
+      "validReceipts": 1,
+      "invalidReceipts": 0,
+      "selectedRoute": "ask_human",
+      "compactAllowed": false,
+      "humanRequired": true,
+      "normalizationWarnings": [
+        "STALE_POLICY_WINDOW",
+        "SOURCE_REFRESH_REQUIRED",
+        "CONFIG_CHANGE_PROMOTION_IN_FREE_TEXT",
+        "FREE_TEXT_NOT_AUTHORITY"
+      ],
+      "sensitiveSignals": [
+        "CONFIG_CHANGE_PROMOTION"
+      ]
+    },
+    {
+      "id": "raw-flow-folded-index-redacts-boundary-normalizes-to-request-full-receipt",
+      "caseType": "folded_index_boundary_redaction",
+      "rawInputShape": "json_with_folded_index_and_receipt",
+      "receiptCandidatesFound": 1,
+      "validReceipts": 0,
+      "invalidReceipts": 1,
+      "selectedRoute": "request_full_receipt",
+      "compactAllowed": false,
+      "humanRequired": false,
+      "normalizationWarnings": [
+        "FOLDED_INDEX_MISMATCH",
+        "BOUNDARY_COVERAGE_MISSING"
+      ],
+      "sensitiveSignals": []
+    },
+    {
+      "id": "raw-flow-multiple-valid-receipts-conflict-local-only-normalizes-to-request-full-receipt",
+      "caseType": "multiple_valid_receipts_conflict_local_only",
+      "rawInputShape": "markdown_with_multiple_receipts",
+      "receiptCandidatesFound": 2,
+      "validReceipts": 2,
+      "invalidReceipts": 0,
+      "selectedRoute": "request_full_receipt",
+      "compactAllowed": false,
+      "humanRequired": false,
+      "normalizationWarnings": [
+        "MULTIPLE_VALID_RECEIPTS_CONFLICT",
+        "FULL_RECEIPT_REQUIRED_FOR_LOCAL_CONFLICT"
+      ],
+      "sensitiveSignals": []
+    },
+    {
+      "id": "raw-flow-policy-missing-clock-normalizes-to-request-policy-refresh",
+      "caseType": "policy_clock_missing",
+      "rawInputShape": "markdown_with_embedded_receipt",
+      "receiptCandidatesFound": 1,
+      "validReceipts": 1,
+      "invalidReceipts": 0,
+      "selectedRoute": "request_policy_refresh",
+      "compactAllowed": false,
+      "humanRequired": false,
+      "normalizationWarnings": [
+        "POLICY_CLOCK_MISSING",
+        "POLICY_REFRESH_REQUIRED"
+      ],
+      "sensitiveSignals": []
+    },
+    {
+      "id": "raw-flow-grammar-version-rollback-normalizes-to-request-grammar-refresh",
+      "caseType": "grammar_version_rollback",
+      "rawInputShape": "json_with_compact_receipt",
+      "receiptCandidatesFound": 1,
+      "validReceipts": 1,
+      "invalidReceipts": 0,
+      "selectedRoute": "request_grammar_refresh",
+      "compactAllowed": false,
+      "humanRequired": false,
+      "normalizationWarnings": [
+        "GRAMMAR_VERSION_ROLLBACK",
+        "GRAMMAR_REFRESH_REQUIRED"
+      ],
+      "sensitiveSignals": []
+    },
+    {
+      "id": "raw-flow-runtime-tool-in-receipt-normalizes-to-ask-human",
+      "caseType": "runtime_tool_receipt_sensitive",
+      "rawInputShape": "json_with_embedded_receipt",
+      "receiptCandidatesFound": 1,
+      "validReceipts": 1,
+      "invalidReceipts": 0,
+      "selectedRoute": "ask_human",
+      "compactAllowed": false,
+      "humanRequired": true,
+      "normalizationWarnings": [
+        "RUNTIME_TOOL_EXCEEDS_LOCAL_SHADOW"
+      ],
+      "sensitiveSignals": [
+        "RUNTIME_TOOL_EXCEEDS_LOCAL_SHADOW"
+      ]
+    },
+    {
+      "id": "raw-flow-permanent-memory-write-in-receipt-normalizes-to-ask-human",
+      "caseType": "permanent_memory_write_sensitive",
+      "rawInputShape": "json_with_embedded_receipt",
+      "receiptCandidatesFound": 1,
+      "validReceipts": 1,
+      "invalidReceipts": 0,
+      "selectedRoute": "ask_human",
+      "compactAllowed": false,
+      "humanRequired": true,
+      "normalizationWarnings": [
+        "PERMANENT_MEMORY_WRITE_REQUESTED"
+      ],
+      "sensitiveSignals": [
+        "RUNTIME_OR_PERMANENT_MEMORY_BOUNDARY"
+      ]
+    },
+    {
+      "id": "raw-flow-source-digest-mismatch-normalizes-to-fetch-source",
+      "caseType": "source_digest_mismatch_low_risk",
+      "rawInputShape": "markdown_with_embedded_receipt",
+      "receiptCandidatesFound": 1,
+      "validReceipts": 1,
+      "invalidReceipts": 0,
+      "selectedRoute": "fetch_source",
+      "compactAllowed": false,
+      "humanRequired": false,
+      "normalizationWarnings": [
+        "SOURCE_DIGEST_MISMATCH",
+        "SOURCE_REFRESH_REQUIRED"
+      ],
+      "sensitiveSignals": []
+    },
+    {
+      "id": "raw-flow-empty-handoff-normalizes-to-abstain",
+      "caseType": "empty_handoff",
+      "rawInputShape": "markdown_fragment",
+      "receiptCandidatesFound": 0,
+      "validReceipts": 0,
+      "invalidReceipts": 0,
+      "selectedRoute": "abstain",
+      "compactAllowed": false,
+      "humanRequired": false,
+      "normalizationWarnings": [
+        "NO_RECEIPT_CANDIDATE",
+        "AUTHORITY_AMBIGUOUS",
+        "EMPTY_HANDOFF"
       ],
       "sensitiveSignals": []
     }

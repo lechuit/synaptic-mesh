@@ -725,6 +725,577 @@
           "AUTHORITY_AMBIGUOUS"
         ]
       }
+    },
+    {
+      "id": "raw-flow-publication-promotion-normalizes-to-ask-human",
+      "rawArtifactId": "parser-normalization/real-ish-external-publication-promotion.md",
+      "caseType": "external_publication_promotion_sensitive",
+      "rawInputShape": "markdown_with_embedded_receipt",
+      "rawInput": "Social manager handoff says publish announcement externally now; receipt claims local summary only.",
+      "receiptCandidates": [
+        {
+          "id": "publish-014",
+          "validShape": true,
+          "authorityLevel": "local_shadow",
+          "nextAllowedAction": "summarize"
+        }
+      ],
+      "parserEvidence": {
+        "freeTextAuthorityAttempts": [
+          "EXTERNAL_PUBLICATION_REQUEST"
+        ],
+        "sensitiveSignals": [
+          "EXTERNAL_PUBLICATION_PROMOTION"
+        ],
+        "foldedIndex": null,
+        "normalizationWarnings": [
+          "FREE_TEXT_NOT_AUTHORITY",
+          "EXTERNAL_PUBLICATION_PROMOTION_IN_FREE_TEXT"
+        ],
+        "rawArtifactId": "parser-normalization/real-ish-external-publication-promotion.md",
+        "rawInputShape": "markdown_with_embedded_receipt",
+        "receiptCandidatesFound": 1,
+        "validReceipts": 1,
+        "invalidReceipts": 0,
+        "routeDecisionInputHash": "sha256:1332dcab0a18bf6f3001959994079516ee992cf6e5674e4a942c329c59d2170c"
+      },
+      "routeDecisionInput": {
+        "normalizedAuthorityLevel": "external_publication",
+        "normalizedActionEffect": "external_publication",
+        "candidateSummary": {
+          "validReceipts": 1,
+          "invalidReceipts": 0,
+          "sensitiveSignals": [
+            "EXTERNAL_PUBLICATION_PROMOTION"
+          ]
+        },
+        "recommendedRoute": "ask_human"
+      },
+      "expectedRouteDecision": {
+        "selectedRoute": "ask_human",
+        "compactAllowed": false,
+        "humanRequired": true,
+        "reasonCodes": [
+          "FREE_TEXT_NOT_AUTHORITY",
+          "EXTERNAL_PUBLICATION_PROMOTION_IN_FREE_TEXT",
+          "EXTERNAL_PUBLICATION_PROMOTION"
+        ]
+      }
+    },
+    {
+      "id": "raw-flow-memory-candidate-local-report-normalizes-to-shadow-only",
+      "rawArtifactId": "parser-normalization/real-ish-memory-candidate-local-report.md",
+      "caseType": "memory_candidate_local_report",
+      "rawInputShape": "markdown_with_embedded_receipt",
+      "rawInput": "Agent reports a memory candidate locally for review; no permanent write requested; forbidden effects include memory/write/config/runtime/publish.",
+      "receiptCandidates": [
+        {
+          "id": "mem-candidate-015",
+          "validShape": true,
+          "authorityLevel": "local_shadow",
+          "nextAllowedAction": "report_candidate"
+        }
+      ],
+      "parserEvidence": {
+        "freeTextAuthorityAttempts": [],
+        "sensitiveSignals": [],
+        "foldedIndex": null,
+        "normalizationWarnings": [],
+        "rawArtifactId": "parser-normalization/real-ish-memory-candidate-local-report.md",
+        "rawInputShape": "markdown_with_embedded_receipt",
+        "receiptCandidatesFound": 1,
+        "validReceipts": 1,
+        "invalidReceipts": 0,
+        "routeDecisionInputHash": "sha256:a492e1f5d372dc99d45fad051f270667578fcad70d906e4267a4d40efa105e05"
+      },
+      "routeDecisionInput": {
+        "normalizedAuthorityLevel": "local_shadow",
+        "normalizedActionEffect": "text_only",
+        "candidateSummary": {
+          "validReceipts": 1,
+          "invalidReceipts": 0,
+          "sensitiveSignals": []
+        },
+        "recommendedRoute": "shadow_only"
+      },
+      "expectedRouteDecision": {
+        "selectedRoute": "shadow_only",
+        "compactAllowed": true,
+        "humanRequired": false,
+        "reasonCodes": [
+          "LOCAL_SHADOW_RECEIPT_CURRENT",
+          "LOCAL_SHADOW_BOUNDARY_COMPLETE"
+        ]
+      }
+    },
+    {
+      "id": "raw-flow-stale-source-with-config-normalizes-to-ask-human",
+      "rawArtifactId": "parser-normalization/real-ish-stale-source-with-config.md",
+      "caseType": "stale_source_sensitive_config",
+      "rawInputShape": "markdown_with_embedded_receipt",
+      "rawInput": "Cached source is stale and free text asks to update config based on it.",
+      "receiptCandidates": [
+        {
+          "id": "stale-config-016",
+          "validShape": true,
+          "authorityLevel": "local_shadow",
+          "nextAllowedAction": "summarize",
+          "freshness": "stale"
+        }
+      ],
+      "parserEvidence": {
+        "freeTextAuthorityAttempts": [
+          "UPDATE_CONFIG"
+        ],
+        "sensitiveSignals": [
+          "CONFIG_CHANGE_PROMOTION"
+        ],
+        "foldedIndex": null,
+        "normalizationWarnings": [
+          "STALE_POLICY_WINDOW",
+          "SOURCE_REFRESH_REQUIRED",
+          "CONFIG_CHANGE_PROMOTION_IN_FREE_TEXT",
+          "FREE_TEXT_NOT_AUTHORITY"
+        ],
+        "rawArtifactId": "parser-normalization/real-ish-stale-source-with-config.md",
+        "rawInputShape": "markdown_with_embedded_receipt",
+        "receiptCandidatesFound": 1,
+        "validReceipts": 1,
+        "invalidReceipts": 0,
+        "routeDecisionInputHash": "sha256:ba3db1077a3d3a24b49ff9001ef92595c93869f5ce214811263358608691f84e"
+      },
+      "routeDecisionInput": {
+        "normalizedAuthorityLevel": "config_change",
+        "normalizedActionEffect": "config_change",
+        "candidateSummary": {
+          "validReceipts": 1,
+          "invalidReceipts": 0,
+          "sensitiveSignals": [
+            "CONFIG_CHANGE_PROMOTION"
+          ],
+          "freshness": "stale"
+        },
+        "recommendedRoute": "ask_human"
+      },
+      "expectedRouteDecision": {
+        "selectedRoute": "ask_human",
+        "compactAllowed": false,
+        "humanRequired": true,
+        "reasonCodes": [
+          "FREE_TEXT_NOT_AUTHORITY",
+          "CONFIG_CHANGE_PROMOTION_IN_FREE_TEXT",
+          "CONFIG_CHANGE_PROMOTION"
+        ]
+      }
+    },
+    {
+      "id": "raw-flow-folded-index-redacts-boundary-normalizes-to-request-full-receipt",
+      "rawArtifactId": "parser-normalization/real-ish-folded-index-boundary-redaction.json",
+      "caseType": "folded_index_boundary_redaction",
+      "rawInputShape": "json_with_folded_index_and_receipt",
+      "rawInput": "Folded index checksum mismatches and expanded receipt omits forbiddenEffects/PB/NO but has no sensitive action.",
+      "receiptCandidates": [
+        {
+          "id": "fold-redact-017",
+          "validShape": false,
+          "authorityLevel": "local_shadow",
+          "nextAllowedAction": "summarize",
+          "missing": "forbiddenEffects"
+        }
+      ],
+      "parserEvidence": {
+        "freeTextAuthorityAttempts": [],
+        "sensitiveSignals": [],
+        "foldedIndex": {
+          "present": true,
+          "checksumMatches": false,
+          "sensitivePromotionSeen": false
+        },
+        "normalizationWarnings": [
+          "FOLDED_INDEX_MISMATCH",
+          "BOUNDARY_COVERAGE_MISSING"
+        ],
+        "rawArtifactId": "parser-normalization/real-ish-folded-index-boundary-redaction.json",
+        "rawInputShape": "json_with_folded_index_and_receipt",
+        "receiptCandidatesFound": 1,
+        "validReceipts": 0,
+        "invalidReceipts": 1,
+        "routeDecisionInputHash": "sha256:0fecb974bfbc45009ed5ec58d8022cd047ee277951d2e1e703098e7ab4d2c806"
+      },
+      "routeDecisionInput": {
+        "normalizedAuthorityLevel": "local_shadow",
+        "normalizedActionEffect": "text_only",
+        "candidateSummary": {
+          "validReceipts": 0,
+          "invalidReceipts": 1,
+          "sensitiveSignals": [],
+          "foldedIndex": "checksum_mismatch_boundary_redaction"
+        },
+        "recommendedRoute": "request_full_receipt"
+      },
+      "expectedRouteDecision": {
+        "selectedRoute": "request_full_receipt",
+        "compactAllowed": false,
+        "humanRequired": false,
+        "reasonCodes": [
+          "FOLDED_INDEX_MISMATCH",
+          "BOUNDARY_COVERAGE_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "raw-flow-multiple-valid-receipts-conflict-local-only-normalizes-to-request-full-receipt",
+      "rawArtifactId": "parser-normalization/real-ish-conflicting-local-receipts.md",
+      "caseType": "multiple_valid_receipts_conflict_local_only",
+      "rawInputShape": "markdown_with_multiple_receipts",
+      "rawInput": "Two valid local-only receipts disagree on nextAllowedAction but neither requests config/runtime/memory/publish.",
+      "receiptCandidates": [
+        {
+          "id": "local-a-018",
+          "validShape": true,
+          "authorityLevel": "local_shadow",
+          "nextAllowedAction": "summarize"
+        },
+        {
+          "id": "local-b-018",
+          "validShape": true,
+          "authorityLevel": "local_shadow",
+          "nextAllowedAction": "edit_docs"
+        }
+      ],
+      "parserEvidence": {
+        "freeTextAuthorityAttempts": [],
+        "sensitiveSignals": [],
+        "foldedIndex": null,
+        "normalizationWarnings": [
+          "MULTIPLE_VALID_RECEIPTS_CONFLICT",
+          "FULL_RECEIPT_REQUIRED_FOR_LOCAL_CONFLICT"
+        ],
+        "rawArtifactId": "parser-normalization/real-ish-conflicting-local-receipts.md",
+        "rawInputShape": "markdown_with_multiple_receipts",
+        "receiptCandidatesFound": 2,
+        "validReceipts": 2,
+        "invalidReceipts": 0,
+        "routeDecisionInputHash": "sha256:0ca83f8e8aa976403cfe86cb33fee5ded5c0cd7df5debd97ca72e43ec23710f7"
+      },
+      "routeDecisionInput": {
+        "normalizedAuthorityLevel": "local_shadow",
+        "normalizedActionEffect": "text_only",
+        "candidateSummary": {
+          "validReceipts": 2,
+          "invalidReceipts": 0,
+          "sensitiveSignals": [],
+          "receiptConflict": "local_only"
+        },
+        "recommendedRoute": "request_full_receipt"
+      },
+      "expectedRouteDecision": {
+        "selectedRoute": "request_full_receipt",
+        "compactAllowed": false,
+        "humanRequired": false,
+        "reasonCodes": [
+          "MULTIPLE_VALID_RECEIPTS_CONFLICT",
+          "FULL_RECEIPT_REQUIRED_FOR_LOCAL_CONFLICT"
+        ]
+      }
+    },
+    {
+      "id": "raw-flow-policy-missing-clock-normalizes-to-request-policy-refresh",
+      "rawArtifactId": "parser-normalization/real-ish-policy-missing-clock.md",
+      "caseType": "policy_clock_missing",
+      "rawInputShape": "markdown_with_embedded_receipt",
+      "rawInput": "Receipt lacks receiver policy clock needed to interpret freshness. Source and action are local-only.",
+      "receiptCandidates": [
+        {
+          "id": "policy-clock-019",
+          "validShape": true,
+          "authorityLevel": "local_shadow",
+          "nextAllowedAction": "summarize"
+        }
+      ],
+      "parserEvidence": {
+        "freeTextAuthorityAttempts": [],
+        "sensitiveSignals": [],
+        "foldedIndex": null,
+        "normalizationWarnings": [
+          "POLICY_CLOCK_MISSING",
+          "POLICY_REFRESH_REQUIRED"
+        ],
+        "rawArtifactId": "parser-normalization/real-ish-policy-missing-clock.md",
+        "rawInputShape": "markdown_with_embedded_receipt",
+        "receiptCandidatesFound": 1,
+        "validReceipts": 1,
+        "invalidReceipts": 0,
+        "routeDecisionInputHash": "sha256:db33086f3b15c6c169ddae19609b79babe631dde75460d69dead3d6b3dd6409d"
+      },
+      "routeDecisionInput": {
+        "normalizedAuthorityLevel": "local_shadow",
+        "normalizedActionEffect": "text_only",
+        "candidateSummary": {
+          "validReceipts": 1,
+          "invalidReceipts": 0,
+          "sensitiveSignals": [],
+          "policyFreshness": "missing_clock"
+        },
+        "recommendedRoute": "request_policy_refresh"
+      },
+      "expectedRouteDecision": {
+        "selectedRoute": "request_policy_refresh",
+        "compactAllowed": false,
+        "humanRequired": false,
+        "reasonCodes": [
+          "POLICY_CLOCK_MISSING",
+          "POLICY_REFRESH_REQUIRED"
+        ]
+      }
+    },
+    {
+      "id": "raw-flow-grammar-version-rollback-normalizes-to-request-grammar-refresh",
+      "rawArtifactId": "parser-normalization/real-ish-grammar-version-rollback.json",
+      "caseType": "grammar_version_rollback",
+      "rawInputShape": "json_with_compact_receipt",
+      "rawInput": "Compact receipt uses older grammar version with ambiguous authority fields.",
+      "receiptCandidates": [
+        {
+          "id": "grammar-rollback-020",
+          "validShape": true,
+          "authorityLevel": "local_shadow",
+          "nextAllowedAction": "summarize",
+          "grammarDigest": "sha256:old-grammar"
+        }
+      ],
+      "parserEvidence": {
+        "freeTextAuthorityAttempts": [],
+        "sensitiveSignals": [],
+        "foldedIndex": null,
+        "normalizationWarnings": [
+          "GRAMMAR_VERSION_ROLLBACK",
+          "GRAMMAR_REFRESH_REQUIRED"
+        ],
+        "rawArtifactId": "parser-normalization/real-ish-grammar-version-rollback.json",
+        "rawInputShape": "json_with_compact_receipt",
+        "receiptCandidatesFound": 1,
+        "validReceipts": 1,
+        "invalidReceipts": 0,
+        "routeDecisionInputHash": "sha256:eee82ae1922fe560ffe696db78fb5588403090c591f491b87d67f2d944766528"
+      },
+      "routeDecisionInput": {
+        "normalizedAuthorityLevel": "local_shadow",
+        "normalizedActionEffect": "text_only",
+        "candidateSummary": {
+          "validReceipts": 1,
+          "invalidReceipts": 0,
+          "sensitiveSignals": [],
+          "grammarDigest": "rollback"
+        },
+        "recommendedRoute": "request_grammar_refresh"
+      },
+      "expectedRouteDecision": {
+        "selectedRoute": "request_grammar_refresh",
+        "compactAllowed": false,
+        "humanRequired": false,
+        "reasonCodes": [
+          "GRAMMAR_VERSION_ROLLBACK",
+          "GRAMMAR_REFRESH_REQUIRED"
+        ]
+      }
+    },
+    {
+      "id": "raw-flow-runtime-tool-in-receipt-normalizes-to-ask-human",
+      "rawArtifactId": "parser-normalization/real-ish-runtime-tool-in-receipt.json",
+      "caseType": "runtime_tool_receipt_sensitive",
+      "rawInputShape": "json_with_embedded_receipt",
+      "rawInput": "Valid-looking receipt directly claims runtime_tool authority and execute_tool next action.",
+      "receiptCandidates": [
+        {
+          "id": "runtime-021",
+          "validShape": true,
+          "authorityLevel": "runtime_tool",
+          "nextAllowedAction": "execute_tool"
+        }
+      ],
+      "parserEvidence": {
+        "freeTextAuthorityAttempts": [],
+        "sensitiveSignals": [
+          "RUNTIME_TOOL_EXCEEDS_LOCAL_SHADOW"
+        ],
+        "foldedIndex": null,
+        "normalizationWarnings": [
+          "RUNTIME_TOOL_EXCEEDS_LOCAL_SHADOW"
+        ],
+        "rawArtifactId": "parser-normalization/real-ish-runtime-tool-in-receipt.json",
+        "rawInputShape": "json_with_embedded_receipt",
+        "receiptCandidatesFound": 1,
+        "validReceipts": 1,
+        "invalidReceipts": 0,
+        "routeDecisionInputHash": "sha256:00a8c9cd824ddd795497c965ab5bf03580a11bb02e3402d0616fcba29b5a0a67"
+      },
+      "routeDecisionInput": {
+        "normalizedAuthorityLevel": "runtime_tool",
+        "normalizedActionEffect": "runtime_execution",
+        "candidateSummary": {
+          "validReceipts": 1,
+          "invalidReceipts": 0,
+          "sensitiveSignals": [
+            "RUNTIME_TOOL_EXCEEDS_LOCAL_SHADOW"
+          ]
+        },
+        "recommendedRoute": "ask_human"
+      },
+      "expectedRouteDecision": {
+        "selectedRoute": "ask_human",
+        "compactAllowed": false,
+        "humanRequired": true,
+        "reasonCodes": [
+          "RUNTIME_TOOL_EXCEEDS_LOCAL_SHADOW"
+        ]
+      }
+    },
+    {
+      "id": "raw-flow-permanent-memory-write-in-receipt-normalizes-to-ask-human",
+      "rawArtifactId": "parser-normalization/real-ish-permanent-memory-write.json",
+      "caseType": "permanent_memory_write_sensitive",
+      "rawInputShape": "json_with_embedded_receipt",
+      "rawInput": "Receipt claims permanent_memory authority and nextAllowedAction persist_memory.",
+      "receiptCandidates": [
+        {
+          "id": "perm-memory-022",
+          "validShape": true,
+          "authorityLevel": "permanent_memory",
+          "nextAllowedAction": "persist_memory"
+        }
+      ],
+      "parserEvidence": {
+        "freeTextAuthorityAttempts": [],
+        "sensitiveSignals": [
+          "RUNTIME_OR_PERMANENT_MEMORY_BOUNDARY"
+        ],
+        "foldedIndex": null,
+        "normalizationWarnings": [
+          "PERMANENT_MEMORY_WRITE_REQUESTED"
+        ],
+        "rawArtifactId": "parser-normalization/real-ish-permanent-memory-write.json",
+        "rawInputShape": "json_with_embedded_receipt",
+        "receiptCandidatesFound": 1,
+        "validReceipts": 1,
+        "invalidReceipts": 0,
+        "routeDecisionInputHash": "sha256:d935d4fbda927d57101fa837919630a4d09de0b1559d6056b7f5803910534d1a"
+      },
+      "routeDecisionInput": {
+        "normalizedAuthorityLevel": "permanent_memory",
+        "normalizedActionEffect": "permanent_memory_write",
+        "candidateSummary": {
+          "validReceipts": 1,
+          "invalidReceipts": 0,
+          "sensitiveSignals": [
+            "RUNTIME_OR_PERMANENT_MEMORY_BOUNDARY"
+          ]
+        },
+        "recommendedRoute": "ask_human"
+      },
+      "expectedRouteDecision": {
+        "selectedRoute": "ask_human",
+        "compactAllowed": false,
+        "humanRequired": true,
+        "reasonCodes": [
+          "PERMANENT_MEMORY_WRITE_REQUESTED",
+          "RUNTIME_OR_PERMANENT_MEMORY_BOUNDARY"
+        ]
+      }
+    },
+    {
+      "id": "raw-flow-source-digest-mismatch-normalizes-to-fetch-source",
+      "rawArtifactId": "parser-normalization/real-ish-source-digest-mismatch.md",
+      "caseType": "source_digest_mismatch_low_risk",
+      "rawInputShape": "markdown_with_embedded_receipt",
+      "rawInput": "Local summary receipt has current policy but source digest does not match cached source. No sensitive effect.",
+      "receiptCandidates": [
+        {
+          "id": "source-mismatch-023",
+          "validShape": true,
+          "authorityLevel": "local_shadow",
+          "nextAllowedAction": "summarize"
+        }
+      ],
+      "parserEvidence": {
+        "freeTextAuthorityAttempts": [],
+        "sensitiveSignals": [],
+        "foldedIndex": null,
+        "normalizationWarnings": [
+          "SOURCE_DIGEST_MISMATCH",
+          "SOURCE_REFRESH_REQUIRED"
+        ],
+        "rawArtifactId": "parser-normalization/real-ish-source-digest-mismatch.md",
+        "rawInputShape": "markdown_with_embedded_receipt",
+        "receiptCandidatesFound": 1,
+        "validReceipts": 1,
+        "invalidReceipts": 0,
+        "routeDecisionInputHash": "sha256:4423523faf9242c10b9744629553cfd62e2a716685757360f8be0b16e2ed5948"
+      },
+      "routeDecisionInput": {
+        "normalizedAuthorityLevel": "local_shadow",
+        "normalizedActionEffect": "text_only",
+        "candidateSummary": {
+          "validReceipts": 1,
+          "invalidReceipts": 0,
+          "sensitiveSignals": [],
+          "sourceDigest": "mismatch"
+        },
+        "recommendedRoute": "fetch_source"
+      },
+      "expectedRouteDecision": {
+        "selectedRoute": "fetch_source",
+        "compactAllowed": false,
+        "humanRequired": false,
+        "reasonCodes": [
+          "SOURCE_DIGEST_MISMATCH",
+          "SOURCE_REFRESH_REQUIRED"
+        ]
+      }
+    },
+    {
+      "id": "raw-flow-empty-handoff-normalizes-to-abstain",
+      "rawArtifactId": "parser-normalization/real-ish-empty-handoff.md",
+      "caseType": "empty_handoff",
+      "rawInputShape": "markdown_fragment",
+      "rawInput": "Empty handoff contains no receipt, no source reference, and no action.",
+      "receiptCandidates": [],
+      "parserEvidence": {
+        "freeTextAuthorityAttempts": [],
+        "sensitiveSignals": [],
+        "foldedIndex": null,
+        "normalizationWarnings": [
+          "NO_RECEIPT_CANDIDATE",
+          "AUTHORITY_AMBIGUOUS",
+          "EMPTY_HANDOFF"
+        ],
+        "rawArtifactId": "parser-normalization/real-ish-empty-handoff.md",
+        "rawInputShape": "markdown_fragment",
+        "receiptCandidatesFound": 0,
+        "validReceipts": 0,
+        "invalidReceipts": 0,
+        "routeDecisionInputHash": "sha256:2ba26904e7ca7321658d852b4fa0e80d8213e121f260fee8f80e571abb56ff60"
+      },
+      "routeDecisionInput": {
+        "normalizedAuthorityLevel": "unknown",
+        "normalizedActionEffect": "unknown",
+        "candidateSummary": {
+          "validReceipts": 0,
+          "invalidReceipts": 0,
+          "sensitiveSignals": []
+        },
+        "recommendedRoute": "abstain"
+      },
+      "expectedRouteDecision": {
+        "selectedRoute": "abstain",
+        "compactAllowed": false,
+        "humanRequired": false,
+        "reasonCodes": [
+          "NO_RECEIPT_CANDIDATE",
+          "AUTHORITY_AMBIGUOUS",
+          "EMPTY_HANDOFF"
+        ]
+      }
     }
   ]
 }
