@@ -25,7 +25,7 @@ npm run test:real-flow-classifier-scorecard
 - compares classified routes against parser-normalization expected decisions;
 - reports false-permit and false-compact rates;
 - includes a negative control proving `candidateSummary.sensitiveSignals` cannot be ignored for `shadow_only` permits;
-- includes a 24-case real-flow scorecard that compares classifier output against offline gold labels while preserving `observedDecision` as fixture oracle, not classifier output.
+- includes a 24-case real-flow scorecard that compares `classifierDecision` against offline `goldDecision` and does not consume deprecated `observedDecision` metadata.
 
 ## What it does not do
 

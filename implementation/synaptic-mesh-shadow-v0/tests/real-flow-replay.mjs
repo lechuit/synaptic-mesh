@@ -35,6 +35,10 @@ function parserEvidenceReplayHash(parserRecord) {
   });
 }
 
+function decisionHash(decision) {
+  return sha256(decision);
+}
+
 function enumValues(schema, propertyName) {
   const values = schema.properties?.[propertyName]?.enum;
   assert.ok(Array.isArray(values), `schema must define enum for ${propertyName}`);
@@ -58,48 +62,45 @@ function assertFlow(flow, routeEnums, parserEvidenceById) {
   assert.match(flow.parserEvidenceRefHash, /^sha256:[a-f0-9]{64}$/, `${flow.flowId} parserEvidenceRefHash must be sha256`);
   assert.equal(flow.parserEvidenceRefHash, parserEvidenceReplayHash(parserRecord), `${flow.flowId} parserEvidenceRefHash must match linked parserEvidence + routeDecisionInput`);
 
-  const gold = flow.goldLabel;
-  const observed = flow.observedDecision;
-  assert.ok(gold && typeof gold === 'object', `${flow.flowId} goldLabel must exist`);
-  assert.ok(observed && typeof observed === 'object', `${flow.flowId} observedDecision must exist`);
-  assert.ok(routeEnums.routes.has(gold.expectedRoute), `${flow.flowId} gold expectedRoute must be canonical`);
-  assert.ok(routeEnums.routes.has(observed.selectedRoute), `${flow.flowId} observed selectedRoute must be canonical`);
-  assert.equal(typeof gold.expectedHumanRequired, 'boolean', `${flow.flowId} expectedHumanRequired must be boolean`);
-  assert.equal(typeof gold.expectedCompactAllowed, 'boolean', `${flow.flowId} expectedCompactAllowed must be boolean`);
-  assert.equal(typeof observed.humanRequired, 'boolean', `${flow.flowId} observed humanRequired must be boolean`);
-  assert.equal(typeof observed.compactAllowed, 'boolean', `${flow.flowId} observed compactAllowed must be boolean`);
-  assertStableCodes(gold.expectedReasonCodes, `${flow.flowId} expectedReasonCodes`);
-  assertStableCodes(observed.reasonCodes, `${flow.flowId} observed reasonCodes`);
-  assertStableCodes(observed.decisiveSignals, `${flow.flowId} decisiveSignals`);
+  const gold = flow.goldDecision;
+  assert.ok(gold && typeof gold === 'object', `${flow.flowId} goldDecision must exist`);
+  assert.ok(routeEnums.routes.has(gold.selectedRoute), `${flow.flowId} goldDecision selectedRoute must be canonical`);
+  assert.equal(typeof gold.humanRequired, 'boolean', `${flow.flowId} goldDecision humanRequired must be boolean`);
+  assert.equal(typeof gold.compactAllowed, 'boolean', `${flow.flowId} goldDecision compactAllowed must be boolean`);
+  assertStableCodes(gold.reasonCodes, `${flow.flowId} goldDecision reasonCodes`);
+  assertStableCodes(gold.decisiveSignals, `${flow.flowId} goldDecision decisiveSignals`);
   assert.ok(Array.isArray(gold.forbiddenEffects), `${flow.flowId} forbiddenEffects must be array`);
   assert.ok(gold.forbiddenEffects.length > 0, `${flow.flowId} forbiddenEffects must not be empty`);
 
-  assert.equal(observed.selectedRoute, gold.expectedRoute, `${flow.flowId} selectedRoute must match gold label`);
-  assert.equal(observed.humanRequired, gold.expectedHumanRequired, `${flow.flowId} humanRequired must match gold label`);
-  assert.equal(observed.compactAllowed, gold.expectedCompactAllowed, `${flow.flowId} compactAllowed must match gold label`);
-  for (const code of gold.expectedReasonCodes) assert.ok(observed.reasonCodes.includes(code), `${flow.flowId} missing expected reason ${code}`);
+  if (compactForbiddenRoutes.has(gold.selectedRoute)) assert.equal(gold.compactAllowed, false, `${flow.flowId} ${gold.selectedRoute} must not compact`);
+  if (gold.selectedRoute === 'ask_human') assert.equal(gold.humanRequired, true, `${flow.flowId} ask_human must require human`);
+  if (['fetch_source', 'request_full_receipt', 'block'].includes(gold.selectedRoute)) assert.equal(gold.humanRequired, false, `${flow.flowId} ${gold.selectedRoute} must not require human by default`);
 
-  if (compactForbiddenRoutes.has(observed.selectedRoute)) assert.equal(observed.compactAllowed, false, `${flow.flowId} ${observed.selectedRoute} must not compact`);
-  if (observed.selectedRoute === 'ask_human') assert.equal(observed.humanRequired, true, `${flow.flowId} ask_human must require human`);
-  if (['fetch_source', 'request_full_receipt', 'block'].includes(observed.selectedRoute)) assert.equal(observed.humanRequired, false, `${flow.flowId} ${observed.selectedRoute} must not require human by default`);
-
-  assert.ok(observed.rejectedRoutes && typeof observed.rejectedRoutes === 'object' && !Array.isArray(observed.rejectedRoutes), `${flow.flowId} rejectedRoutes must be object`);
-  for (const [route, reasons] of Object.entries(observed.rejectedRoutes)) {
+  assert.ok(gold.rejectedRoutes && typeof gold.rejectedRoutes === 'object' && !Array.isArray(gold.rejectedRoutes), `${flow.flowId} rejectedRoutes must be object`);
+  for (const [route, reasons] of Object.entries(gold.rejectedRoutes)) {
     assert.ok(routeEnums.routes.has(route), `${flow.flowId} rejected route ${route} must be canonical`);
-    assert.notEqual(route, observed.selectedRoute, `${flow.flowId} must not reject selected route`);
+    assert.notEqual(route, gold.selectedRoute, `${flow.flowId} must not reject selected route`);
     assertStableCodes(Array.isArray(reasons) ? reasons : [reasons], `${flow.flowId} rejected ${route} reasons`);
+  }
+
+  if (flow.observedDecision !== undefined) {
+    assert.deepEqual(flow.observedDecision, {
+      deprecated: true,
+      replacement: 'goldDecision',
+      note: 'legacy fixture oracle only; scorecards must not consume this field',
+    }, `${flow.flowId} observedDecision must be deprecated metadata only`);
   }
 }
 
 function assertMinimumCoverage(flows) {
   const routeCounts = new Map();
-  for (const flow of flows) routeCounts.set(flow.observedDecision.selectedRoute, (routeCounts.get(flow.observedDecision.selectedRoute) ?? 0) + 1);
+  for (const flow of flows) routeCounts.set(flow.goldDecision.selectedRoute, (routeCounts.get(flow.goldDecision.selectedRoute) ?? 0) + 1);
   for (const route of ['block', 'ask_human', 'fetch_source', 'request_full_receipt', 'request_policy_refresh', 'request_grammar_refresh', 'shadow_only', 'abstain']) {
     assert.ok((routeCounts.get(route) ?? 0) > 0, `real-flow replay must cover route ${route}`);
   }
-  assert.ok(flows.some((flow) => flow.goldLabel.forbiddenEffects.includes('memory')), 'must include memory boundary replay');
-  assert.ok(flows.some((flow) => flow.goldLabel.forbiddenEffects.includes('config')), 'must include config boundary replay');
-  assert.ok(flows.some((flow) => flow.goldLabel.forbiddenEffects.includes('runtime') || flow.goldLabel.forbiddenEffects.includes('tool_execution')), 'must include runtime/tool boundary replay');
+  assert.ok(flows.some((flow) => flow.goldDecision.forbiddenEffects.includes('memory')), 'must include memory boundary replay');
+  assert.ok(flows.some((flow) => flow.goldDecision.forbiddenEffects.includes('config')), 'must include config boundary replay');
+  assert.ok(flows.some((flow) => flow.goldDecision.forbiddenEffects.includes('runtime') || flow.goldDecision.forbiddenEffects.includes('tool_execution')), 'must include runtime/tool boundary replay');
 }
 
 const fixture = JSON.parse(await readFile(fixturePath, 'utf8'));
@@ -118,24 +119,15 @@ assert.ok(Array.isArray(fixture.flows) && fixture.flows.length > 0, 'flows must 
 
 const validationErrors = [];
 const routeCounts = Object.fromEntries([...routeEnums.routes].map((route) => [route, 0]));
-const falsePermitFlows = [];
-const falseCompactFlows = [];
-const falseHumanEscalationFlows = [];
 const boundaryLossFlows = [];
-const wrongRouteFlows = [];
 const reasonCodeSet = new Set();
 
 for (const flow of fixture.flows) {
   try {
     assertFlow(flow, routeEnums, parserEvidenceById);
-    routeCounts[flow.observedDecision.selectedRoute] += 1;
-    for (const code of flow.observedDecision.reasonCodes) reasonCodeSet.add(code);
-    const expectedNonPermit = flow.goldLabel.expectedRoute !== 'shadow_only' || flow.goldLabel.expectedHumanRequired || flow.goldLabel.expectedCompactAllowed === false;
-    if (expectedNonPermit && flow.observedDecision.selectedRoute === 'shadow_only') falsePermitFlows.push(flow.flowId);
-    if (!flow.goldLabel.expectedCompactAllowed && flow.observedDecision.compactAllowed) falseCompactFlows.push(flow.flowId);
-    if (!flow.goldLabel.expectedHumanRequired && flow.observedDecision.humanRequired) falseHumanEscalationFlows.push(flow.flowId);
-    if (!Array.isArray(flow.goldLabel.forbiddenEffects) || flow.goldLabel.forbiddenEffects.length === 0) boundaryLossFlows.push(flow.flowId);
-    if (flow.observedDecision.selectedRoute !== flow.goldLabel.expectedRoute) wrongRouteFlows.push(flow.flowId);
+    routeCounts[flow.goldDecision.selectedRoute] += 1;
+    for (const code of flow.goldDecision.reasonCodes) reasonCodeSet.add(code);
+    if (!Array.isArray(flow.goldDecision.forbiddenEffects) || flow.goldDecision.forbiddenEffects.length === 0) boundaryLossFlows.push(flow.flowId);
   } catch (error) {
     validationErrors.push({ id: flow.flowId ?? 'unknown', error: error.message });
   }
@@ -148,56 +140,42 @@ try {
 }
 
 assert.deepEqual(validationErrors, [], 'all real-flow replay fixtures should validate');
-assert.deepEqual(falsePermitFlows, [], 'falsePermitRate must be zero for replay fixtures');
-assert.deepEqual(falseCompactFlows, [], 'falseCompactRate must be zero for replay fixtures');
 assert.deepEqual(boundaryLossFlows, [], 'boundaryLossRate must be zero for replay fixtures');
 
 const output = {
   summary: {
     artifact,
-    timestamp: process.env.SYNAPTIC_MESH_FRESH_TIMESTAMPS === '1' ? new Date().toISOString() : '2026-05-07T23:05:00.000Z',
+    timestamp: process.env.SYNAPTIC_MESH_FRESH_TIMESTAMPS === '1' ? new Date().toISOString() : '2026-05-08T00:00:00.000Z',
     verdict: 'pass',
     fixture: 'implementation/synaptic-mesh-shadow-v0/fixtures/real-flow-replay.json',
     flowCount: fixture.flows.length,
     validCount: fixture.flows.length - validationErrors.length,
-    matchedGoldLabels: fixture.flows.length - wrongRouteFlows.length,
+    goldDecisionCount: fixture.flows.length,
+    observedDecisionDeprecated: true,
+    scorecardsConsumeObservedDecision: false,
     routesCovered: Object.fromEntries(Object.entries(routeCounts).filter(([, count]) => count > 0)),
     reasonCodesValidated: reasonCodeSet.size,
-    falsePermitRate: falsePermitFlows.length / fixture.flows.length,
-    falseCompactRate: falseCompactFlows.length / fixture.flows.length,
-    falseHumanEscalationRate: falseHumanEscalationFlows.length / fixture.flows.length,
     boundaryLossRate: boundaryLossFlows.length / fixture.flows.length,
-    wrongRouteRate: wrongRouteFlows.length / fixture.flows.length,
     classifierImplemented: false,
     runtimeEnforcementImplemented: false,
     liveShadowObserverImplemented: false,
-    safetyClaimScope: 'offline_naturalistic_replay_with_gold_labels_only_not_live_observer_not_classifier_not_runtime_authorization',
+    safetyClaimScope: 'offline_naturalistic_replay_with_gold_decisions_only_not_live_observer_not_classifier_not_runtime_authorization',
   },
   scorecard: {
-    falsePermitFlows,
-    falseCompactFlows,
-    falseHumanEscalationFlows,
     boundaryLossFlows,
-    wrongRouteFlows,
   },
   auditLog: fixture.flows.map((flow) => ({
     flowId: flow.flowId,
     sourceKind: flow.sourceKind,
     parserEvidenceRef: flow.parserEvidenceRef,
     parserEvidenceRefHash: flow.parserEvidenceRefHash,
-    expectedRoute: flow.goldLabel.expectedRoute,
-    selectedRoute: flow.observedDecision.selectedRoute,
-    matched: flow.goldLabel.expectedRoute === flow.observedDecision.selectedRoute,
-    compactAllowed: flow.observedDecision.compactAllowed,
-    humanRequired: flow.observedDecision.humanRequired,
-    reasonCodes: flow.observedDecision.reasonCodes,
-    decisiveSignals: flow.observedDecision.decisiveSignals,
-    rejectedRoutes: flow.observedDecision.rejectedRoutes,
+    goldDecisionHash: decisionHash(flow.goldDecision),
+    goldDecision: flow.goldDecision,
   })),
   knownUncoveredRisks: [
     'replay_flows_are_hand_authored_naturalistic_examples_not_live_traffic',
-    'gold_labels_are_fixture_expectations_not_human_adjudication_dataset',
-    'observed_decisions_are_fixture_replay_expectations_not_receiver_classifier_outputs',
+    'gold_decisions_are_fixture_expectations_not_human_adjudication_dataset',
+    'observed_decision_is_deprecated_metadata_only_not_receiver_classifier_output',
     'no_classifier_runtime_enforcement_or_tool_authorization_added',
     'live_shadow_observer_is_not_implemented_yet',
   ],

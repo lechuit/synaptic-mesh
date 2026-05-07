@@ -63,4 +63,4 @@ This is not:
 - publication readiness;
 - production/canary safety evidence.
 
-The goal is to make naturalistic handoff replay measurable before any live observer or classifier work. Passing this gate means fixture `observedDecision` records still match gold labels and linked parser evidence hashes; it does not mean the receiver can compute the route from raw input by itself.
+The goal is to make naturalistic handoff replay measurable before any live observer or runtime work. Passing this gate means each fixture has a hash-bound `goldDecision` and linked parser evidence; it does not mean the receiver can compute the route from raw input by itself. `observedDecision` is deprecated metadata only and new scorecards must not consume it.

@@ -154,7 +154,7 @@ Key files:
 - `raw-parser-adversarial.out.json` — raw/prose/receipt parser-pressure fixture evidence; not semantic parser robustness proof or runtime authorization;
 - `parser-normalization-evidence.out.json` — raw handoff to `parserEvidence` / route-decision input fixture evidence; not a classifier, live parser, runtime authorization, or live shadow observer;
 - `real-flow-replay.out.json` — naturalistic handoff replay evidence with gold labels, parserEvidence hash binding, scorecard, and audit log; not live traffic, an automatic receiver decision, runtime authorization, or live shadow observer;
-- `real-flow-classifier-scorecard.out.json` — compares deterministic classifier output against 24 offline real-flow gold labels; `observedDecision` remains fixture oracle, not classifier output;
+- `real-flow-classifier-scorecard.out.json` — compares deterministic `classifierDecision` output against 24 offline real-flow `goldDecision` records; deprecated `observedDecision` metadata is not consumed;
 - `route-classifier-shadow.out.json` — deterministic route classifier shadow evidence over parserEvidence fixtures; not raw parsing, live observation, runtime enforcement, tool authorization, or publication readiness;
 - `receiver-policy-adapter-contracts.out.json` — framework-shaped receiver adapter contract cases;
 - `cli-validator.out.json` — CLI behavior cases;
