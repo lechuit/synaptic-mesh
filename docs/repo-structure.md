@@ -12,6 +12,7 @@ Synaptic Mesh keeps protocol, implementation, research, and evidence separate so
 - `paper/` — manuscript-oriented material.
 - `docs/` — repository operation and layout guidance that does not define protocol authority.
 - `design-notes/` — short implementation design notes for changes that should stay smaller than a full spec.
+- `tools/` — repo-local validation utilities, including the package-wired manifest verification guard.
 
 ## Scaling rules
 
@@ -20,6 +21,7 @@ Synaptic Mesh keeps protocol, implementation, research, and evidence separate so
 3. Keep IO at the edges: CLIs in `bin/`, contract/evidence writers in `tests/`, and historical outputs under `evidence/` or `runs/`.
 4. Add adapter/framework mappings as narrow ports that translate framework packet shapes into the stable receiver-policy input shape.
 5. Avoid large file moves in behavior PRs. If a migration is needed, do it in a dedicated layout PR with manifest/evidence regeneration.
+6. Keep `MANIFEST.json` current with tracked repository files; `npm run verify:manifest`, `npm run check`, and `npm run review:local` should fail when tracked file bytes or hashes drift.
 
 ## Suggested next package boundary
 

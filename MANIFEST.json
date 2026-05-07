@@ -1,7 +1,7 @@
 {
   "bundle": "synaptic-mesh",
   "version": "0.1.2",
-  "generated": "2026-05-07T17:26:56Z",
+  "generated": "2026-05-07T17:52:51Z",
   "status": "hardening_release_candidate_not_runtime_ready",
   "repository": "https://github.com/lechuit/synaptic-mesh",
   "license": "Apache-2.0 for code; CC BY 4.0 for docs/prose unless otherwise noted",
@@ -36,8 +36,8 @@
     },
     {
       "path": "docs/repo-structure.md",
-      "bytes": 2070,
-      "sha256": "85e6fecd513d267b5b043eccb294bef5972528b59011869e8928a87a59e6c666"
+      "bytes": 2362,
+      "sha256": "567e6458824d52d89d2734a149cd73a450ed6ec6bbdd24c90b5af043bb052afd"
     },
     {
       "path": "evidence/publication-reproducibility-rerun/cli-validator.out.json",
@@ -156,8 +156,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/package.json",
-      "bytes": 3676,
-      "sha256": "f3236ae3c6dd8826525ec8df2d21967d5780f1fcaf01014877696e9d49c0187f"
+      "bytes": 3841,
+      "sha256": "3a21028b852552cca525a63399a006c02ca49ac446272fb89f923b881087ef5b"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/README.md",
@@ -728,6 +728,11 @@
       "path": "specs/synaptic-mesh-memory-authority-v0.md",
       "bytes": 6791,
       "sha256": "5b649da3dedf544cd61ac7b9fc16c3391fd02d44368a3f4fa187bceff4bdfc02"
+    },
+    {
+      "path": "tools/verify-manifest.mjs",
+      "bytes": 3226,
+      "sha256": "1828bfa02e9ec88373dab9720e728f2711fa2bfdd5fbb7975280a44377a8d15c"
     }
   ]
 }
