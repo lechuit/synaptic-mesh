@@ -68,10 +68,22 @@ function validateRejectedRoutes(record, routeValues, label) {
   }
 }
 
+function validateHumanRequiredRouteConsistency(caseId, decision) {
+  // No documented exceptions currently exist: humanRequired true is reserved for ask_human.
+  const documentedHumanRequiredExceptions = new Set();
+  const exceptionKey = `${caseId}:${decision.selectedRoute}`;
+  const hasException = documentedHumanRequiredExceptions.has(exceptionKey);
+  assert.ok(
+    decision.selectedRoute === 'ask_human' || decision.humanRequired === false || hasException,
+    `${caseId} selectedRoute ${decision.selectedRoute} must not set humanRequired true without a documented exception`,
+  );
+}
+
 function validateRouteDecision(caseId, decision, schemaSets) {
   assert.ok(decision && typeof decision === 'object' && !Array.isArray(decision), `${caseId} must include correctRouteDecision`);
   assert.ok(schemaSets.routeValues.has(decision.selectedRoute), `${caseId} selectedRoute must be known`);
   assert.equal(typeof decision.humanRequired, 'boolean', `${caseId} humanRequired must be boolean`);
+  validateHumanRequiredRouteConsistency(caseId, decision);
   validateStableCodes(decision.reasonCodes, `${caseId} reasonCodes`);
   validateStableCodes(decision.decisiveSignals, `${caseId} decisiveSignals`);
   validateRejectedRoutes(decision, schemaSets.routeValues, caseId);

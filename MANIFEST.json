@@ -286,8 +286,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/fixtures/route-decision-wrong-routes.json",
-      "bytes": 20670,
-      "sha256": "89e792c92903c0b7a73a64e5f31dbac99bd4033adac271adc715db611d7a330c"
+      "bytes": 20671,
+      "sha256": "d767f0e21802dd5d5054abd474d9404541c56d12c0a2d133da64c47d01701971"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/fixtures/threat-model-routes.json",
@@ -441,8 +441,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/route-decision-wrong-routes.mjs",
-      "bytes": 14456,
-      "sha256": "1f2c4160cfd7a36c290c6a6e5168af517ba6a7b192995cc7ca87f318a790c2d6"
+      "bytes": 15105,
+      "sha256": "b59140340a0d91fcffd297741db05fcf4da1105467c270ac9602ad6a9f08275f"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/smoke.mjs",

@@ -221,7 +221,7 @@
       },
       "correctRouteDecision": {
         "selectedRoute": "block",
-        "humanRequired": true,
+        "humanRequired": false,
         "reasonCodes": ["NEXT_ALLOWED_ACTION_TAMPERED", "ACTION_EFFECT_RUNTIME_EXECUTION"],
         "rejectedRoutes": {
           "ask_human": ["TAMPERED_RECEIPT_MUST_NOT_ESCALATE_AS_VALID"],
