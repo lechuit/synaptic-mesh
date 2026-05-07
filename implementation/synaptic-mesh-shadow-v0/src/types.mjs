@@ -1,3 +1,14 @@
+export {
+  ACTION_POLICY_STRATEGIES,
+  AMBIGUOUS_ACTION_VERBS,
+  HUMAN_REQUIRED_VERBS,
+  LOCAL_ACTION_VERBS,
+  actionRequiresHuman,
+  classifyAction,
+  classifyReceiverAction,
+  humanRequiredReason,
+} from './action-policy.mjs';
+
 export const DECISIONS = Object.freeze({
   ALLOW_LOCAL_SHADOW: 'allow_local_shadow',
   FETCH_ABSTAIN: 'fetch_abstain',
@@ -5,48 +16,6 @@ export const DECISIONS = Object.freeze({
   BLOCK_LOCAL: 'block_local',
 });
 
-export const LOCAL_ACTION_VERBS = new Set([
-  'write_doc',
-  'run_local_test',
-  'prepare_draft',
-  'create_local_fixture',
-]);
-
-
-export const AMBIGUOUS_ACTION_VERBS = new Set([
-  'tool_call',
-  'invoke',
-  'execute',
-  'dispatch',
-  'function_call',
-  'handoff',
-  'delegate',
-  'agent_action',
-]);
-
-export const HUMAN_REQUIRED_VERBS = new Set([
-  'send_external',
-  'http_request',
-  'network_call',
-  'email_send',
-  'message_send',
-  'change_config',
-  'update_settings',
-  'modify_runtime_config',
-  'promote_memory',
-  'write_memory',
-  'delete',
-  'remove_file',
-  'rm',
-  'publish',
-  'post_public',
-  'release_publish',
-  'runtime_integrate',
-  'install_runtime_hook',
-  'canary_enable',
-  'production_use',
-  'l2_operational_use',
-]);
 
 export const REQUIRED_RECEIPT_FIELDS = Object.freeze([
   'sourceArtifactId',
@@ -63,10 +32,3 @@ export function missingFields(object, fields = REQUIRED_RECEIPT_FIELDS) {
   return fields.filter((field) => object?.[field] === undefined || object?.[field] === null || object?.[field] === '');
 }
 
-export function classifyAction(action = {}) {
-  const verb = action.verb ?? 'unknown';
-  if (HUMAN_REQUIRED_VERBS.has(verb)) return { riskTier: 'sensitive', requiresHuman: true };
-  if (AMBIGUOUS_ACTION_VERBS.has(verb)) return { riskTier: 'ambiguous', requiresHuman: true };
-  if (LOCAL_ACTION_VERBS.has(verb) && action.riskTier !== 'sensitive') return { riskTier: action.riskTier ?? 'low_local', requiresHuman: false };
-  return { riskTier: 'unknown', requiresHuman: true };
-}

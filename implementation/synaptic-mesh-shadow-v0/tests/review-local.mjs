@@ -10,6 +10,10 @@ const evidencePath = resolve(packageRoot, 'evidence/review-local.out.json');
 
 const commands = [
   {
+    id: 'syntax-action-policy',
+    args: ['--check', resolve(packageRoot, 'src/action-policy.mjs')],
+  },
+  {
     id: 'syntax-core-reference',
     args: ['--check', resolve(packageRoot, 'src/types.mjs')],
   },

@@ -3,8 +3,8 @@
     "artifact": "T-synaptic-mesh-review-local-runner-v0",
     "timestamp": "2026-05-07T15:05:00.000Z",
     "verdict": "pass",
-    "commands": 13,
-    "passCommands": 13,
+    "commands": 14,
+    "passCommands": 14,
     "failedCommands": [],
     "fixtureCount": 15,
     "fixtureParityVerdict": "pass",
@@ -19,6 +19,13 @@
     "sourceFixtureMutation": false
   },
   "rows": [
+    {
+      "id": "syntax-action-policy",
+      "command": "/usr/local/bin/node --check implementation/synaptic-mesh-shadow-v0/src/action-policy.mjs",
+      "status": 0,
+      "pass": true,
+      "stderr": ""
+    },
     {
       "id": "syntax-core-reference",
       "command": "/usr/local/bin/node --check implementation/synaptic-mesh-shadow-v0/src/types.mjs",

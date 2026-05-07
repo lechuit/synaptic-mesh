@@ -3,7 +3,7 @@ import { mkdir, writeFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createReceiverPolicyAdapter } from '../src/receiver-policy-adapter.mjs';
-import { classifyAction } from '../src/types.mjs';
+import { ACTION_POLICY_STRATEGIES, classifyAction, classifyReceiverAction } from '../src/types.mjs';
 
 const artifact = 'T-synaptic-mesh-receiver-policy-adapter-contracts-v0';
 const here = dirname(fileURLToPath(import.meta.url));
@@ -783,8 +783,17 @@ const cases = [
   },
 ];
 
-const ambiguousClass = classifyAction({ verb: 'invoke', riskTier: 'low_local' });
-assert.deepEqual(ambiguousClass, { riskTier: 'ambiguous', requiresHuman: true });
+const strategyIds = ACTION_POLICY_STRATEGIES.map((strategy) => strategy.id);
+assert.deepEqual(strategyIds, [
+  'sensitive-verb',
+  'ambiguous-framework-verb',
+  'local-low-risk-verb',
+  'unknown-or-sensitive-fallback',
+]);
+const ambiguousPolicy = classifyReceiverAction({ verb: 'invoke', riskTier: 'low_local' });
+assert.equal(ambiguousPolicy.strategyId, 'ambiguous-framework-verb');
+assert.deepEqual(ambiguousPolicy.classification, { riskTier: 'ambiguous', requiresHuman: true });
+assert.match(ambiguousPolicy.humanReason, /verb is ambiguous: invoke/);
 const unknownClass = classifyAction({ verb: 'not_a_known_action', riskTier: 'low_local' });
 assert.deepEqual(unknownClass, { riskTier: 'unknown', requiresHuman: true });
 
