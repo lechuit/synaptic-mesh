@@ -25,7 +25,7 @@ The receiver adapter contract suite now exercises representative fail-closed beh
 - complete local receipt + low-risk local action allows local shadow review;
 - missing receipt/metadata abstains;
 - source mismatch abstains;
-- receiver-observed source digest mismatch abstains;
+- receiver-observed source digest/mtime/run-id mismatch abstains;
 - duplicate authority fields abstain;
 - stale/missing digest abstains;
 - sensitive actions and sensitive verb aliases ask a human;
@@ -45,6 +45,6 @@ The useful claim is narrower: the local shadow package now has stronger contract
 
 ## Next work candidates
 
-1. Add source-observation mismatch variants beyond digest, especially observed source mtime and run id drift.
+1. Add more source-observation mismatch variants after real receiver observation formats are clearer.
 2. Add a compact duplicate-field coverage table once more variants are covered per framework shape.
 3. Add fixture examples for ambiguous framework action names and require explicit receiver classification before local allow.
