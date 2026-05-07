@@ -20,6 +20,7 @@ Synaptic Mesh keeps protocol, implementation, research, and evidence separate so
 - [ADR 0001: Shadow receiver architecture](adr/0001-shadow-receiver-architecture.md) documents the pure core, strategy registry, contract-first evidence, manifest guard, and review-gate decisions now used by the local shadow implementation.
 - [ADR 0002: Authority claim model](adr/0002-authority-claim-model.md) documents the local shadow authority-claim taxonomy, receiver verification rule, and boundary that keeps sender labels from becoming authority.
 - [RouteDecision schema v0](concepts/route-decision-v0.md) documents the first formal schema and its local shadow shape-validation boundary.
+- [Adapter boundary for LangGraph and MCP v0](../design-notes/adapter-boundary-langgraph-mcp-v0.md) documents future adapter boundaries, prerequisites, and non-goals without adding runtime integration.
 
 ## Scaling rules
 
