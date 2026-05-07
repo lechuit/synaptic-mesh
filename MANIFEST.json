@@ -1,11 +1,11 @@
 {
   "bundle": "synaptic-mesh",
   "version": "0.1.0-rc1",
-  "generated": "2026-05-07T05:10:00Z",
+  "generated": "2026-05-07T14:56:00Z",
   "status": "public_release_candidate_not_runtime_ready",
   "repository": "https://github.com/lechuit/synaptic-mesh",
   "license": "Apache-2.0 for code; CC BY 4.0 for docs/prose unless otherwise noted",
-  "reproducibility": "expected_pass_11of11_fixture_parity_15of15_unsafe0_source_mutation_false",
+  "reproducibility": "expected_pass_12of12_fixture_parity_15of15_unsafe0_source_mutation_false",
   "rawSourceCache": "excluded",
   "runtimeBoundary": "runtime_tooling_canary_enforcement_production_L2plus_out_of_scope",
   "files": [
@@ -13,6 +13,11 @@
       "path": ".gitignore",
       "bytes": 42,
       "sha256": "67a2e1536b46e0707de81bce0542fee82c4858ea3c7119cfdcd60db47e09902e"
+    },
+    {
+      "path": "ANNOUNCEMENT.md",
+      "bytes": 1242,
+      "sha256": "d9c4cf9468616797f2b95b41a7d3c31328dba28dde267f27a3e294b9d214f3ce"
     },
     {
       "path": "CITATION.cff",
@@ -25,19 +30,29 @@
       "sha256": "b2318341fb6d3850b930358fa8df800191eebb8333c9b3ac2fd2399df6bf0d50"
     },
     {
+      "path": "FRAMEWORK_COMPATIBILITY.md",
+      "bytes": 1626,
+      "sha256": "4dd1e652e520d800a7cc7cfc80a1219b769c371a5df7050b300dc9c77d30c767"
+    },
+    {
       "path": "LICENSE",
       "bytes": 9207,
       "sha256": "67374f7f997c2e979f5a7c19d72458ed85f93d39f3037b1749b745d9ee1684eb"
     },
     {
       "path": "LICENSE-DOCS",
-      "bytes": 531,
-      "sha256": "f49eb118afc1b49f5dae9eeb3e6142427b2108906fff93bc72b12c2d2e13ec88"
+      "bytes": 18656,
+      "sha256": "9e5f1b3c610b9c2da5c313bf81d577a7d1acec686bdb0384edefa6df0f90cd94"
     },
     {
       "path": "LICENSES.md",
       "bytes": 407,
       "sha256": "d2e37bba2cb7000b69b22f7509ce96e8dd25e833ffb42ae6ef845fb511658a9c"
+    },
+    {
+      "path": "LINKEDIN_POST.md",
+      "bytes": 2694,
+      "sha256": "7c591216ab2bf8b4d32d4a46788df1b9367bcf8617435a77f0dccbc020697a85"
     },
     {
       "path": "NOTICE",
@@ -52,42 +67,22 @@
     {
       "path": "PUBLICATION_PATH.md",
       "bytes": 836,
-      "sha256": "a64c91bc999cb1b9c6c02ff348fd12f0c16baf45d170dbc7fa97b0b9c79b7816"
+      "sha256": "0606465e4ccbe4f1d316c3fcc5b42290cdf4a1cfe414db0047249377d856a925"
     },
     {
       "path": "README.md",
-      "bytes": 1629,
-      "sha256": "e9a59d1292c029e2a4209b36c6f81f29c08457cd5546f19346987b6c5ff8e17d"
+      "bytes": 2830,
+      "sha256": "a2876d036c91126558540def82306e0a0f8b83ae958a998ff10c0834ec337fd7"
     },
     {
       "path": "RELEASE_CANDIDATE.md",
       "bytes": 1197,
-      "sha256": "fc5b1c8a360b46a5c44e20825c4dccfecba91cc8ac43693a0cc752da3ae9f56d"
+      "sha256": "68688d54188350e4239ffafcec3b874822239ab1cf89c77b09ed5ec3a6ae8243"
     },
     {
       "path": "RELEASE_NOTES.md",
-      "bytes": 930,
-      "sha256": "d89ef7db16a0cacb76414519d42d0c050851f29fddab3055221c5cac9c7ead09"
-    },
-    {
-      "path": "evidence/export-review-local-final.log",
-      "bytes": 3235,
-      "sha256": "f5b7971dffa6947ec842f4ab29154a9ff1c8c408e6140f0a4d4fa9daebfd0160"
-    },
-    {
-      "path": "evidence/export-review-local-rerun3.log",
-      "bytes": 3235,
-      "sha256": "f5b7971dffa6947ec842f4ab29154a9ff1c8c408e6140f0a4d4fa9daebfd0160"
-    },
-    {
-      "path": "evidence/export-review-local-step1.log",
-      "bytes": 3235,
-      "sha256": "f5b7971dffa6947ec842f4ab29154a9ff1c8c408e6140f0a4d4fa9daebfd0160"
-    },
-    {
-      "path": "evidence/prepublish-review-local.log",
-      "bytes": 3235,
-      "sha256": "f5b7971dffa6947ec842f4ab29154a9ff1c8c408e6140f0a4d4fa9daebfd0160"
+      "bytes": 1634,
+      "sha256": "cb4cdc11ac7219f0238635023611109e142019ded799a408dc4f183cbcdb4524"
     },
     {
       "path": "evidence/publication-reproducibility-rerun/cli-validator.out.json",
@@ -125,39 +120,9 @@
       "sha256": "2895d32711b99481275a15df86cb5286d18b1e8a5967f3d61c961c6179f362d9"
     },
     {
-      "path": "evidence/publication-reproducibility-rerun.log",
-      "bytes": 3237,
-      "sha256": "d22eff77ad39fd1bc69d44e55ced3b27236bc098b8a7bc8f64eac0f59ef2a448"
-    },
-    {
-      "path": "evidence/rc-review-local-finalcheck.log",
-      "bytes": 3235,
-      "sha256": "f5b7971dffa6947ec842f4ab29154a9ff1c8c408e6140f0a4d4fa9daebfd0160"
-    },
-    {
-      "path": "evidence/rc-review-local-post-step1-verify.log",
-      "bytes": 3235,
-      "sha256": "f5b7971dffa6947ec842f4ab29154a9ff1c8c408e6140f0a4d4fa9daebfd0160"
-    },
-    {
-      "path": "evidence/rc-review-local-release-path-rescan.log",
-      "bytes": 3235,
-      "sha256": "f5b7971dffa6947ec842f4ab29154a9ff1c8c408e6140f0a4d4fa9daebfd0160"
-    },
-    {
-      "path": "evidence/rc-review-local-release-path.log",
-      "bytes": 3235,
-      "sha256": "f5b7971dffa6947ec842f4ab29154a9ff1c8c408e6140f0a4d4fa9daebfd0160"
-    },
-    {
-      "path": "evidence/rc-review-local.log",
-      "bytes": 3235,
-      "sha256": "f5b7971dffa6947ec842f4ab29154a9ff1c8c408e6140f0a4d4fa9daebfd0160"
-    },
-    {
       "path": "implementation/synaptic-mesh-shadow-v0/README.md",
-      "bytes": 4864,
-      "sha256": "d89e1c7b1b7c08b8218c30812a4035d6b59b656897a131e607fbe246d370fb97"
+      "bytes": 5144,
+      "sha256": "132bb1c597f1074330e9f7cc38c16d411f90b9918cbf1383de224642a80182bf"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/bin/validate-receipt.mjs",
@@ -165,9 +130,14 @@
       "sha256": "edced71ca64a89afc4f453634d9936eab56b4d3492ffee9bc90f305be2870b24"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/authority-laundering-regression.out.json",
+      "bytes": 2820,
+      "sha256": "a772e52c8a7d76c2532e5af08c80eb654f021ae635ad9893a50d993ea96a4abd"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/cli-validator.out.json",
-      "bytes": 1665,
-      "sha256": "9d058afa1db5d50a9ce3474d3c9f9bab1f6abd3632d39750c4e4ad7e3b23f4b4"
+      "bytes": 1739,
+      "sha256": "0626cb1fba1151112184335dd4d1492af7e59f12c7497a1060860ab00fd391e0"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/fixture-parity.out.json",
@@ -181,18 +151,23 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/partial-receipt-degrade.out.json",
-      "bytes": 5654,
-      "sha256": "ebcb993f3bb37f071e32e1e34f98b3552dde8e22add0458cbf5580f8a64a3b53"
+      "bytes": 5728,
+      "sha256": "8fddbe73c403ce63243cbcae2c6dcc2cdf86881b90ea3e421731677cb31f96b9"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/receipt-transform-regression.out.json",
+      "bytes": 4374,
+      "sha256": "c3f84550f6f0640f8c6185391935beb31cdb632ce878bbf2377335982b83c29d"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/review-local.out.json",
-      "bytes": 3152,
-      "sha256": "b9a5e3aa3f92d06849878b36fecce298eafe490e85bc0eba1394d9fc5789f033"
+      "bytes": 3445,
+      "sha256": "6d3598fa62dcebc98768f7157565f617528895cb0a64b283bac7e6ad60cf266f"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/synthetic-handoff-examples.out.json",
-      "bytes": 2139,
-      "sha256": "2895d32711b99481275a15df86cb5286d18b1e8a5967f3d61c961c6179f362d9"
+      "bytes": 2286,
+      "sha256": "4e057865124f00551d38072ef01e86e7ad41e478ab394af18440be150ea63d12"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/examples/compact-receipts.jsonl",
@@ -211,8 +186,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/package.json",
-      "bytes": 3189,
-      "sha256": "212b4ce4745599bbb7ab76db303273521dc4b44ee9f0c1c93fceb93e79f309a9"
+      "bytes": 3330,
+      "sha256": "112b4caea587f4c1a77932d27431c682966c391a88e19d2e0964207778242d01"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/action-context-packet.mjs",
@@ -231,13 +206,13 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/receipt-parser.mjs",
-      "bytes": 1513,
-      "sha256": "7019f37e021a504d049a9f1ff5053690692ebdecb1d24287e9312f7d4ab191b4"
+      "bytes": 1603,
+      "sha256": "f3f53c46b4dfffdb72eaf57b98699a78139a002b954b5f19be9a750e6308a7a3"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/receipt-validator.mjs",
-      "bytes": 7151,
-      "sha256": "e25ab402e5f15616ee5978120d0133f689f6bc5c9f094acf3acafcfad6739189"
+      "bytes": 7755,
+      "sha256": "ed2f372e701eadee54ecbf116e9706f4799e0fedf10a407478a8d457c819db0c"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/receipt-validators.mjs",
@@ -253,6 +228,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/src/types.mjs",
       "bytes": 1333,
       "sha256": "0a92cd4f76bbd3e73d77a48389da4dc3bf38dfcb755dab45d24ee85540ac46e4"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/authority-laundering-regression.mjs",
+      "bytes": 5131,
+      "sha256": "311015edd46667109d691150235bdf47a03775e67c29d524b90b789d9970af93"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/cli-validator.mjs",
@@ -296,18 +276,18 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/receipt-parser-validator.mjs",
-      "bytes": 3524,
-      "sha256": "3a9666c114450741784a8c3a4003aff08a45872588e9a35ce47e6af531c12dac"
+      "bytes": 3507,
+      "sha256": "fb50ec7e74d79c36568fba6b988f64a1fd52512fe1d9a68d6cff273b461a134a"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/receipt-transform-regression.mjs",
-      "bytes": 5208,
-      "sha256": "c59419464aadc4beac2657034b81b62d1f42681b54ba9fbfafc093da1b027817"
+      "bytes": 5693,
+      "sha256": "b49169c22f127de851faa6ee2df7643964008e368c53398f396b1c5065b145c9"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/review-local.mjs",
-      "bytes": 5043,
-      "sha256": "e18b4d089fe4086f16e2fb172c1477da8e4791dad32eee7fd1827081d7d8d658"
+      "bytes": 5516,
+      "sha256": "b7cd859599fdda9be21181d9c14436a8f27b7cc6a3e0be452dc45ab5341c9379"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/smoke.mjs",
@@ -361,8 +341,8 @@
     },
     {
       "path": "paper/synaptic-mesh-paper-v0.md",
-      "bytes": 20948,
-      "sha256": "16a61271286ba69c4780c74b56bc49e77f306832f1023459971ca50e122df173"
+      "bytes": 21524,
+      "sha256": "bf85a4268be1b63946aae6453a6223774d249857cb68e717cb046828204eb3d7"
     },
     {
       "path": "research-package/T-synaptic-mesh-claim-evidence-trace-map-v0.md",
@@ -371,8 +351,8 @@
     },
     {
       "path": "research-package/T-synaptic-mesh-final-claim-audit-v0.md",
-      "bytes": 5942,
-      "sha256": "23d52620b3660863867d1c73294165b7512ad969f1efa5925bc3e2124892be40"
+      "bytes": 6047,
+      "sha256": "d322f6820de96d0750b71a2b079ae3a2f164a5b3f8c3532442a957c561b17eda"
     },
     {
       "path": "research-package/T-synaptic-mesh-final-metadata-bibtex-style-v0.md",
@@ -382,27 +362,27 @@
     {
       "path": "research-package/T-synaptic-mesh-human-review-package-final-v0.md",
       "bytes": 6663,
-      "sha256": "a9731d9a2dfdeaa25bff1957ff60a3d513cf9868e033d0fb4c9491ac61320b6f"
+      "sha256": "f9e30ba8037c953898be7c1f86731194e5b325daf647e9af263cd2c88162906a"
     },
     {
       "path": "research-package/T-synaptic-mesh-public-private-boundary-audit-v0.md",
-      "bytes": 6232,
-      "sha256": "ad16f5ee45a9605dc8ba1876baad466084a150c9340fe1d2f71388580921ef3c"
+      "bytes": 6193,
+      "sha256": "d8412cd0f084b913a0daca82af2a69c8534bad07c166a6769476f2c9540689f5"
     },
     {
       "path": "research-package/T-synaptic-mesh-public-review-edit-pass-v0.md",
       "bytes": 2026,
-      "sha256": "a1abcfcbb8b493e346a80dac372ffac9918872df7875a8c6c044378cd04c003e"
+      "sha256": "ae11634681def553034fb35827c4fc143cdc6e5896b3b6d4989289f3cc750778"
     },
     {
       "path": "research-package/T-synaptic-mesh-publication-blocker-ledger-v0.md",
-      "bytes": 8549,
-      "sha256": "34c2810ea77f9069a2c7b638f239359e7d7d90e5120fd7d2bfd793c1892e5555"
+      "bytes": 8550,
+      "sha256": "a7e592940e8641444c172fbcc8ddf02f888dbed0cf95ef55c63a31e150c49d6a"
     },
     {
       "path": "research-package/T-synaptic-mesh-publication-reproducibility-rerun-v0.md",
-      "bytes": 4493,
-      "sha256": "2db310b1985cc38fdd5dbca94ea6ab0c4c6eb48b5bb4a58a248045274577d8a8"
+      "bytes": 4486,
+      "sha256": "f6e301a214009b810952de7483b470104e92447a1f2fa5de3c784518519193e3"
     },
     {
       "path": "research-package/T-synaptic-mesh-r11-resolution-or-downgrade-v0.md",
@@ -411,8 +391,8 @@
     },
     {
       "path": "research-package/T-synaptic-mesh-readme-boundary-quickstart-v0.md",
-      "bytes": 4717,
-      "sha256": "6f809e79633d7b3001a68c9582612a68703833ee6e56425035992f26a195c8e7"
+      "bytes": 4748,
+      "sha256": "c1473f49fa1b868fa33cce100bc9e7e4eff473d965b2852dd536bf59841a93a7"
     },
     {
       "path": "research-package/T-synaptic-mesh-repro-suite-manifest-v0.md",
@@ -446,8 +426,8 @@
     },
     {
       "path": "research-package/synaptic-mesh-index-v0.md",
-      "bytes": 17364,
-      "sha256": "fa34b976bbbe4678acecf7542095c6d425d199dfb49e296f8fe49fe7f2976d5d"
+      "bytes": 17355,
+      "sha256": "80f289a6560dcb018c1fee5f451050babb9cb3781dd4b564a37159118320eff9"
     },
     {
       "path": "runs/2026-05-03-memory-retrieval-contradiction-lab/README.md",
@@ -681,8 +661,8 @@
     },
     {
       "path": "specs/README.md",
-      "bytes": 2735,
-      "sha256": "86d29c7d74dd38bf44240deb48fb6ebed002151e04dbc49e1375e7a4607e9339"
+      "bytes": 2725,
+      "sha256": "f5cf5bbcce067a599c8bd9aec354e28d11e3b975a8e3b9e3d6b7ed787d724fe1"
     },
     {
       "path": "specs/compressed-temporal-receipt-v0.md",
