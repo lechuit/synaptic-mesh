@@ -10,9 +10,13 @@ Synaptic Mesh keeps protocol, implementation, research, and evidence separate so
 - `runs/` — experiment-specific artifacts kept immutable enough for reproduction.
 - `evidence/` — top-level reproducibility snapshots that are intentionally separate from implementation-local evidence.
 - `paper/` — manuscript-oriented material.
-- `docs/` — repository operation and layout guidance that does not define protocol authority.
+- `docs/` — repository operation and layout guidance that does not define protocol authority. ADRs live under `docs/adr/`.
 - `design-notes/` — short implementation design notes for changes that should stay smaller than a full spec.
 - `tools/` — repo-local validation utilities, including the package-wired manifest verification guard.
+
+## Architecture decisions
+
+- [ADR 0001: Shadow receiver architecture](adr/0001-shadow-receiver-architecture.md) documents the pure core, strategy registry, contract-first evidence, manifest guard, and review-gate decisions now used by the local shadow implementation.
 
 ## Scaling rules
 
