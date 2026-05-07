@@ -28,6 +28,7 @@ npm run release:check
 - `npm run test:authority-routes`
 - `npm run test:authority-envelope`
 - `npm run test:route-decision-schema`
+- `npm run test:threat-model-routes`
 
 For auditability, keep the individual gate names visible in PR notes even when `release:check` is the command reviewers run.
 

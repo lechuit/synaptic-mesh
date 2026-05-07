@@ -52,6 +52,9 @@ jobs:
       - name: RouteDecision schema evidence
         run: npm run test:route-decision-schema
 
+      - name: Threat model route mapping evidence
+        run: npm run test:threat-model-routes
+
       - name: Upload shadow evidence
         if: always()
         uses: actions/upload-artifact@v4

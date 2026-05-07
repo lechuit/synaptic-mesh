@@ -38,7 +38,7 @@ The reference currently covers:
 Current local gates observed in `evidence/review-local.out.json`:
 
 - review-local verdict: `pass`;
-- commands: `18/18` passing;
+- commands: `19/19` passing;
 - fixture parity: `15/15` passing;
 - normalized summary fixtures: `15`;
 - unsafe allow signals: `0`;
@@ -138,6 +138,7 @@ Key files:
 - `receipt-transform-regression.out.json` — transform regression cases;
 - `authority-laundering-regression.out.json` — adversarial laundering regression cases;
 - `route-decision-schema.out.json` — RouteDecision schema shape-validation evidence;
+- `threat-model-routes.out.json` — threat-model actor/capability to expected route mapping evidence;
 - `receiver-policy-adapter-contracts.out.json` — framework-shaped receiver adapter contract cases;
 - `cli-validator.out.json` — CLI behavior cases;
 - `synthetic-handoff-examples.out.json` — synthetic handoff cases;

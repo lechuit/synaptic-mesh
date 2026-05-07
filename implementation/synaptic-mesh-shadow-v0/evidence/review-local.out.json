@@ -3,8 +3,8 @@
     "artifact": "T-synaptic-mesh-review-local-runner-v0",
     "timestamp": "2026-05-07T15:05:00.000Z",
     "verdict": "pass",
-    "commands": 18,
-    "passCommands": 18,
+    "commands": 19,
+    "passCommands": 19,
     "failedCommands": [],
     "fixtureCount": 15,
     "fixtureParityVerdict": "pass",
@@ -17,6 +17,9 @@
     "authorityBoundaryCount": 8,
     "routeDecisionSchemaVerdict": "pass",
     "routeDecisionSchemaValidCount": 17,
+    "threatModelRoutesVerdict": "pass",
+    "threatModelRouteMappingCount": 11,
+    "threatModelKnownGapCount": 2,
     "receiverAdapterContractsVerdict": "pass",
     "actionPolicyContractsVerdict": "pass",
     "syntheticHandoffVerdict": "pass",
@@ -105,6 +108,13 @@
     {
       "id": "route-decision-schema-tests",
       "command": "node implementation/synaptic-mesh-shadow-v0/tests/route-decision-schema.mjs",
+      "status": 0,
+      "pass": true,
+      "stderr": ""
+    },
+    {
+      "id": "threat-model-route-mapping-tests",
+      "command": "node implementation/synaptic-mesh-shadow-v0/tests/threat-model-routes.mjs",
       "status": 0,
       "pass": true,
       "stderr": ""
