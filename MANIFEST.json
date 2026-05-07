@@ -1,7 +1,7 @@
 {
   "bundle": "synaptic-mesh",
   "version": "0.1.3",
-  "generated": "2026-05-07T20:45:00Z",
+  "generated": "2026-05-07T20:55:00Z",
   "status": "hardening_release_candidate_not_runtime_ready",
   "repository": "https://github.com/lechuit/synaptic-mesh",
   "license": "Apache-2.0 for code; CC BY 4.0 for docs/prose unless otherwise noted",
@@ -11,8 +11,8 @@
   "files": [
     {
       "path": ".github/workflows/ci.yml",
-      "bytes": 1933,
-      "sha256": "dc72a715c3fe21842ef80341ace6281c43461db360346ce84b5234178618a579"
+      "bytes": 2035,
+      "sha256": "aa1a224ec006e4dcb88734c3e422b593d7abec9cfb7223952f3e2adbb9812de0"
     },
     {
       "path": ".gitignore",
@@ -81,8 +81,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 4055,
-      "sha256": "9e4b4387b74e3ae9d4258d8db0b5f8615873863a65bdc2432e02190a54ec019c"
+      "bytes": 4261,
+      "sha256": "a75c7ae3e8becf680950c3e6af5a86515e74029956474b2c55fa6e1f1c81a2a4"
     },
     {
       "path": "RELEASE_CANDIDATE.md",
@@ -91,8 +91,8 @@
     },
     {
       "path": "RELEASE_NOTES.md",
-      "bytes": 2757,
-      "sha256": "69c3ebc32d441a12057157d8509c187fcbc981796f5392aee6813eb79ac62fec"
+      "bytes": 3027,
+      "sha256": "17c846e11015cbec99e3506e1cbe5f6645f246de723a5660c60e12951ef4613f"
     },
     {
       "path": "design-notes/scalable-design-patterns-v0.md",
@@ -108,6 +108,11 @@
       "path": "docs/adr/0002-authority-claim-model.md",
       "bytes": 4281,
       "sha256": "33d862c3c92fd6d02951cb40b77a3cfae26c36c1bed271e5f094b24d4cd3daeb"
+    },
+    {
+      "path": "docs/adversarial-fixture-generation.md",
+      "bytes": 1808,
+      "sha256": "b033271762a19b38972545379cfa9f0053865fecea9ec35fd968bc83bb9cb610"
     },
     {
       "path": "docs/authority-degradation-routes.md",
@@ -136,8 +141,8 @@
     },
     {
       "path": "docs/release-checklist.md",
-      "bytes": 3460,
-      "sha256": "59a9fe6831583fb0e2c5f4877fe19bafaba1eb1d2a442372e9cd1d545829d783"
+      "bytes": 3674,
+      "sha256": "0c14b87b50bd9af7a57387a1e1bde0a38acb0f3d666da3f533c62a35350b7ecc"
     },
     {
       "path": "docs/repo-structure.md",
@@ -186,8 +191,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/README.md",
-      "bytes": 6589,
-      "sha256": "d44e3b1e4ba7597ab6485b379719977c33319877363cbb13f25bb740136682c1"
+      "bytes": 6828,
+      "sha256": "fc8a765b9ba10cfe53ab636fe484fd230cd0a4e65dab2243a19df37efcd86438"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/bin/validate-receipt.mjs",
@@ -198,6 +203,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/action-policy-contracts.out.json",
       "bytes": 7409,
       "sha256": "4c76b83d258324142de7d4233f744066e41eaa212d7f83b2d3476cfb673352d7"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/adversarial-fixture-generator.out.json",
+      "bytes": 1834,
+      "sha256": "6742400cb982ec58c3ac0ce47e30a13f418ee14c5b279fdc8f083b4dc691736a"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/authority-claim-routes-fixtures.out.json",
@@ -256,8 +266,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/review-local.out.json",
-      "bytes": 5965,
-      "sha256": "9d25e335e4206cf5deb5757088cdd3d3fb18e96949555ae38011f5fb854f80ff"
+      "bytes": 6284,
+      "sha256": "0a01076f38b6d0490276a8cf57dbf41188625137e3b4cbb560216edc2617f5c7"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/route-decision-schema.out.json",
@@ -300,6 +310,11 @@
       "sha256": "81c84d844fb368a60f81683bb2378b88fd251ee371087f9091031d6e36d64e59"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/fixtures/generated-adversarial-routes.json",
+      "bytes": 33019,
+      "sha256": "554e588f256dc0fbe040d3df91690f8c1ba5337467576446079392529311f20f"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/fixtures/manifest.json",
       "bytes": 1355,
       "sha256": "7e762ff92cc3c78db252f98f28f1bce46e5f0cce61b67ad18c18400dee81430f"
@@ -321,8 +336,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/package.json",
-      "bytes": 4822,
-      "sha256": "4a19ca22fac13a524069d8543ffe83e45ac616bd78c4523a1743237087bc1d8d"
+      "bytes": 4960,
+      "sha256": "3e90de33409bc62e1bf9891adcd21a3be6f6f9a0773148e91c4d384c92505266"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/action-context-packet.mjs",
@@ -383,6 +398,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/tests/action-policy-contracts.mjs",
       "bytes": 3928,
       "sha256": "f5383131c56f53b4703f97e5fc073fd614e73638dbbfa6b444fa9ea07e33685d"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/adversarial-fixture-generator.mjs",
+      "bytes": 19417,
+      "sha256": "0fe1fa14b990faf459e1af4ae3d46b49bbc93c41e4878f47d2ef0bfa0678881b"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/authority-claim-routes-fixtures.mjs",
@@ -466,8 +486,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/review-local.mjs",
-      "bytes": 9240,
-      "sha256": "52528d8070338268eae32a8a0209498bca4d3fb99ecffaa19d5f315b6e75414c"
+      "bytes": 9803,
+      "sha256": "a05443fbbd5b5b56912f42ae7f79edf746e4c528f1bc9fe0456c844c27df1666"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/route-decision-schema.mjs",
@@ -891,8 +911,8 @@
     },
     {
       "path": "tools/release-check.mjs",
-      "bytes": 7930,
-      "sha256": "eada30518e74c2400c561eb8492f4b7fa2304413924480a469f773c1f0524815"
+      "bytes": 7962,
+      "sha256": "122a8b25833b54e8cddf8a094c47b23550f3744fd1ad2e2d5ca6f49ee6851603"
     },
     {
       "path": "tools/verify-manifest.mjs",

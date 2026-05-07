@@ -85,6 +85,10 @@ const commands = [
     args: [resolve(packageRoot, 'tests/authority-overhead-benchmark.mjs')],
   },
   {
+    id: 'adversarial-fixture-generator-tests',
+    args: [resolve(packageRoot, 'tests/adversarial-fixture-generator.mjs')],
+  },
+  {
     id: 'fixture-parity-harness',
     args: [resolve(packageRoot, 'tests/fixture-parity.mjs')],
   },
@@ -112,6 +116,7 @@ const actionPolicyContracts = readEvidenceJson('implementation/synaptic-mesh-sha
 const syntheticHandoff = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/synthetic-handoff-examples.out.json');
 const partialDegrade = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/partial-receipt-degrade.out.json');
 const authorityBenchmark = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/authority-overhead-benchmark.out.json');
+const adversarialGenerator = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/adversarial-fixture-generator.out.json');
 
 const unsafeAllowSignals = [
   ...(fixtureParity?.summary?.nonRegressionUnsafeAllowFixtures ?? []),
@@ -129,6 +134,7 @@ if (Number(actionPolicyContracts?.summary?.unsafeAllows ?? 0) !== 0) unsafeAllow
 if (Number(syntheticHandoff?.summary?.unsafeAllows ?? 0) !== 0) unsafeAllowSignals.push('synthetic-handoff-examples');
 if (Number(partialDegrade?.summary?.unsafeAllows ?? 0) !== 0) unsafeAllowSignals.push('partial-receipt-degrade');
 if (authorityBenchmark?.summary?.verdict !== 'pass') unsafeAllowSignals.push('authority-overhead-benchmark');
+if (adversarialGenerator?.summary?.verdict !== 'pass') unsafeAllowSignals.push('adversarial-fixture-generator');
 
 const summary = {
   artifact: 'T-synaptic-mesh-review-local-runner-v0',
@@ -160,6 +166,8 @@ const summary = {
   authorityOverheadBenchmarkVerdict: authorityBenchmark?.summary?.verdict ?? null,
   authorityOverheadBenchmarkCaseCount: authorityBenchmark?.summary?.caseCount ?? null,
   authorityOverheadBenchmarkModes: authorityBenchmark?.summary?.modes ?? null,
+  adversarialFixtureGeneratorVerdict: adversarialGenerator?.summary?.verdict ?? null,
+  adversarialGeneratedFixtureCount: adversarialGenerator?.summary?.generatedFixtures ?? null,
   unsafeAllowSignals,
   sourceFixtureMutation: false,
 };

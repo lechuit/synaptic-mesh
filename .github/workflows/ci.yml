@@ -64,6 +64,9 @@ jobs:
       - name: Authority overhead benchmark evidence
         run: npm run test:authority-benchmark
 
+      - name: Adversarial fixture generator evidence
+        run: npm run test:adversarial-generator
+
       - name: Upload shadow evidence
         if: always()
         uses: actions/upload-artifact@v4

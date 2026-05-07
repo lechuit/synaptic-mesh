@@ -19,6 +19,7 @@ Current v0.1.3 status is narrower:
 - adds RouteDecision wrong-route oracle fixtures for adversarial route semantics without adding a classifier or runtime enforcement;
 - adds a strict local-shadow Receipt schema fixture/evidence gate for structured receipt shape validation, not semantic proof or runtime authorization;
 - adds a deterministic local benchmark/overhead harness comparing naive summary, full context, simple receipt, and AuthorityEnvelope representations without runtime integration;
+- adds a deterministic adversarial fixture generator that derives variants from hand-authored wrong-route oracles while preserving expected RouteDecision routes/reasons;
 - no real LangGraph, AutoGen, CrewAI, Semantic Kernel, MCP, or runtime host adapters are included yet;
 - real adapter work is a future track and should preserve the same runtime/non-goal boundaries.
 
@@ -48,7 +49,7 @@ From this bundle root:
 npm --prefix implementation/synaptic-mesh-shadow-v0 run review:local
 ```
 
-Expected current result: 21/21 commands pass, fixture parity 15/15, RouteDecision schema 17/17 fixture records, threat-model route mappings 11/11, RouteDecision wrong-route fixtures 9/9, Receipt schema valid/invalid fixtures 1/4, authority overhead benchmark 6 fixtures/4 modes, unsafe allow signals 0, source fixture mutation false.
+Expected current result: 22/22 commands pass, fixture parity 15/15, RouteDecision schema 17/17 fixture records, threat-model route mappings 11/11, RouteDecision wrong-route fixtures 9/9, generated adversarial fixtures 9/9, Receipt schema valid/invalid fixtures 1/4, authority overhead benchmark 6 fixtures/4 modes, unsafe allow signals 0, source fixture mutation false.
 
 For adapter-shaped contract coverage specifically:
 

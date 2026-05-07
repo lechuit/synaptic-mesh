@@ -9,10 +9,11 @@ Status: baseline shadow-gates release candidate / public review package update. 
 - Kept CI scoped to the local shadow package; it does not add runtime/framework integration, MCP/A2A integration, tool execution, or enforcement behavior.
 - Preserved deterministic local evidence expectations for review runs.
 - Added a deterministic local authority overhead benchmark comparing naive summaries, full context, simple receipts, and AuthorityEnvelope-shaped records without live LLM/API calls or runtime integration.
+- Added a deterministic adversarial fixture generator that derives variants from existing RouteDecision wrong-route oracles and preserves source expected routes/reason codes.
 
 ## Validation snapshot
 
-- review-local: pass 21/21
+- review-local: pass 22/22
 - receiver adapter contracts: pass 59/59
 - fixture parity: 15/15
 - unsafe allow signals: 0
@@ -22,6 +23,7 @@ Status: baseline shadow-gates release candidate / public review package update. 
 - RouteDecision wrong-route oracle fixtures: pass 9/9 fixtures, no classifier/runtime semantics
 - Receipt schema: pass 1 valid and 4 invalid/adversarial fixtures, shape validation only
 - Authority overhead benchmark: pass 6 fixtures across 4 representation modes, fixture proxy only
+- Adversarial fixture generator: pass 9/9 generated fixtures, oracle-derived expectations only
 
 ## Compatibility note
 
