@@ -1,0 +1,60 @@
+name: CI baseline gates
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  shadow-baseline:
+    name: Shadow validation baseline
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: implementation/synaptic-mesh-shadow-v0
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Install package metadata baseline
+        run: npm install --ignore-scripts --no-audit --no-fund
+
+      - name: Verify repository manifest
+        run: npm run verify:manifest
+
+      - name: Syntax and manifest check
+        run: npm run check
+
+      - name: Receiver adapter contracts
+        run: npm run test:receiver-adapters
+
+      - name: Local shadow review
+        run: npm run review:local
+
+      - name: Action policy contracts
+        run: npm run test:action-policy
+
+      - name: Authority route fixtures
+        run: npm run test:authority-routes
+
+      - name: Authority envelope PR26 fixtures
+        run: npm run test:authority-envelope
+
+      - name: Upload shadow evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: shadow-baseline-evidence
+          path: |
+            implementation/synaptic-mesh-shadow-v0/evidence/*.out.json
+            MANIFEST.json
+          if-no-files-found: warn

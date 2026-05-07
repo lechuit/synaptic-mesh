@@ -12,7 +12,7 @@ export function runNodeCommand(command, { cwd, displayRoot }) {
   return {
     id: command.id,
     command: [
-      process.execPath,
+      'node',
       ...command.args.map((arg) => arg.startsWith(displayRoot) ? arg.slice(displayRoot.length + 1) : arg),
     ].join(' '),
     status: proc.status,
