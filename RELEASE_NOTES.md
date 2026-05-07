@@ -4,19 +4,21 @@ Status: baseline shadow-gates release candidate / public review package update. 
 
 ## Highlights since v0.1.2
 
-- Added GitHub Actions baseline gates for manifest verification, syntax checks, receiver adapter contracts, local shadow review, action-policy contracts, authority route fixtures, authority-envelope fixtures, RouteDecision schema evidence, and threat-model route mapping evidence.
+- Added GitHub Actions baseline gates for manifest verification, syntax checks, receiver adapter contracts, local shadow review, action-policy contracts, authority route fixtures, authority-envelope fixtures, RouteDecision schema evidence, threat-model route mapping evidence, and RouteDecision wrong-route oracle evidence.
+- Added adversarial wrong-route fixtures for memory-claim laundering, hidden promotion, stale policy windows, replayed receipts, nested authority, free-text action tampering, external prose, and ambiguous verbs.
 - Kept CI scoped to the local shadow package; it does not add runtime/framework integration, MCP/A2A integration, tool execution, or enforcement behavior.
 - Preserved deterministic local evidence expectations for review runs.
 
 ## Validation snapshot
 
-- review-local: pass 19/19
+- review-local: pass 20/20
 - receiver adapter contracts: pass 59/59
 - fixture parity: 15/15
 - unsafe allow signals: 0
 - source fixture mutation: false
 - RouteDecision schema: pass 17/17 fixture records
 - Threat-model route mapping: pass 11/11 mappings, 2 explicit known gaps
+- RouteDecision wrong-route oracle fixtures: pass 9/9 fixtures, no classifier/runtime semantics
 
 ## Compatibility note
 

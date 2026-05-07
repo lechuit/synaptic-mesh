@@ -33,12 +33,13 @@ The reference currently covers:
 - synthetic handoff examples;
 - fixture parity over the canonical local fixture set;
 - normalized fixture summary output;
+- RouteDecision schema, threat-model mapping, and wrong-route oracle fixture evidence;
 - one-command local review evidence.
 
 Current local gates observed in `evidence/review-local.out.json`:
 
 - review-local verdict: `pass`;
-- commands: `19/19` passing;
+- commands: `20/20` passing;
 - fixture parity: `15/15` passing;
 - normalized summary fixtures: `15`;
 - unsafe allow signals: `0`;
@@ -139,6 +140,7 @@ Key files:
 - `authority-laundering-regression.out.json` — adversarial laundering regression cases;
 - `route-decision-schema.out.json` — RouteDecision schema shape-validation evidence;
 - `threat-model-routes.out.json` — threat-model actor/capability to expected route mapping evidence;
+- `route-decision-wrong-routes.out.json` — adversarial wrong-route oracle fixture evidence; not a classifier or runtime semantic parser;
 - `receiver-policy-adapter-contracts.out.json` — framework-shaped receiver adapter contract cases;
 - `cli-validator.out.json` — CLI behavior cases;
 - `synthetic-handoff-examples.out.json` — synthetic handoff cases;

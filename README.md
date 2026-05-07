@@ -16,6 +16,7 @@ Current v0.1.3 status is narrower:
 - shipped as a standalone reference package and fixture suite, not integrated with any production/runtime host;
 - includes contract-shaped receiver adapter tests for Generic, LangGraph-like, AutoGen-like, CrewAI-like, Semantic Kernel-like, and MCP-like packet shapes;
 - expands fail-closed coverage for duplicate authority fields, sensitive verb aliases, and receiver-observed source mismatch by digest/mtime/run-id;
+- adds RouteDecision wrong-route oracle fixtures for adversarial route semantics without adding a classifier or runtime enforcement;
 - no real LangGraph, AutoGen, CrewAI, Semantic Kernel, MCP, or runtime host adapters are included yet;
 - real adapter work is a future track and should preserve the same runtime/non-goal boundaries.
 
@@ -45,7 +46,7 @@ From this bundle root:
 npm --prefix implementation/synaptic-mesh-shadow-v0 run review:local
 ```
 
-Expected current result: 19/19 commands pass, fixture parity 15/15, RouteDecision schema 17/17 fixture records, threat-model route mappings 11/11, unsafe allow signals 0, source fixture mutation false.
+Expected current result: 20/20 commands pass, fixture parity 15/15, RouteDecision schema 17/17 fixture records, threat-model route mappings 11/11, RouteDecision wrong-route fixtures 9/9, unsafe allow signals 0, source fixture mutation false.
 
 For adapter-shaped contract coverage specifically:
 
