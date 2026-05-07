@@ -56,6 +56,7 @@ const autogenLikeAdapter = createReceiverPolicyAdapter({
       receipt: packet.message?.metadata?.compactAuthorityReceipt,
       expectedSource: packet.message?.metadata?.expectedSource,
       proposedAction: packet.proposedReplyAction,
+      sourceFreshnessPolicy: packet.message?.metadata?.sourceFreshnessPolicy,
     };
   },
 });
@@ -70,6 +71,7 @@ const crewAiLikeAdapter = createReceiverPolicyAdapter({
       receipt: packet.task?.context?.authorityReceipt,
       expectedSource: packet.task?.context?.expectedSource,
       proposedAction: packet.task?.nextAction,
+      sourceFreshnessPolicy: packet.task?.context?.sourceFreshnessPolicy,
     };
   },
 });
@@ -98,9 +100,15 @@ const mcpLikeAdapter = createReceiverPolicyAdapter({
       receipt: packet.request?.metadata?.authorityReceipt,
       expectedSource: packet.request?.metadata?.expectedSource,
       proposedAction: packet.request?.toolCall,
+      sourceFreshnessPolicy: packet.request?.metadata?.sourceFreshnessPolicy,
     };
   },
 });
+
+const observedDigestMismatchPolicy = {
+  profile: 'diagnostic_optional',
+  observedSourceDigest: 'sha256:observed-newer-source-digest',
+};
 
 const cases = [
   {
@@ -495,6 +503,67 @@ const cases = [
     },
     expected: 'ask_human',
     reason: /action requires human/,
+  },
+  {
+    id: 'generic-observed-source-digest-mismatch-fetches',
+    adapter: genericAdapter,
+    packet: {
+      packetId: 'generic-observed-digest-mismatch-1',
+      receipt,
+      expectedSource,
+      sourceFreshnessPolicy: observedDigestMismatchPolicy,
+      proposedAction: { verb: 'write_doc', target: 'local-note.md', riskTier: 'low_local' },
+    },
+    expected: 'fetch_abstain',
+    reason: /receipt digest does not match observed source digest/,
+  },
+  {
+    id: 'langgraph-like-observed-source-digest-mismatch-fetches',
+    adapter: langGraphLikeAdapter,
+    packet: {
+      nodeState: { packetId: 'lg-observed-digest-mismatch-1', memoryReceipt: receipt, expectedSource, sourceFreshnessPolicy: observedDigestMismatchPolicy },
+      nextToolCall: { verb: 'run_local_test', target: 'implementation/synaptic-mesh-shadow-v0', riskTier: 'low_local' },
+    },
+    expected: 'fetch_abstain',
+    reason: /receipt digest does not match observed source digest/,
+  },
+  {
+    id: 'autogen-like-observed-source-digest-mismatch-fetches',
+    adapter: autogenLikeAdapter,
+    packet: {
+      message: { id: 'ag-observed-digest-mismatch-1', metadata: { compactAuthorityReceipt: receipt, expectedSource, sourceFreshnessPolicy: observedDigestMismatchPolicy } },
+      proposedReplyAction: { verb: 'write_doc', target: 'local-summary.md', riskTier: 'low_local' },
+    },
+    expected: 'fetch_abstain',
+    reason: /receipt digest does not match observed source digest/,
+  },
+  {
+    id: 'crewai-like-observed-source-digest-mismatch-fetches',
+    adapter: crewAiLikeAdapter,
+    packet: {
+      task: { id: 'crew-observed-digest-mismatch-1', context: { authorityReceipt: receipt, expectedSource, sourceFreshnessPolicy: observedDigestMismatchPolicy }, nextAction: { verb: 'prepare_draft', target: 'local-task-note.md', riskTier: 'low_local' } },
+    },
+    expected: 'fetch_abstain',
+    reason: /receipt digest does not match observed source digest/,
+  },
+  {
+    id: 'semantic-kernel-like-observed-source-digest-mismatch-fetches',
+    adapter: semanticKernelLikeAdapter,
+    packet: {
+      plannerState: { id: 'sk-observed-digest-mismatch-1', memory: { authorityReceipt: receipt, expectedSource, sourceFreshnessPolicy: observedDigestMismatchPolicy } },
+      plannedFunctionCall: { verb: 'run_local_test', target: 'local-validator', riskTier: 'low_local' },
+    },
+    expected: 'fetch_abstain',
+    reason: /receipt digest does not match observed source digest/,
+  },
+  {
+    id: 'mcp-like-observed-source-digest-mismatch-fetches',
+    adapter: mcpLikeAdapter,
+    packet: {
+      request: { id: 'mcp-observed-digest-mismatch-1', metadata: { authorityReceipt: receipt, expectedSource, sourceFreshnessPolicy: observedDigestMismatchPolicy }, toolCall: { verb: 'write_doc', target: 'local-mcp-note.md', riskTier: 'low_local' } },
+    },
+    expected: 'fetch_abstain',
+    reason: /receipt digest does not match observed source digest/,
   },
   {
     id: 'autogen-like-prose-metadata-does-not-authorize-sensitive-action',
