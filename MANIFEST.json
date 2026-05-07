@@ -1,7 +1,7 @@
 {
   "bundle": "synaptic-mesh",
   "version": "0.1.2",
-  "generated": "2026-05-07T17:52:51Z",
+  "generated": "2026-05-07T17:58:08Z",
   "status": "hardening_release_candidate_not_runtime_ready",
   "repository": "https://github.com/lechuit/synaptic-mesh",
   "license": "Apache-2.0 for code; CC BY 4.0 for docs/prose unless otherwise noted",
@@ -35,9 +35,14 @@
       "sha256": "2aa0bd6bee2c8f926a1a2e3414f32f194881d273947b5fdf0eede0938ba54f60"
     },
     {
+      "path": "docs/adr/0001-shadow-receiver-architecture.md",
+      "bytes": 3063,
+      "sha256": "2f5952886fcad09a6294a7031219489aa34d434c92935bccd3e5756d87477fcf"
+    },
+    {
       "path": "docs/repo-structure.md",
-      "bytes": 2362,
-      "sha256": "567e6458824d52d89d2734a149cd73a450ed6ec6bbdd24c90b5af043bb052afd"
+      "bytes": 2660,
+      "sha256": "a6e57eeff6d542331250ee29141fe098a5877569886f747e4f32b6cc7df6125e"
     },
     {
       "path": "evidence/publication-reproducibility-rerun/cli-validator.out.json",
