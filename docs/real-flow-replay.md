@@ -6,7 +6,7 @@ It uses hand-authored, real-ish handoff examples with gold labels and audit logs
 
 ```text
 naturalistic handoff artifact
-  -> parserEvidenceRef
+  -> parserEvidenceRef + parserEvidenceRefHash
   -> observed RouteDecision fixture
   -> gold label comparison
   -> scorecard / audit log
@@ -33,6 +33,7 @@ Each replay has:
 
 - a naturalistic raw artifact;
 - a `parserEvidenceRef` from the parser normalization fixture set;
+- a `parserEvidenceRefHash` over the linked parser fixture's `parserEvidence` plus `routeDecisionInput`, so parser-normalization drift breaks replay validation instead of passing silently;
 - a gold-label expected route, compact/human expectations, reason codes, and forbidden effects;
 - an observed decision with decisive signals and rejected routes;
 - scorecard metrics for false permit, false compact, false human escalation, boundary loss, and wrong route.
@@ -43,6 +44,7 @@ This is not:
 
 - live traffic;
 - a live shadow observer;
+- an automatic receiver decision;
 - a classifier;
 - runtime enforcement;
 - tool authorization;
@@ -53,4 +55,4 @@ This is not:
 - publication readiness;
 - production/canary safety evidence.
 
-The goal is to make naturalistic handoff replay measurable before any live observer or classifier work.
+The goal is to make naturalistic handoff replay measurable before any live observer or classifier work. Passing this gate means fixture `observedDecision` records still match gold labels and linked parser evidence hashes; it does not mean the receiver can compute the route from raw input by itself.

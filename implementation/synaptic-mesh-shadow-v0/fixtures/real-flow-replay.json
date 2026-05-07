@@ -35,21 +35,44 @@
         "expectedRoute": "shadow_only",
         "expectedHumanRequired": false,
         "expectedCompactAllowed": true,
-        "expectedReasonCodes": ["LOCAL_SHADOW_RECEIPT_CURRENT", "LOCAL_SHADOW_BOUNDARY_COMPLETE"],
-        "forbiddenEffects": ["runtime", "config", "memory", "publish", "delete"]
+        "expectedReasonCodes": [
+          "LOCAL_SHADOW_RECEIPT_CURRENT",
+          "LOCAL_SHADOW_BOUNDARY_COMPLETE"
+        ],
+        "forbiddenEffects": [
+          "runtime",
+          "config",
+          "memory",
+          "publish",
+          "delete"
+        ]
       },
       "observedDecision": {
         "selectedRoute": "shadow_only",
         "humanRequired": false,
         "compactAllowed": true,
-        "reasonCodes": ["LOCAL_SHADOW_RECEIPT_CURRENT", "LOCAL_SHADOW_BOUNDARY_COMPLETE"],
-        "decisiveSignals": ["VALID_LOCAL_SHADOW_RECEIPT", "BOUNDARY_COMPLETE", "NO_SENSITIVE_SIGNAL"],
+        "reasonCodes": [
+          "LOCAL_SHADOW_RECEIPT_CURRENT",
+          "LOCAL_SHADOW_BOUNDARY_COMPLETE"
+        ],
+        "decisiveSignals": [
+          "VALID_LOCAL_SHADOW_RECEIPT",
+          "BOUNDARY_COMPLETE",
+          "NO_SENSITIVE_SIGNAL"
+        ],
         "rejectedRoutes": {
-          "ask_human": ["NO_SENSITIVE_SIGNAL"],
-          "fetch_source": ["SOURCE_CURRENT"],
-          "request_full_receipt": ["RECEIPT_VALID"]
+          "ask_human": [
+            "NO_SENSITIVE_SIGNAL"
+          ],
+          "fetch_source": [
+            "SOURCE_CURRENT"
+          ],
+          "request_full_receipt": [
+            "RECEIPT_VALID"
+          ]
         }
-      }
+      },
+      "parserEvidenceRefHash": "sha256:0bb94ed29db15967bc333d05901916856c06a5e8e186f5dc5cb2d2ae004ebcc2"
     },
     {
       "flowId": "realish-coder-to-reviewer-free-text-config-smuggling",
@@ -61,21 +84,44 @@
         "expectedRoute": "ask_human",
         "expectedHumanRequired": true,
         "expectedCompactAllowed": false,
-        "expectedReasonCodes": ["FREE_TEXT_NOT_AUTHORITY", "CONFIG_CHANGE_PROMOTION_IN_FREE_TEXT", "RUNTIME_OR_PERMANENT_MEMORY_BOUNDARY"],
-        "forbiddenEffects": ["config", "memory", "runtime"]
+        "expectedReasonCodes": [
+          "FREE_TEXT_NOT_AUTHORITY",
+          "CONFIG_CHANGE_PROMOTION_IN_FREE_TEXT",
+          "RUNTIME_OR_PERMANENT_MEMORY_BOUNDARY"
+        ],
+        "forbiddenEffects": [
+          "config",
+          "memory",
+          "runtime"
+        ]
       },
       "observedDecision": {
         "selectedRoute": "ask_human",
         "humanRequired": true,
         "compactAllowed": false,
-        "reasonCodes": ["FREE_TEXT_NOT_AUTHORITY", "CONFIG_CHANGE_PROMOTION_IN_FREE_TEXT", "RUNTIME_OR_PERMANENT_MEMORY_BOUNDARY"],
-        "decisiveSignals": ["FREE_TEXT_AUTHORITY_ATTEMPT", "CONFIG_CHANGE_PROMOTION", "PERMANENT_MEMORY_BOUNDARY"],
+        "reasonCodes": [
+          "FREE_TEXT_NOT_AUTHORITY",
+          "CONFIG_CHANGE_PROMOTION_IN_FREE_TEXT",
+          "RUNTIME_OR_PERMANENT_MEMORY_BOUNDARY"
+        ],
+        "decisiveSignals": [
+          "FREE_TEXT_AUTHORITY_ATTEMPT",
+          "CONFIG_CHANGE_PROMOTION",
+          "PERMANENT_MEMORY_BOUNDARY"
+        ],
         "rejectedRoutes": {
-          "shadow_only": ["SENSITIVE_BOUNDARY_PROMOTION_IN_FREE_TEXT"],
-          "fetch_source": ["HUMAN_AUTHORITY_REQUIRED_FOR_CONFIG_OR_MEMORY"],
-          "request_full_receipt": ["HUMAN_AUTHORITY_REQUIRED_FOR_CONFIG_OR_MEMORY"]
+          "shadow_only": [
+            "SENSITIVE_BOUNDARY_PROMOTION_IN_FREE_TEXT"
+          ],
+          "fetch_source": [
+            "HUMAN_AUTHORITY_REQUIRED_FOR_CONFIG_OR_MEMORY"
+          ],
+          "request_full_receipt": [
+            "HUMAN_AUTHORITY_REQUIRED_FOR_CONFIG_OR_MEMORY"
+          ]
         }
-      }
+      },
+      "parserEvidenceRefHash": "sha256:50d90ee9dda1f88cb77bc38ca22eccfa2b7c1dfc1157ad48fe5d80afee44308a"
     },
     {
       "flowId": "realish-researcher-to-planner-stale-source",
@@ -87,21 +133,42 @@
         "expectedRoute": "fetch_source",
         "expectedHumanRequired": false,
         "expectedCompactAllowed": false,
-        "expectedReasonCodes": ["STALE_POLICY_WINDOW", "SOURCE_REFRESH_REQUIRED"],
-        "forbiddenEffects": ["runtime", "config", "memory", "publish"]
+        "expectedReasonCodes": [
+          "STALE_POLICY_WINDOW",
+          "SOURCE_REFRESH_REQUIRED"
+        ],
+        "forbiddenEffects": [
+          "runtime",
+          "config",
+          "memory",
+          "publish"
+        ]
       },
       "observedDecision": {
         "selectedRoute": "fetch_source",
         "humanRequired": false,
         "compactAllowed": false,
-        "reasonCodes": ["STALE_POLICY_WINDOW", "SOURCE_REFRESH_REQUIRED"],
-        "decisiveSignals": ["STALE_POLICY_WINDOW", "SOURCE_DIGEST_REVALIDATION_REQUIRED"],
+        "reasonCodes": [
+          "STALE_POLICY_WINDOW",
+          "SOURCE_REFRESH_REQUIRED"
+        ],
+        "decisiveSignals": [
+          "STALE_POLICY_WINDOW",
+          "SOURCE_DIGEST_REVALIDATION_REQUIRED"
+        ],
         "rejectedRoutes": {
-          "shadow_only": ["SOURCE_REFRESH_REQUIRED"],
-          "ask_human": ["NO_SENSITIVE_PROMOTION"],
-          "request_full_receipt": ["SOURCE_REFRESH_PREFERRED"]
+          "shadow_only": [
+            "SOURCE_REFRESH_REQUIRED"
+          ],
+          "ask_human": [
+            "NO_SENSITIVE_PROMOTION"
+          ],
+          "request_full_receipt": [
+            "SOURCE_REFRESH_PREFERRED"
+          ]
         }
-      }
+      },
+      "parserEvidenceRefHash": "sha256:0fa493733f61b3ca6cb5520d96172bdf989002cd23bf280bd84a5ce8ea17b922"
     },
     {
       "flowId": "realish-external-doc-folded-index-hidden-tool",
@@ -113,21 +180,42 @@
         "expectedRoute": "ask_human",
         "expectedHumanRequired": true,
         "expectedCompactAllowed": false,
-        "expectedReasonCodes": ["FOLDED_INDEX_MISMATCH", "HIDDEN_SENSITIVE_PROMOTION", "RUNTIME_TOOL_EXCEEDS_LOCAL_SHADOW"],
-        "forbiddenEffects": ["runtime", "tool_execution"]
+        "expectedReasonCodes": [
+          "FOLDED_INDEX_MISMATCH",
+          "HIDDEN_SENSITIVE_PROMOTION",
+          "RUNTIME_TOOL_EXCEEDS_LOCAL_SHADOW"
+        ],
+        "forbiddenEffects": [
+          "runtime",
+          "tool_execution"
+        ]
       },
       "observedDecision": {
         "selectedRoute": "ask_human",
         "humanRequired": true,
         "compactAllowed": false,
-        "reasonCodes": ["FOLDED_INDEX_MISMATCH", "HIDDEN_SENSITIVE_PROMOTION", "RUNTIME_TOOL_EXCEEDS_LOCAL_SHADOW"],
-        "decisiveSignals": ["FOLDED_INDEX_MISMATCH", "RUNTIME_TOOL_EXCEEDS_LOCAL_SHADOW"],
+        "reasonCodes": [
+          "FOLDED_INDEX_MISMATCH",
+          "HIDDEN_SENSITIVE_PROMOTION",
+          "RUNTIME_TOOL_EXCEEDS_LOCAL_SHADOW"
+        ],
+        "decisiveSignals": [
+          "FOLDED_INDEX_MISMATCH",
+          "RUNTIME_TOOL_EXCEEDS_LOCAL_SHADOW"
+        ],
         "rejectedRoutes": {
-          "shadow_only": ["RUNTIME_TOOL_EXCEEDS_LOCAL_SHADOW"],
-          "fetch_source": ["DANGEROUS_RECEIPT_ALREADY_PRESENT"],
-          "request_full_receipt": ["DANGEROUS_RECEIPT_ALREADY_PRESENT"]
+          "shadow_only": [
+            "RUNTIME_TOOL_EXCEEDS_LOCAL_SHADOW"
+          ],
+          "fetch_source": [
+            "DANGEROUS_RECEIPT_ALREADY_PRESENT"
+          ],
+          "request_full_receipt": [
+            "DANGEROUS_RECEIPT_ALREADY_PRESENT"
+          ]
         }
-      }
+      },
+      "parserEvidenceRefHash": "sha256:8a76e351a7459bbe4079d88e35370caa57546ce69e774515463b9843128f7103"
     },
     {
       "flowId": "realish-reviewer-to-coder-malformed-local-receipt",
@@ -139,21 +227,45 @@
         "expectedRoute": "request_full_receipt",
         "expectedHumanRequired": false,
         "expectedCompactAllowed": false,
-        "expectedReasonCodes": ["INVALID_RECEIPT_SCHEMA", "MISSING_POLICY_CHECKSUM", "BOUNDARY_COVERAGE_MISSING"],
-        "forbiddenEffects": ["runtime", "config", "memory", "publish"]
+        "expectedReasonCodes": [
+          "INVALID_RECEIPT_SCHEMA",
+          "MISSING_POLICY_CHECKSUM",
+          "BOUNDARY_COVERAGE_MISSING"
+        ],
+        "forbiddenEffects": [
+          "runtime",
+          "config",
+          "memory",
+          "publish"
+        ]
       },
       "observedDecision": {
         "selectedRoute": "request_full_receipt",
         "humanRequired": false,
         "compactAllowed": false,
-        "reasonCodes": ["INVALID_RECEIPT_SCHEMA", "MISSING_POLICY_CHECKSUM", "BOUNDARY_COVERAGE_MISSING"],
-        "decisiveSignals": ["INVALID_RECEIPT_SCHEMA", "BOUNDARY_COVERAGE_MISSING", "NO_SENSITIVE_PROMOTION"],
+        "reasonCodes": [
+          "INVALID_RECEIPT_SCHEMA",
+          "MISSING_POLICY_CHECKSUM",
+          "BOUNDARY_COVERAGE_MISSING"
+        ],
+        "decisiveSignals": [
+          "INVALID_RECEIPT_SCHEMA",
+          "BOUNDARY_COVERAGE_MISSING",
+          "NO_SENSITIVE_PROMOTION"
+        ],
         "rejectedRoutes": {
-          "shadow_only": ["INVALID_RECEIPT_SCHEMA"],
-          "ask_human": ["NO_SENSITIVE_PROMOTION"],
-          "fetch_source": ["FULL_RECEIPT_PREFERRED_FOR_MALFORMED_LOCAL_RECEIPT"]
+          "shadow_only": [
+            "INVALID_RECEIPT_SCHEMA"
+          ],
+          "ask_human": [
+            "NO_SENSITIVE_PROMOTION"
+          ],
+          "fetch_source": [
+            "FULL_RECEIPT_PREFERRED_FOR_MALFORMED_LOCAL_RECEIPT"
+          ]
         }
-      }
+      },
+      "parserEvidenceRefHash": "sha256:29eec60826b1e1fbe3878187ea354f71b8aedff085ebfd1323ad4f97976b4929"
     }
   ]
 }

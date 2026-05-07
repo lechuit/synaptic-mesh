@@ -27,7 +27,7 @@ Status: baseline shadow-gates release candidate / public review package update. 
 - Adversarial fixture generator: pass 9/9 generated fixtures, oracle-derived expectations only
 - Raw/parser adversarial fixtures: pass 9/9 raw fixture/parser-pressure cases, annotation validation only
 - Parser normalization evidence: pass 5/5 raw handoff normalization cases, parserEvidence shape/input-hash validation only
-- Offline real-flow replay: pass 5/5 naturalistic handoff replay cases, gold-label/audit-log validation only
+- Offline real-flow replay: pass 5/5 naturalistic handoff replay cases, gold-label/audit-log validation only, now hash-bound to linked parser evidence
 
 ## Compatibility note
 

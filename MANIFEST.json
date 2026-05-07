@@ -76,8 +76,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 5058,
-      "sha256": "859b4c438f4eebad3401569e89f71bece53d45d4851f315d67d9359380afacda"
+      "bytes": 5117,
+      "sha256": "eef229a86e968661bd483bb801eda23fda3f46c1201da9d3bf0c108940c8e2fc"
     },
     {
       "path": "RELEASE_CANDIDATE.md",
@@ -86,8 +86,8 @@
     },
     {
       "path": "RELEASE_NOTES.md",
-      "bytes": 3409,
-      "sha256": "e38680b45b49859734e73d05d2c3aaa681610319d1a5629f15f4b1502f076f9a"
+      "bytes": 3451,
+      "sha256": "a669183049e7039cab78878f30a06318a83ace4debfc18f1e27520c5db2dd635"
     },
     {
       "path": "design-notes/adapter-boundary-langgraph-mcp-v0.md",
@@ -141,8 +141,8 @@
     },
     {
       "path": "docs/coverage-matrix.md",
-      "bytes": 5011,
-      "sha256": "a280b53a6e721b6e8d6a5b369752a7f7b04bb46bc7b0cdee8aca8add12868fe7"
+      "bytes": 5106,
+      "sha256": "7ebc522abd658e00742396f3f4d2427d338528e45041d41d1dd7bf778133f345"
     },
     {
       "path": "docs/parser-normalization-evidence.md",
@@ -156,8 +156,8 @@
     },
     {
       "path": "docs/real-flow-replay.md",
-      "bytes": 1640,
-      "sha256": "cd7d70294ef3e8d16370759618877ca8d5245c10fb3741441335f47908a3ec07"
+      "bytes": 2083,
+      "sha256": "4fd9b95eec358c1794a10bf4fa986733c2cc3e5a33c0a44e40bbab4a1cfa6c01"
     },
     {
       "path": "docs/reason-codes.md",
@@ -166,8 +166,8 @@
     },
     {
       "path": "docs/release-checklist.md",
-      "bytes": 4750,
-      "sha256": "7ca60fbc2d2a7f74bbb4a68bab66b90c010ead8d40552d7ff0ccea26b64c4de3"
+      "bytes": 4818,
+      "sha256": "605f25e5aa43a072463d7c4f89c616298b195c02d6decbf14b27c1b1dff63acb"
     },
     {
       "path": "docs/repo-structure.md",
@@ -216,8 +216,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/README.md",
-      "bytes": 7593,
-      "sha256": "7607e68a2914714627b63f63a7b11b29fce5ace44f306c82e7bfe7a68148e575"
+      "bytes": 7654,
+      "sha256": "fe08ad29631840e1642e7f46a36de469de2341af0148b55a312142012d7baf24"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/bin/validate-receipt.mjs",
@@ -286,8 +286,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/real-flow-replay.out.json",
-      "bytes": 6191,
-      "sha256": "8d16644a879bf8587ad540d1b0f9a8ddbb5154b6953bb034e6d475c74395c675"
+      "bytes": 6811,
+      "sha256": "192c38112c2b1ca2824e4c0e4382f07d4791cdc1f5f9e055ec7ccd0dd1849c9b"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/receipt-schema.out.json",
@@ -371,8 +371,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/fixtures/real-flow-replay.json",
-      "bytes": 7640,
-      "sha256": "662393b1d5172cf19a8d619cc7a28e8f171434833d46a055425ffb039e0ba78c"
+      "bytes": 9300,
+      "sha256": "334ae00dce7b1e470b522d2b54ef3de260ca98435778c9e44386635d5426eb3b"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/fixtures/receipts.json",
@@ -511,8 +511,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/real-flow-replay.mjs",
-      "bytes": 11809,
-      "sha256": "91ddf93130cd80c563060bcbf5635b25bc43bd174d83800f511ed0e2e4d7f574"
+      "bytes": 12962,
+      "sha256": "637902c6f99c17f838668a7bbc2366914f36400be9aa911663c06bcc25f4c35c"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/receipt-freshness-age-policy.mjs",
