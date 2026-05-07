@@ -1,10 +1,10 @@
 {
   "summary": {
     "artifact": "T-synaptic-mesh-review-local-runner-v0",
-    "timestamp": "2026-05-07T14:53:59.562Z",
+    "timestamp": "2026-05-07T14:57:16.740Z",
     "verdict": "pass",
-    "commands": 12,
-    "passCommands": 12,
+    "commands": 13,
+    "passCommands": 13,
     "failedCommands": [],
     "fixtureCount": 15,
     "fixtureParityVerdict": "pass",
@@ -12,6 +12,7 @@
     "transformRegressionVerdict": "pass",
     "cliValidatorVerdict": "pass",
     "authorityLaunderingVerdict": "pass",
+    "receiverAdapterContractsVerdict": "pass",
     "syntheticHandoffVerdict": "pass",
     "partialReceiptDegradeVerdict": "pass",
     "unsafeAllowSignals": [],
@@ -63,6 +64,13 @@
     {
       "id": "authority-laundering-regression-tests",
       "command": "/usr/local/bin/node implementation/synaptic-mesh-shadow-v0/tests/authority-laundering-regression.mjs",
+      "status": 0,
+      "pass": true,
+      "stderr": ""
+    },
+    {
+      "id": "receiver-policy-adapter-contract-tests",
+      "command": "/usr/local/bin/node implementation/synaptic-mesh-shadow-v0/tests/receiver-policy-adapter-contracts.mjs",
       "status": 0,
       "pass": true,
       "stderr": ""

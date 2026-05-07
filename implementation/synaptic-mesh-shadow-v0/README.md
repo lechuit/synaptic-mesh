@@ -38,7 +38,7 @@ The reference currently covers:
 Current local gates observed in `evidence/review-local.out.json`:
 
 - review-local verdict: `pass`;
-- commands: `12/12` passing;
+- commands: `13/13` passing;
 - fixture parity: `15/15` passing;
 - normalized summary fixtures: `15`;
 - unsafe allow signals: `0`;
@@ -119,6 +119,10 @@ Run the CLI validator regression:
 npm run test:cli
 ```
 
+## Receiver policy adapter contract
+
+The local reference includes a contract-only adapter module, `src/receiver-policy-adapter.mjs`, that maps framework-shaped packets into the same receiver-side receipt validation call. Current tests include generic, LangGraph-like, and AutoGen-like packet shapes. This is **not** a real framework adapter or runtime integration; it is a portability contract for review.
+
 ## Evidence files
 
 Local evidence outputs are written under:
@@ -133,6 +137,7 @@ Key files:
 - `receipt-parser-validator.out.json` — parser/validator cases;
 - `receipt-transform-regression.out.json` — transform regression cases;
 - `authority-laundering-regression.out.json` — adversarial laundering regression cases;
+- `receiver-policy-adapter-contracts.out.json` — framework-shaped receiver adapter contract cases;
 - `cli-validator.out.json` — CLI behavior cases;
 - `synthetic-handoff-examples.out.json` — synthetic handoff cases;
 - `partial-receipt-degrade.out.json` — partial receipt fail-closed behavior;
