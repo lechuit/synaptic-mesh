@@ -3,8 +3,8 @@
     "artifact": "T-synaptic-mesh-review-local-runner-v0",
     "timestamp": "2026-05-07T15:05:00.000Z",
     "verdict": "pass",
-    "commands": 16,
-    "passCommands": 16,
+    "commands": 17,
+    "passCommands": 17,
     "failedCommands": [],
     "fixtureCount": 15,
     "fixtureParityVerdict": "pass",
@@ -12,6 +12,9 @@
     "transformRegressionVerdict": "pass",
     "cliValidatorVerdict": "pass",
     "authorityLaunderingVerdict": "pass",
+    "authorityClaimRoutesVerdict": "pass",
+    "authorityClaimRouteCount": 8,
+    "authorityBoundaryCount": 8,
     "receiverAdapterContractsVerdict": "pass",
     "actionPolicyContractsVerdict": "pass",
     "syntheticHandoffVerdict": "pass",
@@ -86,6 +89,13 @@
     {
       "id": "authority-laundering-regression-tests",
       "command": "/usr/local/bin/node implementation/synaptic-mesh-shadow-v0/tests/authority-laundering-regression.mjs",
+      "status": 0,
+      "pass": true,
+      "stderr": ""
+    },
+    {
+      "id": "authority-claim-route-fixtures-tests",
+      "command": "/usr/local/bin/node implementation/synaptic-mesh-shadow-v0/tests/authority-claim-routes-fixtures.mjs",
       "status": 0,
       "pass": true,
       "stderr": ""

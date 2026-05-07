@@ -1,0 +1,298 @@
+{
+  "artifact": "T-synaptic-mesh-authority-claim-route-fixtures-v0",
+  "status": "fixture_metadata_only_no_classifier",
+  "purpose": "Define degradation route vocabulary for authority-claim fixtures so ask_human/requires_human does not become a generic uncertainty bucket.",
+  "boundary": [
+    "local_shadow_only",
+    "fixture_metadata_only",
+    "not_classifier",
+    "not_runtime_enforcement",
+    "not_config",
+    "not_authorization",
+    "no_external_effects"
+  ],
+  "routes": [
+    {
+      "id": "block",
+      "humanRequiredDefault": false,
+      "description": "Deterministically reject a prohibited or unsafe local action without needing new human input."
+    },
+    {
+      "id": "ask_human",
+      "humanRequiredDefault": true,
+      "description": "Escalate when the requested authority depends on human approval, sensitive external effects, config/runtime changes, or consent."
+    },
+    {
+      "id": "fetch_source",
+      "humanRequiredDefault": false,
+      "description": "Retrieve or re-check the cited source artifact before deciding."
+    },
+    {
+      "id": "request_full_receipt",
+      "humanRequiredDefault": false,
+      "description": "Ask sender/system for an uncompressed receipt when compact metadata omits authority-critical fields."
+    },
+    {
+      "id": "request_policy_refresh",
+      "humanRequiredDefault": false,
+      "description": "Refresh policy/project-rule evidence when current policy context is missing, stale, or contradictory."
+    },
+    {
+      "id": "request_grammar_refresh",
+      "humanRequiredDefault": false,
+      "description": "Refresh the handoff/receipt grammar when parsing semantics are missing, stale, or version-conflicted."
+    },
+    {
+      "id": "shadow_only",
+      "humanRequiredDefault": false,
+      "description": "Continue only in local shadow/research space; do not promote, integrate, publish, or authorize tools."
+    },
+    {
+      "id": "abstain",
+      "humanRequiredDefault": false,
+      "description": "Make no authority decision when evidence is insufficient and no safe fetch/refresh route is available."
+    }
+  ],
+  "fixtures": [
+    {
+      "id": "compact-receipt-missing-boundary-fields-requests-full-receipt",
+      "claimType": "boundaryClaim",
+      "inputShape": "compact_receipt",
+      "missingAuthorityFields": [
+        "PB",
+        "NO"
+      ],
+      "selectedRoute": "request_full_receipt",
+      "humanRequired": false,
+      "reason": "compact_receipt_missing_boundary_fields",
+      "unsafeAllow": false,
+      "notes": "Missing boundary fields should not be dumped into ask_human before requesting the full receipt.",
+      "boundaryType": "local_shadow"
+    },
+    {
+      "id": "config-change-requested-by-agent-inference-asks-human",
+      "claimType": "permissionClaim",
+      "inputShape": "agent_inferred_next_action",
+      "requestedEffect": "config_change",
+      "selectedRoute": "ask_human",
+      "humanRequired": true,
+      "reason": "config_change_requested_by_agent_inference",
+      "unsafeAllow": false,
+      "notes": "Config/runtime authority cannot be inferred from sender labels or local shadow evidence.",
+      "boundaryType": "config_change"
+    },
+    {
+      "id": "stale-evidence-digest-fetches-source",
+      "claimType": "evidenceClaim",
+      "inputShape": "receipt_with_source_digest",
+      "selectedRoute": "fetch_source",
+      "humanRequired": false,
+      "reason": "source_digest_or_mtime_requires_revalidation",
+      "unsafeAllow": false
+    },
+    {
+      "id": "stale-project-policy-requests-policy-refresh",
+      "claimType": "policyClaim",
+      "inputShape": "policy_summary",
+      "selectedRoute": "request_policy_refresh",
+      "humanRequired": false,
+      "reason": "policy_context_stale_or_missing",
+      "unsafeAllow": false
+    },
+    {
+      "id": "unknown-compact-grammar-requests-grammar-refresh",
+      "claimType": "lineageClaim",
+      "inputShape": "compact_receipt_unknown_grammar_version",
+      "selectedRoute": "request_grammar_refresh",
+      "humanRequired": false,
+      "reason": "receipt_grammar_version_unrecognized",
+      "unsafeAllow": false
+    },
+    {
+      "id": "local-research-note-remains-shadow-only",
+      "claimType": "actionClaim",
+      "inputShape": "local_research_write",
+      "selectedRoute": "shadow_only",
+      "humanRequired": false,
+      "reason": "local_shadow_scope_verified_no_promotion",
+      "unsafeAllow": false,
+      "boundaryType": "local_shadow"
+    },
+    {
+      "id": "contradictory-authority-with-no-source-abstains",
+      "claimType": "permissionClaim",
+      "inputShape": "contradictory_sender_labels_without_source",
+      "selectedRoute": "abstain",
+      "humanRequired": false,
+      "reason": "contradictory_authority_claim_no_verifiable_source",
+      "unsafeAllow": false
+    },
+    {
+      "id": "explicit-negative-boundary-blocks-prohibited-publication",
+      "claimType": "boundaryClaim",
+      "inputShape": "receipt_negative_boundary",
+      "selectedRoute": "block",
+      "humanRequired": false,
+      "reason": "negative_boundary_explicitly_forbids_publication",
+      "unsafeAllow": false,
+      "boundaryType": "external_publication"
+    },
+    {
+      "id": "read-only-evidence-inspection-can-use-compact-route",
+      "claimType": "evidenceClaim",
+      "boundaryType": "read_only",
+      "inputShape": "source_reference",
+      "selectedRoute": "fetch_source",
+      "humanRequired": false,
+      "reason": "read_only_source_reference_can_be_rechecked",
+      "unsafeAllow": false
+    },
+    {
+      "id": "memory-candidate-stays-non-promotional-shadow-route",
+      "claimType": "memoryClaim",
+      "boundaryType": "memory_candidate",
+      "inputShape": "memory_promotion_candidate",
+      "selectedRoute": "shadow_only",
+      "humanRequired": false,
+      "reason": "memory_candidate_not_permanent_promotion",
+      "unsafeAllow": false
+    },
+    {
+      "id": "shared-memory-claim-with-compact-receipt-abstains",
+      "claimType": "memoryClaim",
+      "boundaryType": "shared_memory",
+      "inputShape": "compact_receipt_shared_memory_claim",
+      "selectedRoute": "abstain",
+      "humanRequired": false,
+      "reason": "shared_memory_no_compact_route_by_default",
+      "unsafeAllow": false
+    },
+    {
+      "id": "permanent-memory-claim-asks-human",
+      "claimType": "memoryClaim",
+      "boundaryType": "permanent_memory",
+      "inputShape": "durable_memory_promotion_request",
+      "selectedRoute": "ask_human",
+      "humanRequired": true,
+      "reason": "permanent_memory_requires_human_confirmation",
+      "unsafeAllow": false
+    },
+    {
+      "id": "runtime-tool-authority-asks-human",
+      "claimType": "permissionClaim",
+      "boundaryType": "runtime_tool",
+      "inputShape": "tool_authorization_claim",
+      "selectedRoute": "ask_human",
+      "humanRequired": true,
+      "reason": "runtime_tool_authority_requires_human",
+      "unsafeAllow": false
+    },
+    {
+      "id": "external-publication-authority-asks-human",
+      "claimType": "boundaryClaim",
+      "boundaryType": "external_publication",
+      "inputShape": "publish_release_claim",
+      "selectedRoute": "ask_human",
+      "humanRequired": true,
+      "reason": "external_publication_requires_human",
+      "unsafeAllow": false
+    }
+  ],
+  "knownNextStepForPr26": [
+    "Implement a shadow classifier that chooses among degradation routes instead of collapsing uncertainty to ask_human.",
+    "Keep ask_human reserved for consent, sensitive effects, config/runtime changes, and policy-required human review.",
+    "Prefer fetch_source, request_full_receipt, request_policy_refresh, or request_grammar_refresh when missing evidence can be resolved mechanically inside the local shadow boundary.",
+    "Use the boundary taxonomy as an input to route selection: compactability and human requirement differ by boundary, so receiver decisions must not treat local_shadow, memory_candidate, config_change, runtime_tool, and external_publication as equivalent.",
+    "Design the classifier against docs/threat-model-v0.md actors and capabilities; map each threat to a fixture or explicit non-goal before runtime/enforcement work."
+  ],
+  "boundaryTaxonomy": [
+    {
+      "boundary": "read_only",
+      "risk": "low",
+      "canCompact": "yes",
+      "requiresHumanDefault": false,
+      "notes": "Read or inspect local/public evidence without changing state."
+    },
+    {
+      "boundary": "local_shadow",
+      "risk": "low_medium",
+      "canCompact": "yes_with_receipt",
+      "requiresHumanDefault": false,
+      "notes": "Local research/review outputs only; no runtime, config, publication, or durable memory effects."
+    },
+    {
+      "boundary": "memory_candidate",
+      "risk": "medium",
+      "canCompact": "exact_or_full_preferred",
+      "requiresHumanDefault": false,
+      "notes": "Candidate generation may be local; promotion remains separate and must preserve evidence/source."
+    },
+    {
+      "boundary": "shared_memory",
+      "risk": "high",
+      "canCompact": "no_compact_route_by_default",
+      "requiresHumanDefault": "possibly",
+      "notes": "Cross-agent/shared memory affects other receivers; require stronger source and policy checks."
+    },
+    {
+      "boundary": "permanent_memory",
+      "risk": "high",
+      "canCompact": "no",
+      "requiresHumanDefault": true,
+      "notes": "Durable promotion requires explicit approved process/human confirmation."
+    },
+    {
+      "boundary": "config_change",
+      "risk": "high",
+      "canCompact": "no",
+      "requiresHumanDefault": true,
+      "notes": "Config/runtime authority cannot be inferred from sender labels."
+    },
+    {
+      "boundary": "runtime_tool",
+      "risk": "high",
+      "canCompact": "no",
+      "requiresHumanDefault": true,
+      "notes": "Tool authorization or runtime enforcement is outside local shadow fixtures."
+    },
+    {
+      "boundary": "external_publication",
+      "risk": "high",
+      "canCompact": "no",
+      "requiresHumanDefault": true,
+      "notes": "Publishing, releases, posts, and other external effects require human approval."
+    }
+  ],
+  "threatModel": {
+    "document": "docs/threat-model-v0.md",
+    "status": "draft_scaffold_for_classifier_design",
+    "actors": [
+      "BenignSenderBug",
+      "OverconfidentAgent",
+      "StaleReceiver",
+      "NaiveCompressor",
+      "MaliciousExternalDocument",
+      "ReceiptTamperer",
+      "BoundarySmuggler",
+      "PolicyHotSwap",
+      "NestedHandoffConfuser"
+    ],
+    "capabilities": [
+      "canAddFreeText",
+      "canOmitReceipt",
+      "canReplayOldReceipt",
+      "canChangeNextAllowedAction",
+      "canInjectAmbiguousVerb",
+      "canModifyFoldedIndex",
+      "canClaimAuthorityWithoutEvidence",
+      "canHideSensitivePromotion"
+    ],
+    "knownUncoveredRisks": [
+      "no_authority_route_classifier_yet",
+      "no_malicious_external_document_fixture_yet",
+      "no_folded_index_tamper_regression_yet",
+      "no_full_policy_hotswap_regression_yet",
+      "no_full_nested_handoff_authority_resolution_suite_yet"
+    ]
+  }
+}

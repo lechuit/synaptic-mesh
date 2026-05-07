@@ -1,0 +1,151 @@
+{
+  "summary": {
+    "artifact": "T-synaptic-mesh-authority-claim-route-fixtures-v0",
+    "timestamp": "2026-05-07T18:45:00.000Z",
+    "verdict": "pass",
+    "routeCount": 8,
+    "fixtureCount": 14,
+    "routeCounts": {
+      "block": 1,
+      "ask_human": 4,
+      "fetch_source": 2,
+      "request_full_receipt": 1,
+      "request_policy_refresh": 1,
+      "request_grammar_refresh": 1,
+      "shadow_only": 2,
+      "abstain": 2
+    },
+    "boundaryCount": 8,
+    "boundaryCounts": {
+      "read_only": 1,
+      "local_shadow": 2,
+      "memory_candidate": 1,
+      "shared_memory": 1,
+      "permanent_memory": 1,
+      "config_change": 1,
+      "runtime_tool": 1,
+      "external_publication": 2
+    },
+    "askHumanCases": 4,
+    "nonHumanDegradationCases": 10,
+    "unsafeAllows": 0,
+    "classifierImplemented": false,
+    "sourceFixtureMutation": false,
+    "threatActors": 9,
+    "threatCapabilities": 8,
+    "knownUncoveredRisks": 5
+  },
+  "expectedRoutes": [
+    "block",
+    "ask_human",
+    "fetch_source",
+    "request_full_receipt",
+    "request_policy_refresh",
+    "request_grammar_refresh",
+    "shadow_only",
+    "abstain"
+  ],
+  "expectedBoundaries": [
+    "read_only",
+    "local_shadow",
+    "memory_candidate",
+    "shared_memory",
+    "permanent_memory",
+    "config_change",
+    "runtime_tool",
+    "external_publication"
+  ],
+  "fixtureIds": [
+    "compact-receipt-missing-boundary-fields-requests-full-receipt",
+    "config-change-requested-by-agent-inference-asks-human",
+    "stale-evidence-digest-fetches-source",
+    "stale-project-policy-requests-policy-refresh",
+    "unknown-compact-grammar-requests-grammar-refresh",
+    "local-research-note-remains-shadow-only",
+    "contradictory-authority-with-no-source-abstains",
+    "explicit-negative-boundary-blocks-prohibited-publication",
+    "read-only-evidence-inspection-can-use-compact-route",
+    "memory-candidate-stays-non-promotional-shadow-route",
+    "shared-memory-claim-with-compact-receipt-abstains",
+    "permanent-memory-claim-asks-human",
+    "runtime-tool-authority-asks-human",
+    "external-publication-authority-asks-human"
+  ],
+  "examples": {
+    "compactReceiptMissingBoundaryFields": {
+      "id": "compact-receipt-missing-boundary-fields-requests-full-receipt",
+      "claimType": "boundaryClaim",
+      "inputShape": "compact_receipt",
+      "missingAuthorityFields": [
+        "PB",
+        "NO"
+      ],
+      "selectedRoute": "request_full_receipt",
+      "humanRequired": false,
+      "reason": "compact_receipt_missing_boundary_fields",
+      "unsafeAllow": false,
+      "notes": "Missing boundary fields should not be dumped into ask_human before requesting the full receipt.",
+      "boundaryType": "local_shadow"
+    },
+    "configChangeRequestedByAgentInference": {
+      "id": "config-change-requested-by-agent-inference-asks-human",
+      "claimType": "permissionClaim",
+      "inputShape": "agent_inferred_next_action",
+      "requestedEffect": "config_change",
+      "selectedRoute": "ask_human",
+      "humanRequired": true,
+      "reason": "config_change_requested_by_agent_inference",
+      "unsafeAllow": false,
+      "notes": "Config/runtime authority cannot be inferred from sender labels or local shadow evidence.",
+      "boundaryType": "config_change"
+    }
+  },
+  "threatModel": {
+    "document": "docs/threat-model-v0.md",
+    "status": "draft_scaffold_for_classifier_design",
+    "actors": [
+      "BenignSenderBug",
+      "OverconfidentAgent",
+      "StaleReceiver",
+      "NaiveCompressor",
+      "MaliciousExternalDocument",
+      "ReceiptTamperer",
+      "BoundarySmuggler",
+      "PolicyHotSwap",
+      "NestedHandoffConfuser"
+    ],
+    "capabilities": [
+      "canAddFreeText",
+      "canOmitReceipt",
+      "canReplayOldReceipt",
+      "canChangeNextAllowedAction",
+      "canInjectAmbiguousVerb",
+      "canModifyFoldedIndex",
+      "canClaimAuthorityWithoutEvidence",
+      "canHideSensitivePromotion"
+    ],
+    "knownUncoveredRisks": [
+      "no_authority_route_classifier_yet",
+      "no_malicious_external_document_fixture_yet",
+      "no_folded_index_tamper_regression_yet",
+      "no_full_policy_hotswap_regression_yet",
+      "no_full_nested_handoff_authority_resolution_suite_yet"
+    ]
+  },
+  "knownNextStepForPr26": [
+    "Implement a shadow classifier that chooses among degradation routes instead of collapsing uncertainty to ask_human.",
+    "Keep ask_human reserved for consent, sensitive effects, config/runtime changes, and policy-required human review.",
+    "Prefer fetch_source, request_full_receipt, request_policy_refresh, or request_grammar_refresh when missing evidence can be resolved mechanically inside the local shadow boundary.",
+    "Use the boundary taxonomy as an input to route selection: compactability and human requirement differ by boundary, so receiver decisions must not treat local_shadow, memory_candidate, config_change, runtime_tool, and external_publication as equivalent.",
+    "Design the classifier against docs/threat-model-v0.md actors and capabilities; map each threat to a fixture or explicit non-goal before runtime/enforcement work."
+  ],
+  "boundary": [
+    "local_shadow_only",
+    "fixture_metadata_only",
+    "not_classifier",
+    "not_runtime_enforcement",
+    "not_config",
+    "not_authorization",
+    "no_external_effects"
+  ]
+}
