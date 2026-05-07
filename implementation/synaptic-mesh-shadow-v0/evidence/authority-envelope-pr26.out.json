@@ -1,0 +1,176 @@
+{
+  "summary": {
+    "artifact": "T-synaptic-mesh-authority-envelope-pr26-v0",
+    "timestamp": "2026-05-07T18:51:00.000Z",
+    "verdict": "pass",
+    "fixtureCount": 17,
+    "classifierImplemented": false,
+    "runtimeEnforcementImplemented": false,
+    "conceptDocument": "docs/authority-envelope-pr26.md"
+  },
+  "examples": {
+    "highConfidenceConfig": {
+      "id": "high-confidence-framework-claim-cannot-authorize-config-write",
+      "claimType": "permissionClaim",
+      "boundaryType": "config_change",
+      "inputShape": "framework_inference_plus_config_write_request",
+      "selectedRoute": "ask_human",
+      "humanRequired": true,
+      "reason": "high_confidence_claim_lacks_config_authority",
+      "unsafeAllow": false,
+      "claimConfidence": "high",
+      "evidenceStrength": "high",
+      "authorityLevel": "config_change",
+      "boundaryCoverage": "missing",
+      "actionIntent": "modify_framework_config",
+      "actionEffect": "config_change",
+      "notes": "A high-confidence framework inference is not permission to modify configuration.",
+      "routeDecision": {
+        "selectedRoute": "ask_human",
+        "rejectedRoutes": {
+          "shadow_only": [
+            "ACTION_EFFECT_CONFIG_CHANGE_EXCEEDS_LOCAL_SHADOW"
+          ],
+          "fetch_source": [
+            "FACTUAL_EVIDENCE_DOES_NOT_GRANT_AUTHORITY"
+          ],
+          "request_full_receipt": [
+            "HUMAN_PERMISSION_REQUIRED_FOR_CONFIG_CHANGE"
+          ]
+        },
+        "decisiveSignals": [
+          "CLAIM_CONFIDENCE_HIGH",
+          "EVIDENCE_STRENGTH_HIGH",
+          "AUTHORITY_LEVEL_CONFIG_CHANGE",
+          "BOUNDARY_COVERAGE_MISSING"
+        ],
+        "reasonCodes": [
+          "CONFIDENCE_IS_NOT_AUTHORITY",
+          "CONFIG_CHANGE_REQUIRES_HUMAN_AUTHORITY",
+          "BOUNDARY_COVERAGE_MISSING"
+        ],
+        "humanReason": "The framework claim may be true, but it does not authorize config mutation."
+      }
+    },
+    "textOnlyMigration": {
+      "id": "generate-migration-plan-text-only-stays-shadow",
+      "claimType": "actionClaim",
+      "boundaryType": "local_shadow",
+      "inputShape": "migration_generation_request",
+      "selectedRoute": "shadow_only",
+      "humanRequired": false,
+      "reason": "text_only_plan_with_local_shadow_boundary",
+      "unsafeAllow": false,
+      "claimConfidence": "medium",
+      "evidenceStrength": "medium",
+      "authorityLevel": "local_shadow",
+      "boundaryCoverage": "complete",
+      "actionIntent": "generate_migration_plan",
+      "actionEffect": "text_only",
+      "notes": "Generating a prose migration plan is not filesystem mutation.",
+      "routeDecision": {
+        "selectedRoute": "shadow_only",
+        "rejectedRoutes": {
+          "ask_human": [
+            "NO_SENSITIVE_PROMOTION"
+          ],
+          "block": [
+            "NO_PROHIBITED_EFFECT"
+          ],
+          "request_full_receipt": [
+            "BOUNDARY_COVERAGE_COMPLETE"
+          ]
+        },
+        "decisiveSignals": [
+          "ACTION_INTENT_GENERATE_MIGRATION_PLAN",
+          "ACTION_EFFECT_TEXT_ONLY",
+          "BOUNDARY_COVERAGE_COMPLETE"
+        ],
+        "reasonCodes": [
+          "ACTION_EFFECT_TEXT_ONLY",
+          "LOCAL_SHADOW_BOUNDARY_COMPLETE",
+          "NO_FILESYSTEM_WRITE"
+        ],
+        "humanReason": "The action only writes local prose under shadow scope."
+      }
+    },
+    "writeMigration": {
+      "id": "generate-migration-filesystem-write-asks-human",
+      "claimType": "actionClaim",
+      "boundaryType": "runtime_tool",
+      "inputShape": "migration_generation_request",
+      "selectedRoute": "ask_human",
+      "humanRequired": true,
+      "reason": "filesystem_write_requires_boundary_authority",
+      "unsafeAllow": false,
+      "claimConfidence": "medium",
+      "evidenceStrength": "medium",
+      "authorityLevel": "runtime_tool",
+      "boundaryCoverage": "missing",
+      "actionIntent": "generate_migration",
+      "actionEffect": "filesystem_write",
+      "notes": "The same verb family becomes higher risk when it writes files.",
+      "routeDecision": {
+        "selectedRoute": "ask_human",
+        "rejectedRoutes": {
+          "shadow_only": [
+            "ACTION_EFFECT_FILESYSTEM_WRITE_EXCEEDS_TEXT_ONLY"
+          ],
+          "fetch_source": [
+            "PERMISSION_SOURCE_MISSING"
+          ],
+          "request_full_receipt": [
+            "FILESYSTEM_WRITE_REQUIRES_AUTHORITY"
+          ]
+        },
+        "decisiveSignals": [
+          "ACTION_INTENT_GENERATE_MIGRATION",
+          "ACTION_EFFECT_FILESYSTEM_WRITE",
+          "BOUNDARY_COVERAGE_MISSING"
+        ],
+        "reasonCodes": [
+          "ACTION_EFFECT_FILESYSTEM_WRITE",
+          "BOUNDARY_COVERAGE_MISSING",
+          "FILESYSTEM_WRITE_REQUIRES_AUTHORITY"
+        ],
+        "humanReason": "Filesystem mutation needs boundary authority; verb similarity to text generation is insufficient."
+      }
+    },
+    "compactReceiptRouteDecision": {
+      "selectedRoute": "request_full_receipt",
+      "rejectedRoutes": {
+        "shadow_only": [
+          "MISSING_BOUNDARY_FIELDS"
+        ],
+        "ask_human": [
+          "NO_SENSITIVE_PROMOTION"
+        ],
+        "fetch_source": [
+          "UNKNOWN_GRAMMAR_DIGEST"
+        ]
+      },
+      "decisiveSignals": [
+        "COMPACT_RECEIPT_PRESENT",
+        "MISSING_BOUNDARY_FIELDS",
+        "UNKNOWN_GRAMMAR_DIGEST",
+        "NO_RUNTIME_BOUNDARY"
+      ],
+      "reasonCodes": [
+        "MISSING_BOUNDARY_FIELDS",
+        "UNKNOWN_GRAMMAR_DIGEST",
+        "REQUEST_FULL_RECEIPT_BEFORE_HUMAN_ESCALATION"
+      ],
+      "humanReason": "Compact receipt lacks authority-critical boundary fields, so request full receipt before escalating to a human."
+    }
+  },
+  "benchmarkRoadmapCaptured": true,
+  "boundary": [
+    "local_shadow_only",
+    "fixture_metadata_only",
+    "not_classifier",
+    "not_runtime_enforcement",
+    "not_config",
+    "not_authorization",
+    "no_external_effects"
+  ]
+}
