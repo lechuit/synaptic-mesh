@@ -78,11 +78,11 @@ Receiver rule:
 
 ## Current local contract coverage
 
-`implementation/synaptic-mesh-shadow-v0/tests/receiver-policy-adapter-contracts.mjs` currently exercises all rows above as contract-shaped packet mappings. It covers representative fail-closed cases across the matrix: missing receipts/metadata, duplicate source fields, source mismatch, receiver-observed source digest mismatch, missing digest, stale receipt, delegated publish/config/delete, external send, sensitive verb aliases, and framework/server prose that claims an action is safe.
+`implementation/synaptic-mesh-shadow-v0/tests/receiver-policy-adapter-contracts.mjs` currently exercises all rows above as contract-shaped packet mappings. It covers representative fail-closed cases across the matrix: missing receipts/metadata, duplicate authority fields, source mismatch, receiver-observed source digest mismatch, missing digest, stale receipt, delegated publish/config/delete, external send, sensitive verb aliases, and framework/server prose that claims an action is safe.
 
 The coverage is intentionally contract-level. It does not prove real framework integration or runtime enforcement.
 
 ## Next proposed tests
 
-- Add duplicate field variants beyond `SRC` (`SCOPE`, `NO`, `ACT`, `SRCDIGEST`) per framework shape.
 - Add source-observation mismatch variants beyond digest, especially observed source mtime and run id drift, after real receiver observation formats are clearer.
+- Add a compact duplicate-field coverage table once the contract suite has enough variants per framework shape.
