@@ -1,15 +1,17 @@
-# Synaptic Mesh v0.1.0-rc1
+# Synaptic Mesh v0.1.1
 
-Status: **public release candidate**. Not runtime-ready; not production/canary/enforcement-ready.
+Status: **hardening release candidate**. Not runtime-ready; not production/canary/enforcement-ready.
 
 ## Scope
 
-This release candidate packages Synaptic Mesh for public review:
+This release candidate updates the public review package with local hardening work:
 
 - paper draft;
 - specs;
 - local shadow/reference implementation;
 - curated reproducibility fixtures;
+- adversarial authority-laundering regressions;
+- contract-only receiver policy adapter tests;
 - bibliography and quote-check artifacts;
 - reproducibility evidence;
 - public/private boundary audit.
@@ -32,7 +34,7 @@ Expected:
 
 ## Publication boundary
 
-This archive is a public release candidate for review. Runtime/tooling integration, config changes, permanent memory promotion, canary, enforcement, production, or L2+ operational use remain out of scope and require a separate explicit maintainer decision.
+This archive is a public review package update. Runtime/tooling integration, config changes, permanent memory promotion, canary, enforcement, production, or L2+ operational use remain out of scope and require a separate explicit maintainer decision.
 
 ## Raw source cache policy
 

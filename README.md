@@ -1,6 +1,6 @@
-# Synaptic Mesh v0.1.0-rc1
+# Synaptic Mesh v0.1.1
 
-Status: public release candidate `v0.1.0-rc1`; **not runtime-ready**; **not production/canary/enforcement-ready**.
+Status: hardening release candidate `v0.1.1`; **not runtime-ready**; **not production/canary/enforcement-ready**.
 
 ## What this is
 
@@ -10,12 +10,13 @@ A public release-candidate review package for Synaptic Mesh / Multi-Agent Memory
 
 Synaptic Mesh is intended to be **framework-agnostic**: the protocol idea should apply to any agent stack that retrieves, summarizes, compresses, or hands off memory-derived context.
 
-Current v0.1.0-rc1 status is narrower:
+Current v0.1.1 status is narrower:
 
 - validated with the included local shadow workflow;
 - shipped as a standalone reference package and fixture suite, not integrated with any production/runtime host;
-- no LangGraph, AutoGen, CrewAI, Semantic Kernel, MCP, or other framework adapters are included yet;
-- adapter work is a future track and should preserve the same runtime/non-goal boundaries.
+- includes contract-shaped generic, LangGraph-like, and AutoGen-like receiver adapter tests for portability review;
+- no real LangGraph, AutoGen, CrewAI, Semantic Kernel, MCP, or runtime host adapters are included yet;
+- real adapter work is a future track and should preserve the same runtime/non-goal boundaries.
 
 In short: **The current proving ground is the included local shadow package; the target is a portable protocol.**
 

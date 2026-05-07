@@ -161,7 +161,7 @@ for (const testCase of cases) {
 
 const summary = {
   artifact,
-  timestamp: new Date().toISOString(),
+  timestamp: process.env.SYNAPTIC_MESH_FRESH_TIMESTAMPS === '1' ? new Date().toISOString() : '2026-05-07T15:05:00.000Z',
   verdict: 'pass',
   totalCases: results.length,
   passCases: results.length,
