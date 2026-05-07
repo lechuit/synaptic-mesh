@@ -1,7 +1,6 @@
-import { mkdirSync, writeFileSync } from 'node:fs';
-import { spawnSync } from 'node:child_process';
-import { dirname, resolve } from 'node:path';
+import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { readJsonFile, runNodeCommand, writeJsonEvidence } from '../src/adapters/review-local-io.mjs';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const packageRoot = resolve(here, '..');
@@ -75,39 +74,19 @@ const commands = [
   },
 ];
 
-const rows = commands.map((command) => {
-  const proc = spawnSync(process.execPath, command.args, {
-    cwd: radarRoot,
-    encoding: 'utf8',
-    maxBuffer: 1024 * 1024 * 20,
-  });
+const rows = commands.map((command) => runNodeCommand(command, { cwd: radarRoot, displayRoot: radarRoot }));
 
-  return {
-    id: command.id,
-    command: [process.execPath, ...command.args.map((arg) => arg.startsWith(radarRoot) ? arg.slice(radarRoot.length + 1) : arg)].join(' '),
-    status: proc.status,
-    pass: proc.status === 0,
-    stderr: proc.stderr.trim(),
-  };
-});
+const readEvidenceJson = (relativePath) => readJsonFile(relativePath, { root: radarRoot });
 
-function readJson(relativePath) {
-  try {
-    return JSON.parse(Buffer.from(spawnSync('cat', [resolve(radarRoot, relativePath)], { encoding: 'buffer' }).stdout).toString('utf8'));
-  } catch {
-    return null;
-  }
-}
-
-const fixtureParity = readJson('implementation/synaptic-mesh-shadow-v0/evidence/fixture-parity.out.json');
-const normalizedSummary = readJson('implementation/synaptic-mesh-shadow-v0/evidence/normalized-fixture-summary.out.json');
-const transformRegression = readJson('implementation/synaptic-mesh-shadow-v0/evidence/receipt-transform-regression.out.json');
-const cliValidator = readJson('implementation/synaptic-mesh-shadow-v0/evidence/cli-validator.out.json');
-const authorityLaundering = readJson('implementation/synaptic-mesh-shadow-v0/evidence/authority-laundering-regression.out.json');
-const receiverAdapterContracts = readJson('implementation/synaptic-mesh-shadow-v0/evidence/receiver-policy-adapter-contracts.out.json');
-const actionPolicyContracts = readJson('implementation/synaptic-mesh-shadow-v0/evidence/action-policy-contracts.out.json');
-const syntheticHandoff = readJson('implementation/synaptic-mesh-shadow-v0/evidence/synthetic-handoff-examples.out.json');
-const partialDegrade = readJson('implementation/synaptic-mesh-shadow-v0/evidence/partial-receipt-degrade.out.json');
+const fixtureParity = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/fixture-parity.out.json');
+const normalizedSummary = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/normalized-fixture-summary.out.json');
+const transformRegression = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/receipt-transform-regression.out.json');
+const cliValidator = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/cli-validator.out.json');
+const authorityLaundering = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/authority-laundering-regression.out.json');
+const receiverAdapterContracts = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/receiver-policy-adapter-contracts.out.json');
+const actionPolicyContracts = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/action-policy-contracts.out.json');
+const syntheticHandoff = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/synthetic-handoff-examples.out.json');
+const partialDegrade = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/partial-receipt-degrade.out.json');
 
 const unsafeAllowSignals = [
   ...(fixtureParity?.summary?.nonRegressionUnsafeAllowFixtures ?? []),
@@ -155,8 +134,7 @@ const output = {
   ],
 };
 
-mkdirSync(dirname(evidencePath), { recursive: true });
-writeFileSync(evidencePath, `${JSON.stringify(output, null, 2)}\n`);
+writeJsonEvidence(evidencePath, output);
 console.log(JSON.stringify(output, null, 2));
 
 if (summary.verdict !== 'pass') process.exit(1);
