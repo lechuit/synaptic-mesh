@@ -1,7 +1,7 @@
 {
   "bundle": "synaptic-mesh",
   "version": "0.1.2",
-  "generated": "2026-05-07T17:20:00Z",
+  "generated": "2026-05-07T17:26:56Z",
   "status": "hardening_release_candidate_not_runtime_ready",
   "repository": "https://github.com/lechuit/synaptic-mesh",
   "license": "Apache-2.0 for code; CC BY 4.0 for docs/prose unless otherwise noted",
@@ -31,8 +31,8 @@
     },
     {
       "path": "design-notes/scalable-design-patterns-v0.md",
-      "bytes": 1027,
-      "sha256": "946db9d10fccb0a4f568d93ed078ab46ce48b3d7bddb31f28c0786533eb5d73a"
+      "bytes": 1078,
+      "sha256": "2aa0bd6bee2c8f926a1a2e3414f32f194881d273947b5fdf0eede0938ba54f60"
     },
     {
       "path": "docs/repo-structure.md",
@@ -90,6 +90,11 @@
       "sha256": "edced71ca64a89afc4f453634d9936eab56b4d3492ffee9bc90f305be2870b24"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/action-policy-contracts.out.json",
+      "bytes": 7409,
+      "sha256": "4c76b83d258324142de7d4233f744066e41eaa212d7f83b2d3476cfb673352d7"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/authority-laundering-regression.out.json",
       "bytes": 2820,
       "sha256": "a772e52c8a7d76c2532e5af08c80eb654f021ae635ad9893a50d993ea96a4abd"
@@ -126,8 +131,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/review-local.out.json",
-      "bytes": 3956,
-      "sha256": "35b2b48605b90fb89ddb176e4a3a4c4274e6f4233ded003cd51a603ea8642bb1"
+      "bytes": 4466,
+      "sha256": "fed39f0a4c99d83a5dfc45a94a17ff036f7437977814824b671280c941ed2396"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/synthetic-handoff-examples.out.json",
@@ -151,8 +156,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/package.json",
-      "bytes": 3558,
-      "sha256": "10abfc12f222132dbb871a54528be23d019c715cecd133705ef38e3575be9b5e"
+      "bytes": 3676,
+      "sha256": "f3236ae3c6dd8826525ec8df2d21967d5780f1fcaf01014877696e9d49c0187f"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/README.md",
@@ -208,6 +213,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/src/types.mjs",
       "bytes": 832,
       "sha256": "ae7b617cefee26a8b42d67c610245ea495850003f16a8cfe8c7e3e8b102c8823"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/action-policy-contracts.mjs",
+      "bytes": 3928,
+      "sha256": "f5383131c56f53b4703f97e5fc073fd614e73638dbbfa6b444fa9ea07e33685d"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/authority-laundering-regression.mjs",
@@ -271,8 +281,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/review-local.mjs",
-      "bytes": 6207,
-      "sha256": "313f8162708d0c0bc1ec97f55be081c0800f3283d860dffc930b4c71ad47253e"
+      "bytes": 6786,
+      "sha256": "6fae6a97dcdd055df63b190577407569329e05e97b86630968d1d7622443311b"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/smoke.mjs",
