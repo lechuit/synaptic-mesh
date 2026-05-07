@@ -1,6 +1,6 @@
-# Synaptic Mesh v0.1.2
+# Synaptic Mesh v0.1.3
 
-Status: adapter-contract hardening release candidate `v0.1.2`; **not runtime-ready**; **not production/canary/enforcement-ready**.
+Status: baseline shadow-gates release candidate `v0.1.3`; **not runtime-ready**; **not production/canary/enforcement-ready**.
 
 ## What this is
 
@@ -10,7 +10,7 @@ A public review package for Synaptic Mesh / Multi-Agent Memory Authority Protoco
 
 Synaptic Mesh is intended to be **framework-agnostic**: the protocol idea should apply to any agent stack that retrieves, summarizes, compresses, or hands off memory-derived context.
 
-Current v0.1.2 status is narrower:
+Current v0.1.3 status is narrower:
 
 - validated with the included local shadow workflow;
 - shipped as a standalone reference package and fixture suite, not integrated with any production/runtime host;
