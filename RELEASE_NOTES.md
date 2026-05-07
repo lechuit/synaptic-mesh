@@ -5,7 +5,7 @@ Status: baseline shadow-gates release candidate / public review package update. 
 ## Highlights since v0.1.4
 
 - Added reason-code vocabulary documentation so fixture/evidence signals can be reviewed consistently without treating reason codes as runtime authorization.
-- Added a conservative coverage matrix that marks deterministic fixture gates as covered, proxy evidence as partial, classifier behavior as pending, and runtime enforcement / production readiness as out of scope.
+- Added a conservative coverage matrix that marks deterministic fixture gates as covered, proxy evidence as partial, deterministic classifier shadow behavior as partial, and runtime enforcement / production readiness as out of scope.
 - Added raw/parser adversarial fixture coverage for untrusted prose, hidden dangerous receipts, malformed receipts, free-text action tampering, conflicting receipts, and stale/replayed policy windows.
 - Added deterministic adversarial fixture generation from existing wrong-route oracles while preserving source expected routes/reason codes.
 - Added deterministic local authority-overhead benchmark evidence comparing naive summaries, full context, simple receipts, and AuthorityEnvelope-shaped records without live LLM/API calls or runtime integration.
@@ -14,7 +14,7 @@ Status: baseline shadow-gates release candidate / public review package update. 
 
 ## Validation snapshot
 
-- review-local: pass 25/25
+- review-local: pass 26/26
 - receiver adapter contracts: pass 59/59
 - fixture parity: 15/15
 - unsafe allow signals: 0
@@ -28,6 +28,7 @@ Status: baseline shadow-gates release candidate / public review package update. 
 - Raw/parser adversarial fixtures: pass 9/9 raw fixture/parser-pressure cases, annotation validation only
 - Parser normalization evidence: pass 13/13 raw handoff normalization cases, parserEvidence shape/input-hash validation only
 - Offline real-flow replay: pass 13/13 naturalistic handoff replay cases, gold-label/audit-log validation only, now hash-bound to linked parser evidence
+- Deterministic route classifier shadow gate: pass 13/13 parser-evidence fixture decisions, falsePermit 0, falseCompact 0, includes inconsistent sensitive-summary negative control, no runtime/live observer/tool authorization
 
 ## Compatibility note
 

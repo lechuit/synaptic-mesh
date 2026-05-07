@@ -28,7 +28,7 @@ This matrix summarizes what the current Synaptic Mesh local-shadow package cover
 | Conflicting valid receipts | Raw/parser adversarial fixtures | Covered | Multiple valid receipts with conflicting boundaries are expected to avoid compact/local promotion. |
 | Source freshness / digest drift | Source freshness regression/profile tests and route fixtures | Covered | Deterministic digest/mtime/run-id drift cases are checked in local fixtures. |
 | Framework adapter packet shapes | Receiver adapter contract tests (`test:receiver-adapters`) | Covered | Generic, LangGraph-like, AutoGen-like, CrewAI-like, Semantic Kernel-like, and MCP-like packet shapes are contract-shaped only; no real framework adapters are included. |
-| Classifier behavior | None | Pending | No classifier is implemented or evaluated in this release candidate. |
+| Deterministic classifier behavior | Route classifier shadow gate (`test:route-classifier-shadow`) | Partial | Covers deterministic routing over hand-authored `parserEvidence` + `routeDecisionInput` fixtures. It is not raw parsing, live traffic, runtime enforcement, or semantic robustness proof. |
 | Runtime enforcement | None | Out of scope | The package is review/local-shadow only; it does not authorize tools, write memory, publish, or enforce runtime policy. |
 | Production/canary readiness | None | Out of scope | Release gates support public review and fixture reproducibility, not deployment readiness. |
 
