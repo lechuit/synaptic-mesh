@@ -1,7 +1,7 @@
 {
   "bundle": "synaptic-mesh",
   "version": "0.1.2",
-  "generated": "2026-05-07T16:53:21Z",
+  "generated": "2026-05-07T16:56:41Z",
   "status": "hardening_release_candidate_not_runtime_ready",
   "repository": "https://github.com/lechuit/synaptic-mesh",
   "license": "Apache-2.0 for code; CC BY 4.0 for docs/prose unless otherwise noted",
@@ -166,8 +166,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/receiver-policy-adapter-contracts.out.json",
-      "bytes": 54227,
-      "sha256": "73902888e72dd877bf180765ba5696a3629091e319e505e2fcd7a03f850964fa"
+      "bytes": 54239,
+      "sha256": "e7049c7647bf29a2445e0841614c8aefa88382b23efe0c22f30ec27ca56d627e"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/review-local.out.json",
@@ -221,8 +221,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/receipt-validator.mjs",
-      "bytes": 7839,
-      "sha256": "0ffd5b88defafb1ad520c706aa098d4bb7ffcc6f98bae529f45a60d44edb969f"
+      "bytes": 8057,
+      "sha256": "50ee1cb412ce0761e2339ae3e8be6174590b97be8e79512ddf2a3df83f9dba49"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/receipt-validators.mjs",
@@ -301,8 +301,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/receiver-policy-adapter-contracts.mjs",
-      "bytes": 30713,
-      "sha256": "9d450666433589cceb223644c74c6a0bd51c64f053b7c246e9c0d10165b4d5bf"
+      "bytes": 31075,
+      "sha256": "35ca9d56baf28aec8481ede507d17b72a2d0dcf439414dabe33f0e27f42a5c9e"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/review-local.mjs",

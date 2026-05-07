@@ -3,6 +3,7 @@ import { mkdir, writeFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createReceiverPolicyAdapter } from '../src/receiver-policy-adapter.mjs';
+import { classifyAction } from '../src/types.mjs';
 
 const artifact = 'T-synaptic-mesh-receiver-policy-adapter-contracts-v0';
 const here = dirname(fileURLToPath(import.meta.url));
@@ -714,7 +715,7 @@ const cases = [
       proposedAction: { verb: 'tool_call', target: 'unclassified-tool', riskTier: 'low_local' },
     },
     expected: 'ask_human',
-    reason: /action requires human/,
+    reason: /verb is ambiguous/,
   },
   {
     id: 'langgraph-like-ambiguous-invoke-asks-human',
@@ -724,7 +725,7 @@ const cases = [
       nextToolCall: { verb: 'invoke', target: 'graph-node', riskTier: 'low_local' },
     },
     expected: 'ask_human',
-    reason: /action requires human/,
+    reason: /verb is ambiguous/,
   },
   {
     id: 'autogen-like-ambiguous-dispatch-asks-human',
@@ -734,7 +735,7 @@ const cases = [
       proposedReplyAction: { verb: 'dispatch', target: 'agent-route', riskTier: 'low_local' },
     },
     expected: 'ask_human',
-    reason: /action requires human/,
+    reason: /verb is ambiguous/,
   },
   {
     id: 'crewai-like-ambiguous-delegate-asks-human',
@@ -743,7 +744,7 @@ const cases = [
       task: { id: 'crew-ambiguous-delegate-1', context: { authorityReceipt: receipt, expectedSource }, nextAction: { verb: 'delegate', target: 'crew-task', riskTier: 'low_local' } },
     },
     expected: 'ask_human',
-    reason: /action requires human/,
+    reason: /verb is ambiguous/,
   },
   {
     id: 'semantic-kernel-like-ambiguous-function-call-asks-human',
@@ -753,7 +754,7 @@ const cases = [
       plannedFunctionCall: { verb: 'function_call', target: 'planner-function', riskTier: 'low_local' },
     },
     expected: 'ask_human',
-    reason: /action requires human/,
+    reason: /verb is ambiguous/,
   },
   {
     id: 'mcp-like-ambiguous-agent-action-asks-human',
@@ -762,7 +763,7 @@ const cases = [
       request: { id: 'mcp-ambiguous-agent-action-1', metadata: { authorityReceipt: receipt, expectedSource }, toolCall: { verb: 'agent_action', target: 'server-tool', riskTier: 'low_local' } },
     },
     expected: 'ask_human',
-    reason: /action requires human/,
+    reason: /verb is ambiguous/,
   },
   {
     id: 'autogen-like-prose-metadata-does-not-authorize-sensitive-action',
@@ -781,6 +782,11 @@ const cases = [
     reason: /action requires human/,
   },
 ];
+
+const ambiguousClass = classifyAction({ verb: 'invoke', riskTier: 'low_local' });
+assert.deepEqual(ambiguousClass, { riskTier: 'ambiguous', requiresHuman: true });
+const unknownClass = classifyAction({ verb: 'not_a_known_action', riskTier: 'low_local' });
+assert.deepEqual(unknownClass, { riskTier: 'unknown', requiresHuman: true });
 
 const results = [];
 for (const testCase of cases) {

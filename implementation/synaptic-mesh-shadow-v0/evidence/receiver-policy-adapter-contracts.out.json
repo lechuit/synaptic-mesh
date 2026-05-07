@@ -1306,7 +1306,7 @@
       "framework": "generic",
       "decision": "ask_human",
       "reasons": [
-        "action requires human or is unknown/sensitive: tool_call"
+        "action requires human because verb is ambiguous: tool_call"
       ],
       "mapped": {
         "hasReceipt": true,
@@ -1330,7 +1330,7 @@
       "framework": "langgraph-like",
       "decision": "ask_human",
       "reasons": [
-        "action requires human or is unknown/sensitive: invoke"
+        "action requires human because verb is ambiguous: invoke"
       ],
       "mapped": {
         "hasReceipt": true,
@@ -1354,7 +1354,7 @@
       "framework": "autogen-like",
       "decision": "ask_human",
       "reasons": [
-        "action requires human or is unknown/sensitive: dispatch"
+        "action requires human because verb is ambiguous: dispatch"
       ],
       "mapped": {
         "hasReceipt": true,
@@ -1378,7 +1378,7 @@
       "framework": "crewai-like",
       "decision": "ask_human",
       "reasons": [
-        "action requires human or is unknown/sensitive: delegate"
+        "action requires human because verb is ambiguous: delegate"
       ],
       "mapped": {
         "hasReceipt": true,
@@ -1402,7 +1402,7 @@
       "framework": "semantic-kernel-like",
       "decision": "ask_human",
       "reasons": [
-        "action requires human or is unknown/sensitive: function_call"
+        "action requires human because verb is ambiguous: function_call"
       ],
       "mapped": {
         "hasReceipt": true,
@@ -1426,7 +1426,7 @@
       "framework": "mcp-like",
       "decision": "ask_human",
       "reasons": [
-        "action requires human or is unknown/sensitive: agent_action"
+        "action requires human because verb is ambiguous: agent_action"
       ],
       "mapped": {
         "hasReceipt": true,
