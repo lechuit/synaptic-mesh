@@ -23,3 +23,13 @@
 - Not runtime/tooling integrated.
 - Not production/canary/enforcement/L2+ ready.
 - Runtime or operational use requires a separate explicit maintainer decision.
+
+## Public review requests
+
+Feedback is especially welcome on:
+
+- adversarial fixtures: https://github.com/lechuit/synaptic-mesh/issues/1
+- threat-model gaps: https://github.com/lechuit/synaptic-mesh/issues/2
+- citation / quote-check review: https://github.com/lechuit/synaptic-mesh/issues/3
+- reference implementation API feedback: https://github.com/lechuit/synaptic-mesh/issues/4
+- runtime boundary / non-goals clarity: https://github.com/lechuit/synaptic-mesh/issues/5

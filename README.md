@@ -1,8 +1,6 @@
 # Synaptic Mesh v0.1.0-rc1
 
-Generated locally: 2026-05-07T02:44Z  
-Bundle: `synaptic-mesh-public-review-v0-20260507-0244`  
-Status: public release candidate; **not runtime-ready**; **not production/canary/enforcement-ready**.
+Status: public release candidate `v0.1.0-rc1`; **not runtime-ready**; **not production/canary/enforcement-ready**.
 
 ## What this is
 
@@ -18,7 +16,6 @@ Included:
 
 ## What this is not
 
-- not a publication or external release;
 - not production software;
 - not runtime/tooling integration;
 - not a safety certification;
@@ -38,7 +35,16 @@ Expected current result: 11/11 commands pass, fixture parity 15/15, unsafe allow
 
 The bundle includes quote-check reports and bibliography metadata. It intentionally excludes raw downloaded source PDFs/HTML caches; reviewers should retrieve primary sources from their official URLs/DOIs if needed.
 
-## Publication boundary
+## Public review requests
 
-External publication/release still requires explicit project-owner/human approval after reviewing this bundle.
-Runtime/tooling integration requires a separate explicit approval track.
+The most useful feedback right now is tracked in these starter issues:
+
+1. [Adversarial fixture requests for authority-laundering cases](https://github.com/lechuit/synaptic-mesh/issues/1)
+2. [Threat model gaps and missing attack classes](https://github.com/lechuit/synaptic-mesh/issues/2)
+3. [Citation and quote-check review](https://github.com/lechuit/synaptic-mesh/issues/3)
+4. [Reference implementation API and receipt format feedback](https://github.com/lechuit/synaptic-mesh/issues/4)
+5. [Runtime boundary and non-goals clarity review](https://github.com/lechuit/synaptic-mesh/issues/5)
+
+## Runtime boundary
+
+Runtime/tooling integration requires a separate explicit maintainer approval track. This RC is for protocol, citation, fixture, and reference-implementation review only.
