@@ -56,14 +56,14 @@ Receiver rule:
 
 ## Matrix
 
-| Framework shape | Receipt location | Expected source location | Proposed action location | Required fail-closed cases | Status |
+| Framework shape | Receipt location | Expected source location | Proposed action location | Required fail-closed examples | Coverage status |
 |---|---|---|---|---|---|
-| Generic packet | `packet.receipt` or `packet.compactReceipt` | `packet.expectedSource` | `packet.proposedAction` | missing receipt, source mismatch, sensitive action | covered by local contract test |
-| LangGraph-like state | `nodeState.memoryReceipt` | `nodeState.expectedSource` | `nextToolCall` | missing state receipt, tool publish/send/config/delete, source mismatch | covered by local contract test |
-| AutoGen-like message | `message.metadata.compactAuthorityReceipt` | `message.metadata.expectedSource` | `proposedReplyAction` | sender prose claiming safe, missing metadata, external send | covered by local contract test |
-| CrewAI-like task context | `task.context.authorityReceipt` | `task.context.expectedSource` | `task.nextAction` | delegated task escalation, tool-side publish/config/delete | covered by local contract test |
-| Semantic Kernel-like planner state | `plannerState.memory.authorityReceipt` | `plannerState.memory.expectedSource` | `plannedFunctionCall` | function call crosses local boundary, stale source, missing digest | covered by local contract test |
-| MCP-like tool request | `request.metadata.authorityReceipt` | `request.metadata.expectedSource` | `request.toolCall` | network/file/config/delete tools, server-provided safe labels | covered by local contract test |
+| Generic packet | `packet.receipt` or `packet.compactReceipt` | `packet.expectedSource` | `packet.proposedAction` | missing receipt, source mismatch, sensitive action | shape covered; representative fail-closed tests covered |
+| LangGraph-like state | `nodeState.memoryReceipt` | `nodeState.expectedSource` | `nextToolCall` | missing state receipt, tool publish/send/config/delete, source mismatch | shape covered; representative fail-closed tests covered |
+| AutoGen-like message | `message.metadata.compactAuthorityReceipt` | `message.metadata.expectedSource` | `proposedReplyAction` | sender prose claiming safe, missing metadata, external send | shape covered; representative fail-closed tests covered |
+| CrewAI-like task context | `task.context.authorityReceipt` | `task.context.expectedSource` | `task.nextAction` | delegated task escalation, tool-side publish/config/delete | shape covered; representative fail-closed tests covered |
+| Semantic Kernel-like planner state | `plannerState.memory.authorityReceipt` | `plannerState.memory.expectedSource` | `plannedFunctionCall` | function call crosses local boundary, stale source, missing digest | shape covered; representative fail-closed tests covered |
+| MCP-like tool request | `request.metadata.authorityReceipt` | `request.metadata.expectedSource` | `request.toolCall` | network/file/config/delete tools, server-provided safe labels | shape covered; representative fail-closed tests covered |
 
 ## Adapter invariants
 
@@ -78,10 +78,12 @@ Receiver rule:
 
 ## Current local contract coverage
 
-`implementation/synaptic-mesh-shadow-v0/tests/receiver-policy-adapter-contracts.mjs` currently exercises all rows above as contract-shaped packet mappings. It includes negative controls where framework metadata/prose says safe but the proposed action is sensitive.
+`implementation/synaptic-mesh-shadow-v0/tests/receiver-policy-adapter-contracts.mjs` currently exercises all rows above as contract-shaped packet mappings. It covers representative fail-closed cases across the matrix: missing receipts/metadata, source mismatch, missing digest, stale receipt, delegated publish/config/delete, external send, and framework/server prose that claims an action is safe.
+
+The coverage is intentionally contract-level. It does not prove real framework integration or runtime enforcement.
 
 ## Next proposed tests
 
-- Add stale/freshness-policy cases per framework shape.
 - Add duplicate receipt field cases per framework shape.
-- Add CrewAI/Semantic Kernel/MCP source-observation mismatch cases using receiver-observed digest/mtime.
+- Add per-framework source-observation mismatch cases using receiver-observed digest/mtime.
+- Add more verb aliases for file/network/config/delete actions so framework-specific naming cannot bypass receiver classification.
