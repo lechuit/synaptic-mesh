@@ -114,6 +114,20 @@ const observedDigestMismatchPolicy = {
   observedSourceDigest: 'sha256:observed-newer-source-digest',
 };
 
+const observedMtimeMismatchPolicy = {
+  profile: 'diagnostic_optional',
+  receiverNow: '2026-05-07T16:50:00.000Z',
+  maxSourceAgeMs: 60_000,
+  allowedFutureSkewMs: 0,
+  sourceMtime: '2026-05-07T16:00:00.000Z',
+};
+
+const observedRunIdMismatchPolicy = {
+  profile: 'diagnostic_optional',
+  sourceRunId: 'source-run-old',
+  currentRunId: 'receiver-run-current',
+};
+
 const cases = [
   {
     id: 'generic-complete-local-allows',
@@ -628,6 +642,67 @@ const cases = [
     },
     expected: 'fetch_abstain',
     reason: /duplicate receipt field: ACT/,
+  },
+  {
+    id: 'generic-observed-source-mtime-stale-fetches',
+    adapter: genericAdapter,
+    packet: {
+      packetId: 'generic-observed-mtime-stale-1',
+      receipt,
+      expectedSource,
+      sourceFreshnessPolicy: observedMtimeMismatchPolicy,
+      proposedAction: { verb: 'write_doc', target: 'local-note.md', riskTier: 'low_local' },
+    },
+    expected: 'fetch_abstain',
+    reason: /source artifact mtime exceeds receiver max source age/,
+  },
+  {
+    id: 'langgraph-like-observed-run-id-mismatch-fetches',
+    adapter: langGraphLikeAdapter,
+    packet: {
+      nodeState: { packetId: 'lg-observed-run-mismatch-1', memoryReceipt: receipt, expectedSource, sourceFreshnessPolicy: observedRunIdMismatchPolicy },
+      nextToolCall: { verb: 'run_local_test', target: 'implementation/synaptic-mesh-shadow-v0', riskTier: 'low_local' },
+    },
+    expected: 'fetch_abstain',
+    reason: /source artifact run id is not current/,
+  },
+  {
+    id: 'autogen-like-observed-source-mtime-stale-fetches',
+    adapter: autogenLikeAdapter,
+    packet: {
+      message: { id: 'ag-observed-mtime-stale-1', metadata: { compactAuthorityReceipt: receipt, expectedSource, sourceFreshnessPolicy: observedMtimeMismatchPolicy } },
+      proposedReplyAction: { verb: 'write_doc', target: 'local-summary.md', riskTier: 'low_local' },
+    },
+    expected: 'fetch_abstain',
+    reason: /source artifact mtime exceeds receiver max source age/,
+  },
+  {
+    id: 'crewai-like-observed-run-id-mismatch-fetches',
+    adapter: crewAiLikeAdapter,
+    packet: {
+      task: { id: 'crew-observed-run-mismatch-1', context: { authorityReceipt: receipt, expectedSource, sourceFreshnessPolicy: observedRunIdMismatchPolicy }, nextAction: { verb: 'prepare_draft', target: 'local-task-note.md', riskTier: 'low_local' } },
+    },
+    expected: 'fetch_abstain',
+    reason: /source artifact run id is not current/,
+  },
+  {
+    id: 'semantic-kernel-like-observed-source-mtime-stale-fetches',
+    adapter: semanticKernelLikeAdapter,
+    packet: {
+      plannerState: { id: 'sk-observed-mtime-stale-1', memory: { authorityReceipt: receipt, expectedSource, sourceFreshnessPolicy: observedMtimeMismatchPolicy } },
+      plannedFunctionCall: { verb: 'run_local_test', target: 'local-validator', riskTier: 'low_local' },
+    },
+    expected: 'fetch_abstain',
+    reason: /source artifact mtime exceeds receiver max source age/,
+  },
+  {
+    id: 'mcp-like-observed-run-id-mismatch-fetches',
+    adapter: mcpLikeAdapter,
+    packet: {
+      request: { id: 'mcp-observed-run-mismatch-1', metadata: { authorityReceipt: receipt, expectedSource, sourceFreshnessPolicy: observedRunIdMismatchPolicy }, toolCall: { verb: 'write_doc', target: 'local-mcp-note.md', riskTier: 'low_local' } },
+    },
+    expected: 'fetch_abstain',
+    reason: /source artifact run id is not current/,
   },
   {
     id: 'autogen-like-prose-metadata-does-not-authorize-sensitive-action',

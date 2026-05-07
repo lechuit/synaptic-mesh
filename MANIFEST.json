@@ -1,7 +1,7 @@
 {
   "bundle": "synaptic-mesh",
   "version": "0.1.1",
-  "generated": "2026-05-07T17:00:00Z",
+  "generated": "2026-05-07T17:05:00Z",
   "status": "hardening_release_candidate_not_runtime_ready",
   "repository": "https://github.com/lechuit/synaptic-mesh",
   "license": "Apache-2.0 for code; CC BY 4.0 for docs/prose unless otherwise noted",
@@ -36,8 +36,8 @@
     },
     {
       "path": "HARDENING_ROUNDUP.md",
-      "bytes": 2212,
-      "sha256": "f9ba7c952b851fd1dbf02b6c3f6c3e6914765bd85c9ffac902f0252ce09e95f7"
+      "bytes": 2217,
+      "sha256": "d41b454513185919bb455a04ad3e0bded0e0e8234f1edc1bcc43a30177fcfa53"
     },
     {
       "path": "LICENSE",
@@ -166,8 +166,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/receiver-policy-adapter-contracts.out.json",
-      "bytes": 43527,
-      "sha256": "7470b38fa0024adcabe7602cd7e19f981a71abb1e204ef0fd332c656802d2478"
+      "bytes": 48928,
+      "sha256": "35c801a7493f9e207744a152fd0ddfd742e974f823d9c6694f14745066d5a18b"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/review-local.out.json",
@@ -301,8 +301,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/receiver-policy-adapter-contracts.mjs",
-      "bytes": 25255,
-      "sha256": "cb465f22e7ae9635e00c5c69342c405c0722aa63465ff9752afd09bd7b55012c"
+      "bytes": 28449,
+      "sha256": "90fe19cdcd05da94e6343d580e26b23d4ca27058565cbd7e605c56dbd017e2b3"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/review-local.mjs",
@@ -691,8 +691,8 @@
     },
     {
       "path": "specs/framework-adapter-matrix-v0.md",
-      "bytes": 4588,
-      "sha256": "b3ca0b3085f9ce5f903cc21464ecb0139bc45bdcf0dfc757bbfbe689228e625d"
+      "bytes": 4540,
+      "sha256": "61d231b8a57e53235521a56a3f947a19aa280984ea52e811e68e7209877d8388"
     },
     {
       "path": "specs/memory-authority-receipt-v0.md",
