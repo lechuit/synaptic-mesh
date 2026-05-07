@@ -76,8 +76,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 4493,
-      "sha256": "d53c49d6c5338d9343df54a00c282a58dd22eb2e471690f06f306a4ed8dea6c7"
+      "bytes": 4653,
+      "sha256": "695495c6889711b8d1e2efb8fb258aff21e44b95318ab366fc168fc3b1eb8cba"
     },
     {
       "path": "RELEASE_CANDIDATE.md",
@@ -140,9 +140,19 @@
       "sha256": "41c4b1356f88d1a145e00c44caaddeaab197b8d3e73b672cd5cbe98308e09d41"
     },
     {
+      "path": "docs/coverage-matrix.md",
+      "bytes": 4429,
+      "sha256": "6d501dc071b2c514d4d45bff8b3278036f53f4c8e4fdf1389a460572c5ada369"
+    },
+    {
       "path": "docs/raw-parser-adversarial.md",
       "bytes": 2677,
       "sha256": "5edf47824506cbe62b18bfa18bc12b80414d751472797b0cac6eeb4abc0230de"
+    },
+    {
+      "path": "docs/reason-codes.md",
+      "bytes": 5815,
+      "sha256": "7a604c5b8c696fc2621bb45c82c040b5aff92ef3806753de7647ef794c95d1f9"
     },
     {
       "path": "docs/release-checklist.md",
@@ -151,8 +161,8 @@
     },
     {
       "path": "docs/repo-structure.md",
-      "bytes": 3557,
-      "sha256": "a45f80046cc533745918a2fff381ee9d74b55a7b0a958f644eac6fe6edf4a4eb"
+      "bytes": 3893,
+      "sha256": "bae4b164d36ccd6249e9edfcdce98126257ff027be30a3ef9ab3fbe888695e87"
     },
     {
       "path": "docs/threat-model-v0.md",

@@ -1,0 +1,54 @@
+# Reason code vocabulary
+
+This document stabilizes the public vocabulary used by Synaptic Mesh local-shadow fixtures and evidence. Reason codes are **review signals**, not runtime authorization decisions.
+
+Current gates require stable uppercase token strings in `reasonCodes` / `expectedReasonCodes`. This page groups those strings into official categories so tests, fixture reviews, and future specs can discuss the same failure modes without implying more coverage than exists.
+
+## Rules
+
+- Codes are stable, uppercase, underscore-separated identifiers.
+- A code should describe the conservative reason for a selected route, not the route itself.
+- Prefer category-based names for new codes. Existing fixtures include older family names; keep them stable unless a migration PR updates fixtures, evidence, docs, and release notes together.
+- Do not use free-form prose as a reason code. Put explanations in adjacent `notes`, `expectedBehavior`, or fixture documentation.
+- A reason code is evidence vocabulary only. It does not grant permission, enforce policy, or prove parser/classifier behavior.
+
+## Official categories
+
+| Category | Use for | Currently represented by |
+| --- | --- | --- |
+| `SCHEMA_*` | Receipt/RouteDecision shape, required fields, grammar/schema mismatch, malformed receipt candidates. | `INVALID_RECEIPT_SCHEMA`, `MISSING_POLICY_CHECKSUM`, `MISSING_BOUNDARY_FIELDS`, `RECEIPT_GRAMMAR_VERSION_UNRECOGNIZED`, `UNKNOWN_GRAMMAR_DIGEST`, `POLICY_CHECKSUM_MISSING` |
+| `POLICY_*` | Policy version/window/checksum drift, receiver policy refresh, policy hot-swap, stale policy context. | `POLICY_HOT_SWAP_DETECTED`, `POLICY_VERSION_STALE`, `POLICY_WINDOW_STALE`, `STALE_POLICY_WINDOW`, `POLICY_CONTEXT_STALE_OR_MISSING`, `RECEIVER_POLICY_REFRESH_REQUIRED`, `REQUEST_FULL_RECEIPT_BEFORE_HUMAN_ESCALATION` |
+| `BOUNDARY_*` | Boundary completeness, local-shadow limits, runtime/config/publication/permanent-memory boundaries. | `BOUNDARY_COVERAGE_MISSING`, `LOCAL_SHADOW_BOUNDARY_COMPLETE`, `NO_SENSITIVE_BOUNDARY`, `RUNTIME_OR_PERMANENT_MEMORY_BOUNDARY`, `CONFIG_CHANGE_REQUIRES_HUMAN_AUTHORITY`, `PERMANENT_MEMORY_REQUIRES_HUMAN_AUTHORITY`, `RUNTIME_TOOL_REQUIRES_HUMAN_AUTHORITY` |
+| `FRESHNESS_*` | Source/receipt freshness, replay, digest/mtime revalidation, source refresh before escalation. | `SOURCE_REFRESH_REQUIRED`, `SOURCE_DIGEST_REVALIDATION_REQUIRED`, `SOURCE_DIGEST_OR_MTIME_REQUIRES_REVALIDATION`, `SOURCE_DIGEST_MISMATCH`, `REPLAYED_RECEIPT_STALE`, `LOCAL_SHADOW_RECEIPT_CURRENT` |
+| `PARSER_*` | Raw artifact/parser-pressure signals where hostile prose or receipt-like material should not be treated as authority. | `PROMPT_INJECTION_STYLE_PROSE`, `EXTERNAL_PROSE_NOT_AUTHORITY`, `AGENT_INFERENCE_NOT_AUTHORITY`, `FREE_TEXT_NOT_AUTHORITY`, `TAMPERED_ACTION_FIELD_INVALIDATES_RECEIPT` |
+| `CONFLICT_*` | Conflicting receipts, contradictory claims, route/effect conflicts, source-bound authority conflicts. | `BOUNDARY_CONFLICT`, `MULTIPLE_VALID_RECEIPTS`, `CONTRADICTORY_AUTHORITY_CLAIM_NO_VERIFIABLE_SOURCE`, `NEXT_ALLOWED_ACTION_TAMPERED`, `SOURCE_BOUND_AUTHORITY_MISSING`, `TAMPERED_RECEIPT_MUST_NOT_ESCALATE_AS_VALID` |
+| `PROMOTION_*` | Attempts to upgrade authority across local-shadow, runtime, config, publication, shared/permanent-memory, or tool boundaries. | `CONFIG_CHANGE_PROMOTION`, `SENSITIVE_PROMOTION_HIDDEN_IN_PAYLOAD`, `HIDDEN_SENSITIVE_PROMOTION`, `PERMANENT_MEMORY_EXCEEDS_LOCAL_SHADOW`, `RUNTIME_TOOL_EXCEEDS_LOCAL_SHADOW`, `EXTERNAL_PUBLICATION_EXCEEDS_LOCAL_SHADOW` |
+| `FREE_TEXT_*` | Free-text attempts to modify structured fields, next allowed action, or authority labels. | `FREE_TEXT_CANNOT_MODIFY_NEXT_ALLOWED_ACTION`, `CONFIG_CHANGE_PROMOTION_IN_FREE_TEXT`, `SENSITIVE_BOUNDARY_PROMOTION_IN_FREE_TEXT`, `EXTERNAL_PROSE_NOT_AUTHORITY` |
+| `FOLDED_INDEX_*` | Folded/compact receipt index mismatch, hidden sensitive promotion, or tamper risk. | `FOLDED_INDEX_MISMATCH`, `FOLDED_INDEX_HIDES_SENSITIVE_PROMOTION`, `FOLDED_INDEX_TAMPER_RISK` |
+
+## Existing non-prefix families
+
+The current fixture suite predates this category list and also uses these stable families:
+
+- `ACTION_*` — action effects and external-effect pressure, for example `ACTION_EFFECT_RUNTIME_EXECUTION` and `ACTIONABLE_EXTERNAL_EFFECT_PRESENT`.
+- `AUTHORITY_*` / authority phrasing — authority refresh and unresolved receipt authority, for example `AUTHORITY_REFRESH_REQUIRED` and `AUTHORITATIVE_RECEIPT_UNRESOLVED`.
+- `CLAIM_TYPE_*` — claim taxonomy signals, for example `CLAIM_TYPE_LAUNDERING_DETECTED`.
+- `MEMORY_*`, `RUNTIME_*`, `EXTERNAL_*`, `SOURCE_*`, `SELECTED_ROUTE_*`, and `NO_*` — older stable fixture vocabulary used by authority-route, threat-model, benchmark, generated adversarial, and raw/parser gates.
+
+These are official for the current release candidate because they appear in tracked fixtures/evidence. New fixture work should prefer the category-based names above unless preserving an existing gate contract.
+
+## Planned aliases only
+
+The following are suggested future aliases, not currently asserted by tests unless a later PR migrates fixtures/evidence:
+
+- `SCHEMA_INVALID_RECEIPT`, `SCHEMA_MISSING_POLICY_CHECKSUM`
+- `POLICY_WINDOW_STALE`, `POLICY_CHECKSUM_MISMATCH`
+- `BOUNDARY_LOCAL_SHADOW_EXCEEDED`, `BOUNDARY_HUMAN_REQUIRED`
+- `FRESHNESS_SOURCE_REFRESH_REQUIRED`, `FRESHNESS_RECEIPT_REPLAYED`
+- `PARSER_PROMPT_INJECTION_PROSE`, `PARSER_TAMPERED_ACTION_FIELD`
+- `CONFLICT_MULTIPLE_RECEIPTS`, `CONFLICT_BOUNDARY_MISMATCH`
+- `PROMOTION_CONFIG_CHANGE`, `PROMOTION_RUNTIME_TOOL`
+- `FREE_TEXT_NEXT_ALLOWED_ACTION_TAMPERED`
+- `FOLDED_INDEX_MISMATCH`, `FOLDED_INDEX_HIDDEN_PROMOTION`
+
+A migration should be docs-first and evidence-preserving: add aliases, regenerate fixture/evidence outputs, and keep old codes documented until removed by a release note.
