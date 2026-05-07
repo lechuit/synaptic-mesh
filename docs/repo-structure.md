@@ -11,7 +11,7 @@ Synaptic Mesh keeps protocol, implementation, research, and evidence separate so
 - `runs/` — experiment-specific artifacts kept immutable enough for reproduction.
 - `evidence/` — top-level reproducibility snapshots that are intentionally separate from implementation-local evidence.
 - `paper/` — manuscript-oriented material.
-- `docs/` — repository operation and layout guidance that does not define protocol authority. ADRs live under `docs/adr/`; concept notes live under `docs/concepts/`.
+- `docs/` — repository operation, layout guidance, review vocabulary, and conservative coverage status that do not define runtime authority. ADRs live under `docs/adr/`; concept notes live under `docs/concepts/`.
 - `design-notes/` — short implementation design notes for changes that should stay smaller than a full spec.
 - `tools/` — repo-local validation utilities, including the package-wired manifest verification guard.
 
@@ -20,6 +20,8 @@ Synaptic Mesh keeps protocol, implementation, research, and evidence separate so
 - [ADR 0001: Shadow receiver architecture](adr/0001-shadow-receiver-architecture.md) documents the pure core, strategy registry, contract-first evidence, manifest guard, and review-gate decisions now used by the local shadow implementation.
 - [ADR 0002: Authority claim model](adr/0002-authority-claim-model.md) documents the local shadow authority-claim taxonomy, receiver verification rule, and boundary that keeps sender labels from becoming authority.
 - [RouteDecision schema v0](concepts/route-decision-v0.md) documents the first formal schema and its local shadow shape-validation boundary.
+- [Reason code vocabulary](reason-codes.md) documents current stable reason-code categories and representative codes without turning them into runtime authority.
+- [Coverage matrix](coverage-matrix.md) separates covered, partial, pending, and out-of-scope claims before release decisions.
 - [Adapter boundary for LangGraph and MCP v0](../design-notes/adapter-boundary-langgraph-mcp-v0.md) documents future adapter boundaries, prerequisites, and non-goals without adding runtime integration.
 
 ## Scaling rules
