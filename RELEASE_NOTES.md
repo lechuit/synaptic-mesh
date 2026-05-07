@@ -13,7 +13,7 @@
 
 ## Validation snapshot
 
-- review-local: pass 12/12
+- review-local: pass 13/13
 - fixture parity: 15/15
 - unsafe allow signals: 0
 - source fixture mutation: false
