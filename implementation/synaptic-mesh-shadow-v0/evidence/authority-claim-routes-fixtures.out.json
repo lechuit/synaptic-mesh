@@ -4,30 +4,30 @@
     "timestamp": "2026-05-07T18:45:00.000Z",
     "verdict": "pass",
     "routeCount": 8,
-    "fixtureCount": 14,
+    "fixtureCount": 17,
     "routeCounts": {
       "block": 1,
-      "ask_human": 4,
+      "ask_human": 6,
       "fetch_source": 2,
       "request_full_receipt": 1,
       "request_policy_refresh": 1,
       "request_grammar_refresh": 1,
-      "shadow_only": 2,
+      "shadow_only": 3,
       "abstain": 2
     },
     "boundaryCount": 8,
     "boundaryCounts": {
       "read_only": 1,
-      "local_shadow": 2,
+      "local_shadow": 3,
       "memory_candidate": 1,
       "shared_memory": 1,
       "permanent_memory": 1,
-      "config_change": 1,
-      "runtime_tool": 1,
+      "config_change": 2,
+      "runtime_tool": 2,
       "external_publication": 2
     },
-    "askHumanCases": 4,
-    "nonHumanDegradationCases": 10,
+    "askHumanCases": 6,
+    "nonHumanDegradationCases": 11,
     "unsafeAllows": 0,
     "classifierImplemented": false,
     "sourceFixtureMutation": false,
@@ -69,7 +69,10 @@
     "shared-memory-claim-with-compact-receipt-abstains",
     "permanent-memory-claim-asks-human",
     "runtime-tool-authority-asks-human",
-    "external-publication-authority-asks-human"
+    "external-publication-authority-asks-human",
+    "high-confidence-framework-claim-cannot-authorize-config-write",
+    "generate-migration-plan-text-only-stays-shadow",
+    "generate-migration-filesystem-write-asks-human"
   ],
   "examples": {
     "compactReceiptMissingBoundaryFields": {
@@ -85,7 +88,39 @@
       "reason": "compact_receipt_missing_boundary_fields",
       "unsafeAllow": false,
       "notes": "Missing boundary fields should not be dumped into ask_human before requesting the full receipt.",
-      "boundaryType": "local_shadow"
+      "boundaryType": "local_shadow",
+      "claimConfidence": "unknown",
+      "evidenceStrength": "low",
+      "authorityLevel": "local_shadow",
+      "boundaryCoverage": "missing",
+      "actionIntent": "resolve_compact_receipt_authority",
+      "actionEffect": "text_only",
+      "routeDecision": {
+        "selectedRoute": "request_full_receipt",
+        "rejectedRoutes": {
+          "shadow_only": [
+            "MISSING_BOUNDARY_FIELDS"
+          ],
+          "ask_human": [
+            "NO_SENSITIVE_PROMOTION"
+          ],
+          "fetch_source": [
+            "UNKNOWN_GRAMMAR_DIGEST"
+          ]
+        },
+        "decisiveSignals": [
+          "COMPACT_RECEIPT_PRESENT",
+          "MISSING_BOUNDARY_FIELDS",
+          "UNKNOWN_GRAMMAR_DIGEST",
+          "NO_RUNTIME_BOUNDARY"
+        ],
+        "reasonCodes": [
+          "MISSING_BOUNDARY_FIELDS",
+          "UNKNOWN_GRAMMAR_DIGEST",
+          "REQUEST_FULL_RECEIPT_BEFORE_HUMAN_ESCALATION"
+        ],
+        "humanReason": "Compact receipt lacks authority-critical boundary fields, so request full receipt before escalating to a human."
+      }
     },
     "configChangeRequestedByAgentInference": {
       "id": "config-change-requested-by-agent-inference-asks-human",
@@ -97,7 +132,38 @@
       "reason": "config_change_requested_by_agent_inference",
       "unsafeAllow": false,
       "notes": "Config/runtime authority cannot be inferred from sender labels or local shadow evidence.",
-      "boundaryType": "config_change"
+      "boundaryType": "config_change",
+      "claimConfidence": "medium",
+      "evidenceStrength": "low",
+      "authorityLevel": "config_change",
+      "boundaryCoverage": "missing",
+      "actionIntent": "apply_agent_inferred_config_change",
+      "actionEffect": "config_change",
+      "routeDecision": {
+        "selectedRoute": "ask_human",
+        "rejectedRoutes": {
+          "shadow_only": [
+            "ACTION_EFFECT_CONFIG_CHANGE_EXCEEDS_LOCAL_SHADOW"
+          ],
+          "fetch_source": [
+            "PERMISSION_SOURCE_MISSING"
+          ],
+          "request_full_receipt": [
+            "CONFIG_CHANGE_REQUIRES_HUMAN_AUTHORITY"
+          ]
+        },
+        "decisiveSignals": [
+          "ACTION_EFFECT_CONFIG_CHANGE",
+          "BOUNDARY_COVERAGE_MISSING",
+          "AGENT_INFERENCE_NOT_AUTHORITY"
+        ],
+        "reasonCodes": [
+          "CONFIG_CHANGE_REQUIRES_HUMAN_AUTHORITY",
+          "AGENT_INFERENCE_NOT_AUTHORITY",
+          "BOUNDARY_COVERAGE_MISSING"
+        ],
+        "humanReason": "Config/runtime authority cannot be inferred from agent labels or local shadow evidence."
+      }
     }
   },
   "threatModel": {
@@ -137,7 +203,9 @@
     "Keep ask_human reserved for consent, sensitive effects, config/runtime changes, and policy-required human review.",
     "Prefer fetch_source, request_full_receipt, request_policy_refresh, or request_grammar_refresh when missing evidence can be resolved mechanically inside the local shadow boundary.",
     "Use the boundary taxonomy as an input to route selection: compactability and human requirement differ by boundary, so receiver decisions must not treat local_shadow, memory_candidate, config_change, runtime_tool, and external_publication as equivalent.",
-    "Design the classifier against docs/threat-model-v0.md actors and capabilities; map each threat to a fixture or explicit non-goal before runtime/enforcement work."
+    "Design the classifier against docs/threat-model-v0.md actors and capabilities; map each threat to a fixture or explicit non-goal before runtime/enforcement work.",
+    "Move AuthorityEnvelope evaluation from research notes to a repeatable benchmark comparing naive summary, full context, simple receipt, and authority envelope using wrongRouteRate, falseCompactRate, falseHumanEscalationRate, tokenCost, clarityScore, receiverDecisionAccuracy, and boundaryLossRate.",
+    "Do not add memory yet; prove the receiver knows how to distrust. Post-PR26 priority should be CI gates, release:check, RouteDecision schema/evidence first, boundary taxonomy, threat model, multi-hop fixtures, authority claim/spec consolidation, then public minimal spec only after vocabulary stabilizes."
   ],
   "boundary": [
     "local_shadow_only",

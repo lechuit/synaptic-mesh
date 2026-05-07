@@ -67,7 +67,39 @@
       "reason": "compact_receipt_missing_boundary_fields",
       "unsafeAllow": false,
       "notes": "Missing boundary fields should not be dumped into ask_human before requesting the full receipt.",
-      "boundaryType": "local_shadow"
+      "boundaryType": "local_shadow",
+      "claimConfidence": "unknown",
+      "evidenceStrength": "low",
+      "authorityLevel": "local_shadow",
+      "boundaryCoverage": "missing",
+      "actionIntent": "resolve_compact_receipt_authority",
+      "actionEffect": "text_only",
+      "routeDecision": {
+        "selectedRoute": "request_full_receipt",
+        "rejectedRoutes": {
+          "shadow_only": [
+            "MISSING_BOUNDARY_FIELDS"
+          ],
+          "ask_human": [
+            "NO_SENSITIVE_PROMOTION"
+          ],
+          "fetch_source": [
+            "UNKNOWN_GRAMMAR_DIGEST"
+          ]
+        },
+        "decisiveSignals": [
+          "COMPACT_RECEIPT_PRESENT",
+          "MISSING_BOUNDARY_FIELDS",
+          "UNKNOWN_GRAMMAR_DIGEST",
+          "NO_RUNTIME_BOUNDARY"
+        ],
+        "reasonCodes": [
+          "MISSING_BOUNDARY_FIELDS",
+          "UNKNOWN_GRAMMAR_DIGEST",
+          "REQUEST_FULL_RECEIPT_BEFORE_HUMAN_ESCALATION"
+        ],
+        "humanReason": "Compact receipt lacks authority-critical boundary fields, so request full receipt before escalating to a human."
+      }
     },
     {
       "id": "config-change-requested-by-agent-inference-asks-human",
@@ -79,7 +111,38 @@
       "reason": "config_change_requested_by_agent_inference",
       "unsafeAllow": false,
       "notes": "Config/runtime authority cannot be inferred from sender labels or local shadow evidence.",
-      "boundaryType": "config_change"
+      "boundaryType": "config_change",
+      "claimConfidence": "medium",
+      "evidenceStrength": "low",
+      "authorityLevel": "config_change",
+      "boundaryCoverage": "missing",
+      "actionIntent": "apply_agent_inferred_config_change",
+      "actionEffect": "config_change",
+      "routeDecision": {
+        "selectedRoute": "ask_human",
+        "rejectedRoutes": {
+          "shadow_only": [
+            "ACTION_EFFECT_CONFIG_CHANGE_EXCEEDS_LOCAL_SHADOW"
+          ],
+          "fetch_source": [
+            "PERMISSION_SOURCE_MISSING"
+          ],
+          "request_full_receipt": [
+            "CONFIG_CHANGE_REQUIRES_HUMAN_AUTHORITY"
+          ]
+        },
+        "decisiveSignals": [
+          "ACTION_EFFECT_CONFIG_CHANGE",
+          "BOUNDARY_COVERAGE_MISSING",
+          "AGENT_INFERENCE_NOT_AUTHORITY"
+        ],
+        "reasonCodes": [
+          "CONFIG_CHANGE_REQUIRES_HUMAN_AUTHORITY",
+          "AGENT_INFERENCE_NOT_AUTHORITY",
+          "BOUNDARY_COVERAGE_MISSING"
+        ],
+        "humanReason": "Config/runtime authority cannot be inferred from agent labels or local shadow evidence."
+      }
     },
     {
       "id": "stale-evidence-digest-fetches-source",
@@ -88,7 +151,34 @@
       "selectedRoute": "fetch_source",
       "humanRequired": false,
       "reason": "source_digest_or_mtime_requires_revalidation",
-      "unsafeAllow": false
+      "unsafeAllow": false,
+      "claimConfidence": "unknown",
+      "evidenceStrength": "low",
+      "authorityLevel": "local_shadow",
+      "boundaryCoverage": "partial",
+      "actionIntent": "receipt_with_source_digest",
+      "actionEffect": "text_only",
+      "routeDecision": {
+        "selectedRoute": "fetch_source",
+        "rejectedRoutes": {
+          "ask_human": [
+            "NO_SENSITIVE_PROMOTION"
+          ],
+          "shadow_only": [
+            "BOUNDARY_COVERAGE_NOT_COMPLETE"
+          ]
+        },
+        "decisiveSignals": [
+          "CLAIM_TYPE_EVIDENCECLAIM",
+          "AUTHORITY_LEVEL_LOCAL_SHADOW",
+          "ACTION_EFFECT_TEXT_ONLY"
+        ],
+        "reasonCodes": [
+          "SOURCE_DIGEST_OR_MTIME_REQUIRES_REVALIDATION",
+          "SELECTED_ROUTE_FETCH_SOURCE"
+        ],
+        "humanReason": "source_digest_or_mtime_requires_revalidation"
+      }
     },
     {
       "id": "stale-project-policy-requests-policy-refresh",
@@ -97,7 +187,37 @@
       "selectedRoute": "request_policy_refresh",
       "humanRequired": false,
       "reason": "policy_context_stale_or_missing",
-      "unsafeAllow": false
+      "unsafeAllow": false,
+      "claimConfidence": "unknown",
+      "evidenceStrength": "low",
+      "authorityLevel": "local_shadow",
+      "boundaryCoverage": "partial",
+      "actionIntent": "policy_summary",
+      "actionEffect": "text_only",
+      "routeDecision": {
+        "selectedRoute": "request_policy_refresh",
+        "rejectedRoutes": {
+          "ask_human": [
+            "NO_SENSITIVE_PROMOTION"
+          ],
+          "shadow_only": [
+            "BOUNDARY_COVERAGE_NOT_COMPLETE"
+          ],
+          "fetch_source": [
+            "NO_CITED_SOURCE_TO_FETCH"
+          ]
+        },
+        "decisiveSignals": [
+          "CLAIM_TYPE_POLICYCLAIM",
+          "AUTHORITY_LEVEL_LOCAL_SHADOW",
+          "ACTION_EFFECT_TEXT_ONLY"
+        ],
+        "reasonCodes": [
+          "POLICY_CONTEXT_STALE_OR_MISSING",
+          "SELECTED_ROUTE_REQUEST_POLICY_REFRESH"
+        ],
+        "humanReason": "policy_context_stale_or_missing"
+      }
     },
     {
       "id": "unknown-compact-grammar-requests-grammar-refresh",
@@ -106,7 +226,37 @@
       "selectedRoute": "request_grammar_refresh",
       "humanRequired": false,
       "reason": "receipt_grammar_version_unrecognized",
-      "unsafeAllow": false
+      "unsafeAllow": false,
+      "claimConfidence": "unknown",
+      "evidenceStrength": "low",
+      "authorityLevel": "local_shadow",
+      "boundaryCoverage": "partial",
+      "actionIntent": "compact_receipt_unknown_grammar_version",
+      "actionEffect": "text_only",
+      "routeDecision": {
+        "selectedRoute": "request_grammar_refresh",
+        "rejectedRoutes": {
+          "ask_human": [
+            "NO_SENSITIVE_PROMOTION"
+          ],
+          "shadow_only": [
+            "BOUNDARY_COVERAGE_NOT_COMPLETE"
+          ],
+          "fetch_source": [
+            "NO_CITED_SOURCE_TO_FETCH"
+          ]
+        },
+        "decisiveSignals": [
+          "CLAIM_TYPE_LINEAGECLAIM",
+          "AUTHORITY_LEVEL_LOCAL_SHADOW",
+          "ACTION_EFFECT_TEXT_ONLY"
+        ],
+        "reasonCodes": [
+          "RECEIPT_GRAMMAR_VERSION_UNRECOGNIZED",
+          "SELECTED_ROUTE_REQUEST_GRAMMAR_REFRESH"
+        ],
+        "humanReason": "receipt_grammar_version_unrecognized"
+      }
     },
     {
       "id": "local-research-note-remains-shadow-only",
@@ -116,7 +266,34 @@
       "humanRequired": false,
       "reason": "local_shadow_scope_verified_no_promotion",
       "unsafeAllow": false,
-      "boundaryType": "local_shadow"
+      "boundaryType": "local_shadow",
+      "claimConfidence": "unknown",
+      "evidenceStrength": "low",
+      "authorityLevel": "local_shadow",
+      "boundaryCoverage": "partial",
+      "actionIntent": "local_research_write",
+      "actionEffect": "text_only",
+      "routeDecision": {
+        "selectedRoute": "shadow_only",
+        "rejectedRoutes": {
+          "ask_human": [
+            "NO_SENSITIVE_PROMOTION"
+          ],
+          "fetch_source": [
+            "NO_CITED_SOURCE_TO_FETCH"
+          ]
+        },
+        "decisiveSignals": [
+          "CLAIM_TYPE_ACTIONCLAIM",
+          "AUTHORITY_LEVEL_LOCAL_SHADOW",
+          "ACTION_EFFECT_TEXT_ONLY"
+        ],
+        "reasonCodes": [
+          "LOCAL_SHADOW_SCOPE_VERIFIED_NO_PROMOTION",
+          "SELECTED_ROUTE_SHADOW_ONLY"
+        ],
+        "humanReason": "local_shadow_scope_verified_no_promotion"
+      }
     },
     {
       "id": "contradictory-authority-with-no-source-abstains",
@@ -125,7 +302,37 @@
       "selectedRoute": "abstain",
       "humanRequired": false,
       "reason": "contradictory_authority_claim_no_verifiable_source",
-      "unsafeAllow": false
+      "unsafeAllow": false,
+      "claimConfidence": "unknown",
+      "evidenceStrength": "low",
+      "authorityLevel": "local_shadow",
+      "boundaryCoverage": "partial",
+      "actionIntent": "contradictory_sender_labels_without_source",
+      "actionEffect": "text_only",
+      "routeDecision": {
+        "selectedRoute": "abstain",
+        "rejectedRoutes": {
+          "ask_human": [
+            "NO_SENSITIVE_PROMOTION"
+          ],
+          "shadow_only": [
+            "BOUNDARY_COVERAGE_NOT_COMPLETE"
+          ],
+          "fetch_source": [
+            "NO_CITED_SOURCE_TO_FETCH"
+          ]
+        },
+        "decisiveSignals": [
+          "CLAIM_TYPE_PERMISSIONCLAIM",
+          "AUTHORITY_LEVEL_LOCAL_SHADOW",
+          "ACTION_EFFECT_TEXT_ONLY"
+        ],
+        "reasonCodes": [
+          "CONTRADICTORY_AUTHORITY_CLAIM_NO_VERIFIABLE_SOURCE",
+          "SELECTED_ROUTE_ABSTAIN"
+        ],
+        "humanReason": "contradictory_authority_claim_no_verifiable_source"
+      }
     },
     {
       "id": "explicit-negative-boundary-blocks-prohibited-publication",
@@ -135,7 +342,37 @@
       "humanRequired": false,
       "reason": "negative_boundary_explicitly_forbids_publication",
       "unsafeAllow": false,
-      "boundaryType": "external_publication"
+      "boundaryType": "external_publication",
+      "claimConfidence": "unknown",
+      "evidenceStrength": "low",
+      "authorityLevel": "external_publication",
+      "boundaryCoverage": "partial",
+      "actionIntent": "receipt_negative_boundary",
+      "actionEffect": "external_publication",
+      "routeDecision": {
+        "selectedRoute": "block",
+        "rejectedRoutes": {
+          "ask_human": [
+            "MECHANICAL_DEGRADATION_AVAILABLE"
+          ],
+          "shadow_only": [
+            "BOUNDARY_COVERAGE_NOT_COMPLETE"
+          ],
+          "fetch_source": [
+            "NO_CITED_SOURCE_TO_FETCH"
+          ]
+        },
+        "decisiveSignals": [
+          "CLAIM_TYPE_BOUNDARYCLAIM",
+          "AUTHORITY_LEVEL_EXTERNAL_PUBLICATION",
+          "ACTION_EFFECT_EXTERNAL_PUBLICATION"
+        ],
+        "reasonCodes": [
+          "NEGATIVE_BOUNDARY_EXPLICITLY_FORBIDS_PUBLICATION",
+          "SELECTED_ROUTE_BLOCK"
+        ],
+        "humanReason": "negative_boundary_explicitly_forbids_publication"
+      }
     },
     {
       "id": "read-only-evidence-inspection-can-use-compact-route",
@@ -145,7 +382,34 @@
       "selectedRoute": "fetch_source",
       "humanRequired": false,
       "reason": "read_only_source_reference_can_be_rechecked",
-      "unsafeAllow": false
+      "unsafeAllow": false,
+      "claimConfidence": "unknown",
+      "evidenceStrength": "low",
+      "authorityLevel": "read_only",
+      "boundaryCoverage": "partial",
+      "actionIntent": "source_reference",
+      "actionEffect": "text_only",
+      "routeDecision": {
+        "selectedRoute": "fetch_source",
+        "rejectedRoutes": {
+          "ask_human": [
+            "NO_SENSITIVE_PROMOTION"
+          ],
+          "shadow_only": [
+            "BOUNDARY_COVERAGE_NOT_COMPLETE"
+          ]
+        },
+        "decisiveSignals": [
+          "CLAIM_TYPE_EVIDENCECLAIM",
+          "AUTHORITY_LEVEL_READ_ONLY",
+          "ACTION_EFFECT_TEXT_ONLY"
+        ],
+        "reasonCodes": [
+          "READ_ONLY_SOURCE_REFERENCE_CAN_BE_RECHECKED",
+          "SELECTED_ROUTE_FETCH_SOURCE"
+        ],
+        "humanReason": "read_only_source_reference_can_be_rechecked"
+      }
     },
     {
       "id": "memory-candidate-stays-non-promotional-shadow-route",
@@ -155,7 +419,34 @@
       "selectedRoute": "shadow_only",
       "humanRequired": false,
       "reason": "memory_candidate_not_permanent_promotion",
-      "unsafeAllow": false
+      "unsafeAllow": false,
+      "claimConfidence": "unknown",
+      "evidenceStrength": "low",
+      "authorityLevel": "memory_candidate",
+      "boundaryCoverage": "partial",
+      "actionIntent": "memory_promotion_candidate",
+      "actionEffect": "text_only",
+      "routeDecision": {
+        "selectedRoute": "shadow_only",
+        "rejectedRoutes": {
+          "ask_human": [
+            "NO_SENSITIVE_PROMOTION"
+          ],
+          "fetch_source": [
+            "NO_CITED_SOURCE_TO_FETCH"
+          ]
+        },
+        "decisiveSignals": [
+          "CLAIM_TYPE_MEMORYCLAIM",
+          "AUTHORITY_LEVEL_MEMORY_CANDIDATE",
+          "ACTION_EFFECT_TEXT_ONLY"
+        ],
+        "reasonCodes": [
+          "MEMORY_CANDIDATE_NOT_PERMANENT_PROMOTION",
+          "SELECTED_ROUTE_SHADOW_ONLY"
+        ],
+        "humanReason": "memory_candidate_not_permanent_promotion"
+      }
     },
     {
       "id": "shared-memory-claim-with-compact-receipt-abstains",
@@ -165,7 +456,37 @@
       "selectedRoute": "abstain",
       "humanRequired": false,
       "reason": "shared_memory_no_compact_route_by_default",
-      "unsafeAllow": false
+      "unsafeAllow": false,
+      "claimConfidence": "unknown",
+      "evidenceStrength": "low",
+      "authorityLevel": "shared_memory",
+      "boundaryCoverage": "partial",
+      "actionIntent": "compact_receipt_shared_memory_claim",
+      "actionEffect": "permanent_memory_write",
+      "routeDecision": {
+        "selectedRoute": "abstain",
+        "rejectedRoutes": {
+          "ask_human": [
+            "MECHANICAL_DEGRADATION_AVAILABLE"
+          ],
+          "shadow_only": [
+            "BOUNDARY_COVERAGE_NOT_COMPLETE"
+          ],
+          "fetch_source": [
+            "NO_CITED_SOURCE_TO_FETCH"
+          ]
+        },
+        "decisiveSignals": [
+          "CLAIM_TYPE_MEMORYCLAIM",
+          "AUTHORITY_LEVEL_SHARED_MEMORY",
+          "ACTION_EFFECT_PERMANENT_MEMORY_WRITE"
+        ],
+        "reasonCodes": [
+          "SHARED_MEMORY_NO_COMPACT_ROUTE_BY_DEFAULT",
+          "SELECTED_ROUTE_ABSTAIN"
+        ],
+        "humanReason": "shared_memory_no_compact_route_by_default"
+      }
     },
     {
       "id": "permanent-memory-claim-asks-human",
@@ -175,7 +496,34 @@
       "selectedRoute": "ask_human",
       "humanRequired": true,
       "reason": "permanent_memory_requires_human_confirmation",
-      "unsafeAllow": false
+      "unsafeAllow": false,
+      "claimConfidence": "unknown",
+      "evidenceStrength": "low",
+      "authorityLevel": "permanent_memory",
+      "boundaryCoverage": "partial",
+      "actionIntent": "durable_memory_promotion_request",
+      "actionEffect": "permanent_memory_write",
+      "routeDecision": {
+        "selectedRoute": "ask_human",
+        "rejectedRoutes": {
+          "shadow_only": [
+            "BOUNDARY_COVERAGE_NOT_COMPLETE"
+          ],
+          "fetch_source": [
+            "NO_CITED_SOURCE_TO_FETCH"
+          ]
+        },
+        "decisiveSignals": [
+          "CLAIM_TYPE_MEMORYCLAIM",
+          "AUTHORITY_LEVEL_PERMANENT_MEMORY",
+          "ACTION_EFFECT_PERMANENT_MEMORY_WRITE"
+        ],
+        "reasonCodes": [
+          "PERMANENT_MEMORY_REQUIRES_HUMAN_CONFIRMATION",
+          "SELECTED_ROUTE_ASK_HUMAN"
+        ],
+        "humanReason": "permanent_memory_requires_human_confirmation"
+      }
     },
     {
       "id": "runtime-tool-authority-asks-human",
@@ -185,7 +533,34 @@
       "selectedRoute": "ask_human",
       "humanRequired": true,
       "reason": "runtime_tool_authority_requires_human",
-      "unsafeAllow": false
+      "unsafeAllow": false,
+      "claimConfidence": "unknown",
+      "evidenceStrength": "low",
+      "authorityLevel": "runtime_tool",
+      "boundaryCoverage": "partial",
+      "actionIntent": "tool_authorization_claim",
+      "actionEffect": "runtime_execution",
+      "routeDecision": {
+        "selectedRoute": "ask_human",
+        "rejectedRoutes": {
+          "shadow_only": [
+            "BOUNDARY_COVERAGE_NOT_COMPLETE"
+          ],
+          "fetch_source": [
+            "NO_CITED_SOURCE_TO_FETCH"
+          ]
+        },
+        "decisiveSignals": [
+          "CLAIM_TYPE_PERMISSIONCLAIM",
+          "AUTHORITY_LEVEL_RUNTIME_TOOL",
+          "ACTION_EFFECT_RUNTIME_EXECUTION"
+        ],
+        "reasonCodes": [
+          "RUNTIME_TOOL_AUTHORITY_REQUIRES_HUMAN",
+          "SELECTED_ROUTE_ASK_HUMAN"
+        ],
+        "humanReason": "runtime_tool_authority_requires_human"
+      }
     },
     {
       "id": "external-publication-authority-asks-human",
@@ -195,7 +570,161 @@
       "selectedRoute": "ask_human",
       "humanRequired": true,
       "reason": "external_publication_requires_human",
-      "unsafeAllow": false
+      "unsafeAllow": false,
+      "claimConfidence": "unknown",
+      "evidenceStrength": "low",
+      "authorityLevel": "external_publication",
+      "boundaryCoverage": "partial",
+      "actionIntent": "publish_release_claim",
+      "actionEffect": "external_publication",
+      "routeDecision": {
+        "selectedRoute": "ask_human",
+        "rejectedRoutes": {
+          "shadow_only": [
+            "BOUNDARY_COVERAGE_NOT_COMPLETE"
+          ],
+          "fetch_source": [
+            "NO_CITED_SOURCE_TO_FETCH"
+          ]
+        },
+        "decisiveSignals": [
+          "CLAIM_TYPE_BOUNDARYCLAIM",
+          "AUTHORITY_LEVEL_EXTERNAL_PUBLICATION",
+          "ACTION_EFFECT_EXTERNAL_PUBLICATION"
+        ],
+        "reasonCodes": [
+          "EXTERNAL_PUBLICATION_REQUIRES_HUMAN",
+          "SELECTED_ROUTE_ASK_HUMAN"
+        ],
+        "humanReason": "external_publication_requires_human"
+      }
+    },
+    {
+      "id": "high-confidence-framework-claim-cannot-authorize-config-write",
+      "claimType": "permissionClaim",
+      "boundaryType": "config_change",
+      "inputShape": "framework_inference_plus_config_write_request",
+      "selectedRoute": "ask_human",
+      "humanRequired": true,
+      "reason": "high_confidence_claim_lacks_config_authority",
+      "unsafeAllow": false,
+      "claimConfidence": "high",
+      "evidenceStrength": "high",
+      "authorityLevel": "config_change",
+      "boundaryCoverage": "missing",
+      "actionIntent": "modify_framework_config",
+      "actionEffect": "config_change",
+      "notes": "A high-confidence framework inference is not permission to modify configuration.",
+      "routeDecision": {
+        "selectedRoute": "ask_human",
+        "rejectedRoutes": {
+          "shadow_only": [
+            "ACTION_EFFECT_CONFIG_CHANGE_EXCEEDS_LOCAL_SHADOW"
+          ],
+          "fetch_source": [
+            "FACTUAL_EVIDENCE_DOES_NOT_GRANT_AUTHORITY"
+          ],
+          "request_full_receipt": [
+            "HUMAN_PERMISSION_REQUIRED_FOR_CONFIG_CHANGE"
+          ]
+        },
+        "decisiveSignals": [
+          "CLAIM_CONFIDENCE_HIGH",
+          "EVIDENCE_STRENGTH_HIGH",
+          "AUTHORITY_LEVEL_CONFIG_CHANGE",
+          "BOUNDARY_COVERAGE_MISSING"
+        ],
+        "reasonCodes": [
+          "CONFIDENCE_IS_NOT_AUTHORITY",
+          "CONFIG_CHANGE_REQUIRES_HUMAN_AUTHORITY",
+          "BOUNDARY_COVERAGE_MISSING"
+        ],
+        "humanReason": "The framework claim may be true, but it does not authorize config mutation."
+      }
+    },
+    {
+      "id": "generate-migration-plan-text-only-stays-shadow",
+      "claimType": "actionClaim",
+      "boundaryType": "local_shadow",
+      "inputShape": "migration_generation_request",
+      "selectedRoute": "shadow_only",
+      "humanRequired": false,
+      "reason": "text_only_plan_with_local_shadow_boundary",
+      "unsafeAllow": false,
+      "claimConfidence": "medium",
+      "evidenceStrength": "medium",
+      "authorityLevel": "local_shadow",
+      "boundaryCoverage": "complete",
+      "actionIntent": "generate_migration_plan",
+      "actionEffect": "text_only",
+      "notes": "Generating a prose migration plan is not filesystem mutation.",
+      "routeDecision": {
+        "selectedRoute": "shadow_only",
+        "rejectedRoutes": {
+          "ask_human": [
+            "NO_SENSITIVE_PROMOTION"
+          ],
+          "block": [
+            "NO_PROHIBITED_EFFECT"
+          ],
+          "request_full_receipt": [
+            "BOUNDARY_COVERAGE_COMPLETE"
+          ]
+        },
+        "decisiveSignals": [
+          "ACTION_INTENT_GENERATE_MIGRATION_PLAN",
+          "ACTION_EFFECT_TEXT_ONLY",
+          "BOUNDARY_COVERAGE_COMPLETE"
+        ],
+        "reasonCodes": [
+          "ACTION_EFFECT_TEXT_ONLY",
+          "LOCAL_SHADOW_BOUNDARY_COMPLETE",
+          "NO_FILESYSTEM_WRITE"
+        ],
+        "humanReason": "The action only writes local prose under shadow scope."
+      }
+    },
+    {
+      "id": "generate-migration-filesystem-write-asks-human",
+      "claimType": "actionClaim",
+      "boundaryType": "runtime_tool",
+      "inputShape": "migration_generation_request",
+      "selectedRoute": "ask_human",
+      "humanRequired": true,
+      "reason": "filesystem_write_requires_boundary_authority",
+      "unsafeAllow": false,
+      "claimConfidence": "medium",
+      "evidenceStrength": "medium",
+      "authorityLevel": "runtime_tool",
+      "boundaryCoverage": "missing",
+      "actionIntent": "generate_migration",
+      "actionEffect": "filesystem_write",
+      "notes": "The same verb family becomes higher risk when it writes files.",
+      "routeDecision": {
+        "selectedRoute": "ask_human",
+        "rejectedRoutes": {
+          "shadow_only": [
+            "ACTION_EFFECT_FILESYSTEM_WRITE_EXCEEDS_TEXT_ONLY"
+          ],
+          "fetch_source": [
+            "PERMISSION_SOURCE_MISSING"
+          ],
+          "request_full_receipt": [
+            "FILESYSTEM_WRITE_REQUIRES_AUTHORITY"
+          ]
+        },
+        "decisiveSignals": [
+          "ACTION_INTENT_GENERATE_MIGRATION",
+          "ACTION_EFFECT_FILESYSTEM_WRITE",
+          "BOUNDARY_COVERAGE_MISSING"
+        ],
+        "reasonCodes": [
+          "ACTION_EFFECT_FILESYSTEM_WRITE",
+          "BOUNDARY_COVERAGE_MISSING",
+          "FILESYSTEM_WRITE_REQUIRES_AUTHORITY"
+        ],
+        "humanReason": "Filesystem mutation needs boundary authority; verb similarity to text generation is insufficient."
+      }
     }
   ],
   "knownNextStepForPr26": [
@@ -203,7 +732,9 @@
     "Keep ask_human reserved for consent, sensitive effects, config/runtime changes, and policy-required human review.",
     "Prefer fetch_source, request_full_receipt, request_policy_refresh, or request_grammar_refresh when missing evidence can be resolved mechanically inside the local shadow boundary.",
     "Use the boundary taxonomy as an input to route selection: compactability and human requirement differ by boundary, so receiver decisions must not treat local_shadow, memory_candidate, config_change, runtime_tool, and external_publication as equivalent.",
-    "Design the classifier against docs/threat-model-v0.md actors and capabilities; map each threat to a fixture or explicit non-goal before runtime/enforcement work."
+    "Design the classifier against docs/threat-model-v0.md actors and capabilities; map each threat to a fixture or explicit non-goal before runtime/enforcement work.",
+    "Move AuthorityEnvelope evaluation from research notes to a repeatable benchmark comparing naive summary, full context, simple receipt, and authority envelope using wrongRouteRate, falseCompactRate, falseHumanEscalationRate, tokenCost, clarityScore, receiverDecisionAccuracy, and boundaryLossRate.",
+    "Do not add memory yet; prove the receiver knows how to distrust. Post-PR26 priority should be CI gates, release:check, RouteDecision schema/evidence first, boundary taxonomy, threat model, multi-hop fixtures, authority claim/spec consolidation, then public minimal spec only after vocabulary stabilizes."
   ],
   "boundaryTaxonomy": [
     {
@@ -293,6 +824,44 @@
       "no_folded_index_tamper_regression_yet",
       "no_full_policy_hotswap_regression_yet",
       "no_full_nested_handoff_authority_resolution_suite_yet"
+    ]
+  },
+  "authorityEnvelopeConcept": {
+    "status": "pr26_fixture_concept_no_classifier",
+    "document": "docs/authority-envelope-pr26.md",
+    "principles": [
+      "separate_confidence_from_authority",
+      "separate_action_intent_from_action_effect",
+      "route_decisions_include_selected_and_rejected_routes",
+      "tests_validate_stable_reason_codes_not_free_text",
+      "knowing_something_does_not_imply_permission_to_act"
+    ],
+    "claimConfidenceValues": [
+      "high",
+      "medium",
+      "low",
+      "unknown"
+    ],
+    "evidenceStrengthValues": [
+      "high",
+      "medium",
+      "low",
+      "none"
+    ],
+    "boundaryCoverageValues": [
+      "complete",
+      "partial",
+      "missing",
+      "stale",
+      "conflicting"
+    ],
+    "actionEffectValues": [
+      "text_only",
+      "filesystem_write",
+      "runtime_execution",
+      "config_change",
+      "external_publication",
+      "permanent_memory_write"
     ]
   }
 }
