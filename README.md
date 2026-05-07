@@ -22,7 +22,7 @@ Current v0.1.5 status is narrower:
 - adds a deterministic adversarial fixture generator that derives variants from hand-authored wrong-route oracles while preserving expected RouteDecision routes/reasons;
 - adds raw/parser adversarial fixtures for untrusted prose, folded-index mismatches, malformed receipts, free-text next-action tampering, conflicting receipts, and stale/replayed policy windows;
 - adds parser normalization evidence for raw handoff examples into `parserEvidence` / route-decision input shape without classifier, runtime, or live shadow observer behavior;
-- adds offline real-flow replay fixtures with gold labels, scorecards, and audit logs without live traffic, classifier, runtime, or live shadow observer behavior;
+- adds offline real-flow replay fixtures with gold labels, parserEvidence hash binding, scorecards, and audit logs without live traffic, automatic receiver decisions, classifier, runtime, or live shadow observer behavior;
 - no real LangGraph, AutoGen, CrewAI, Semantic Kernel, MCP, or runtime host adapters are included yet;
 - real adapter work is a future track and should preserve the same runtime/non-goal boundaries.
 

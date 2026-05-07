@@ -152,7 +152,7 @@ Key files:
 - `adversarial-fixture-generator.out.json` — deterministic generated variants derived from source wrong-route oracles; not semantic proof or replacement oracles;
 - `raw-parser-adversarial.out.json` — raw/prose/receipt parser-pressure fixture evidence; not semantic parser robustness proof or runtime authorization;
 - `parser-normalization-evidence.out.json` — raw handoff to `parserEvidence` / route-decision input fixture evidence; not a classifier, live parser, runtime authorization, or live shadow observer;
-- `real-flow-replay.out.json` — naturalistic handoff replay evidence with gold labels, scorecard, and audit log; not live traffic, a classifier, runtime authorization, or live shadow observer;
+- `real-flow-replay.out.json` — naturalistic handoff replay evidence with gold labels, parserEvidence hash binding, scorecard, and audit log; not live traffic, an automatic receiver decision, a classifier, runtime authorization, or live shadow observer;
 - `receiver-policy-adapter-contracts.out.json` — framework-shaped receiver adapter contract cases;
 - `cli-validator.out.json` — CLI behavior cases;
 - `synthetic-handoff-examples.out.json` — synthetic handoff cases;

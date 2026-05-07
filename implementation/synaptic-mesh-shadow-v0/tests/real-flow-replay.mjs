@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -15,6 +16,25 @@ const evidencePath = resolve(packageRoot, 'evidence/real-flow-replay.out.json');
 const stableCodePattern = /^[A-Z0-9_]+$/;
 const compactForbiddenRoutes = new Set(['block', 'ask_human', 'fetch_source', 'request_full_receipt', 'request_policy_refresh', 'request_grammar_refresh', 'abstain']);
 
+function canonicalJson(value) {
+  if (Array.isArray(value)) return `[${value.map(canonicalJson).join(',')}]`;
+  if (value && typeof value === 'object') {
+    return `{${Object.keys(value).sort().map((key) => `${JSON.stringify(key)}:${canonicalJson(value[key])}`).join(',')}}`;
+  }
+  return JSON.stringify(value);
+}
+
+function sha256(value) {
+  return `sha256:${createHash('sha256').update(canonicalJson(value)).digest('hex')}`;
+}
+
+function parserEvidenceReplayHash(parserRecord) {
+  return sha256({
+    parserEvidence: parserRecord.parserEvidence,
+    routeDecisionInput: parserRecord.routeDecisionInput,
+  });
+}
+
 function enumValues(schema, propertyName) {
   const values = schema.properties?.[propertyName]?.enum;
   assert.ok(Array.isArray(values), `schema must define enum for ${propertyName}`);
@@ -28,12 +48,15 @@ function assertStableCodes(values, label, { allowEmpty = false } = {}) {
   for (const value of values) assert.match(value, stableCodePattern, `${label} contains unstable code ${value}`);
 }
 
-function assertFlow(flow, routeEnums, parserEvidenceIds) {
+function assertFlow(flow, routeEnums, parserEvidenceById) {
   assert.equal(typeof flow.flowId, 'string', 'flowId must be string');
   assert.equal(typeof flow.sourceKind, 'string', `${flow.flowId} sourceKind must be string`);
   assert.equal(typeof flow.rawArtifact, 'string', `${flow.flowId} rawArtifact must be string`);
   assert.ok(flow.rawArtifact.length > 0, `${flow.flowId} rawArtifact must not be empty`);
-  assert.ok(parserEvidenceIds.has(flow.parserEvidenceRef), `${flow.flowId} parserEvidenceRef must point to parser normalization fixture`);
+  const parserRecord = parserEvidenceById.get(flow.parserEvidenceRef);
+  assert.ok(parserRecord, `${flow.flowId} parserEvidenceRef must point to parser normalization fixture`);
+  assert.match(flow.parserEvidenceRefHash, /^sha256:[a-f0-9]{64}$/, `${flow.flowId} parserEvidenceRefHash must be sha256`);
+  assert.equal(flow.parserEvidenceRefHash, parserEvidenceReplayHash(parserRecord), `${flow.flowId} parserEvidenceRefHash must match linked parserEvidence + routeDecisionInput`);
 
   const gold = flow.goldLabel;
   const observed = flow.observedDecision;
@@ -83,7 +106,7 @@ const fixture = JSON.parse(await readFile(fixturePath, 'utf8'));
 const parserFixture = JSON.parse(await readFile(parserFixturePath, 'utf8'));
 const routeDecisionSchema = JSON.parse(await readFile(routeDecisionSchemaPath, 'utf8'));
 const routeEnums = { routes: enumValues(routeDecisionSchema, 'selectedRoute') };
-const parserEvidenceIds = new Set(parserFixture.fixtures.map((record) => record.id));
+const parserEvidenceById = new Map(parserFixture.fixtures.map((record) => [record.id, record]));
 
 assert.equal(fixture.artifact, artifact);
 assert.match(fixture.status, /offline_naturalistic_replay/);
@@ -104,7 +127,7 @@ const reasonCodeSet = new Set();
 
 for (const flow of fixture.flows) {
   try {
-    assertFlow(flow, routeEnums, parserEvidenceIds);
+    assertFlow(flow, routeEnums, parserEvidenceById);
     routeCounts[flow.observedDecision.selectedRoute] += 1;
     for (const code of flow.observedDecision.reasonCodes) reasonCodeSet.add(code);
     const expectedNonPermit = flow.goldLabel.expectedRoute !== 'shadow_only' || flow.goldLabel.expectedHumanRequired || flow.goldLabel.expectedCompactAllowed === false;
@@ -161,6 +184,7 @@ const output = {
     flowId: flow.flowId,
     sourceKind: flow.sourceKind,
     parserEvidenceRef: flow.parserEvidenceRef,
+    parserEvidenceRefHash: flow.parserEvidenceRefHash,
     expectedRoute: flow.goldLabel.expectedRoute,
     selectedRoute: flow.observedDecision.selectedRoute,
     matched: flow.goldLabel.expectedRoute === flow.observedDecision.selectedRoute,
@@ -173,6 +197,7 @@ const output = {
   knownUncoveredRisks: [
     'replay_flows_are_hand_authored_naturalistic_examples_not_live_traffic',
     'gold_labels_are_fixture_expectations_not_human_adjudication_dataset',
+    'observed_decisions_are_fixture_replay_expectations_not_receiver_classifier_outputs',
     'no_classifier_runtime_enforcement_or_tool_authorization_added',
     'live_shadow_observer_is_not_implemented_yet',
   ],
