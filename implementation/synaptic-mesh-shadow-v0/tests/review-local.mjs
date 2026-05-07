@@ -97,6 +97,10 @@ const commands = [
     args: [resolve(packageRoot, 'tests/parser-normalization-evidence.mjs')],
   },
   {
+    id: 'real-flow-replay-tests',
+    args: [resolve(packageRoot, 'tests/real-flow-replay.mjs')],
+  },
+  {
     id: 'fixture-parity-harness',
     args: [resolve(packageRoot, 'tests/fixture-parity.mjs')],
   },
@@ -127,6 +131,7 @@ const authorityBenchmark = readEvidenceJson('implementation/synaptic-mesh-shadow
 const adversarialGenerator = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/adversarial-fixture-generator.out.json');
 const rawParserAdversarial = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/raw-parser-adversarial.out.json');
 const parserNormalizationEvidence = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/parser-normalization-evidence.out.json');
+const realFlowReplay = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/real-flow-replay.out.json');
 
 const unsafeAllowSignals = [
   ...(fixtureParity?.summary?.nonRegressionUnsafeAllowFixtures ?? []),
@@ -147,6 +152,8 @@ if (authorityBenchmark?.summary?.verdict !== 'pass') unsafeAllowSignals.push('au
 if (adversarialGenerator?.summary?.verdict !== 'pass') unsafeAllowSignals.push('adversarial-fixture-generator');
 if (rawParserAdversarial?.summary?.verdict !== 'pass') unsafeAllowSignals.push('raw-parser-adversarial');
 if (parserNormalizationEvidence?.summary?.verdict !== 'pass') unsafeAllowSignals.push('parser-normalization-evidence');
+if (realFlowReplay?.summary?.verdict !== 'pass') unsafeAllowSignals.push('real-flow-replay');
+if (Number(realFlowReplay?.summary?.falsePermitRate ?? 0) !== 0) unsafeAllowSignals.push('real-flow-replay-false-permit');
 
 const summary = {
   artifact: 'T-synaptic-mesh-review-local-runner-v0',
@@ -185,6 +192,10 @@ const summary = {
   parserNormalizationEvidenceVerdict: parserNormalizationEvidence?.summary?.verdict ?? null,
   parserNormalizationEvidenceFixtureCount: parserNormalizationEvidence?.summary?.fixtureCount ?? null,
   parserNormalizationEvidenceHashBoundRate: parserNormalizationEvidence?.summary?.routeDecisionInputHashBoundRate ?? null,
+  realFlowReplayVerdict: realFlowReplay?.summary?.verdict ?? null,
+  realFlowReplayFlowCount: realFlowReplay?.summary?.flowCount ?? null,
+  realFlowReplayFalsePermitRate: realFlowReplay?.summary?.falsePermitRate ?? null,
+  realFlowReplayFalseCompactRate: realFlowReplay?.summary?.falseCompactRate ?? null,
   unsafeAllowSignals,
   sourceFixtureMutation: false,
 };

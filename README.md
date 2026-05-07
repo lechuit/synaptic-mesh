@@ -22,6 +22,7 @@ Current v0.1.5 status is narrower:
 - adds a deterministic adversarial fixture generator that derives variants from hand-authored wrong-route oracles while preserving expected RouteDecision routes/reasons;
 - adds raw/parser adversarial fixtures for untrusted prose, folded-index mismatches, malformed receipts, free-text next-action tampering, conflicting receipts, and stale/replayed policy windows;
 - adds parser normalization evidence for raw handoff examples into `parserEvidence` / route-decision input shape without classifier, runtime, or live shadow observer behavior;
+- adds offline real-flow replay fixtures with gold labels, scorecards, and audit logs without live traffic, classifier, runtime, or live shadow observer behavior;
 - no real LangGraph, AutoGen, CrewAI, Semantic Kernel, MCP, or runtime host adapters are included yet;
 - real adapter work is a future track and should preserve the same runtime/non-goal boundaries.
 
@@ -52,7 +53,7 @@ From this bundle root:
 npm --prefix implementation/synaptic-mesh-shadow-v0 run review:local
 ```
 
-Expected current result: 24/24 commands pass, fixture parity 15/15, RouteDecision schema 17/17 fixture records, threat-model route mappings 11/11, RouteDecision wrong-route fixtures 9/9, generated adversarial fixtures 9/9, raw/parser adversarial fixtures 9/9, parser normalization fixtures 5/5, Receipt schema valid/invalid fixtures 1/4, authority overhead benchmark 6 fixtures/4 modes, unsafe allow signals 0, source fixture mutation false.
+Expected current result: 25/25 commands pass, fixture parity 15/15, RouteDecision schema 17/17 fixture records, threat-model route mappings 11/11, RouteDecision wrong-route fixtures 9/9, generated adversarial fixtures 9/9, raw/parser adversarial fixtures 9/9, parser normalization fixtures 5/5, real-flow replay fixtures 5/5, Receipt schema valid/invalid fixtures 1/4, authority overhead benchmark 6 fixtures/4 modes, unsafe allow signals 0, source fixture mutation false.
 
 For adapter-shaped contract coverage specifically:
 
