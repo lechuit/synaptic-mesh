@@ -1,0 +1,308 @@
+{
+  "summary": {
+    "artifact": "T-synaptic-mesh-action-policy-contracts-v0",
+    "timestamp": "2026-05-07T15:10:00.000Z",
+    "verdict": "pass",
+    "strategyCount": 4,
+    "ambiguousVerbCount": 8,
+    "sensitiveVerbCount": 21,
+    "localVerbCount": 4,
+    "unsafeAllows": 0
+  },
+  "expectedStrategyIds": [
+    "sensitive-verb",
+    "ambiguous-framework-verb",
+    "local-low-risk-verb",
+    "unknown-or-sensitive-fallback"
+  ],
+  "strategyIds": [
+    "sensitive-verb",
+    "ambiguous-framework-verb",
+    "local-low-risk-verb",
+    "unknown-or-sensitive-fallback"
+  ],
+  "ambiguousRows": [
+    {
+      "verb": "tool_call",
+      "strategyId": "ambiguous-framework-verb",
+      "classification": {
+        "riskTier": "ambiguous",
+        "requiresHuman": true
+      },
+      "humanReason": "action requires human because verb is ambiguous: tool_call"
+    },
+    {
+      "verb": "invoke",
+      "strategyId": "ambiguous-framework-verb",
+      "classification": {
+        "riskTier": "ambiguous",
+        "requiresHuman": true
+      },
+      "humanReason": "action requires human because verb is ambiguous: invoke"
+    },
+    {
+      "verb": "execute",
+      "strategyId": "ambiguous-framework-verb",
+      "classification": {
+        "riskTier": "ambiguous",
+        "requiresHuman": true
+      },
+      "humanReason": "action requires human because verb is ambiguous: execute"
+    },
+    {
+      "verb": "dispatch",
+      "strategyId": "ambiguous-framework-verb",
+      "classification": {
+        "riskTier": "ambiguous",
+        "requiresHuman": true
+      },
+      "humanReason": "action requires human because verb is ambiguous: dispatch"
+    },
+    {
+      "verb": "function_call",
+      "strategyId": "ambiguous-framework-verb",
+      "classification": {
+        "riskTier": "ambiguous",
+        "requiresHuman": true
+      },
+      "humanReason": "action requires human because verb is ambiguous: function_call"
+    },
+    {
+      "verb": "handoff",
+      "strategyId": "ambiguous-framework-verb",
+      "classification": {
+        "riskTier": "ambiguous",
+        "requiresHuman": true
+      },
+      "humanReason": "action requires human because verb is ambiguous: handoff"
+    },
+    {
+      "verb": "delegate",
+      "strategyId": "ambiguous-framework-verb",
+      "classification": {
+        "riskTier": "ambiguous",
+        "requiresHuman": true
+      },
+      "humanReason": "action requires human because verb is ambiguous: delegate"
+    },
+    {
+      "verb": "agent_action",
+      "strategyId": "ambiguous-framework-verb",
+      "classification": {
+        "riskTier": "ambiguous",
+        "requiresHuman": true
+      },
+      "humanReason": "action requires human because verb is ambiguous: agent_action"
+    }
+  ],
+  "sensitiveRows": [
+    {
+      "verb": "send_external",
+      "strategyId": "sensitive-verb",
+      "classification": {
+        "riskTier": "sensitive",
+        "requiresHuman": true
+      }
+    },
+    {
+      "verb": "http_request",
+      "strategyId": "sensitive-verb",
+      "classification": {
+        "riskTier": "sensitive",
+        "requiresHuman": true
+      }
+    },
+    {
+      "verb": "network_call",
+      "strategyId": "sensitive-verb",
+      "classification": {
+        "riskTier": "sensitive",
+        "requiresHuman": true
+      }
+    },
+    {
+      "verb": "email_send",
+      "strategyId": "sensitive-verb",
+      "classification": {
+        "riskTier": "sensitive",
+        "requiresHuman": true
+      }
+    },
+    {
+      "verb": "message_send",
+      "strategyId": "sensitive-verb",
+      "classification": {
+        "riskTier": "sensitive",
+        "requiresHuman": true
+      }
+    },
+    {
+      "verb": "change_config",
+      "strategyId": "sensitive-verb",
+      "classification": {
+        "riskTier": "sensitive",
+        "requiresHuman": true
+      }
+    },
+    {
+      "verb": "update_settings",
+      "strategyId": "sensitive-verb",
+      "classification": {
+        "riskTier": "sensitive",
+        "requiresHuman": true
+      }
+    },
+    {
+      "verb": "modify_runtime_config",
+      "strategyId": "sensitive-verb",
+      "classification": {
+        "riskTier": "sensitive",
+        "requiresHuman": true
+      }
+    },
+    {
+      "verb": "promote_memory",
+      "strategyId": "sensitive-verb",
+      "classification": {
+        "riskTier": "sensitive",
+        "requiresHuman": true
+      }
+    },
+    {
+      "verb": "write_memory",
+      "strategyId": "sensitive-verb",
+      "classification": {
+        "riskTier": "sensitive",
+        "requiresHuman": true
+      }
+    },
+    {
+      "verb": "delete",
+      "strategyId": "sensitive-verb",
+      "classification": {
+        "riskTier": "sensitive",
+        "requiresHuman": true
+      }
+    },
+    {
+      "verb": "remove_file",
+      "strategyId": "sensitive-verb",
+      "classification": {
+        "riskTier": "sensitive",
+        "requiresHuman": true
+      }
+    },
+    {
+      "verb": "rm",
+      "strategyId": "sensitive-verb",
+      "classification": {
+        "riskTier": "sensitive",
+        "requiresHuman": true
+      }
+    },
+    {
+      "verb": "publish",
+      "strategyId": "sensitive-verb",
+      "classification": {
+        "riskTier": "sensitive",
+        "requiresHuman": true
+      }
+    },
+    {
+      "verb": "post_public",
+      "strategyId": "sensitive-verb",
+      "classification": {
+        "riskTier": "sensitive",
+        "requiresHuman": true
+      }
+    },
+    {
+      "verb": "release_publish",
+      "strategyId": "sensitive-verb",
+      "classification": {
+        "riskTier": "sensitive",
+        "requiresHuman": true
+      }
+    },
+    {
+      "verb": "runtime_integrate",
+      "strategyId": "sensitive-verb",
+      "classification": {
+        "riskTier": "sensitive",
+        "requiresHuman": true
+      }
+    },
+    {
+      "verb": "install_runtime_hook",
+      "strategyId": "sensitive-verb",
+      "classification": {
+        "riskTier": "sensitive",
+        "requiresHuman": true
+      }
+    },
+    {
+      "verb": "canary_enable",
+      "strategyId": "sensitive-verb",
+      "classification": {
+        "riskTier": "sensitive",
+        "requiresHuman": true
+      }
+    },
+    {
+      "verb": "production_use",
+      "strategyId": "sensitive-verb",
+      "classification": {
+        "riskTier": "sensitive",
+        "requiresHuman": true
+      }
+    },
+    {
+      "verb": "l2_operational_use",
+      "strategyId": "sensitive-verb",
+      "classification": {
+        "riskTier": "sensitive",
+        "requiresHuman": true
+      }
+    }
+  ],
+  "localRows": [
+    {
+      "verb": "write_doc",
+      "strategyId": "local-low-risk-verb",
+      "classification": {
+        "riskTier": "low_local",
+        "requiresHuman": false
+      }
+    },
+    {
+      "verb": "run_local_test",
+      "strategyId": "local-low-risk-verb",
+      "classification": {
+        "riskTier": "low_local",
+        "requiresHuman": false
+      }
+    },
+    {
+      "verb": "prepare_draft",
+      "strategyId": "local-low-risk-verb",
+      "classification": {
+        "riskTier": "low_local",
+        "requiresHuman": false
+      }
+    },
+    {
+      "verb": "create_local_fixture",
+      "strategyId": "local-low-risk-verb",
+      "classification": {
+        "riskTier": "low_local",
+        "requiresHuman": false
+      }
+    }
+  ],
+  "boundary": [
+    "local_shadow_only",
+    "not_runtime_enforcement",
+    "not_framework_integration",
+    "not_config"
+  ]
+}

@@ -3,8 +3,8 @@
     "artifact": "T-synaptic-mesh-review-local-runner-v0",
     "timestamp": "2026-05-07T15:05:00.000Z",
     "verdict": "pass",
-    "commands": 14,
-    "passCommands": 14,
+    "commands": 16,
+    "passCommands": 16,
     "failedCommands": [],
     "fixtureCount": 15,
     "fixtureParityVerdict": "pass",
@@ -13,6 +13,7 @@
     "cliValidatorVerdict": "pass",
     "authorityLaunderingVerdict": "pass",
     "receiverAdapterContractsVerdict": "pass",
+    "actionPolicyContractsVerdict": "pass",
     "syntheticHandoffVerdict": "pass",
     "partialReceiptDegradeVerdict": "pass",
     "unsafeAllowSignals": [],
@@ -34,6 +35,13 @@
       "stderr": ""
     },
     {
+      "id": "syntax-action-policy-contracts",
+      "command": "/usr/local/bin/node --check implementation/synaptic-mesh-shadow-v0/tests/action-policy-contracts.mjs",
+      "status": 0,
+      "pass": true,
+      "stderr": ""
+    },
+    {
       "id": "syntax-receipt-parser",
       "command": "/usr/local/bin/node --check implementation/synaptic-mesh-shadow-v0/src/receipt-parser.mjs",
       "status": 0,
@@ -50,6 +58,13 @@
     {
       "id": "syntax-cli",
       "command": "/usr/local/bin/node --check implementation/synaptic-mesh-shadow-v0/bin/validate-receipt.mjs",
+      "status": 0,
+      "pass": true,
+      "stderr": ""
+    },
+    {
+      "id": "action-policy-contract-tests",
+      "command": "/usr/local/bin/node implementation/synaptic-mesh-shadow-v0/tests/action-policy-contracts.mjs",
       "status": 0,
       "pass": true,
       "stderr": ""

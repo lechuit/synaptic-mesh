@@ -18,6 +18,10 @@ const commands = [
     args: ['--check', resolve(packageRoot, 'src/types.mjs')],
   },
   {
+    id: 'syntax-action-policy-contracts',
+    args: ['--check', resolve(packageRoot, 'tests/action-policy-contracts.mjs')],
+  },
+  {
     id: 'syntax-receipt-parser',
     args: ['--check', resolve(packageRoot, 'src/receipt-parser.mjs')],
   },
@@ -28,6 +32,10 @@ const commands = [
   {
     id: 'syntax-cli',
     args: ['--check', resolve(packageRoot, 'bin/validate-receipt.mjs')],
+  },
+  {
+    id: 'action-policy-contract-tests',
+    args: [resolve(packageRoot, 'tests/action-policy-contracts.mjs')],
   },
   {
     id: 'receipt-parser-validator-tests',
@@ -97,6 +105,7 @@ const transformRegression = readJson('implementation/synaptic-mesh-shadow-v0/evi
 const cliValidator = readJson('implementation/synaptic-mesh-shadow-v0/evidence/cli-validator.out.json');
 const authorityLaundering = readJson('implementation/synaptic-mesh-shadow-v0/evidence/authority-laundering-regression.out.json');
 const receiverAdapterContracts = readJson('implementation/synaptic-mesh-shadow-v0/evidence/receiver-policy-adapter-contracts.out.json');
+const actionPolicyContracts = readJson('implementation/synaptic-mesh-shadow-v0/evidence/action-policy-contracts.out.json');
 const syntheticHandoff = readJson('implementation/synaptic-mesh-shadow-v0/evidence/synthetic-handoff-examples.out.json');
 const partialDegrade = readJson('implementation/synaptic-mesh-shadow-v0/evidence/partial-receipt-degrade.out.json');
 
@@ -108,6 +117,7 @@ if (Number(transformRegression?.summary?.unsafeAllows ?? 0) !== 0) unsafeAllowSi
 if (Number(cliValidator?.summary?.unsafeAllows ?? 0) !== 0) unsafeAllowSignals.push('cli-validator');
 if (Number(authorityLaundering?.summary?.unsafeAllows ?? 0) !== 0) unsafeAllowSignals.push('authority-laundering-regression');
 if (Number(receiverAdapterContracts?.summary?.unsafeAllows ?? 0) !== 0) unsafeAllowSignals.push('receiver-policy-adapter-contracts');
+if (Number(actionPolicyContracts?.summary?.unsafeAllows ?? 0) !== 0) unsafeAllowSignals.push('action-policy-contracts');
 if (Number(syntheticHandoff?.summary?.unsafeAllows ?? 0) !== 0) unsafeAllowSignals.push('synthetic-handoff-examples');
 if (Number(partialDegrade?.summary?.unsafeAllows ?? 0) !== 0) unsafeAllowSignals.push('partial-receipt-degrade');
 
@@ -125,6 +135,7 @@ const summary = {
   cliValidatorVerdict: cliValidator?.summary?.verdict ?? null,
   authorityLaunderingVerdict: authorityLaundering?.summary?.verdict ?? null,
   receiverAdapterContractsVerdict: receiverAdapterContracts?.summary?.verdict ?? null,
+  actionPolicyContractsVerdict: actionPolicyContracts?.summary?.verdict ?? null,
   syntheticHandoffVerdict: syntheticHandoff?.summary?.verdict ?? null,
   partialReceiptDegradeVerdict: partialDegrade?.summary?.verdict ?? null,
   unsafeAllowSignals,
