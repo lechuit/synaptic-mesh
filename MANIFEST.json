@@ -1,7 +1,7 @@
 {
   "bundle": "synaptic-mesh",
   "version": "0.1.1",
-  "generated": "2026-05-07T16:55:00Z",
+  "generated": "2026-05-07T17:00:00Z",
   "status": "hardening_release_candidate_not_runtime_ready",
   "repository": "https://github.com/lechuit/synaptic-mesh",
   "license": "Apache-2.0 for code; CC BY 4.0 for docs/prose unless otherwise noted",
@@ -33,6 +33,11 @@
       "path": "FRAMEWORK_COMPATIBILITY.md",
       "bytes": 1626,
       "sha256": "4dd1e652e520d800a7cc7cfc80a1219b769c371a5df7050b300dc9c77d30c767"
+    },
+    {
+      "path": "HARDENING_ROUNDUP.md",
+      "bytes": 2212,
+      "sha256": "f9ba7c952b851fd1dbf02b6c3f6c3e6914765bd85c9ffac902f0252ce09e95f7"
     },
     {
       "path": "LICENSE",
