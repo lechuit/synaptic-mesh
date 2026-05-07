@@ -1,7 +1,7 @@
 {
   "bundle": "synaptic-mesh",
   "version": "0.1.1",
-  "generated": "2026-05-07T16:45:00Z",
+  "generated": "2026-05-07T16:40:00Z",
   "status": "hardening_release_candidate_not_runtime_ready",
   "repository": "https://github.com/lechuit/synaptic-mesh",
   "license": "Apache-2.0 for code; CC BY 4.0 for docs/prose unless otherwise noted",
@@ -686,8 +686,8 @@
     },
     {
       "path": "specs/framework-adapter-matrix-v0.md",
-      "bytes": 4558,
-      "sha256": "5e2a2a0af7f8a3e44f135c829e51ab994d39390695f515b1cdcc930609297882"
+      "bytes": 4466,
+      "sha256": "da040fdd16813780030fff34eac47d06d585a7c7803936e713902aff600dd87d"
     },
     {
       "path": "specs/memory-authority-receipt-v0.md",
