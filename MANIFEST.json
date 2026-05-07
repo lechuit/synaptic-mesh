@@ -21,8 +21,8 @@
     },
     {
       "path": "CITATION.cff",
-      "bytes": 346,
-      "sha256": "9c433e26df1354883b44afd0232f8c63874dca7ceb8e4228aa93abe03d93d2bf"
+      "bytes": 342,
+      "sha256": "2b85f9c4fb5f535aa317b6637d9cbab77230cdcb666efd77637298b6846dffb0"
     },
     {
       "path": "CONTRIBUTING.md",
@@ -71,8 +71,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 2830,
-      "sha256": "339295f46c18d9fad166e40a161bebd68eeec10d0ffbd72c5c7b9731df26d69f"
+      "bytes": 2944,
+      "sha256": "8f5da5fd3599b8a08dd89fb72a241ec3e3a23334f17cdc008349ce94b203331d"
     },
     {
       "path": "RELEASE_CANDIDATE.md",
@@ -162,12 +162,12 @@
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/receiver-policy-adapter-contracts.out.json",
       "bytes": 6345,
-      "sha256": "4f94baa30d16db8f2920a9cc0a75b1ddbf0626b1602b0a94950901b1ea23b830"
+      "sha256": "148a403651c5d452327275e31ed10a54b5292649ef48d8fafc19c8b846f2d46a"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/review-local.out.json",
       "bytes": 3740,
-      "sha256": "b9f29157dfbc9efa96c21784b9f5e6b2d6043d21597166f184f9be2da3718799"
+      "sha256": "07e59dc2f4b51383842a2b246ac4f2b7e312d9499cc9aaa4503e558ced48d2be"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/synthetic-handoff-examples.out.json",
@@ -296,13 +296,13 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/receiver-policy-adapter-contracts.mjs",
-      "bytes": 6226,
-      "sha256": "40fee5daf42a1682716d1ae2a0da144b7f5ed66e1dafccb56b178b7f1a8165f4"
+      "bytes": 6308,
+      "sha256": "9acf5d9b76c1da6a65d12dbed6a2c0dcdf650f19406a92d6bbb727ce1cfe34be"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/review-local.mjs",
-      "bytes": 6014,
-      "sha256": "9af91414b6cf6a7e7cac0f25b22bd5594e46b7dfe64273a3ddae216e7917303e"
+      "bytes": 6096,
+      "sha256": "42177315ec7a2fdd6b0fbbe5e02f593ca9e7f93493ef99af4ab01439176bdb8a"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/smoke.mjs",

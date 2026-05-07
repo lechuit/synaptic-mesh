@@ -109,7 +109,7 @@ if (Number(partialDegrade?.summary?.unsafeAllows ?? 0) !== 0) unsafeAllowSignals
 
 const summary = {
   artifact: 'T-synaptic-mesh-review-local-runner-v0',
-  timestamp: new Date().toISOString(),
+  timestamp: process.env.SYNAPTIC_MESH_FRESH_TIMESTAMPS === '1' ? new Date().toISOString() : '2026-05-07T15:05:00.000Z',
   verdict: rows.every((row) => row.pass) && unsafeAllowSignals.length === 0 ? 'pass' : 'fail',
   commands: rows.length,
   passCommands: rows.filter((row) => row.pass).length,
