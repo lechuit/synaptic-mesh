@@ -1,16 +1,16 @@
-# Release Notes — Synaptic Mesh v0.1.3
+# Release Notes — Synaptic Mesh v0.1.5
 
 Status: baseline shadow-gates release candidate / public review package update. Not runtime-ready; not production/canary/enforcement-ready.
 
-## Highlights since v0.1.2
+## Highlights since v0.1.4
 
-- Added GitHub Actions baseline gates for manifest verification, syntax checks, receiver adapter contracts, local shadow review, action-policy contracts, authority route fixtures, authority-envelope fixtures, RouteDecision schema evidence, threat-model route mapping evidence, RouteDecision wrong-route oracle evidence, Receipt schema evidence, and raw/parser adversarial evidence.
-- Added adversarial wrong-route fixtures for memory-claim laundering, hidden promotion, stale policy windows, replayed receipts, nested authority, free-text action tampering, external prose, and ambiguous verbs.
-- Kept CI scoped to the local shadow package; it does not add runtime/framework integration, MCP/A2A integration, tool execution, or enforcement behavior.
-- Preserved deterministic local evidence expectations for review runs.
-- Added a deterministic local authority overhead benchmark comparing naive summaries, full context, simple receipts, and AuthorityEnvelope-shaped records without live LLM/API calls or runtime integration.
-- Added a deterministic adversarial fixture generator that derives variants from existing RouteDecision wrong-route oracles and preserves source expected routes/reason codes.
+- Added reason-code vocabulary documentation so fixture/evidence signals can be reviewed consistently without treating reason codes as runtime authorization.
+- Added a conservative coverage matrix that marks deterministic fixture gates as covered, proxy evidence as partial, classifier behavior as pending, and runtime enforcement / production readiness as out of scope.
 - Added raw/parser adversarial fixture coverage for untrusted prose, hidden dangerous receipts, malformed receipts, free-text action tampering, conflicting receipts, and stale/replayed policy windows.
+- Added deterministic adversarial fixture generation from existing wrong-route oracles while preserving source expected routes/reason codes.
+- Added deterministic local authority-overhead benchmark evidence comparing naive summaries, full context, simple receipts, and AuthorityEnvelope-shaped records without live LLM/API calls or runtime integration.
+- Removed a stale public draft artifact from the repository and refreshed manifest coverage.
+- Kept CI scoped to the local shadow package; this release does not add runtime/framework integration, MCP/A2A integration, tool execution, memory writes, publication, or enforcement behavior.
 
 ## Validation snapshot
 
@@ -29,7 +29,7 @@ Status: baseline shadow-gates release candidate / public review package update. 
 
 ## Compatibility note
 
-Synaptic Mesh remains a framework-agnostic protocol proposal. v0.1.3 strengthens release confidence with baseline local-shadow CI gates, but does not ship real LangGraph, AutoGen, CrewAI, Semantic Kernel, MCP, or runtime host adapters. Real runtime adapters remain future work.
+Synaptic Mesh remains a framework-agnostic protocol proposal. v0.1.5 strengthens release confidence with baseline local-shadow CI gates, but does not ship real LangGraph, AutoGen, CrewAI, Semantic Kernel, MCP, or runtime host adapters. Real runtime adapters remain future work.
 
 ## Operational non-release status
 
