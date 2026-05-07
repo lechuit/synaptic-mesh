@@ -12,6 +12,7 @@ const releaseGateScripts = [
   'test:authority-routes',
   'test:authority-envelope',
   'test:route-decision-schema',
+  'test:threat-model-routes',
 ];
 
 function runGit(args, options = {}) {

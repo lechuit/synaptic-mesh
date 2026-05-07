@@ -35,17 +35,22 @@ The authority-claim model should not be designed only from happy paths. Before a
 | `canClaimAuthorityWithoutEvidence` | Assert permission, memory, or policy without source binding. | Abstain or ask human depending on boundary. |
 | `canHideSensitivePromotion` | Bury durable memory, shared memory, runtime, config, or publication effects in local-looking payloads. | Boundary taxonomy must override sender label. |
 
-## Initial threat-to-test mapping
+## Threat-to-route mapping artifact
 
-| Threat pressure | Existing or PR25 coverage | Needed next |
+`implementation/synaptic-mesh-shadow-v0/fixtures/threat-model-routes.json` maps each threat-model actor and each listed capability to at least one expected route-decision fixture or explicit known gap. `npm run test:threat-model-routes` validates that mapping and writes `implementation/synaptic-mesh-shadow-v0/evidence/threat-model-routes.out.json`.
+
+This is a threat-to-fixture/evidence map only. It validates route vocabulary, stable reason codes, expected rejected routes, boundary coverage, and the absence of runtime/enforcement claims. It is not semantic proof, not an implemented classifier, not authorization, and not runtime protection.
+
+| Threat pressure | Current mapping evidence | Remaining gap |
 |---|---|---|
-| Duplicate/tampered fields | `authority-laundering-regression` covers duplicate `SCOPE`/`NO` and sensitive `ACT`. | Expand to folded indexes and nested receipts. |
-| Free-text authority labels | `authority-laundering-regression` includes safe-looking prose metadata. | Add malicious external document fixtures. |
-| Missing compact boundary fields | `authority-claim-routes-fixtures` sentinel routes to `request_full_receipt`. | Classifier should implement route choice. |
-| Config/runtime inferred authority | `authority-claim-routes-fixtures` sentinels route to `ask_human`. | Classifier should enforce boundary taxonomy. |
-| Boundary differences | `authority-claim-routes-fixtures` includes 8-boundary taxonomy and coverage. | ADR/table or classifier input in PR26/PR27. |
-| Stale source/policy/grammar | Route fixtures cover `fetch_source`, `request_policy_refresh`, `request_grammar_refresh`. | Add classifier tests for each stale mode. |
-| Nested handoff confusion | Prior fixture manifest lists nested handoff source-spoofing priority fixture. | Formal nested handoff adversarial tests. |
+| Duplicate/tampered fields | `TM-R06` maps tampered `ACT` / next-action runtime execution to `block`. | No runtime tamper detector. |
+| Free-text authority labels | `TM-R05` maps external prose authority labels to `abstain`; `TM-G01` keeps malicious-document semantic parsing explicit as a gap. | No malicious external document parser/classifier. |
+| Missing compact boundary fields | `TM-R01` maps omitted PB/NO boundary fields to `request_full_receipt`. | No classifier implementation. |
+| Config/runtime inferred authority | `TM-R02`, `TM-R06`, `TM-R08` map config/runtime/publication pressure to `ask_human`/`block` expectations. | No runtime enforcement. |
+| Boundary differences | Mapping spans read-only, local shadow, shared memory, permanent memory, config, runtime, and publication boundaries. | No semantic boundary classifier. |
+| Stale source/policy/grammar | `TM-R03`, `TM-R09`, and `TM-R11` map stale policy/source replay pressure to refresh/fetch routes. | No live policy hot-swap regression. |
+| Folded index compression loss | `TM-R04` maps folded-index tamper risk to `request_full_receipt`; `TM-G02` records folded-index/hidden-promotion interaction as a gap. | No folded-index tamper detector. |
+| Nested handoff confusion | `TM-R10` maps ambiguous nested/quoted authority to `fetch_source`. | No full nested authority-resolution suite. |
 
 ## Known uncovered risks
 
