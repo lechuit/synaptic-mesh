@@ -26,7 +26,7 @@ const exactReceipt = [
 const lowRiskAction = { verb: 'write_doc', target: 'research-package/local-note.md', riskTier: 'low_local' };
 const sensitiveActions = [
   { verb: 'send_external', target: 'telegram', riskTier: 'sensitive' },
-  { verb: 'runtime_integrate', target: 'OpenClaw', riskTier: 'sensitive' },
+  { verb: 'runtime_integrate', target: 'host_runtime', riskTier: 'sensitive' },
   { verb: 'change_config', target: 'gateway', riskTier: 'sensitive' },
   { verb: 'delete', target: 'artifact', riskTier: 'sensitive' },
   { verb: 'publish', target: 'repo', riskTier: 'sensitive' },

@@ -5,7 +5,7 @@ Status: public research package index / post-human-review + quote-check workshee
 
 ## Purpose
 
-This index organizes the Synaptic Mesh / Multi-Agent Memory Authority Protocol line into a local research package map. It tracks the paper/spec/evidence/reference implementation pieces without authorizing publication, OpenClaw runtime/tooling integration, config changes, permanent memory promotion, external sends, deletion, canary, enforcement, production, or L2+ operational use.
+This index organizes the Synaptic Mesh / Multi-Agent Memory Authority Protocol line into a local research package map. It tracks the paper/spec/evidence/reference implementation pieces without authorizing publication, production/runtime tooling integration, config changes, permanent memory promotion, external sends, deletion, canary, enforcement, production, or L2+ operational use.
 
 Confirmed direction: finish the current memory/Synaptic Mesh line before switching tracks, and build toward a real implementation plus publishable research package with documents, tests, specs, paper material, evidence, implementation notes, and human-reviewed release gates.
 
@@ -38,7 +38,7 @@ Core design maxim:
 ## Package structure
 
 ```text
-radar-invencion/
+synaptic-mesh/
   paper/                 # paper draft, abstract, related work, references
   specs/                 # protocol specs and schemas
   tests/                 # curated reproducible fixture suite or pointers into runs/
@@ -130,7 +130,6 @@ radar-invencion/
 From the repository/workspace root:
 
 ```bash
-cd radar-invencion
 npm --prefix implementation/synaptic-mesh-shadow-v0 run review:local
 ```
 
@@ -236,7 +235,7 @@ Not allowed without explicit human approval:
 - external publication;
 - repo release/public push if intended as publication;
 - runtime/tooling integration;
-- OpenClaw config changes;
+- production/runtime config changes;
 - durable/permanent memory promotion;
 - external sends except milestone/blocker/decision updates;
 - deletion;

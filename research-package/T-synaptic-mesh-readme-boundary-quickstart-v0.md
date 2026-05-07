@@ -7,7 +7,7 @@ Status: `pass`, local documentation only
 
 Update the local Synaptic Mesh shadow reference README so reviewers can run the minimum functional reference and understand the safety boundary.
 
-This target is documentation only. It is not runtime/tooling integration, OpenClaw config, durable memory, publication, enforcement, external effect automation, canary, production, or L2+ use.
+This target is documentation only. It is not runtime/tooling integration, production/runtime config, durable memory, publication, enforcement, external effect automation, canary, production, or L2+ use.
 
 ## Updated artifact
 
@@ -23,8 +23,8 @@ The README now states that the package is:
 
 It also states that the package is not:
 
-- OpenClaw runtime/tooling integration;
-- OpenClaw config;
+- production/runtime tooling integration;
+- production/runtime config;
 - durable/permanent memory;
 - external publication;
 - canary, production, or enforcement;
@@ -43,7 +43,7 @@ npm run test:cli
 npm run test:handoff
 ```
 
-From Radar root:
+From the repository root:
 
 ```bash
 npm --prefix implementation/synaptic-mesh-shadow-v0 run review:local
@@ -84,7 +84,7 @@ The README now records the observed review-local gates:
 ```json
 {
   "reviewLocalVerdict": "pass",
-  "commands": "10/10",
+  "commands": "11/11",
   "fixtureParity": "15/15",
   "normalizedSummaryFixtures": 15,
   "unsafeAllowSignals": 0,

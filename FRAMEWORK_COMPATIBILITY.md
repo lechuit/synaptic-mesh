@@ -1,12 +1,12 @@
 # Framework Compatibility
 
-Synaptic Mesh is designed as a protocol, not as an OpenClaw-only feature.
+Synaptic Mesh is designed as a protocol, not as a feature tied to one specific framework.
 
 ## Current status in v0.1.0-rc1
 
-- Current validation context: OpenClaw-origin local shadow workflow.
+- Current validation context: a local shadow workflow.
 - Included implementation: standalone local shadow/reference package.
-- Not included: OpenClaw runtime integration.
+- Not included: production/runtime integration.
 - Not included: adapters for LangGraph, AutoGen, CrewAI, Semantic Kernel, MCP, or other agent frameworks.
 - Not included: production/canary/enforcement/L2+ operational use.
 
@@ -29,7 +29,7 @@ A portable adapter should preserve at least:
 
 Future adapters could target:
 
-- OpenClaw runtime hooks;
+- runtime host hooks;
 - LangGraph / LangChain memory or middleware nodes;
 - AutoGen / CrewAI handoff messages;
 - Semantic Kernel memory/planner flows;

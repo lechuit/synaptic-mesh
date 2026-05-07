@@ -6,15 +6,17 @@ I just published Synaptic Mesh v0.1.0-rc1:
 
 https://github.com/lechuit/synaptic-mesh
 
-Synaptic Mesh is a research/protocol release candidate for a problem I think will become increasingly important in multi-agent systems. The current RC is validated from an OpenClaw-origin local shadow workflow, but the goal is a portable protocol, not an OpenClaw-only feature:
+I am working on a problem that shows up when agents use memory, summaries, and handoffs:
 
-When agents retrieve, summarize, compress, and hand off memory-derived context, what authority actually survives?
+sometimes the context survives, but the restriction gets lost.
 
-A summary can preserve the useful content while quietly dropping the boundary that made it safe: stale, local-only, denied, sealed/private, partial-lineage, or human-required context can be laundered into downstream action authority.
+For example, a system may preserve “this source says X” while dropping “this was only evidence, not permission to act.” Stale, local-only, denied, sealed/private, partial-lineage, or human-required context can quietly turn into downstream action authority if the receiving agent only sees a confident summary.
 
-This RC explores a protocol for preserving authority/status/boundary receipts across memory transforms:
+Synaptic Mesh is a research/protocol release candidate for preserving those boundaries across memory transforms:
 
 source result → summary → handoff → next action → action proposal
+
+The core idea is a compact receipt that travels with memory-derived claims and lets the receiver fail closed — fetch again, abstain, or ask a human — when source, freshness, scope, promotion boundary, forbidden effects, or action separation are missing or unclear.
 
 Included in v0.1.0-rc1:
 
@@ -47,9 +49,9 @@ If you work on agent memory, provenance, AI safety, multi-agent orchestration, o
 I just published Synaptic Mesh v0.1.0-rc1:
 https://github.com/lechuit/synaptic-mesh
 
-It’s a research/protocol RC for preserving memory authority, status, and boundary receipts across multi-agent compression, handoff, and action-planning steps.
+Problem: when agents summarize memory-derived evidence, the content can survive while the restriction gets lost — “this says X” remains, but “this was not permission to act” disappears.
 
-Core question: when agents summarize memory-derived evidence, what authority actually survives — and how do receivers avoid laundering stale, local-only, denied, partial-lineage, or human-required context into action authority?
+Synaptic Mesh is a research/protocol RC for preserving memory authority, status, and boundary receipts across multi-agent compression, handoff, and action-planning steps.
 
 Includes paper draft, specs, local shadow/reference implementation, 15 fixtures, quote-check artifacts, and explicit runtime boundaries.
 

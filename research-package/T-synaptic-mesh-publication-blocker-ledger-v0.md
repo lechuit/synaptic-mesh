@@ -124,13 +124,13 @@ This ledger is intentionally conservative. It does **not** authorize publication
   - separate human approval;
   - separate safety review;
   - likely separate implementation plan and rollback plan.
-- Reason: local shadow/reference work is not authorization for operational enforcement or OpenClaw/runtime integration.
+- Reason: local shadow/reference work is not authorization for operational enforcement or production/runtime integration.
 
 ## Non-blocking but useful next improvements
 
 1. Add a small human-review brief summarizing what Synaptic Mesh is, what evidence exists, and what approval would authorize.
 2. Add a quote-check worksheet with one row per R01-R18 reference.
-3. Add final-publication redaction checklist for private private research lab details.
+3. Add final-publication redaction checklist for private research provenance details.
 4. Add a “what would invalidate the claim” section to the paper for stronger scientific framing.
 
 ## Current publication verdict

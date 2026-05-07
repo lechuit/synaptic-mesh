@@ -2,7 +2,7 @@
 
 Status: **local shadow/reference only**.
 
-This package is a minimum functional reference for Synaptic Mesh / Multi-Agent Memory Authority Protocol handoff receipts. It was validated in an OpenClaw-origin research workflow, but it is standalone and is not an OpenClaw runtime integration. It exists so reviewers can inspect receipt parsing, validation, transform regression, CLI behavior, synthetic handoff examples, and local evidence gates without confusing the work for runtime enforcement.
+This package is a minimum functional reference for Synaptic Mesh / Multi-Agent Memory Authority Protocol handoff receipts. It was validated in a local research workflow, but it is standalone and is not integrated with any production/runtime host. It exists so reviewers can inspect receipt parsing, validation, transform regression, CLI behavior, synthetic handoff examples, and local evidence gates without confusing the work for runtime enforcement.
 
 ## Boundary
 
@@ -14,8 +14,8 @@ This package is:
 
 This package is **not**:
 
-- OpenClaw runtime/tooling integration;
-- OpenClaw config;
+- production/runtime tooling integration;
+- production/runtime config;
 - durable/permanent memory;
 - canary, production, or enforcement;
 - an approval system for sensitive actions;
@@ -38,7 +38,7 @@ The reference currently covers:
 Current local gates observed in `evidence/review-local.out.json`:
 
 - review-local verdict: `pass`;
-- commands: `10/10` passing;
+- commands: `11/11` passing;
 - fixture parity: `15/15` passing;
 - normalized summary fixtures: `15`;
 - unsafe allow signals: `0`;
@@ -49,7 +49,6 @@ Current local gates observed in `evidence/review-local.out.json`:
 From the repository/workspace root:
 
 ```bash
-cd radar-invencion
 npm --prefix implementation/synaptic-mesh-shadow-v0 run review:local
 ```
 
@@ -153,8 +152,8 @@ Related local research package artifacts:
 
 ## Publication and runtime status
 
-Publication status: **public release candidate**. Current validation is OpenClaw-origin local shadow only; runtime/tooling integration remains out of scope and requires separate maintainer approval.
+Publication status: **public release candidate**. Current validation is a local shadow workflow only; runtime/tooling integration remains out of scope and requires separate maintainer approval.
 
-Runtime status: **not approved / not runtime-ready**. This local reference does not integrate with OpenClaw runtime, tools, config, crons, memory plugins, or external messaging.
+Runtime status: **not approved / not runtime-ready**. This local reference does not integrate with production/runtime tools, config, scheduled jobs, memory plugins, or external messaging.
 
 Reviewer interpretation: a passing local review means the reference package is reproducible locally. It does **not** mean the protocol is safe for operational authority, enforcement, production, or autonomous sensitive actions.

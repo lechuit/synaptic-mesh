@@ -30,7 +30,7 @@ Archival research-package artifacts and local run notes may preserve internal pr
 Private/operator patterns:
 
 ```text
-<local-user-path> | <local-user> | project owner | external messaging service | <redacted-channel-id> | private research lab | private research workspace | <local-agent-workspace>
+<local-user-path> | <local-user> | project owner | external messaging service | <redacted-channel-id> | <private-lab-label> | <private-workspace-label> | <local-agent-workspace>
 ```
 
 Release/runtime boundary patterns:
@@ -42,17 +42,17 @@ not runtime | not publication | not approved | requires human approval | not pro
 ## Redactions/fixes applied
 
 - `paper/synaptic-mesh-paper-v0.md`
-  - replaced `Project: private research workspace / private research lab` with `Project: Synaptic Mesh research package`.
+  - replaced `Project: <private-workspace-label> / <private-lab-label>` with `Project: Synaptic Mesh research package`.
   - replaced “reviewed by project owner” with “reviewed by a human reviewer.”
   - replaced “approved by project owner” with “approved by the project owner/human reviewer.”
 - `specs/README.md`
-  - replaced OpenClaw/external messaging service-specific boundary wording with generic host-runtime/external-send wording.
+  - replaced runtime-host/external-send-specific boundary wording with generic runtime-host/external-send wording.
 - `research-package/T-synaptic-mesh-publication-reproducibility-rerun-v0.md`
-  - replaced absolute local command path with “from the `radar-invencion` package root.”
-  - replaced operator/private research lab scan-target wording with generic private operator/path wording.
+  - replaced absolute local command path with “from the repository/package root.”
+  - replaced operator/private-lab scan-target wording with generic private operator/path wording.
 - `research-package/synaptic-mesh-index-v0.md`
   - replaced project-owner/operator-specific wording with generic project-owner/human-review wording.
-  - replaced OpenClaw/runtime and external messaging service-specific wording in public-facing boundary sections with generic host-runtime/external-send wording where appropriate.
+  - replaced runtime-host and external messaging service-specific wording in public-facing boundary sections with generic runtime-host/external-send wording where appropriate.
 
 ## Post-fix public-facing scan result
 
@@ -64,8 +64,8 @@ After fixes, the public-facing surface no longer contains the high-risk private/
 project owner: 0 public-facing hits
 external messaging service: 0 public-facing hits
 <redacted-channel-id>: 0 public-facing hits
-private research lab: 0 public-facing hits
-private research workspace: 0 public-facing hits
+<private-lab-label>: 0 public-facing hits
+<private-workspace-label>: 0 public-facing hits
 <local-agent-workspace>: 0 public-facing hits
 ```
 
@@ -80,7 +80,7 @@ Expected boundary language remains present and is desirable:
 
 ## Residual notes
 
-- `implementation/synaptic-mesh-shadow-v0/README.md` still mentions OpenClaw runtime/config/memory plugins as a boundary example. This is acceptable for the local reference package but can be generalized later if exporting to a venue that should not mention any host runtime.
+- `implementation/synaptic-mesh-shadow-v0/README.md` still mentions host runtime/config/memory plugins as a boundary example. This is acceptable for the local reference package but can be generalized later if exporting to a venue that should not mention any host runtime.
 - Older archival artifacts may still include internal provenance, old next-step language, or operator-specific history. Treat them as internal evidence/provenance unless a separate export script/manifest selects and redacts them.
 - This audit did not publish, package, release, push, delete, change config, promote memory, or integrate runtime.
 

@@ -20,7 +20,7 @@
 
 ## Compatibility note
 
-Synaptic Mesh is intended as a framework-agnostic protocol. v0.1.0-rc1 is currently validated in an OpenClaw-origin local shadow workflow and ships as a standalone reference package; framework adapters are not included yet.
+Synaptic Mesh is intended as a framework-agnostic protocol. v0.1.0-rc1 is currently validated in a local shadow workflow and ships as a standalone reference package; framework adapters are not included yet.
 
 ## Operational non-release status
 

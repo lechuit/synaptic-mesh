@@ -10,7 +10,7 @@ Capture a fresh local shadow-reference review gate after quote-check, metadata n
 
 ## Command run
 
-From the `radar-invencion` package root:
+From the repository/package root:
 
 ```bash
 npm --prefix implementation/synaptic-mesh-shadow-v0 run review:local
