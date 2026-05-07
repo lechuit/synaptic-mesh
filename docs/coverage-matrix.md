@@ -21,6 +21,7 @@ This matrix summarizes what the current Synaptic Mesh local-shadow package cover
 | Summary-level adversarial generator | Adversarial fixture generator (`test:adversarial-generator`) | Partial | Generates variants from hand-authored wrong-route oracles while preserving expected routes/reasons; does not prove arbitrary adversarial robustness. |
 | Raw parser attacks | Raw/parser adversarial gate (`test:raw-parser-adversarial`) | Partial | Covers hand-authored raw artifacts and parser-signal annotations for hostile prose/receipt-like inputs. It is not a real parser/classifier robustness proof. |
 | Parser normalization evidence | Parser normalization gate (`test:parser-normalization-evidence`) | Partial | Covers hand-authored raw handoff examples normalized into `parserEvidence` and route-decision input hashes. It is not a live parser, classifier, or live shadow observer. |
+| Offline real-flow replay | Real-flow replay gate (`test:real-flow-replay`) | Partial | Covers naturalistic handoff-like replay fixtures with gold labels, audit logs, and scorecard metrics. It is not live traffic, a classifier, or a live shadow observer. |
 | Stale receipt replay | Raw/parser adversarial gate plus wrong-route/freshness reason codes | Covered | Includes stale policy-window/replayed receipt cases with conservative fetch-source or ask-human expectations. |
 | Hidden promotion | Raw/parser folded-index fixtures, generated adversarial fixtures, wrong-route oracles | Covered | Includes folded-index mismatch/hidden sensitive promotion cases. Runtime detection remains outside scope. |
 | Free-text next-action tampering | Raw/parser and wrong-route fixtures | Covered | Valid receipts remain authoritative over free-text attempts to modify `nextAllowedAction`. |
@@ -33,4 +34,4 @@ This matrix summarizes what the current Synaptic Mesh local-shadow package cover
 
 ## Reviewer focus
 
-Reviewers should look for rows marked **partial** or **pending** before treating the package as stronger than it is. In particular, raw/parser and adversarial-generator evidence should be read as fixture pressure, not as proof that unstructured malicious inputs are reliably detected in a live system.
+Reviewers should look for rows marked **partial** or **pending** before treating the package as stronger than it is. In particular, raw/parser, parser-normalization, real-flow replay, and adversarial-generator evidence should be read as fixture pressure, not as proof that unstructured malicious inputs are reliably detected in a live system.

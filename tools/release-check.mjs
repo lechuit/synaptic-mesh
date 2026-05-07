@@ -19,6 +19,7 @@ const releaseGateScripts = [
   'test:adversarial-generator',
   'test:raw-parser-adversarial',
   'test:parser-normalization-evidence',
+  'test:real-flow-replay',
 ];
 
 function runGit(args, options = {}) {

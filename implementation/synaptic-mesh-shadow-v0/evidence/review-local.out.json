@@ -3,8 +3,8 @@
     "artifact": "T-synaptic-mesh-review-local-runner-v0",
     "timestamp": "2026-05-07T15:05:00.000Z",
     "verdict": "pass",
-    "commands": 24,
-    "passCommands": 24,
+    "commands": 25,
+    "passCommands": 25,
     "failedCommands": [],
     "fixtureCount": 15,
     "fixtureParityVerdict": "pass",
@@ -41,6 +41,10 @@
     "parserNormalizationEvidenceVerdict": "pass",
     "parserNormalizationEvidenceFixtureCount": 5,
     "parserNormalizationEvidenceHashBoundRate": 1,
+    "realFlowReplayVerdict": "pass",
+    "realFlowReplayFlowCount": 5,
+    "realFlowReplayFalsePermitRate": 0,
+    "realFlowReplayFalseCompactRate": 0,
     "unsafeAllowSignals": [],
     "sourceFixtureMutation": false
   },
@@ -195,6 +199,13 @@
     {
       "id": "parser-normalization-evidence-tests",
       "command": "node implementation/synaptic-mesh-shadow-v0/tests/parser-normalization-evidence.mjs",
+      "status": 0,
+      "pass": true,
+      "stderr": ""
+    },
+    {
+      "id": "real-flow-replay-tests",
+      "command": "node implementation/synaptic-mesh-shadow-v0/tests/real-flow-replay.mjs",
       "status": 0,
       "pass": true,
       "stderr": ""

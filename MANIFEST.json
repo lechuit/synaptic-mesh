@@ -11,8 +11,8 @@
   "files": [
     {
       "path": ".github/workflows/ci.yml",
-      "bytes": 2240,
-      "sha256": "3476b3000e477a120a6938064d7e830e5699176fb3aab36d04742f4bebf4e351"
+      "bytes": 2332,
+      "sha256": "8f5c76b776953b72b28782526bc5cb81ed7018427e6d00614b327aeb856b09e5"
     },
     {
       "path": ".gitignore",
@@ -76,8 +76,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 4864,
-      "sha256": "ccabb7c18ba7d0caf8aa6474989ef34481e99eee2157b15349ef99eb69c29683"
+      "bytes": 5058,
+      "sha256": "859b4c438f4eebad3401569e89f71bece53d45d4851f315d67d9359380afacda"
     },
     {
       "path": "RELEASE_CANDIDATE.md",
@@ -86,8 +86,8 @@
     },
     {
       "path": "RELEASE_NOTES.md",
-      "bytes": 3300,
-      "sha256": "c977a76e2dbed8490d795a71b1a7c40d4c7ad5222eedc34315314df67900e4aa"
+      "bytes": 3409,
+      "sha256": "e38680b45b49859734e73d05d2c3aaa681610319d1a5629f15f4b1502f076f9a"
     },
     {
       "path": "design-notes/adapter-boundary-langgraph-mcp-v0.md",
@@ -141,8 +141,8 @@
     },
     {
       "path": "docs/coverage-matrix.md",
-      "bytes": 4712,
-      "sha256": "da4860a4315747e47b41206f219ffa25b016a9986e9330eee49dee3ce2a0e6f6"
+      "bytes": 5011,
+      "sha256": "a280b53a6e721b6e8d6a5b369752a7f7b04bb46bc7b0cdee8aca8add12868fe7"
     },
     {
       "path": "docs/parser-normalization-evidence.md",
@@ -155,19 +155,24 @@
       "sha256": "5edf47824506cbe62b18bfa18bc12b80414d751472797b0cac6eeb4abc0230de"
     },
     {
+      "path": "docs/real-flow-replay.md",
+      "bytes": 1640,
+      "sha256": "cd7d70294ef3e8d16370759618877ca8d5245c10fb3741441335f47908a3ec07"
+    },
+    {
       "path": "docs/reason-codes.md",
       "bytes": 5815,
       "sha256": "7a604c5b8c696fc2621bb45c82c040b5aff92ef3806753de7647ef794c95d1f9"
     },
     {
       "path": "docs/release-checklist.md",
-      "bytes": 4389,
-      "sha256": "0c972f99eb79f4e27d37176a30853a24ebc383f4559995ac7955630f269d9bdd"
+      "bytes": 4750,
+      "sha256": "7ca60fbc2d2a7f74bbb4a68bab66b90c010ead8d40552d7ff0ccea26b64c4de3"
     },
     {
       "path": "docs/repo-structure.md",
-      "bytes": 4090,
-      "sha256": "71a43cc33ae6699203cbe7489d5a083ba701ec96662dd4b26705343a68b9dba7"
+      "bytes": 4255,
+      "sha256": "c2a4497d8b38cd3a8aeae691a7dfeb02b791ac0d9ce293060109ab95c8c0a54f"
     },
     {
       "path": "docs/threat-model-v0.md",
@@ -211,8 +216,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/README.md",
-      "bytes": 7333,
-      "sha256": "5fca8f0bede33b2ab8ee5b4b6f95f86ca376545e08f614cc3cd54c7ab7f47b4e"
+      "bytes": 7593,
+      "sha256": "7607e68a2914714627b63f63a7b11b29fce5ace44f306c82e7bfe7a68148e575"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/bin/validate-receipt.mjs",
@@ -280,6 +285,11 @@
       "sha256": "04c4afdd2a2918e8ef1a4882dbf62e6a34b121c4e3f6a2f3ff0bafc40d5f841f"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/real-flow-replay.out.json",
+      "bytes": 6191,
+      "sha256": "8d16644a879bf8587ad540d1b0f9a8ddbb5154b6953bb034e6d475c74395c675"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/receipt-schema.out.json",
       "bytes": 3345,
       "sha256": "f29ea38dddc716cb715189186501444d8769acd48e8739e693fe6aaf6377517d"
@@ -296,8 +306,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/review-local.out.json",
-      "bytes": 6959,
-      "sha256": "18ab5c4bef0b184b3dcd9b8eefc07aa71aa4ac8307116fd2c28459a41affdfc9"
+      "bytes": 7311,
+      "sha256": "8097d7a8f5f26c34870f64795593280f719a136b2cf93fa88d98f1dc667baa7a"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/route-decision-schema.out.json",
@@ -360,6 +370,11 @@
       "sha256": "014bc6507037d55811fe16ba51c8d76f65b12bc267eab345a711b95ad4c5f609"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/fixtures/real-flow-replay.json",
+      "bytes": 7640,
+      "sha256": "662393b1d5172cf19a8d619cc7a28e8f171434833d46a055425ffb039e0ba78c"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/fixtures/receipts.json",
       "bytes": 6528,
       "sha256": "2c20850dbcfb5e5fc6c578d23309d9541c2826072fd1faf617366fea624d57f6"
@@ -376,8 +391,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/package.json",
-      "bytes": 5231,
-      "sha256": "3d31475e6f24178c99527fe479917b6d6065ed6093ccab8c637d090486a45a18"
+      "bytes": 5338,
+      "sha256": "7ce5313a09bf2521fdbfce5c72516aad5e59d6036548d708e2fde0dc98c216e1"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/action-context-packet.mjs",
@@ -495,6 +510,11 @@
       "sha256": "78aca758610c3934b5d05c538b98777ed5d74c4a0829f50e0f842e2cbcd74aaf"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/real-flow-replay.mjs",
+      "bytes": 11809,
+      "sha256": "91ddf93130cd80c563060bcbf5635b25bc43bd174d83800f511ed0e2e4d7f574"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/receipt-freshness-age-policy.mjs",
       "bytes": 5943,
       "sha256": "1b9c933bb57c8dd84d2907e4bcf86de49775c852e45a6d90d7a4bf513786367f"
@@ -536,8 +556,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/review-local.mjs",
-      "bytes": 11042,
-      "sha256": "7990415dad1fd8ad3141001bc0f2b94159453e6835f9b5d2183138eeefe0e546"
+      "bytes": 11790,
+      "sha256": "dbe98397ac16ff395e6294804a79bf93ab871437a34ca74ed106d7ba5bcba7fd"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/route-decision-schema.mjs",
@@ -966,8 +986,8 @@
     },
     {
       "path": "tools/release-check.mjs",
-      "bytes": 8035,
-      "sha256": "94c3a8804aec11860f0ac82b2a104c4a182141dc8b709e17bfb81a0de3ea084c"
+      "bytes": 8062,
+      "sha256": "88950f112cd49f2a418608c3f4835b7ebf14ebcff22fc05d016e8e72b21641f6"
     },
     {
       "path": "tools/verify-manifest.mjs",

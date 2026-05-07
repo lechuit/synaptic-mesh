@@ -73,6 +73,9 @@ jobs:
       - name: Parser normalization evidence
         run: npm run test:parser-normalization-evidence
 
+      - name: Offline real-flow replay evidence
+        run: npm run test:real-flow-replay
+
       - name: Upload shadow evidence
         if: always()
         uses: actions/upload-artifact@v4
