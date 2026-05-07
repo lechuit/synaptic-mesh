@@ -29,6 +29,8 @@ const receipt = [
   'ACT=write_local_report',
 ].join('; ');
 
+const duplicateSourceReceipt = `${receipt}; SRC=spoofed-second-source`;
+
 const genericAdapter = createReceiverPolicyAdapter();
 const langGraphLikeAdapter = createReceiverPolicyAdapter({
   adapterId: 'langgraph-like-receiver-policy-contract-v0',
@@ -373,6 +375,66 @@ const cases = [
     },
     expected: 'ask_human',
     reason: /action requires human/,
+  },
+  {
+    id: 'generic-duplicate-source-field-fetches',
+    adapter: genericAdapter,
+    packet: {
+      packetId: 'generic-duplicate-src-1',
+      receipt: duplicateSourceReceipt,
+      expectedSource,
+      proposedAction: { verb: 'write_doc', target: 'local-note.md', riskTier: 'low_local' },
+    },
+    expected: 'fetch_abstain',
+    reason: /duplicate receipt field: SRC/,
+  },
+  {
+    id: 'langgraph-like-duplicate-source-field-fetches',
+    adapter: langGraphLikeAdapter,
+    packet: {
+      nodeState: { packetId: 'lg-duplicate-src-1', memoryReceipt: duplicateSourceReceipt, expectedSource },
+      nextToolCall: { verb: 'run_local_test', target: 'implementation/synaptic-mesh-shadow-v0', riskTier: 'low_local' },
+    },
+    expected: 'fetch_abstain',
+    reason: /duplicate receipt field: SRC/,
+  },
+  {
+    id: 'autogen-like-duplicate-source-field-fetches',
+    adapter: autogenLikeAdapter,
+    packet: {
+      message: { id: 'ag-duplicate-src-1', metadata: { compactAuthorityReceipt: duplicateSourceReceipt, expectedSource } },
+      proposedReplyAction: { verb: 'write_doc', target: 'local-summary.md', riskTier: 'low_local' },
+    },
+    expected: 'fetch_abstain',
+    reason: /duplicate receipt field: SRC/,
+  },
+  {
+    id: 'crewai-like-duplicate-source-field-fetches',
+    adapter: crewAiLikeAdapter,
+    packet: {
+      task: { id: 'crew-duplicate-src-1', context: { authorityReceipt: duplicateSourceReceipt, expectedSource }, nextAction: { verb: 'prepare_draft', target: 'local-task-note.md', riskTier: 'low_local' } },
+    },
+    expected: 'fetch_abstain',
+    reason: /duplicate receipt field: SRC/,
+  },
+  {
+    id: 'semantic-kernel-like-duplicate-source-field-fetches',
+    adapter: semanticKernelLikeAdapter,
+    packet: {
+      plannerState: { id: 'sk-duplicate-src-1', memory: { authorityReceipt: duplicateSourceReceipt, expectedSource } },
+      plannedFunctionCall: { verb: 'run_local_test', target: 'local-validator', riskTier: 'low_local' },
+    },
+    expected: 'fetch_abstain',
+    reason: /duplicate receipt field: SRC/,
+  },
+  {
+    id: 'mcp-like-duplicate-source-field-fetches',
+    adapter: mcpLikeAdapter,
+    packet: {
+      request: { id: 'mcp-duplicate-src-1', metadata: { authorityReceipt: duplicateSourceReceipt, expectedSource }, toolCall: { verb: 'write_doc', target: 'local-mcp-note.md', riskTier: 'low_local' } },
+    },
+    expected: 'fetch_abstain',
+    reason: /duplicate receipt field: SRC/,
   },
   {
     id: 'autogen-like-prose-metadata-does-not-authorize-sensitive-action',
