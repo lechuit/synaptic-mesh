@@ -1,4 +1,5 @@
-import { AMBIGUOUS_ACTION_VERBS, DECISIONS, HUMAN_REQUIRED_VERBS, LOCAL_ACTION_VERBS } from './types.mjs';
+import { actionRequiresHuman, humanRequiredReason } from './action-policy.mjs';
+import { DECISIONS } from './types.mjs';
 import { parseCompactReceipt, RECEIPT_FIELD_ALIASES, REQUIRED_COMPACT_RECEIPT_FIELDS } from './receipt-parser.mjs';
 
 const LOCAL_SCOPE_PATTERN = /^(local|local_only|shadow|local_shadow|local_doc|report)(?:[_-].*)?$/i;
@@ -103,20 +104,6 @@ function validateProducedAtFreshness(producedAt, policy) {
   if (ageMs > maxAgeMs) reasons.push(`produced-at timestamp exceeds receiver max age: ${producedAt}`);
 
   return reasons;
-}
-
-function actionRequiresHuman(action = {}) {
-  if (HUMAN_REQUIRED_VERBS.has(action.verb)) return true;
-  if (AMBIGUOUS_ACTION_VERBS.has(action.verb)) return true;
-  if (!LOCAL_ACTION_VERBS.has(action.verb)) return true;
-  if (action.riskTier === 'sensitive') return true;
-  return false;
-}
-
-function humanRequiredReason(action = {}) {
-  const verb = action.verb ?? 'unknown';
-  if (AMBIGUOUS_ACTION_VERBS.has(verb)) return `action requires human because verb is ambiguous: ${verb}`;
-  return `action requires human or is unknown/sensitive: ${verb}`;
 }
 
 function finish(parsed, decision, reasons) {
