@@ -40,6 +40,7 @@ It runs:
 - `npm run test:parser-normalization-evidence`
 - `npm run test:real-flow-replay`
 - `npm run test:route-classifier-shadow`
+- `npm run test:real-flow-classifier-scorecard`
 
 For auditability, keep the individual gate names visible in PR notes even when `release:check` is the command reviewers run.
 
@@ -52,8 +53,8 @@ For auditability, keep the individual gate names visible in PR notes even when `
 - Confirm adversarial fixture generator evidence remains deterministic, source-oracle-derived, and does not replace hand-authored oracles or generate unclear expected routes.
 - Confirm raw/parser adversarial evidence remains raw fixture/parser pressure only; it must not claim semantic parser robustness, classifier behavior, runtime safety, tool authorization, memory writes, config changes, network access, or publication readiness.
 - Confirm parser normalization evidence remains hand-authored local-shadow evidence from raw handoff examples to `parserEvidence` / route-decision input shape; it must not claim live parser robustness, classifier behavior, live shadow observation, runtime safety, authorization, tool execution, memory writes, config changes, network access, or publication readiness.
-- Confirm deterministic route classifier remains shadow-only over parserEvidence fixtures and does not claim raw parsing, live observer behavior, runtime enforcement, authorization, automatic blocking, memory writes, config changes, network access, or publication readiness.
-- Confirm offline real-flow replay remains naturalistic fixture replay with gold labels, parserEvidence hash binding, and audit logs only; it must not claim automatic receiver decision behavior, live traffic, classifier behavior, live shadow observation, runtime safety, authorization, tool execution, memory writes, config changes, network access, automatic blocking, or publication readiness.
+- Confirm deterministic route classifier remains shadow-only over parserEvidence fixtures and real-flow scorecard cases, and does not claim raw parsing, live observer behavior, runtime enforcement, authorization, automatic blocking, memory writes, config changes, network access, or publication readiness.
+- Confirm offline real-flow replay remains naturalistic fixture replay with gold labels, parserEvidence hash binding, and audit logs only; `observedDecision` is a fixture oracle, not classifier output. It must not claim automatic receiver decision behavior, live traffic, live shadow observation, runtime safety, authorization, tool execution, memory writes, config changes, network access, automatic blocking, or publication readiness.
 - Confirm source fixtures are not mutated by the review run (`sourceFixtureMutation: false` in local review evidence).
 - Confirm release-check output remains local-only and does not call network services or runtime tools.
 

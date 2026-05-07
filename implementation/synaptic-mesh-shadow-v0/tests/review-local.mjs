@@ -105,6 +105,10 @@ const commands = [
     args: [resolve(packageRoot, 'tests/route-classifier-shadow.mjs')],
   },
   {
+    id: 'real-flow-classifier-scorecard-tests',
+    args: [resolve(packageRoot, 'tests/real-flow-classifier-scorecard.mjs')],
+  },
+  {
     id: 'fixture-parity-harness',
     args: [resolve(packageRoot, 'tests/fixture-parity.mjs')],
   },
@@ -137,6 +141,7 @@ const rawParserAdversarial = readEvidenceJson('implementation/synaptic-mesh-shad
 const parserNormalizationEvidence = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/parser-normalization-evidence.out.json');
 const realFlowReplay = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/real-flow-replay.out.json');
 const routeClassifierShadow = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/route-classifier-shadow.out.json');
+const realFlowClassifierScorecard = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/real-flow-classifier-scorecard.out.json');
 
 const unsafeAllowSignals = [
   ...(fixtureParity?.summary?.nonRegressionUnsafeAllowFixtures ?? []),
@@ -161,6 +166,10 @@ if (realFlowReplay?.summary?.verdict !== 'pass') unsafeAllowSignals.push('real-f
 if (Number(realFlowReplay?.summary?.falsePermitRate ?? 0) !== 0) unsafeAllowSignals.push('real-flow-replay-false-permit');
 if (routeClassifierShadow?.summary?.verdict !== 'pass') unsafeAllowSignals.push('route-classifier-shadow');
 if (Number(routeClassifierShadow?.summary?.falsePermitRate ?? 0) !== 0) unsafeAllowSignals.push('route-classifier-shadow-false-permit');
+if (realFlowClassifierScorecard?.summary?.verdict !== 'pass') unsafeAllowSignals.push('real-flow-classifier-scorecard');
+if (Number(realFlowClassifierScorecard?.summary?.flowCount ?? 0) < 20 || Number(realFlowClassifierScorecard?.summary?.flowCount ?? 0) > 30) unsafeAllowSignals.push('real-flow-classifier-scorecard-flow-count');
+if (Number(realFlowClassifierScorecard?.summary?.falsePermitRate ?? 0) !== 0) unsafeAllowSignals.push('real-flow-classifier-scorecard-false-permit');
+if (Number(realFlowClassifierScorecard?.summary?.falseCompactRate ?? 0) !== 0) unsafeAllowSignals.push('real-flow-classifier-scorecard-false-compact');
 
 const summary = {
   artifact: 'T-synaptic-mesh-review-local-runner-v0',
@@ -208,6 +217,12 @@ const summary = {
   routeClassifierShadowMismatchCount: routeClassifierShadow?.summary?.mismatchCount ?? null,
   routeClassifierShadowFalsePermitRate: routeClassifierShadow?.summary?.falsePermitRate ?? null,
   routeClassifierShadowFalseCompactRate: routeClassifierShadow?.summary?.falseCompactRate ?? null,
+  realFlowClassifierScorecardVerdict: realFlowClassifierScorecard?.summary?.verdict ?? null,
+  realFlowClassifierScorecardFlowCount: realFlowClassifierScorecard?.summary?.flowCount ?? null,
+  realFlowClassifierScorecardMismatchCount: realFlowClassifierScorecard?.summary?.mismatchCount ?? null,
+  realFlowClassifierScorecardFalsePermitRate: realFlowClassifierScorecard?.summary?.falsePermitRate ?? null,
+  realFlowClassifierScorecardFalseCompactRate: realFlowClassifierScorecard?.summary?.falseCompactRate ?? null,
+  realFlowClassifierScorecardObservedDecisionIsClassifierOutput: realFlowClassifierScorecard?.summary?.observedDecisionIsClassifierOutput ?? null,
   unsafeAllowSignals,
   sourceFixtureMutation: false,
 };
