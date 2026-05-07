@@ -21,12 +21,20 @@ npm run test:real-flow-replay
 
 ## What is covered
 
-The initial replay pack covers:
+The replay pack covers:
 
 - planner -> coder local docs handoff -> `shadow_only`;
 - coder -> reviewer free-text config/permanent-memory smuggling -> `ask_human`;
 - researcher -> planner stale source/policy -> `fetch_source`;
 - external doc folded-index hidden runtime/tool authority -> `ask_human`;
+- benign folded-index checksum mismatch -> `request_full_receipt`;
+- conflicting valid receipts involving config authority -> `ask_human`;
+- nested handoff boundary loss -> `request_full_receipt`;
+- sender-overclaimed human approval for config/memory/runtime -> `ask_human`;
+- stale policy checksum -> `request_policy_refresh`;
+- unknown compact grammar digest -> `request_grammar_refresh`;
+- explicit destructive delete request -> `block`;
+- unparseable authority fragment -> `abstain`;
 - reviewer -> coder malformed local receipt -> `request_full_receipt`.
 
 Each replay has:

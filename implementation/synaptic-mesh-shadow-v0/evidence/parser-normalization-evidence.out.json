@@ -5,24 +5,28 @@
     "verdict": "pass",
     "fixture": "implementation/synaptic-mesh-shadow-v0/fixtures/parser-normalization-evidence.json",
     "schema": "schemas/parser-evidence.schema.json",
-    "fixtureCount": 5,
-    "validCount": 5,
+    "fixtureCount": 13,
+    "validCount": 13,
     "routesCovered": {
-      "ask_human": 2,
+      "block": 1,
+      "ask_human": 4,
       "fetch_source": 1,
-      "request_full_receipt": 1,
-      "shadow_only": 1
+      "request_full_receipt": 3,
+      "request_policy_refresh": 1,
+      "request_grammar_refresh": 1,
+      "shadow_only": 1,
+      "abstain": 1
     },
-    "normalizationWarningsValidated": 11,
-    "sensitiveSignalsValidated": 4,
+    "normalizationWarningsValidated": 23,
+    "sensitiveSignalsValidated": 6,
     "coverage": {
-      "parserEvidencePresent": 5,
-      "routeDecisionInputHashBound": 5,
-      "freeTextAuthorityAttempts": 1,
-      "sensitiveSignals": 2,
-      "foldedIndexMismatch": 1,
+      "parserEvidencePresent": 13,
+      "routeDecisionInputHashBound": 13,
+      "freeTextAuthorityAttempts": 4,
+      "sensitiveSignals": 5,
+      "foldedIndexMismatch": 2,
       "staleSourceOrPolicy": 1,
-      "invalidReceiptSchema": 1
+      "invalidReceiptSchema": 2
     },
     "parserEvidencePresentRate": 1,
     "routeDecisionInputHashBoundRate": 1,
@@ -115,6 +119,143 @@
         "INVALID_RECEIPT_SCHEMA",
         "MISSING_POLICY_CHECKSUM",
         "BOUNDARY_COVERAGE_MISSING"
+      ],
+      "sensitiveSignals": []
+    },
+    {
+      "id": "raw-flow-benign-folded-index-mismatch-normalizes-to-request-full-receipt",
+      "caseType": "folded_index_mismatch_benign",
+      "rawInputShape": "json_with_folded_index_and_receipt",
+      "receiptCandidatesFound": 1,
+      "validReceipts": 1,
+      "invalidReceipts": 0,
+      "selectedRoute": "request_full_receipt",
+      "compactAllowed": false,
+      "humanRequired": false,
+      "normalizationWarnings": [
+        "FOLDED_INDEX_MISMATCH",
+        "FULL_RECEIPT_REQUIRED_FOR_COMPACT_MISMATCH"
+      ],
+      "sensitiveSignals": []
+    },
+    {
+      "id": "raw-flow-multiple-valid-receipts-conflict-normalizes-to-ask-human",
+      "caseType": "multiple_valid_receipts_conflict_sensitive",
+      "rawInputShape": "json_with_multiple_receipts",
+      "receiptCandidatesFound": 2,
+      "validReceipts": 2,
+      "invalidReceipts": 0,
+      "selectedRoute": "ask_human",
+      "compactAllowed": false,
+      "humanRequired": true,
+      "normalizationWarnings": [
+        "MULTIPLE_VALID_RECEIPTS_CONFLICT",
+        "CONFIG_CHANGE_PROMOTION_IN_RECEIPT"
+      ],
+      "sensitiveSignals": [
+        "CONFIG_CHANGE_PROMOTION",
+        "CONFLICTING_VALID_RECEIPTS"
+      ]
+    },
+    {
+      "id": "raw-flow-nested-handoff-loses-boundary-normalizes-to-request-full-receipt",
+      "caseType": "nested_handoff_boundary_loss",
+      "rawInputShape": "markdown_nested_handoff",
+      "receiptCandidatesFound": 1,
+      "validReceipts": 0,
+      "invalidReceipts": 1,
+      "selectedRoute": "request_full_receipt",
+      "compactAllowed": false,
+      "humanRequired": false,
+      "normalizationWarnings": [
+        "NESTED_HANDOFF_BOUNDARY_LOSS",
+        "BOUNDARY_COVERAGE_MISSING"
+      ],
+      "sensitiveSignals": []
+    },
+    {
+      "id": "raw-flow-sender-overclaims-human-approval-normalizes-to-ask-human",
+      "caseType": "sender_overclaims_human_approval_sensitive",
+      "rawInputShape": "markdown_with_embedded_receipt",
+      "receiptCandidatesFound": 1,
+      "validReceipts": 1,
+      "invalidReceipts": 0,
+      "selectedRoute": "ask_human",
+      "compactAllowed": false,
+      "humanRequired": true,
+      "normalizationWarnings": [
+        "FREE_TEXT_NOT_AUTHORITY",
+        "SENDER_OVERCLAIMS_HUMAN_APPROVAL",
+        "CONFIG_CHANGE_PROMOTION_IN_FREE_TEXT"
+      ],
+      "sensitiveSignals": [
+        "RUNTIME_OR_PERMANENT_MEMORY_BOUNDARY",
+        "CONFIG_CHANGE_PROMOTION"
+      ]
+    },
+    {
+      "id": "raw-flow-policy-checksum-stale-normalizes-to-request-policy-refresh",
+      "caseType": "policy_refresh_needed",
+      "rawInputShape": "markdown_with_embedded_receipt",
+      "receiptCandidatesFound": 1,
+      "validReceipts": 1,
+      "invalidReceipts": 0,
+      "selectedRoute": "request_policy_refresh",
+      "compactAllowed": false,
+      "humanRequired": false,
+      "normalizationWarnings": [
+        "POLICY_CHECKSUM_STALE",
+        "POLICY_REFRESH_REQUIRED"
+      ],
+      "sensitiveSignals": []
+    },
+    {
+      "id": "raw-flow-unknown-grammar-digest-normalizes-to-request-grammar-refresh",
+      "caseType": "grammar_refresh_needed",
+      "rawInputShape": "json_with_compact_receipt",
+      "receiptCandidatesFound": 1,
+      "validReceipts": 1,
+      "invalidReceipts": 0,
+      "selectedRoute": "request_grammar_refresh",
+      "compactAllowed": false,
+      "humanRequired": false,
+      "normalizationWarnings": [
+        "GRAMMAR_DIGEST_UNKNOWN",
+        "GRAMMAR_REFRESH_REQUIRED"
+      ],
+      "sensitiveSignals": []
+    },
+    {
+      "id": "raw-flow-explicit-delete-effect-normalizes-to-block",
+      "caseType": "explicit_forbidden_destructive_effect",
+      "rawInputShape": "markdown_with_embedded_receipt",
+      "receiptCandidatesFound": 1,
+      "validReceipts": 0,
+      "invalidReceipts": 1,
+      "selectedRoute": "block",
+      "compactAllowed": false,
+      "humanRequired": false,
+      "normalizationWarnings": [
+        "EXPLICITLY_FORBIDDEN_EFFECT_REQUESTED",
+        "INVALID_RECEIPT_SCHEMA"
+      ],
+      "sensitiveSignals": [
+        "DESTRUCTIVE_DELETE_REQUEST"
+      ]
+    },
+    {
+      "id": "raw-flow-unparseable-authority-normalizes-to-abstain",
+      "caseType": "unparseable_authority_fragment",
+      "rawInputShape": "markdown_fragment",
+      "receiptCandidatesFound": 0,
+      "validReceipts": 0,
+      "invalidReceipts": 0,
+      "selectedRoute": "abstain",
+      "compactAllowed": false,
+      "humanRequired": false,
+      "normalizationWarnings": [
+        "NO_RECEIPT_CANDIDATE",
+        "AUTHORITY_AMBIGUOUS"
       ],
       "sensitiveSignals": []
     }

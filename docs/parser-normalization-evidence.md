@@ -26,6 +26,14 @@ The fixture set covers hand-authored raw-ish handoffs for:
 - free-text config / permanent-memory promotion -> `ask_human`;
 - stale source or policy window -> `fetch_source`;
 - folded-index mismatch hiding runtime/tool authority -> `ask_human`;
+- benign folded-index mismatch without sensitive signals -> `request_full_receipt`;
+- multiple valid receipts conflicting over config/runtime authority -> `ask_human`;
+- nested handoff boundary loss -> `request_full_receipt`;
+- sender-overclaimed human approval for config/memory/runtime -> `ask_human`;
+- stale policy checksum -> `request_policy_refresh`;
+- unknown compact grammar digest -> `request_grammar_refresh`;
+- explicit destructive delete request -> `block`;
+- unparseable authority fragment -> `abstain`;
 - malformed local receipt without sensitive promotion -> `request_full_receipt`.
 
 Each case records:

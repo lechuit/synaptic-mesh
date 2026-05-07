@@ -76,8 +76,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 5117,
-      "sha256": "eef229a86e968661bd483bb801eda23fda3f46c1201da9d3bf0c108940c8e2fc"
+      "bytes": 5121,
+      "sha256": "d6f45babf92c536925cf2f24f186ad7c77e0379db750357af50b9fada2e3351e"
     },
     {
       "path": "RELEASE_CANDIDATE.md",
@@ -86,8 +86,8 @@
     },
     {
       "path": "RELEASE_NOTES.md",
-      "bytes": 3451,
-      "sha256": "a669183049e7039cab78878f30a06318a83ace4debfc18f1e27520c5db2dd635"
+      "bytes": 3455,
+      "sha256": "2aa9aa456472c99abc085350f11f616e026f3c3d4d1a2b09bec7d39e92775e6e"
     },
     {
       "path": "design-notes/adapter-boundary-langgraph-mcp-v0.md",
@@ -141,13 +141,13 @@
     },
     {
       "path": "docs/coverage-matrix.md",
-      "bytes": 5106,
-      "sha256": "7ebc522abd658e00742396f3f4d2427d338528e45041d41d1dd7bf778133f345"
+      "bytes": 5196,
+      "sha256": "2f263830fdd8e4348365a06b52aa5b999f799214bece21370f8fbfae14d7d145"
     },
     {
       "path": "docs/parser-normalization-evidence.md",
-      "bytes": 1613,
-      "sha256": "f54c00f4ee6d2f66aae9761275d4b310ef54a825e568b5da342cd1d08837ea4b"
+      "bytes": 2130,
+      "sha256": "015df89bb164c470b28dfa65b746c795601a53e2aff37fb79abbd8af94f3bd22"
     },
     {
       "path": "docs/raw-parser-adversarial.md",
@@ -156,8 +156,8 @@
     },
     {
       "path": "docs/real-flow-replay.md",
-      "bytes": 2083,
-      "sha256": "4fd9b95eec358c1794a10bf4fa986733c2cc3e5a33c0a44e40bbab4a1cfa6c01"
+      "bytes": 2563,
+      "sha256": "01b3347e364d0f29bcea08109ea489c38f0c369f899b58dc20cc79880ceeb217"
     },
     {
       "path": "docs/reason-codes.md",
@@ -216,8 +216,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/README.md",
-      "bytes": 7654,
-      "sha256": "fe08ad29631840e1642e7f46a36de469de2341af0148b55a312142012d7baf24"
+      "bytes": 7682,
+      "sha256": "e6e65db5e45e040ac360813ace64e3309024d3ea4d85987c87ed45df1d244a01"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/bin/validate-receipt.mjs",
@@ -271,8 +271,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/parser-normalization-evidence.out.json",
-      "bytes": 4618,
-      "sha256": "682bc7f0c197d7c353b2d2eebb34a49166a5d80146d20cdbd34dd6450f0d7d36"
+      "bytes": 9301,
+      "sha256": "aa074d79fcf5f6eca6c83fb2a2d20179d9ff6fc68674be3f5b4b6e35f9fbad2b"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/partial-receipt-degrade.out.json",
@@ -286,8 +286,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/real-flow-replay.out.json",
-      "bytes": 6811,
-      "sha256": "192c38112c2b1ca2824e4c0e4382f07d4791cdc1f5f9e055ec7ccd0dd1849c9b"
+      "bytes": 14872,
+      "sha256": "ae328a4230aede8575c95c9ff752b89162db4938970b7ec73bc1ca87f2afb981"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/receipt-schema.out.json",
@@ -306,8 +306,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/review-local.out.json",
-      "bytes": 7311,
-      "sha256": "8097d7a8f5f26c34870f64795593280f719a136b2cf93fa88d98f1dc667baa7a"
+      "bytes": 7313,
+      "sha256": "71a6dabde323f18e819fb3a6e08882de773581b9c40dc6bce509f7e866b581f2"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/route-decision-schema.out.json",
@@ -361,8 +361,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/fixtures/parser-normalization-evidence.json",
-      "bytes": 11220,
-      "sha256": "cc2244b2b813b45b705f8c78d2e756be1cbe9c79be874a454bd47a733505187a"
+      "bytes": 27384,
+      "sha256": "b68a0aaf893bd5cf23630d2532f79ef0b96c6461390a60288e2e5578fdd934ee"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/fixtures/raw-parser-adversarial.json",
@@ -371,8 +371,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/fixtures/real-flow-replay.json",
-      "bytes": 9300,
-      "sha256": "334ae00dce7b1e470b522d2b54ef3de260ca98435778c9e44386635d5426eb3b"
+      "bytes": 22147,
+      "sha256": "14e505669cd8ca794141e3b080ac35730102af350656e2b95d3fabdca6c13c8f"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/fixtures/receipts.json",
@@ -496,8 +496,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/parser-normalization-evidence.mjs",
-      "bytes": 13198,
-      "sha256": "afa4b783382481eabe4e6dfeb9fb9d490a938ad6e66af40cf5b41f4a6b2afaa7"
+      "bytes": 14466,
+      "sha256": "f67ab1854f3de07330b575823633296de1afe74eec86306f19a2951560ad9f94"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/partial-receipt-degrade.mjs",
@@ -511,8 +511,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/real-flow-replay.mjs",
-      "bytes": 12962,
-      "sha256": "637902c6f99c17f838668a7bbc2366914f36400be9aa911663c06bcc25f4c35c"
+      "bytes": 13035,
+      "sha256": "57ade67463bbc3e55895c0606cd39b9896ace2930c2f383675bac419face2ac7"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/receipt-freshness-age-policy.mjs",
