@@ -6,6 +6,19 @@ Status: public release candidate `v0.1.0-rc1`; **not runtime-ready**; **not prod
 
 A public release-candidate review package for Synaptic Mesh / Multi-Agent Memory Authority Protocol: a protocol proposal for preserving authority/status/boundary receipts through multi-agent memory transforms.
 
+## Compatibility / scope
+
+Synaptic Mesh is intended to be **framework-agnostic**: the protocol idea should apply to any agent stack that retrieves, summarizes, compresses, or hands off memory-derived context.
+
+Current v0.1.0-rc1 status is narrower:
+
+- validated in an OpenClaw-origin local shadow workflow;
+- shipped as a standalone reference package and fixture suite, not an OpenClaw runtime feature;
+- no LangGraph, AutoGen, CrewAI, Semantic Kernel, MCP, or other framework adapters are included yet;
+- adapter work is a future track and should preserve the same runtime/non-goal boundaries.
+
+In short: **OpenClaw is the current proving ground; the target is a portable protocol.**
+
 Included:
 
 - paper draft: `paper/synaptic-mesh-paper-v0.md`

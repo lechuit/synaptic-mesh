@@ -2,7 +2,7 @@
 
 Status: **local shadow/reference only**.
 
-This package is a minimum functional reference for Synaptic Mesh / Multi-Agent Memory Authority Protocol handoff receipts. It exists so reviewers can inspect receipt parsing, validation, transform regression, CLI behavior, synthetic handoff examples, and local evidence gates without confusing the work for runtime enforcement.
+This package is a minimum functional reference for Synaptic Mesh / Multi-Agent Memory Authority Protocol handoff receipts. It was validated in an OpenClaw-origin research workflow, but it is standalone and is not an OpenClaw runtime integration. It exists so reviewers can inspect receipt parsing, validation, transform regression, CLI behavior, synthetic handoff examples, and local evidence gates without confusing the work for runtime enforcement.
 
 ## Boundary
 
@@ -17,12 +17,11 @@ This package is **not**:
 - OpenClaw runtime/tooling integration;
 - OpenClaw config;
 - durable/permanent memory;
-- external publication;
 - canary, production, or enforcement;
 - an approval system for sensitive actions;
-- permission to publish, send externally, delete, change config, or promote memory.
+- permission to send externally beyond this public repository, delete, change config, or promote memory.
 
-Any L2+ operational/runtime use requires explicit human approval.
+Any L2+ operational/runtime use requires separate explicit maintainer approval.
 
 ## What it checks
 
@@ -154,7 +153,7 @@ Related local research package artifacts:
 
 ## Publication and runtime status
 
-Publication status: **public release candidate**. Runtime/tooling integration remains out of scope and requires separate maintainer approval.
+Publication status: **public release candidate**. Current validation is OpenClaw-origin local shadow only; runtime/tooling integration remains out of scope and requires separate maintainer approval.
 
 Runtime status: **not approved / not runtime-ready**. This local reference does not integrate with OpenClaw runtime, tools, config, crons, memory plugins, or external messaging.
 
