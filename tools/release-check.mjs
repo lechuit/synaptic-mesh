@@ -13,6 +13,7 @@ const releaseGateScripts = [
   'test:authority-envelope',
   'test:route-decision-schema',
   'test:threat-model-routes',
+  'test:route-decision-wrong-routes',
 ];
 
 function runGit(args, options = {}) {

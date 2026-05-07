@@ -1,0 +1,79 @@
+{
+  "summary": {
+    "artifact": "T-synaptic-mesh-route-decision-wrong-routes-v0",
+    "timestamp": "2026-05-07T20:10:00.000Z",
+    "verdict": "pass",
+    "fixture": "implementation/synaptic-mesh-shadow-v0/fixtures/route-decision-wrong-routes.json",
+    "routeDecisionSchema": "schemas/route-decision.schema.json",
+    "wrongRouteFixtures": 9,
+    "coverageAreaCount": 9,
+    "highPriorityCasesPresent": 3,
+    "wrongRoutesValidated": 18,
+    "reasonCodesValidated": 18,
+    "decisiveSignalsValidated": 27,
+    "classifierImplemented": false,
+    "runtimeSemanticsImplemented": false,
+    "runtimeEnforcementImplemented": false,
+    "safetyClaimScope": "local_shadow_oracle_fixture_validation_only_not_runtime_classifier_not_semantic_inference_not_authorization"
+  },
+  "coverageAreas": [
+    "malicious_external_document_semantic_parsing",
+    "folded_index_hidden_promotion_interaction",
+    "live_stale_policy_hot_swap",
+    "nested_authority_resolution",
+    "memory_claim_to_permission_claim_laundering",
+    "free_text_next_allowed_action_change",
+    "stale_replayed_receipt",
+    "ambiguous_verb_inside_prose",
+    "missing_policy_checksum_or_stale_policy_window"
+  ],
+  "coverageCounts": {
+    "malicious_external_document_semantic_parsing": 1,
+    "folded_index_hidden_promotion_interaction": 1,
+    "live_stale_policy_hot_swap": 1,
+    "nested_authority_resolution": 1,
+    "memory_claim_to_permission_claim_laundering": 1,
+    "free_text_next_allowed_action_change": 1,
+    "stale_replayed_receipt": 1,
+    "ambiguous_verb_inside_prose": 1,
+    "missing_policy_checksum_or_stale_policy_window": 1
+  },
+  "selectedRouteCounts": {
+    "block": 1,
+    "ask_human": 4,
+    "fetch_source": 1,
+    "request_policy_refresh": 2,
+    "abstain": 1
+  },
+  "wrongRouteCounts": {
+    "ask_human": 5,
+    "fetch_source": 2,
+    "request_full_receipt": 2,
+    "shadow_only": 8,
+    "abstain": 1
+  },
+  "boundaryCounts": {
+    "read_only": 1,
+    "local_shadow": 3,
+    "permanent_memory": 1,
+    "config_change": 1,
+    "runtime_tool": 2,
+    "external_publication": 1
+  },
+  "knownUncoveredRisks": [
+    "oracle_fixtures_validate_expected_semantic_routes_but_do_not_infer_routes_from_arbitrary_input",
+    "no_runtime_classifier_or_enforcement_added",
+    "adversarial_text_parsing_is_described_as_fixture_pressure_not_implemented",
+    "policy_hot_swap_cases_are_static_fixtures_not_live_policy_state_validation",
+    "wrong_route_oracles_do_not_parse_or_classify_arbitrary_adversarial_text",
+    "stable_reason_codes_are_fixture_expectations_not_runtime_decision_logic"
+  ],
+  "validationErrors": [],
+  "boundary": [
+    "local_shadow_only",
+    "fixture_oracle_only",
+    "not_runtime_integration",
+    "not_tool_authorization",
+    "not_external_publication"
+  ]
+}

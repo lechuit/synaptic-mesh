@@ -24,6 +24,11 @@ This is schema and fixture validation only. It does **not** add a runtime classi
 
 Passing `npm run test:route-decision-schema` means the current fixture RouteDecision records have stable shape, route vocabulary, stable reason codes, rejected-route evidence, and coverage across known route/boundary examples. It does not prove that a future classifier chose the semantically correct route.
 
+`npm run test:route-decision-wrong-routes` adds oracle-fixture pressure for adversarial cases where tempting routes must be rejected. The fixture suite covers malicious external prose, folded-index hidden promotion, policy hot-swap/stale windows, nested authority, memory-claim-to-permission-claim laundering, free-text `nextAllowedAction` tampering, stale replayed receipts, and ambiguous verbs inside prose. It validates expected route semantics for those hand-authored cases only; it still does not parse arbitrary input, implement a classifier, or authorize runtime behavior.
+
 ## Evidence
 
-The local validator writes `implementation/synaptic-mesh-shadow-v0/evidence/route-decision-schema.out.json` with fixture count, valid count, reason-code/rejected-route validation totals, coverage areas, known uncovered risks, and the local-shadow safety claim scope.
+The local validators write:
+
+- `implementation/synaptic-mesh-shadow-v0/evidence/route-decision-schema.out.json` with fixture count, valid count, reason-code/rejected-route validation totals, coverage areas, known uncovered risks, and the local-shadow safety claim scope.
+- `implementation/synaptic-mesh-shadow-v0/evidence/route-decision-wrong-routes.out.json` with wrong-route fixture count, coverage areas, tempting rejected-route counts, known uncovered risks, and explicit `classifierImplemented: false` / `runtimeEnforcementImplemented: false` boundaries.
