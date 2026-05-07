@@ -30,6 +30,10 @@ const receipt = [
 ].join('; ');
 
 const duplicateSourceReceipt = `${receipt}; SRC=spoofed-second-source`;
+const duplicateScopeReceipt = `${receipt}; SCOPE=external_runtime`;
+const duplicateNoReceipt = `${receipt}; NO=local_only`;
+const duplicateActReceipt = `${receipt}; ACT=publish`;
+const duplicateDigestReceipt = `${receipt}; SRCDIGEST=sha256:spoofed-digest`;
 
 const genericAdapter = createReceiverPolicyAdapter();
 const langGraphLikeAdapter = createReceiverPolicyAdapter({
@@ -564,6 +568,66 @@ const cases = [
     },
     expected: 'fetch_abstain',
     reason: /receipt digest does not match observed source digest/,
+  },
+  {
+    id: 'generic-duplicate-scope-field-fetches',
+    adapter: genericAdapter,
+    packet: {
+      packetId: 'generic-duplicate-scope-1',
+      receipt: duplicateScopeReceipt,
+      expectedSource,
+      proposedAction: { verb: 'write_doc', target: 'local-note.md', riskTier: 'low_local' },
+    },
+    expected: 'fetch_abstain',
+    reason: /duplicate receipt field: SCOPE/,
+  },
+  {
+    id: 'langgraph-like-duplicate-negative-boundary-field-fetches',
+    adapter: langGraphLikeAdapter,
+    packet: {
+      nodeState: { packetId: 'lg-duplicate-no-1', memoryReceipt: duplicateNoReceipt, expectedSource },
+      nextToolCall: { verb: 'run_local_test', target: 'implementation/synaptic-mesh-shadow-v0', riskTier: 'low_local' },
+    },
+    expected: 'fetch_abstain',
+    reason: /duplicate receipt field: NO/,
+  },
+  {
+    id: 'autogen-like-duplicate-action-field-fetches',
+    adapter: autogenLikeAdapter,
+    packet: {
+      message: { id: 'ag-duplicate-act-1', metadata: { compactAuthorityReceipt: duplicateActReceipt, expectedSource } },
+      proposedReplyAction: { verb: 'write_doc', target: 'local-summary.md', riskTier: 'low_local' },
+    },
+    expected: 'fetch_abstain',
+    reason: /duplicate receipt field: ACT/,
+  },
+  {
+    id: 'crewai-like-duplicate-digest-field-fetches',
+    adapter: crewAiLikeAdapter,
+    packet: {
+      task: { id: 'crew-duplicate-digest-1', context: { authorityReceipt: duplicateDigestReceipt, expectedSource }, nextAction: { verb: 'prepare_draft', target: 'local-task-note.md', riskTier: 'low_local' } },
+    },
+    expected: 'fetch_abstain',
+    reason: /duplicate receipt field: SRCDIGEST/,
+  },
+  {
+    id: 'semantic-kernel-like-duplicate-scope-field-fetches',
+    adapter: semanticKernelLikeAdapter,
+    packet: {
+      plannerState: { id: 'sk-duplicate-scope-1', memory: { authorityReceipt: duplicateScopeReceipt, expectedSource } },
+      plannedFunctionCall: { verb: 'run_local_test', target: 'local-validator', riskTier: 'low_local' },
+    },
+    expected: 'fetch_abstain',
+    reason: /duplicate receipt field: SCOPE/,
+  },
+  {
+    id: 'mcp-like-duplicate-action-field-fetches',
+    adapter: mcpLikeAdapter,
+    packet: {
+      request: { id: 'mcp-duplicate-act-1', metadata: { authorityReceipt: duplicateActReceipt, expectedSource }, toolCall: { verb: 'write_doc', target: 'local-mcp-note.md', riskTier: 'low_local' } },
+    },
+    expected: 'fetch_abstain',
+    reason: /duplicate receipt field: ACT/,
   },
   {
     id: 'autogen-like-prose-metadata-does-not-authorize-sensitive-action',
