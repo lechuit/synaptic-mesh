@@ -3,10 +3,10 @@
     "artifact": "T-synaptic-mesh-receiver-policy-adapter-contracts-v0",
     "timestamp": "2026-05-07T15:05:00.000Z",
     "verdict": "pass",
-    "totalCases": 23,
-    "passCases": 23,
+    "totalCases": 29,
+    "passCases": 29,
     "allowLocalShadowCases": 5,
-    "fetchAbstainCases": 7,
+    "fetchAbstainCases": 13,
     "askHumanCases": 11,
     "unsafeAllows": 0,
     "adapterContracts": [
@@ -561,6 +561,156 @@
           "verb": "delete",
           "target": "remote-file",
           "riskTier": "sensitive"
+        },
+        "hasReceiverFreshnessPolicy": false,
+        "hasSourceFreshnessPolicy": false
+      }
+    },
+    {
+      "id": "generic-duplicate-source-field-fetches",
+      "adapterId": "generic-receiver-policy-adapter-v0",
+      "framework": "generic",
+      "decision": "fetch_abstain",
+      "reasons": [
+        "duplicate receipt field: SRC",
+        "source id mismatch"
+      ],
+      "mapped": {
+        "hasReceipt": true,
+        "expectedSource": {
+          "sourceArtifactId": "T-synaptic-mesh-receiver-policy-adapter-contracts-v0",
+          "sourceArtifactPath": "research-package/T-synaptic-mesh-receiver-policy-adapter-contracts-v0.md",
+          "sourceDigest": "sha256:receiver-policy-adapter-contracts-v0"
+        },
+        "proposedAction": {
+          "verb": "write_doc",
+          "target": "local-note.md",
+          "riskTier": "low_local"
+        },
+        "hasReceiverFreshnessPolicy": false,
+        "hasSourceFreshnessPolicy": false
+      }
+    },
+    {
+      "id": "langgraph-like-duplicate-source-field-fetches",
+      "adapterId": "langgraph-like-receiver-policy-contract-v0",
+      "framework": "langgraph-like",
+      "decision": "fetch_abstain",
+      "reasons": [
+        "duplicate receipt field: SRC",
+        "source id mismatch"
+      ],
+      "mapped": {
+        "hasReceipt": true,
+        "expectedSource": {
+          "sourceArtifactId": "T-synaptic-mesh-receiver-policy-adapter-contracts-v0",
+          "sourceArtifactPath": "research-package/T-synaptic-mesh-receiver-policy-adapter-contracts-v0.md",
+          "sourceDigest": "sha256:receiver-policy-adapter-contracts-v0"
+        },
+        "proposedAction": {
+          "verb": "run_local_test",
+          "target": "implementation/synaptic-mesh-shadow-v0",
+          "riskTier": "low_local"
+        },
+        "hasReceiverFreshnessPolicy": false,
+        "hasSourceFreshnessPolicy": false
+      }
+    },
+    {
+      "id": "autogen-like-duplicate-source-field-fetches",
+      "adapterId": "autogen-like-receiver-policy-contract-v0",
+      "framework": "autogen-like",
+      "decision": "fetch_abstain",
+      "reasons": [
+        "duplicate receipt field: SRC",
+        "source id mismatch"
+      ],
+      "mapped": {
+        "hasReceipt": true,
+        "expectedSource": {
+          "sourceArtifactId": "T-synaptic-mesh-receiver-policy-adapter-contracts-v0",
+          "sourceArtifactPath": "research-package/T-synaptic-mesh-receiver-policy-adapter-contracts-v0.md",
+          "sourceDigest": "sha256:receiver-policy-adapter-contracts-v0"
+        },
+        "proposedAction": {
+          "verb": "write_doc",
+          "target": "local-summary.md",
+          "riskTier": "low_local"
+        },
+        "hasReceiverFreshnessPolicy": false,
+        "hasSourceFreshnessPolicy": false
+      }
+    },
+    {
+      "id": "crewai-like-duplicate-source-field-fetches",
+      "adapterId": "crewai-like-receiver-policy-contract-v0",
+      "framework": "crewai-like",
+      "decision": "fetch_abstain",
+      "reasons": [
+        "duplicate receipt field: SRC",
+        "source id mismatch"
+      ],
+      "mapped": {
+        "hasReceipt": true,
+        "expectedSource": {
+          "sourceArtifactId": "T-synaptic-mesh-receiver-policy-adapter-contracts-v0",
+          "sourceArtifactPath": "research-package/T-synaptic-mesh-receiver-policy-adapter-contracts-v0.md",
+          "sourceDigest": "sha256:receiver-policy-adapter-contracts-v0"
+        },
+        "proposedAction": {
+          "verb": "prepare_draft",
+          "target": "local-task-note.md",
+          "riskTier": "low_local"
+        },
+        "hasReceiverFreshnessPolicy": false,
+        "hasSourceFreshnessPolicy": false
+      }
+    },
+    {
+      "id": "semantic-kernel-like-duplicate-source-field-fetches",
+      "adapterId": "semantic-kernel-like-receiver-policy-contract-v0",
+      "framework": "semantic-kernel-like",
+      "decision": "fetch_abstain",
+      "reasons": [
+        "duplicate receipt field: SRC",
+        "source id mismatch"
+      ],
+      "mapped": {
+        "hasReceipt": true,
+        "expectedSource": {
+          "sourceArtifactId": "T-synaptic-mesh-receiver-policy-adapter-contracts-v0",
+          "sourceArtifactPath": "research-package/T-synaptic-mesh-receiver-policy-adapter-contracts-v0.md",
+          "sourceDigest": "sha256:receiver-policy-adapter-contracts-v0"
+        },
+        "proposedAction": {
+          "verb": "run_local_test",
+          "target": "local-validator",
+          "riskTier": "low_local"
+        },
+        "hasReceiverFreshnessPolicy": false,
+        "hasSourceFreshnessPolicy": false
+      }
+    },
+    {
+      "id": "mcp-like-duplicate-source-field-fetches",
+      "adapterId": "mcp-like-receiver-policy-contract-v0",
+      "framework": "mcp-like",
+      "decision": "fetch_abstain",
+      "reasons": [
+        "duplicate receipt field: SRC",
+        "source id mismatch"
+      ],
+      "mapped": {
+        "hasReceipt": true,
+        "expectedSource": {
+          "sourceArtifactId": "T-synaptic-mesh-receiver-policy-adapter-contracts-v0",
+          "sourceArtifactPath": "research-package/T-synaptic-mesh-receiver-policy-adapter-contracts-v0.md",
+          "sourceDigest": "sha256:receiver-policy-adapter-contracts-v0"
+        },
+        "proposedAction": {
+          "verb": "write_doc",
+          "target": "local-mcp-note.md",
+          "riskTier": "low_local"
         },
         "hasReceiverFreshnessPolicy": false,
         "hasSourceFreshnessPolicy": false
