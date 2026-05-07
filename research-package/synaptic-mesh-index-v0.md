@@ -121,7 +121,7 @@ synaptic-mesh/
 | `research-package/T-synaptic-mesh-tier-c-live-doc-check-v0.md` | Tier C live-doc landscape check | Complete; R08/R16/R17/R18 checked live, access date recorded, R18 redirect updated. |
 | `research-package/T-synaptic-mesh-final-metadata-bibtex-style-v0.md` | Final active bibliography metadata/style | Complete for local publication review; active 15-ref set aligned. |
 | `research-package/T-synaptic-mesh-final-claim-audit-v0.md` | Final conservative claim audit | Complete; paper language aligned with quote-check and landscape constraints. |
-| `research-package/T-synaptic-mesh-publication-reproducibility-rerun-v0.md` | Publication-readiness reproducibility rerun | Complete; 13/13 commands, 15/15 fixture parity, unsafe allow signals 0. |
+| `research-package/T-synaptic-mesh-publication-reproducibility-rerun-v0.md` | Publication-readiness reproducibility rerun | Historical publication snapshot; complete at 12/12 commands, 15/15 fixture parity, unsafe allow signals 0. Current live review-local evidence is 13/13. |
 | `research-package/T-synaptic-mesh-public-private-boundary-audit-v0.md` | Public/private boundary audit | Complete for public-facing surface; private operator/path traces redacted. |
 | `research-package/T-synaptic-mesh-human-review-package-final-v0.md` | Final human-review packet | Complete; local publication-review checkpoint reached and human decision required. |
 
