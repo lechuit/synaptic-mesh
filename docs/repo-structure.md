@@ -27,6 +27,7 @@ Synaptic Mesh keeps protocol, implementation, research, and evidence separate so
 - [Deterministic route classifier](deterministic-route-classifier.md) documents the shadow-only classifier over parser evidence fixtures.
 - [Adapter boundary for LangGraph and MCP v0](../design-notes/adapter-boundary-langgraph-mcp-v0.md) documents future adapter boundaries, prerequisites, and non-goals without adding runtime integration.
 - [Manual dry-run pilot failure catalog](manual-dry-run-pilot-failure-catalog.md) documents local reject-only pilot cases that must not emit success evidence or add operational powers.
+- [Manual dry-run pilot runbook](manual-dry-run-pilot-runbook.md) and [checklist](manual-dry-run-pilot-checklist.md) document the human process for running already-redacted bundles without changing the manual/local/offline/record-only boundary.
 
 ## Scaling rules
 
