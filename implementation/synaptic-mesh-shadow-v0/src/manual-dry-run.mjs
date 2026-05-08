@@ -1,7 +1,7 @@
 import { createHash } from 'node:crypto';
 import { constants } from 'node:fs';
-import { mkdir, open, readFile, realpath, stat } from 'node:fs/promises';
-import { dirname, resolve } from 'node:path';
+import { lstat, mkdir, open, readFile, realpath, stat } from 'node:fs/promises';
+import { dirname, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { classifyRoute } from './route-classifier.mjs';
 
@@ -37,6 +37,29 @@ const requiredForbiddenEffects = ['runtime', 'tools', 'memory_write', 'config_wr
 const sensitiveBundleFlags = ['containsSecrets', 'containsToolOutput', 'containsMemoryText', 'containsConfigText', 'containsApprovalText', 'containsPrivatePath'];
 const persistenceReviewFlags = ['rawContentPersisted', 'privatePathsPersisted', 'secretLikeValuesPersisted', 'toolOutputsPersisted', 'memoryTextPersisted', 'configTextPersisted', 'approvalTextPersisted'];
 const effectCapabilityFields = ['mayBlock', 'mayAllow', 'mayExecuteTool', 'mayWriteMemory', 'mayWriteConfig', 'mayPublishExternally', 'mayModifyAgentInstructions', 'mayEnterApprovalPath'];
+const forbiddenClaimFields = new Map([
+  ['rawContent', 'RAW_CONTENT_FIELD_PRESENT'],
+  ['rawHandoffText', 'RAW_CONTENT_FIELD_PRESENT'],
+  ['unredactedContent', 'RAW_CONTENT_FIELD_PRESENT'],
+  ['liveInputAllowed', 'LIVE_INPUT_REQUESTED'],
+  ['networkAllowed', 'NETWORK_REQUESTED'],
+  ['toolExecutionAllowed', 'TOOL_EXECUTION_REQUESTED'],
+  ['memoryWriteAllowed', 'MEMORY_WRITE_REQUESTED'],
+  ['configWriteAllowed', 'CONFIG_WRITE_REQUESTED'],
+  ['publicationAllowed', 'PUBLICATION_REQUESTED'],
+  ['approvalPathAllowed', 'APPROVAL_PATH_REQUESTED'],
+  ['blockingAllowed', 'BLOCKING_REQUESTED'],
+  ['allowingAllowed', 'ALLOWING_REQUESTED'],
+  ['authorizationAllowed', 'AUTHORIZATION_REQUESTED'],
+  ['enforcementAllowed', 'ENFORCEMENT_REQUESTED'],
+  ['mayBlock', 'MAY_BLOCK_REQUESTED'],
+  ['mayAllow', 'MAY_ALLOW_REQUESTED'],
+  ['mayExecuteTool', 'MAY_EXECUTE_TOOL_REQUESTED'],
+  ['mayWriteMemory', 'MAY_WRITE_MEMORY_REQUESTED'],
+  ['mayWriteConfig', 'MAY_WRITE_CONFIG_REQUESTED'],
+  ['mayPublishExternally', 'MAY_PUBLISH_EXTERNALLY_REQUESTED'],
+  ['mayEnterApprovalPath', 'MAY_ENTER_APPROVAL_PATH_REQUESTED'],
+]);
 
 export function parseManualDryRunArgs(argv) {
   const parsed = { target: 'manual-dry-run-v0' };
@@ -110,7 +133,24 @@ function assertRedactionReview(record, bundleId) {
   if (record.forbiddenForRuntimeUse !== true) throw fail('REDACTION_REVIEW_NOT_FORBIDDEN_FOR_RUNTIME');
 }
 
+function assertNoForbiddenClaims(value) {
+  if (Array.isArray(value)) {
+    for (const item of value) assertNoForbiddenClaims(item);
+    return;
+  }
+  if (!value || typeof value !== 'object') return;
+  for (const [key, childValue] of Object.entries(value)) {
+    if (forbiddenClaimFields.has(key)) {
+      if (typeof childValue === 'boolean' ? childValue !== false : childValue !== undefined && childValue !== null && childValue !== '') {
+        throw fail(forbiddenClaimFields.get(key), key);
+      }
+    }
+    assertNoForbiddenClaims(childValue);
+  }
+}
+
 function normalizeInputArtifact(input) {
+  assertNoForbiddenClaims(input);
   if (input?.schemaVersion === 'manual-dry-run-input-v0') {
     assertManualBundle(input.manualObservationBundle);
     assertRedactionReview(input.redactionReviewRecord, input.manualObservationBundle.bundleId);
@@ -354,6 +394,33 @@ function rejectPathShape(inputPath) {
   if (inputPath.includes('*') || inputPath.includes('?') || inputPath.includes('[')) throw fail('INPUT_GLOB_NOT_ALLOWED');
 }
 
+function assertContainedPath(path, root) {
+  if (path !== root && !path.startsWith(`${root}/`)) throw fail('OUTPUT_OUTSIDE_EVIDENCE_DIR_NOT_ALLOWED');
+}
+
+async function ensureOutputParentInsideEvidence(outputParent, evidenceRoot, realEvidenceRoot) {
+  assertContainedPath(outputParent, evidenceRoot);
+  const relativeParent = relative(evidenceRoot, outputParent);
+  if (!relativeParent) return;
+  let current = evidenceRoot;
+  for (const part of relativeParent.split(/[\\/]+/).filter(Boolean)) {
+    current = resolve(current, part);
+    assertContainedPath(current, evidenceRoot);
+    const existing = await lstat(current).catch((error) => {
+      if (error.code === 'ENOENT') return null;
+      throw fail('OUTPUT_PARENT_NOT_READABLE', error.message);
+    });
+    if (existing) {
+      if (existing.isSymbolicLink()) throw fail('OUTPUT_PARENT_SYMLINK_NOT_ALLOWED');
+      if (!existing.isDirectory()) throw fail('OUTPUT_PARENT_NOT_DIRECTORY');
+    } else {
+      await mkdir(current, { mode: 0o700 });
+    }
+    const realCurrent = await realpath(current);
+    if (realCurrent !== realEvidenceRoot && !realCurrent.startsWith(`${realEvidenceRoot}/`)) throw fail('OUTPUT_OUTSIDE_EVIDENCE_DIR_NOT_ALLOWED');
+  }
+}
+
 export async function runManualDryRunCli(argv, { cwd = process.cwd() } = {}) {
   const parsed = parseManualDryRunArgs(argv);
   if (parsed.error) throw fail(parsed.error.reasonCode, parsed.error.detail);
@@ -363,11 +430,10 @@ export async function runManualDryRunCli(argv, { cwd = process.cwd() } = {}) {
   const inputPath = resolve(cwd, parsed.value.input);
   const outputPath = resolve(cwd, parsed.value.output);
   const evidenceRoot = resolve(packageRoot, 'evidence');
-  if (outputPath !== evidenceRoot && !outputPath.startsWith(`${evidenceRoot}/`)) throw fail('OUTPUT_OUTSIDE_EVIDENCE_DIR_NOT_ALLOWED');
+  assertContainedPath(outputPath, evidenceRoot);
   const realEvidenceRoot = await realpath(evidenceRoot);
   const outputParent = dirname(outputPath);
-  if (outputParent !== evidenceRoot && !outputParent.startsWith(`${evidenceRoot}/`)) throw fail('OUTPUT_OUTSIDE_EVIDENCE_DIR_NOT_ALLOWED');
-  await mkdir(outputParent, { recursive: true });
+  await ensureOutputParentInsideEvidence(outputParent, evidenceRoot, realEvidenceRoot);
   const realOutputParent = await realpath(outputParent);
   if (realOutputParent !== realEvidenceRoot && !realOutputParent.startsWith(`${realEvidenceRoot}/`)) throw fail('OUTPUT_OUTSIDE_EVIDENCE_DIR_NOT_ALLOWED');
   const inputStat = await stat(inputPath).catch((error) => { throw fail('INPUT_NOT_READABLE', error.message); });
