@@ -1,6 +1,6 @@
-# Synaptic Mesh v0.1.6
+# Synaptic Mesh v0.1.7
 
-Status: offline real-flow scorecard release candidate `v0.1.6`; **not runtime-ready**; **not production/canary/enforcement-ready**.
+Status: decision trace hardening release candidate `v0.1.7`; **not runtime-ready**; **not production/canary/enforcement-ready**.
 
 ## What this is
 
@@ -10,7 +10,7 @@ A public review package for Synaptic Mesh / Multi-Agent Memory Authority Protoco
 
 Synaptic Mesh is intended to be **framework-agnostic**: the protocol idea should apply to any agent stack that retrieves, summarizes, compresses, or hands off memory-derived context.
 
-Current v0.1.6 status is narrower:
+Current v0.1.7 status is narrower:
 
 - validated with the included local shadow workflow;
 - shipped as a standalone reference package and fixture suite, not integrated with any production/runtime host;
@@ -22,8 +22,8 @@ Current v0.1.6 status is narrower:
 - adds a deterministic adversarial fixture generator that derives variants from hand-authored wrong-route oracles while preserving expected RouteDecision routes/reasons;
 - adds raw/parser adversarial fixtures for untrusted prose, folded-index mismatches, malformed receipts, free-text next-action tampering, conflicting receipts, and stale/replayed policy windows;
 - adds parser normalization evidence for raw handoff examples into `parserEvidence` / route-decision input shape without classifier, runtime, or live shadow observer behavior;
-- adds offline real-flow replay fixtures with gold labels, parserEvidence hash binding, scorecards, and audit logs without live traffic, automatic receiver decisions, runtime, or live shadow observer behavior;
-- adds deterministic route classifier v0 for shadow-only fixture evaluation over parser evidence; it is not raw parsing, live observation, runtime enforcement, tool authorization, or production safety evidence;
+- adds offline real-flow replay fixtures with `goldDecision`, parserEvidence hash binding, scorecards, and audit logs without live traffic, automatic receiver decisions, runtime, or live shadow observer behavior;
+- adds deterministic route classifier v0 for shadow-only fixture evaluation over parser evidence; separates `goldDecision` from `classifierDecision`; adds DecisionTrace, mutation, and category threshold gates; it is not raw parsing, live observation, runtime enforcement, tool authorization, or production safety evidence;
 - no real LangGraph, AutoGen, CrewAI, Semantic Kernel, MCP, or runtime host adapters are included yet;
 - real adapter work is a future track and should preserve the same runtime/non-goal boundaries.
 

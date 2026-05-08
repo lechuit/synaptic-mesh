@@ -1,16 +1,17 @@
-# Release Notes — Synaptic Mesh v0.1.6
+# Release Notes — Synaptic Mesh v0.1.7
 
-Status: real-flow scorecard release candidate / public review package update. Not runtime-ready; not production/canary/enforcement-ready.
+Status: decision trace hardening release candidate / public review package update. Not runtime-ready; not production/canary/enforcement-ready.
 
-## Highlights since v0.1.5
+## Highlights since v0.1.6
 
-- Added reason-code vocabulary documentation so fixture/evidence signals can be reviewed consistently without treating reason codes as runtime authorization.
-- Added a conservative coverage matrix that marks deterministic fixture gates as covered, proxy evidence as partial, deterministic classifier shadow behavior as partial, and runtime enforcement / production readiness as out of scope.
-- Added raw/parser adversarial fixture coverage for untrusted prose, hidden dangerous receipts, malformed receipts, free-text action tampering, conflicting receipts, and stale/replayed policy windows.
-- Added deterministic adversarial fixture generation from existing wrong-route oracles while preserving source expected routes/reason codes.
-- Added deterministic local authority-overhead benchmark evidence comparing naive summaries, full context, simple receipts, and AuthorityEnvelope-shaped records without live LLM/API calls or runtime integration.
-- Expanded offline real-flow replay from 13 to 24 cases and added a classifier-vs-gold scorecard; `observedDecision` is deprecated metadata and scorecards compare `classifierDecision` against `goldDecision`.
+- Separated `goldDecision` from `classifierDecision`; deprecated `observedDecision` metadata and gated scorecards so they compare classifier output against gold decisions only.
+- Added offline `DecisionTrace` schema/evidence with parser/input/gold/classifier hash bindings.
+- Added synthetic real-flow mutation suite and category coverage thresholds to prove degraded behavior and avoid superficial route coverage.
 - Kept CI scoped to the local shadow package; this release does not add runtime/framework integration, MCP/A2A integration, tool execution, memory writes, publication, or enforcement behavior.
+
+## Carried-forward package evidence
+
+The release package still includes earlier local-shadow gates from the v0.1.x line: reason-code vocabulary docs, conservative coverage matrix, raw/parser adversarial fixtures, adversarial fixture generation, and authority-overhead benchmark evidence. These remain current validation artifacts, but they are not new v0.1.7 delta items.
 
 ## Validation snapshot
 
@@ -32,7 +33,7 @@ Status: real-flow scorecard release candidate / public review package update. No
 
 ## Compatibility note
 
-Synaptic Mesh remains a framework-agnostic protocol proposal. v0.1.6 strengthens release confidence with 24-case offline real-flow replay and classifier scorecard gates, but does not ship real LangGraph, AutoGen, CrewAI, Semantic Kernel, MCP, or runtime host adapters. Real runtime adapters remain future work.
+Synaptic Mesh remains a framework-agnostic protocol proposal. v0.1.7 strengthens release confidence with decision traces, oracle/classifier separation, mutation degradation checks, and category coverage thresholds, but does not ship real LangGraph, AutoGen, CrewAI, Semantic Kernel, MCP, or runtime host adapters. Real runtime adapters remain future work.
 
 ## Operational non-release status
 

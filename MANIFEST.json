@@ -1,11 +1,11 @@
 {
   "bundle": "synaptic-mesh",
-  "version": "0.1.6",
-  "generated": "2026-05-07T23:50:00Z",
-  "status": "real_flow_scorecard_release_candidate_not_runtime_ready",
+  "version": "0.1.7",
+  "generated": "2026-05-08T00:50:00Z",
+  "status": "decision_trace_hardening_release_candidate_not_runtime_ready",
   "repository": "https://github.com/lechuit/synaptic-mesh",
   "license": "Apache-2.0 for code; CC BY 4.0 for docs/prose unless otherwise noted",
-  "reproducibility": "expected_pass_local_shadow_gates_real_flow_scorecard_no_runtime",
+  "reproducibility": "expected_pass_local_shadow_gates_decision_trace_mutation_thresholds_no_runtime",
   "rawSourceCache": "excluded",
   "runtimeBoundary": "ci_baseline_local_shadow_validation_only_no_runtime_integration_no_mcp_a2a_no_authorization_no_tool_execution",
   "files": [
@@ -76,8 +76,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 5439,
-      "sha256": "7fd3504428aa14f87f5bea53e26d154d5c27f3814eeffc992c1df44453187e7c"
+      "bytes": 5551,
+      "sha256": "7d53866884009b2c4172b53a7f322872502bb81c4209342cbb33eaeebad86396"
     },
     {
       "path": "RELEASE_CANDIDATE.md",
@@ -86,8 +86,8 @@
     },
     {
       "path": "RELEASE_NOTES.md",
-      "bytes": 3874,
-      "sha256": "1155e5ab998fe2eb266daaa90e44e0bd21f8cfe27d36173648dc1ea4c3cbd7a0"
+      "bytes": 3558,
+      "sha256": "77a0794198b50ee99202679ce02c20c0c08f04942edb12dae9abd0f829415aa1"
     },
     {
       "path": "design-notes/adapter-boundary-langgraph-mcp-v0.md",
@@ -142,7 +142,7 @@
     {
       "path": "docs/coverage-matrix.md",
       "bytes": 5384,
-      "sha256": "54ed9fb077750d2b78a1f1a573d0c21ec9e1e591a3464551ef33e6056af9907b"
+      "sha256": "0bbb6c8dadd4bca1e809ea0c94eabe8a1a7e1afd8e0ab153e7975828a638970c"
     },
     {
       "path": "docs/deterministic-route-classifier.md",
@@ -172,7 +172,7 @@
     {
       "path": "docs/release-checklist.md",
       "bytes": 5437,
-      "sha256": "3205089f53e39db739024b5eb4ecd18897e08321715675609d27fbd107a636b3"
+      "sha256": "67711c875d767ea8aebbb226a8b8b0f375135af2f1d7ceeb8f607c51fe912449"
     },
     {
       "path": "docs/repo-structure.md",
