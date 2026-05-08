@@ -46,6 +46,7 @@ const releaseGateScripts = [
   'test:manual-dry-run-cli-real-redacted-pilot',
   'test:manual-dry-run-cli-pilot-failure-catalog',
   'test:manual-dry-run-cli-real-redacted-pilot-expanded',
+  'test:manual-dry-run-cli-pilot-reproducibility',
 ];
 
 function runGit(args, options = {}) {
@@ -650,6 +651,40 @@ assert(manualDryRunRealRedactedPilotExpanded?.summary?.blockingImplemented === f
 assert(manualDryRunRealRedactedPilotExpanded?.summary?.allowingImplemented === false, 'manual dry-run CLI expanded real-redacted pilot must not implement allowing');
 assert(manualDryRunRealRedactedPilotExpanded?.summary?.authorizationImplemented === false, 'manual dry-run CLI expanded real-redacted pilot must not implement authorization');
 assert(manualDryRunRealRedactedPilotExpanded?.summary?.enforcementImplemented === false, 'manual dry-run CLI expanded real-redacted pilot must not implement enforcement');
+
+const manualDryRunPilotReproducibility = readJson(path.join(packageRoot, 'evidence/manual-dry-run-cli-pilot-reproducibility.out.json'));
+assert(manualDryRunPilotReproducibility?.pilotReproducibility === 'pass', 'manual dry-run CLI pilot reproducibility verdict must be pass');
+assert(manualDryRunPilotReproducibility?.cases >= 12, 'manual dry-run CLI pilot reproducibility must cover at least 12 cases');
+assert(manualDryRunPilotReproducibility?.runsPerCase === 2, 'manual dry-run CLI pilot reproducibility must run each case twice');
+assert(manualDryRunPilotReproducibility?.canonicalOutputsCompared === manualDryRunPilotReproducibility?.cases, 'manual dry-run CLI pilot reproducibility must compare one canonical output per case');
+assert(manualDryRunPilotReproducibility?.recordOnly === manualDryRunPilotReproducibility?.cases, 'manual dry-run CLI pilot reproducibility outputs must all be record-only');
+assert(manualDryRunPilotReproducibility?.returnWriteMismatches === 0, 'manual dry-run CLI pilot reproducibility must have zero return/write mismatches');
+assert(manualDryRunPilotReproducibility?.normalizedOutputMismatches === 0, 'manual dry-run CLI pilot reproducibility must have zero normalized output mismatches');
+assert(manualDryRunPilotReproducibility?.committedEvidenceMismatches === 0, 'manual dry-run CLI pilot reproducibility must have zero committed evidence mismatches');
+assert(manualDryRunPilotReproducibility?.inputMutations === 0, 'manual dry-run CLI pilot reproducibility must not mutate inputs');
+assert(manualDryRunPilotReproducibility?.forbiddenEffects === 0, 'manual dry-run CLI pilot reproducibility must have zero forbidden effects');
+assert(manualDryRunPilotReproducibility?.capabilityTrueCount === 0, 'manual dry-run CLI pilot reproducibility must keep capabilities false');
+assert(manualDryRunPilotReproducibility?.falsePermits === 0, 'manual dry-run CLI pilot reproducibility must have zero false permits');
+assert(manualDryRunPilotReproducibility?.falseCompacts === 0, 'manual dry-run CLI pilot reproducibility must have zero false compacts');
+assert(manualDryRunPilotReproducibility?.boundaryLoss === 0, 'manual dry-run CLI pilot reproducibility must have zero boundary loss');
+assert(manualDryRunPilotReproducibility?.rawContentPersisted === false, 'manual dry-run CLI pilot reproducibility must not persist raw content');
+assert(manualDryRunPilotReproducibility?.privatePathsPersisted === false, 'manual dry-run CLI pilot reproducibility must not persist private paths');
+assert(manualDryRunPilotReproducibility?.secretLikeValuesPersisted === false, 'manual dry-run CLI pilot reproducibility must not persist secrets');
+assert(manualDryRunPilotReproducibility?.toolOutputsPersisted === false, 'manual dry-run CLI pilot reproducibility must not persist tool outputs');
+assert(manualDryRunPilotReproducibility?.memoryTextPersisted === false, 'manual dry-run CLI pilot reproducibility must not persist memory text');
+assert(manualDryRunPilotReproducibility?.configTextPersisted === false, 'manual dry-run CLI pilot reproducibility must not persist config text');
+assert(manualDryRunPilotReproducibility?.approvalTextPersisted === false, 'manual dry-run CLI pilot reproducibility must not persist approval text');
+assert(manualDryRunPilotReproducibility?.summary?.liveObserverImplemented === false, 'manual dry-run CLI pilot reproducibility must not implement live observer');
+assert(manualDryRunPilotReproducibility?.summary?.runtimeIntegrationImplemented === false, 'manual dry-run CLI pilot reproducibility must not implement runtime integration');
+assert(manualDryRunPilotReproducibility?.summary?.toolExecutionImplemented === false, 'manual dry-run CLI pilot reproducibility must not implement tool execution');
+assert(manualDryRunPilotReproducibility?.summary?.memoryWriteImplemented === false, 'manual dry-run CLI pilot reproducibility must not implement memory writes');
+assert(manualDryRunPilotReproducibility?.summary?.configWriteImplemented === false, 'manual dry-run CLI pilot reproducibility must not implement config writes');
+assert(manualDryRunPilotReproducibility?.summary?.publicationImplemented === false, 'manual dry-run CLI pilot reproducibility must not implement publication');
+assert(manualDryRunPilotReproducibility?.summary?.approvalPathImplemented === false, 'manual dry-run CLI pilot reproducibility must not implement approval path');
+assert(manualDryRunPilotReproducibility?.summary?.blockingImplemented === false, 'manual dry-run CLI pilot reproducibility must not implement blocking');
+assert(manualDryRunPilotReproducibility?.summary?.allowingImplemented === false, 'manual dry-run CLI pilot reproducibility must not implement allowing');
+assert(manualDryRunPilotReproducibility?.summary?.authorizationImplemented === false, 'manual dry-run CLI pilot reproducibility must not implement authorization');
+assert(manualDryRunPilotReproducibility?.summary?.enforcementImplemented === false, 'manual dry-run CLI pilot reproducibility must not implement enforcement');
 
 const reviewLocalCount = countLabel(reviewEvidence.summary.passCommands, reviewEvidence.summary.commands);
 const receiverAdapterCount = countLabel(receiverAdapterEvidence.summary.passCases, receiverAdapterEvidence.summary.totalCases);

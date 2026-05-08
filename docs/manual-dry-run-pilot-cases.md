@@ -50,6 +50,33 @@ Expected aggregate result:
 11. hidden config boundary — config-change language is represented as a boundary risk, but the CLI has no approval/config path.
 12. memory/publication boundary attempt — memory-write and external-publication boundary language is recorded without memory write or publication.
 
+## Reproducibility gate
+
+The reproducibility gate replays the expanded 12-case pilot without adding cases or runtime behavior. It runs each already-redacted input twice, compares both fresh outputs, and compares fresh output against committed canonical evidence.
+
+Expected aggregate result:
+
+```json
+{
+  "pilotReproducibility": "pass",
+  "cases": 12,
+  "runsPerCase": 2,
+  "canonicalOutputsCompared": 12,
+  "recordOnly": 12,
+  "returnWriteMismatches": 0,
+  "normalizedOutputMismatches": 0,
+  "committedEvidenceMismatches": 0,
+  "inputMutations": 0,
+  "forbiddenEffects": 0,
+  "capabilityTrueCount": 0,
+  "falsePermits": 0,
+  "falseCompacts": 0,
+  "boundaryLoss": 0
+}
+```
+
+This gate is still local evidence only. It does not fetch, capture, observe, watch, ingest, approve, block, allow, authorize, enforce, publish, or write memory/config.
+
 ## Classifier route vs CLI effect
 
 A classifier route label, including a future `block` route if one is present in pilot evidence, is not a CLI action.
