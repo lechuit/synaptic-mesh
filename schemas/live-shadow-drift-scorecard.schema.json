@@ -1,0 +1,118 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/lechuit/synaptic-mesh/schemas/live-shadow-drift-scorecard.schema.json",
+  "title": "LiveShadowDriftScorecard evidence record",
+  "description": "Offline scorecard-shape schema for aggregating synthetic live-shadow replay drift labels. This validates aggregate shape only; it does not observe live traffic, read runtime logs, implement a live observer, execute tools, write memory/config, publish externally, block, allow, approve, or enforce.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "scorecardId",
+    "generatedAt",
+    "mode",
+    "sourceEvidence",
+    "observationCount",
+    "resultCount",
+    "driftBuckets",
+    "capabilitySummary",
+    "redactionRetentionBoundary",
+    "auditReasonCodes",
+    "boundary"
+  ],
+  "properties": {
+    "schemaVersion": { "type": "string", "enum": ["live-shadow-drift-scorecard-v0"] },
+    "scorecardId": { "type": "string", "pattern": "^lsds_[a-z0-9_\\-]+$" },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "mode": { "type": "string", "enum": ["offline_scorecard_shape_only"] },
+    "sourceEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["syntheticReplay", "observationSchema", "resultSchema"],
+      "properties": {
+        "syntheticReplay": { "type": "string", "enum": ["implementation/synaptic-mesh-shadow-v0/evidence/live-shadow-synthetic-replay.out.json"] },
+        "observationSchema": { "type": "string", "enum": ["schemas/live-shadow-observation.schema.json"] },
+        "resultSchema": { "type": "string", "enum": ["schemas/live-shadow-observation-result.schema.json"] }
+      }
+    },
+    "observationCount": { "type": "integer" },
+    "resultCount": { "type": "integer" },
+    "driftBuckets": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["none", "classifierDecisionChanged", "redactionWarning", "forbiddenEffect", "capabilityAttempt", "unknown"],
+      "properties": {
+        "none": { "type": "integer" },
+        "classifierDecisionChanged": { "type": "integer" },
+        "redactionWarning": { "type": "integer" },
+        "forbiddenEffect": { "type": "integer", "enum": [0] },
+        "capabilityAttempt": { "type": "integer", "enum": [0] },
+        "unknown": { "type": "integer", "enum": [0] }
+      }
+    },
+    "capabilitySummary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mayBlockCount", "mayAllowCount", "mayExecuteToolCount", "mayWriteMemoryCount", "mayWriteConfigCount", "mayPublishExternallyCount", "mayModifyAgentInstructionsCount", "mayEnterApprovalPathCount", "capabilityTrueCount"],
+      "properties": {
+        "mayBlockCount": { "type": "integer", "enum": [0] },
+        "mayAllowCount": { "type": "integer", "enum": [0] },
+        "mayExecuteToolCount": { "type": "integer", "enum": [0] },
+        "mayWriteMemoryCount": { "type": "integer", "enum": [0] },
+        "mayWriteConfigCount": { "type": "integer", "enum": [0] },
+        "mayPublishExternallyCount": { "type": "integer", "enum": [0] },
+        "mayModifyAgentInstructionsCount": { "type": "integer", "enum": [0] },
+        "mayEnterApprovalPathCount": { "type": "integer", "enum": [0] },
+        "capabilityTrueCount": { "type": "integer", "enum": [0] }
+      }
+    },
+    "redactionRetentionBoundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["rawContentPersisted", "retentionSchedulerImplemented", "redactionImplementationAdded", "designReference"],
+      "properties": {
+        "rawContentPersisted": { "type": "boolean", "enum": [false] },
+        "retentionSchedulerImplemented": { "type": "boolean", "enum": [false] },
+        "redactionImplementationAdded": { "type": "boolean", "enum": [false] },
+        "designReference": { "type": "string", "enum": ["design-notes/live-shadow-redaction-retention-v0.md"] }
+      }
+    },
+    "auditReasonCodes": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": [
+          "LIVE_SHADOW_TRACE_ONLY",
+          "LIVE_SHADOW_NO_EFFECTS",
+          "LIVE_SHADOW_LOCAL_ONLY",
+          "LIVE_SHADOW_DECISION_PATH_SEPARATED"
+        ]
+      }
+    },
+    "boundary": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": [
+          "offline_scorecard_shape_only",
+          "aggregate_counts_only",
+          "no_live_observation",
+          "no_runtime",
+          "no_daemon",
+          "no_adapter_integration",
+          "no_tool_execution",
+          "no_memory_write",
+          "no_config_write",
+          "no_external_publication",
+          "no_block",
+          "no_allow",
+          "no_approval",
+          "no_enforcement"
+        ]
+      }
+    }
+  }
+}

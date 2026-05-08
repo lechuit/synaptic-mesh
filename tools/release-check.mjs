@@ -29,6 +29,7 @@ const releaseGateScripts = [
   'test:live-shadow-observation-result-schema',
   'test:live-shadow-forbidden-effects',
   'test:live-shadow-synthetic-replay',
+  'test:live-shadow-drift-scorecard',
 ];
 
 function runGit(args, options = {}) {
@@ -226,6 +227,23 @@ assert(liveShadowSyntheticReplay?.summary?.memoryWriteImplemented === false, 'li
 assert(liveShadowSyntheticReplay?.summary?.configWriteImplemented === false, 'live-shadow synthetic replay must not implement config writes');
 assert(liveShadowSyntheticReplay?.summary?.externalPublicationImplemented === false, 'live-shadow synthetic replay must not implement external publication');
 assert(liveShadowSyntheticReplay?.summary?.enforcementImplemented === false, 'live-shadow synthetic replay must not implement enforcement');
+
+const liveShadowDriftScorecard = readJson(path.join(packageRoot, 'evidence/live-shadow-drift-scorecard-shape.out.json'));
+assert(liveShadowDriftScorecard?.summary?.verdict === 'pass', 'live-shadow drift scorecard verdict must be pass');
+assert(liveShadowDriftScorecard?.summary?.mode === 'offline_scorecard_shape_only', 'live-shadow drift scorecard must remain offline scorecard shape only');
+assert(liveShadowDriftScorecard?.summary?.observerImplemented === false, 'live-shadow drift scorecard must not implement an observer');
+assert(liveShadowDriftScorecard?.summary?.liveTrafficRead === false, 'live-shadow drift scorecard must not read live traffic');
+assert(liveShadowDriftScorecard?.summary?.forbiddenEffectCount === 0, 'live-shadow drift scorecard must have zero forbidden effects');
+assert(liveShadowDriftScorecard?.summary?.capabilityAttemptCount === 0, 'live-shadow drift scorecard must have zero capability attempts');
+assert(liveShadowDriftScorecard?.summary?.capabilityTrueCount === 0, 'live-shadow drift scorecard must not set capability fields true');
+assert(liveShadowDriftScorecard?.summary?.rawContentPersisted === false, 'live-shadow drift scorecard must not persist raw content');
+assert(liveShadowDriftScorecard?.summary?.redactionImplementationAdded === false, 'live-shadow drift scorecard must not implement redaction code');
+assert(liveShadowDriftScorecard?.summary?.retentionSchedulerImplemented === false, 'live-shadow drift scorecard must not implement retention scheduling');
+assert(liveShadowDriftScorecard?.summary?.toolExecutionImplemented === false, 'live-shadow drift scorecard must not implement tool execution');
+assert(liveShadowDriftScorecard?.summary?.memoryWriteImplemented === false, 'live-shadow drift scorecard must not implement memory writes');
+assert(liveShadowDriftScorecard?.summary?.configWriteImplemented === false, 'live-shadow drift scorecard must not implement config writes');
+assert(liveShadowDriftScorecard?.summary?.externalPublicationImplemented === false, 'live-shadow drift scorecard must not implement external publication');
+assert(liveShadowDriftScorecard?.summary?.enforcementImplemented === false, 'live-shadow drift scorecard must not implement enforcement');
 
 const reviewLocalCount = countLabel(reviewEvidence.summary.passCommands, reviewEvidence.summary.commands);
 const receiverAdapterCount = countLabel(receiverAdapterEvidence.summary.passCases, receiverAdapterEvidence.summary.totalCases);

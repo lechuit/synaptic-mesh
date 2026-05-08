@@ -125,3 +125,7 @@ Before any implementation, add offline gates for:
 5. no-import/no-runtime checks for observer-adjacent files
 
 Until those exist, this design note remains only a boundary document.
+
+## Drift scorecard follow-up
+
+The next unreleased v0.1.8-track gate is [Live-shadow drift scorecard shape v0](../docs/live-shadow-drift-scorecard.md). It is aggregate shape validation only and does not implement live monitoring, redaction code, retention scheduling, runtime integration, tools, memory/config writes, publication, approval, or enforcement.
