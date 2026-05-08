@@ -16,7 +16,7 @@ Run release gates from the package directory:
 
 ```bash
 cd implementation/synaptic-mesh-shadow-v0
-npm run release:check -- --target v0.1.15
+npm run release:check -- --target v0.1.16
 ```
 
 `release:check` verifies the manifest/docs package version, reports the explicit `releaseTarget`, reports the local Git `currentPublishedRelease` when available, blocks release-candidate validation against an already-existing tag unless the current checkout is exactly that tagged commit, and runs the release-critical local gates. If `--target` is omitted, it defaults to the manifest version and prints a warning so release PRs do not silently inherit a stale target.
@@ -65,6 +65,7 @@ It runs:
 - `npm run test:manual-dry-run-cli-real-redacted-pilot`
 - `npm run test:manual-dry-run-cli-pilot-failure-catalog`
 - `npm run test:manual-dry-run-cli-real-redacted-pilot-expanded`
+- `npm run test:manual-dry-run-cli-pilot-reproducibility`
 
 For auditability, keep the individual gate names visible in PR notes even when `release:check` is the command reviewers run.
 
@@ -86,6 +87,7 @@ For auditability, keep the individual gate names visible in PR notes even when `
 - Confirm manual dry-run command contracts and CLI remain manual/offline, explicit local file input only, already-redacted bundle input only, record-only local evidence output, no live observer, no watcher/daemon, no network, no adapter/runtime integration, no tools, no memory/config writes, no publication, no approval path, no blocking/allowing, no authorization, and no enforcement. Confirm CLI negative controls reject forbidden flags/claims and output path escapes without writing evidence or creating outside-evidence directories.
 - Confirm manual dry-run pilot failure catalog rejects known misuse with clear reason codes, writes only local reject evidence for rejected cases, and writes no success evidence, normal DecisionTrace, normal LiveShadowObservationResult, or scorecard success row for rejected cases.
 - Confirm expanded real-redacted manual dry-run pilot evidence covers at least 12 already-redacted cases, one redaction review record per case, all record-only outputs, zero mismatches, zero forbidden effects, zero capability true count, zero false permits, zero false compacts, zero boundary loss, and no raw/private/secret/tool/memory/config/approval persistence.
+- Confirm manual dry-run pilot reproducibility evidence covers at least 12 already-redacted cases, two fresh runs per case, one canonical output comparison per case, zero return/write mismatches, zero normalized output mismatches, zero committed evidence mismatches, zero input mutations, all record-only outputs, zero forbidden effects, zero capability true count, zero false permits, zero false compacts, zero boundary loss, and no raw/private/secret/tool/memory/config/approval persistence.
 
 ## CI expectations
 

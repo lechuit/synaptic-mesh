@@ -1,6 +1,6 @@
-# Synaptic Mesh v0.1.15
+# Synaptic Mesh v0.1.16
 
-Status: real-redacted manual dry-run pilot / pre-live shadow readiness release candidate `v0.1.15`; **not runtime-ready**; **not production/canary/enforcement-ready**.
+Status: real-redacted manual dry-run pilot / pre-live shadow readiness release candidate `v0.1.16`; **not runtime-ready**; **not production/canary/enforcement-ready**.
 
 ## What this is
 
@@ -10,7 +10,7 @@ A public review package for Synaptic Mesh / Multi-Agent Memory Authority Protoco
 
 Synaptic Mesh is intended to be **framework-agnostic**: the protocol idea should apply to any agent stack that retrieves, summarizes, compresses, or hands off memory-derived context.
 
-Current v0.1.15 status is narrower:
+Current v0.1.16 status is narrower:
 
 - validated with the included local shadow workflow;
 - shipped as a standalone reference package and fixture suite, not integrated with any production/runtime host;
@@ -33,6 +33,7 @@ Current v0.1.15 status is narrower:
 - adds a six-case real-redacted manual dry-run pilot over internal release-handoff metadata only, including valid approvals, failed-review retry decisions, and release-publication boundary status; all outputs remain record-only with zero forbidden effects, zero capability true counts, zero false permits, zero false compacts, and zero boundary loss;
 - adds a manual dry-run pilot failure catalog with 14 explicit reject-only misuse cases; rejected cases write local reject evidence only and do not write success evidence, normal DecisionTrace, normal LiveShadowObservationResult, or scorecard success rows;
 - expands the real-redacted manual dry-run pilot to 12 already-redacted metadata/control-message handoff cases with one redaction review record per case and all outputs record-only with zero forbidden effects, capability true counts, false permits, false compacts, boundary loss, or raw/private/secret/tool/memory/config/approval persistence;
+- adds a manual dry-run pilot reproducibility gate over the 12-case expanded pilot: two fresh CLI runs per case match each other and the committed canonical evidence with zero normalized output mismatches, zero committed evidence mismatches, and zero input mutations;
 - adds strict manual and real-redacted observation scorecard thresholds: zero validation failures, mismatches, false permits, false compacts, boundary loss, forbidden effects, blocking/allowing, and capability attempts;
 - no live observer, live traffic/log/session reads, daemons, watchers, MCP endpoints, tool execution, memory writes, config writes, external publication, approval paths, blocking, allowing, authorization, enforcement, or production safety claims are included;
 - no real LangGraph, AutoGen, CrewAI, Semantic Kernel, MCP, or runtime host adapters are included yet;
@@ -66,7 +67,7 @@ From this bundle root:
 npm --prefix implementation/synaptic-mesh-shadow-v0 run review:local
 ```
 
-Expected current result: 34/34 commands pass, fixture parity 15/15, RouteDecision schema 17/17 fixture records, threat-model route mappings 11/11, RouteDecision wrong-route fixtures 9/9, generated adversarial fixtures 9/9, raw/parser adversarial fixtures 9/9, parser normalization fixtures 24/24, real-flow replay fixtures 24/24, classifier scorecard 24/24, decision traces 24/24, real-flow mutations 15/15, category coverage thresholds pass, live-shadow observation schemas pass, live-shadow synthetic replay 24 observations/24 results, live-shadow drift scorecard 24 observations/24 results, manual observation bundles 2/2, manual redaction fixture pack 2 positive/8 negative, manual parserEvidence replay 2/2, manual DecisionTrace/live-shadow replay 2 traces/2 observations/2 results, manual scorecard thresholds pass, redaction review records pass, real-redacted handoff pack 3/3, real-redacted replay gate 3 traces/3 observations/3 results, real-redacted adversarial coverage 6 cases with routes request_full_receipt/request_policy_refresh/ask_human/block, manual dry-run contracts 2 commands/2 results with 21 command negative controls and 39 result negative controls, manual dry-run CLI skeleton/negative controls/3 real-redacted positive handoffs/6-case real-redacted pilot/14-case failure catalog plus 12-case expanded pilot all pass with zero forbidden effects/capabilities, Receipt schema valid/invalid fixtures 1/4, authority overhead benchmark 6 fixtures/4 modes, unsafe allow signals 0, source fixture mutation false.
+Expected current result: 34/34 commands pass, fixture parity 15/15, RouteDecision schema 17/17 fixture records, threat-model route mappings 11/11, RouteDecision wrong-route fixtures 9/9, generated adversarial fixtures 9/9, raw/parser adversarial fixtures 9/9, parser normalization fixtures 24/24, real-flow replay fixtures 24/24, classifier scorecard 24/24, decision traces 24/24, real-flow mutations 15/15, category coverage thresholds pass, live-shadow observation schemas pass, live-shadow synthetic replay 24 observations/24 results, live-shadow drift scorecard 24 observations/24 results, manual observation bundles 2/2, manual redaction fixture pack 2 positive/8 negative, manual parserEvidence replay 2/2, manual DecisionTrace/live-shadow replay 2 traces/2 observations/2 results, manual scorecard thresholds pass, redaction review records pass, real-redacted handoff pack 3/3, real-redacted replay gate 3 traces/3 observations/3 results, real-redacted adversarial coverage 6 cases with routes request_full_receipt/request_policy_refresh/ask_human/block, manual dry-run contracts 2 commands/2 results with 21 command negative controls and 39 result negative controls, manual dry-run CLI skeleton/negative controls/3 real-redacted positive handoffs/6-case real-redacted pilot/14-case failure catalog/12-case expanded pilot plus pilot reproducibility gate all pass with zero forbidden effects/capabilities, Receipt schema valid/invalid fixtures 1/4, authority overhead benchmark 6 fixtures/4 modes, unsafe allow signals 0, source fixture mutation false.
 
 For adapter-shaped contract coverage specifically:
 
@@ -79,7 +80,7 @@ Expected current result: 59/59 cases pass, unsafe allows 0.
 For release/package verification:
 
 ```bash
-npm --prefix implementation/synaptic-mesh-shadow-v0 run release:check -- --target v0.1.15
+npm --prefix implementation/synaptic-mesh-shadow-v0 run release:check -- --target v0.1.16
 ```
 
 ## Citation/source policy

@@ -1,13 +1,13 @@
 {
   "bundle": "synaptic-mesh",
-  "version": "0.1.15",
-  "generated": "2026-05-08T14:35:00Z",
-  "status": "v0.1.15_manual_dry_run_pilot_failure_catalog_release_candidate_not_runtime_ready",
+  "version": "0.1.16",
+  "generated": "2026-05-08T23:50:00Z",
+  "status": "v0.1.16_manual_dry_run_pilot_reproducibility_release_candidate_not_runtime_ready",
   "repository": "https://github.com/lechuit/synaptic-mesh",
   "license": "Apache-2.0 for code; CC BY 4.0 for docs/prose unless otherwise noted",
-  "reproducibility": "expected_pass_local_shadow_gates_for_v0.1.15_manual_dry_run_pilot_failure_catalog_fourteen_reject_cases_no_success_evidence",
+  "reproducibility": "expected_pass_local_shadow_gates_for_v0.1.16_manual_dry_run_pilot_reproducibility_twelve_cases_two_runs_each_zero_normalized_output_mismatches",
   "rawSourceCache": "excluded",
-  "runtimeBoundary": "v0.1.15_manual_dry_run_pilot_failure_catalog_local_reject_evidence_only_no_success_evidence_for_rejected_cases_no_live_observer_no_runtime_integration_no_tool_execution_no_memory_config_publication_approval_authorization_or_enforcement",
+  "runtimeBoundary": "v0.1.16_manual_dry_run_pilot_reproducibility_local_record_only_no_live_observer_no_runtime_integration_no_tool_execution_no_memory_config_publication_approval_authorization_or_enforcement",
   "files": [
     {
       "path": ".github/workflows/ci.yml",
@@ -76,8 +76,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 9066,
-      "sha256": "cb7ae3790b4a56a02fe1c803b20419feb84fccad07d7b33b59e41699e2ba0d8a"
+      "bytes": 9361,
+      "sha256": "deb1d3b2d17a7dcc231f73bf5a3a057eb432bd0839f3be3ec70565b1f0c03231"
     },
     {
       "path": "RELEASE_CANDIDATE.md",
@@ -86,8 +86,8 @@
     },
     {
       "path": "RELEASE_NOTES.md",
-      "bytes": 6919,
-      "sha256": "009bf932c3b4d0fa02ff8394ad88811d9e4d3d8ccfc67c99d46a197f6a3f224e"
+      "bytes": 6845,
+      "sha256": "4a243472888e50abe175ba79660c6738fc87799f6eb617c237a8bb13e54858e6"
     },
     {
       "path": "design-notes/adapter-boundary-langgraph-mcp-v0.md",
@@ -196,8 +196,8 @@
     },
     {
       "path": "docs/manual-dry-run-pilot-cases.md",
-      "bytes": 3056,
-      "sha256": "67ae9b4f4dfb7177840fb41e978a58b5195b06086c89be3cd78359601dccdbd8"
+      "bytes": 3897,
+      "sha256": "bf14733e16cb0486bae7829c1f9e542632fb002041ab92b4fa5bb4a0712c9cac"
     },
     {
       "path": "docs/manual-dry-run-pilot-checklist.md",
@@ -276,8 +276,8 @@
     },
     {
       "path": "docs/release-checklist.md",
-      "bytes": 8390,
-      "sha256": "46e4e68359ef2dd448d8d4630453b5223aa973a7b70407840a7c3690b676c758"
+      "bytes": 8942,
+      "sha256": "77511b1bd6e6d3577477136d497b1c61571c2caed5fe382d3accedbb29308d23"
     },
     {
       "path": "docs/repo-structure.md",
@@ -433,6 +433,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/manual-dry-run-cli-pilot-failure-catalog.out.json",
       "bytes": 7673,
       "sha256": "b22a60d39d81794ae6059d1ff099ed4020d94d6c66daec2d64c2fc19f1cbab1a"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/manual-dry-run-cli-pilot-reproducibility.out.json",
+      "bytes": 19705,
+      "sha256": "3acbc5172d567c18ce8fa5a2e217fe0c5a6061fd35d5598eb8f4dd564bda935c"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/manual-dry-run-cli-real-redacted-handoffs.out.json",
@@ -936,8 +941,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/package.json",
-      "bytes": 9549,
-      "sha256": "746f3078442901b484b34d1d23e3e9b8fa6d65ab41b5ec858ad220796aae9f07"
+      "bytes": 9728,
+      "sha256": "9273d8d17d582dabdf888fe08b575e8bea6d208f165dfa9db8a38b3998592d28"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/action-context-packet.mjs",
@@ -1108,6 +1113,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/tests/manual-dry-run-cli-pilot-failure-catalog.mjs",
       "bytes": 6495,
       "sha256": "14fbeb3aac063d8fe36e6571f38cab04cdfb1ad19ec620595f91183625489e7a"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/manual-dry-run-cli-pilot-reproducibility.mjs",
+      "bytes": 9634,
+      "sha256": "af99b3cc5a87e66c2a6677da5c78c3f158c4f33bd03c2d8835a6ed72bc140dcd"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/manual-dry-run-cli-real-redacted-handoffs.mjs",
@@ -1721,8 +1731,8 @@
     },
     {
       "path": "tools/release-check.mjs",
-      "bytes": 71692,
-      "sha256": "b511669351e515522e8b018893cfb5da37de994b84f475faf4406f502c59331f"
+      "bytes": 76775,
+      "sha256": "e8f3cf837734288ac7935ee381f186f707ab682ecd323028dd1b1f1f3317c722"
     },
     {
       "path": "tools/verify-manifest.mjs",
