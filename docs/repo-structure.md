@@ -12,7 +12,7 @@ Synaptic Mesh keeps protocol, implementation, research, and evidence separate so
 - `evidence/` — top-level reproducibility snapshots that are intentionally separate from implementation-local evidence.
 - `paper/` — manuscript-oriented material.
 - `docs/` — repository operation, layout guidance, review vocabulary, and conservative coverage status that do not define runtime authority. ADRs live under `docs/adr/`; concept notes live under `docs/concepts/`.
-- `design-notes/` — short implementation design notes for changes that should stay smaller than a full spec.
+- `design-notes/` — short implementation design notes for changes that should stay smaller than a full spec; `live-shadow-observer-v0.md` is design-only and adds no runtime observer.
 - `tools/` — repo-local validation utilities, including the package-wired manifest verification guard.
 
 ## Architecture decisions
