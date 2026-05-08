@@ -1,0 +1,62 @@
+{
+  "summary": {
+    "artifact": "T-synaptic-mesh-live-shadow-observation-result-schema-v0",
+    "timestamp": "2026-05-08T00:56:00.000Z",
+    "verdict": "pass",
+    "schema": "schemas/live-shadow-observation-result.schema.json",
+    "sourceFixture": "implementation/synaptic-mesh-shadow-v0/fixtures/live-shadow-observation-results.json",
+    "resultCount": 2,
+    "validResultCount": 2,
+    "negativeControlCount": 11,
+    "recordOnlyResultCount": 2,
+    "forbiddenEffectsDetectedCount": 0,
+    "mode": "offline_schema_fixture_only",
+    "observerImplemented": false,
+    "liveTrafficRead": false,
+    "mayBlockCount": 0,
+    "mayAllowCount": 0,
+    "toolExecutionImplemented": false,
+    "memoryWriteImplemented": false,
+    "configWriteImplemented": false,
+    "externalPublicationImplemented": false,
+    "agentInstructionWriteImplemented": false,
+    "approvalPathImplemented": false,
+    "safetyClaimScope": "live_shadow_observation_result_schema_shape_only_record_only_not_runtime_not_authorization"
+  },
+  "validationErrors": [],
+  "effectCapabilityFields": [
+    "mayBlock",
+    "mayAllow",
+    "mayExecuteTool",
+    "mayWriteMemory",
+    "mayWriteConfig",
+    "mayPublishExternally",
+    "mayModifyAgentInstructions",
+    "mayEnterApprovalPath"
+  ],
+  "negativeControls": [
+    "observerAction block",
+    "mayBlock true",
+    "mayAllow true",
+    "mayExecuteTool true",
+    "mayWriteMemory true",
+    "mayWriteConfig true",
+    "mayPublishExternally true",
+    "mayModifyAgentInstructions true",
+    "mayEnterApprovalPath true",
+    "forbidden effect detected",
+    "unknown property"
+  ],
+  "boundary": [
+    "record_only",
+    "no_effects",
+    "no_block",
+    "no_allow",
+    "not_tool_execution",
+    "not_memory_write",
+    "not_config_write",
+    "not_external_publication",
+    "not_agent_instruction_write",
+    "not_approval_path"
+  ]
+}
