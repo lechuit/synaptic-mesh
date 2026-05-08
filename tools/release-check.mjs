@@ -31,6 +31,7 @@ const releaseGateScripts = [
   'test:live-shadow-synthetic-replay',
   'test:live-shadow-drift-scorecard',
   'test:manual-observation-bundle-schema',
+  'test:manual-observation-redaction-fixtures',
 ];
 
 function runGit(args, options = {}) {
@@ -267,6 +268,27 @@ assert(manualObservationBundleSchema?.summary?.memoryWriteImplemented === false,
 assert(manualObservationBundleSchema?.summary?.configWriteImplemented === false, 'manual observation bundle must not implement config writes');
 assert(manualObservationBundleSchema?.summary?.externalPublicationImplemented === false, 'manual observation bundle must not implement external publication');
 assert(manualObservationBundleSchema?.summary?.enforcementImplemented === false, 'manual observation bundle must not implement enforcement');
+
+const manualObservationRedactionFixtures = readJson(path.join(packageRoot, 'evidence/manual-observation-redaction-fixtures.out.json'));
+assert(manualObservationRedactionFixtures?.summary?.verdict === 'pass', 'manual observation redaction fixtures verdict must be pass');
+assert(manualObservationRedactionFixtures?.summary?.mode === 'manual_offline_redaction_fixture_pack_only', 'manual redaction fixtures must remain fixture-pack only');
+assert(manualObservationRedactionFixtures?.summary?.humanReviewRequiredForCapture === true, 'manual redaction fixtures capture must require human review');
+assert(manualObservationRedactionFixtures?.summary?.redactionFailures === 0, 'manual redaction fixtures must have zero redaction failures');
+assert(manualObservationRedactionFixtures?.summary?.rawContentPersisted === false, 'manual redaction fixtures must not persist raw content');
+assert(manualObservationRedactionFixtures?.summary?.privatePathPersisted === false, 'manual redaction fixtures must not persist private paths');
+assert(manualObservationRedactionFixtures?.summary?.secretLikeValuePersisted === false, 'manual redaction fixtures must not persist secret-like values');
+assert(manualObservationRedactionFixtures?.summary?.toolOutputPersisted === false, 'manual redaction fixtures must not persist tool output');
+assert(manualObservationRedactionFixtures?.summary?.memoryTextPersisted === false, 'manual redaction fixtures must not persist memory text');
+assert(manualObservationRedactionFixtures?.summary?.configTextPersisted === false, 'manual redaction fixtures must not persist config text');
+assert(manualObservationRedactionFixtures?.summary?.approvalTextPersisted === false, 'manual redaction fixtures must not persist approval text');
+assert(manualObservationRedactionFixtures?.summary?.capabilityAttempts === 0, 'manual redaction fixtures must not include capability attempts');
+assert(manualObservationRedactionFixtures?.summary?.forbiddenEffects === 0, 'manual redaction fixtures must not include forbidden effects');
+assert(manualObservationRedactionFixtures?.summary?.liveObserverImplemented === false, 'manual redaction fixtures must not implement live observer');
+assert(manualObservationRedactionFixtures?.summary?.toolExecutionImplemented === false, 'manual redaction fixtures must not implement tool execution');
+assert(manualObservationRedactionFixtures?.summary?.memoryWriteImplemented === false, 'manual redaction fixtures must not implement memory writes');
+assert(manualObservationRedactionFixtures?.summary?.configWriteImplemented === false, 'manual redaction fixtures must not implement config writes');
+assert(manualObservationRedactionFixtures?.summary?.externalPublicationImplemented === false, 'manual redaction fixtures must not implement external publication');
+assert(manualObservationRedactionFixtures?.summary?.enforcementImplemented === false, 'manual redaction fixtures must not implement enforcement');
 
 const reviewLocalCount = countLabel(reviewEvidence.summary.passCommands, reviewEvidence.summary.commands);
 const receiverAdapterCount = countLabel(receiverAdapterEvidence.summary.passCases, receiverAdapterEvidence.summary.totalCases);
