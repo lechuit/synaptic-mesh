@@ -113,6 +113,10 @@ const commands = [
     args: [resolve(packageRoot, 'tests/decision-trace-schema.mjs')],
   },
   {
+    id: 'real-flow-mutation-suite-tests',
+    args: [resolve(packageRoot, 'tests/real-flow-mutation-suite.mjs')],
+  },
+  {
     id: 'fixture-parity-harness',
     args: [resolve(packageRoot, 'tests/fixture-parity.mjs')],
   },
@@ -147,6 +151,7 @@ const realFlowReplay = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/
 const routeClassifierShadow = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/route-classifier-shadow.out.json');
 const realFlowClassifierScorecard = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/real-flow-classifier-scorecard.out.json');
 const decisionTraceSchema = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/decision-trace-schema.out.json');
+const realFlowMutationSuite = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/real-flow-mutation-suite.out.json');
 
 const unsafeAllowSignals = [
   ...(fixtureParity?.summary?.nonRegressionUnsafeAllowFixtures ?? []),
@@ -181,6 +186,13 @@ if (Number(decisionTraceSchema?.summary?.traceCount ?? 0) < 20 || Number(decisio
 if (Number(decisionTraceSchema?.summary?.mismatchCount ?? 0) !== 0) unsafeAllowSignals.push('decision-trace-mismatch');
 if (Number(decisionTraceSchema?.summary?.falsePermitRate ?? 0) !== 0) unsafeAllowSignals.push('decision-trace-false-permit');
 if (Number(decisionTraceSchema?.summary?.falseCompactRate ?? 0) !== 0) unsafeAllowSignals.push('decision-trace-false-compact');
+if (realFlowMutationSuite?.summary?.verdict !== 'pass') unsafeAllowSignals.push('real-flow-mutation-suite');
+if (Number(realFlowMutationSuite?.summary?.mutationCount ?? 0) < 15) unsafeAllowSignals.push('real-flow-mutation-count');
+if (Number(realFlowMutationSuite?.summary?.mismatchCount ?? 0) !== 0) unsafeAllowSignals.push('real-flow-mutation-mismatch');
+if (Number(realFlowMutationSuite?.summary?.duplicateMutationIdCount ?? 0) !== 0) unsafeAllowSignals.push('real-flow-mutation-duplicate-id');
+if (Number(realFlowMutationSuite?.summary?.nonDegradedCount ?? 0) !== 0) unsafeAllowSignals.push('real-flow-mutation-non-degraded');
+if (Number(realFlowMutationSuite?.summary?.falsePermitRate ?? 0) !== 0) unsafeAllowSignals.push('real-flow-mutation-false-permit');
+if (Number(realFlowMutationSuite?.summary?.falseCompactRate ?? 0) !== 0) unsafeAllowSignals.push('real-flow-mutation-false-compact');
 
 const summary = {
   artifact: 'T-synaptic-mesh-review-local-runner-v0',
@@ -240,6 +252,13 @@ const summary = {
   decisionTraceMismatchCount: decisionTraceSchema?.summary?.mismatchCount ?? null,
   decisionTraceFalsePermitRate: decisionTraceSchema?.summary?.falsePermitRate ?? null,
   decisionTraceFalseCompactRate: decisionTraceSchema?.summary?.falseCompactRate ?? null,
+  realFlowMutationSuiteVerdict: realFlowMutationSuite?.summary?.verdict ?? null,
+  realFlowMutationCount: realFlowMutationSuite?.summary?.mutationCount ?? null,
+  realFlowMutationMismatchCount: realFlowMutationSuite?.summary?.mismatchCount ?? null,
+  realFlowMutationDuplicateIdCount: realFlowMutationSuite?.summary?.duplicateMutationIdCount ?? null,
+  realFlowMutationNonDegradedCount: realFlowMutationSuite?.summary?.nonDegradedCount ?? null,
+  realFlowMutationFalsePermitRate: realFlowMutationSuite?.summary?.falsePermitRate ?? null,
+  realFlowMutationFalseCompactRate: realFlowMutationSuite?.summary?.falseCompactRate ?? null,
   unsafeAllowSignals,
   sourceFixtureMutation: false,
 };

@@ -3,8 +3,8 @@
     "artifact": "T-synaptic-mesh-review-local-runner-v0",
     "timestamp": "2026-05-07T15:05:00.000Z",
     "verdict": "pass",
-    "commands": 28,
-    "passCommands": 28,
+    "commands": 29,
+    "passCommands": 29,
     "failedCommands": [],
     "fixtureCount": 15,
     "fixtureParityVerdict": "pass",
@@ -62,6 +62,13 @@
     "decisionTraceMismatchCount": 0,
     "decisionTraceFalsePermitRate": 0,
     "decisionTraceFalseCompactRate": 0,
+    "realFlowMutationSuiteVerdict": "pass",
+    "realFlowMutationCount": 15,
+    "realFlowMutationMismatchCount": 0,
+    "realFlowMutationDuplicateIdCount": 0,
+    "realFlowMutationNonDegradedCount": 0,
+    "realFlowMutationFalsePermitRate": 0,
+    "realFlowMutationFalseCompactRate": 0,
     "unsafeAllowSignals": [],
     "sourceFixtureMutation": false
   },
@@ -244,6 +251,13 @@
     {
       "id": "decision-trace-schema-tests",
       "command": "node implementation/synaptic-mesh-shadow-v0/tests/decision-trace-schema.mjs",
+      "status": 0,
+      "pass": true,
+      "stderr": ""
+    },
+    {
+      "id": "real-flow-mutation-suite-tests",
+      "command": "node implementation/synaptic-mesh-shadow-v0/tests/real-flow-mutation-suite.mjs",
       "status": 0,
       "pass": true,
       "stderr": ""

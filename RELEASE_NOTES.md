@@ -14,7 +14,7 @@ Status: real-flow scorecard release candidate / public review package update. No
 
 ## Validation snapshot
 
-- review-local: pass 28/28
+- review-local: pass 29/29
 - receiver adapter contracts: pass 59/59
 - fixture parity: 15/15
 - unsafe allow signals: 0
