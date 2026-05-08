@@ -1,18 +1,20 @@
-# Release Notes — Synaptic Mesh v0.1.11
+# Release Notes — Synaptic Mesh v0.1.12
 
-Status: real-redacted adversarial coverage / offline replay gate release candidate / public review package update. Not runtime-ready; not production/canary/enforcement-ready.
+Status: manual dry-run command contracts / offline schema gate release candidate / public review package update. Not runtime-ready; not production/canary/enforcement-ready.
 
-## Highlights since v0.1.10
+## Highlights since v0.1.11
 
-- Added a follow-on real-redacted adversarial coverage pack with exactly 6 manually reviewed metadata-only/control-message cases.
-- Covered non-happy-path replay routes: `request_full_receipt`, `request_policy_refresh`, `ask_human`, and `block`.
-- Added a dedicated `real-redacted-adversarial-coverage` gate and wired it into `review:local`.
-- Hardened the new gate after process review: it now recomputes/asserts `goldDecisionHash`, `classifierDecisionHash`, classifier reason/decisive/rejected-route alignment, observation-to-trace/classifier/input bindings, and result-to-observation/policy bindings.
-- Kept the boundary conservative: manually curated redacted metadata/control-message replay fixtures only; no live observer, live traffic/log/session reads, daemon, watcher, adapter/MCP/A2A integration, tool execution, memory/config writes, external publication beyond the repo release flow, approval path, blocking, allowing, authorization, or enforcement.
+- Added a design note for the future manual dry-run CLI boundary: manual dry-run processes redacted artifacts; it does not capture reality.
+- Added `ManualDryRunCommand` and `ManualDryRunResult` schemas for a future human-invoked local dry-run over already-redacted `ManualObservationBundle` artifacts.
+- Added positive command/result fixtures and deterministic evidence for 2 manual dry-run contract cases.
+- Added `test:manual-dry-run-contracts` and wired it into `check`, `release:check`, and the release checklist.
+- Added 21 command negative controls and 39 result negative controls covering raw/live/network/watcher/daemon/adapter/runtime/tools/memory/config/publication/blocking/allowing/approval/authorization/enforcement overreach.
+- Hardened `rejectedInputKinds` so the command schema requires all forbidden input kinds, not merely one representative forbidden input.
+- Kept the boundary conservative: schema/design/test evidence only; no CLI binary, live observer, live traffic/log/session reads, daemon, watcher, adapter/MCP/A2A integration, tool execution, memory/config writes, external publication beyond the repo release flow, approval path, blocking, allowing, authorization, or enforcement.
 
 ## Carried-forward package evidence
 
-The release package still includes earlier local-shadow gates from the v0.1.x line: reason-code vocabulary docs, conservative coverage matrix, raw/parser adversarial fixtures, adversarial fixture generation, authority-overhead benchmark evidence, decision traces, oracle/classifier separation, mutation degradation checks, category coverage thresholds, passive live-shadow schemas, synthetic live-shadow replay, redaction/retention design boundaries, aggregate drift scorecard shape checks, manual observation bundles, manual redaction fixtures, parserEvidence replay, manual DecisionTrace/live-shadow replay, strict manual scorecard thresholds, RedactionReviewRecord audit gates, the initial 3-case real-redacted handoff pack, and the real-redacted handoff replay gate. These remain current validation artifacts, but they are not new v0.1.11 delta items.
+The release package still includes earlier local-shadow gates from the v0.1.x line: reason-code vocabulary docs, conservative coverage matrix, raw/parser adversarial fixtures, adversarial fixture generation, authority-overhead benchmark evidence, decision traces, oracle/classifier separation, mutation degradation checks, category coverage thresholds, passive live-shadow schemas, synthetic live-shadow replay, redaction/retention design boundaries, aggregate drift scorecard shape checks, manual observation bundles, manual redaction fixtures, parserEvidence replay, manual DecisionTrace/live-shadow replay, strict manual scorecard thresholds, RedactionReviewRecord audit gates, the initial 3-case real-redacted handoff pack, the real-redacted handoff replay gate, and the 6-case real-redacted adversarial coverage gate. These remain current validation artifacts, but they are not new v0.1.12 delta items.
 
 ## Validation snapshot
 
@@ -48,17 +50,18 @@ The release package still includes earlier local-shadow gates from the v0.1.x li
 - Real-redacted handoff pack: pass 3/3 manually curated real-redacted bundles, 3 redaction review records, 3 scorecard rows, validation errors 0, mismatch 0, raw/private/secret/tool/memory/config/approval persistence false, forbidden effects 0, mayBlock 0, mayAllow 0, capability attempts 0
 - Real-redacted handoff replay gate: pass 3 traces → 3 observations + 3 record-only results, validation errors 0, mismatch 0, falsePermit 0, falseCompact 0, boundaryLoss 0, forbidden effects detected 0, mayBlock 0, mayAllow 0, capabilityTrue 0
 - Real-redacted adversarial coverage: pass 6 manually reviewed metadata/control cases, route counts `request_full_receipt: 1`, `request_policy_refresh: 1`, `ask_human: 3`, `block: 1`, validation errors 0, falsePermit 0, falseCompact 0, boundaryLoss 0, forbidden effects detected 0, mayBlock 0, mayAllow 0, capabilityTrue 0
+- Manual dry-run contracts: pass 2 commands / 2 results, validation errors 0, command negative controls 21, result negative controls 39, record-only results 2, parser/classifier/DecisionTrace/LiveShadowResult/scorecard generated flags 2/2, forbidden effects 0, mayBlock 0, mayAllow 0, raw/live/network/tool/memory/config/publication/approval capability counts 0
 
 ## Compatibility note
 
-Synaptic Mesh remains a framework-agnostic protocol proposal. v0.1.11 strengthens release confidence around real-redacted adversarial handoff coverage in an offline replay setting before any live observer exists, but does not ship real LangGraph, AutoGen, CrewAI, Semantic Kernel, MCP, runtime host adapters, live observers, daemons, watchers, retention schedulers, authorization paths, or enforcement hooks. Real runtime/live-observer work remains future work and requires a separate explicit maintainer decision.
+Synaptic Mesh remains a framework-agnostic protocol proposal. v0.1.12 strengthens release confidence around the next pre-live step: a manual dry-run contract for already-redacted artifacts before any CLI implementation or live observer exists. It does not ship real LangGraph, AutoGen, CrewAI, Semantic Kernel, MCP, runtime host adapters, live observers, daemons, watchers, retention schedulers, authorization paths, approval paths, blockers/allowers, or enforcement hooks. Real runtime/live-observer work remains future work and requires a separate explicit maintainer decision.
 
 ## Operational non-release status
 
 - Not runtime/tooling integrated.
 - Not live-monitoring integrated.
 - Not production/canary/enforcement/L2+ ready.
-- Runtime, live observation, adapter, retention, authorization, or operational use requires a separate explicit maintainer decision.
+- Runtime, live observation, adapter, retention, authorization, approval, or operational use requires a separate explicit maintainer decision.
 
 ## Public review requests
 
