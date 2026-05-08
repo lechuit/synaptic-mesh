@@ -7,8 +7,8 @@ Status: manual dry-run pilot robustness release candidate / public review packag
 - Added a manual dry-run pilot failure catalog with 14 reject-only misuse cases.
 - The catalog verifies missing redaction review records, persisted raw/private/secret/tool/memory/config/approval text claims, URL/directory inputs, output escapes, and forbidden allow/block/tool/memory/config capability claims all fail with clear reason codes.
 - Rejected cases write local reject evidence only; they do not write success evidence, normal DecisionTrace, normal LiveShadowObservationResult, or scorecard success rows.
-- Carries forward the v0.1.14 six-case real-redacted pilot as baseline evidence; #82 adds misuse/failure behavior, not new live/runtime behavior.
-- Added `test:manual-dry-run-cli-pilot-failure-catalog` and wired it into `check`, release docs, and release validation.
+- Carries forward the v0.1.14 six-case real-redacted pilot as baseline evidence while adding misuse/failure behavior and a 12-case expanded pilot, not new live/runtime behavior.
+- Added `test:manual-dry-run-cli-pilot-failure-catalog` and `test:manual-dry-run-cli-real-redacted-pilot-expanded`, then wired them into `check`, release docs, and release validation.
 - Preserved the strict boundary: manual invocation only, explicit local file input only, already-redacted bundle only, required redaction review record, local evidence output only, `record_only` result only.
 - Still no live observer, watcher, daemon, adapter/MCP/A2A integration, runtime host integration, tool execution, memory/config writes, external publication by the CLI, approval path, blocking, allowing, authorization, or enforcement.
 
@@ -21,6 +21,11 @@ Status: manual dry-run pilot robustness release candidate / public review packag
 - Forbidden effects: 0.
 - Capability true count: 0.
 - Runtime/live/tool/memory/config/approval/block/allow/authorization/enforcement implementations: false.
+- Expanded real-redacted manual dry-run pilot: pass over 12/12 already-redacted metadata/control-message cases.
+- Expanded pilot redaction review records: 12/12.
+- Expanded pilot record-only outputs: 12/12.
+- Expanded pilot validation errors, mismatches, forbidden effects, capability true count, false permits, false compacts, and boundary loss: 0.
+- Expanded pilot raw/private/secret/tool/memory/config/approval persistence: false.
 
 ## Carried-forward package evidence
 
@@ -39,13 +44,14 @@ The release package still includes earlier local-shadow gates from the v0.1.x li
 - Manual dry-run CLI real-redacted handoffs: pass 3/3, record-only 3, validation errors 0, forbidden effects 0, capabilityTrue 0, falsePermit 0, falseCompact 0, boundaryLoss 0.
 - Manual dry-run CLI real-redacted pilot: pass 6/6, record-only 6, validation errors 0, forbidden effects 0, capabilityTrue 0, falsePermit 0, falseCompact 0, boundaryLoss 0.
 - Manual dry-run CLI pilot failure catalog: pass 14/14 expected rejects, unexpected accepts 0, success evidence for rejected cases 0, forbidden effects 0, capabilityTrue 0.
+- Manual dry-run CLI expanded real-redacted pilot: pass 12/12, redaction review records 12, record-only 12, validation errors 0, mismatches 0, forbidden effects 0, capabilityTrue 0, falsePermit 0, falseCompact 0, boundaryLoss 0, raw/private/secret/tool/memory/config/approval persistence false.
 - Real-redacted handoff pack: pass 3/3 manually curated real-redacted bundles, 3 redaction review records, validation errors 0, mismatch 0, raw/private/secret/tool/memory/config/approval persistence false, forbidden effects 0, mayBlock 0, mayAllow 0, capability attempts 0.
 - Real-redacted handoff replay gate: pass 3 traces → 3 observations + 3 record-only results, validation errors 0, mismatch 0, falsePermit 0, falseCompact 0, boundaryLoss 0, forbidden effects detected 0, mayBlock 0, mayAllow 0, capabilityTrue 0.
 - Real-redacted adversarial coverage: pass 6 manually reviewed metadata/control cases, route counts `request_full_receipt: 1`, `request_policy_refresh: 1`, `ask_human: 3`, `block: 1`, validation errors 0, falsePermit 0, falseCompact 0, boundaryLoss 0, forbidden effects detected 0, mayBlock 0, mayAllow 0, capabilityTrue 0.
 
 ## Compatibility note
 
-Synaptic Mesh remains a framework-agnostic protocol proposal. v0.1.15 starts the manual dry-run pilot robustness block by adding explicit failure-catalog coverage. The CLI processes already-redacted artifacts; it does not capture reality.
+Synaptic Mesh remains a framework-agnostic protocol proposal. v0.1.15 hardens the manual dry-run pilot with explicit failure-catalog coverage and a 12-case expanded already-redacted pilot. The CLI processes already-redacted artifacts; it does not capture reality.
 
 ## Operational non-release status
 

@@ -64,6 +64,7 @@ It runs:
 - `npm run test:manual-dry-run-cli-real-redacted-handoffs`
 - `npm run test:manual-dry-run-cli-real-redacted-pilot`
 - `npm run test:manual-dry-run-cli-pilot-failure-catalog`
+- `npm run test:manual-dry-run-cli-real-redacted-pilot-expanded`
 
 For auditability, keep the individual gate names visible in PR notes even when `release:check` is the command reviewers run.
 
@@ -84,6 +85,7 @@ For auditability, keep the individual gate names visible in PR notes even when `
 - Confirm real-redacted handoff evidence remains manually curated/redacted metadata only, with no raw handoff content, private paths, secrets, tool output, memory/config text, approval text, live observer, runtime integration, approval path, blocking/allowing, authorization, or enforcement.
 - Confirm manual dry-run command contracts and CLI remain manual/offline, explicit local file input only, already-redacted bundle input only, record-only local evidence output, no live observer, no watcher/daemon, no network, no adapter/runtime integration, no tools, no memory/config writes, no publication, no approval path, no blocking/allowing, no authorization, and no enforcement. Confirm CLI negative controls reject forbidden flags/claims and output path escapes without writing evidence or creating outside-evidence directories.
 - Confirm manual dry-run pilot failure catalog rejects known misuse with clear reason codes, writes only local reject evidence for rejected cases, and writes no success evidence, normal DecisionTrace, normal LiveShadowObservationResult, or scorecard success row for rejected cases.
+- Confirm expanded real-redacted manual dry-run pilot evidence covers at least 12 already-redacted cases, one redaction review record per case, all record-only outputs, zero mismatches, zero forbidden effects, zero capability true count, zero false permits, zero false compacts, zero boundary loss, and no raw/private/secret/tool/memory/config/approval persistence.
 
 ## CI expectations
 
