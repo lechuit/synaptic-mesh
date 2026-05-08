@@ -1,8 +1,8 @@
 {
   "bundle": "synaptic-mesh",
-  "version": "0.1.13",
-  "generated": "2026-05-08T12:41:16Z",
-  "status": "v0.1.14_real_redacted_pilot_prerelease_not_runtime_ready",
+  "version": "0.1.14",
+  "generated": "2026-05-08T14:08:11Z",
+  "status": "v0.1.14_real_redacted_manual_dry_run_pilot_release_candidate_not_runtime_ready",
   "repository": "https://github.com/lechuit/synaptic-mesh",
   "license": "Apache-2.0 for code; CC BY 4.0 for docs/prose unless otherwise noted",
   "reproducibility": "expected_pass_local_shadow_gates_for_v0.1.14_real_redacted_pilot_six_cases_record_only",
@@ -76,8 +76,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 8020,
-      "sha256": "b6a5324eee28530610bf3a6a2fb3c2bc6409cec618cbf9908e7ada0b3b88f153"
+      "bytes": 8419,
+      "sha256": "78ab7b9422e82833171cfb72dc4d61b3f566a2a93ed4080a361af76a820b3773"
     },
     {
       "path": "RELEASE_CANDIDATE.md",
@@ -86,8 +86,8 @@
     },
     {
       "path": "RELEASE_NOTES.md",
-      "bytes": 5914,
-      "sha256": "d9be7273b39f53cc5eb9307ca2fac6ddef38a1c59fb94a665b64eb45f3a95475"
+      "bytes": 5607,
+      "sha256": "21b034e60148812fe939391594a2549bdfe5aca418ff6c161e338310e64a2e22"
     },
     {
       "path": "design-notes/adapter-boundary-langgraph-mcp-v0.md",
@@ -256,8 +256,8 @@
     },
     {
       "path": "docs/release-checklist.md",
-      "bytes": 7436,
-      "sha256": "8f206f4582375f2d10c9fb4ee594c304964de788e2f19091201ef4a62d573cec"
+      "bytes": 7492,
+      "sha256": "eae0c9d304e91cb13b370cec1f24daa9493dde4e48c21053ba9e256fa5fe1a6e"
     },
     {
       "path": "docs/repo-structure.md",
@@ -1551,8 +1551,8 @@
     },
     {
       "path": "tools/release-check.mjs",
-      "bytes": 60183,
-      "sha256": "7dc4e938ecfb500d06ae3ebab281a43dc2cd21c8a269115a3466a9a65dcb3285"
+      "bytes": 63233,
+      "sha256": "0ac7ae1cdab9289804d3cff3054acc89fea931fdce38a9488ee458d33c8088db"
     },
     {
       "path": "tools/verify-manifest.mjs",

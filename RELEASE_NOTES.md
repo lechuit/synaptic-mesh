@@ -1,26 +1,31 @@
-# Release Notes — Synaptic Mesh v0.1.13
+# Release Notes — Synaptic Mesh v0.1.14
 
-Status: manual dry-run CLI release candidate / public review package update. Not runtime-ready; not production/canary/enforcement-ready.
+Status: real-redacted manual dry-run pilot release candidate / public review package update. Not runtime-ready; not production/canary/enforcement-ready.
 
-## Highlights since v0.1.12
+## Highlights since v0.1.13
 
-- Implemented the minimal manual dry-run CLI for explicit local file input over already-redacted `ManualObservationBundle` artifacts with required `RedactionReviewRecord`.
-- Added local evidence output containment under `implementation/synaptic-mesh-shadow-v0/evidence/`, including no-follow/exclusive output writes and parent-component symlink checks.
-- Added CLI forbidden-effects gates for raw/live/network/tool/memory/config/publication/approval/block/allow/authorization/enforcement claims and forbidden flags.
-- Added negative controls proving rejected outputs do not write evidence, follow symlinks, or create directories outside the evidence tree.
-- Added a positive CLI path over exactly 3 manually reviewed real-redacted handoffs.
-- Preserved the strict boundary: manual invocation only, explicit local file input only, already-redacted bundle only, local evidence output only, `record_only` result only.
-- Still no live observer, watcher, daemon, adapter/MCP/A2A integration, runtime host integration, tool execution, memory/config writes, external publication beyond the repo release flow, approval path, blocking, allowing, authorization, or enforcement.
+- Added a six-case manually reviewed real-redacted pilot for the manual dry-run CLI.
+- Pilot cases are derived from real internal v0.1.13 release-handoff metadata, including valid review approvals, failed-review retry decisions, and release-publication boundary status.
+- Added explicit pilot input fixtures, aggregate pilot evidence, and per-case evidence outputs.
+- Added `test:manual-dry-run-cli-real-redacted-pilot` and wired it into `check`, release docs, and release validation.
+- Preserved the strict boundary: manual invocation only, explicit local file input only, already-redacted bundle only, required redaction review record, local evidence output only, `record_only` result only.
+- Still no live observer, watcher, daemon, adapter/MCP/A2A integration, runtime host integration, tool execution, memory/config writes, external publication by the CLI, approval path, blocking, allowing, authorization, or enforcement.
 
-## New v0.1.13 evidence
+## New v0.1.14 evidence
 
-- Manual dry-run CLI skeleton: pass, record-only, generated parser/classifier/DecisionTrace/LiveShadowObservation/LiveShadowObservationResult/scorecard/ManualDryRunResult evidence, validation errors 0, forbidden effects 0, capability true count 0.
-- Manual dry-run CLI negative controls: pass, 16/16 forbidden CLI flags rejected, 23/23 forbidden input claims rejected, symlink output rejected, symlink-parent traversal rejected, outside-evidence directory creation prevented.
-- Manual dry-run CLI real-redacted positive path: pass over 3/3 real-redacted handoffs, record-only 3/3, validation errors 0, forbidden effects 0, capability true count 0, false permits 0, false compacts 0, boundary loss 0.
+- Manual dry-run CLI real-redacted pilot: pass over 6/6 real-redacted metadata-only handoffs.
+- Record-only outputs: 6/6.
+- Validation errors: 0.
+- Forbidden effects detected: 0.
+- Capability true count: 0.
+- False permits: 0.
+- False compacts: 0.
+- Boundary loss: 0.
+- Raw/live/network/tool/memory/config/publication/approval/block/allow/enforcement counters: 0.
 
 ## Carried-forward package evidence
 
-The release package still includes earlier local-shadow gates from the v0.1.x line: reason-code vocabulary docs, conservative coverage matrix, raw/parser adversarial fixtures, adversarial fixture generation, authority-overhead benchmark evidence, decision traces, oracle/classifier separation, mutation degradation checks, category coverage thresholds, passive live-shadow schemas, synthetic live-shadow replay, redaction/retention design boundaries, aggregate drift scorecard shape checks, manual observation bundles, manual redaction fixtures, parserEvidence replay, manual DecisionTrace/live-shadow replay, strict manual scorecard thresholds, RedactionReviewRecord audit gates, the 3-case real-redacted handoff pack, real-redacted replay gate, 6-case real-redacted adversarial coverage gate, and manual dry-run command/result contract schemas. These remain current validation artifacts, but they are not new v0.1.13 delta items.
+The release package still includes earlier local-shadow gates from the v0.1.x line: reason-code vocabulary docs, conservative coverage matrix, raw/parser adversarial fixtures, adversarial fixture generation, authority-overhead benchmark evidence, decision traces, oracle/classifier separation, mutation degradation checks, category coverage thresholds, passive live-shadow schemas, synthetic live-shadow replay, redaction/retention design boundaries, aggregate drift scorecard shape checks, manual observation bundles, manual redaction fixtures, parserEvidence replay, manual DecisionTrace/live-shadow replay, strict manual scorecard thresholds, RedactionReviewRecord audit gates, the 3-case real-redacted handoff pack, real-redacted replay gate, 6-case real-redacted adversarial coverage gate, manual dry-run command/result contract schemas, the manual dry-run CLI skeleton, forbidden-effects CLI gates, and the 3-case CLI real-redacted positive path. These remain current validation artifacts, but they are not new v0.1.14 delta items.
 
 ## Validation snapshot
 
@@ -33,13 +38,14 @@ The release package still includes earlier local-shadow gates from the v0.1.x li
 - Manual dry-run CLI: pass, recordOnly true, validation errors 0, forbidden effects 0, mayBlock 0, mayAllow 0, capabilityTrue 0, raw/live/network/tool/memory/config/publication/approval/block/allow/enforcement all false.
 - Manual dry-run CLI negative controls: pass, forbidden CLI flag rejections 16/16, forbidden input rejections 23/23, symlink output rejected, symlink parent rejected, outside evidence dir not created.
 - Manual dry-run CLI real-redacted handoffs: pass 3/3, record-only 3, validation errors 0, forbidden effects 0, capabilityTrue 0, falsePermit 0, falseCompact 0, boundaryLoss 0.
+- Manual dry-run CLI real-redacted pilot: pass 6/6, record-only 6, validation errors 0, forbidden effects 0, capabilityTrue 0, falsePermit 0, falseCompact 0, boundaryLoss 0.
 - Real-redacted handoff pack: pass 3/3 manually curated real-redacted bundles, 3 redaction review records, validation errors 0, mismatch 0, raw/private/secret/tool/memory/config/approval persistence false, forbidden effects 0, mayBlock 0, mayAllow 0, capability attempts 0.
 - Real-redacted handoff replay gate: pass 3 traces → 3 observations + 3 record-only results, validation errors 0, mismatch 0, falsePermit 0, falseCompact 0, boundaryLoss 0, forbidden effects detected 0, mayBlock 0, mayAllow 0, capabilityTrue 0.
 - Real-redacted adversarial coverage: pass 6 manually reviewed metadata/control cases, route counts `request_full_receipt: 1`, `request_policy_refresh: 1`, `ask_human: 3`, `block: 1`, validation errors 0, falsePermit 0, falseCompact 0, boundaryLoss 0, forbidden effects detected 0, mayBlock 0, mayAllow 0, capabilityTrue 0.
 
 ## Compatibility note
 
-Synaptic Mesh remains a framework-agnostic protocol proposal. v0.1.13 adds a small manual dry-run CLI for local already-redacted artifacts, not a live observer or runtime adapter. The CLI processes redacted artifacts; it does not capture reality.
+Synaptic Mesh remains a framework-agnostic protocol proposal. v0.1.14 adds a controlled real-redacted pilot for the existing manual dry-run CLI. The CLI processes already-redacted artifacts; it does not capture reality.
 
 ## Operational non-release status
 
