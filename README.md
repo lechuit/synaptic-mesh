@@ -1,6 +1,6 @@
-# Synaptic Mesh v0.1.10
+# Synaptic Mesh v0.1.11
 
-Status: manual offline ingestion / pre-live shadow readiness release candidate `v0.1.10`; **not runtime-ready**; **not production/canary/enforcement-ready**.
+Status: real-redacted adversarial coverage / pre-live shadow readiness release candidate `v0.1.11`; **not runtime-ready**; **not production/canary/enforcement-ready**.
 
 ## What this is
 
@@ -10,7 +10,7 @@ A public review package for Synaptic Mesh / Multi-Agent Memory Authority Protoco
 
 Synaptic Mesh is intended to be **framework-agnostic**: the protocol idea should apply to any agent stack that retrieves, summarizes, compresses, or hands off memory-derived context.
 
-Current v0.1.10 status is narrower:
+Current v0.1.11 status is narrower:
 
 - validated with the included local shadow workflow;
 - shipped as a standalone reference package and fixture suite, not integrated with any production/runtime host;
@@ -73,7 +73,7 @@ Expected current result: 59/59 cases pass, unsafe allows 0.
 For release/package verification:
 
 ```bash
-npm --prefix implementation/synaptic-mesh-shadow-v0 run release:check -- --target v0.1.10
+npm --prefix implementation/synaptic-mesh-shadow-v0 run release:check -- --target v0.1.11
 ```
 
 ## Citation/source policy
