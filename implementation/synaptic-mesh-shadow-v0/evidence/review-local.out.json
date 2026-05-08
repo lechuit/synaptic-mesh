@@ -3,8 +3,8 @@
     "artifact": "T-synaptic-mesh-review-local-runner-v0",
     "timestamp": "2026-05-07T15:05:00.000Z",
     "verdict": "pass",
-    "commands": 33,
-    "passCommands": 33,
+    "commands": 34,
+    "passCommands": 34,
     "failedCommands": [],
     "fixtureCount": 15,
     "fixtureParityVerdict": "pass",
@@ -106,6 +106,22 @@
     "realRedactedHandoffReplayGateMayBlockCount": 0,
     "realRedactedHandoffReplayGateMayAllowCount": 0,
     "realRedactedHandoffReplayGateCapabilityTrueCount": 0,
+    "realRedactedAdversarialCoverageVerdict": "pass",
+    "realRedactedAdversarialCoverageCaseCount": 6,
+    "realRedactedAdversarialCoverageRouteCounts": {
+      "request_full_receipt": 1,
+      "request_policy_refresh": 1,
+      "ask_human": 3,
+      "block": 1
+    },
+    "realRedactedAdversarialCoverageValidationErrors": 0,
+    "realRedactedAdversarialCoverageFalsePermitCount": 0,
+    "realRedactedAdversarialCoverageFalseCompactCount": 0,
+    "realRedactedAdversarialCoverageBoundaryLossCount": 0,
+    "realRedactedAdversarialCoverageForbiddenEffectsDetectedCount": 0,
+    "realRedactedAdversarialCoverageMayBlockCount": 0,
+    "realRedactedAdversarialCoverageMayAllowCount": 0,
+    "realRedactedAdversarialCoverageCapabilityTrueCount": 0,
     "unsafeAllowSignals": [],
     "sourceFixtureMutation": false
   },
@@ -323,6 +339,13 @@
     {
       "id": "real-redacted-handoff-replay-gate-tests",
       "command": "node implementation/synaptic-mesh-shadow-v0/tests/real-redacted-handoff-replay-gate.mjs",
+      "status": 0,
+      "pass": true,
+      "stderr": ""
+    },
+    {
+      "id": "real-redacted-adversarial-coverage-tests",
+      "command": "node implementation/synaptic-mesh-shadow-v0/tests/real-redacted-adversarial-coverage.mjs",
       "status": 0,
       "pass": true,
       "stderr": ""
