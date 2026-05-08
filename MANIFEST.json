@@ -1,13 +1,13 @@
 {
   "bundle": "synaptic-mesh",
   "version": "0.1.7",
-  "generated": "2026-05-08T01:12:00Z",
-  "status": "decision_trace_hardening_plus_live_shadow_synthetic_replay_offline_not_runtime_ready",
+  "generated": "2026-05-08T01:17:00Z",
+  "status": "unreleased_v0.1.8_track_live_shadow_synthetic_replay_offline_not_runtime_ready",
   "repository": "https://github.com/lechuit/synaptic-mesh",
   "license": "Apache-2.0 for code; CC BY 4.0 for docs/prose unless otherwise noted",
-  "reproducibility": "expected_pass_local_shadow_gates_decision_trace_mutation_thresholds_live_shadow_schema_synthetic_replay_no_runtime",
+  "reproducibility": "expected_pass_local_shadow_gates_against_v0.1.7_baseline_plus_unreleased_v0.1.8_track_live_shadow_synthetic_replay_no_runtime",
   "rawSourceCache": "excluded",
-  "runtimeBoundary": "ci_baseline_local_shadow_validation_only_no_runtime_integration_no_mcp_a2a_no_authorization_no_tool_execution_no_live_observer_no_daemon",
+  "runtimeBoundary": "unreleased_v0.1.8_track_ci_baseline_local_shadow_validation_only_no_runtime_integration_no_mcp_a2a_no_authorization_no_tool_execution_no_live_observer_no_daemon",
   "files": [
     {
       "path": ".github/workflows/ci.yml",
@@ -156,13 +156,13 @@
     },
     {
       "path": "docs/live-shadow-schemas.md",
-      "bytes": 4287,
-      "sha256": "3e89f7271e08edf39cd742eecb9eeccb62682e24a600cb81f114cecb709d5111"
+      "bytes": 4419,
+      "sha256": "1740aed6fcd95b9e76e259dc0a69d39b9423043ffff5014212e5ea5f7c57deb2"
     },
     {
       "path": "docs/live-shadow-synthetic-replay.md",
-      "bytes": 2252,
-      "sha256": "344277da3a6c6cb752d30416e88791007a49ee1ef6e8779de373e59d8558af78"
+      "bytes": 2903,
+      "sha256": "5f4e24d5691de39591be62b9ccfce3f4ad865d6143c56f89061f8f43241f3589"
     },
     {
       "path": "docs/parser-normalization-evidence.md",

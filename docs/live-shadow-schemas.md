@@ -90,4 +90,4 @@ A future PR may add synthetic offline replay or scorecard shape checks. It shoul
 
 ## Synthetic replay follow-up
 
-The next offline gate is documented in [Synthetic live-shadow replay v0](live-shadow-synthetic-replay.md). It consumes existing DecisionTrace evidence and emits synthetic `LiveShadowObservation` / `LiveShadowObservationResult` records while preserving `passive`, `record_only`, `no_effects`, and `local_shadow_only`. It is still not a live observer and does not add runtime, adapters, tools, memory/config writes, publication, blocking, approval, or enforcement.
+The next unreleased v0.1.8-track offline gate is documented in [Synthetic live-shadow replay v0](live-shadow-synthetic-replay.md). It consumes existing DecisionTrace evidence and emits synthetic `LiveShadowObservation` / `LiveShadowObservationResult` records while preserving `passive`, `record_only`, `no_effects`, and `local_shadow_only`. It is still not a live observer and does not add runtime, adapters, tools, memory/config writes, publication, blocking, approval, or enforcement. It is not a v0.1.8 release cut yet; v0.1.8 metadata/tag/GitHub Release remain a later dedicated release PR.
