@@ -133,6 +133,10 @@ const commands = [
     args: [resolve(packageRoot, 'tests/real-redacted-handoff-replay-gate.mjs')],
   },
   {
+    id: 'real-redacted-adversarial-coverage-tests',
+    args: [resolve(packageRoot, 'tests/real-redacted-adversarial-coverage.mjs')],
+  },
+  {
     id: 'fixture-parity-harness',
     args: [resolve(packageRoot, 'tests/fixture-parity.mjs')],
   },
@@ -172,6 +176,7 @@ const categoryCoverageThresholds = readEvidenceJson('implementation/synaptic-mes
 const redactionReviewRecordSchema = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/redaction-review-record-schema.out.json');
 const realRedactedHandoffPack = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/real-redacted-handoff-pack.out.json');
 const realRedactedHandoffReplayGate = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/real-redacted-handoff-replay-gate.out.json');
+const realRedactedAdversarialCoverage = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/real-redacted-adversarial-coverage.out.json');
 
 const unsafeAllowSignals = [
   ...(fixtureParity?.summary?.nonRegressionUnsafeAllowFixtures ?? []),
@@ -258,6 +263,17 @@ if (Number(realRedactedHandoffReplayGate?.summary?.mayBlockCount ?? 1) !== 0) un
 if (Number(realRedactedHandoffReplayGate?.summary?.mayAllowCount ?? 1) !== 0) unsafeAllowSignals.push('real-redacted-handoff-replay-gate-may-allow');
 if (Number(realRedactedHandoffReplayGate?.summary?.capabilityTrueCount ?? 1) !== 0) unsafeAllowSignals.push('real-redacted-handoff-replay-gate-capability-true');
 if (realRedactedHandoffReplayGate?.summary?.rawContentPersisted !== false) unsafeAllowSignals.push('real-redacted-handoff-replay-gate-raw-content');
+if (realRedactedAdversarialCoverage?.summary?.verdict !== 'pass') unsafeAllowSignals.push('real-redacted-adversarial-coverage');
+if (Number(realRedactedAdversarialCoverage?.summary?.adversarialRealRedactedCases ?? 0) !== 6) unsafeAllowSignals.push('real-redacted-adversarial-coverage-count');
+if (Number(realRedactedAdversarialCoverage?.summary?.validationErrorCount ?? 1) !== 0) unsafeAllowSignals.push('real-redacted-adversarial-coverage-validation-errors');
+if (Number(realRedactedAdversarialCoverage?.summary?.falsePermitCount ?? 1) !== 0) unsafeAllowSignals.push('real-redacted-adversarial-coverage-false-permit');
+if (Number(realRedactedAdversarialCoverage?.summary?.falseCompactCount ?? 1) !== 0) unsafeAllowSignals.push('real-redacted-adversarial-coverage-false-compact');
+if (Number(realRedactedAdversarialCoverage?.summary?.boundaryLossCount ?? 1) !== 0) unsafeAllowSignals.push('real-redacted-adversarial-coverage-boundary-loss');
+if (Number(realRedactedAdversarialCoverage?.summary?.forbiddenEffectsDetectedCount ?? 1) !== 0) unsafeAllowSignals.push('real-redacted-adversarial-coverage-forbidden-effects');
+if (Number(realRedactedAdversarialCoverage?.summary?.mayBlockCount ?? 1) !== 0) unsafeAllowSignals.push('real-redacted-adversarial-coverage-may-block');
+if (Number(realRedactedAdversarialCoverage?.summary?.mayAllowCount ?? 1) !== 0) unsafeAllowSignals.push('real-redacted-adversarial-coverage-may-allow');
+if (Number(realRedactedAdversarialCoverage?.summary?.capabilityTrueCount ?? 1) !== 0) unsafeAllowSignals.push('real-redacted-adversarial-coverage-capability-true');
+if (realRedactedAdversarialCoverage?.summary?.rawContentPersisted !== false) unsafeAllowSignals.push('real-redacted-adversarial-coverage-raw-content');
 
 const summary = {
   artifact: 'T-synaptic-mesh-review-local-runner-v0',
@@ -361,6 +377,17 @@ const summary = {
   realRedactedHandoffReplayGateMayBlockCount: realRedactedHandoffReplayGate?.summary?.mayBlockCount ?? null,
   realRedactedHandoffReplayGateMayAllowCount: realRedactedHandoffReplayGate?.summary?.mayAllowCount ?? null,
   realRedactedHandoffReplayGateCapabilityTrueCount: realRedactedHandoffReplayGate?.summary?.capabilityTrueCount ?? null,
+  realRedactedAdversarialCoverageVerdict: realRedactedAdversarialCoverage?.summary?.verdict ?? null,
+  realRedactedAdversarialCoverageCaseCount: realRedactedAdversarialCoverage?.summary?.adversarialRealRedactedCases ?? null,
+  realRedactedAdversarialCoverageRouteCounts: realRedactedAdversarialCoverage?.summary?.routeCounts ?? null,
+  realRedactedAdversarialCoverageValidationErrors: realRedactedAdversarialCoverage?.summary?.validationErrorCount ?? null,
+  realRedactedAdversarialCoverageFalsePermitCount: realRedactedAdversarialCoverage?.summary?.falsePermitCount ?? null,
+  realRedactedAdversarialCoverageFalseCompactCount: realRedactedAdversarialCoverage?.summary?.falseCompactCount ?? null,
+  realRedactedAdversarialCoverageBoundaryLossCount: realRedactedAdversarialCoverage?.summary?.boundaryLossCount ?? null,
+  realRedactedAdversarialCoverageForbiddenEffectsDetectedCount: realRedactedAdversarialCoverage?.summary?.forbiddenEffectsDetectedCount ?? null,
+  realRedactedAdversarialCoverageMayBlockCount: realRedactedAdversarialCoverage?.summary?.mayBlockCount ?? null,
+  realRedactedAdversarialCoverageMayAllowCount: realRedactedAdversarialCoverage?.summary?.mayAllowCount ?? null,
+  realRedactedAdversarialCoverageCapabilityTrueCount: realRedactedAdversarialCoverage?.summary?.capabilityTrueCount ?? null,
   unsafeAllowSignals,
   sourceFixtureMutation: false,
 };

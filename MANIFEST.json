@@ -1,7 +1,7 @@
 {
   "bundle": "synaptic-mesh",
   "version": "0.1.10",
-  "generated": "2026-05-08T03:40:00Z",
+  "generated": "2026-05-08T05:05:00Z",
   "status": "v0.1.10_real_redacted_handoff_ingestion_offline_replay_gate_public_review_package_not_runtime_ready",
   "repository": "https://github.com/lechuit/synaptic-mesh",
   "license": "Apache-2.0 for code; CC BY 4.0 for docs/prose unless otherwise noted",
@@ -76,8 +76,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 6913,
-      "sha256": "d00cc721bf910d5e48e5fea1d4afe30d7ce317892e5730e1d85dfe4aa86ba43e"
+      "bytes": 7266,
+      "sha256": "37011de3d3b9ddb4821c016653ae032103ee2a06473b9e240861c57ac77ad48e"
     },
     {
       "path": "RELEASE_CANDIDATE.md",
@@ -220,6 +220,11 @@
       "sha256": "0cce7504c180f2e96abec00a8d9e4b9dbb31048cb49f2f1c0c41e2c42f997a54"
     },
     {
+      "path": "docs/real-redacted-adversarial-coverage.md",
+      "bytes": 3268,
+      "sha256": "661a3b090bbc371034c6c44fcde7fb73acd22e3d8d4793ec67b49e20d5e7d31c"
+    },
+    {
       "path": "docs/real-redacted-handoff-pack.md",
       "bytes": 2376,
       "sha256": "aca80ec2f77df4fca6c185f2589275020930ff337720164ac7fed7eac34ab130"
@@ -291,8 +296,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/README.md",
-      "bytes": 10186,
-      "sha256": "ffde0503b4ea46116582d77b516486b7506762dd58d634515f99688a699a197c"
+      "bytes": 10457,
+      "sha256": "d5ba33134efab814ff38d1d36f6ed5daba1eacd9cf5094ad9ad4affe606fccfb"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/bin/validate-receipt.mjs",
@@ -435,6 +440,11 @@
       "sha256": "08b261811d1b681901da89171d1a89bf73e85efdf8066bcf52c0779f680d97de"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/real-redacted-adversarial-coverage.out.json",
+      "bytes": 6612,
+      "sha256": "50c0c221565292905c27a19290063ff4a6900c1f364965231d21d2028b5483ed"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/real-redacted-handoff-pack.out.json",
       "bytes": 5354,
       "sha256": "d2a32edce0e4e7aafb96b9e1658f8665faec4d2a1d08a0eaf29dba6d141c9f80"
@@ -466,8 +476,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/review-local.out.json",
-      "bytes": 12150,
-      "sha256": "b5d259ca406ede0a1813001370955d55d2efdfb8675550753237f5f20f1fa2ca"
+      "bytes": 13133,
+      "sha256": "672b6f1cbbb95d2e3958200239e09e81e2e15797ce6e7e55291b3834f182167e"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/route-classifier-shadow.out.json",
@@ -585,6 +595,11 @@
       "sha256": "ce736167d87a47c8e8e0343246f3e30973564a47b9d5f158cc0f77bdf9a26ff6"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/fixtures/real-redacted-adversarial-coverage.json",
+      "bytes": 73024,
+      "sha256": "3618d79e1a3d21cd3c0e48c7fcae03ae3f2a336b5186abdb0264c9fd2208b1c1"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/fixtures/real-redacted-handoff-pack.json",
       "bytes": 29892,
       "sha256": "bf1746afef4653460e51257f9ca70cf715a5e8549072f50922f6aaabd88438b3"
@@ -611,8 +626,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/package.json",
-      "bytes": 8112,
-      "sha256": "7fbe8328c60b2dc8252ae2771f192d858347109df74e8200825e29c54bc1b7c7"
+      "bytes": 8273,
+      "sha256": "0205aa4fb481e66670dd6de514028cb80266c052f6c60bdae9d66033dee81ad8"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/action-context-packet.mjs",
@@ -815,6 +830,11 @@
       "sha256": "abdc9a13e6c969fbec424eec0c34fe9ad272b41a20c4eb47075674a3335cff49"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/real-redacted-adversarial-coverage.mjs",
+      "bytes": 15811,
+      "sha256": "51e0121613992523af06f985f142013762cc187295f8019f3b4297363fab0482"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/real-redacted-handoff-pack.mjs",
       "bytes": 11663,
       "sha256": "b8312fb1c7b5e8770acc3380d15abf31ec8229dd05928bc85a5ab9fe39ded68c"
@@ -871,8 +891,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/review-local.mjs",
-      "bytes": 29376,
-      "sha256": "8b192101ea8305c08378efb39b02e68f1dfb9f9a20592d00703a3abedc532c3c"
+      "bytes": 32728,
+      "sha256": "b5ae8d627639b11d1adaa6319ed13bd26589991718b2b222453f00081f746142"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/route-classifier-shadow.mjs",
