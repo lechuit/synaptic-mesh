@@ -38,6 +38,7 @@ const releaseGateScripts = [
   'test:redaction-review-record-schema',
   'test:real-redacted-handoff-pack',
   'test:real-redacted-handoff-replay-gate',
+  'test:real-redacted-adversarial-coverage',
 ];
 
 function runGit(args, options = {}) {
@@ -458,6 +459,40 @@ assert(realRedactedHandoffReplayGate?.summary?.externalPublicationImplemented ==
 assert(realRedactedHandoffReplayGate?.summary?.approvalPathImplemented === false, 'real-redacted replay gate must not implement approval path');
 assert(realRedactedHandoffReplayGate?.summary?.authorizationImplemented === false, 'real-redacted replay gate must not implement authorization');
 assert(realRedactedHandoffReplayGate?.summary?.enforcementImplemented === false, 'real-redacted replay gate must not implement enforcement');
+
+const realRedactedAdversarialCoverage = readJson(path.join(packageRoot, 'evidence/real-redacted-adversarial-coverage.out.json'));
+assert(realRedactedAdversarialCoverage?.summary?.verdict === 'pass', 'real-redacted adversarial coverage verdict must be pass');
+assert(realRedactedAdversarialCoverage?.summary?.adversarialRealRedactedCases === 6, 'real-redacted adversarial coverage must contain exactly 6 cases');
+assert(realRedactedAdversarialCoverage?.summary?.routeCounts?.request_full_receipt === 1, 'real-redacted adversarial coverage must include one request_full_receipt route');
+assert(realRedactedAdversarialCoverage?.summary?.routeCounts?.request_policy_refresh === 1, 'real-redacted adversarial coverage must include one request_policy_refresh route');
+assert(realRedactedAdversarialCoverage?.summary?.routeCounts?.ask_human === 3, 'real-redacted adversarial coverage must include three ask_human routes');
+assert(realRedactedAdversarialCoverage?.summary?.routeCounts?.block === 1, 'real-redacted adversarial coverage must include one block route');
+assert(realRedactedAdversarialCoverage?.summary?.validationErrorCount === 0, 'real-redacted adversarial coverage must have zero validation errors');
+assert(realRedactedAdversarialCoverage?.summary?.falsePermitCount === 0, 'real-redacted adversarial coverage must have zero false permits');
+assert(realRedactedAdversarialCoverage?.summary?.falseCompactCount === 0, 'real-redacted adversarial coverage must have zero false compacts');
+assert(realRedactedAdversarialCoverage?.summary?.boundaryLossCount === 0, 'real-redacted adversarial coverage must have zero boundary loss');
+assert(realRedactedAdversarialCoverage?.summary?.forbiddenEffectsDetectedCount === 0, 'real-redacted adversarial coverage must detect zero forbidden effects');
+assert(realRedactedAdversarialCoverage?.summary?.mayBlockCount === 0, 'real-redacted adversarial coverage must not block');
+assert(realRedactedAdversarialCoverage?.summary?.mayAllowCount === 0, 'real-redacted adversarial coverage must not allow');
+assert(realRedactedAdversarialCoverage?.summary?.capabilityTrueCount === 0, 'real-redacted adversarial coverage must keep all capability booleans false');
+assert(realRedactedAdversarialCoverage?.summary?.rawContentPersisted === false, 'real-redacted adversarial coverage must not persist raw content');
+assert(realRedactedAdversarialCoverage?.summary?.privatePathsPersisted === false, 'real-redacted adversarial coverage must not persist private paths');
+assert(realRedactedAdversarialCoverage?.summary?.secretLikeValuesPersisted === false, 'real-redacted adversarial coverage must not persist secret-like values');
+assert(realRedactedAdversarialCoverage?.summary?.toolOutputsPersisted === false, 'real-redacted adversarial coverage must not persist tool outputs');
+assert(realRedactedAdversarialCoverage?.summary?.memoryTextPersisted === false, 'real-redacted adversarial coverage must not persist memory text');
+assert(realRedactedAdversarialCoverage?.summary?.configTextPersisted === false, 'real-redacted adversarial coverage must not persist config text');
+assert(realRedactedAdversarialCoverage?.summary?.approvalTextPersisted === false, 'real-redacted adversarial coverage must not persist approval text');
+assert(realRedactedAdversarialCoverage?.summary?.liveObserverImplemented === false, 'real-redacted adversarial coverage must not implement live observer');
+assert(realRedactedAdversarialCoverage?.summary?.daemonImplemented === false, 'real-redacted adversarial coverage must not implement daemon');
+assert(realRedactedAdversarialCoverage?.summary?.watcherImplemented === false, 'real-redacted adversarial coverage must not implement watcher');
+assert(realRedactedAdversarialCoverage?.summary?.adapterIntegrationImplemented === false, 'real-redacted adversarial coverage must not integrate adapters');
+assert(realRedactedAdversarialCoverage?.summary?.toolExecutionImplemented === false, 'real-redacted adversarial coverage must not implement tool execution');
+assert(realRedactedAdversarialCoverage?.summary?.memoryWriteImplemented === false, 'real-redacted adversarial coverage must not implement memory writes');
+assert(realRedactedAdversarialCoverage?.summary?.configWriteImplemented === false, 'real-redacted adversarial coverage must not implement config writes');
+assert(realRedactedAdversarialCoverage?.summary?.externalPublicationImplemented === false, 'real-redacted adversarial coverage must not implement external publication');
+assert(realRedactedAdversarialCoverage?.summary?.approvalPathImplemented === false, 'real-redacted adversarial coverage must not implement approval path');
+assert(realRedactedAdversarialCoverage?.summary?.authorizationImplemented === false, 'real-redacted adversarial coverage must not implement authorization');
+assert(realRedactedAdversarialCoverage?.summary?.enforcementImplemented === false, 'real-redacted adversarial coverage must not implement enforcement');
 
 const reviewLocalCount = countLabel(reviewEvidence.summary.passCommands, reviewEvidence.summary.commands);
 const receiverAdapterCount = countLabel(receiverAdapterEvidence.summary.passCases, receiverAdapterEvidence.summary.totalCases);

@@ -1,13 +1,13 @@
 {
   "bundle": "synaptic-mesh",
-  "version": "0.1.10",
-  "generated": "2026-05-08T05:05:00Z",
-  "status": "v0.1.10_real_redacted_handoff_ingestion_offline_replay_gate_public_review_package_not_runtime_ready",
+  "version": "0.1.11",
+  "generated": "2026-05-08T05:15:00Z",
+  "status": "v0.1.11_real_redacted_adversarial_coverage_offline_replay_gate_public_review_package_not_runtime_ready",
   "repository": "https://github.com/lechuit/synaptic-mesh",
   "license": "Apache-2.0 for code; CC BY 4.0 for docs/prose unless otherwise noted",
-  "reproducibility": "expected_pass_local_shadow_gates_for_v0.1.10_real_redacted_handoff_ingestion_offline_replay_no_runtime",
+  "reproducibility": "expected_pass_local_shadow_gates_for_v0.1.11_real_redacted_adversarial_coverage_offline_replay_no_runtime",
   "rawSourceCache": "excluded",
-  "runtimeBoundary": "v0.1.10_real_redacted_handoff_ingestion_offline_replay_only_no_live_observer_no_runtime_integration_no_tool_execution_no_memory_config_publication_approval_authorization_or_enforcement",
+  "runtimeBoundary": "v0.1.11_real_redacted_adversarial_coverage_offline_replay_only_no_live_observer_no_runtime_integration_no_tool_execution_no_memory_config_publication_approval_authorization_or_enforcement",
   "files": [
     {
       "path": ".github/workflows/ci.yml",
@@ -76,8 +76,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 7266,
-      "sha256": "37011de3d3b9ddb4821c016653ae032103ee2a06473b9e240861c57ac77ad48e"
+      "bytes": 7276,
+      "sha256": "5e2771da3ea726318e12d117dbb188256a8f173a3f47fb8d901c10347b390292"
     },
     {
       "path": "RELEASE_CANDIDATE.md",
@@ -86,8 +86,8 @@
     },
     {
       "path": "RELEASE_NOTES.md",
-      "bytes": 7860,
-      "sha256": "98c9dc012dd731f8ddfdb4e8dc48627fc4f8772640c8c0fcdfc09739bdc6fa37"
+      "bytes": 7879,
+      "sha256": "80925bc2aaabb3dc98a0ae3fc9b7a66054d74589c642539e5ad299edda78c6db"
     },
     {
       "path": "design-notes/adapter-boundary-langgraph-mcp-v0.md",
@@ -247,7 +247,7 @@
     {
       "path": "docs/release-checklist.md",
       "bytes": 6655,
-      "sha256": "69b238155fa273d1a9f55c4f218ff39c3aa48c8b6542c3f0d27ce9691cccad90"
+      "sha256": "129b652979de86fe63e63ebb8e1b3b67640f3165480e69f2ac0d331d866b4118"
     },
     {
       "path": "docs/repo-structure.md",
@@ -1361,8 +1361,8 @@
     },
     {
       "path": "tools/release-check.mjs",
-      "bytes": 47531,
-      "sha256": "c1528715d8c35cdb76891dcea6cc92182e1e9bccac496c7ec9b3510e59385b27"
+      "bytes": 52538,
+      "sha256": "4dcc49febe04de30ecd82f8f5d4bd0d322d7c39820a88c1478d7910ced161003"
     },
     {
       "path": "tools/verify-manifest.mjs",
