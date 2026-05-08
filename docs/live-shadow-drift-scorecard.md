@@ -67,3 +67,7 @@ All capability counters must stay zero:
 ## Release boundary
 
 This remains unreleased `v0.1.8-track` work. Repository release metadata stays at the latest published release until the dedicated v0.1.8 release PR. During this track, `release:check -- --target v0.1.7` is a latest-published-release baseline/compatibility gate, not a claim that this scorecard shape was released under v0.1.7.
+
+## Manual ingestion follow-up
+
+The next unreleased v0.1.9-track gate is [Manual observation bundles v0](manual-observation-bundles.md). It defines a manual/offline/redacted bundle shape for handoff-like artifacts before any live observer, watcher, daemon, runtime adapter, tool execution, memory/config write, publication, approval path, blocking, allowing, or enforcement exists.
