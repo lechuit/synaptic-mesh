@@ -33,6 +33,7 @@ const releaseGateScripts = [
   'test:manual-observation-bundle-schema',
   'test:manual-observation-redaction-fixtures',
   'test:manual-bundle-parser-evidence-replay',
+  'test:manual-decisiontrace-live-shadow-replay',
 ];
 
 function runGit(args, options = {}) {
@@ -308,6 +309,32 @@ assert(manualBundleParserEvidenceReplay?.summary?.memoryWriteImplemented === fal
 assert(manualBundleParserEvidenceReplay?.summary?.configWriteImplemented === false, 'manual parserEvidence replay must not implement config writes');
 assert(manualBundleParserEvidenceReplay?.summary?.externalPublicationImplemented === false, 'manual parserEvidence replay must not implement external publication');
 assert(manualBundleParserEvidenceReplay?.summary?.enforcementImplemented === false, 'manual parserEvidence replay must not implement enforcement');
+
+const manualDecisionTraceLiveShadowReplay = readJson(path.join(packageRoot, 'evidence/manual-decisiontrace-live-shadow-replay.out.json'));
+assert(manualDecisionTraceLiveShadowReplay?.summary?.verdict === 'pass', 'manual DecisionTrace live-shadow replay verdict must be pass');
+assert(manualDecisionTraceLiveShadowReplay?.summary?.mode === 'manual_offline_decisiontrace_live_shadow_replay_only', 'manual DecisionTrace live-shadow replay must remain replay-only');
+assert(manualDecisionTraceLiveShadowReplay?.summary?.manualBundles === manualDecisionTraceLiveShadowReplay?.summary?.traceCount, 'manual DecisionTrace replay must cover all manual bundles');
+assert(manualDecisionTraceLiveShadowReplay?.summary?.traceCount === manualDecisionTraceLiveShadowReplay?.summary?.observationCount, 'manual live-shadow replay must produce one observation per trace');
+assert(manualDecisionTraceLiveShadowReplay?.summary?.traceCount === manualDecisionTraceLiveShadowReplay?.summary?.resultCount, 'manual live-shadow replay must produce one result per trace');
+assert(manualDecisionTraceLiveShadowReplay?.summary?.validationErrorCount === 0, 'manual DecisionTrace live-shadow replay must validate all records');
+assert(manualDecisionTraceLiveShadowReplay?.summary?.mismatchCount === 0, 'manual DecisionTrace live-shadow replay must have zero mismatches');
+assert(manualDecisionTraceLiveShadowReplay?.summary?.falsePermitCount === 0, 'manual DecisionTrace live-shadow replay must have zero false permits');
+assert(manualDecisionTraceLiveShadowReplay?.summary?.falseCompactCount === 0, 'manual DecisionTrace live-shadow replay must have zero false compacts');
+assert(manualDecisionTraceLiveShadowReplay?.summary?.boundaryLossCount === 0, 'manual DecisionTrace live-shadow replay must have zero boundary loss');
+assert(manualDecisionTraceLiveShadowReplay?.summary?.forbiddenEffectsDetectedCount === 0, 'manual live-shadow replay must detect zero forbidden effects');
+assert(manualDecisionTraceLiveShadowReplay?.summary?.mayBlockCount === 0, 'manual live-shadow replay must not block');
+assert(manualDecisionTraceLiveShadowReplay?.summary?.mayAllowCount === 0, 'manual live-shadow replay must not allow');
+assert(manualDecisionTraceLiveShadowReplay?.summary?.capabilityTrueCount === 0, 'manual live-shadow replay must keep all capability booleans false');
+assert(manualDecisionTraceLiveShadowReplay?.summary?.redactedMetadataOnly === true, 'manual DecisionTrace live-shadow replay must use redacted metadata only');
+assert(manualDecisionTraceLiveShadowReplay?.summary?.rawContentPersisted === false, 'manual DecisionTrace live-shadow replay must not persist raw content');
+assert(manualDecisionTraceLiveShadowReplay?.summary?.capabilityAttempts === 0, 'manual DecisionTrace live-shadow replay must not include capability attempts');
+assert(manualDecisionTraceLiveShadowReplay?.summary?.forbiddenEffects === 0, 'manual DecisionTrace live-shadow replay must not include forbidden effects');
+assert(manualDecisionTraceLiveShadowReplay?.summary?.liveObserverImplemented === false, 'manual DecisionTrace live-shadow replay must not implement live observer');
+assert(manualDecisionTraceLiveShadowReplay?.summary?.toolExecutionImplemented === false, 'manual DecisionTrace live-shadow replay must not implement tool execution');
+assert(manualDecisionTraceLiveShadowReplay?.summary?.memoryWriteImplemented === false, 'manual DecisionTrace live-shadow replay must not implement memory writes');
+assert(manualDecisionTraceLiveShadowReplay?.summary?.configWriteImplemented === false, 'manual DecisionTrace live-shadow replay must not implement config writes');
+assert(manualDecisionTraceLiveShadowReplay?.summary?.externalPublicationImplemented === false, 'manual DecisionTrace live-shadow replay must not implement external publication');
+assert(manualDecisionTraceLiveShadowReplay?.summary?.enforcementImplemented === false, 'manual DecisionTrace live-shadow replay must not implement enforcement');
 
 const reviewLocalCount = countLabel(reviewEvidence.summary.passCommands, reviewEvidence.summary.commands);
 const receiverAdapterCount = countLabel(receiverAdapterEvidence.summary.passCases, receiverAdapterEvidence.summary.totalCases);

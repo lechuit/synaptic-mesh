@@ -1,13 +1,13 @@
 {
   "bundle": "synaptic-mesh",
   "version": "0.1.8",
-  "generated": "2026-05-08T02:23:00Z",
-  "status": "unreleased_v0.1.9_track_manual_bundle_parser_evidence_replay_offline_not_runtime_ready",
+  "generated": "2026-05-08T02:33:00Z",
+  "status": "unreleased_v0.1.9_track_manual_decisiontrace_live_shadow_replay_offline_not_runtime_ready",
   "repository": "https://github.com/lechuit/synaptic-mesh",
   "license": "Apache-2.0 for code; CC BY 4.0 for docs/prose unless otherwise noted",
-  "reproducibility": "expected_pass_local_shadow_gates_against_v0.1.8_baseline_plus_unreleased_v0.1.9_track_manual_parser_evidence_replay_no_runtime",
+  "reproducibility": "expected_pass_local_shadow_gates_against_v0.1.8_baseline_plus_unreleased_v0.1.9_track_manual_decisiontrace_live_shadow_replay_no_runtime",
   "rawSourceCache": "excluded",
-  "runtimeBoundary": "unreleased_v0.1.9_track_manual_parser_evidence_replay_only_no_classifier_no_decision_trace_no_runtime_integration_no_tool_execution_no_live_observer_no_daemon_no_watcher",
+  "runtimeBoundary": "unreleased_v0.1.9_track_manual_decisiontrace_live_shadow_record_replay_only_no_live_observer_no_runtime_integration_no_tool_execution_no_memory_config_publication_approval_or_enforcement",
   "files": [
     {
       "path": ".github/workflows/ci.yml",
@@ -176,8 +176,13 @@
     },
     {
       "path": "docs/manual-bundle-parser-evidence-replay.md",
-      "bytes": 1516,
-      "sha256": "c8f6e819f00f6a43957db5b5777616515062fa9f5a3c4955728a034a56f2c79f"
+      "bytes": 1953,
+      "sha256": "eb203e8b44798a0e0bc6711c450fda92d5bbd8e5909c2b84c46625ab376df070"
+    },
+    {
+      "path": "docs/manual-decisiontrace-live-shadow-replay.md",
+      "bytes": 1778,
+      "sha256": "386be5ac3aebd26504960ac643b9c01933689220a5098ab2d81eb9d156648e28"
     },
     {
       "path": "docs/manual-observation-bundles.md",
@@ -350,6 +355,11 @@
       "sha256": "ccd41f7528d0d4cf3da082bc438e4711e77fc1e8d67bac8ad68dac5660446720"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/manual-decisiontrace-live-shadow-replay.out.json",
+      "bytes": 10308,
+      "sha256": "74b1fdd728e564c85b4e727a3586dd58ddfa94a84343635ab49c64f148d198a8"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/manual-observation-bundle-schema.out.json",
       "bytes": 2499,
       "sha256": "7381edb1c9ad8ce15fcea1db6a071ffc298db1c039ab14d8327bbcaec239c9bb"
@@ -495,6 +505,11 @@
       "sha256": "5dfb9f2e91b03020c646edbd8e5a698a1bf3250e2549f8bc008fefbf060afc51"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/fixtures/manual-decisiontrace-live-shadow-replay.json",
+      "bytes": 1652,
+      "sha256": "f27a88c950641c764311942f276293a011671639945bb2a5b83711a9d9aab099"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/fixtures/manual-observation-bundles.json",
       "bytes": 2520,
       "sha256": "a1b488c653b41cd8da5ab53b0db910784aaaf9172dc6714a73aa0b0cee340191"
@@ -536,8 +551,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/package.json",
-      "bytes": 7316,
-      "sha256": "eb9433ae3345a84e9a3a4967f6c2aff9b7223b12228eacdee25c238e154dbcee"
+      "bytes": 7492,
+      "sha256": "d1f792092e0ece41d31ded0cfc243fc629a903fc7c76f64a1384b1336279e18c"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/action-context-packet.mjs",
@@ -688,6 +703,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/tests/manual-bundle-parser-evidence-replay.mjs",
       "bytes": 6538,
       "sha256": "9981bc76a419cde56a840354ba3f9b9cca66e9fbe3ee9dd80ec489c8a86a5576"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/manual-decisiontrace-live-shadow-replay.mjs",
+      "bytes": 15613,
+      "sha256": "9c92891dfcec3a01f0c9acc9db6b1b1ac0a79a1a38561b14e5b9eb78f342a3fc"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/manual-observation-bundle-schema.mjs",
@@ -1231,8 +1251,8 @@
     },
     {
       "path": "tools/release-check.mjs",
-      "bytes": 28254,
-      "sha256": "5b619d82b752b7c51aa2fabc06fc246ec9296162620d2728300c221b5d80b681"
+      "bytes": 32276,
+      "sha256": "955c03e9985253c665d5266cd184b7dde97cbfd7604230ac2e00f2786f6836d3"
     },
     {
       "path": "tools/verify-manifest.mjs",

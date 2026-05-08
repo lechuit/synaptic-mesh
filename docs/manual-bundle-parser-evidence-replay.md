@@ -40,3 +40,7 @@ The gate expects:
 ## Release boundary
 
 This is unreleased `v0.1.9-track` work. Repository release metadata remains at the latest published release until a dedicated v0.1.9 release PR is cut. During this track, `release:check -- --target v0.1.8` is a latest-published-release baseline/compatibility gate, not a claim that this work was released under v0.1.8.
+
+## DecisionTrace / live-shadow replay follow-up
+
+The next unreleased v0.1.9-track gate is [Manual DecisionTrace → LiveShadowObservation replay v0](manual-decisiontrace-live-shadow-replay.md). It maps redacted parserEvidence replay rows into offline DecisionTrace and record-only LiveShadowObservation shapes; it does not observe live traffic, execute tools, write memory/config, publish, approve, block, allow, authorize, or enforce.
