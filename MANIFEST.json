@@ -200,6 +200,11 @@
       "sha256": "3b71791cb8454170b3265db881fd2d9f9dfa845149a8128da43be4c373db8542"
     },
     {
+      "path": "docs/manual-real-handoff-capture-v0.md",
+      "bytes": 10255,
+      "sha256": "2eae385626d49e1ce4264c478c1c52b72733d8ee0d6404c8e636c6e64ffa35da"
+    },
+    {
       "path": "docs/parser-normalization-evidence.md",
       "bytes": 2130,
       "sha256": "015df89bb164c470b28dfa65b746c795601a53e2aff37fb79abbd8af94f3bd22"
