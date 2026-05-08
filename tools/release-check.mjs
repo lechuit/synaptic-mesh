@@ -39,6 +39,7 @@ const releaseGateScripts = [
   'test:real-redacted-handoff-pack',
   'test:real-redacted-handoff-replay-gate',
   'test:real-redacted-adversarial-coverage',
+  'test:manual-dry-run-contracts',
 ];
 
 function runGit(args, options = {}) {

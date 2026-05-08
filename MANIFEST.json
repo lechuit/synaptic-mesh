@@ -1,7 +1,7 @@
 {
   "bundle": "synaptic-mesh",
   "version": "0.1.11",
-  "generated": "2026-05-08T05:15:00Z",
+  "generated": "2026-05-08T05:55:00Z",
   "status": "v0.1.11_real_redacted_adversarial_coverage_offline_replay_gate_public_review_package_not_runtime_ready",
   "repository": "https://github.com/lechuit/synaptic-mesh",
   "license": "Apache-2.0 for code; CC BY 4.0 for docs/prose unless otherwise noted",
@@ -105,6 +105,11 @@
       "sha256": "474233d2478c38d8e7485f11bc7f8a18d6dca87035593f02cf2a67547f07b850"
     },
     {
+      "path": "design-notes/manual-dry-run-cli-v0.md",
+      "bytes": 5590,
+      "sha256": "464bbaa968ba9759ffb1318bf30a7c9f910528fdf27cc6720431356b8711aea2"
+    },
+    {
       "path": "design-notes/scalable-design-patterns-v0.md",
       "bytes": 1078,
       "sha256": "2aa0bd6bee2c8f926a1a2e3414f32f194881d273947b5fdf0eede0938ba54f60"
@@ -185,6 +190,11 @@
       "sha256": "0ef1acc69e089605c7e473588165b5c440844e3d4b8635d9554d388bf06a9787"
     },
     {
+      "path": "docs/manual-dry-run-contracts.md",
+      "bytes": 3102,
+      "sha256": "be466b50231f50a957aa6b67f9672a056060b7070745b85f2f1e7611b0e5b9c6"
+    },
+    {
       "path": "docs/manual-observation-bundles.md",
       "bytes": 2568,
       "sha256": "0ddb7e67c648e8b2d845d5e454155e5c5b64bf6e0576e786b94cb087a65ee276"
@@ -246,8 +256,8 @@
     },
     {
       "path": "docs/release-checklist.md",
-      "bytes": 6655,
-      "sha256": "129b652979de86fe63e63ebb8e1b3b67640f3165480e69f2ac0d331d866b4118"
+      "bytes": 7144,
+      "sha256": "a99ae61b076c7376faba3850c9300f2a6ce582848e432ff4db441c3a1ae0ad07"
     },
     {
       "path": "docs/repo-structure.md",
@@ -388,6 +398,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/manual-decisiontrace-live-shadow-replay.out.json",
       "bytes": 10308,
       "sha256": "74b1fdd728e564c85b4e727a3586dd58ddfa94a84343635ab49c64f148d198a8"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/manual-dry-run-contracts.out.json",
+      "bytes": 5353,
+      "sha256": "6c69366b8b4ff1d1696ed43456173b87740229d3369ff15cbd5178f161805865"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/manual-observation-bundle-schema.out.json",
@@ -565,6 +580,11 @@
       "sha256": "f27a88c950641c764311942f276293a011671639945bb2a5b83711a9d9aab099"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/fixtures/manual-dry-run-contracts.json",
+      "bytes": 6283,
+      "sha256": "808df5f3eceeedcf0fa1256b04163592233131da850489e6bb33e85f265f985f"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/fixtures/manual-observation-bundles.json",
       "bytes": 2520,
       "sha256": "a1b488c653b41cd8da5ab53b0db910784aaaf9172dc6714a73aa0b0cee340191"
@@ -626,8 +646,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/package.json",
-      "bytes": 8273,
-      "sha256": "0205aa4fb481e66670dd6de514028cb80266c052f6c60bdae9d66033dee81ad8"
+      "bytes": 8404,
+      "sha256": "00f48f2adae2f1b2cf1a929f2db907209a79b694c1597c29f09d337c304f2505"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/action-context-packet.mjs",
@@ -783,6 +803,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/tests/manual-decisiontrace-live-shadow-replay.mjs",
       "bytes": 15613,
       "sha256": "9c92891dfcec3a01f0c9acc9db6b1b1ac0a79a1a38561b14e5b9eb78f342a3fc"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/manual-dry-run-contracts.mjs",
+      "bytes": 17832,
+      "sha256": "73d01cb8bfc90a2cfff718902ed2dacb602e93dfb7f8bd167e8ddfbfbf15b21e"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/manual-observation-bundle-schema.mjs",
@@ -1305,6 +1330,16 @@
       "sha256": "7cd337d29375b6a294990ed4e932ba8faf621cf0b628c35bdddca6b371fc31c0"
     },
     {
+      "path": "schemas/manual-dry-run-command.schema.json",
+      "bytes": 4517,
+      "sha256": "8cf1ad7790abf8bdee7981edef3bae3d9d37a2adb914a189e3fe6cb26ad789d2"
+    },
+    {
+      "path": "schemas/manual-dry-run-result.schema.json",
+      "bytes": 4709,
+      "sha256": "9d880a30f0eff429025f471a1e544e20cd11740253a95ce796849f0fb849996b"
+    },
+    {
       "path": "schemas/manual-observation-bundle.schema.json",
       "bytes": 3110,
       "sha256": "26dedab0084a3a181db0d167f2f10739ed0398ff03efce424817f2de78960007"
@@ -1361,8 +1396,8 @@
     },
     {
       "path": "tools/release-check.mjs",
-      "bytes": 52538,
-      "sha256": "4dcc49febe04de30ecd82f8f5d4bd0d322d7c39820a88c1478d7910ced161003"
+      "bytes": 52573,
+      "sha256": "fc81d61fca13ba35abde20cc02331184d6a9b988018c2494834f5957a400cc86"
     },
     {
       "path": "tools/verify-manifest.mjs",
