@@ -55,3 +55,7 @@ This schema is the first step. Later v0.1.9-track PRs may add redaction fixture 
 ## Release boundary
 
 This is unreleased `v0.1.9-track` work. Repository release metadata remains at the latest published release until a dedicated v0.1.9 release PR is cut. During this track, `release:check -- --target v0.1.8` is a latest-published-release baseline/compatibility gate, not a claim that this work was released under v0.1.8.
+
+## Redaction fixture follow-up
+
+The next unreleased v0.1.9-track gate is [Manual observation redaction fixture pack v0](manual-observation-redaction-fixtures.md). It adds positive redacted cases and synthetic negative leakage labels only; it does not implement redaction code, capture live traffic, read logs/sessions, execute tools, write memory/config, publish, approve, block, allow, or enforce.
