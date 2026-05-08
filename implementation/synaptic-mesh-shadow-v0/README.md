@@ -33,7 +33,7 @@ The reference currently covers:
 - synthetic handoff examples;
 - fixture parity over the canonical local fixture set;
 - normalized fixture summary output;
-- RouteDecision schema, threat-model mapping, wrong-route oracle fixture evidence, generated adversarial fixture variants, raw/parser adversarial fixture pressure, parser normalization evidence across all canonical routes, offline real-flow replay evidence, deterministic route classifier shadow evidence, live-shadow shape/replay gates, and manual offline observation ingestion readiness gates;
+- RouteDecision schema, threat-model mapping, wrong-route oracle fixture evidence, generated adversarial fixture variants, raw/parser adversarial fixture pressure, parser normalization evidence across all canonical routes, offline real-flow replay evidence, deterministic route classifier shadow evidence, live-shadow shape/replay gates, manual offline observation ingestion readiness gates, and manual dry-run CLI gates over explicit already-redacted local files;
 - deterministic local benchmark/overhead evidence comparing representation strategies (fixture proxy only, no live LLM/API calls);
 - one-command local review evidence.
 
@@ -86,6 +86,15 @@ npm run test:parser-normalization-evidence
 npm run test:real-flow-replay
 npm run test:real-flow-classifier-scorecard
 npm run review:local
+```
+
+
+Manual dry-run CLI gates:
+
+```bash
+npm run test:manual-dry-run-cli
+npm run test:manual-dry-run-cli-negative-controls
+npm run test:manual-dry-run-cli-real-redacted-handoffs
 ```
 
 Primary commands requested for reviewer quickstart:
@@ -166,6 +175,9 @@ Key files:
 - `real-redacted-handoff-pack.out.json` — validates 3 manually curated real-redacted handoff fixtures and expected artifacts; raw handoff content is not persisted;
 - `real-redacted-handoff-replay-gate.out.json` — replays the real-redacted pack through parser/classifier/DecisionTrace/LiveShadowObservationResult and scorecard comparisons; offline record-only evidence, not a live observer;
 - `real-redacted-adversarial-coverage.out.json` — validates six manually reviewed real-redacted/control-message metadata cases across request_full_receipt/request_policy_refresh/ask_human/block routes; offline record-only evidence, not a live observer or runtime gate;
+- `manual-dry-run-cli.out.json` — validates the minimal manual dry-run CLI skeleton over one explicit redacted local input;
+- `manual-dry-run-cli-negative-controls.out.json` — validates forbidden flags/claims and output containment negative controls;
+- `manual-dry-run-cli-real-redacted-handoffs.out.json` — runs the manual dry-run CLI over exactly 3 explicit real-redacted handoffs, record-only with zero forbidden effects/capabilities/boundary loss;
 - `route-classifier-shadow.out.json` — deterministic route classifier shadow evidence over parserEvidence fixtures; not raw parsing, live observation, runtime enforcement, tool authorization, or publication readiness;
 - `receiver-policy-adapter-contracts.out.json` — framework-shaped receiver adapter contract cases;
 - `cli-validator.out.json` — CLI behavior cases;

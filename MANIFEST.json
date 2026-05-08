@@ -1,13 +1,13 @@
 {
   "bundle": "synaptic-mesh",
-  "version": "0.1.12",
-  "generated": "2026-05-08T12:19:30Z",
-  "status": "v0.1.13_manual_dry_run_cli_real_redacted_positive_path_prerelease_not_runtime_ready",
+  "version": "0.1.13",
+  "generated": "2026-05-08T12:26:11Z",
+  "status": "v0.1.13_manual_dry_run_cli_release_candidate_not_runtime_ready",
   "repository": "https://github.com/lechuit/synaptic-mesh",
   "license": "Apache-2.0 for code; CC BY 4.0 for docs/prose unless otherwise noted",
   "reproducibility": "expected_pass_local_shadow_gates_for_v0.1.13_manual_dry_run_cli_three_real_redacted_handoffs_record_only",
   "rawSourceCache": "excluded",
-  "runtimeBoundary": "v0.1.13_manual_dry_run_cli_three_real_redacted_handoffs_manual_local_file_input_redacted_bundle_record_only_no_live_observer_no_runtime_integration_no_tool_execution_no_memory_config_publication_approval_authorization_or_enforcement",
+  "runtimeBoundary": "v0.1.13_manual_dry_run_cli_manual_local_file_input_redacted_bundle_record_only_no_live_observer_no_runtime_integration_no_tool_execution_no_memory_config_publication_approval_authorization_or_enforcement",
   "files": [
     {
       "path": ".github/workflows/ci.yml",
@@ -76,8 +76,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 7586,
-      "sha256": "7d053fc00cd9f5d18f6ae836910becbc603fe05feb6c26387248f4a10f97ff7a"
+      "bytes": 8020,
+      "sha256": "b6a5324eee28530610bf3a6a2fb3c2bc6409cec618cbf9908e7ada0b3b88f153"
     },
     {
       "path": "RELEASE_CANDIDATE.md",
@@ -86,8 +86,8 @@
     },
     {
       "path": "RELEASE_NOTES.md",
-      "bytes": 8613,
-      "sha256": "6138b15028f08c5e20aae9960a5dda8e460c980c32dbaba4bda414f5ce7b5bdf"
+      "bytes": 5914,
+      "sha256": "d9be7273b39f53cc5eb9307ca2fac6ddef38a1c59fb94a665b64eb45f3a95475"
     },
     {
       "path": "design-notes/adapter-boundary-langgraph-mcp-v0.md",
@@ -256,8 +256,8 @@
     },
     {
       "path": "docs/release-checklist.md",
-      "bytes": 7144,
-      "sha256": "4c28b2ffb5c983dd07ec44ae6b32d8429321ae78ff3f70cce243de1d3ce55c4e"
+      "bytes": 7436,
+      "sha256": "8f206f4582375f2d10c9fb4ee594c304964de788e2f19091201ef4a62d573cec"
     },
     {
       "path": "docs/repo-structure.md",
@@ -306,8 +306,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/README.md",
-      "bytes": 10457,
-      "sha256": "d5ba33134efab814ff38d1d36f6ed5daba1eacd9cf5094ad9ad4affe606fccfb"
+      "bytes": 11162,
+      "sha256": "baf1921f0810fd71858cf7f4fe9ebe1dfe10b49b5d8d2c6c4012e946c2f7804b"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/bin/manual-dry-run.mjs",
@@ -1476,8 +1476,8 @@
     },
     {
       "path": "tools/release-check.mjs",
-      "bytes": 52573,
-      "sha256": "fc81d61fca13ba35abde20cc02331184d6a9b988018c2494834f5957a400cc86"
+      "bytes": 60183,
+      "sha256": "7dc4e938ecfb500d06ae3ebab281a43dc2cd21c8a269115a3466a9a65dcb3285"
     },
     {
       "path": "tools/verify-manifest.mjs",
