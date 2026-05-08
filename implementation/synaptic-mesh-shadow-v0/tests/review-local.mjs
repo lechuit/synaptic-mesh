@@ -129,6 +129,10 @@ const commands = [
     args: [resolve(packageRoot, 'tests/real-redacted-handoff-pack.mjs')],
   },
   {
+    id: 'real-redacted-handoff-replay-gate-tests',
+    args: [resolve(packageRoot, 'tests/real-redacted-handoff-replay-gate.mjs')],
+  },
+  {
     id: 'fixture-parity-harness',
     args: [resolve(packageRoot, 'tests/fixture-parity.mjs')],
   },
@@ -167,6 +171,7 @@ const realFlowMutationSuite = readEvidenceJson('implementation/synaptic-mesh-sha
 const categoryCoverageThresholds = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/category-coverage-thresholds.out.json');
 const redactionReviewRecordSchema = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/redaction-review-record-schema.out.json');
 const realRedactedHandoffPack = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/real-redacted-handoff-pack.out.json');
+const realRedactedHandoffReplayGate = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/real-redacted-handoff-replay-gate.out.json');
 
 const unsafeAllowSignals = [
   ...(fixtureParity?.summary?.nonRegressionUnsafeAllowFixtures ?? []),
@@ -236,6 +241,23 @@ if (Number(realRedactedHandoffPack?.summary?.mayBlock ?? 1) !== 0) unsafeAllowSi
 if (Number(realRedactedHandoffPack?.summary?.mayAllow ?? 1) !== 0) unsafeAllowSignals.push('real-redacted-handoff-pack-may-allow');
 if (Number(realRedactedHandoffPack?.summary?.capabilityAttempts ?? 1) !== 0) unsafeAllowSignals.push('real-redacted-handoff-pack-capability-attempts');
 if (Number(realRedactedHandoffPack?.summary?.mismatch ?? 1) !== 0) unsafeAllowSignals.push('real-redacted-handoff-pack-mismatch');
+if (realRedactedHandoffReplayGate?.summary?.verdict !== 'pass') unsafeAllowSignals.push('real-redacted-handoff-replay-gate');
+if (Number(realRedactedHandoffReplayGate?.summary?.realRedactedBundles ?? 0) !== 3) unsafeAllowSignals.push('real-redacted-handoff-replay-gate-count');
+if (Number(realRedactedHandoffReplayGate?.summary?.redactionReviewRecords ?? 0) !== 3) unsafeAllowSignals.push('real-redacted-handoff-replay-gate-review-count');
+if (realRedactedHandoffReplayGate?.summary?.parserEvidence !== 'pass') unsafeAllowSignals.push('real-redacted-handoff-replay-gate-parser-evidence');
+if (realRedactedHandoffReplayGate?.summary?.classifierDecision !== 'pass') unsafeAllowSignals.push('real-redacted-handoff-replay-gate-classifier');
+if (realRedactedHandoffReplayGate?.summary?.decisionTrace !== 'pass') unsafeAllowSignals.push('real-redacted-handoff-replay-gate-decision-trace');
+if (realRedactedHandoffReplayGate?.summary?.liveShadowObservationResult !== 'record_only') unsafeAllowSignals.push('real-redacted-handoff-replay-gate-result-not-record-only');
+if (Number(realRedactedHandoffReplayGate?.summary?.validationErrorCount ?? 1) !== 0) unsafeAllowSignals.push('real-redacted-handoff-replay-gate-validation-errors');
+if (Number(realRedactedHandoffReplayGate?.summary?.mismatchCount ?? 1) !== 0) unsafeAllowSignals.push('real-redacted-handoff-replay-gate-mismatch');
+if (Number(realRedactedHandoffReplayGate?.summary?.falsePermitCount ?? 1) !== 0) unsafeAllowSignals.push('real-redacted-handoff-replay-gate-false-permit');
+if (Number(realRedactedHandoffReplayGate?.summary?.falseCompactCount ?? 1) !== 0) unsafeAllowSignals.push('real-redacted-handoff-replay-gate-false-compact');
+if (Number(realRedactedHandoffReplayGate?.summary?.boundaryLossCount ?? 1) !== 0) unsafeAllowSignals.push('real-redacted-handoff-replay-gate-boundary-loss');
+if (Number(realRedactedHandoffReplayGate?.summary?.forbiddenEffectsDetectedCount ?? 1) !== 0) unsafeAllowSignals.push('real-redacted-handoff-replay-gate-forbidden-effects');
+if (Number(realRedactedHandoffReplayGate?.summary?.mayBlockCount ?? 1) !== 0) unsafeAllowSignals.push('real-redacted-handoff-replay-gate-may-block');
+if (Number(realRedactedHandoffReplayGate?.summary?.mayAllowCount ?? 1) !== 0) unsafeAllowSignals.push('real-redacted-handoff-replay-gate-may-allow');
+if (Number(realRedactedHandoffReplayGate?.summary?.capabilityTrueCount ?? 1) !== 0) unsafeAllowSignals.push('real-redacted-handoff-replay-gate-capability-true');
+if (realRedactedHandoffReplayGate?.summary?.rawContentPersisted !== false) unsafeAllowSignals.push('real-redacted-handoff-replay-gate-raw-content');
 
 const summary = {
   artifact: 'T-synaptic-mesh-review-local-runner-v0',
@@ -328,6 +350,17 @@ const summary = {
   realRedactedHandoffPackMayAllow: realRedactedHandoffPack?.summary?.mayAllow ?? null,
   realRedactedHandoffPackCapabilityAttempts: realRedactedHandoffPack?.summary?.capabilityAttempts ?? null,
   realRedactedHandoffPackMismatch: realRedactedHandoffPack?.summary?.mismatch ?? null,
+  realRedactedHandoffReplayGateVerdict: realRedactedHandoffReplayGate?.summary?.verdict ?? null,
+  realRedactedHandoffReplayGateBundleCount: realRedactedHandoffReplayGate?.summary?.realRedactedBundles ?? null,
+  realRedactedHandoffReplayGateReviewRecordCount: realRedactedHandoffReplayGate?.summary?.redactionReviewRecords ?? null,
+  realRedactedHandoffReplayGateTraceCount: realRedactedHandoffReplayGate?.summary?.traceCount ?? null,
+  realRedactedHandoffReplayGateObservationCount: realRedactedHandoffReplayGate?.summary?.observationCount ?? null,
+  realRedactedHandoffReplayGateResultCount: realRedactedHandoffReplayGate?.summary?.resultCount ?? null,
+  realRedactedHandoffReplayGateMismatchCount: realRedactedHandoffReplayGate?.summary?.mismatchCount ?? null,
+  realRedactedHandoffReplayGateForbiddenEffectsDetectedCount: realRedactedHandoffReplayGate?.summary?.forbiddenEffectsDetectedCount ?? null,
+  realRedactedHandoffReplayGateMayBlockCount: realRedactedHandoffReplayGate?.summary?.mayBlockCount ?? null,
+  realRedactedHandoffReplayGateMayAllowCount: realRedactedHandoffReplayGate?.summary?.mayAllowCount ?? null,
+  realRedactedHandoffReplayGateCapabilityTrueCount: realRedactedHandoffReplayGate?.summary?.capabilityTrueCount ?? null,
   unsafeAllowSignals,
   sourceFixtureMutation: false,
 };
