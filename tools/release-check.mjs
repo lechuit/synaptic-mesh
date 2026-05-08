@@ -34,6 +34,7 @@ const releaseGateScripts = [
   'test:manual-observation-redaction-fixtures',
   'test:manual-bundle-parser-evidence-replay',
   'test:manual-decisiontrace-live-shadow-replay',
+  'test:manual-observation-scorecard-thresholds',
 ];
 
 function runGit(args, options = {}) {
@@ -335,6 +336,34 @@ assert(manualDecisionTraceLiveShadowReplay?.summary?.memoryWriteImplemented === 
 assert(manualDecisionTraceLiveShadowReplay?.summary?.configWriteImplemented === false, 'manual DecisionTrace live-shadow replay must not implement config writes');
 assert(manualDecisionTraceLiveShadowReplay?.summary?.externalPublicationImplemented === false, 'manual DecisionTrace live-shadow replay must not implement external publication');
 assert(manualDecisionTraceLiveShadowReplay?.summary?.enforcementImplemented === false, 'manual DecisionTrace live-shadow replay must not implement enforcement');
+
+const manualObservationScorecardThresholds = readJson(path.join(packageRoot, 'evidence/manual-observation-scorecard-thresholds.out.json'));
+assert(manualObservationScorecardThresholds?.summary?.verdict === 'pass', 'manual observation scorecard thresholds verdict must be pass');
+assert(manualObservationScorecardThresholds?.summary?.mode === 'manual_offline_scorecard_thresholds_only', 'manual observation scorecard thresholds must remain thresholds-only');
+assert(manualObservationScorecardThresholds?.summary?.manualBundles === manualObservationScorecardThresholds?.summary?.traceCount, 'manual scorecard thresholds must cover all manual bundles');
+assert(manualObservationScorecardThresholds?.summary?.traceCount === manualObservationScorecardThresholds?.summary?.observationCount, 'manual scorecard thresholds must have one observation per trace');
+assert(manualObservationScorecardThresholds?.summary?.traceCount === manualObservationScorecardThresholds?.summary?.resultCount, 'manual scorecard thresholds must have one result per trace');
+assert(manualObservationScorecardThresholds?.summary?.thresholdFailureCount === 0, 'manual scorecard thresholds must have zero threshold failures');
+assert(manualObservationScorecardThresholds?.summary?.validationErrorCount === 0, 'manual scorecard thresholds must validate');
+assert(manualObservationScorecardThresholds?.summary?.mismatchCount === 0, 'manual scorecard thresholds must have zero mismatches');
+assert(manualObservationScorecardThresholds?.summary?.falsePermitCount === 0, 'manual scorecard thresholds must have zero false permits');
+assert(manualObservationScorecardThresholds?.summary?.falseCompactCount === 0, 'manual scorecard thresholds must have zero false compacts');
+assert(manualObservationScorecardThresholds?.summary?.boundaryLossCount === 0, 'manual scorecard thresholds must have zero boundary loss');
+assert(manualObservationScorecardThresholds?.summary?.forbiddenEffectsDetectedCount === 0, 'manual scorecard thresholds must detect zero forbidden effects');
+assert(manualObservationScorecardThresholds?.summary?.mayBlockCount === 0, 'manual scorecard thresholds must not block');
+assert(manualObservationScorecardThresholds?.summary?.mayAllowCount === 0, 'manual scorecard thresholds must not allow');
+assert(manualObservationScorecardThresholds?.summary?.capabilityTrueCount === 0, 'manual scorecard thresholds must keep all capability booleans false');
+assert(manualObservationScorecardThresholds?.summary?.rawContentPersisted === false, 'manual scorecard thresholds must not persist raw content');
+assert(manualObservationScorecardThresholds?.summary?.redactedMetadataOnly === true, 'manual scorecard thresholds must use redacted metadata only');
+assert(manualObservationScorecardThresholds?.summary?.capabilityAttempts === 0, 'manual scorecard thresholds must not include capability attempts');
+assert(manualObservationScorecardThresholds?.summary?.forbiddenEffects === 0, 'manual scorecard thresholds must not include forbidden effects');
+assert(manualObservationScorecardThresholds?.summary?.liveObserverImplemented === false, 'manual scorecard thresholds must not implement live observer');
+assert(manualObservationScorecardThresholds?.summary?.toolExecutionImplemented === false, 'manual scorecard thresholds must not implement tool execution');
+assert(manualObservationScorecardThresholds?.summary?.memoryWriteImplemented === false, 'manual scorecard thresholds must not implement memory writes');
+assert(manualObservationScorecardThresholds?.summary?.configWriteImplemented === false, 'manual scorecard thresholds must not implement config writes');
+assert(manualObservationScorecardThresholds?.summary?.externalPublicationImplemented === false, 'manual scorecard thresholds must not implement external publication');
+assert(manualObservationScorecardThresholds?.summary?.authorizationImplemented === false, 'manual scorecard thresholds must not implement authorization');
+assert(manualObservationScorecardThresholds?.summary?.enforcementImplemented === false, 'manual scorecard thresholds must not implement enforcement');
 
 const reviewLocalCount = countLabel(reviewEvidence.summary.passCommands, reviewEvidence.summary.commands);
 const receiverAdapterCount = countLabel(receiverAdapterEvidence.summary.passCases, receiverAdapterEvidence.summary.totalCases);

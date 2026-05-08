@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "manual-observation-scorecard-thresholds-v0",
+  "description": "Offline aggregate threshold fixture for manual observation replay evidence. It evaluates redacted manual replay counters only and does not observe live traffic or implement a live observer, runtime path, tools, memory/config writes, publication, approval, blocking, allowing, authorization, or enforcement.",
+  "scorecardMode": "manual_offline_scorecard_thresholds_only",
+  "sourceEvidence": "implementation/synaptic-mesh-shadow-v0/evidence/manual-decisiontrace-live-shadow-replay.out.json",
+  "thresholds": {
+    "validationErrorCountMax": 0,
+    "mismatchCountMax": 0,
+    "falsePermitCountMax": 0,
+    "falseCompactCountMax": 0,
+    "boundaryLossCountMax": 0,
+    "forbiddenEffectsDetectedCountMax": 0,
+    "mayBlockCountMax": 0,
+    "mayAllowCountMax": 0,
+    "capabilityTrueCountMax": 0,
+    "rawContentPersistedAllowed": false,
+    "redactedMetadataOnlyRequired": true
+  },
+  "boundary": [
+    "manual_offline_only",
+    "aggregate_thresholds_only",
+    "redacted_metadata_only",
+    "record_only",
+    "no_live_observation",
+    "no_runtime",
+    "no_daemon",
+    "no_adapter_integration",
+    "no_tool_execution",
+    "no_memory_write",
+    "no_config_write",
+    "no_external_publication",
+    "no_block",
+    "no_allow",
+    "no_approval",
+    "no_authorization",
+    "no_enforcement"
+  ]
+}
