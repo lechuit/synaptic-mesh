@@ -1,7 +1,7 @@
 {
   "bundle": "synaptic-mesh",
   "version": "0.1.12",
-  "generated": "2026-05-08T11:46:15Z",
+  "generated": "2026-05-08T12:03:54Z",
   "status": "v0.1.12_manual_dry_run_command_contracts_offline_schema_gate_public_review_package_not_runtime_ready",
   "repository": "https://github.com/lechuit/synaptic-mesh",
   "license": "Apache-2.0 for code; CC BY 4.0 for docs/prose unless otherwise noted",
@@ -310,6 +310,11 @@
       "sha256": "d5ba33134efab814ff38d1d36f6ed5daba1eacd9cf5094ad9ad4affe606fccfb"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/bin/manual-dry-run.mjs",
+      "bytes": 501,
+      "sha256": "522960c83cbc05397d64ef553b6dc2b1d9670a77ff3eb436d37c719b966777cb"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/bin/validate-receipt.mjs",
       "bytes": 4201,
       "sha256": "edced71ca64a89afc4f453634d9936eab56b4d3492ffee9bc90f305be2870b24"
@@ -398,6 +403,16 @@
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/manual-decisiontrace-live-shadow-replay.out.json",
       "bytes": 10308,
       "sha256": "74b1fdd728e564c85b4e727a3586dd58ddfa94a84343635ab49c64f148d198a8"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/manual-dry-run-cli.case-001.out.json",
+      "bytes": 7533,
+      "sha256": "9324c038d3cadd5c5ecfc682c697cc962ca35f341126c6a17221838961c3f7ae"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/manual-dry-run-cli.out.json",
+      "bytes": 2106,
+      "sha256": "e2add3680e4c1b7009b0b58ebaf47493774b15f0eb4e6c2433571a619085e2fd"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/manual-dry-run-contracts.out.json",
@@ -585,6 +600,11 @@
       "sha256": "808df5f3eceeedcf0fa1256b04163592233131da850489e6bb33e85f265f985f"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/fixtures/manual-dry-run-inputs/case-001.json",
+      "bytes": 4199,
+      "sha256": "bcc9000baf124033a21b17d1035a363b82fc7a9ab823cf5c878c7a5a709e3549"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/fixtures/manual-observation-bundles.json",
       "bytes": 2520,
       "sha256": "a1b488c653b41cd8da5ab53b0db910784aaaf9172dc6714a73aa0b0cee340191"
@@ -646,8 +666,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/package.json",
-      "bytes": 8404,
-      "sha256": "00f48f2adae2f1b2cf1a929f2db907209a79b694c1597c29f09d337c304f2505"
+      "bytes": 8648,
+      "sha256": "6bbd3d6f8d9e36787391915827e8ef04bcadbf03d5199a2aa34702d94c755c88"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/action-context-packet.mjs",
@@ -673,6 +693,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/src/fixture-manifest.mjs",
       "bytes": 2209,
       "sha256": "74c2bd8b483c660a64cd52544805cf54cc3e889f786130ea367a17bed87c062d"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/src/manual-dry-run.mjs",
+      "bytes": 18173,
+      "sha256": "44354b5e043a050b656c5122a85a08573fca3bf848674a5ed05e5a90e8c872d4"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/receipt-parser.mjs",
@@ -803,6 +828,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/tests/manual-decisiontrace-live-shadow-replay.mjs",
       "bytes": 15613,
       "sha256": "9c92891dfcec3a01f0c9acc9db6b1b1ac0a79a1a38561b14e5b9eb78f342a3fc"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/manual-dry-run-cli.mjs",
+      "bytes": 8184,
+      "sha256": "f6b3a413d7457f0778994a6f117465ed21b08db0f1910f61ead93ffccc13020e"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/manual-dry-run-contracts.mjs",
@@ -1336,8 +1366,8 @@
     },
     {
       "path": "schemas/manual-dry-run-result.schema.json",
-      "bytes": 4709,
-      "sha256": "9d880a30f0eff429025f471a1e544e20cd11740253a95ce796849f0fb849996b"
+      "bytes": 4826,
+      "sha256": "357ea8624bf52a474d8fa2e32e79b07c24ccc8bd1b27fcf0b7ddd0c69ecb1650"
     },
     {
       "path": "schemas/manual-observation-bundle.schema.json",
