@@ -15,6 +15,7 @@ const outputPath = resolve(packageRoot, 'evidence/manual-dry-run-cli.case-001.ou
 const symlinkOutputPath = resolve(packageRoot, 'evidence/manual-dry-run-cli.symlink-poc.out.json');
 const symlinkEscapeTarget = '/tmp/synaptic-mesh-manual-dry-run-symlink-poc.json';
 const outsideDirPoc = '/tmp/synaptic-mesh-manual-dry-run-outside-dir-poc';
+const forbiddenInputPath = resolve(packageRoot, 'fixtures/manual-dry-run-inputs/forbidden-effect-poc.json');
 const evidencePath = resolve(packageRoot, 'evidence/manual-dry-run-cli.out.json');
 
 const schemas = {
@@ -87,6 +88,69 @@ try {
 assert.equal(outsideDirRejected, true, 'CLI must reject output outside evidence before mkdir');
 assert.equal(existsSync(outsideDirPoc), false, 'CLI must not create directories outside evidence for rejected output paths');
 
+const forbiddenCliCases = [
+  { flag: '--url', reasonCode: 'FORBIDDEN_FLAG' },
+  { flag: '--watch', reasonCode: 'FORBIDDEN_FLAG' },
+  { flag: '--network', reasonCode: 'FORBIDDEN_FLAG' },
+  { flag: '--tool', reasonCode: 'FORBIDDEN_FLAG' },
+  { flag: '--memory', reasonCode: 'FORBIDDEN_FLAG' },
+  { flag: '--config', reasonCode: 'FORBIDDEN_FLAG' },
+  { flag: '--publish', reasonCode: 'FORBIDDEN_FLAG' },
+  { flag: '--approve', reasonCode: 'FORBIDDEN_FLAG' },
+  { flag: '--block', reasonCode: 'FORBIDDEN_FLAG' },
+  { flag: '--allow', reasonCode: 'FORBIDDEN_FLAG' },
+  { flag: '--live', reasonCode: 'FORBIDDEN_FLAG' },
+  { flag: '--runtime', reasonCode: 'FORBIDDEN_FLAG' },
+  { flag: '--adapter', reasonCode: 'FORBIDDEN_FLAG' },
+  { flag: '--enforce', reasonCode: 'FORBIDDEN_FLAG' },
+  { flag: '--authorize', reasonCode: 'FORBIDDEN_FLAG' },
+];
+let forbiddenCliFlagRejections = 0;
+for (const { flag, reasonCode } of forbiddenCliCases) {
+  try {
+    await runManualDryRunCli([flag, 'x', '--input', 'fixtures/manual-dry-run-inputs/case-001.json', '--output', 'evidence/manual-dry-run-cli.forbidden.out.json'], { cwd: packageRoot });
+  } catch (error) {
+    if (error.reasonCode === reasonCode) forbiddenCliFlagRejections += 1;
+  }
+}
+assert.equal(forbiddenCliFlagRejections, forbiddenCliCases.length, 'CLI must reject forbidden effect flags before execution');
+
+const forbiddenInputCases = [
+  { patch: { manualObservationBundle: { rawContent: 'unredacted text' } }, reasonCode: 'RAW_CONTENT_FIELD_PRESENT' },
+  { patch: { manualObservationBundle: { liveInputAllowed: true } }, reasonCode: 'LIVE_INPUT_REQUESTED' },
+  { patch: { manualObservationBundle: { networkAllowed: true } }, reasonCode: 'NETWORK_REQUESTED' },
+  { patch: { manualObservationBundle: { toolExecutionAllowed: true } }, reasonCode: 'TOOL_EXECUTION_REQUESTED' },
+  { patch: { manualObservationBundle: { memoryWriteAllowed: true } }, reasonCode: 'MEMORY_WRITE_REQUESTED' },
+  { patch: { manualObservationBundle: { configWriteAllowed: true } }, reasonCode: 'CONFIG_WRITE_REQUESTED' },
+  { patch: { manualObservationBundle: { publicationAllowed: true } }, reasonCode: 'PUBLICATION_REQUESTED' },
+  { patch: { manualObservationBundle: { approvalPathAllowed: true } }, reasonCode: 'APPROVAL_PATH_REQUESTED' },
+  { patch: { manualObservationBundle: { blockingAllowed: true } }, reasonCode: 'BLOCKING_REQUESTED' },
+  { patch: { manualObservationBundle: { allowingAllowed: true } }, reasonCode: 'ALLOWING_REQUESTED' },
+  { patch: { manualObservationBundle: { authorizationAllowed: true } }, reasonCode: 'AUTHORIZATION_REQUESTED' },
+  { patch: { manualObservationBundle: { enforcementAllowed: true } }, reasonCode: 'ENFORCEMENT_REQUESTED' },
+  { patch: { manualObservationBundle: { nested: { mayExecuteTool: true } } }, reasonCode: 'MAY_EXECUTE_TOOL_REQUESTED' },
+  { patch: { manualObservationBundle: { nested: { mayWriteMemory: true } } }, reasonCode: 'MAY_WRITE_MEMORY_REQUESTED' },
+  { patch: { manualObservationBundle: { nested: { mayPublishExternally: true } } }, reasonCode: 'MAY_PUBLISH_EXTERNALLY_REQUESTED' },
+  { patch: { manualObservationBundle: { nested: { mayEnterApprovalPath: true } } }, reasonCode: 'MAY_ENTER_APPROVAL_PATH_REQUESTED' },
+  { patch: { parserEvidence: { rawContent: 'laundered raw text' } }, reasonCode: 'RAW_CONTENT_FIELD_PRESENT' },
+  { patch: { routeDecisionInput: { mayAllow: true } }, reasonCode: 'MAY_ALLOW_REQUESTED' },
+];
+let forbiddenInputRejections = 0;
+for (const [index, { patch, reasonCode }] of forbiddenInputCases.entries()) {
+  const candidate = JSON.parse(JSON.stringify(input));
+  for (const [topLevelKey, patchValue] of Object.entries(patch)) {
+    candidate[topLevelKey] = { ...(candidate[topLevelKey] ?? {}), ...patchValue };
+  }
+  await writeFile(forbiddenInputPath, `${JSON.stringify(candidate, null, 2)}\n`);
+  try {
+    await runManualDryRunCli(['--input', 'fixtures/manual-dry-run-inputs/forbidden-effect-poc.json', '--output', `evidence/manual-dry-run-cli.forbidden-${index}.out.json`], { cwd: packageRoot });
+  } catch (error) {
+    if (error.reasonCode === reasonCode) forbiddenInputRejections += 1;
+  }
+  await rm(forbiddenInputPath, { force: true });
+}
+assert.equal(forbiddenInputRejections, forbiddenInputCases.length, 'CLI must reject forbidden effect claims in input artifacts');
+
 const output = {
   summary: {
     artifact,
@@ -128,6 +192,10 @@ const output = {
     symlinkEscapeTargetWritten: existsSync(symlinkEscapeTarget),
     outsideEvidenceDirRejected: outsideDirRejected,
     outsideEvidenceDirCreated: existsSync(outsideDirPoc),
+    forbiddenCliFlagCases: forbiddenCliCases.length,
+    forbiddenCliFlagRejections,
+    forbiddenInputCases: forbiddenInputCases.length,
+    forbiddenInputRejections,
     safetyClaimScope: 'manual_dry_run_cli_minimal_local_file_redacted_bundle_record_only_not_live_observer_not_runtime_not_authorization',
   },
   validationErrors,

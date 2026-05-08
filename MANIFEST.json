@@ -1,13 +1,13 @@
 {
   "bundle": "synaptic-mesh",
   "version": "0.1.12",
-  "generated": "2026-05-08T12:03:54Z",
-  "status": "v0.1.12_manual_dry_run_command_contracts_offline_schema_gate_public_review_package_not_runtime_ready",
+  "generated": "2026-05-08T12:14:03Z",
+  "status": "v0.1.13_manual_dry_run_cli_forbidden_effects_gate_prerelease_not_runtime_ready",
   "repository": "https://github.com/lechuit/synaptic-mesh",
   "license": "Apache-2.0 for code; CC BY 4.0 for docs/prose unless otherwise noted",
-  "reproducibility": "expected_pass_local_shadow_gates_for_v0.1.12_manual_dry_run_contracts_no_cli_no_runtime",
+  "reproducibility": "expected_pass_local_shadow_gates_for_v0.1.13_manual_dry_run_cli_manual_local_redacted_record_only",
   "rawSourceCache": "excluded",
-  "runtimeBoundary": "v0.1.12_manual_dry_run_contracts_schema_design_test_only_no_cli_no_live_observer_no_runtime_integration_no_tool_execution_no_memory_config_publication_approval_authorization_or_enforcement",
+  "runtimeBoundary": "v0.1.13_manual_dry_run_cli_manual_local_file_input_redacted_bundle_record_only_no_live_observer_no_runtime_integration_no_tool_execution_no_memory_config_publication_approval_authorization_or_enforcement",
   "files": [
     {
       "path": ".github/workflows/ci.yml",
@@ -405,14 +405,19 @@
       "sha256": "74b1fdd728e564c85b4e727a3586dd58ddfa94a84343635ab49c64f148d198a8"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/manual-dry-run-cli-negative-controls.out.json",
+      "bytes": 1404,
+      "sha256": "a08692479603e688c09e397b83a708d67213221ea8e9bfebaff7a4bc762d97c1"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/manual-dry-run-cli.case-001.out.json",
       "bytes": 7533,
       "sha256": "9324c038d3cadd5c5ecfc682c697cc962ca35f341126c6a17221838961c3f7ae"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/manual-dry-run-cli.out.json",
-      "bytes": 2106,
-      "sha256": "e2add3680e4c1b7009b0b58ebaf47493774b15f0eb4e6c2433571a619085e2fd"
+      "bytes": 2244,
+      "sha256": "c1e10315032b537f4c09e21ab4ccb0f32f08cf69e7de558b5cf6b5dfa4799354"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/manual-dry-run-contracts.out.json",
@@ -666,8 +671,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/package.json",
-      "bytes": 8648,
-      "sha256": "6bbd3d6f8d9e36787391915827e8ef04bcadbf03d5199a2aa34702d94c755c88"
+      "bytes": 8815,
+      "sha256": "28f459b5c431e8393e8e68e6c7d241ee5564121d1974de62882a79d6aa4a2c9d"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/action-context-packet.mjs",
@@ -696,8 +701,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/manual-dry-run.mjs",
-      "bytes": 18173,
-      "sha256": "44354b5e043a050b656c5122a85a08573fca3bf848674a5ed05e5a90e8c872d4"
+      "bytes": 20916,
+      "sha256": "bed3fa64139c4c5191ae6e121b9ecd5a5da069e87c8f5a2a23b15f6e6c8f4a94"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/receipt-parser.mjs",
@@ -830,9 +835,14 @@
       "sha256": "9c92891dfcec3a01f0c9acc9db6b1b1ac0a79a1a38561b14e5b9eb78f342a3fc"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/manual-dry-run-cli-negative-controls.mjs",
+      "bytes": 9066,
+      "sha256": "0b09f6d86d4e681080019fe53a6492b6d20981c2f82be644858c2492e786f31b"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/manual-dry-run-cli.mjs",
-      "bytes": 8184,
-      "sha256": "f6b3a413d7457f0778994a6f117465ed21b08db0f1910f61ead93ffccc13020e"
+      "bytes": 12758,
+      "sha256": "7c2fa2b470b1babfe418d0784489c21531d2c2112cedf4dd1926be1a3dcbf697"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/manual-dry-run-contracts.mjs",

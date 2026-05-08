@@ -39,6 +39,10 @@
     "symlinkEscapeTargetWritten": false,
     "outsideEvidenceDirRejected": true,
     "outsideEvidenceDirCreated": false,
+    "forbiddenCliFlagCases": 15,
+    "forbiddenCliFlagRejections": 15,
+    "forbiddenInputCases": 18,
+    "forbiddenInputRejections": 18,
     "safetyClaimScope": "manual_dry_run_cli_minimal_local_file_redacted_bundle_record_only_not_live_observer_not_runtime_not_authorization"
   },
   "validationErrors": [],
