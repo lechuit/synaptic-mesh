@@ -1,7 +1,7 @@
 {
   "bundle": "synaptic-mesh",
   "version": "0.1.12",
-  "generated": "2026-05-08T06:10:00Z",
+  "generated": "2026-05-08T11:46:15Z",
   "status": "v0.1.12_manual_dry_run_command_contracts_offline_schema_gate_public_review_package_not_runtime_ready",
   "repository": "https://github.com/lechuit/synaptic-mesh",
   "license": "Apache-2.0 for code; CC BY 4.0 for docs/prose unless otherwise noted",
@@ -106,8 +106,8 @@
     },
     {
       "path": "design-notes/manual-dry-run-cli-v0.md",
-      "bytes": 5590,
-      "sha256": "464bbaa968ba9759ffb1318bf30a7c9f910528fdf27cc6720431356b8711aea2"
+      "bytes": 10767,
+      "sha256": "2473b734bb90f53f3b0e4146d24be4574929900ede4ac14f7106ca48954afa27"
     },
     {
       "path": "design-notes/scalable-design-patterns-v0.md",
