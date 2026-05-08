@@ -24,6 +24,7 @@ const releaseGateScripts = [
   'test:real-flow-classifier-scorecard',
   'test:decision-trace-schema',
   'test:real-flow-mutation-suite',
+  'test:category-coverage-thresholds',
 ];
 
 function runGit(args, options = {}) {
@@ -154,6 +155,7 @@ const realFlowReplayEvidence = readJson(path.join(packageRoot, 'evidence/real-fl
 const realFlowClassifierScorecard = readJson(path.join(packageRoot, 'evidence/real-flow-classifier-scorecard.out.json'));
 const decisionTraceSchema = readJson(path.join(packageRoot, 'evidence/decision-trace-schema.out.json'));
 const realFlowMutationSuite = readJson(path.join(packageRoot, 'evidence/real-flow-mutation-suite.out.json'));
+const categoryCoverageThresholds = readJson(path.join(packageRoot, 'evidence/category-coverage-thresholds.out.json'));
 assert(receiverAdapterEvidence?.summary?.verdict === 'pass', 'receiver adapter evidence verdict must be pass');
 assert(receiverAdapterEvidence?.summary?.unsafeAllows === 0, 'receiver adapter evidence must report unsafeAllows: 0');
 assert(realFlowReplayEvidence?.summary?.flowCount >= 20 && realFlowReplayEvidence?.summary?.flowCount <= 30, 'v0.1.6 real-flow replay must have 20–30 cases');
@@ -183,6 +185,10 @@ assert(realFlowMutationSuite?.summary?.falsePermitRate === 0, 'real-flow mutatio
 assert(realFlowMutationSuite?.summary?.falseCompactRate === 0, 'real-flow mutation suite falseCompactRate must be 0');
 assert(realFlowMutationSuite?.summary?.runtimeEnforcementImplemented === false, 'real-flow mutation suite must not implement runtime enforcement');
 assert(realFlowMutationSuite?.summary?.liveShadowObserverImplemented === false, 'real-flow mutation suite must not implement live shadow observer');
+assert(categoryCoverageThresholds?.summary?.verdict === 'pass', 'category coverage thresholds verdict must be pass');
+assert(categoryCoverageThresholds?.summary?.thresholdFailures === 0, 'category coverage thresholds must have zero failures');
+assert(categoryCoverageThresholds?.summary?.runtimeEnforcementImplemented === false, 'category coverage thresholds must not implement runtime enforcement');
+assert(categoryCoverageThresholds?.summary?.liveShadowObserverImplemented === false, 'category coverage thresholds must not implement live shadow observer');
 
 const reviewLocalCount = countLabel(reviewEvidence.summary.passCommands, reviewEvidence.summary.commands);
 const receiverAdapterCount = countLabel(receiverAdapterEvidence.summary.passCases, receiverAdapterEvidence.summary.totalCases);
