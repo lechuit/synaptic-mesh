@@ -95,6 +95,7 @@ Manual dry-run CLI gates:
 npm run test:manual-dry-run-cli
 npm run test:manual-dry-run-cli-negative-controls
 npm run test:manual-dry-run-cli-real-redacted-handoffs
+npm run test:manual-dry-run-cli-real-redacted-pilot
 ```
 
 Primary commands requested for reviewer quickstart:
@@ -178,6 +179,7 @@ Key files:
 - `manual-dry-run-cli.out.json` — validates the minimal manual dry-run CLI skeleton over one explicit redacted local input;
 - `manual-dry-run-cli-negative-controls.out.json` — validates forbidden flags/claims and output containment negative controls;
 - `manual-dry-run-cli-real-redacted-handoffs.out.json` — runs the manual dry-run CLI over exactly 3 explicit real-redacted handoffs, record-only with zero forbidden effects/capabilities/boundary loss;
+- `manual-dry-run-cli-real-redacted-pilot.out.json` — runs a six-case manually reviewed real-redacted pilot over internal release-handoff metadata only; record-only with zero forbidden effects/capabilities/boundary loss;
 - `route-classifier-shadow.out.json` — deterministic route classifier shadow evidence over parserEvidence fixtures; not raw parsing, live observation, runtime enforcement, tool authorization, or publication readiness;
 - `receiver-policy-adapter-contracts.out.json` — framework-shaped receiver adapter contract cases;
 - `cli-validator.out.json` — CLI behavior cases;
