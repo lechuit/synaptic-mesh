@@ -121,6 +121,10 @@ const commands = [
     args: [resolve(packageRoot, 'tests/category-coverage-thresholds.mjs')],
   },
   {
+    id: 'redaction-review-record-schema-tests',
+    args: [resolve(packageRoot, 'tests/redaction-review-record-schema.mjs')],
+  },
+  {
     id: 'fixture-parity-harness',
     args: [resolve(packageRoot, 'tests/fixture-parity.mjs')],
   },
@@ -157,6 +161,7 @@ const realFlowClassifierScorecard = readEvidenceJson('implementation/synaptic-me
 const decisionTraceSchema = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/decision-trace-schema.out.json');
 const realFlowMutationSuite = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/real-flow-mutation-suite.out.json');
 const categoryCoverageThresholds = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/category-coverage-thresholds.out.json');
+const redactionReviewRecordSchema = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/redaction-review-record-schema.out.json');
 
 const unsafeAllowSignals = [
   ...(fixtureParity?.summary?.nonRegressionUnsafeAllowFixtures ?? []),
@@ -200,6 +205,17 @@ if (Number(realFlowMutationSuite?.summary?.falsePermitRate ?? 0) !== 0) unsafeAl
 if (Number(realFlowMutationSuite?.summary?.falseCompactRate ?? 0) !== 0) unsafeAllowSignals.push('real-flow-mutation-false-compact');
 if (categoryCoverageThresholds?.summary?.verdict !== 'pass') unsafeAllowSignals.push('category-coverage-thresholds');
 if (Number(categoryCoverageThresholds?.summary?.thresholdFailures ?? 1) !== 0) unsafeAllowSignals.push('category-coverage-threshold-failures');
+if (redactionReviewRecordSchema?.summary?.verdict !== 'pass') unsafeAllowSignals.push('redaction-review-record-schema');
+if (Number(redactionReviewRecordSchema?.summary?.validationErrorCount ?? 1) !== 0) unsafeAllowSignals.push('redaction-review-record-validation-errors');
+if (redactionReviewRecordSchema?.summary?.rawContentPersisted !== false) unsafeAllowSignals.push('redaction-review-record-raw-content');
+if (redactionReviewRecordSchema?.summary?.privatePathsPersisted !== false) unsafeAllowSignals.push('redaction-review-record-private-paths');
+if (redactionReviewRecordSchema?.summary?.secretLikeValuesPersisted !== false) unsafeAllowSignals.push('redaction-review-record-secrets');
+if (redactionReviewRecordSchema?.summary?.toolOutputsPersisted !== false) unsafeAllowSignals.push('redaction-review-record-tool-outputs');
+if (redactionReviewRecordSchema?.summary?.memoryTextPersisted !== false) unsafeAllowSignals.push('redaction-review-record-memory-text');
+if (redactionReviewRecordSchema?.summary?.configTextPersisted !== false) unsafeAllowSignals.push('redaction-review-record-config-text');
+if (redactionReviewRecordSchema?.summary?.approvalTextPersisted !== false) unsafeAllowSignals.push('redaction-review-record-approval-text');
+if (redactionReviewRecordSchema?.summary?.forbiddenForLiveObservation !== true) unsafeAllowSignals.push('redaction-review-record-live-observation-not-forbidden');
+if (redactionReviewRecordSchema?.summary?.forbiddenForRuntimeUse !== true) unsafeAllowSignals.push('redaction-review-record-runtime-not-forbidden');
 
 const summary = {
   artifact: 'T-synaptic-mesh-review-local-runner-v0',
@@ -268,6 +284,19 @@ const summary = {
   realFlowMutationFalseCompactRate: realFlowMutationSuite?.summary?.falseCompactRate ?? null,
   categoryCoverageThresholdsVerdict: categoryCoverageThresholds?.summary?.verdict ?? null,
   categoryCoverageThresholdFailures: categoryCoverageThresholds?.summary?.thresholdFailures ?? null,
+  redactionReviewRecordSchemaVerdict: redactionReviewRecordSchema?.summary?.verdict ?? null,
+  redactionReviewRecordCount: redactionReviewRecordSchema?.summary?.reviewRecords ?? null,
+  redactionReviewRecordValidationErrors: redactionReviewRecordSchema?.summary?.validationErrorCount ?? null,
+  redactionReviewRecordNegativeControls: redactionReviewRecordSchema?.summary?.negativeControlCount ?? null,
+  redactionReviewRecordRawContentPersisted: redactionReviewRecordSchema?.summary?.rawContentPersisted ?? null,
+  redactionReviewRecordPrivatePathsPersisted: redactionReviewRecordSchema?.summary?.privatePathsPersisted ?? null,
+  redactionReviewRecordSecretLikeValuesPersisted: redactionReviewRecordSchema?.summary?.secretLikeValuesPersisted ?? null,
+  redactionReviewRecordToolOutputsPersisted: redactionReviewRecordSchema?.summary?.toolOutputsPersisted ?? null,
+  redactionReviewRecordMemoryTextPersisted: redactionReviewRecordSchema?.summary?.memoryTextPersisted ?? null,
+  redactionReviewRecordConfigTextPersisted: redactionReviewRecordSchema?.summary?.configTextPersisted ?? null,
+  redactionReviewRecordApprovalTextPersisted: redactionReviewRecordSchema?.summary?.approvalTextPersisted ?? null,
+  redactionReviewRecordForbiddenForLiveObservation: redactionReviewRecordSchema?.summary?.forbiddenForLiveObservation ?? null,
+  redactionReviewRecordForbiddenForRuntimeUse: redactionReviewRecordSchema?.summary?.forbiddenForRuntimeUse ?? null,
   unsafeAllowSignals,
   sourceFixtureMutation: false,
 };
