@@ -95,6 +95,11 @@
       "sha256": "36821f5be961e1f8dcbfe8b8c321b804ee3c1336bde0ca2dc6a06fde428d1b0d"
     },
     {
+      "path": "design-notes/live-shadow-observer-v0.md",
+      "bytes": 6858,
+      "sha256": "231582cfbc0d3cf58c9be956f6103e755faa1a3eb9eb5ab72207125d54972cc6"
+    },
+    {
       "path": "design-notes/scalable-design-patterns-v0.md",
       "bytes": 1078,
       "sha256": "2aa0bd6bee2c8f926a1a2e3414f32f194881d273947b5fdf0eede0938ba54f60"
@@ -171,13 +176,13 @@
     },
     {
       "path": "docs/release-checklist.md",
-      "bytes": 5437,
-      "sha256": "67711c875d767ea8aebbb226a8b8b0f375135af2f1d7ceeb8f607c51fe912449"
+      "bytes": 5705,
+      "sha256": "2c4e6986087a814d11c65d56836fa041aff66b95412eb173b729697f876fbe77"
     },
     {
       "path": "docs/repo-structure.md",
-      "bytes": 4393,
-      "sha256": "a1e058cece42866d5627ab704b95a9fa6dc89fb35353e495623c511d1aea3410"
+      "bytes": 4467,
+      "sha256": "68deb52308901d2e99f4d9c0adf1831e6323aeed343aa7f3b6cc07233500456d"
     },
     {
       "path": "docs/threat-model-v0.md",
