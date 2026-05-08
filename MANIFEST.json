@@ -76,8 +76,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 5404,
-      "sha256": "5a34a9e1821fd9b209aa22f86d4b897f34af72599007aafc2445decd5cae29bb"
+      "bytes": 5439,
+      "sha256": "7fd3504428aa14f87f5bea53e26d154d5c27f3814eeffc992c1df44453187e7c"
     },
     {
       "path": "RELEASE_CANDIDATE.md",
@@ -87,7 +87,7 @@
     {
       "path": "RELEASE_NOTES.md",
       "bytes": 3874,
-      "sha256": "bfc157d82245092f80c813769015afca288069c351b1495ade4bd5cc27e2bfe6"
+      "sha256": "1155e5ab998fe2eb266daaa90e44e0bd21f8cfe27d36173648dc1ea4c3cbd7a0"
     },
     {
       "path": "design-notes/adapter-boundary-langgraph-mcp-v0.md",
@@ -171,8 +171,8 @@
     },
     {
       "path": "docs/release-checklist.md",
-      "bytes": 5391,
-      "sha256": "ed70b8b8c7ec27abc54aefb8c8c4625cadb94d38ab7771049f241efd78874e3f"
+      "bytes": 5437,
+      "sha256": "3205089f53e39db739024b5eb4ecd18897e08321715675609d27fbd107a636b3"
     },
     {
       "path": "docs/repo-structure.md",
@@ -221,8 +221,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/README.md",
-      "bytes": 8541,
-      "sha256": "141ef533b743cfcc2af62839adab7444893d86caa77e0af8c6ae9884b646f7c2"
+      "bytes": 8726,
+      "sha256": "c58ae2c6bb82bea548420a97e3879b02704525942ff002e1636b6b142df62bd9"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/bin/validate-receipt.mjs",
@@ -258,6 +258,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/authority-overhead-benchmark.out.json",
       "bytes": 19325,
       "sha256": "0df219ca072fffe8aedd06a074688ea7f03e87bf2c4295f46ef6b3e721603cb2"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/category-coverage-thresholds.out.json",
+      "bytes": 3451,
+      "sha256": "34b01ed9c5c25adb926de2f0a9873316d68d3a8ffd36fe58e6648e6f10f95f7d"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/cli-validator.out.json",
@@ -326,8 +331,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/review-local.out.json",
-      "bytes": 9324,
-      "sha256": "09a1fc08555359b13c4042ae8b66ac7e0a22a845f76acf7a830f3d8d29f8af6e"
+      "bytes": 9641,
+      "sha256": "b3eeb7d92e0622378a5faa25ac5611206b99e34e27e23210d7cb88c3c97b629c"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/route-classifier-shadow.out.json",
@@ -416,8 +421,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/package.json",
-      "bytes": 5868,
-      "sha256": "327d81f0f4e7e7ae383f55c40d647173d6e19fe8cdfd374600bf88397e21c7a6"
+      "bytes": 6011,
+      "sha256": "4c4211dc712079df4e7fff99c319e9b5c054bab215e489c9874bdbd2b770cb82"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/action-context-packet.mjs",
@@ -508,6 +513,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/tests/authority-overhead-benchmark.mjs",
       "bytes": 13602,
       "sha256": "68ebcfd8d8340716db4ddfd2a57bf9a883c544877d4c5e85f47093a2b0693a6e"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/category-coverage-thresholds.mjs",
+      "bytes": 7148,
+      "sha256": "89d789d8016d30e6e91eb6fc95adb7652c5a544a4d5f99c2525e2e18caac5e84"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/cli-validator.mjs",
@@ -601,8 +611,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/review-local.mjs",
-      "bytes": 17794,
-      "sha256": "3a18c927c9d3725d7b8d155707d30f7ae4f9e9c3214aa357c2d6b3ac0a466eea"
+      "bytes": 18521,
+      "sha256": "4af9d60fa8d255cce2203258b0943715c112ccfe3c134f10994d155fce448d24"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/route-classifier-shadow.mjs",
@@ -1041,8 +1051,8 @@
     },
     {
       "path": "tools/release-check.mjs",
-      "bytes": 12246,
-      "sha256": "442197da490d30d5ba05533dbce1cc87ace9232db8c071309c23e7a5d3d6800d"
+      "bytes": 12963,
+      "sha256": "1f2b93411d9b415ef3d8921140ce077d7fc1e9c4688a7d451b6ca09611d2628d"
     },
     {
       "path": "tools/verify-manifest.mjs",

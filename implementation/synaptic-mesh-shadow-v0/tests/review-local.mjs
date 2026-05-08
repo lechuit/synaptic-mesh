@@ -117,6 +117,10 @@ const commands = [
     args: [resolve(packageRoot, 'tests/real-flow-mutation-suite.mjs')],
   },
   {
+    id: 'category-coverage-thresholds-tests',
+    args: [resolve(packageRoot, 'tests/category-coverage-thresholds.mjs')],
+  },
+  {
     id: 'fixture-parity-harness',
     args: [resolve(packageRoot, 'tests/fixture-parity.mjs')],
   },
@@ -152,6 +156,7 @@ const routeClassifierShadow = readEvidenceJson('implementation/synaptic-mesh-sha
 const realFlowClassifierScorecard = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/real-flow-classifier-scorecard.out.json');
 const decisionTraceSchema = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/decision-trace-schema.out.json');
 const realFlowMutationSuite = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/real-flow-mutation-suite.out.json');
+const categoryCoverageThresholds = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/category-coverage-thresholds.out.json');
 
 const unsafeAllowSignals = [
   ...(fixtureParity?.summary?.nonRegressionUnsafeAllowFixtures ?? []),
@@ -193,6 +198,8 @@ if (Number(realFlowMutationSuite?.summary?.duplicateMutationIdCount ?? 0) !== 0)
 if (Number(realFlowMutationSuite?.summary?.nonDegradedCount ?? 0) !== 0) unsafeAllowSignals.push('real-flow-mutation-non-degraded');
 if (Number(realFlowMutationSuite?.summary?.falsePermitRate ?? 0) !== 0) unsafeAllowSignals.push('real-flow-mutation-false-permit');
 if (Number(realFlowMutationSuite?.summary?.falseCompactRate ?? 0) !== 0) unsafeAllowSignals.push('real-flow-mutation-false-compact');
+if (categoryCoverageThresholds?.summary?.verdict !== 'pass') unsafeAllowSignals.push('category-coverage-thresholds');
+if (Number(categoryCoverageThresholds?.summary?.thresholdFailures ?? 1) !== 0) unsafeAllowSignals.push('category-coverage-threshold-failures');
 
 const summary = {
   artifact: 'T-synaptic-mesh-review-local-runner-v0',
@@ -259,6 +266,8 @@ const summary = {
   realFlowMutationNonDegradedCount: realFlowMutationSuite?.summary?.nonDegradedCount ?? null,
   realFlowMutationFalsePermitRate: realFlowMutationSuite?.summary?.falsePermitRate ?? null,
   realFlowMutationFalseCompactRate: realFlowMutationSuite?.summary?.falseCompactRate ?? null,
+  categoryCoverageThresholdsVerdict: categoryCoverageThresholds?.summary?.verdict ?? null,
+  categoryCoverageThresholdFailures: categoryCoverageThresholds?.summary?.thresholdFailures ?? null,
   unsafeAllowSignals,
   sourceFixtureMutation: false,
 };
