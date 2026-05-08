@@ -1,19 +1,19 @@
-# Release Notes — Synaptic Mesh v0.1.8
+# Release Notes — Synaptic Mesh v0.1.9
 
-Status: live-shadow contract hardening release candidate / public review package update. Not runtime-ready; not production/canary/enforcement-ready.
+Status: manual offline ingestion / pre-live shadow readiness release candidate / public review package update. Not runtime-ready; not production/canary/enforcement-ready.
 
-## Highlights since v0.1.7
+## Highlights since v0.1.8
 
-- Added a design-only passive live-shadow observer boundary: future observers may record audit artifacts but must not become part of the decision path.
-- Added offline `LiveShadowObservation` and `LiveShadowObservationResult` schemas/fixtures with forbidden-effects gates and negative controls.
-- Added synthetic offline replay from DecisionTrace evidence into passive live-shadow observation/result records; all outputs remain `record_only`, `no_effects`, and `local_shadow_only`.
-- Added a design-only redaction/retention boundary for future live-shadow artifacts: raw prompts, transcripts, secrets, tool outputs, memory/config text, approval text, and private paths are redacted/refused by design.
-- Added aggregate-only live-shadow drift scorecard shape validation over synthetic replay evidence, with zero tolerated forbidden effects, capability attempts, raw content persistence, redaction implementation, retention scheduler, or enforcement.
-- Kept CI scoped to the local shadow package; this release does not add runtime/framework integration, live observer implementation, MCP/A2A integration, tool execution, memory writes, config writes, publication, approval paths, blocking/allowing, or enforcement behavior.
+- Added `ManualObservationBundle` schema and fixtures for human-reviewed, manual/offline, redacted-only observation bundles.
+- Added a manual observation redaction fixture pack with positive redacted cases and synthetic negative leakage labels; no real raw prompts, secrets, tool output, memory/config text, approval text, or private paths are persisted.
+- Added manual bundle → `parserEvidence` replay with route-decision-input hash binding; this is replay/shape evidence only, not a classifier or runtime parser.
+- Added manual `DecisionTrace` → `LiveShadowObservation` / `LiveShadowObservationResult` replay; all results remain `record_only`, `no_effects`, and `local_shadow_only`.
+- Added manual observation scorecard thresholds with strict zero-tolerance counters for validation failures, mismatches, false permits, false compacts, boundary loss, forbidden effects, blocking/allowing, and capability attempts.
+- Kept CI scoped to the local shadow package; this release does not add runtime/framework integration, live observer implementation, MCP/A2A integration, tool execution, memory writes, config writes, publication, approval paths, blocking/allowing, authorization, or enforcement behavior.
 
 ## Carried-forward package evidence
 
-The release package still includes earlier local-shadow gates from the v0.1.x line: reason-code vocabulary docs, conservative coverage matrix, raw/parser adversarial fixtures, adversarial fixture generation, authority-overhead benchmark evidence, decision traces, oracle/classifier separation, mutation degradation checks, and category coverage thresholds. These remain current validation artifacts, but they are not new v0.1.8 delta items.
+The release package still includes earlier local-shadow gates from the v0.1.x line: reason-code vocabulary docs, conservative coverage matrix, raw/parser adversarial fixtures, adversarial fixture generation, authority-overhead benchmark evidence, decision traces, oracle/classifier separation, mutation degradation checks, category coverage thresholds, passive live-shadow schemas, synthetic live-shadow replay, redaction/retention design boundaries, and aggregate drift scorecard shape checks. These remain current validation artifacts, but they are not new v0.1.9 delta items.
 
 ## Validation snapshot
 
@@ -40,17 +40,22 @@ The release package still includes earlier local-shadow gates from the v0.1.x li
 - Live-shadow forbidden-effects gate: pass, violations 0
 - Synthetic live-shadow replay: pass 24 traces → 24 observations + 24 results, 48 valid records, forbidden effects 0, mayBlock/mayAllow/capabilityTrue 0
 - Live-shadow drift scorecard shape: pass 24 observations/24 results, validation errors 0, forbidden effects 0, capability attempts 0, capabilityTrue 0, rawContentPersisted false, redactionImplementationAdded false, retentionSchedulerImplemented false
+- Manual observation bundle schema: pass 2/2 bundles, validation errors 0, negative controls 14, human review required, raw content persisted false, forbidden effects 0
+- Manual observation redaction fixture pack: pass 2 positive / 8 negative synthetic cases, redactionFailures 0, raw/private/secret/tool/memory/config/approval persistence false, capabilityAttempts 0, forbiddenEffects 0
+- Manual bundle parserEvidence replay: pass 2/2 replay rows, parserEvidenceValidCount 2, validation errors 0, routeDecisionInputHashBound true, classifierDecisionComputed false, decisionTraceGenerated false
+- Manual DecisionTrace/live-shadow replay: pass 2 traces → 2 observations + 2 results, validation errors 0, mismatch 0, falsePermit 0, falseCompact 0, boundaryLoss 0, forbiddenEffectsDetected 0, mayBlock/mayAllow/capabilityTrue 0
+- Manual observation scorecard thresholds: pass, thresholdFailureCount 0, validationErrorCount 0, rawContentPersisted false, redactedMetadataOnly true, capabilityAttempts 0, forbiddenEffects 0
 
 ## Compatibility note
 
-Synaptic Mesh remains a framework-agnostic protocol proposal. v0.1.8 strengthens release confidence with passive live-shadow contracts, synthetic replay, redaction/retention design boundaries, and aggregate drift scorecard shape checks, but does not ship real LangGraph, AutoGen, CrewAI, Semantic Kernel, MCP, runtime host adapters, live observers, daemons, watchers, retention schedulers, or enforcement hooks. Real runtime/live-observer work remains future work.
+Synaptic Mesh remains a framework-agnostic protocol proposal. v0.1.9 strengthens release confidence around manual/offline ingestion before any live observer exists, but does not ship real LangGraph, AutoGen, CrewAI, Semantic Kernel, MCP, runtime host adapters, live observers, daemons, watchers, retention schedulers, authorization paths, or enforcement hooks. Real runtime/live-observer work remains future work and requires a separate explicit maintainer decision.
 
 ## Operational non-release status
 
 - Not runtime/tooling integrated.
 - Not live-monitoring integrated.
 - Not production/canary/enforcement/L2+ ready.
-- Runtime, live observation, adapter, retention, or operational use requires a separate explicit maintainer decision.
+- Runtime, live observation, adapter, retention, authorization, or operational use requires a separate explicit maintainer decision.
 
 ## Public review requests
 
