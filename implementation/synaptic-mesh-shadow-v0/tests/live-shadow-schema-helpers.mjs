@@ -35,8 +35,15 @@ export function validateSchemaValue(schema, value, path = '$') {
   } else if (schema.type && actualType !== schema.type) {
     return [`${path}: expected ${schema.type}, got ${actualType}`];
   }
+  if (schema.const !== undefined && value !== schema.const) errors.push(`${path}: const mismatch`);
   if (schema.enum && !schema.enum.includes(value)) errors.push(`${path}: enum mismatch`);
   if (schema.pattern && typeof value === 'string' && !(new RegExp(schema.pattern).test(value))) errors.push(`${path}: pattern mismatch`);
+  if (schema.allOf) {
+    for (const [index, candidate] of schema.allOf.entries()) {
+      const candidateErrors = validateSchemaValue(candidate, value, path);
+      if (candidateErrors.length > 0) errors.push(`${path}: allOf[${index}] mismatch (${candidateErrors.join('; ')})`);
+    }
+  }
   if (schema.type === 'object') {
     for (const field of schema.required ?? []) if (!Object.hasOwn(value, field)) errors.push(`${path}: missing required field ${field}`);
     if (schema.additionalProperties === false) {
@@ -47,6 +54,12 @@ export function validateSchemaValue(schema, value, path = '$') {
     for (const [field, childValue] of Object.entries(value)) {
       if (Object.hasOwn(schema.properties ?? {}, field)) errors.push(...validateSchemaValue(schema.properties[field], childValue, `${path}.${field}`));
       else if (additional && typeof additional === 'object') errors.push(...validateSchemaValue(additional, childValue, `${path}.${field}`));
+    }
+  }
+  if (schema.type === 'array' || schema.contains) {
+    if (schema.contains) {
+      const matchCount = value.filter((item, index) => validateSchemaValue(schema.contains, item, `${path}[${index}]`).length === 0).length;
+      if (matchCount < (schema.minContains ?? 1)) errors.push(`${path}: contains mismatch`);
     }
   }
   if (schema.type === 'array') {
