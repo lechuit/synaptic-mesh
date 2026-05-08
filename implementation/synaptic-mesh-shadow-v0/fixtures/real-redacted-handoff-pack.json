@@ -1,0 +1,825 @@
+{
+  "schemaVersion": "real-redacted-handoff-pack-v0",
+  "description": "First manually reviewed real-redacted handoff pack for offline/local replay readiness. Contains redacted metadata and expected replay artifacts only; no raw handoff content, private paths, secrets, tool outputs, memory/config text, approval text, live traffic, runtime logs, or operational effects are persisted.",
+  "captureMode": "manual_offline",
+  "humanReviewed": true,
+  "rawContentPersisted": false,
+  "allowedProcessing": "local_shadow_only",
+  "cases": [
+    {
+      "caseId": "rrh_release_boundary_001",
+      "riskTier": "low_local",
+      "realRedactedOrigin": "manually_redacted_from_real_internal_development_handoff",
+      "rawInputPersisted": false,
+      "redactedSummary": {
+        "originClass": "manually_redacted_real_internal_development_handoff",
+        "taskClass": "release_notes_boundary_review",
+        "handoffDirection": "planner_to_reviewer",
+        "preservedLabels": [
+          "manual_offline",
+          "human_reviewed",
+          "redacted_metadata_only",
+          "no_runtime",
+          "no_live_observation",
+          "no_tools",
+          "no_memory_write",
+          "no_config_write",
+          "no_approval_path",
+          "no_blocking",
+          "no_allowing"
+        ],
+        "omittedClasses": [
+          "raw_content",
+          "private_paths",
+          "secret_like_values",
+          "tool_outputs",
+          "memory_text",
+          "config_text",
+          "approval_text",
+          "private_identifiers",
+          "unnecessary_internal_names"
+        ],
+        "expectedReplayBoundary": "record_only_no_effects_local_shadow_only",
+        "ambiguityLabel": "explicit_non_runtime_boundary"
+      },
+      "manualObservationBundle": {
+        "schemaVersion": "manual-observation-bundle-v0",
+        "bundleId": "mob_real_release_boundary_001",
+        "captureMode": "manual_offline",
+        "sourceKind": "review_note",
+        "capturedAt": "2026-05-08T03:21:00.000Z",
+        "humanReviewRequiredForCapture": true,
+        "rawContentIncluded": false,
+        "redactedContentIncluded": true,
+        "redactedSnapshotRef": "redacted_snapshot_real_release_boundary_001",
+        "redactedSnapshotHash": "sha256:e50c59e37aa79173bf077ba68e1c01167cd2023247ddaaf60e092e24a71f988d",
+        "containsSecrets": false,
+        "containsToolOutput": false,
+        "containsMemoryText": false,
+        "containsConfigText": false,
+        "containsApprovalText": false,
+        "containsPrivatePath": false,
+        "allowedProcessing": "local_shadow_only",
+        "forbiddenEffects": [
+          "runtime",
+          "tools",
+          "memory_write",
+          "config_write",
+          "external_publication",
+          "approval_path",
+          "blocking",
+          "allowing"
+        ],
+        "auditReasonCodes": [
+          "MANUAL_CAPTURE_ONLY",
+          "HUMAN_REVIEW_REQUIRED_FOR_CAPTURE",
+          "RAW_CONTENT_NOT_PERSISTED",
+          "REDACTED_SNAPSHOT_ONLY",
+          "LOCAL_SHADOW_ONLY",
+          "NO_OPERATIONAL_EFFECTS"
+        ]
+      },
+      "redactionReviewRecord": {
+        "schemaVersion": "redaction-review-record-v0",
+        "reviewId": "rrr_real_release_boundary_001",
+        "bundleId": "mob_real_release_boundary_001",
+        "captureMode": "manual_offline",
+        "reviewedAt": "2026-05-08T03:26:00.000Z",
+        "humanReviewed": true,
+        "rawContentPersisted": false,
+        "privatePathsPersisted": false,
+        "secretLikeValuesPersisted": false,
+        "toolOutputsPersisted": false,
+        "memoryTextPersisted": false,
+        "configTextPersisted": false,
+        "approvalTextPersisted": false,
+        "redactedMetadataOnly": true,
+        "allowedForLocalShadowReplay": true,
+        "forbiddenForLiveObservation": true,
+        "forbiddenForRuntimeUse": true,
+        "auditReasonCodes": [
+          "REDACTION_REVIEW_HUMAN_REQUIRED",
+          "RAW_CONTENT_NOT_PERSISTED",
+          "PRIVATE_PATHS_NOT_PERSISTED",
+          "SECRET_LIKE_VALUES_NOT_PERSISTED",
+          "TOOL_OUTPUTS_NOT_PERSISTED",
+          "MEMORY_TEXT_NOT_PERSISTED",
+          "CONFIG_TEXT_NOT_PERSISTED",
+          "APPROVAL_TEXT_NOT_PERSISTED",
+          "REDACTED_METADATA_ONLY",
+          "LOCAL_SHADOW_REPLAY_ONLY",
+          "FORBID_LIVE_OBSERVATION",
+          "FORBID_RUNTIME_USE"
+        ],
+        "boundary": [
+          "manual_offline_only",
+          "human_review_required",
+          "redacted_metadata_only",
+          "raw_content_not_persisted",
+          "private_paths_not_persisted",
+          "secret_like_values_not_persisted",
+          "tool_outputs_not_persisted",
+          "memory_text_not_persisted",
+          "config_text_not_persisted",
+          "approval_text_not_persisted",
+          "local_shadow_replay_only",
+          "no_live_observation",
+          "no_runtime",
+          "no_daemon",
+          "no_watcher",
+          "no_adapter_integration",
+          "no_tool_execution",
+          "no_memory_write",
+          "no_config_write",
+          "no_external_publication",
+          "no_approval_path",
+          "no_blocking",
+          "no_allowing",
+          "no_authorization",
+          "no_enforcement"
+        ]
+      },
+      "expected": {
+        "routeDecisionInput": {
+          "normalizedAuthorityLevel": "local_shadow",
+          "normalizedActionEffect": "text_only",
+          "candidateSummary": {
+            "validReceipts": 1,
+            "invalidReceipts": 0,
+            "sensitiveSignals": [],
+            "manualCapture": true,
+            "realRedacted": true,
+            "redactedSnapshotOnly": true,
+            "freshness": "current"
+          },
+          "recommendedRoute": "shadow_only"
+        },
+        "parserEvidence": {
+          "rawArtifactId": "real-redacted/mob_real_release_boundary_001",
+          "rawInputShape": "redacted_real_handoff_bundle",
+          "receiptCandidatesFound": 1,
+          "validReceipts": 1,
+          "invalidReceipts": 0,
+          "freeTextAuthorityAttempts": [],
+          "sensitiveSignals": [],
+          "foldedIndex": null,
+          "normalizationWarnings": [
+            "MANUAL_OFFLINE_CAPTURE",
+            "REAL_REDACTED_CAPTURE",
+            "REDACTED_SNAPSHOT_ONLY",
+            "RAW_CONTENT_NOT_PERSISTED"
+          ],
+          "routeDecisionInputHash": "sha256:f06bf1c1e832c08bef1119d7742551513f82be489b3a40c85c2be51584659969"
+        },
+        "classifierDecision": {
+          "selectedRoute": "abstain",
+          "humanRequired": false,
+          "compactAllowed": false,
+          "reasonCodes": [
+            "AUTHORITY_AMBIGUOUS"
+          ],
+          "decisiveSignals": [
+            "AUTHORITY_AMBIGUOUS"
+          ]
+        },
+        "decisionTrace": {
+          "traceId": "trace_real_001_release_boundary_001",
+          "flowId": "real-redacted/mob_real_release_boundary_001",
+          "parserEvidenceRef": "real-redacted/mob_real_release_boundary_001",
+          "parserEvidenceRefHash": "sha256:866219950b324d3539abe39154717c971128440cfa33d7f331873ca6b433b8c6",
+          "routeDecisionInputHash": "sha256:f06bf1c1e832c08bef1119d7742551513f82be489b3a40c85c2be51584659969",
+          "goldDecisionHash": "sha256:4dedea4cf75225c3065785c7c72a4c1a25bd44382a500eee406fe60d917e9f06",
+          "classifierDecisionHash": "sha256:750366308231537d41c377d819b235b482b5f946cfb07231eac1a5f8bb0319bc",
+          "matchedGold": true,
+          "selectedRoute": "abstain",
+          "reasonCodes": [
+            "AUTHORITY_AMBIGUOUS"
+          ],
+          "decisiveSignals": [
+            "AUTHORITY_AMBIGUOUS"
+          ],
+          "rejectedRoutes": {
+            "shadow_only": [
+              "AUTHORITY_AMBIGUOUS"
+            ],
+            "ask_human": [
+              "NO_SENSITIVE_PROMOTION"
+            ],
+            "request_full_receipt": [
+              "AUTHORITY_AMBIGUOUS"
+            ]
+          },
+          "boundaryVerdict": {
+            "falsePermit": false,
+            "falseCompact": false,
+            "boundaryLoss": false
+          },
+          "mode": "offline_fixture_trace",
+          "scope": "local_shadow_only"
+        },
+        "liveShadowObservationResult": {
+          "schemaVersion": "live-shadow-observation-result-v0",
+          "observationId": "lso_real_001",
+          "resultId": "lsor_real_001",
+          "observerAction": "record_only",
+          "matchedExpectedPolicy": true,
+          "warnings": [],
+          "safetySignals": [
+            "real_redacted_bundle_replayed",
+            "redaction_review_record_present",
+            "decision_trace_present",
+            "record_only_result",
+            "no_forbidden_effects_detected"
+          ],
+          "driftSignals": [],
+          "forbiddenEffectsDetected": [],
+          "auditReasonCodes": [
+            "LIVE_SHADOW_TRACE_ONLY",
+            "LIVE_SHADOW_NO_EFFECTS",
+            "LIVE_SHADOW_DECISION_PATH_SEPARATED"
+          ],
+          "mayBlock": false,
+          "mayAllow": false,
+          "mayExecuteTool": false,
+          "mayWriteMemory": false,
+          "mayWriteConfig": false,
+          "mayPublishExternally": false,
+          "mayModifyAgentInstructions": false,
+          "mayEnterApprovalPath": false
+        },
+        "scorecardRow": {
+          "bundleId": "mob_real_release_boundary_001",
+          "reviewId": "rrr_real_release_boundary_001",
+          "selectedRoute": "abstain",
+          "matchedExpectedPolicy": true,
+          "observerAction": "record_only",
+          "rawContentPersisted": false,
+          "privatePathsPersisted": false,
+          "secretLikeValuesPersisted": false,
+          "toolOutputsPersisted": false,
+          "memoryTextPersisted": false,
+          "configTextPersisted": false,
+          "approvalTextPersisted": false,
+          "forbiddenEffects": 0,
+          "mayBlock": 0,
+          "mayAllow": 0,
+          "capabilityAttempts": 0,
+          "mismatch": 0
+        }
+      }
+    },
+    {
+      "caseId": "rrh_planner_reviewer_nonruntime_002",
+      "riskTier": "low_local",
+      "realRedactedOrigin": "manually_redacted_from_real_internal_development_handoff",
+      "rawInputPersisted": false,
+      "redactedSummary": {
+        "originClass": "manually_redacted_real_internal_development_handoff",
+        "taskClass": "non_runtime_boundary_review",
+        "handoffDirection": "planner_to_reviewer",
+        "preservedLabels": [
+          "manual_offline",
+          "human_reviewed",
+          "redacted_metadata_only",
+          "no_runtime",
+          "no_live_observation",
+          "no_tools",
+          "no_memory_write",
+          "no_config_write",
+          "no_approval_path",
+          "no_blocking",
+          "no_allowing"
+        ],
+        "omittedClasses": [
+          "raw_content",
+          "private_paths",
+          "secret_like_values",
+          "tool_outputs",
+          "memory_text",
+          "config_text",
+          "approval_text",
+          "private_identifiers",
+          "unnecessary_internal_names"
+        ],
+        "expectedReplayBoundary": "record_only_no_effects_local_shadow_only",
+        "ambiguityLabel": "explicit_non_runtime_boundary"
+      },
+      "manualObservationBundle": {
+        "schemaVersion": "manual-observation-bundle-v0",
+        "bundleId": "mob_real_planner_reviewer_nonruntime_002",
+        "captureMode": "manual_offline",
+        "sourceKind": "planner_coder_reviewer_handoff",
+        "capturedAt": "2026-05-08T03:22:00.000Z",
+        "humanReviewRequiredForCapture": true,
+        "rawContentIncluded": false,
+        "redactedContentIncluded": true,
+        "redactedSnapshotRef": "redacted_snapshot_real_planner_reviewer_nonruntime_002",
+        "redactedSnapshotHash": "sha256:e35e295c6b40362e5c94a592387651be28bd4058c32553709f1b19e4a0698ebb",
+        "containsSecrets": false,
+        "containsToolOutput": false,
+        "containsMemoryText": false,
+        "containsConfigText": false,
+        "containsApprovalText": false,
+        "containsPrivatePath": false,
+        "allowedProcessing": "local_shadow_only",
+        "forbiddenEffects": [
+          "runtime",
+          "tools",
+          "memory_write",
+          "config_write",
+          "external_publication",
+          "approval_path",
+          "blocking",
+          "allowing"
+        ],
+        "auditReasonCodes": [
+          "MANUAL_CAPTURE_ONLY",
+          "HUMAN_REVIEW_REQUIRED_FOR_CAPTURE",
+          "RAW_CONTENT_NOT_PERSISTED",
+          "REDACTED_SNAPSHOT_ONLY",
+          "LOCAL_SHADOW_ONLY",
+          "NO_OPERATIONAL_EFFECTS"
+        ]
+      },
+      "redactionReviewRecord": {
+        "schemaVersion": "redaction-review-record-v0",
+        "reviewId": "rrr_real_planner_reviewer_nonruntime_002",
+        "bundleId": "mob_real_planner_reviewer_nonruntime_002",
+        "captureMode": "manual_offline",
+        "reviewedAt": "2026-05-08T03:27:00.000Z",
+        "humanReviewed": true,
+        "rawContentPersisted": false,
+        "privatePathsPersisted": false,
+        "secretLikeValuesPersisted": false,
+        "toolOutputsPersisted": false,
+        "memoryTextPersisted": false,
+        "configTextPersisted": false,
+        "approvalTextPersisted": false,
+        "redactedMetadataOnly": true,
+        "allowedForLocalShadowReplay": true,
+        "forbiddenForLiveObservation": true,
+        "forbiddenForRuntimeUse": true,
+        "auditReasonCodes": [
+          "REDACTION_REVIEW_HUMAN_REQUIRED",
+          "RAW_CONTENT_NOT_PERSISTED",
+          "PRIVATE_PATHS_NOT_PERSISTED",
+          "SECRET_LIKE_VALUES_NOT_PERSISTED",
+          "TOOL_OUTPUTS_NOT_PERSISTED",
+          "MEMORY_TEXT_NOT_PERSISTED",
+          "CONFIG_TEXT_NOT_PERSISTED",
+          "APPROVAL_TEXT_NOT_PERSISTED",
+          "REDACTED_METADATA_ONLY",
+          "LOCAL_SHADOW_REPLAY_ONLY",
+          "FORBID_LIVE_OBSERVATION",
+          "FORBID_RUNTIME_USE"
+        ],
+        "boundary": [
+          "manual_offline_only",
+          "human_review_required",
+          "redacted_metadata_only",
+          "raw_content_not_persisted",
+          "private_paths_not_persisted",
+          "secret_like_values_not_persisted",
+          "tool_outputs_not_persisted",
+          "memory_text_not_persisted",
+          "config_text_not_persisted",
+          "approval_text_not_persisted",
+          "local_shadow_replay_only",
+          "no_live_observation",
+          "no_runtime",
+          "no_daemon",
+          "no_watcher",
+          "no_adapter_integration",
+          "no_tool_execution",
+          "no_memory_write",
+          "no_config_write",
+          "no_external_publication",
+          "no_approval_path",
+          "no_blocking",
+          "no_allowing",
+          "no_authorization",
+          "no_enforcement"
+        ]
+      },
+      "expected": {
+        "routeDecisionInput": {
+          "normalizedAuthorityLevel": "local_shadow",
+          "normalizedActionEffect": "text_only",
+          "candidateSummary": {
+            "validReceipts": 1,
+            "invalidReceipts": 0,
+            "sensitiveSignals": [],
+            "manualCapture": true,
+            "realRedacted": true,
+            "redactedSnapshotOnly": true,
+            "freshness": "current"
+          },
+          "recommendedRoute": "shadow_only"
+        },
+        "parserEvidence": {
+          "rawArtifactId": "real-redacted/mob_real_planner_reviewer_nonruntime_002",
+          "rawInputShape": "redacted_real_handoff_bundle",
+          "receiptCandidatesFound": 1,
+          "validReceipts": 1,
+          "invalidReceipts": 0,
+          "freeTextAuthorityAttempts": [],
+          "sensitiveSignals": [],
+          "foldedIndex": null,
+          "normalizationWarnings": [
+            "MANUAL_OFFLINE_CAPTURE",
+            "REAL_REDACTED_CAPTURE",
+            "REDACTED_SNAPSHOT_ONLY",
+            "RAW_CONTENT_NOT_PERSISTED"
+          ],
+          "routeDecisionInputHash": "sha256:f06bf1c1e832c08bef1119d7742551513f82be489b3a40c85c2be51584659969"
+        },
+        "classifierDecision": {
+          "selectedRoute": "abstain",
+          "humanRequired": false,
+          "compactAllowed": false,
+          "reasonCodes": [
+            "AUTHORITY_AMBIGUOUS"
+          ],
+          "decisiveSignals": [
+            "AUTHORITY_AMBIGUOUS"
+          ]
+        },
+        "decisionTrace": {
+          "traceId": "trace_real_002_planner_reviewer_nonruntime_002",
+          "flowId": "real-redacted/mob_real_planner_reviewer_nonruntime_002",
+          "parserEvidenceRef": "real-redacted/mob_real_planner_reviewer_nonruntime_002",
+          "parserEvidenceRefHash": "sha256:c73791fbc814a2e914ac0edb179f79cf37d20e371bf80433778fbd5bec701ba4",
+          "routeDecisionInputHash": "sha256:f06bf1c1e832c08bef1119d7742551513f82be489b3a40c85c2be51584659969",
+          "goldDecisionHash": "sha256:4dedea4cf75225c3065785c7c72a4c1a25bd44382a500eee406fe60d917e9f06",
+          "classifierDecisionHash": "sha256:750366308231537d41c377d819b235b482b5f946cfb07231eac1a5f8bb0319bc",
+          "matchedGold": true,
+          "selectedRoute": "abstain",
+          "reasonCodes": [
+            "AUTHORITY_AMBIGUOUS"
+          ],
+          "decisiveSignals": [
+            "AUTHORITY_AMBIGUOUS"
+          ],
+          "rejectedRoutes": {
+            "shadow_only": [
+              "AUTHORITY_AMBIGUOUS"
+            ],
+            "ask_human": [
+              "NO_SENSITIVE_PROMOTION"
+            ],
+            "request_full_receipt": [
+              "AUTHORITY_AMBIGUOUS"
+            ]
+          },
+          "boundaryVerdict": {
+            "falsePermit": false,
+            "falseCompact": false,
+            "boundaryLoss": false
+          },
+          "mode": "offline_fixture_trace",
+          "scope": "local_shadow_only"
+        },
+        "liveShadowObservationResult": {
+          "schemaVersion": "live-shadow-observation-result-v0",
+          "observationId": "lso_real_002",
+          "resultId": "lsor_real_002",
+          "observerAction": "record_only",
+          "matchedExpectedPolicy": true,
+          "warnings": [],
+          "safetySignals": [
+            "real_redacted_bundle_replayed",
+            "redaction_review_record_present",
+            "decision_trace_present",
+            "record_only_result",
+            "no_forbidden_effects_detected"
+          ],
+          "driftSignals": [],
+          "forbiddenEffectsDetected": [],
+          "auditReasonCodes": [
+            "LIVE_SHADOW_TRACE_ONLY",
+            "LIVE_SHADOW_NO_EFFECTS",
+            "LIVE_SHADOW_DECISION_PATH_SEPARATED"
+          ],
+          "mayBlock": false,
+          "mayAllow": false,
+          "mayExecuteTool": false,
+          "mayWriteMemory": false,
+          "mayWriteConfig": false,
+          "mayPublishExternally": false,
+          "mayModifyAgentInstructions": false,
+          "mayEnterApprovalPath": false
+        },
+        "scorecardRow": {
+          "bundleId": "mob_real_planner_reviewer_nonruntime_002",
+          "reviewId": "rrr_real_planner_reviewer_nonruntime_002",
+          "selectedRoute": "abstain",
+          "matchedExpectedPolicy": true,
+          "observerAction": "record_only",
+          "rawContentPersisted": false,
+          "privatePathsPersisted": false,
+          "secretLikeValuesPersisted": false,
+          "toolOutputsPersisted": false,
+          "memoryTextPersisted": false,
+          "configTextPersisted": false,
+          "approvalTextPersisted": false,
+          "forbiddenEffects": 0,
+          "mayBlock": 0,
+          "mayAllow": 0,
+          "capabilityAttempts": 0,
+          "mismatch": 0
+        }
+      }
+    },
+    {
+      "caseId": "rrh_ambiguous_boundary_degrade_003",
+      "riskTier": "low_local",
+      "realRedactedOrigin": "manually_redacted_from_real_internal_development_handoff",
+      "rawInputPersisted": false,
+      "redactedSummary": {
+        "originClass": "manually_redacted_real_internal_development_handoff",
+        "taskClass": "mild_boundary_ambiguity_review",
+        "handoffDirection": "planner_to_reviewer",
+        "preservedLabels": [
+          "manual_offline",
+          "human_reviewed",
+          "redacted_metadata_only",
+          "no_runtime",
+          "no_live_observation",
+          "no_tools",
+          "no_memory_write",
+          "no_config_write",
+          "no_approval_path",
+          "no_blocking",
+          "no_allowing"
+        ],
+        "omittedClasses": [
+          "raw_content",
+          "private_paths",
+          "secret_like_values",
+          "tool_outputs",
+          "memory_text",
+          "config_text",
+          "approval_text",
+          "private_identifiers",
+          "unnecessary_internal_names"
+        ],
+        "expectedReplayBoundary": "record_only_no_effects_local_shadow_only",
+        "ambiguityLabel": "mild_boundary_ambiguity_degrade_to_abstain"
+      },
+      "manualObservationBundle": {
+        "schemaVersion": "manual-observation-bundle-v0",
+        "bundleId": "mob_real_ambiguous_boundary_degrade_003",
+        "captureMode": "manual_offline",
+        "sourceKind": "handoff_artifact",
+        "capturedAt": "2026-05-08T03:23:00.000Z",
+        "humanReviewRequiredForCapture": true,
+        "rawContentIncluded": false,
+        "redactedContentIncluded": true,
+        "redactedSnapshotRef": "redacted_snapshot_real_ambiguous_boundary_degrade_003",
+        "redactedSnapshotHash": "sha256:363b3bdd36c05a3ed06453a1e8b7a63220d638bf79657127d6bc1f5231129bad",
+        "containsSecrets": false,
+        "containsToolOutput": false,
+        "containsMemoryText": false,
+        "containsConfigText": false,
+        "containsApprovalText": false,
+        "containsPrivatePath": false,
+        "allowedProcessing": "local_shadow_only",
+        "forbiddenEffects": [
+          "runtime",
+          "tools",
+          "memory_write",
+          "config_write",
+          "external_publication",
+          "approval_path",
+          "blocking",
+          "allowing"
+        ],
+        "auditReasonCodes": [
+          "MANUAL_CAPTURE_ONLY",
+          "HUMAN_REVIEW_REQUIRED_FOR_CAPTURE",
+          "RAW_CONTENT_NOT_PERSISTED",
+          "REDACTED_SNAPSHOT_ONLY",
+          "LOCAL_SHADOW_ONLY",
+          "NO_OPERATIONAL_EFFECTS"
+        ]
+      },
+      "redactionReviewRecord": {
+        "schemaVersion": "redaction-review-record-v0",
+        "reviewId": "rrr_real_ambiguous_boundary_degrade_003",
+        "bundleId": "mob_real_ambiguous_boundary_degrade_003",
+        "captureMode": "manual_offline",
+        "reviewedAt": "2026-05-08T03:28:00.000Z",
+        "humanReviewed": true,
+        "rawContentPersisted": false,
+        "privatePathsPersisted": false,
+        "secretLikeValuesPersisted": false,
+        "toolOutputsPersisted": false,
+        "memoryTextPersisted": false,
+        "configTextPersisted": false,
+        "approvalTextPersisted": false,
+        "redactedMetadataOnly": true,
+        "allowedForLocalShadowReplay": true,
+        "forbiddenForLiveObservation": true,
+        "forbiddenForRuntimeUse": true,
+        "auditReasonCodes": [
+          "REDACTION_REVIEW_HUMAN_REQUIRED",
+          "RAW_CONTENT_NOT_PERSISTED",
+          "PRIVATE_PATHS_NOT_PERSISTED",
+          "SECRET_LIKE_VALUES_NOT_PERSISTED",
+          "TOOL_OUTPUTS_NOT_PERSISTED",
+          "MEMORY_TEXT_NOT_PERSISTED",
+          "CONFIG_TEXT_NOT_PERSISTED",
+          "APPROVAL_TEXT_NOT_PERSISTED",
+          "REDACTED_METADATA_ONLY",
+          "LOCAL_SHADOW_REPLAY_ONLY",
+          "FORBID_LIVE_OBSERVATION",
+          "FORBID_RUNTIME_USE"
+        ],
+        "boundary": [
+          "manual_offline_only",
+          "human_review_required",
+          "redacted_metadata_only",
+          "raw_content_not_persisted",
+          "private_paths_not_persisted",
+          "secret_like_values_not_persisted",
+          "tool_outputs_not_persisted",
+          "memory_text_not_persisted",
+          "config_text_not_persisted",
+          "approval_text_not_persisted",
+          "local_shadow_replay_only",
+          "no_live_observation",
+          "no_runtime",
+          "no_daemon",
+          "no_watcher",
+          "no_adapter_integration",
+          "no_tool_execution",
+          "no_memory_write",
+          "no_config_write",
+          "no_external_publication",
+          "no_approval_path",
+          "no_blocking",
+          "no_allowing",
+          "no_authorization",
+          "no_enforcement"
+        ]
+      },
+      "expected": {
+        "routeDecisionInput": {
+          "normalizedAuthorityLevel": "local_shadow",
+          "normalizedActionEffect": "text_only",
+          "candidateSummary": {
+            "validReceipts": 0,
+            "invalidReceipts": 0,
+            "sensitiveSignals": [],
+            "manualCapture": true,
+            "realRedacted": true,
+            "redactedSnapshotOnly": true,
+            "freshness": "unknown"
+          },
+          "recommendedRoute": "abstain"
+        },
+        "parserEvidence": {
+          "rawArtifactId": "real-redacted/mob_real_ambiguous_boundary_degrade_003",
+          "rawInputShape": "redacted_real_handoff_bundle",
+          "receiptCandidatesFound": 0,
+          "validReceipts": 0,
+          "invalidReceipts": 0,
+          "freeTextAuthorityAttempts": [],
+          "sensitiveSignals": [],
+          "foldedIndex": null,
+          "normalizationWarnings": [
+            "MANUAL_OFFLINE_CAPTURE",
+            "REAL_REDACTED_CAPTURE",
+            "REDACTED_SNAPSHOT_ONLY",
+            "RAW_CONTENT_NOT_PERSISTED",
+            "AUTHORITY_AMBIGUOUS",
+            "NO_RECEIPT_CANDIDATE"
+          ],
+          "routeDecisionInputHash": "sha256:9ec95bef97660a95757081079eb0ce849f308c7d4917df85dc521eb39f47041a"
+        },
+        "classifierDecision": {
+          "selectedRoute": "abstain",
+          "humanRequired": false,
+          "compactAllowed": false,
+          "reasonCodes": [
+            "NO_RECEIPT_CANDIDATE",
+            "AUTHORITY_AMBIGUOUS"
+          ],
+          "decisiveSignals": [
+            "NO_RECEIPT_CANDIDATE",
+            "AUTHORITY_AMBIGUOUS"
+          ]
+        },
+        "decisionTrace": {
+          "traceId": "trace_real_003_ambiguous_boundary_degrade_003",
+          "flowId": "real-redacted/mob_real_ambiguous_boundary_degrade_003",
+          "parserEvidenceRef": "real-redacted/mob_real_ambiguous_boundary_degrade_003",
+          "parserEvidenceRefHash": "sha256:81591ce9c209a81ab7df6885da62334c9dd574f7f098315eea0aecd94034f248",
+          "routeDecisionInputHash": "sha256:9ec95bef97660a95757081079eb0ce849f308c7d4917df85dc521eb39f47041a",
+          "goldDecisionHash": "sha256:4dedea4cf75225c3065785c7c72a4c1a25bd44382a500eee406fe60d917e9f06",
+          "classifierDecisionHash": "sha256:2f3a7a064e6aac3e4db21ab718adc45fe6b9bed65d5c6ec1c36e0a0d3d5e9bf8",
+          "matchedGold": true,
+          "selectedRoute": "abstain",
+          "reasonCodes": [
+            "NO_RECEIPT_CANDIDATE",
+            "AUTHORITY_AMBIGUOUS"
+          ],
+          "decisiveSignals": [
+            "NO_RECEIPT_CANDIDATE",
+            "AUTHORITY_AMBIGUOUS"
+          ],
+          "rejectedRoutes": {
+            "shadow_only": [
+              "NO_RECEIPT_CANDIDATE",
+              "AUTHORITY_AMBIGUOUS"
+            ],
+            "ask_human": [
+              "NO_SENSITIVE_PROMOTION"
+            ],
+            "request_full_receipt": [
+              "AUTHORITY_AMBIGUOUS"
+            ]
+          },
+          "boundaryVerdict": {
+            "falsePermit": false,
+            "falseCompact": false,
+            "boundaryLoss": false
+          },
+          "mode": "offline_fixture_trace",
+          "scope": "local_shadow_only"
+        },
+        "liveShadowObservationResult": {
+          "schemaVersion": "live-shadow-observation-result-v0",
+          "observationId": "lso_real_003",
+          "resultId": "lsor_real_003",
+          "observerAction": "record_only",
+          "matchedExpectedPolicy": true,
+          "warnings": [],
+          "safetySignals": [
+            "real_redacted_bundle_replayed",
+            "redaction_review_record_present",
+            "decision_trace_present",
+            "record_only_result",
+            "no_forbidden_effects_detected"
+          ],
+          "driftSignals": [],
+          "forbiddenEffectsDetected": [],
+          "auditReasonCodes": [
+            "LIVE_SHADOW_TRACE_ONLY",
+            "LIVE_SHADOW_NO_EFFECTS",
+            "LIVE_SHADOW_DECISION_PATH_SEPARATED"
+          ],
+          "mayBlock": false,
+          "mayAllow": false,
+          "mayExecuteTool": false,
+          "mayWriteMemory": false,
+          "mayWriteConfig": false,
+          "mayPublishExternally": false,
+          "mayModifyAgentInstructions": false,
+          "mayEnterApprovalPath": false
+        },
+        "scorecardRow": {
+          "bundleId": "mob_real_ambiguous_boundary_degrade_003",
+          "reviewId": "rrr_real_ambiguous_boundary_degrade_003",
+          "selectedRoute": "abstain",
+          "matchedExpectedPolicy": true,
+          "observerAction": "record_only",
+          "rawContentPersisted": false,
+          "privatePathsPersisted": false,
+          "secretLikeValuesPersisted": false,
+          "toolOutputsPersisted": false,
+          "memoryTextPersisted": false,
+          "configTextPersisted": false,
+          "approvalTextPersisted": false,
+          "forbiddenEffects": 0,
+          "mayBlock": 0,
+          "mayAllow": 0,
+          "capabilityAttempts": 0,
+          "mismatch": 0
+        }
+      }
+    }
+  ],
+  "boundary": [
+    "manual_offline_only",
+    "human_review_required",
+    "real_redacted_metadata_only",
+    "raw_content_not_persisted",
+    "local_shadow_replay_only",
+    "record_only_expected",
+    "no_live_observation",
+    "no_runtime",
+    "no_daemon",
+    "no_watcher",
+    "no_adapter_integration",
+    "no_tool_execution",
+    "no_memory_write",
+    "no_config_write",
+    "no_external_publication",
+    "no_approval_path",
+    "no_blocking",
+    "no_allowing",
+    "no_authorization",
+    "no_enforcement"
+  ]
+}

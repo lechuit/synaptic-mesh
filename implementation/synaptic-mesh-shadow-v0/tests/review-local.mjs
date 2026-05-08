@@ -125,6 +125,10 @@ const commands = [
     args: [resolve(packageRoot, 'tests/redaction-review-record-schema.mjs')],
   },
   {
+    id: 'real-redacted-handoff-pack-tests',
+    args: [resolve(packageRoot, 'tests/real-redacted-handoff-pack.mjs')],
+  },
+  {
     id: 'fixture-parity-harness',
     args: [resolve(packageRoot, 'tests/fixture-parity.mjs')],
   },
@@ -162,6 +166,7 @@ const decisionTraceSchema = readEvidenceJson('implementation/synaptic-mesh-shado
 const realFlowMutationSuite = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/real-flow-mutation-suite.out.json');
 const categoryCoverageThresholds = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/category-coverage-thresholds.out.json');
 const redactionReviewRecordSchema = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/redaction-review-record-schema.out.json');
+const realRedactedHandoffPack = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/real-redacted-handoff-pack.out.json');
 
 const unsafeAllowSignals = [
   ...(fixtureParity?.summary?.nonRegressionUnsafeAllowFixtures ?? []),
@@ -216,6 +221,21 @@ if (redactionReviewRecordSchema?.summary?.configTextPersisted !== false) unsafeA
 if (redactionReviewRecordSchema?.summary?.approvalTextPersisted !== false) unsafeAllowSignals.push('redaction-review-record-approval-text');
 if (redactionReviewRecordSchema?.summary?.forbiddenForLiveObservation !== true) unsafeAllowSignals.push('redaction-review-record-live-observation-not-forbidden');
 if (redactionReviewRecordSchema?.summary?.forbiddenForRuntimeUse !== true) unsafeAllowSignals.push('redaction-review-record-runtime-not-forbidden');
+if (realRedactedHandoffPack?.summary?.verdict !== 'pass') unsafeAllowSignals.push('real-redacted-handoff-pack');
+if (Number(realRedactedHandoffPack?.summary?.realRedactedBundles ?? 0) !== 3) unsafeAllowSignals.push('real-redacted-handoff-pack-count');
+if (Number(realRedactedHandoffPack?.summary?.validationErrorCount ?? 1) !== 0) unsafeAllowSignals.push('real-redacted-handoff-pack-validation-errors');
+if (realRedactedHandoffPack?.summary?.rawContentPersisted !== false) unsafeAllowSignals.push('real-redacted-handoff-pack-raw-content');
+if (realRedactedHandoffPack?.summary?.privatePathsPersisted !== false) unsafeAllowSignals.push('real-redacted-handoff-pack-private-paths');
+if (realRedactedHandoffPack?.summary?.secretLikeValuesPersisted !== false) unsafeAllowSignals.push('real-redacted-handoff-pack-secrets');
+if (realRedactedHandoffPack?.summary?.toolOutputsPersisted !== false) unsafeAllowSignals.push('real-redacted-handoff-pack-tool-outputs');
+if (realRedactedHandoffPack?.summary?.memoryTextPersisted !== false) unsafeAllowSignals.push('real-redacted-handoff-pack-memory-text');
+if (realRedactedHandoffPack?.summary?.configTextPersisted !== false) unsafeAllowSignals.push('real-redacted-handoff-pack-config-text');
+if (realRedactedHandoffPack?.summary?.approvalTextPersisted !== false) unsafeAllowSignals.push('real-redacted-handoff-pack-approval-text');
+if (Number(realRedactedHandoffPack?.summary?.forbiddenEffects ?? 1) !== 0) unsafeAllowSignals.push('real-redacted-handoff-pack-forbidden-effects');
+if (Number(realRedactedHandoffPack?.summary?.mayBlock ?? 1) !== 0) unsafeAllowSignals.push('real-redacted-handoff-pack-may-block');
+if (Number(realRedactedHandoffPack?.summary?.mayAllow ?? 1) !== 0) unsafeAllowSignals.push('real-redacted-handoff-pack-may-allow');
+if (Number(realRedactedHandoffPack?.summary?.capabilityAttempts ?? 1) !== 0) unsafeAllowSignals.push('real-redacted-handoff-pack-capability-attempts');
+if (Number(realRedactedHandoffPack?.summary?.mismatch ?? 1) !== 0) unsafeAllowSignals.push('real-redacted-handoff-pack-mismatch');
 
 const summary = {
   artifact: 'T-synaptic-mesh-review-local-runner-v0',
@@ -297,6 +317,17 @@ const summary = {
   redactionReviewRecordApprovalTextPersisted: redactionReviewRecordSchema?.summary?.approvalTextPersisted ?? null,
   redactionReviewRecordForbiddenForLiveObservation: redactionReviewRecordSchema?.summary?.forbiddenForLiveObservation ?? null,
   redactionReviewRecordForbiddenForRuntimeUse: redactionReviewRecordSchema?.summary?.forbiddenForRuntimeUse ?? null,
+  realRedactedHandoffPackVerdict: realRedactedHandoffPack?.summary?.verdict ?? null,
+  realRedactedHandoffPackBundleCount: realRedactedHandoffPack?.summary?.realRedactedBundles ?? null,
+  realRedactedHandoffPackReviewRecordCount: realRedactedHandoffPack?.summary?.redactionReviewRecords ?? null,
+  realRedactedHandoffPackScorecardRows: realRedactedHandoffPack?.summary?.scorecardRows ?? null,
+  realRedactedHandoffPackValidationErrors: realRedactedHandoffPack?.summary?.validationErrorCount ?? null,
+  realRedactedHandoffPackRawContentPersisted: realRedactedHandoffPack?.summary?.rawContentPersisted ?? null,
+  realRedactedHandoffPackForbiddenEffects: realRedactedHandoffPack?.summary?.forbiddenEffects ?? null,
+  realRedactedHandoffPackMayBlock: realRedactedHandoffPack?.summary?.mayBlock ?? null,
+  realRedactedHandoffPackMayAllow: realRedactedHandoffPack?.summary?.mayAllow ?? null,
+  realRedactedHandoffPackCapabilityAttempts: realRedactedHandoffPack?.summary?.capabilityAttempts ?? null,
+  realRedactedHandoffPackMismatch: realRedactedHandoffPack?.summary?.mismatch ?? null,
   unsafeAllowSignals,
   sourceFixtureMutation: false,
 };
