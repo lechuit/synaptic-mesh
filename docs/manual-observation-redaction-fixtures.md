@@ -47,3 +47,7 @@ The expected counters remain strict:
 ## Release boundary
 
 This is unreleased `v0.1.9-track` work. Repository release metadata remains at the latest published release until a dedicated v0.1.9 release PR is cut. During this track, `release:check -- --target v0.1.8` is a latest-published-release baseline/compatibility gate, not a claim that this work was released under v0.1.8.
+
+## Parser evidence replay follow-up
+
+The next unreleased v0.1.9-track gate is [Manual bundle parserEvidence replay v0](manual-bundle-parser-evidence-replay.md). It maps accepted redacted manual bundles into parserEvidence shape only; it does not compute classifier decisions, generate DecisionTrace records, observe live traffic, execute tools, write memory/config, publish, approve, block, allow, or enforce.

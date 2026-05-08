@@ -32,6 +32,7 @@ const releaseGateScripts = [
   'test:live-shadow-drift-scorecard',
   'test:manual-observation-bundle-schema',
   'test:manual-observation-redaction-fixtures',
+  'test:manual-bundle-parser-evidence-replay',
 ];
 
 function runGit(args, options = {}) {
@@ -289,6 +290,24 @@ assert(manualObservationRedactionFixtures?.summary?.memoryWriteImplemented === f
 assert(manualObservationRedactionFixtures?.summary?.configWriteImplemented === false, 'manual redaction fixtures must not implement config writes');
 assert(manualObservationRedactionFixtures?.summary?.externalPublicationImplemented === false, 'manual redaction fixtures must not implement external publication');
 assert(manualObservationRedactionFixtures?.summary?.enforcementImplemented === false, 'manual redaction fixtures must not implement enforcement');
+
+const manualBundleParserEvidenceReplay = readJson(path.join(packageRoot, 'evidence/manual-bundle-parser-evidence-replay.out.json'));
+assert(manualBundleParserEvidenceReplay?.summary?.verdict === 'pass', 'manual bundle parserEvidence replay verdict must be pass');
+assert(manualBundleParserEvidenceReplay?.summary?.mode === 'manual_offline_parser_evidence_replay_only', 'manual parserEvidence replay must remain replay-only');
+assert(manualBundleParserEvidenceReplay?.summary?.parserEvidenceValidCount === manualBundleParserEvidenceReplay?.summary?.manualBundles, 'manual parserEvidence replay must validate all manual bundles');
+assert(manualBundleParserEvidenceReplay?.summary?.routeDecisionInputHashBound === true, 'manual parserEvidence replay must hash-bind routeDecisionInput');
+assert(manualBundleParserEvidenceReplay?.summary?.rawContentPersisted === false, 'manual parserEvidence replay must not persist raw content');
+assert(manualBundleParserEvidenceReplay?.summary?.capabilityAttempts === 0, 'manual parserEvidence replay must not include capability attempts');
+assert(manualBundleParserEvidenceReplay?.summary?.forbiddenEffects === 0, 'manual parserEvidence replay must not include forbidden effects');
+assert(manualBundleParserEvidenceReplay?.summary?.humanReviewRequiredForCapture === true, 'manual parserEvidence replay must require human-reviewed capture');
+assert(manualBundleParserEvidenceReplay?.summary?.classifierDecisionComputed === false, 'manual parserEvidence replay must not compute classifier decisions');
+assert(manualBundleParserEvidenceReplay?.summary?.decisionTraceGenerated === false, 'manual parserEvidence replay must not generate DecisionTrace records');
+assert(manualBundleParserEvidenceReplay?.summary?.liveObserverImplemented === false, 'manual parserEvidence replay must not implement live observer');
+assert(manualBundleParserEvidenceReplay?.summary?.toolExecutionImplemented === false, 'manual parserEvidence replay must not implement tool execution');
+assert(manualBundleParserEvidenceReplay?.summary?.memoryWriteImplemented === false, 'manual parserEvidence replay must not implement memory writes');
+assert(manualBundleParserEvidenceReplay?.summary?.configWriteImplemented === false, 'manual parserEvidence replay must not implement config writes');
+assert(manualBundleParserEvidenceReplay?.summary?.externalPublicationImplemented === false, 'manual parserEvidence replay must not implement external publication');
+assert(manualBundleParserEvidenceReplay?.summary?.enforcementImplemented === false, 'manual parserEvidence replay must not implement enforcement');
 
 const reviewLocalCount = countLabel(reviewEvidence.summary.passCommands, reviewEvidence.summary.commands);
 const receiverAdapterCount = countLabel(receiverAdapterEvidence.summary.passCases, receiverAdapterEvidence.summary.totalCases);
