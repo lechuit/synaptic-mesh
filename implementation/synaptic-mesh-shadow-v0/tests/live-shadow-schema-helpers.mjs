@@ -30,7 +30,11 @@ function typeOf(value) {
 export function validateSchemaValue(schema, value, path = '$') {
   const errors = [];
   const actualType = typeOf(value);
-  if (schema.type && actualType !== schema.type) return [`${path}: expected ${schema.type}, got ${actualType}`];
+  if (schema.type === 'integer') {
+    if (actualType !== 'number' || !Number.isInteger(value)) return [`${path}: expected integer, got ${actualType}`];
+  } else if (schema.type && actualType !== schema.type) {
+    return [`${path}: expected ${schema.type}, got ${actualType}`];
+  }
   if (schema.enum && !schema.enum.includes(value)) errors.push(`${path}: enum mismatch`);
   if (schema.pattern && typeof value === 'string' && !(new RegExp(schema.pattern).test(value))) errors.push(`${path}: pattern mismatch`);
   if (schema.type === 'object') {

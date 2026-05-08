@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "live-shadow-drift-scorecard-fixture-v0",
+  "description": "Offline scorecard-shape fixture. Aggregates synthetic replay evidence only; does not observe live traffic or implement a live observer.",
+  "sourceEvidence": "implementation/synaptic-mesh-shadow-v0/evidence/live-shadow-synthetic-replay.out.json",
+  "scorecardMode": "offline_scorecard_shape_only",
+  "bucketVocabulary": [
+    "none",
+    "classifierDecisionChanged",
+    "redactionWarning",
+    "forbiddenEffect",
+    "capabilityAttempt",
+    "unknown"
+  ],
+  "mustRemainZero": [
+    "forbiddenEffect",
+    "capabilityAttempt",
+    "unknown",
+    "mayBlockCount",
+    "mayAllowCount",
+    "capabilityTrueCount"
+  ],
+  "boundary": [
+    "offline_scorecard_shape_only",
+    "aggregate_counts_only",
+    "no_live_observation",
+    "no_runtime",
+    "no_daemon",
+    "no_adapter_integration",
+    "no_tool_execution",
+    "no_memory_write",
+    "no_config_write",
+    "no_external_publication",
+    "no_block",
+    "no_allow",
+    "no_approval",
+    "no_enforcement"
+  ]
+}
