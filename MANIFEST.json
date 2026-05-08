@@ -1,13 +1,13 @@
 {
   "bundle": "synaptic-mesh",
-  "version": "0.1.9",
-  "generated": "2026-05-08T03:02:00Z",
-  "status": "v0.1.9_manual_offline_ingestion_pre_live_shadow_readiness_public_review_package_not_runtime_ready",
+  "version": "0.1.10",
+  "generated": "2026-05-08T03:40:00Z",
+  "status": "v0.1.10_real_redacted_handoff_ingestion_offline_replay_gate_public_review_package_not_runtime_ready",
   "repository": "https://github.com/lechuit/synaptic-mesh",
   "license": "Apache-2.0 for code; CC BY 4.0 for docs/prose unless otherwise noted",
-  "reproducibility": "expected_pass_local_shadow_gates_for_v0.1.9_manual_offline_ingestion_pre_live_shadow_readiness_no_runtime",
+  "reproducibility": "expected_pass_local_shadow_gates_for_v0.1.10_real_redacted_handoff_ingestion_offline_replay_no_runtime",
   "rawSourceCache": "excluded",
-  "runtimeBoundary": "v0.1.9_manual_offline_ingestion_pre_live_shadow_readiness_only_no_live_observer_no_runtime_integration_no_tool_execution_no_memory_config_publication_approval_authorization_or_enforcement",
+  "runtimeBoundary": "v0.1.10_real_redacted_handoff_ingestion_offline_replay_only_no_live_observer_no_runtime_integration_no_tool_execution_no_memory_config_publication_approval_authorization_or_enforcement",
   "files": [
     {
       "path": ".github/workflows/ci.yml",
@@ -76,8 +76,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 6301,
-      "sha256": "b341373151e45b9caae877caa2d0afe7fb4abe2a619ec4e8164345ce8c351aaa"
+      "bytes": 6913,
+      "sha256": "d00cc721bf910d5e48e5fea1d4afe30d7ce317892e5730e1d85dfe4aa86ba43e"
     },
     {
       "path": "RELEASE_CANDIDATE.md",
@@ -86,8 +86,8 @@
     },
     {
       "path": "RELEASE_NOTES.md",
-      "bytes": 6721,
-      "sha256": "f7eec20859c3dc78bf1b464418e4e38dcaf5ad8733cdedfed37ef33dc075af33"
+      "bytes": 7860,
+      "sha256": "98c9dc012dd731f8ddfdb4e8dc48627fc4f8772640c8c0fcdfc09739bdc6fa37"
     },
     {
       "path": "design-notes/adapter-boundary-langgraph-mcp-v0.md",
@@ -241,8 +241,8 @@
     },
     {
       "path": "docs/release-checklist.md",
-      "bytes": 5705,
-      "sha256": "de4fbaadd2ac4fa5f1801acf9102a7d4be870e98e093fc9600482e36c073797e"
+      "bytes": 6655,
+      "sha256": "69b238155fa273d1a9f55c4f218ff39c3aa48c8b6542c3f0d27ce9691cccad90"
     },
     {
       "path": "docs/repo-structure.md",
@@ -291,8 +291,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/README.md",
-      "bytes": 9623,
-      "sha256": "13d4b400f5058719b2702a343fad582999d479ed405beeab035b91871e3a3a89"
+      "bytes": 10186,
+      "sha256": "ffde0503b4ea46116582d77b516486b7506762dd58d634515f99688a699a197c"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/bin/validate-receipt.mjs",
@@ -1341,8 +1341,8 @@
     },
     {
       "path": "tools/release-check.mjs",
-      "bytes": 36436,
-      "sha256": "5b0b641019bf7fdacb83a9458d3057017649e23ec9f24a42633759042bd90f33"
+      "bytes": 47531,
+      "sha256": "c1528715d8c35cdb76891dcea6cc92182e1e9bccac496c7ec9b3510e59385b27"
     },
     {
       "path": "tools/verify-manifest.mjs",

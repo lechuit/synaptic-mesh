@@ -1,23 +1,23 @@
-# Release Notes — Synaptic Mesh v0.1.9
+# Release Notes — Synaptic Mesh v0.1.10
 
-Status: manual offline ingestion / pre-live shadow readiness release candidate / public review package update. Not runtime-ready; not production/canary/enforcement-ready.
+Status: real-redacted handoff ingestion / offline replay gate release candidate / public review package update. Not runtime-ready; not production/canary/enforcement-ready.
 
-## Highlights since v0.1.8
+## Highlights since v0.1.9
 
-- Added `ManualObservationBundle` schema and fixtures for human-reviewed, manual/offline, redacted-only observation bundles.
-- Added a manual observation redaction fixture pack with positive redacted cases and synthetic negative leakage labels; no real raw prompts, secrets, tool output, memory/config text, approval text, or private paths are persisted.
-- Added manual bundle → `parserEvidence` replay with route-decision-input hash binding; this is replay/shape evidence only, not a classifier or runtime parser.
-- Added manual `DecisionTrace` → `LiveShadowObservation` / `LiveShadowObservationResult` replay; all results remain `record_only`, `no_effects`, and `local_shadow_only`.
-- Added manual observation scorecard thresholds with strict zero-tolerance counters for validation failures, mismatches, false permits, false compacts, boundary loss, forbidden effects, blocking/allowing, and capability attempts.
-- Kept CI scoped to the local shadow package; this release does not add runtime/framework integration, live observer implementation, MCP/A2A integration, tool execution, memory writes, config writes, publication, approval paths, blocking/allowing, authorization, or enforcement behavior.
+- Added a manual real-handoff capture protocol for curating real-redacted replay fixtures without persisting raw handoff content.
+- Added `RedactionReviewRecord` schema, fixtures, evidence, and review-local integration as an audit barrier before any real-redacted handoff pack is accepted.
+- Added the first manually curated real-redacted handoff pack with exactly 3 reviewed cases. The pack includes `ManualObservationBundle`, `RedactionReviewRecord`, expected `parserEvidence`, expected classifier decision, expected `DecisionTrace`, expected `LiveShadowObservationResult`, and expected scorecard rows.
+- Added a real-redacted handoff replay gate that consumes the pack and validates the offline chain: `ManualObservationBundle` + `RedactionReviewRecord` → `parserEvidence` → classifier decision → `DecisionTrace` → `LiveShadowObservation` → `LiveShadowObservationResult` → replay rows.
+- Hardened the real-redacted gates to require exactly 3 cases and to deep-compare generated `DecisionTrace`, `LiveShadowObservationResult`, and scorecard rows against expected pack artifacts.
+- Kept the boundary conservative: manually curated real-redacted replay fixtures only; no live observer, live traffic/log/session reads, daemon, watcher, adapter/MCP/A2A integration, tool execution, memory/config writes, external publication, approval path, blocking, allowing, authorization, or enforcement.
 
 ## Carried-forward package evidence
 
-The release package still includes earlier local-shadow gates from the v0.1.x line: reason-code vocabulary docs, conservative coverage matrix, raw/parser adversarial fixtures, adversarial fixture generation, authority-overhead benchmark evidence, decision traces, oracle/classifier separation, mutation degradation checks, category coverage thresholds, passive live-shadow schemas, synthetic live-shadow replay, redaction/retention design boundaries, and aggregate drift scorecard shape checks. These remain current validation artifacts, but they are not new v0.1.9 delta items.
+The release package still includes earlier local-shadow gates from the v0.1.x line: reason-code vocabulary docs, conservative coverage matrix, raw/parser adversarial fixtures, adversarial fixture generation, authority-overhead benchmark evidence, decision traces, oracle/classifier separation, mutation degradation checks, category coverage thresholds, passive live-shadow schemas, synthetic live-shadow replay, redaction/retention design boundaries, aggregate drift scorecard shape checks, manual observation bundles, manual redaction fixtures, parserEvidence replay, manual DecisionTrace/live-shadow replay, and strict manual scorecard thresholds. These remain current validation artifacts, but they are not new v0.1.10 delta items.
 
 ## Validation snapshot
 
-- review-local: pass 30/30
+- review-local: pass 33/33
 - receiver adapter contracts: pass 59/59
 - fixture parity: 15/15
 - unsafe allow signals: 0
@@ -45,10 +45,13 @@ The release package still includes earlier local-shadow gates from the v0.1.x li
 - Manual bundle parserEvidence replay: pass 2/2 replay rows, parserEvidenceValidCount 2, validation errors 0, routeDecisionInputHashBound true, classifierDecisionComputed false, decisionTraceGenerated false
 - Manual DecisionTrace/live-shadow replay: pass 2 traces → 2 observations + 2 results, validation errors 0, mismatch 0, falsePermit 0, falseCompact 0, boundaryLoss 0, forbiddenEffectsDetected 0, mayBlock/mayAllow/capabilityTrue 0
 - Manual observation scorecard thresholds: pass, thresholdFailureCount 0, validationErrorCount 0, rawContentPersisted false, redactedMetadataOnly true, capabilityAttempts 0, forbiddenEffects 0
+- RedactionReviewRecord schema: pass 2/2 base records, validation errors 0, negative controls 19, raw/private/secret/tool/memory/config/approval persistence false, forbidden for live observation/runtime use true
+- Real-redacted handoff pack: pass 3/3 manually curated real-redacted bundles, 3 redaction review records, 3 scorecard rows, validation errors 0, mismatch 0, raw/private/secret/tool/memory/config/approval persistence false, forbidden effects 0, mayBlock 0, mayAllow 0, capability attempts 0
+- Real-redacted handoff replay gate: pass 3 traces → 3 observations + 3 record-only results, validation errors 0, mismatch 0, falsePermit 0, falseCompact 0, boundaryLoss 0, forbidden effects detected 0, mayBlock 0, mayAllow 0, capabilityTrue 0
 
 ## Compatibility note
 
-Synaptic Mesh remains a framework-agnostic protocol proposal. v0.1.9 strengthens release confidence around manual/offline ingestion before any live observer exists, but does not ship real LangGraph, AutoGen, CrewAI, Semantic Kernel, MCP, runtime host adapters, live observers, daemons, watchers, retention schedulers, authorization paths, or enforcement hooks. Real runtime/live-observer work remains future work and requires a separate explicit maintainer decision.
+Synaptic Mesh remains a framework-agnostic protocol proposal. v0.1.10 strengthens release confidence around real-redacted handoff ingestion in an offline replay setting before any live observer exists, but does not ship real LangGraph, AutoGen, CrewAI, Semantic Kernel, MCP, runtime host adapters, live observers, daemons, watchers, retention schedulers, authorization paths, or enforcement hooks. Real runtime/live-observer work remains future work and requires a separate explicit maintainer decision.
 
 ## Operational non-release status
 

@@ -1,6 +1,6 @@
-# Synaptic Mesh v0.1.9
+# Synaptic Mesh v0.1.10
 
-Status: manual offline ingestion / pre-live shadow readiness release candidate `v0.1.9`; **not runtime-ready**; **not production/canary/enforcement-ready**.
+Status: manual offline ingestion / pre-live shadow readiness release candidate `v0.1.10`; **not runtime-ready**; **not production/canary/enforcement-ready**.
 
 ## What this is
 
@@ -10,7 +10,7 @@ A public review package for Synaptic Mesh / Multi-Agent Memory Authority Protoco
 
 Synaptic Mesh is intended to be **framework-agnostic**: the protocol idea should apply to any agent stack that retrieves, summarizes, compresses, or hands off memory-derived context.
 
-Current v0.1.9 status is narrower:
+Current v0.1.10 status is narrower:
 
 - validated with the included local shadow workflow;
 - shipped as a standalone reference package and fixture suite, not integrated with any production/runtime host;
@@ -22,8 +22,11 @@ Current v0.1.9 status is narrower:
 - adds a design-only redaction/retention boundary for future observation artifacts; no redaction code or retention scheduler is implemented;
 - adds aggregate-only live-shadow drift scorecard shape validation over synthetic replay evidence; it stores counts/bucket labels, not raw prompts, transcripts, secrets, tool outputs, memory/config text, approval text, or private paths;
 - adds manual/offline/redacted observation bundle schemas and fixtures for pre-live-shadow handoff readiness;
+- adds `RedactionReviewRecord` audit records and a manual real-handoff capture protocol before any real-redacted replay artifacts are accepted;
+- adds a manually curated real-redacted handoff pack with exactly 3 reviewed/redacted cases and no persisted raw handoff content;
 - adds manual bundle → parserEvidence replay, then manual DecisionTrace → LiveShadowObservation/Result replay, all offline and record-only;
-- adds strict manual observation scorecard thresholds: zero validation failures, mismatches, false permits, false compacts, boundary loss, forbidden effects, blocking/allowing, and capability attempts;
+- adds a real-redacted handoff replay gate that compares generated classifier decisions, `DecisionTrace`, `LiveShadowObservationResult`, and replay scorecard rows against expected pack artifacts;
+- adds strict manual and real-redacted observation scorecard thresholds: zero validation failures, mismatches, false permits, false compacts, boundary loss, forbidden effects, blocking/allowing, and capability attempts;
 - no live observer, live traffic/log/session reads, daemons, watchers, MCP endpoints, tool execution, memory writes, config writes, external publication, approval paths, blocking, allowing, authorization, enforcement, or production safety claims are included;
 - no real LangGraph, AutoGen, CrewAI, Semantic Kernel, MCP, or runtime host adapters are included yet;
 - real adapter/live-observer work is a future track and requires a separate explicit maintainer decision.
@@ -56,7 +59,7 @@ From this bundle root:
 npm --prefix implementation/synaptic-mesh-shadow-v0 run review:local
 ```
 
-Expected current result: 30/30 commands pass, fixture parity 15/15, RouteDecision schema 17/17 fixture records, threat-model route mappings 11/11, RouteDecision wrong-route fixtures 9/9, generated adversarial fixtures 9/9, raw/parser adversarial fixtures 9/9, parser normalization fixtures 24/24, real-flow replay fixtures 24/24, classifier scorecard 24/24, decision traces 24/24, real-flow mutations 15/15, category coverage thresholds pass, live-shadow observation schemas pass, live-shadow synthetic replay 24 observations/24 results, live-shadow drift scorecard 24 observations/24 results, manual observation bundles 2/2, manual redaction fixture pack 2 positive/8 negative, manual parserEvidence replay 2/2, manual DecisionTrace/live-shadow replay 2 traces/2 observations/2 results, manual scorecard thresholds pass with zero forbidden effects/capabilities, Receipt schema valid/invalid fixtures 1/4, authority overhead benchmark 6 fixtures/4 modes, unsafe allow signals 0, source fixture mutation false.
+Expected current result: 33/33 commands pass, fixture parity 15/15, RouteDecision schema 17/17 fixture records, threat-model route mappings 11/11, RouteDecision wrong-route fixtures 9/9, generated adversarial fixtures 9/9, raw/parser adversarial fixtures 9/9, parser normalization fixtures 24/24, real-flow replay fixtures 24/24, classifier scorecard 24/24, decision traces 24/24, real-flow mutations 15/15, category coverage thresholds pass, live-shadow observation schemas pass, live-shadow synthetic replay 24 observations/24 results, live-shadow drift scorecard 24 observations/24 results, manual observation bundles 2/2, manual redaction fixture pack 2 positive/8 negative, manual parserEvidence replay 2/2, manual DecisionTrace/live-shadow replay 2 traces/2 observations/2 results, manual scorecard thresholds pass, redaction review records pass, real-redacted handoff pack 3/3, real-redacted replay gate 3 traces/3 observations/3 results, zero forbidden effects/capabilities, Receipt schema valid/invalid fixtures 1/4, authority overhead benchmark 6 fixtures/4 modes, unsafe allow signals 0, source fixture mutation false.
 
 For adapter-shaped contract coverage specifically:
 
@@ -69,7 +72,7 @@ Expected current result: 59/59 cases pass, unsafe allows 0.
 For release/package verification:
 
 ```bash
-npm --prefix implementation/synaptic-mesh-shadow-v0 run release:check -- --target v0.1.9
+npm --prefix implementation/synaptic-mesh-shadow-v0 run release:check -- --target v0.1.10
 ```
 
 ## Citation/source policy

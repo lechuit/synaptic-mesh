@@ -16,7 +16,7 @@ Run release gates from the package directory:
 
 ```bash
 cd implementation/synaptic-mesh-shadow-v0
-npm run release:check -- --target v0.1.9
+npm run release:check -- --target v0.1.10
 ```
 
 `release:check` verifies the manifest/docs package version, reports the explicit `releaseTarget`, reports the local Git `currentPublishedRelease` when available, and runs the release-critical local gates. If `--target` is omitted, it defaults to the manifest version and prints a warning so release PRs do not silently inherit a stale target.
@@ -44,6 +44,19 @@ It runs:
 - `npm run test:decision-trace-schema`
 - `npm run test:real-flow-mutation-suite`
 - `npm run test:category-coverage-thresholds`
+- `npm run test:live-shadow-observation-schema`
+- `npm run test:live-shadow-observation-result-schema`
+- `npm run test:live-shadow-forbidden-effects`
+- `npm run test:live-shadow-synthetic-replay`
+- `npm run test:live-shadow-drift-scorecard`
+- `npm run test:manual-observation-bundle-schema`
+- `npm run test:manual-observation-redaction-fixtures`
+- `npm run test:manual-bundle-parser-evidence-replay`
+- `npm run test:manual-decisiontrace-live-shadow-replay`
+- `npm run test:manual-observation-scorecard-thresholds`
+- `npm run test:redaction-review-record-schema`
+- `npm run test:real-redacted-handoff-pack`
+- `npm run test:real-redacted-handoff-replay-gate`
 
 For auditability, keep the individual gate names visible in PR notes even when `release:check` is the command reviewers run.
 
@@ -61,6 +74,7 @@ For auditability, keep the individual gate names visible in PR notes even when `
 - If a live-shadow observer design note is present, confirm it remains design-only and explicitly forbids runtime enforcement, tool authorization, memory writes, config changes, external publication, automatic blocking, daemon/watch behavior, and adapter integration.
 - Confirm source fixtures are not mutated by the review run (`sourceFixtureMutation: false` in local review evidence).
 - Confirm release-check output remains local-only and does not call network services or runtime tools.
+- Confirm real-redacted handoff evidence remains manually curated/redacted metadata only, with no raw handoff content, private paths, secrets, tool output, memory/config text, approval text, live observer, runtime integration, approval path, blocking/allowing, authorization, or enforcement.
 
 ## CI expectations
 
