@@ -1,13 +1,13 @@
 {
   "bundle": "synaptic-mesh",
   "version": "0.1.13",
-  "generated": "2026-05-08T12:26:11Z",
-  "status": "v0.1.13_manual_dry_run_cli_release_candidate_not_runtime_ready",
+  "generated": "2026-05-08T12:41:16Z",
+  "status": "v0.1.14_real_redacted_pilot_prerelease_not_runtime_ready",
   "repository": "https://github.com/lechuit/synaptic-mesh",
   "license": "Apache-2.0 for code; CC BY 4.0 for docs/prose unless otherwise noted",
-  "reproducibility": "expected_pass_local_shadow_gates_for_v0.1.13_manual_dry_run_cli_three_real_redacted_handoffs_record_only",
+  "reproducibility": "expected_pass_local_shadow_gates_for_v0.1.14_real_redacted_pilot_six_cases_record_only",
   "rawSourceCache": "excluded",
-  "runtimeBoundary": "v0.1.13_manual_dry_run_cli_manual_local_file_input_redacted_bundle_record_only_no_live_observer_no_runtime_integration_no_tool_execution_no_memory_config_publication_approval_authorization_or_enforcement",
+  "runtimeBoundary": "v0.1.14_real_redacted_pilot_manual_local_file_input_redacted_bundle_record_only_no_live_observer_no_runtime_integration_no_tool_execution_no_memory_config_publication_approval_authorization_or_enforcement",
   "files": [
     {
       "path": ".github/workflows/ci.yml",
@@ -306,8 +306,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/README.md",
-      "bytes": 11162,
-      "sha256": "baf1921f0810fd71858cf7f4fe9ebe1dfe10b49b5d8d2c6c4012e946c2f7804b"
+      "bytes": 11437,
+      "sha256": "d5a6e210007b688401be44097b91cc77d0a1392a564bdb6d121f8eab8e2b717a"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/bin/manual-dry-run.mjs",
@@ -415,6 +415,11 @@
       "sha256": "9459707e64cac3001be5be0a2c923c4c1efdd10b40c2b126af4e422bc9a13128"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/manual-dry-run-cli-real-redacted-pilot.out.json",
+      "bytes": 7693,
+      "sha256": "a36bf13dbae7a70185bed7dc48c10e681c1db76189d5486daf86ef98ce69a346"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/manual-dry-run-cli.case-001.out.json",
       "bytes": 7533,
       "sha256": "9324c038d3cadd5c5ecfc682c697cc962ca35f341126c6a17221838961c3f7ae"
@@ -438,6 +443,36 @@
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/manual-dry-run-cli.real-redacted-case-003.out.json",
       "bytes": 7708,
       "sha256": "ec20dc4b9b6d169efe0551965794c8e65200a227fca12e83d4d5e87d77b4c551"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/manual-dry-run-cli.real-redacted-pilot-001.out.json",
+      "bytes": 7716,
+      "sha256": "45ded2621dd62e2325c48c80672a3a58e84cf1839836e0cd2a895cb4e7947cd4"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/manual-dry-run-cli.real-redacted-pilot-002.out.json",
+      "bytes": 7748,
+      "sha256": "b2b65d717f581223cc672a25a6bbbb96dd1f15bd6b04bef6ef067cea21bf13f8"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/manual-dry-run-cli.real-redacted-pilot-003.out.json",
+      "bytes": 7876,
+      "sha256": "dd1c602aa19a2e305a78573fec6fcbce6712c69f2f96ab80849010d7a1f2cb38"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/manual-dry-run-cli.real-redacted-pilot-004.out.json",
+      "bytes": 7588,
+      "sha256": "9f015d7ecf746a5c62bc370e420fd78ec3ad88784632d5fbd862f28d1f3734de"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/manual-dry-run-cli.real-redacted-pilot-005.out.json",
+      "bytes": 7716,
+      "sha256": "d98305354dfcf37d0bf686dd4b133a7b4619bbebd2c07d194a863871bcf17ebd"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/manual-dry-run-cli.real-redacted-pilot-006.out.json",
+      "bytes": 7716,
+      "sha256": "5cbda8ceb56d4ca087a9482d69785cf05d753b085c50a8ee49316856845d245f"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/manual-dry-run-contracts.out.json",
@@ -645,6 +680,36 @@
       "sha256": "32df7b4b8106850c25693b05ecf7c7d249a224ca92f32abb989269581cdc1d93"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/fixtures/manual-dry-run-inputs/real-redacted-pilot-001.json",
+      "bytes": 3046,
+      "sha256": "fd7ae8fc2eb8b50fc5223026ed866ef86f6935c77a63c59d64887354d2c143d2"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/fixtures/manual-dry-run-inputs/real-redacted-pilot-002.json",
+      "bytes": 3056,
+      "sha256": "572f2e64c4ce6eb372a4203a0d2932296a924861104b2df77fe27442708281e9"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/fixtures/manual-dry-run-inputs/real-redacted-pilot-003.json",
+      "bytes": 3096,
+      "sha256": "f3b9d9b9479fe091be6508e923185d77a48067f8b006d42ce4e66ea12c6b958e"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/fixtures/manual-dry-run-inputs/real-redacted-pilot-004.json",
+      "bytes": 3006,
+      "sha256": "d1501d41da289be8cd68c61af5c233e6baa420de7142b9344bffa5dd76192191"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/fixtures/manual-dry-run-inputs/real-redacted-pilot-005.json",
+      "bytes": 3046,
+      "sha256": "07729cdd38dc69f448f3e81aa37fe69af01dc7991ba6fb946e51bd6ffa8ca236"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/fixtures/manual-dry-run-inputs/real-redacted-pilot-006.json",
+      "bytes": 3046,
+      "sha256": "72495415fb0d40b83cf20ededf32821d3edb119d826eb8c9661051661c179fa8"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/fixtures/manual-observation-bundles.json",
       "bytes": 2520,
       "sha256": "a1b488c653b41cd8da5ab53b0db910784aaaf9172dc6714a73aa0b0cee340191"
@@ -685,6 +750,11 @@
       "sha256": "bf1746afef4653460e51257f9ca70cf715a5e8549072f50922f6aaabd88438b3"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/fixtures/real-redacted-pilot-pack.json",
+      "bytes": 28644,
+      "sha256": "4dac3e70c2359d938915a0ecb6286e81d77063f7e593b682ebb9f1c7415180ad"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/fixtures/receipts.json",
       "bytes": 6528,
       "sha256": "2c20850dbcfb5e5fc6c578d23309d9541c2826072fd1faf617366fea624d57f6"
@@ -706,8 +776,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/package.json",
-      "bytes": 8997,
-      "sha256": "8e81ad71a9df6fbc7829940b5ad2d64049d5e453342170c574de7e632fac24a7"
+      "bytes": 9170,
+      "sha256": "5920e8e7f717eafd57d051add913acf12117b042f83354ed31718210536e280e"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/action-context-packet.mjs",
@@ -878,6 +948,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/tests/manual-dry-run-cli-real-redacted-handoffs.mjs",
       "bytes": 8579,
       "sha256": "3a20c565afd099d6cde65f9c17714f5e3ece5694567c170369eef94810935296"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/manual-dry-run-cli-real-redacted-pilot.mjs",
+      "bytes": 16654,
+      "sha256": "71ae7914ded0e6faf3d26d9047bfb1a46812c07149361fdfa7a16723fd6294cc"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/manual-dry-run-cli.mjs",
