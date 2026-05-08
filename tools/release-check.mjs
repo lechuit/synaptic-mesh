@@ -28,6 +28,7 @@ const releaseGateScripts = [
   'test:live-shadow-observation-schema',
   'test:live-shadow-observation-result-schema',
   'test:live-shadow-forbidden-effects',
+  'test:live-shadow-synthetic-replay',
 ];
 
 function runGit(args, options = {}) {
@@ -208,6 +209,23 @@ assert(liveShadowForbiddenEffects?.summary?.toolExecutionImplemented === false, 
 assert(liveShadowForbiddenEffects?.summary?.memoryWriteImplemented === false, 'live-shadow forbidden-effects gate must not implement memory writes');
 assert(liveShadowForbiddenEffects?.summary?.configWriteImplemented === false, 'live-shadow forbidden-effects gate must not implement config writes');
 assert(liveShadowForbiddenEffects?.summary?.externalPublicationImplemented === false, 'live-shadow forbidden-effects gate must not implement external publication');
+
+const liveShadowSyntheticReplay = readJson(path.join(packageRoot, 'evidence/live-shadow-synthetic-replay.out.json'));
+assert(liveShadowSyntheticReplay?.summary?.verdict === 'pass', 'live-shadow synthetic replay verdict must be pass');
+assert(liveShadowSyntheticReplay?.summary?.mode === 'synthetic_offline_replay_only', 'live-shadow synthetic replay must remain offline-only');
+assert(liveShadowSyntheticReplay?.summary?.observerImplemented === false, 'live-shadow synthetic replay must not implement an observer');
+assert(liveShadowSyntheticReplay?.summary?.liveTrafficRead === false, 'live-shadow synthetic replay must not read live traffic');
+assert(liveShadowSyntheticReplay?.summary?.daemonImplemented === false, 'live-shadow synthetic replay must not implement a daemon');
+assert(liveShadowSyntheticReplay?.summary?.adapterIntegrationImplemented === false, 'live-shadow synthetic replay must not integrate adapters');
+assert(liveShadowSyntheticReplay?.summary?.forbiddenEffectsDetectedCount === 0, 'live-shadow synthetic replay must detect zero forbidden effects');
+assert(liveShadowSyntheticReplay?.summary?.mayBlockCount === 0, 'live-shadow synthetic replay must not block');
+assert(liveShadowSyntheticReplay?.summary?.mayAllowCount === 0, 'live-shadow synthetic replay must not allow');
+assert(liveShadowSyntheticReplay?.summary?.capabilityTrueCount === 0, 'live-shadow synthetic replay must not set capability fields true');
+assert(liveShadowSyntheticReplay?.summary?.toolExecutionImplemented === false, 'live-shadow synthetic replay must not implement tool execution');
+assert(liveShadowSyntheticReplay?.summary?.memoryWriteImplemented === false, 'live-shadow synthetic replay must not implement memory writes');
+assert(liveShadowSyntheticReplay?.summary?.configWriteImplemented === false, 'live-shadow synthetic replay must not implement config writes');
+assert(liveShadowSyntheticReplay?.summary?.externalPublicationImplemented === false, 'live-shadow synthetic replay must not implement external publication');
+assert(liveShadowSyntheticReplay?.summary?.enforcementImplemented === false, 'live-shadow synthetic replay must not implement enforcement');
 
 const reviewLocalCount = countLabel(reviewEvidence.summary.passCommands, reviewEvidence.summary.commands);
 const receiverAdapterCount = countLabel(receiverAdapterEvidence.summary.passCases, receiverAdapterEvidence.summary.totalCases);
