@@ -76,8 +76,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 5354,
-      "sha256": "8143e1cc543a41b5e87f5db7b5dc5e9117a0e18e9ab04e21a5fa25844e3ccc9b"
+      "bytes": 5377,
+      "sha256": "c867544553e806e0581b3550a2ceda97c976b5d04167859fa7ba3c79a7effe7d"
     },
     {
       "path": "RELEASE_CANDIDATE.md",
@@ -87,7 +87,7 @@
     {
       "path": "RELEASE_NOTES.md",
       "bytes": 3874,
-      "sha256": "fee2798f1afddd776a07708429fcbdcaaeeef817fa8af031fa1adf46e003db82"
+      "sha256": "36602d2e8cd23ddf6dcbb4d5c02acad2c75c90600ff6c0f46551063b009ac087"
     },
     {
       "path": "design-notes/adapter-boundary-langgraph-mcp-v0.md",
@@ -171,8 +171,8 @@
     },
     {
       "path": "docs/release-checklist.md",
-      "bytes": 5310,
-      "sha256": "f533225e3b871b4bffb80c7f0183573ad56a793cbfcff00944b8fd4fbe851f20"
+      "bytes": 5349,
+      "sha256": "fb6c7150fb6052d512c2822aa3deb704f11f72ecd6c4ff09e55b52ae8a69cd4f"
     },
     {
       "path": "docs/repo-structure.md",
@@ -221,8 +221,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/README.md",
-      "bytes": 8188,
-      "sha256": "1027c0b7b17f984de2a901c642f8b0f31e09244d0fa5552b91a6b9eb1482b480"
+      "bytes": 8380,
+      "sha256": "3600297f91f205f59728d752fdbf19b73b7b153cd3e44c3df41daec83539260c"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/bin/validate-receipt.mjs",
@@ -263,6 +263,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/cli-validator.out.json",
       "bytes": 1739,
       "sha256": "0626cb1fba1151112184335dd4d1492af7e59f12c7497a1060860ab00fd391e0"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/decision-trace-schema.out.json",
+      "bytes": 37466,
+      "sha256": "dbbb2a4284c3f8c1a7d2f26936d006d394e618d84da8ea4d90a613b5732423bb"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/fixture-parity.out.json",
@@ -316,8 +321,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/review-local.out.json",
-      "bytes": 8422,
-      "sha256": "7ba059571e3d8561546fd0007ba007525551bccf479d6d0d0f2f87321f707a8e"
+      "bytes": 8820,
+      "sha256": "d48f195c5537cba023b3b96c17646abb79f2aefa14244ed9eb98e13e056abf6e"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/route-classifier-shadow.out.json",
@@ -406,8 +411,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/package.json",
-      "bytes": 5615,
-      "sha256": "0911a8c6108c5dc53f91601bb299fbf98b51c04b365c67bd7f98ae3d818a4062"
+      "bytes": 5737,
+      "sha256": "7b7998a83931b6d33cf90c4a860887f3709fdec3dc4d5f7632c4fe3cfe1f3e19"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/action-context-packet.mjs",
@@ -505,6 +510,11 @@
       "sha256": "c12267a8d617a73d236b62140bdd44b5b5db92188ba034d04a47fa84805cfaae"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/decision-trace-schema.mjs",
+      "bytes": 10395,
+      "sha256": "dbaf2effc1438a53de882df87e903dbf97e0b13d2225fed8b0b125c2811fca45"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/fixture-parity.mjs",
       "bytes": 2995,
       "sha256": "418ccb6a6be9da1a9809ea049e92594a09d044892bbd6c30a1420611e147f5a4"
@@ -581,8 +591,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/review-local.mjs",
-      "bytes": 14704,
-      "sha256": "1af280a46da2e67cfb298b66e8c11ead64e9cf9acdd26d131e4ae0fe0fb51a69"
+      "bytes": 16010,
+      "sha256": "7d517997e62655194561f4a8c9269253b8653f3993965729a7a03847862c782c"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/route-classifier-shadow.mjs",
@@ -975,6 +985,11 @@
       "sha256": "a7001f3ff3244fb0cb575647b6f8a747785bc064ed7796f9f3be874cba79f7ae"
     },
     {
+      "path": "schemas/decision-trace.schema.json",
+      "bytes": 3265,
+      "sha256": "3197b7df4d6d17e54cfa5a7fdb69f01c301f6ab83a0c422c841100f6f0da629c"
+    },
+    {
       "path": "schemas/parser-evidence.schema.json",
       "bytes": 2028,
       "sha256": "2dfd0ac9e9f4ec86d493bad1b0fc9494a78b896251a295dea86c64aafc7d2ecd"
@@ -1016,8 +1031,8 @@
     },
     {
       "path": "tools/release-check.mjs",
-      "bytes": 9951,
-      "sha256": "fb349ae7997c059fb32971d3358e0ec279959a4c882ecb64042df0236cfdb941"
+      "bytes": 10970,
+      "sha256": "31dc22676b1ddd98f1c931931d3785f9d98692c4d87d8804d072dc4212dba307"
     },
     {
       "path": "tools/verify-manifest.mjs",
