@@ -44,6 +44,7 @@ const releaseGateScripts = [
   'test:manual-dry-run-cli-negative-controls',
   'test:manual-dry-run-cli-real-redacted-handoffs',
   'test:manual-dry-run-cli-real-redacted-pilot',
+  'test:manual-dry-run-cli-pilot-failure-catalog',
 ];
 
 function runGit(args, options = {}) {
@@ -125,6 +126,17 @@ function currentPublishedRelease() {
   }
 }
 
+function tagCommit(tag) {
+  try {
+    return execFileSync('git', ['rev-parse', '--verify', `${tag}^{commit}`], {
+      encoding: 'utf8',
+      stdio: ['ignore', 'pipe', 'ignore'],
+    }).trim();
+  } catch {
+    return null;
+  }
+}
+
 const args = parseArgs(process.argv.slice(2));
 const repoRoot = runGit(['rev-parse', '--show-toplevel']);
 const expectedPackageRoot = path.join(repoRoot, 'implementation/synaptic-mesh-shadow-v0');
@@ -146,6 +158,8 @@ const manifestVersion = manifest.version;
 const manifestReleaseTag = `v${manifestVersion}`;
 const releaseTarget = args.target ?? manifestReleaseTag;
 const publishedRelease = currentPublishedRelease();
+const releaseTargetCommit = tagCommit(releaseTarget);
+const headCommit = runGit(['rev-parse', 'HEAD']);
 const staleVersions = [...new Set([...previousPatchVersionLabels(manifestVersion), 'v0.1.2', '0.1.2'])]
   .filter((version) => version !== manifestReleaseTag && version !== manifestVersion);
 
@@ -155,6 +169,10 @@ assert(releaseTarget === manifestReleaseTag, `release target ${releaseTarget} mu
 if (!args.target) {
   console.warn(`release:check defaulting --target to MANIFEST.json version ${manifestReleaseTag}; pass -- --target vX.Y.Z for release/tag verification.`);
 }
+assert(
+  !releaseTargetCommit || releaseTargetCommit === headCommit,
+  `release target ${releaseTarget} already exists at ${releaseTargetCommit}; current HEAD ${headCommit} differs. Do not add new release-candidate evidence to an already-published target; use the next unreleased version, or check out the exact tagged commit for post-release verification.`,
+);
 assert(packageJson.private === true, 'shadow package must remain private for release checks');
 assert(packageJson.version === '0.0.0-local', 'shadow package version must remain 0.0.0-local unless publication scope changes');
 assert(packageJson.scripts?.['release:check'] === 'node ../../tools/release-check.mjs', 'package.json must wire npm run release:check to ../../tools/release-check.mjs');
@@ -582,6 +600,25 @@ assert(manualDryRunRealRedactedPilot?.summary?.blockedCount === 0, 'manual dry-r
 assert(manualDryRunRealRedactedPilot?.summary?.allowedCount === 0, 'manual dry-run CLI real-redacted pilot must not allow');
 assert(manualDryRunRealRedactedPilot?.summary?.enforcedCount === 0, 'manual dry-run CLI real-redacted pilot must not enforce');
 
+const manualDryRunPilotFailureCatalog = readJson(path.join(packageRoot, 'evidence/manual-dry-run-cli-pilot-failure-catalog.out.json'));
+assert(manualDryRunPilotFailureCatalog?.pilotFailureCatalog === 'pass', 'manual dry-run pilot failure catalog verdict must be pass');
+assert(manualDryRunPilotFailureCatalog?.failureCases === 14, 'manual dry-run pilot failure catalog must cover 14 cases');
+assert(manualDryRunPilotFailureCatalog?.expectedRejects === 14, 'manual dry-run pilot failure catalog must reject all 14 cases');
+assert(manualDryRunPilotFailureCatalog?.unexpectedAccepts === 0, 'manual dry-run pilot failure catalog must have zero unexpected accepts');
+assert(manualDryRunPilotFailureCatalog?.successEvidenceWrittenForRejectedCases === 0, 'manual dry-run pilot failure catalog must write zero success evidence for rejected cases');
+assert(manualDryRunPilotFailureCatalog?.forbiddenEffects === 0, 'manual dry-run pilot failure catalog must have zero forbidden effects');
+assert(manualDryRunPilotFailureCatalog?.capabilityTrueCount === 0, 'manual dry-run pilot failure catalog must keep capabilities false');
+assert(manualDryRunPilotFailureCatalog?.summary?.liveObserverImplemented === false, 'manual dry-run pilot failure catalog must not implement live observer');
+assert(manualDryRunPilotFailureCatalog?.summary?.runtimeIntegrationImplemented === false, 'manual dry-run pilot failure catalog must not implement runtime integration');
+assert(manualDryRunPilotFailureCatalog?.summary?.toolExecutionImplemented === false, 'manual dry-run pilot failure catalog must not implement tool execution');
+assert(manualDryRunPilotFailureCatalog?.summary?.memoryWriteImplemented === false, 'manual dry-run pilot failure catalog must not implement memory writes');
+assert(manualDryRunPilotFailureCatalog?.summary?.configWriteImplemented === false, 'manual dry-run pilot failure catalog must not implement config writes');
+assert(manualDryRunPilotFailureCatalog?.summary?.approvalPathImplemented === false, 'manual dry-run pilot failure catalog must not implement approval path');
+assert(manualDryRunPilotFailureCatalog?.summary?.blockingImplemented === false, 'manual dry-run pilot failure catalog must not implement blocking');
+assert(manualDryRunPilotFailureCatalog?.summary?.allowingImplemented === false, 'manual dry-run pilot failure catalog must not implement allowing');
+assert(manualDryRunPilotFailureCatalog?.summary?.authorizationImplemented === false, 'manual dry-run pilot failure catalog must not implement authorization');
+assert(manualDryRunPilotFailureCatalog?.summary?.enforcementImplemented === false, 'manual dry-run pilot failure catalog must not implement enforcement');
+
 const reviewLocalCount = countLabel(reviewEvidence.summary.passCommands, reviewEvidence.summary.commands);
 const receiverAdapterCount = countLabel(receiverAdapterEvidence.summary.passCases, receiverAdapterEvidence.summary.totalCases);
 
@@ -626,6 +663,8 @@ console.log(JSON.stringify({
   currentPublishedRelease: publishedRelease,
   releaseTarget,
   manifestReleaseTarget: manifestReleaseTag,
+  releaseTargetCommit,
+  headCommit,
   packageRoot: path.relative(repoRoot, packageRoot),
   gates: releaseGateScripts,
   boundary: [

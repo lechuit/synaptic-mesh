@@ -36,6 +36,15 @@ const allowedFlags = new Set(['--input', '--output', '--target']);
 const requiredForbiddenEffects = ['runtime', 'tools', 'memory_write', 'config_write', 'external_publication', 'approval_path', 'blocking', 'allowing'];
 const sensitiveBundleFlags = ['containsSecrets', 'containsToolOutput', 'containsMemoryText', 'containsConfigText', 'containsApprovalText', 'containsPrivatePath'];
 const persistenceReviewFlags = ['rawContentPersisted', 'privatePathsPersisted', 'secretLikeValuesPersisted', 'toolOutputsPersisted', 'memoryTextPersisted', 'configTextPersisted', 'approvalTextPersisted'];
+const persistenceReviewReasonCodes = new Map([
+  ['rawContentPersisted', 'RAW_CONTENT_PERSISTED'],
+  ['privatePathsPersisted', 'PRIVATE_PATH_PERSISTED'],
+  ['secretLikeValuesPersisted', 'SECRET_LIKE_VALUE_PERSISTED'],
+  ['toolOutputsPersisted', 'TOOL_OUTPUT_PERSISTED'],
+  ['memoryTextPersisted', 'MEMORY_TEXT_PERSISTED'],
+  ['configTextPersisted', 'CONFIG_TEXT_PERSISTED'],
+  ['approvalTextPersisted', 'APPROVAL_TEXT_PERSISTED'],
+]);
 const effectCapabilityFields = ['mayBlock', 'mayAllow', 'mayExecuteTool', 'mayWriteMemory', 'mayWriteConfig', 'mayPublishExternally', 'mayModifyAgentInstructions', 'mayEnterApprovalPath'];
 const forbiddenClaimFields = new Map([
   ['rawContent', 'RAW_CONTENT_FIELD_PRESENT'],
@@ -43,20 +52,20 @@ const forbiddenClaimFields = new Map([
   ['unredactedContent', 'RAW_CONTENT_FIELD_PRESENT'],
   ['liveInputAllowed', 'LIVE_INPUT_REQUESTED'],
   ['networkAllowed', 'NETWORK_REQUESTED'],
-  ['toolExecutionAllowed', 'TOOL_EXECUTION_REQUESTED'],
-  ['memoryWriteAllowed', 'MEMORY_WRITE_REQUESTED'],
-  ['configWriteAllowed', 'CONFIG_WRITE_REQUESTED'],
+  ['toolExecutionAllowed', 'TOOL_EXECUTION_FORBIDDEN'],
+  ['memoryWriteAllowed', 'MEMORY_WRITE_FORBIDDEN'],
+  ['configWriteAllowed', 'CONFIG_WRITE_FORBIDDEN'],
   ['publicationAllowed', 'PUBLICATION_REQUESTED'],
   ['approvalPathAllowed', 'APPROVAL_PATH_REQUESTED'],
   ['blockingAllowed', 'BLOCKING_REQUESTED'],
   ['allowingAllowed', 'ALLOWING_REQUESTED'],
   ['authorizationAllowed', 'AUTHORIZATION_REQUESTED'],
   ['enforcementAllowed', 'ENFORCEMENT_REQUESTED'],
-  ['mayBlock', 'MAY_BLOCK_REQUESTED'],
-  ['mayAllow', 'MAY_ALLOW_REQUESTED'],
-  ['mayExecuteTool', 'MAY_EXECUTE_TOOL_REQUESTED'],
-  ['mayWriteMemory', 'MAY_WRITE_MEMORY_REQUESTED'],
-  ['mayWriteConfig', 'MAY_WRITE_CONFIG_REQUESTED'],
+  ['mayBlock', 'CAPABILITY_BLOCK_FORBIDDEN'],
+  ['mayAllow', 'CAPABILITY_ALLOW_FORBIDDEN'],
+  ['mayExecuteTool', 'TOOL_EXECUTION_FORBIDDEN'],
+  ['mayWriteMemory', 'MEMORY_WRITE_FORBIDDEN'],
+  ['mayWriteConfig', 'CONFIG_WRITE_FORBIDDEN'],
   ['mayPublishExternally', 'MAY_PUBLISH_EXTERNALLY_REQUESTED'],
   ['mayEnterApprovalPath', 'MAY_ENTER_APPROVAL_PATH_REQUESTED'],
 ]);
@@ -103,6 +112,16 @@ function classifierDecisionFrom(decision) {
 function fail(reasonCode, detail) {
   const error = new Error(detail ? `${reasonCode}: ${detail}` : reasonCode);
   error.reasonCode = reasonCode;
+  error.reasonCodes = [reasonCode];
+  error.detail = detail;
+  return error;
+}
+
+function failMany(reasonCodes, detail) {
+  const uniqueReasonCodes = [...new Set(reasonCodes)];
+  const error = new Error(detail ? `${uniqueReasonCodes.join(',')}: ${detail}` : uniqueReasonCodes.join(','));
+  error.reasonCode = uniqueReasonCodes[0];
+  error.reasonCodes = uniqueReasonCodes;
   error.detail = detail;
   return error;
 }
@@ -126,27 +145,36 @@ function assertRedactionReview(record, bundleId) {
   if (record.bundleId !== bundleId) throw fail('REDACTION_REVIEW_BUNDLE_MISMATCH');
   if (record.captureMode !== 'manual_offline') throw fail('REDACTION_REVIEW_NON_MANUAL');
   if (record.humanReviewed !== true) throw fail('REDACTION_REVIEW_NOT_HUMAN_REVIEWED');
-  for (const flag of persistenceReviewFlags) if (record[flag] !== false) throw fail('REDACTION_REVIEW_PERSISTENCE_FLAG_TRUE', flag);
+  const persistedReasonCodes = persistenceReviewFlags
+    .filter((flag) => record[flag] !== false)
+    .map((flag) => persistenceReviewReasonCodes.get(flag));
+  if (persistedReasonCodes.length > 0) throw failMany(persistedReasonCodes, 'redaction review persisted forbidden material');
   if (record.redactedMetadataOnly !== true) throw fail('REDACTION_REVIEW_NOT_REDACTED_METADATA_ONLY');
   if (record.allowedForLocalShadowReplay !== true) throw fail('REDACTION_REVIEW_NOT_ALLOWED_FOR_LOCAL_REPLAY');
   if (record.forbiddenForLiveObservation !== true) throw fail('REDACTION_REVIEW_NOT_FORBIDDEN_FOR_LIVE');
   if (record.forbiddenForRuntimeUse !== true) throw fail('REDACTION_REVIEW_NOT_FORBIDDEN_FOR_RUNTIME');
 }
 
-function assertNoForbiddenClaims(value) {
+function collectForbiddenClaimReasonCodes(value, reasonCodes = []) {
   if (Array.isArray(value)) {
-    for (const item of value) assertNoForbiddenClaims(item);
-    return;
+    for (const item of value) collectForbiddenClaimReasonCodes(item, reasonCodes);
+    return reasonCodes;
   }
-  if (!value || typeof value !== 'object') return;
+  if (!value || typeof value !== 'object') return reasonCodes;
   for (const [key, childValue] of Object.entries(value)) {
     if (forbiddenClaimFields.has(key)) {
       if (typeof childValue === 'boolean' ? childValue !== false : childValue !== undefined && childValue !== null && childValue !== '') {
-        throw fail(forbiddenClaimFields.get(key), key);
+        reasonCodes.push(forbiddenClaimFields.get(key));
       }
     }
-    assertNoForbiddenClaims(childValue);
+    collectForbiddenClaimReasonCodes(childValue, reasonCodes);
   }
+  return reasonCodes;
+}
+
+function assertNoForbiddenClaims(value) {
+  const reasonCodes = collectForbiddenClaimReasonCodes(value);
+  if (reasonCodes.length > 0) throw failMany(reasonCodes, 'forbidden operational claim present');
 }
 
 function normalizeInputArtifact(input) {
@@ -390,12 +418,12 @@ export function runManualDryRunArtifact(input, { target = 'manual-dry-run-v0' } 
 }
 
 function rejectPathShape(inputPath) {
-  if (/^https?:\/\//i.test(inputPath)) throw fail('INPUT_URL_NOT_ALLOWED');
+  if (/^https?:\/\//i.test(inputPath)) throw fail('URL_INPUT_FORBIDDEN');
   if (inputPath.includes('*') || inputPath.includes('?') || inputPath.includes('[')) throw fail('INPUT_GLOB_NOT_ALLOWED');
 }
 
 function assertContainedPath(path, root) {
-  if (path !== root && !path.startsWith(`${root}/`)) throw fail('OUTPUT_OUTSIDE_EVIDENCE_DIR_NOT_ALLOWED');
+  if (path !== root && !path.startsWith(`${root}/`)) throw fail('OUTPUT_PATH_OUTSIDE_EVIDENCE');
 }
 
 async function ensureOutputParentInsideEvidence(outputParent, evidenceRoot, realEvidenceRoot) {
@@ -417,7 +445,7 @@ async function ensureOutputParentInsideEvidence(outputParent, evidenceRoot, real
       await mkdir(current, { mode: 0o700 });
     }
     const realCurrent = await realpath(current);
-    if (realCurrent !== realEvidenceRoot && !realCurrent.startsWith(`${realEvidenceRoot}/`)) throw fail('OUTPUT_OUTSIDE_EVIDENCE_DIR_NOT_ALLOWED');
+    if (realCurrent !== realEvidenceRoot && !realCurrent.startsWith(`${realEvidenceRoot}/`)) throw fail('OUTPUT_PATH_OUTSIDE_EVIDENCE');
   }
 }
 
@@ -435,9 +463,9 @@ export async function runManualDryRunCli(argv, { cwd = process.cwd() } = {}) {
   const outputParent = dirname(outputPath);
   await ensureOutputParentInsideEvidence(outputParent, evidenceRoot, realEvidenceRoot);
   const realOutputParent = await realpath(outputParent);
-  if (realOutputParent !== realEvidenceRoot && !realOutputParent.startsWith(`${realEvidenceRoot}/`)) throw fail('OUTPUT_OUTSIDE_EVIDENCE_DIR_NOT_ALLOWED');
+  if (realOutputParent !== realEvidenceRoot && !realOutputParent.startsWith(`${realEvidenceRoot}/`)) throw fail('OUTPUT_PATH_OUTSIDE_EVIDENCE');
   const inputStat = await stat(inputPath).catch((error) => { throw fail('INPUT_NOT_READABLE', error.message); });
-  if (inputStat.isDirectory()) throw fail('INPUT_DIRECTORY_NOT_ALLOWED');
+  if (inputStat.isDirectory()) throw fail('DIRECTORY_INPUT_FORBIDDEN');
   const text = await readFile(inputPath, 'utf8');
   const input = JSON.parse(text);
   const output = runManualDryRunArtifact(input, { target: parsed.value.target });

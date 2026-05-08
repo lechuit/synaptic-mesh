@@ -83,7 +83,7 @@ let outsideDirRejected = false;
 try {
   await runManualDryRunCli(['--input', 'fixtures/manual-dry-run-inputs/case-001.json', '--output', `${outsideDirPoc}/out.json`], { cwd: packageRoot });
 } catch (error) {
-  outsideDirRejected = error.reasonCode === 'OUTPUT_ABSOLUTE_PATH_NOT_ALLOWED' || error.reasonCode === 'OUTPUT_OUTSIDE_EVIDENCE_DIR_NOT_ALLOWED';
+  outsideDirRejected = error.reasonCode === 'OUTPUT_ABSOLUTE_PATH_NOT_ALLOWED' || error.reasonCode === 'OUTPUT_PATH_OUTSIDE_EVIDENCE';
 }
 assert.equal(outsideDirRejected, true, 'CLI must reject output outside evidence before mkdir');
 assert.equal(existsSync(outsideDirPoc), false, 'CLI must not create directories outside evidence for rejected output paths');
@@ -119,21 +119,21 @@ const forbiddenInputCases = [
   { patch: { manualObservationBundle: { rawContent: 'unredacted text' } }, reasonCode: 'RAW_CONTENT_FIELD_PRESENT' },
   { patch: { manualObservationBundle: { liveInputAllowed: true } }, reasonCode: 'LIVE_INPUT_REQUESTED' },
   { patch: { manualObservationBundle: { networkAllowed: true } }, reasonCode: 'NETWORK_REQUESTED' },
-  { patch: { manualObservationBundle: { toolExecutionAllowed: true } }, reasonCode: 'TOOL_EXECUTION_REQUESTED' },
-  { patch: { manualObservationBundle: { memoryWriteAllowed: true } }, reasonCode: 'MEMORY_WRITE_REQUESTED' },
-  { patch: { manualObservationBundle: { configWriteAllowed: true } }, reasonCode: 'CONFIG_WRITE_REQUESTED' },
+  { patch: { manualObservationBundle: { toolExecutionAllowed: true } }, reasonCode: 'TOOL_EXECUTION_FORBIDDEN' },
+  { patch: { manualObservationBundle: { memoryWriteAllowed: true } }, reasonCode: 'MEMORY_WRITE_FORBIDDEN' },
+  { patch: { manualObservationBundle: { configWriteAllowed: true } }, reasonCode: 'CONFIG_WRITE_FORBIDDEN' },
   { patch: { manualObservationBundle: { publicationAllowed: true } }, reasonCode: 'PUBLICATION_REQUESTED' },
   { patch: { manualObservationBundle: { approvalPathAllowed: true } }, reasonCode: 'APPROVAL_PATH_REQUESTED' },
   { patch: { manualObservationBundle: { blockingAllowed: true } }, reasonCode: 'BLOCKING_REQUESTED' },
   { patch: { manualObservationBundle: { allowingAllowed: true } }, reasonCode: 'ALLOWING_REQUESTED' },
   { patch: { manualObservationBundle: { authorizationAllowed: true } }, reasonCode: 'AUTHORIZATION_REQUESTED' },
   { patch: { manualObservationBundle: { enforcementAllowed: true } }, reasonCode: 'ENFORCEMENT_REQUESTED' },
-  { patch: { manualObservationBundle: { nested: { mayExecuteTool: true } } }, reasonCode: 'MAY_EXECUTE_TOOL_REQUESTED' },
-  { patch: { manualObservationBundle: { nested: { mayWriteMemory: true } } }, reasonCode: 'MAY_WRITE_MEMORY_REQUESTED' },
+  { patch: { manualObservationBundle: { nested: { mayExecuteTool: true } } }, reasonCode: 'TOOL_EXECUTION_FORBIDDEN' },
+  { patch: { manualObservationBundle: { nested: { mayWriteMemory: true } } }, reasonCode: 'MEMORY_WRITE_FORBIDDEN' },
   { patch: { manualObservationBundle: { nested: { mayPublishExternally: true } } }, reasonCode: 'MAY_PUBLISH_EXTERNALLY_REQUESTED' },
   { patch: { manualObservationBundle: { nested: { mayEnterApprovalPath: true } } }, reasonCode: 'MAY_ENTER_APPROVAL_PATH_REQUESTED' },
   { patch: { parserEvidence: { rawContent: 'laundered raw text' } }, reasonCode: 'RAW_CONTENT_FIELD_PRESENT' },
-  { patch: { routeDecisionInput: { mayAllow: true } }, reasonCode: 'MAY_ALLOW_REQUESTED' },
+  { patch: { routeDecisionInput: { mayAllow: true } }, reasonCode: 'CAPABILITY_ALLOW_FORBIDDEN' },
 ];
 let forbiddenInputRejections = 0;
 for (const [index, { patch, reasonCode }] of forbiddenInputCases.entries()) {
