@@ -61,3 +61,7 @@ Merge only if:
 - no `src/live-shadow-*.mjs` files are added
 - no runtime/adapters/tools imports are added
 - documentation keeps the claim to synthetic offline replay only
+
+## Next design boundary
+
+The next v0.1.8-track step is the design-only [Live-shadow redaction and retention design v0](../design-notes/live-shadow-redaction-retention-v0.md). It does not implement redaction code, retention scheduling, live observation, runtime integration, tools, memory/config writes, publication, approval, or enforcement.

@@ -1,13 +1,13 @@
 {
   "bundle": "synaptic-mesh",
   "version": "0.1.7",
-  "generated": "2026-05-08T01:17:00Z",
-  "status": "unreleased_v0.1.8_track_live_shadow_synthetic_replay_offline_not_runtime_ready",
+  "generated": "2026-05-08T01:26:00Z",
+  "status": "unreleased_v0.1.8_track_live_shadow_redaction_retention_design_only_not_runtime_ready",
   "repository": "https://github.com/lechuit/synaptic-mesh",
   "license": "Apache-2.0 for code; CC BY 4.0 for docs/prose unless otherwise noted",
-  "reproducibility": "expected_pass_local_shadow_gates_against_v0.1.7_baseline_plus_unreleased_v0.1.8_track_live_shadow_synthetic_replay_no_runtime",
+  "reproducibility": "expected_pass_local_shadow_gates_against_v0.1.7_baseline_plus_unreleased_v0.1.8_track_design_only_no_runtime",
   "rawSourceCache": "excluded",
-  "runtimeBoundary": "unreleased_v0.1.8_track_ci_baseline_local_shadow_validation_only_no_runtime_integration_no_mcp_a2a_no_authorization_no_tool_execution_no_live_observer_no_daemon",
+  "runtimeBoundary": "unreleased_v0.1.8_track_design_only_no_runtime_integration_no_mcp_a2a_no_authorization_no_tool_execution_no_live_observer_no_daemon_no_retention_scheduler",
   "files": [
     {
       "path": ".github/workflows/ci.yml",
@@ -100,6 +100,11 @@
       "sha256": "231582cfbc0d3cf58c9be956f6103e755faa1a3eb9eb5ab72207125d54972cc6"
     },
     {
+      "path": "design-notes/live-shadow-redaction-retention-v0.md",
+      "bytes": 6316,
+      "sha256": "651381db498eecda355152a04b47d67d8beeef4a01ad2439257b1066bf8180dd"
+    },
+    {
       "path": "design-notes/scalable-design-patterns-v0.md",
       "bytes": 1078,
       "sha256": "2aa0bd6bee2c8f926a1a2e3414f32f194881d273947b5fdf0eede0938ba54f60"
@@ -161,8 +166,8 @@
     },
     {
       "path": "docs/live-shadow-synthetic-replay.md",
-      "bytes": 2903,
-      "sha256": "5f4e24d5691de39591be62b9ccfce3f4ad865d6143c56f89061f8f43241f3589"
+      "bytes": 3246,
+      "sha256": "f9eeb27861baf79a31a8193bd54f0eb0d1d71cf1bb4f0ff05d5da998059abf42"
     },
     {
       "path": "docs/parser-normalization-evidence.md",
