@@ -40,7 +40,7 @@ The reference currently covers:
 Current local gates observed in `evidence/review-local.out.json`:
 
 - review-local verdict: `pass`;
-- commands: `27/27` passing;
+- commands: `28/28` passing;
 - fixture parity: `15/15` passing;
 - normalized summary fixtures: `15`;
 - unsafe allow signals: `0`;
@@ -155,6 +155,7 @@ Key files:
 - `parser-normalization-evidence.out.json` — raw handoff to `parserEvidence` / route-decision input fixture evidence; not a classifier, live parser, runtime authorization, or live shadow observer;
 - `real-flow-replay.out.json` — naturalistic handoff replay evidence with gold labels, parserEvidence hash binding, scorecard, and audit log; not live traffic, an automatic receiver decision, runtime authorization, or live shadow observer;
 - `real-flow-classifier-scorecard.out.json` — compares deterministic `classifierDecision` output against 24 offline real-flow `goldDecision` records; deprecated `observedDecision` metadata is not consumed;
+- `decision-trace-schema.out.json` — validates 24 offline `DecisionTrace` records with parser/input/gold/classifier hash bindings; not a live observer, runtime gate, or authorization layer;
 - `route-classifier-shadow.out.json` — deterministic route classifier shadow evidence over parserEvidence fixtures; not raw parsing, live observation, runtime enforcement, tool authorization, or publication readiness;
 - `receiver-policy-adapter-contracts.out.json` — framework-shaped receiver adapter contract cases;
 - `cli-validator.out.json` — CLI behavior cases;

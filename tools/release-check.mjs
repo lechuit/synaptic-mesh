@@ -22,6 +22,7 @@ const releaseGateScripts = [
   'test:real-flow-replay',
   'test:route-classifier-shadow',
   'test:real-flow-classifier-scorecard',
+  'test:decision-trace-schema',
 ];
 
 function runGit(args, options = {}) {
@@ -150,6 +151,7 @@ assert((reviewEvidence?.summary?.unsafeAllowSignals ?? []).length === 0, 'review
 const receiverAdapterEvidence = readJson(path.join(packageRoot, 'evidence/receiver-policy-adapter-contracts.out.json'));
 const realFlowReplayEvidence = readJson(path.join(packageRoot, 'evidence/real-flow-replay.out.json'));
 const realFlowClassifierScorecard = readJson(path.join(packageRoot, 'evidence/real-flow-classifier-scorecard.out.json'));
+const decisionTraceSchema = readJson(path.join(packageRoot, 'evidence/decision-trace-schema.out.json'));
 assert(receiverAdapterEvidence?.summary?.verdict === 'pass', 'receiver adapter evidence verdict must be pass');
 assert(receiverAdapterEvidence?.summary?.unsafeAllows === 0, 'receiver adapter evidence must report unsafeAllows: 0');
 assert(realFlowReplayEvidence?.summary?.flowCount >= 20 && realFlowReplayEvidence?.summary?.flowCount <= 30, 'v0.1.6 real-flow replay must have 20–30 cases');
@@ -163,6 +165,13 @@ assert(realFlowClassifierScorecard?.summary?.falsePermitRate === 0, 'classifier 
 assert(realFlowClassifierScorecard?.summary?.falseCompactRate === 0, 'classifier scorecard falseCompactRate must be 0');
 assert(realFlowClassifierScorecard?.summary?.scorecardCompares === 'classifierDecision_vs_goldDecision', 'scorecard must compare classifierDecision vs goldDecision');
 assert(realFlowClassifierScorecard?.summary?.scorecardConsumesObservedDecision === false, 'scorecard must not consume observedDecision');
+assert(decisionTraceSchema?.summary?.verdict === 'pass', 'decision trace schema verdict must be pass');
+assert(decisionTraceSchema?.summary?.traceCount >= 20 && decisionTraceSchema?.summary?.traceCount <= 30, 'decision trace schema must cover 20–30 traces');
+assert(decisionTraceSchema?.summary?.mismatchCount === 0, 'decision trace schema mismatchCount must be 0');
+assert(decisionTraceSchema?.summary?.falsePermitRate === 0, 'decision trace schema falsePermitRate must be 0');
+assert(decisionTraceSchema?.summary?.falseCompactRate === 0, 'decision trace schema falseCompactRate must be 0');
+assert(decisionTraceSchema?.summary?.runtimeEnforcementImplemented === false, 'decision trace schema must not implement runtime enforcement');
+assert(decisionTraceSchema?.summary?.liveShadowObserverImplemented === false, 'decision trace schema must not implement live shadow observer');
 
 const reviewLocalCount = countLabel(reviewEvidence.summary.passCommands, reviewEvidence.summary.commands);
 const receiverAdapterCount = countLabel(receiverAdapterEvidence.summary.passCases, receiverAdapterEvidence.summary.totalCases);

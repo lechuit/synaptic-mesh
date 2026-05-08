@@ -3,8 +3,8 @@
     "artifact": "T-synaptic-mesh-review-local-runner-v0",
     "timestamp": "2026-05-07T15:05:00.000Z",
     "verdict": "pass",
-    "commands": 27,
-    "passCommands": 27,
+    "commands": 28,
+    "passCommands": 28,
     "failedCommands": [],
     "fixtureCount": 15,
     "fixtureParityVerdict": "pass",
@@ -57,6 +57,11 @@
     "realFlowClassifierScorecardFalseCompactRate": 0,
     "realFlowClassifierScorecardCompares": "classifierDecision_vs_goldDecision",
     "realFlowClassifierScorecardConsumesObservedDecision": false,
+    "decisionTraceSchemaVerdict": "pass",
+    "decisionTraceCount": 24,
+    "decisionTraceMismatchCount": 0,
+    "decisionTraceFalsePermitRate": 0,
+    "decisionTraceFalseCompactRate": 0,
     "unsafeAllowSignals": [],
     "sourceFixtureMutation": false
   },
@@ -232,6 +237,13 @@
     {
       "id": "real-flow-classifier-scorecard-tests",
       "command": "node implementation/synaptic-mesh-shadow-v0/tests/real-flow-classifier-scorecard.mjs",
+      "status": 0,
+      "pass": true,
+      "stderr": ""
+    },
+    {
+      "id": "decision-trace-schema-tests",
+      "command": "node implementation/synaptic-mesh-shadow-v0/tests/decision-trace-schema.mjs",
       "status": 0,
       "pass": true,
       "stderr": ""

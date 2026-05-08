@@ -109,6 +109,10 @@ const commands = [
     args: [resolve(packageRoot, 'tests/real-flow-classifier-scorecard.mjs')],
   },
   {
+    id: 'decision-trace-schema-tests',
+    args: [resolve(packageRoot, 'tests/decision-trace-schema.mjs')],
+  },
+  {
     id: 'fixture-parity-harness',
     args: [resolve(packageRoot, 'tests/fixture-parity.mjs')],
   },
@@ -142,6 +146,7 @@ const parserNormalizationEvidence = readEvidenceJson('implementation/synaptic-me
 const realFlowReplay = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/real-flow-replay.out.json');
 const routeClassifierShadow = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/route-classifier-shadow.out.json');
 const realFlowClassifierScorecard = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/real-flow-classifier-scorecard.out.json');
+const decisionTraceSchema = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/decision-trace-schema.out.json');
 
 const unsafeAllowSignals = [
   ...(fixtureParity?.summary?.nonRegressionUnsafeAllowFixtures ?? []),
@@ -171,6 +176,11 @@ if (Number(realFlowClassifierScorecard?.summary?.falsePermitRate ?? 0) !== 0) un
 if (Number(realFlowClassifierScorecard?.summary?.falseCompactRate ?? 0) !== 0) unsafeAllowSignals.push('real-flow-classifier-scorecard-false-compact');
 if (realFlowClassifierScorecard?.summary?.scorecardCompares !== 'classifierDecision_vs_goldDecision') unsafeAllowSignals.push('real-flow-classifier-scorecard-wrong-comparison');
 if (realFlowClassifierScorecard?.summary?.scorecardConsumesObservedDecision !== false) unsafeAllowSignals.push('real-flow-classifier-scorecard-observed-decision-consumption');
+if (decisionTraceSchema?.summary?.verdict !== 'pass') unsafeAllowSignals.push('decision-trace-schema');
+if (Number(decisionTraceSchema?.summary?.traceCount ?? 0) < 20 || Number(decisionTraceSchema?.summary?.traceCount ?? 0) > 30) unsafeAllowSignals.push('decision-trace-count');
+if (Number(decisionTraceSchema?.summary?.mismatchCount ?? 0) !== 0) unsafeAllowSignals.push('decision-trace-mismatch');
+if (Number(decisionTraceSchema?.summary?.falsePermitRate ?? 0) !== 0) unsafeAllowSignals.push('decision-trace-false-permit');
+if (Number(decisionTraceSchema?.summary?.falseCompactRate ?? 0) !== 0) unsafeAllowSignals.push('decision-trace-false-compact');
 
 const summary = {
   artifact: 'T-synaptic-mesh-review-local-runner-v0',
@@ -225,6 +235,11 @@ const summary = {
   realFlowClassifierScorecardFalseCompactRate: realFlowClassifierScorecard?.summary?.falseCompactRate ?? null,
   realFlowClassifierScorecardCompares: realFlowClassifierScorecard?.summary?.scorecardCompares ?? null,
   realFlowClassifierScorecardConsumesObservedDecision: realFlowClassifierScorecard?.summary?.scorecardConsumesObservedDecision ?? null,
+  decisionTraceSchemaVerdict: decisionTraceSchema?.summary?.verdict ?? null,
+  decisionTraceCount: decisionTraceSchema?.summary?.traceCount ?? null,
+  decisionTraceMismatchCount: decisionTraceSchema?.summary?.mismatchCount ?? null,
+  decisionTraceFalsePermitRate: decisionTraceSchema?.summary?.falsePermitRate ?? null,
+  decisionTraceFalseCompactRate: decisionTraceSchema?.summary?.falseCompactRate ?? null,
   unsafeAllowSignals,
   sourceFixtureMutation: false,
 };
