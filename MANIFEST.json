@@ -1,13 +1,13 @@
 {
   "bundle": "synaptic-mesh",
-  "version": "0.1.14",
-  "generated": "2026-05-08T14:08:11Z",
-  "status": "v0.1.14_real_redacted_manual_dry_run_pilot_release_candidate_not_runtime_ready",
+  "version": "0.1.15",
+  "generated": "2026-05-08T14:35:00Z",
+  "status": "v0.1.15_manual_dry_run_pilot_failure_catalog_release_candidate_not_runtime_ready",
   "repository": "https://github.com/lechuit/synaptic-mesh",
   "license": "Apache-2.0 for code; CC BY 4.0 for docs/prose unless otherwise noted",
-  "reproducibility": "expected_pass_local_shadow_gates_for_v0.1.14_real_redacted_pilot_six_cases_record_only",
+  "reproducibility": "expected_pass_local_shadow_gates_for_v0.1.15_manual_dry_run_pilot_failure_catalog_fourteen_reject_cases_no_success_evidence",
   "rawSourceCache": "excluded",
-  "runtimeBoundary": "v0.1.14_real_redacted_pilot_manual_local_file_input_redacted_bundle_record_only_no_live_observer_no_runtime_integration_no_tool_execution_no_memory_config_publication_approval_authorization_or_enforcement",
+  "runtimeBoundary": "v0.1.15_manual_dry_run_pilot_failure_catalog_local_reject_evidence_only_no_success_evidence_for_rejected_cases_no_live_observer_no_runtime_integration_no_tool_execution_no_memory_config_publication_approval_authorization_or_enforcement",
   "files": [
     {
       "path": ".github/workflows/ci.yml",
@@ -76,8 +76,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 8419,
-      "sha256": "78ab7b9422e82833171cfb72dc4d61b3f566a2a93ed4080a361af76a820b3773"
+      "bytes": 8700,
+      "sha256": "1c09d228f05db33eb6d3093aae5094f0c8bad52215748402f1f3c8ec473f0bde"
     },
     {
       "path": "RELEASE_CANDIDATE.md",
@@ -86,8 +86,8 @@
     },
     {
       "path": "RELEASE_NOTES.md",
-      "bytes": 5607,
-      "sha256": "21b034e60148812fe939391594a2549bdfe5aca418ff6c161e338310e64a2e22"
+      "bytes": 6070,
+      "sha256": "8dc3b8e46d54afcb2a04c4d658689a6f45810ec9e30bb1edb64c9fb6ad4ea8fe"
     },
     {
       "path": "design-notes/adapter-boundary-langgraph-mcp-v0.md",
@@ -195,6 +195,11 @@
       "sha256": "be466b50231f50a957aa6b67f9672a056060b7070745b85f2f1e7611b0e5b9c6"
     },
     {
+      "path": "docs/manual-dry-run-pilot-failure-catalog.md",
+      "bytes": 2395,
+      "sha256": "718554672b4acee7a4869fedf873f48ffded1bf8828b359288847a1f802202f8"
+    },
+    {
       "path": "docs/manual-observation-bundles.md",
       "bytes": 2568,
       "sha256": "0ddb7e67c648e8b2d845d5e454155e5c5b64bf6e0576e786b94cb087a65ee276"
@@ -246,8 +251,8 @@
     },
     {
       "path": "docs/reason-codes.md",
-      "bytes": 5815,
-      "sha256": "7a604c5b8c696fc2621bb45c82c040b5aff92ef3806753de7647ef794c95d1f9"
+      "bytes": 6465,
+      "sha256": "f03877eea989796760234a32178ed3cba5b5df09980eccfc7375e9e448d1cd86"
     },
     {
       "path": "docs/redaction-review-records.md",
@@ -256,13 +261,13 @@
     },
     {
       "path": "docs/release-checklist.md",
-      "bytes": 7492,
-      "sha256": "eae0c9d304e91cb13b370cec1f24daa9493dde4e48c21053ba9e256fa5fe1a6e"
+      "bytes": 7959,
+      "sha256": "955c6a27d12ba4d1312d44805285013de42884566244d234b6fffd994dd27b06"
     },
     {
       "path": "docs/repo-structure.md",
-      "bytes": 4467,
-      "sha256": "68deb52308901d2e99f4d9c0adf1831e6323aeed343aa7f3b6cc07233500456d"
+      "bytes": 4652,
+      "sha256": "49ae060696698168b2d9b6aa220a8964453b1fa73ca67f118c5aed669263c33a"
     },
     {
       "path": "docs/threat-model-v0.md",
@@ -311,8 +316,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/bin/manual-dry-run.mjs",
-      "bytes": 501,
-      "sha256": "522960c83cbc05397d64ef553b6dc2b1d9670a77ff3eb436d37c719b966777cb"
+      "bytes": 582,
+      "sha256": "2f762faa1b682b783d21aa6455ee9fa08f62222b0e1f6a73242b470e6532cb6a"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/bin/validate-receipt.mjs",
@@ -408,6 +413,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/manual-dry-run-cli-negative-controls.out.json",
       "bytes": 1404,
       "sha256": "a08692479603e688c09e397b83a708d67213221ea8e9bfebaff7a4bc762d97c1"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/manual-dry-run-cli-pilot-failure-catalog.out.json",
+      "bytes": 7673,
+      "sha256": "b22a60d39d81794ae6059d1ff099ed4020d94d6c66daec2d64c2fc19f1cbab1a"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/manual-dry-run-cli-real-redacted-handoffs.out.json",
@@ -655,6 +665,11 @@
       "sha256": "f27a88c950641c764311942f276293a011671639945bb2a5b83711a9d9aab099"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/fixtures/manual-dry-run-cli-pilot-failure-catalog.json",
+      "bytes": 3446,
+      "sha256": "a894bd85bd4fba8679c2ca4bd42f044c3bf96d3e52cc77ddeeca6e9c5daa5d6f"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/fixtures/manual-dry-run-contracts.json",
       "bytes": 6283,
       "sha256": "808df5f3eceeedcf0fa1256b04163592233131da850489e6bb33e85f265f985f"
@@ -776,8 +791,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/package.json",
-      "bytes": 9170,
-      "sha256": "5920e8e7f717eafd57d051add913acf12117b042f83354ed31718210536e280e"
+      "bytes": 9349,
+      "sha256": "da860428f68bfd2c69798e2173b162975417341846ee644f4642623db5ddfcae"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/action-context-packet.mjs",
@@ -806,8 +821,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/manual-dry-run.mjs",
-      "bytes": 20916,
-      "sha256": "bed3fa64139c4c5191ae6e121b9ecd5a5da069e87c8f5a2a23b15f6e6c8f4a94"
+      "bytes": 22166,
+      "sha256": "168d43aba9b18eda4d56e793f20dabeb6e62509748089b7c67ba891925aca1ec"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/receipt-parser.mjs",
@@ -941,8 +956,13 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/manual-dry-run-cli-negative-controls.mjs",
-      "bytes": 9066,
-      "sha256": "0b09f6d86d4e681080019fe53a6492b6d20981c2f82be644858c2492e786f31b"
+      "bytes": 9077,
+      "sha256": "8d74542eebd474e9c2ea72d93de359c94fc06fc4e9dbc4cbe44be143d8ec649d"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/manual-dry-run-cli-pilot-failure-catalog.mjs",
+      "bytes": 6495,
+      "sha256": "14fbeb3aac063d8fe36e6571f38cab04cdfb1ad19ec620595f91183625489e7a"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/manual-dry-run-cli-real-redacted-handoffs.mjs",
@@ -956,8 +976,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/manual-dry-run-cli.mjs",
-      "bytes": 12758,
-      "sha256": "7c2fa2b470b1babfe418d0784489c21531d2c2112cedf4dd1926be1a3dcbf697"
+      "bytes": 12748,
+      "sha256": "23cd961603bc0728f7d30e680f6891baf82d6616e920d541fc91eee11c12a245"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/manual-dry-run-contracts.mjs",
@@ -1551,8 +1571,8 @@
     },
     {
       "path": "tools/release-check.mjs",
-      "bytes": 63233,
-      "sha256": "0ac7ae1cdab9289804d3cff3054acc89fea931fdce38a9488ee458d33c8088db"
+      "bytes": 66708,
+      "sha256": "b23d70da73e9ceda2f356a7d89694cbf51b224ab5aeccfdd3c696c7f00fc3039"
     },
     {
       "path": "tools/verify-manifest.mjs",

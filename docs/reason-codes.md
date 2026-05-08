@@ -34,6 +34,7 @@ The current fixture suite predates this category list and also uses these stable
 - `AUTHORITY_*` / authority phrasing — authority refresh and unresolved receipt authority, for example `AUTHORITY_REFRESH_REQUIRED` and `AUTHORITATIVE_RECEIPT_UNRESOLVED`.
 - `CLAIM_TYPE_*` — claim taxonomy signals, for example `CLAIM_TYPE_LAUNDERING_DETECTED`.
 - `MEMORY_*`, `RUNTIME_*`, `EXTERNAL_*`, `SOURCE_*`, `SELECTED_ROUTE_*`, and `NO_*` — older stable fixture vocabulary used by authority-route, threat-model, benchmark, generated adversarial, and raw/parser gates.
+- Manual dry-run reject codes — local CLI failure vocabulary for invalid pilot usage, including `REDACTION_REVIEW_RECORD_MISSING`, `RAW_CONTENT_PERSISTED`, `PRIVATE_PATH_PERSISTED`, `SECRET_LIKE_VALUE_PERSISTED`, `TOOL_OUTPUT_PERSISTED`, `MEMORY_TEXT_PERSISTED`, `CONFIG_TEXT_PERSISTED`, `APPROVAL_TEXT_PERSISTED`, `URL_INPUT_FORBIDDEN`, `DIRECTORY_INPUT_FORBIDDEN`, `OUTPUT_PATH_OUTSIDE_EVIDENCE`, `CAPABILITY_ALLOW_FORBIDDEN`, `CAPABILITY_BLOCK_FORBIDDEN`, `TOOL_EXECUTION_FORBIDDEN`, `MEMORY_WRITE_FORBIDDEN`, and `CONFIG_WRITE_FORBIDDEN`. These codes mean local rejection/no success evidence; they do not imply runtime blocking or enforcement.
 
 These are official for the current release candidate because they appear in tracked fixtures/evidence. New fixture work should prefer the category-based names above unless preserving an existing gate contract.
 

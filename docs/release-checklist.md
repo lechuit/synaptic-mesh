@@ -16,10 +16,10 @@ Run release gates from the package directory:
 
 ```bash
 cd implementation/synaptic-mesh-shadow-v0
-npm run release:check -- --target v0.1.14
+npm run release:check -- --target v0.1.15
 ```
 
-`release:check` verifies the manifest/docs package version, reports the explicit `releaseTarget`, reports the local Git `currentPublishedRelease` when available, and runs the release-critical local gates. If `--target` is omitted, it defaults to the manifest version and prints a warning so release PRs do not silently inherit a stale target.
+`release:check` verifies the manifest/docs package version, reports the explicit `releaseTarget`, reports the local Git `currentPublishedRelease` when available, blocks release-candidate validation against an already-existing tag unless the current checkout is exactly that tagged commit, and runs the release-critical local gates. If `--target` is omitted, it defaults to the manifest version and prints a warning so release PRs do not silently inherit a stale target.
 
 It runs:
 
@@ -63,6 +63,7 @@ It runs:
 - `npm run test:manual-dry-run-cli-negative-controls`
 - `npm run test:manual-dry-run-cli-real-redacted-handoffs`
 - `npm run test:manual-dry-run-cli-real-redacted-pilot`
+- `npm run test:manual-dry-run-cli-pilot-failure-catalog`
 
 For auditability, keep the individual gate names visible in PR notes even when `release:check` is the command reviewers run.
 
@@ -82,6 +83,7 @@ For auditability, keep the individual gate names visible in PR notes even when `
 - Confirm release-check output remains local-only and does not call network services or runtime tools.
 - Confirm real-redacted handoff evidence remains manually curated/redacted metadata only, with no raw handoff content, private paths, secrets, tool output, memory/config text, approval text, live observer, runtime integration, approval path, blocking/allowing, authorization, or enforcement.
 - Confirm manual dry-run command contracts and CLI remain manual/offline, explicit local file input only, already-redacted bundle input only, record-only local evidence output, no live observer, no watcher/daemon, no network, no adapter/runtime integration, no tools, no memory/config writes, no publication, no approval path, no blocking/allowing, no authorization, and no enforcement. Confirm CLI negative controls reject forbidden flags/claims and output path escapes without writing evidence or creating outside-evidence directories.
+- Confirm manual dry-run pilot failure catalog rejects known misuse with clear reason codes, writes only local reject evidence for rejected cases, and writes no success evidence, normal DecisionTrace, normal LiveShadowObservationResult, or scorecard success row for rejected cases.
 
 ## CI expectations
 

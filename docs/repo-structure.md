@@ -26,6 +26,7 @@ Synaptic Mesh keeps protocol, implementation, research, and evidence separate so
 - [Offline real-flow replay](real-flow-replay.md) documents naturalistic handoff replay with gold labels, scorecards, and audit logs without live observer behavior.
 - [Deterministic route classifier](deterministic-route-classifier.md) documents the shadow-only classifier over parser evidence fixtures.
 - [Adapter boundary for LangGraph and MCP v0](../design-notes/adapter-boundary-langgraph-mcp-v0.md) documents future adapter boundaries, prerequisites, and non-goals without adding runtime integration.
+- [Manual dry-run pilot failure catalog](manual-dry-run-pilot-failure-catalog.md) documents local reject-only pilot cases that must not emit success evidence or add operational powers.
 
 ## Scaling rules
 

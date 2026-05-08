@@ -1,0 +1,76 @@
+{
+  "schemaVersion": "manual-dry-run-cli-pilot-failure-catalog-v0",
+  "description": "Failure catalog for the manual dry-run pilot CLI. Each case must reject locally, must not write success evidence, and must not add runtime, live observer, tools, memory/config writes, approval paths, blocking, allowing, authorization, or enforcement.",
+  "cases": [
+    {
+      "caseId": "failure-001-redaction-review-record-missing",
+      "inputPatch": { "redactionReviewRecord": null },
+      "expectedReasonCodes": ["REDACTION_REVIEW_RECORD_MISSING"]
+    },
+    {
+      "caseId": "failure-002-raw-content-persisted",
+      "inputPatch": { "redactionReviewRecord": { "rawContentPersisted": true } },
+      "expectedReasonCodes": ["RAW_CONTENT_PERSISTED"]
+    },
+    {
+      "caseId": "failure-003-private-path-persisted",
+      "inputPatch": { "redactionReviewRecord": { "privatePathsPersisted": true } },
+      "expectedReasonCodes": ["PRIVATE_PATH_PERSISTED"]
+    },
+    {
+      "caseId": "failure-004-secret-like-value-persisted",
+      "inputPatch": { "redactionReviewRecord": { "secretLikeValuesPersisted": true } },
+      "expectedReasonCodes": ["SECRET_LIKE_VALUE_PERSISTED"]
+    },
+    {
+      "caseId": "failure-005-tool-output-persisted",
+      "inputPatch": { "redactionReviewRecord": { "toolOutputsPersisted": true } },
+      "expectedReasonCodes": ["TOOL_OUTPUT_PERSISTED"]
+    },
+    {
+      "caseId": "failure-006-memory-config-text-persisted",
+      "inputPatch": { "redactionReviewRecord": { "memoryTextPersisted": true, "configTextPersisted": true } },
+      "expectedReasonCodes": ["MEMORY_TEXT_PERSISTED", "CONFIG_TEXT_PERSISTED"]
+    },
+    {
+      "caseId": "failure-007-approval-text-persisted",
+      "inputPatch": { "redactionReviewRecord": { "approvalTextPersisted": true } },
+      "expectedReasonCodes": ["APPROVAL_TEXT_PERSISTED"]
+    },
+    {
+      "caseId": "failure-008-url-input",
+      "cliArgs": { "input": "https://example.invalid/manual-dry-run.json", "output": "evidence/manual-dry-run-cli.failure-catalog-case-008.out.json" },
+      "expectedReasonCodes": ["URL_INPUT_FORBIDDEN"]
+    },
+    {
+      "caseId": "failure-009-directory-input",
+      "cliArgs": { "input": "fixtures", "output": "evidence/manual-dry-run-cli.failure-catalog-case-009.out.json" },
+      "expectedReasonCodes": ["DIRECTORY_INPUT_FORBIDDEN"]
+    },
+    {
+      "caseId": "failure-010-output-outside-evidence",
+      "cliArgs": { "input": "fixtures/manual-dry-run-inputs/case-001.json", "output": "../../somewhere/out.json" },
+      "expectedReasonCodes": ["OUTPUT_PATH_OUTSIDE_EVIDENCE"]
+    },
+    {
+      "caseId": "failure-011-may-allow-true",
+      "inputPatch": { "routeDecisionInput": { "mayAllow": true } },
+      "expectedReasonCodes": ["CAPABILITY_ALLOW_FORBIDDEN"]
+    },
+    {
+      "caseId": "failure-012-may-block-true",
+      "inputPatch": { "routeDecisionInput": { "mayBlock": true } },
+      "expectedReasonCodes": ["CAPABILITY_BLOCK_FORBIDDEN"]
+    },
+    {
+      "caseId": "failure-013-tool-execution-allowed",
+      "inputPatch": { "manualObservationBundle": { "toolExecutionAllowed": true } },
+      "expectedReasonCodes": ["TOOL_EXECUTION_FORBIDDEN"]
+    },
+    {
+      "caseId": "failure-014-memory-config-write-allowed",
+      "inputPatch": { "routeDecisionInput": { "memoryWriteAllowed": true, "configWriteAllowed": true } },
+      "expectedReasonCodes": ["MEMORY_WRITE_FORBIDDEN", "CONFIG_WRITE_FORBIDDEN"]
+    }
+  ]
+}
