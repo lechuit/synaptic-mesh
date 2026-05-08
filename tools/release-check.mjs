@@ -23,6 +23,7 @@ const releaseGateScripts = [
   'test:route-classifier-shadow',
   'test:real-flow-classifier-scorecard',
   'test:decision-trace-schema',
+  'test:real-flow-mutation-suite',
 ];
 
 function runGit(args, options = {}) {
@@ -152,6 +153,7 @@ const receiverAdapterEvidence = readJson(path.join(packageRoot, 'evidence/receiv
 const realFlowReplayEvidence = readJson(path.join(packageRoot, 'evidence/real-flow-replay.out.json'));
 const realFlowClassifierScorecard = readJson(path.join(packageRoot, 'evidence/real-flow-classifier-scorecard.out.json'));
 const decisionTraceSchema = readJson(path.join(packageRoot, 'evidence/decision-trace-schema.out.json'));
+const realFlowMutationSuite = readJson(path.join(packageRoot, 'evidence/real-flow-mutation-suite.out.json'));
 assert(receiverAdapterEvidence?.summary?.verdict === 'pass', 'receiver adapter evidence verdict must be pass');
 assert(receiverAdapterEvidence?.summary?.unsafeAllows === 0, 'receiver adapter evidence must report unsafeAllows: 0');
 assert(realFlowReplayEvidence?.summary?.flowCount >= 20 && realFlowReplayEvidence?.summary?.flowCount <= 30, 'v0.1.6 real-flow replay must have 20–30 cases');
@@ -172,6 +174,15 @@ assert(decisionTraceSchema?.summary?.falsePermitRate === 0, 'decision trace sche
 assert(decisionTraceSchema?.summary?.falseCompactRate === 0, 'decision trace schema falseCompactRate must be 0');
 assert(decisionTraceSchema?.summary?.runtimeEnforcementImplemented === false, 'decision trace schema must not implement runtime enforcement');
 assert(decisionTraceSchema?.summary?.liveShadowObserverImplemented === false, 'decision trace schema must not implement live shadow observer');
+assert(realFlowMutationSuite?.summary?.verdict === 'pass', 'real-flow mutation suite verdict must be pass');
+assert(realFlowMutationSuite?.summary?.mutationCount >= 15, 'real-flow mutation suite must cover at least 15 mutations');
+assert(realFlowMutationSuite?.summary?.mismatchCount === 0, 'real-flow mutation suite mismatchCount must be 0');
+assert(realFlowMutationSuite?.summary?.duplicateMutationIdCount === 0, 'real-flow mutation suite duplicateMutationIdCount must be 0');
+assert(realFlowMutationSuite?.summary?.nonDegradedCount === 0, 'real-flow mutation suite nonDegradedCount must be 0');
+assert(realFlowMutationSuite?.summary?.falsePermitRate === 0, 'real-flow mutation suite falsePermitRate must be 0');
+assert(realFlowMutationSuite?.summary?.falseCompactRate === 0, 'real-flow mutation suite falseCompactRate must be 0');
+assert(realFlowMutationSuite?.summary?.runtimeEnforcementImplemented === false, 'real-flow mutation suite must not implement runtime enforcement');
+assert(realFlowMutationSuite?.summary?.liveShadowObserverImplemented === false, 'real-flow mutation suite must not implement live shadow observer');
 
 const reviewLocalCount = countLabel(reviewEvidence.summary.passCommands, reviewEvidence.summary.commands);
 const receiverAdapterCount = countLabel(receiverAdapterEvidence.summary.passCases, receiverAdapterEvidence.summary.totalCases);

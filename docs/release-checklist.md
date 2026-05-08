@@ -42,6 +42,7 @@ It runs:
 - `npm run test:route-classifier-shadow`
 - `npm run test:real-flow-classifier-scorecard`
 - `npm run test:decision-trace-schema`
+- `npm run test:real-flow-mutation-suite`
 
 For auditability, keep the individual gate names visible in PR notes even when `release:check` is the command reviewers run.
 

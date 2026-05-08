@@ -1,0 +1,677 @@
+{
+  "summary": {
+    "artifact": "T-synaptic-mesh-real-flow-mutation-suite-v0",
+    "timestamp": "2026-05-08T00:25:00.000Z",
+    "verdict": "pass",
+    "sourceFixture": "implementation/synaptic-mesh-shadow-v0/fixtures/real-flow-replay.json",
+    "mutationCount": 15,
+    "sourceFlowCount": 2,
+    "mutationCounts": {
+      "inject_config_change_free_text": 3,
+      "stale_policy_window": 3,
+      "missing_receipt_boundary": 3,
+      "unknown_grammar_digest": 3,
+      "source_digest_mismatch": 3
+    },
+    "mismatchCount": 0,
+    "duplicateMutationIdCount": 0,
+    "nonDegradedCount": 0,
+    "falsePermitRate": 0,
+    "falseCompactRate": 0,
+    "allMutationsDegrade": true,
+    "classifierImplemented": true,
+    "runtimeEnforcementImplemented": false,
+    "liveShadowObserverImplemented": false,
+    "toolAuthorizationImplemented": false,
+    "memoryWriteImplemented": false,
+    "configChangeImplemented": false,
+    "externalPublicationImplemented": false,
+    "safetyClaimScope": "offline_real_flow_mutation_suite_only_not_live_observer_not_runtime_not_authorization"
+  },
+  "rows": [
+    {
+      "mutationId": "realish-planner-to-coder-local-doc-review__inject_config_change_free_text__free_text",
+      "variant": "free_text",
+      "sourceFlowId": "realish-planner-to-coder-local-doc-review",
+      "sourceGoldRoute": "shadow_only",
+      "mutation": "inject_config_change_free_text",
+      "expectedRoute": "ask_human",
+      "requiredReasonCodes": [
+        "FREE_TEXT_NOT_AUTHORITY",
+        "CONFIG_CHANGE_PROMOTION_IN_FREE_TEXT"
+      ],
+      "classifierDecision": {
+        "selectedRoute": "ask_human",
+        "humanRequired": true,
+        "compactAllowed": false,
+        "reasonCodes": [
+          "FREE_TEXT_NOT_AUTHORITY",
+          "CONFIG_CHANGE_PROMOTION_IN_FREE_TEXT",
+          "CONFIG_CHANGE_PROMOTION"
+        ],
+        "decisiveSignals": [
+          "CONFIG_CHANGE_PROMOTION"
+        ],
+        "rejectedRoutes": {
+          "shadow_only": [
+            "FREE_TEXT_NOT_AUTHORITY",
+            "CONFIG_CHANGE_PROMOTION_IN_FREE_TEXT",
+            "CONFIG_CHANGE_PROMOTION"
+          ],
+          "fetch_source": [
+            "HUMAN_AUTHORITY_REQUIRED_FOR_SENSITIVE_BOUNDARY"
+          ],
+          "request_full_receipt": [
+            "HUMAN_AUTHORITY_REQUIRED_FOR_SENSITIVE_BOUNDARY"
+          ]
+        }
+      },
+      "matchedExpectedRoute": true,
+      "hasRequiredReasons": true,
+      "degradedFromSource": true,
+      "parserEvidenceHash": "sha256:a74277fe6025c006cf07bfec6eccc4397cdc93d7c9d72cbb760cd228023ff2e5",
+      "routeDecisionInputHash": "sha256:ccb79116a67c8fe40d386507c564bfec9b513f76c567528c5a0c71791dbd84eb"
+    },
+    {
+      "mutationId": "realish-memory-candidate-local-report__inject_config_change_free_text__summary_signal",
+      "variant": "summary_signal",
+      "sourceFlowId": "realish-memory-candidate-local-report",
+      "sourceGoldRoute": "shadow_only",
+      "mutation": "inject_config_change_free_text",
+      "expectedRoute": "ask_human",
+      "requiredReasonCodes": [
+        "FREE_TEXT_NOT_AUTHORITY",
+        "CONFIG_CHANGE_PROMOTION_IN_FREE_TEXT"
+      ],
+      "classifierDecision": {
+        "selectedRoute": "ask_human",
+        "humanRequired": true,
+        "compactAllowed": false,
+        "reasonCodes": [
+          "FREE_TEXT_NOT_AUTHORITY",
+          "CONFIG_CHANGE_PROMOTION_IN_FREE_TEXT",
+          "CONFIG_CHANGE_PROMOTION"
+        ],
+        "decisiveSignals": [
+          "CONFIG_CHANGE_PROMOTION"
+        ],
+        "rejectedRoutes": {
+          "shadow_only": [
+            "FREE_TEXT_NOT_AUTHORITY",
+            "CONFIG_CHANGE_PROMOTION_IN_FREE_TEXT",
+            "CONFIG_CHANGE_PROMOTION"
+          ],
+          "fetch_source": [
+            "HUMAN_AUTHORITY_REQUIRED_FOR_SENSITIVE_BOUNDARY"
+          ],
+          "request_full_receipt": [
+            "HUMAN_AUTHORITY_REQUIRED_FOR_SENSITIVE_BOUNDARY"
+          ]
+        }
+      },
+      "matchedExpectedRoute": true,
+      "hasRequiredReasons": true,
+      "degradedFromSource": true,
+      "parserEvidenceHash": "sha256:6e31e1a058049224a02e3b6648c326bfb6085ef120cd8038b1a081420db987a5",
+      "routeDecisionInputHash": "sha256:ccb79116a67c8fe40d386507c564bfec9b513f76c567528c5a0c71791dbd84eb"
+    },
+    {
+      "mutationId": "realish-planner-to-coder-local-doc-review__inject_config_change_free_text__receipt_signal",
+      "variant": "receipt_signal",
+      "sourceFlowId": "realish-planner-to-coder-local-doc-review",
+      "sourceGoldRoute": "shadow_only",
+      "mutation": "inject_config_change_free_text",
+      "expectedRoute": "ask_human",
+      "requiredReasonCodes": [
+        "FREE_TEXT_NOT_AUTHORITY",
+        "CONFIG_CHANGE_PROMOTION_IN_FREE_TEXT"
+      ],
+      "classifierDecision": {
+        "selectedRoute": "ask_human",
+        "humanRequired": true,
+        "compactAllowed": false,
+        "reasonCodes": [
+          "FREE_TEXT_NOT_AUTHORITY",
+          "CONFIG_CHANGE_PROMOTION_IN_FREE_TEXT",
+          "CONFIG_CHANGE_PROMOTION"
+        ],
+        "decisiveSignals": [
+          "CONFIG_CHANGE_PROMOTION"
+        ],
+        "rejectedRoutes": {
+          "shadow_only": [
+            "FREE_TEXT_NOT_AUTHORITY",
+            "CONFIG_CHANGE_PROMOTION_IN_FREE_TEXT",
+            "CONFIG_CHANGE_PROMOTION"
+          ],
+          "fetch_source": [
+            "HUMAN_AUTHORITY_REQUIRED_FOR_SENSITIVE_BOUNDARY"
+          ],
+          "request_full_receipt": [
+            "HUMAN_AUTHORITY_REQUIRED_FOR_SENSITIVE_BOUNDARY"
+          ]
+        }
+      },
+      "matchedExpectedRoute": true,
+      "hasRequiredReasons": true,
+      "degradedFromSource": true,
+      "parserEvidenceHash": "sha256:34100bcad2dbfc07ea639438e9c41ebf26ea53dadf72b9a6202db7132954a398",
+      "routeDecisionInputHash": "sha256:ccb79116a67c8fe40d386507c564bfec9b513f76c567528c5a0c71791dbd84eb"
+    },
+    {
+      "mutationId": "realish-memory-candidate-local-report__stale_policy_window__checksum_stale",
+      "variant": "checksum_stale",
+      "sourceFlowId": "realish-memory-candidate-local-report",
+      "sourceGoldRoute": "shadow_only",
+      "mutation": "stale_policy_window",
+      "expectedRoute": "request_policy_refresh",
+      "requiredReasonCodes": [
+        "POLICY_REFRESH_REQUIRED"
+      ],
+      "classifierDecision": {
+        "selectedRoute": "request_policy_refresh",
+        "humanRequired": false,
+        "compactAllowed": false,
+        "reasonCodes": [
+          "POLICY_CHECKSUM_STALE",
+          "POLICY_REFRESH_REQUIRED"
+        ],
+        "decisiveSignals": [
+          "POLICY_CHECKSUM_STALE",
+          "NO_SENSITIVE_PROMOTION"
+        ],
+        "rejectedRoutes": {
+          "shadow_only": [
+            "POLICY_CHECKSUM_STALE",
+            "POLICY_REFRESH_REQUIRED"
+          ],
+          "ask_human": [
+            "POLICY_CHECKSUM_STALE"
+          ],
+          "fetch_source": [
+            "POLICY_REFRESH_PREFERRED"
+          ]
+        }
+      },
+      "matchedExpectedRoute": true,
+      "hasRequiredReasons": true,
+      "degradedFromSource": true,
+      "parserEvidenceHash": "sha256:3fe8f1dc76e49490f844f35b8ad41fba3e366f87082aa616a4af5c92b7bc7b0e",
+      "routeDecisionInputHash": "sha256:41608c463c5f698356d222a40cff668964def8649fc9b83b95105de358e63ca7"
+    },
+    {
+      "mutationId": "realish-planner-to-coder-local-doc-review__stale_policy_window__missing_clock",
+      "variant": "missing_clock",
+      "sourceFlowId": "realish-planner-to-coder-local-doc-review",
+      "sourceGoldRoute": "shadow_only",
+      "mutation": "stale_policy_window",
+      "expectedRoute": "request_policy_refresh",
+      "requiredReasonCodes": [
+        "POLICY_REFRESH_REQUIRED"
+      ],
+      "classifierDecision": {
+        "selectedRoute": "request_policy_refresh",
+        "humanRequired": false,
+        "compactAllowed": false,
+        "reasonCodes": [
+          "POLICY_CLOCK_MISSING",
+          "POLICY_REFRESH_REQUIRED"
+        ],
+        "decisiveSignals": [
+          "POLICY_CLOCK_MISSING",
+          "NO_SENSITIVE_PROMOTION"
+        ],
+        "rejectedRoutes": {
+          "shadow_only": [
+            "POLICY_CLOCK_MISSING",
+            "POLICY_REFRESH_REQUIRED"
+          ],
+          "ask_human": [
+            "POLICY_CLOCK_MISSING"
+          ],
+          "fetch_source": [
+            "POLICY_REFRESH_PREFERRED"
+          ]
+        }
+      },
+      "matchedExpectedRoute": true,
+      "hasRequiredReasons": true,
+      "degradedFromSource": true,
+      "parserEvidenceHash": "sha256:7566d66351341474784884d80e08d1a642f38be9453f21fe14b5d73503f41372",
+      "routeDecisionInputHash": "sha256:238623614ba395492d00f024c799005453f424db388dbda35c64a5a3fc695c83"
+    },
+    {
+      "mutationId": "realish-memory-candidate-local-report__stale_policy_window__checksum_replay",
+      "variant": "checksum_replay",
+      "sourceFlowId": "realish-memory-candidate-local-report",
+      "sourceGoldRoute": "shadow_only",
+      "mutation": "stale_policy_window",
+      "expectedRoute": "request_policy_refresh",
+      "requiredReasonCodes": [
+        "POLICY_REFRESH_REQUIRED"
+      ],
+      "classifierDecision": {
+        "selectedRoute": "request_policy_refresh",
+        "humanRequired": false,
+        "compactAllowed": false,
+        "reasonCodes": [
+          "POLICY_CHECKSUM_STALE",
+          "POLICY_REFRESH_REQUIRED"
+        ],
+        "decisiveSignals": [
+          "POLICY_CHECKSUM_STALE",
+          "NO_SENSITIVE_PROMOTION"
+        ],
+        "rejectedRoutes": {
+          "shadow_only": [
+            "POLICY_CHECKSUM_STALE",
+            "POLICY_REFRESH_REQUIRED"
+          ],
+          "ask_human": [
+            "POLICY_CHECKSUM_STALE"
+          ],
+          "fetch_source": [
+            "POLICY_REFRESH_PREFERRED"
+          ]
+        }
+      },
+      "matchedExpectedRoute": true,
+      "hasRequiredReasons": true,
+      "degradedFromSource": true,
+      "parserEvidenceHash": "sha256:fb049e88e84d8312799ca7d42dd8cee509ddfc4c11e004f4d0751de3767b90d8",
+      "routeDecisionInputHash": "sha256:1d4c42b4a81ec87b0aad3ce1f9fa86ab0e7bcec2ae9a0fb2878a19185d4617d5"
+    },
+    {
+      "mutationId": "realish-planner-to-coder-local-doc-review__missing_receipt_boundary__invalid_schema",
+      "variant": "invalid_schema",
+      "sourceFlowId": "realish-planner-to-coder-local-doc-review",
+      "sourceGoldRoute": "shadow_only",
+      "mutation": "missing_receipt_boundary",
+      "expectedRoute": "request_full_receipt",
+      "requiredReasonCodes": [
+        "BOUNDARY_COVERAGE_MISSING"
+      ],
+      "classifierDecision": {
+        "selectedRoute": "request_full_receipt",
+        "humanRequired": false,
+        "compactAllowed": false,
+        "reasonCodes": [
+          "INVALID_RECEIPT_SCHEMA",
+          "BOUNDARY_COVERAGE_MISSING"
+        ],
+        "decisiveSignals": [
+          "INVALID_RECEIPT_SCHEMA",
+          "BOUNDARY_COVERAGE_MISSING",
+          "NO_SENSITIVE_PROMOTION"
+        ],
+        "rejectedRoutes": {
+          "shadow_only": [
+            "INVALID_RECEIPT_SCHEMA",
+            "BOUNDARY_COVERAGE_MISSING"
+          ],
+          "ask_human": [
+            "INVALID_RECEIPT_SCHEMA"
+          ],
+          "fetch_source": [
+            "FULL_RECEIPT_PREFERRED"
+          ]
+        }
+      },
+      "matchedExpectedRoute": true,
+      "hasRequiredReasons": true,
+      "degradedFromSource": true,
+      "parserEvidenceHash": "sha256:c4b23856765578345b2a446ba0774abef89a2e2824edc52c06ebac49b4fe64aa",
+      "routeDecisionInputHash": "sha256:57f589d9dc6a9aabe13e90c7177509ecfb8eefef8b465f99289f54dc47afeffd"
+    },
+    {
+      "mutationId": "realish-memory-candidate-local-report__missing_receipt_boundary__missing_policy_checksum",
+      "variant": "missing_policy_checksum",
+      "sourceFlowId": "realish-memory-candidate-local-report",
+      "sourceGoldRoute": "shadow_only",
+      "mutation": "missing_receipt_boundary",
+      "expectedRoute": "request_full_receipt",
+      "requiredReasonCodes": [
+        "BOUNDARY_COVERAGE_MISSING"
+      ],
+      "classifierDecision": {
+        "selectedRoute": "request_full_receipt",
+        "humanRequired": false,
+        "compactAllowed": false,
+        "reasonCodes": [
+          "MISSING_POLICY_CHECKSUM",
+          "BOUNDARY_COVERAGE_MISSING"
+        ],
+        "decisiveSignals": [
+          "INVALID_RECEIPT_SCHEMA",
+          "BOUNDARY_COVERAGE_MISSING",
+          "NO_SENSITIVE_PROMOTION"
+        ],
+        "rejectedRoutes": {
+          "shadow_only": [
+            "MISSING_POLICY_CHECKSUM",
+            "BOUNDARY_COVERAGE_MISSING"
+          ],
+          "ask_human": [
+            "MISSING_POLICY_CHECKSUM"
+          ],
+          "fetch_source": [
+            "FULL_RECEIPT_PREFERRED"
+          ]
+        }
+      },
+      "matchedExpectedRoute": true,
+      "hasRequiredReasons": true,
+      "degradedFromSource": true,
+      "parserEvidenceHash": "sha256:543fb483c82fda059dc38028f633fe051b46cb15980401cadf7c087eaa561c9a",
+      "routeDecisionInputHash": "sha256:57f589d9dc6a9aabe13e90c7177509ecfb8eefef8b465f99289f54dc47afeffd"
+    },
+    {
+      "mutationId": "realish-planner-to-coder-local-doc-review__missing_receipt_boundary__boundary_missing",
+      "variant": "boundary_missing",
+      "sourceFlowId": "realish-planner-to-coder-local-doc-review",
+      "sourceGoldRoute": "shadow_only",
+      "mutation": "missing_receipt_boundary",
+      "expectedRoute": "request_full_receipt",
+      "requiredReasonCodes": [
+        "BOUNDARY_COVERAGE_MISSING"
+      ],
+      "classifierDecision": {
+        "selectedRoute": "request_full_receipt",
+        "humanRequired": false,
+        "compactAllowed": false,
+        "reasonCodes": [
+          "INVALID_RECEIPT_SCHEMA",
+          "BOUNDARY_COVERAGE_MISSING"
+        ],
+        "decisiveSignals": [
+          "INVALID_RECEIPT_SCHEMA",
+          "BOUNDARY_COVERAGE_MISSING",
+          "NO_SENSITIVE_PROMOTION"
+        ],
+        "rejectedRoutes": {
+          "shadow_only": [
+            "INVALID_RECEIPT_SCHEMA",
+            "BOUNDARY_COVERAGE_MISSING"
+          ],
+          "ask_human": [
+            "INVALID_RECEIPT_SCHEMA"
+          ],
+          "fetch_source": [
+            "FULL_RECEIPT_PREFERRED"
+          ]
+        }
+      },
+      "matchedExpectedRoute": true,
+      "hasRequiredReasons": true,
+      "degradedFromSource": true,
+      "parserEvidenceHash": "sha256:c4b23856765578345b2a446ba0774abef89a2e2824edc52c06ebac49b4fe64aa",
+      "routeDecisionInputHash": "sha256:57f589d9dc6a9aabe13e90c7177509ecfb8eefef8b465f99289f54dc47afeffd"
+    },
+    {
+      "mutationId": "realish-memory-candidate-local-report__unknown_grammar_digest__unknown_digest",
+      "variant": "unknown_digest",
+      "sourceFlowId": "realish-memory-candidate-local-report",
+      "sourceGoldRoute": "shadow_only",
+      "mutation": "unknown_grammar_digest",
+      "expectedRoute": "request_grammar_refresh",
+      "requiredReasonCodes": [
+        "GRAMMAR_REFRESH_REQUIRED"
+      ],
+      "classifierDecision": {
+        "selectedRoute": "request_grammar_refresh",
+        "humanRequired": false,
+        "compactAllowed": false,
+        "reasonCodes": [
+          "GRAMMAR_DIGEST_UNKNOWN",
+          "GRAMMAR_REFRESH_REQUIRED"
+        ],
+        "decisiveSignals": [
+          "GRAMMAR_DIGEST_UNKNOWN",
+          "NO_SENSITIVE_PROMOTION"
+        ],
+        "rejectedRoutes": {
+          "shadow_only": [
+            "GRAMMAR_DIGEST_UNKNOWN",
+            "GRAMMAR_REFRESH_REQUIRED"
+          ],
+          "ask_human": [
+            "GRAMMAR_DIGEST_UNKNOWN"
+          ],
+          "request_full_receipt": [
+            "GRAMMAR_REFRESH_PREFERRED"
+          ]
+        }
+      },
+      "matchedExpectedRoute": true,
+      "hasRequiredReasons": true,
+      "degradedFromSource": true,
+      "parserEvidenceHash": "sha256:d94cfe420bf34590d4510e0861a73fce27eb1fc90706cab79a6ad0ccac5254b8",
+      "routeDecisionInputHash": "sha256:06482df1d2687ac66316242fd6857ba5424f0b70d39c1cbfbd70874e106fac03"
+    },
+    {
+      "mutationId": "realish-planner-to-coder-local-doc-review__unknown_grammar_digest__rollback",
+      "variant": "rollback",
+      "sourceFlowId": "realish-planner-to-coder-local-doc-review",
+      "sourceGoldRoute": "shadow_only",
+      "mutation": "unknown_grammar_digest",
+      "expectedRoute": "request_grammar_refresh",
+      "requiredReasonCodes": [
+        "GRAMMAR_REFRESH_REQUIRED"
+      ],
+      "classifierDecision": {
+        "selectedRoute": "request_grammar_refresh",
+        "humanRequired": false,
+        "compactAllowed": false,
+        "reasonCodes": [
+          "GRAMMAR_VERSION_ROLLBACK",
+          "GRAMMAR_REFRESH_REQUIRED"
+        ],
+        "decisiveSignals": [
+          "GRAMMAR_VERSION_ROLLBACK",
+          "NO_SENSITIVE_PROMOTION"
+        ],
+        "rejectedRoutes": {
+          "shadow_only": [
+            "GRAMMAR_VERSION_ROLLBACK",
+            "GRAMMAR_REFRESH_REQUIRED"
+          ],
+          "ask_human": [
+            "GRAMMAR_VERSION_ROLLBACK"
+          ],
+          "request_full_receipt": [
+            "GRAMMAR_REFRESH_PREFERRED"
+          ]
+        }
+      },
+      "matchedExpectedRoute": true,
+      "hasRequiredReasons": true,
+      "degradedFromSource": true,
+      "parserEvidenceHash": "sha256:c2f173977e9b958dba3fcd17b104ad8889528c4e2067cb5b5705478274d087c4",
+      "routeDecisionInputHash": "sha256:4373cc12a656b1f8ada3862872e6084a30ffa19b7f785067f3ebe1d3c152c890"
+    },
+    {
+      "mutationId": "realish-memory-candidate-local-report__unknown_grammar_digest__unrecognized_digest",
+      "variant": "unrecognized_digest",
+      "sourceFlowId": "realish-memory-candidate-local-report",
+      "sourceGoldRoute": "shadow_only",
+      "mutation": "unknown_grammar_digest",
+      "expectedRoute": "request_grammar_refresh",
+      "requiredReasonCodes": [
+        "GRAMMAR_REFRESH_REQUIRED"
+      ],
+      "classifierDecision": {
+        "selectedRoute": "request_grammar_refresh",
+        "humanRequired": false,
+        "compactAllowed": false,
+        "reasonCodes": [
+          "GRAMMAR_DIGEST_UNKNOWN",
+          "GRAMMAR_REFRESH_REQUIRED"
+        ],
+        "decisiveSignals": [
+          "GRAMMAR_DIGEST_UNKNOWN",
+          "NO_SENSITIVE_PROMOTION"
+        ],
+        "rejectedRoutes": {
+          "shadow_only": [
+            "GRAMMAR_DIGEST_UNKNOWN",
+            "GRAMMAR_REFRESH_REQUIRED"
+          ],
+          "ask_human": [
+            "GRAMMAR_DIGEST_UNKNOWN"
+          ],
+          "request_full_receipt": [
+            "GRAMMAR_REFRESH_PREFERRED"
+          ]
+        }
+      },
+      "matchedExpectedRoute": true,
+      "hasRequiredReasons": true,
+      "degradedFromSource": true,
+      "parserEvidenceHash": "sha256:ddbe425be65eded812031a95e3569ba3bb64ec9efdffb1923af9ea0849bcb70f",
+      "routeDecisionInputHash": "sha256:27f5a8c634935dc8d6b476ef8ae54166b6f676becc8091422b7c70f3c5265d9b"
+    },
+    {
+      "mutationId": "realish-planner-to-coder-local-doc-review__source_digest_mismatch__digest_mismatch",
+      "variant": "digest_mismatch",
+      "sourceFlowId": "realish-planner-to-coder-local-doc-review",
+      "sourceGoldRoute": "shadow_only",
+      "mutation": "source_digest_mismatch",
+      "expectedRoute": "fetch_source",
+      "requiredReasonCodes": [
+        "SOURCE_REFRESH_REQUIRED"
+      ],
+      "classifierDecision": {
+        "selectedRoute": "fetch_source",
+        "humanRequired": false,
+        "compactAllowed": false,
+        "reasonCodes": [
+          "SOURCE_DIGEST_MISMATCH",
+          "SOURCE_REFRESH_REQUIRED"
+        ],
+        "decisiveSignals": [
+          "SOURCE_DIGEST_MISMATCH",
+          "NO_SENSITIVE_PROMOTION"
+        ],
+        "rejectedRoutes": {
+          "shadow_only": [
+            "SOURCE_DIGEST_MISMATCH",
+            "SOURCE_REFRESH_REQUIRED"
+          ],
+          "ask_human": [
+            "SOURCE_DIGEST_MISMATCH"
+          ],
+          "request_full_receipt": [
+            "SOURCE_REFRESH_PREFERRED"
+          ]
+        }
+      },
+      "matchedExpectedRoute": true,
+      "hasRequiredReasons": true,
+      "degradedFromSource": true,
+      "parserEvidenceHash": "sha256:25f23f67b5c036b72a1020d3f545e094af8ebcf4ea236b27da8c02771712d6b6",
+      "routeDecisionInputHash": "sha256:2fc4c99fbba3f98e168679cf4002d43906e7e0c19d5d7b8543338d7fa519d771"
+    },
+    {
+      "mutationId": "realish-memory-candidate-local-report__source_digest_mismatch__stale_window",
+      "variant": "stale_window",
+      "sourceFlowId": "realish-memory-candidate-local-report",
+      "sourceGoldRoute": "shadow_only",
+      "mutation": "source_digest_mismatch",
+      "expectedRoute": "fetch_source",
+      "requiredReasonCodes": [
+        "SOURCE_REFRESH_REQUIRED"
+      ],
+      "classifierDecision": {
+        "selectedRoute": "fetch_source",
+        "humanRequired": false,
+        "compactAllowed": false,
+        "reasonCodes": [
+          "STALE_POLICY_WINDOW",
+          "SOURCE_REFRESH_REQUIRED"
+        ],
+        "decisiveSignals": [
+          "STALE_POLICY_WINDOW",
+          "SOURCE_DIGEST_REVALIDATION_REQUIRED"
+        ],
+        "rejectedRoutes": {
+          "shadow_only": [
+            "STALE_POLICY_WINDOW",
+            "SOURCE_REFRESH_REQUIRED"
+          ],
+          "ask_human": [
+            "STALE_POLICY_WINDOW"
+          ],
+          "request_full_receipt": [
+            "SOURCE_REFRESH_PREFERRED"
+          ]
+        }
+      },
+      "matchedExpectedRoute": true,
+      "hasRequiredReasons": true,
+      "degradedFromSource": true,
+      "parserEvidenceHash": "sha256:894a9dcc022e939ad3e894bb2ed7ceb5bf8e74e6888f839ae228740b240f6fb0",
+      "routeDecisionInputHash": "sha256:af3a6c2f59c9a7b21fe1df2b43e04c1aff5c82cc7634bd2364cd7f6f81d903ff"
+    },
+    {
+      "mutationId": "realish-planner-to-coder-local-doc-review__source_digest_mismatch__source_changed",
+      "variant": "source_changed",
+      "sourceFlowId": "realish-planner-to-coder-local-doc-review",
+      "sourceGoldRoute": "shadow_only",
+      "mutation": "source_digest_mismatch",
+      "expectedRoute": "fetch_source",
+      "requiredReasonCodes": [
+        "SOURCE_REFRESH_REQUIRED"
+      ],
+      "classifierDecision": {
+        "selectedRoute": "fetch_source",
+        "humanRequired": false,
+        "compactAllowed": false,
+        "reasonCodes": [
+          "SOURCE_DIGEST_MISMATCH",
+          "SOURCE_REFRESH_REQUIRED"
+        ],
+        "decisiveSignals": [
+          "SOURCE_DIGEST_MISMATCH",
+          "NO_SENSITIVE_PROMOTION"
+        ],
+        "rejectedRoutes": {
+          "shadow_only": [
+            "SOURCE_DIGEST_MISMATCH",
+            "SOURCE_REFRESH_REQUIRED"
+          ],
+          "ask_human": [
+            "SOURCE_DIGEST_MISMATCH"
+          ],
+          "request_full_receipt": [
+            "SOURCE_REFRESH_PREFERRED"
+          ]
+        }
+      },
+      "matchedExpectedRoute": true,
+      "hasRequiredReasons": true,
+      "degradedFromSource": true,
+      "parserEvidenceHash": "sha256:272eea4c4723005c043ec64b3e2ba8a200553f1f92ff97465af55a0a3a09b4eb",
+      "routeDecisionInputHash": "sha256:31aa4620da5e51f1ee5e281aac7bbf90455c4eefabfdedc3881d27a2f3b0a86c"
+    }
+  ],
+  "mismatches": [],
+  "duplicateMutationIds": [],
+  "nonDegradedRows": [],
+  "falsePermitRows": [],
+  "falseCompactRows": [],
+  "knownUncoveredRisks": [
+    "mutations_are_synthetic_derivatives_of_offline_real_flow_fixtures_not_live_traffic",
+    "classifier_consumes_mutated_normalized_parser_evidence_not_raw_arbitrary_input",
+    "mutation_suite_tests_degradation_routes_not_runtime_blocking_or_authorization"
+  ],
+  "boundary": [
+    "local_shadow_only",
+    "offline_mutation_suite_only",
+    "not_live_observer",
+    "not_runtime_enforcement",
+    "not_tool_authorization",
+    "not_memory_write",
+    "not_config",
+    "not_external_publication"
+  ]
+}
