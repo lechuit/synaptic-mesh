@@ -35,6 +35,9 @@ const releaseGateScripts = [
   'test:manual-bundle-parser-evidence-replay',
   'test:manual-decisiontrace-live-shadow-replay',
   'test:manual-observation-scorecard-thresholds',
+  'test:redaction-review-record-schema',
+  'test:real-redacted-handoff-pack',
+  'test:real-redacted-handoff-replay-gate',
 ];
 
 function runGit(args, options = {}) {
@@ -87,6 +90,15 @@ function countLabel(passed, total) {
   return `${passed}/${total}`;
 }
 
+function previousPatchVersionLabels(version) {
+  const match = version.match(/^(?<major>\d+)\.(?<minor>\d+)\.(?<patch>\d+)$/);
+  if (!match) return [];
+  const patch = Number(match.groups.patch);
+  if (patch <= 0) return [];
+  const previous = `${match.groups.major}.${match.groups.minor}.${patch - 1}`;
+  return [`v${previous}`, previous];
+}
+
 function assertOptionalCountMatches(text, pattern, expectedCount, label, description) {
   const match = text.match(pattern);
   if (!match) return;
@@ -128,10 +140,12 @@ const manifestVersion = manifest.version;
 const manifestReleaseTag = `v${manifestVersion}`;
 const releaseTarget = args.target ?? manifestReleaseTag;
 const publishedRelease = currentPublishedRelease();
-const staleVersions = ['v0.1.2', '0.1.2'].filter((version) => version !== manifestReleaseTag && version !== manifestVersion);
+const staleVersions = [...new Set([...previousPatchVersionLabels(manifestVersion), 'v0.1.2', '0.1.2'])]
+  .filter((version) => version !== manifestReleaseTag && version !== manifestVersion);
 
 assert(/^\d+\.\d+\.\d+$/.test(manifestVersion), `MANIFEST.json version must be semver-like; got ${manifestVersion}`);
 assert(/^v\d+\.\d+\.\d+$/.test(releaseTarget), `release target must be a v-prefixed semver tag such as v0.1.4; got ${releaseTarget}`);
+assert(releaseTarget === manifestReleaseTag, `release target ${releaseTarget} must equal MANIFEST.json version ${manifestReleaseTag}`);
 if (!args.target) {
   console.warn(`release:check defaulting --target to MANIFEST.json version ${manifestReleaseTag}; pass -- --target vX.Y.Z for release/tag verification.`);
 }
@@ -364,6 +378,86 @@ assert(manualObservationScorecardThresholds?.summary?.configWriteImplemented ===
 assert(manualObservationScorecardThresholds?.summary?.externalPublicationImplemented === false, 'manual scorecard thresholds must not implement external publication');
 assert(manualObservationScorecardThresholds?.summary?.authorizationImplemented === false, 'manual scorecard thresholds must not implement authorization');
 assert(manualObservationScorecardThresholds?.summary?.enforcementImplemented === false, 'manual scorecard thresholds must not implement enforcement');
+
+const redactionReviewRecordSchema = readJson(path.join(packageRoot, 'evidence/redaction-review-record-schema.out.json'));
+assert(redactionReviewRecordSchema?.summary?.verdict === 'pass', 'redaction review record schema verdict must be pass');
+assert(redactionReviewRecordSchema?.summary?.reviewRecords >= 2, 'redaction review record schema must cover base records');
+assert(redactionReviewRecordSchema?.summary?.validationErrorCount === 0, 'redaction review record schema must have zero validation errors');
+assert(redactionReviewRecordSchema?.summary?.rawContentPersisted === false, 'redaction review records must not persist raw content');
+assert(redactionReviewRecordSchema?.summary?.privatePathsPersisted === false, 'redaction review records must not persist private paths');
+assert(redactionReviewRecordSchema?.summary?.secretLikeValuesPersisted === false, 'redaction review records must not persist secret-like values');
+assert(redactionReviewRecordSchema?.summary?.toolOutputsPersisted === false, 'redaction review records must not persist tool outputs');
+assert(redactionReviewRecordSchema?.summary?.memoryTextPersisted === false, 'redaction review records must not persist memory text');
+assert(redactionReviewRecordSchema?.summary?.configTextPersisted === false, 'redaction review records must not persist config text');
+assert(redactionReviewRecordSchema?.summary?.approvalTextPersisted === false, 'redaction review records must not persist approval text');
+assert(redactionReviewRecordSchema?.summary?.forbiddenForLiveObservation === true, 'redaction review records must forbid live observation use');
+assert(redactionReviewRecordSchema?.summary?.forbiddenForRuntimeUse === true, 'redaction review records must forbid runtime use');
+
+const realRedactedHandoffPack = readJson(path.join(packageRoot, 'evidence/real-redacted-handoff-pack.out.json'));
+assert(realRedactedHandoffPack?.summary?.verdict === 'pass', 'real-redacted handoff pack verdict must be pass');
+assert(realRedactedHandoffPack?.summary?.realRedactedBundles === 3, 'real-redacted handoff pack must contain exactly 3 bundles');
+assert(realRedactedHandoffPack?.summary?.redactionReviewRecords === 3, 'real-redacted handoff pack must contain exactly 3 redaction review records');
+assert(realRedactedHandoffPack?.summary?.scorecardRows === 3, 'real-redacted handoff pack must contain exactly 3 scorecard rows');
+assert(realRedactedHandoffPack?.summary?.validationErrorCount === 0, 'real-redacted handoff pack must have zero validation errors');
+assert(realRedactedHandoffPack?.summary?.mismatch === 0, 'real-redacted handoff pack must have zero mismatches');
+assert(realRedactedHandoffPack?.summary?.rawContentPersisted === false, 'real-redacted handoff pack must not persist raw content');
+assert(realRedactedHandoffPack?.summary?.privatePathsPersisted === false, 'real-redacted handoff pack must not persist private paths');
+assert(realRedactedHandoffPack?.summary?.secretLikeValuesPersisted === false, 'real-redacted handoff pack must not persist secret-like values');
+assert(realRedactedHandoffPack?.summary?.toolOutputsPersisted === false, 'real-redacted handoff pack must not persist tool outputs');
+assert(realRedactedHandoffPack?.summary?.memoryTextPersisted === false, 'real-redacted handoff pack must not persist memory text');
+assert(realRedactedHandoffPack?.summary?.configTextPersisted === false, 'real-redacted handoff pack must not persist config text');
+assert(realRedactedHandoffPack?.summary?.approvalTextPersisted === false, 'real-redacted handoff pack must not persist approval text');
+assert(realRedactedHandoffPack?.summary?.forbiddenEffects === 0, 'real-redacted handoff pack must include zero forbidden effects');
+assert(realRedactedHandoffPack?.summary?.mayBlock === 0, 'real-redacted handoff pack must not block');
+assert(realRedactedHandoffPack?.summary?.mayAllow === 0, 'real-redacted handoff pack must not allow');
+assert(realRedactedHandoffPack?.summary?.capabilityAttempts === 0, 'real-redacted handoff pack must have zero capability attempts');
+assert(realRedactedHandoffPack?.summary?.liveObserverImplemented === false, 'real-redacted handoff pack must not implement live observer');
+assert(realRedactedHandoffPack?.summary?.toolExecutionImplemented === false, 'real-redacted handoff pack must not implement tool execution');
+assert(realRedactedHandoffPack?.summary?.memoryWriteImplemented === false, 'real-redacted handoff pack must not implement memory writes');
+assert(realRedactedHandoffPack?.summary?.configWriteImplemented === false, 'real-redacted handoff pack must not implement config writes');
+assert(realRedactedHandoffPack?.summary?.externalPublicationImplemented === false, 'real-redacted handoff pack must not implement external publication');
+assert(realRedactedHandoffPack?.summary?.authorizationImplemented === false, 'real-redacted handoff pack must not implement authorization');
+assert(realRedactedHandoffPack?.summary?.enforcementImplemented === false, 'real-redacted handoff pack must not implement enforcement');
+
+const realRedactedHandoffReplayGate = readJson(path.join(packageRoot, 'evidence/real-redacted-handoff-replay-gate.out.json'));
+assert(realRedactedHandoffReplayGate?.summary?.verdict === 'pass', 'real-redacted handoff replay gate verdict must be pass');
+assert(realRedactedHandoffReplayGate?.summary?.mode === 'manual_offline_real_redacted_replay_gate_only', 'real-redacted replay gate must remain manual/offline only');
+assert(realRedactedHandoffReplayGate?.summary?.realRedactedBundles === 3, 'real-redacted replay gate must consume exactly 3 bundles');
+assert(realRedactedHandoffReplayGate?.summary?.redactionReviewRecords === 3, 'real-redacted replay gate must consume exactly 3 redaction review records');
+assert(realRedactedHandoffReplayGate?.summary?.traceCount === 3, 'real-redacted replay gate must produce exactly 3 traces');
+assert(realRedactedHandoffReplayGate?.summary?.observationCount === 3, 'real-redacted replay gate must produce exactly 3 observations');
+assert(realRedactedHandoffReplayGate?.summary?.resultCount === 3, 'real-redacted replay gate must produce exactly 3 results');
+assert(realRedactedHandoffReplayGate?.summary?.parserEvidence === 'pass', 'real-redacted replay gate parserEvidence must pass');
+assert(realRedactedHandoffReplayGate?.summary?.classifierDecision === 'pass', 'real-redacted replay gate classifier decision must pass');
+assert(realRedactedHandoffReplayGate?.summary?.decisionTrace === 'pass', 'real-redacted replay gate DecisionTrace must pass');
+assert(realRedactedHandoffReplayGate?.summary?.liveShadowObservationResult === 'record_only', 'real-redacted replay gate results must be record-only');
+assert(realRedactedHandoffReplayGate?.summary?.validationErrorCount === 0, 'real-redacted replay gate must have zero validation errors');
+assert(realRedactedHandoffReplayGate?.summary?.mismatchCount === 0, 'real-redacted replay gate must have zero mismatches');
+assert(realRedactedHandoffReplayGate?.summary?.falsePermitCount === 0, 'real-redacted replay gate must have zero false permits');
+assert(realRedactedHandoffReplayGate?.summary?.falseCompactCount === 0, 'real-redacted replay gate must have zero false compacts');
+assert(realRedactedHandoffReplayGate?.summary?.boundaryLossCount === 0, 'real-redacted replay gate must have zero boundary loss');
+assert(realRedactedHandoffReplayGate?.summary?.forbiddenEffectsDetectedCount === 0, 'real-redacted replay gate must detect zero forbidden effects');
+assert(realRedactedHandoffReplayGate?.summary?.mayBlockCount === 0, 'real-redacted replay gate must not block');
+assert(realRedactedHandoffReplayGate?.summary?.mayAllowCount === 0, 'real-redacted replay gate must not allow');
+assert(realRedactedHandoffReplayGate?.summary?.capabilityTrueCount === 0, 'real-redacted replay gate must keep all capability booleans false');
+assert(realRedactedHandoffReplayGate?.summary?.rawContentPersisted === false, 'real-redacted replay gate must not persist raw content');
+assert(realRedactedHandoffReplayGate?.summary?.privatePathsPersisted === false, 'real-redacted replay gate must not persist private paths');
+assert(realRedactedHandoffReplayGate?.summary?.secretLikeValuesPersisted === false, 'real-redacted replay gate must not persist secret-like values');
+assert(realRedactedHandoffReplayGate?.summary?.toolOutputsPersisted === false, 'real-redacted replay gate must not persist tool outputs');
+assert(realRedactedHandoffReplayGate?.summary?.memoryTextPersisted === false, 'real-redacted replay gate must not persist memory text');
+assert(realRedactedHandoffReplayGate?.summary?.configTextPersisted === false, 'real-redacted replay gate must not persist config text');
+assert(realRedactedHandoffReplayGate?.summary?.approvalTextPersisted === false, 'real-redacted replay gate must not persist approval text');
+assert(realRedactedHandoffReplayGate?.summary?.liveObserverImplemented === false, 'real-redacted replay gate must not implement live observer');
+assert(realRedactedHandoffReplayGate?.summary?.daemonImplemented === false, 'real-redacted replay gate must not implement daemon');
+assert(realRedactedHandoffReplayGate?.summary?.watcherImplemented === false, 'real-redacted replay gate must not implement watcher');
+assert(realRedactedHandoffReplayGate?.summary?.adapterIntegrationImplemented === false, 'real-redacted replay gate must not integrate adapters');
+assert(realRedactedHandoffReplayGate?.summary?.toolExecutionImplemented === false, 'real-redacted replay gate must not implement tool execution');
+assert(realRedactedHandoffReplayGate?.summary?.memoryWriteImplemented === false, 'real-redacted replay gate must not implement memory writes');
+assert(realRedactedHandoffReplayGate?.summary?.configWriteImplemented === false, 'real-redacted replay gate must not implement config writes');
+assert(realRedactedHandoffReplayGate?.summary?.externalPublicationImplemented === false, 'real-redacted replay gate must not implement external publication');
+assert(realRedactedHandoffReplayGate?.summary?.approvalPathImplemented === false, 'real-redacted replay gate must not implement approval path');
+assert(realRedactedHandoffReplayGate?.summary?.authorizationImplemented === false, 'real-redacted replay gate must not implement authorization');
+assert(realRedactedHandoffReplayGate?.summary?.enforcementImplemented === false, 'real-redacted replay gate must not implement enforcement');
 
 const reviewLocalCount = countLabel(reviewEvidence.summary.passCommands, reviewEvidence.summary.commands);
 const receiverAdapterCount = countLabel(receiverAdapterEvidence.summary.passCases, receiverAdapterEvidence.summary.totalCases);

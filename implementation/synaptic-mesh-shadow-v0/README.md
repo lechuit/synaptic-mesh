@@ -40,7 +40,7 @@ The reference currently covers:
 Current local gates observed in `evidence/review-local.out.json`:
 
 - review-local verdict: `pass`;
-- commands: `30/30` passing;
+- commands: `33/33` passing;
 - fixture parity: `15/15` passing;
 - normalized summary fixtures: `15`;
 - unsafe allow signals: `0`;
@@ -162,6 +162,9 @@ Key files:
 - `manual-bundle-parser-evidence-replay.out.json` — replays accepted manual bundles into parserEvidence shape with routeDecisionInput hash binding; not a classifier or runtime parser;
 - `manual-decisiontrace-live-shadow-replay.out.json` — replays manual parserEvidence rows into offline DecisionTrace and record-only LiveShadowObservation/Result records; not a live observer;
 - `manual-observation-scorecard-thresholds.out.json` — aggregates manual replay counters with zero-tolerance thresholds; not monitoring, authorization, or enforcement;
+- `redaction-review-record-schema.out.json` — validates human redaction review records and negative controls; not a redaction implementation or runtime approval path;
+- `real-redacted-handoff-pack.out.json` — validates 3 manually curated real-redacted handoff fixtures and expected artifacts; raw handoff content is not persisted;
+- `real-redacted-handoff-replay-gate.out.json` — replays the real-redacted pack through parser/classifier/DecisionTrace/LiveShadowObservationResult and scorecard comparisons; offline record-only evidence, not a live observer;
 - `route-classifier-shadow.out.json` — deterministic route classifier shadow evidence over parserEvidence fixtures; not raw parsing, live observation, runtime enforcement, tool authorization, or publication readiness;
 - `receiver-policy-adapter-contracts.out.json` — framework-shaped receiver adapter contract cases;
 - `cli-validator.out.json` — CLI behavior cases;
