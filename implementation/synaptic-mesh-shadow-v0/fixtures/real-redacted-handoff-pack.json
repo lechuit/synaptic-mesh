@@ -189,7 +189,7 @@
           "parserEvidenceRefHash": "sha256:866219950b324d3539abe39154717c971128440cfa33d7f331873ca6b433b8c6",
           "routeDecisionInputHash": "sha256:f06bf1c1e832c08bef1119d7742551513f82be489b3a40c85c2be51584659969",
           "goldDecisionHash": "sha256:4dedea4cf75225c3065785c7c72a4c1a25bd44382a500eee406fe60d917e9f06",
-          "classifierDecisionHash": "sha256:750366308231537d41c377d819b235b482b5f946cfb07231eac1a5f8bb0319bc",
+          "classifierDecisionHash": "sha256:332b3e4624da50eae618c31e34aaa53264d129a7105176a804d977c67ede0944",
           "matchedGold": true,
           "selectedRoute": "abstain",
           "reasonCodes": [
@@ -203,7 +203,7 @@
               "AUTHORITY_AMBIGUOUS"
             ],
             "ask_human": [
-              "NO_SENSITIVE_PROMOTION"
+              "AUTHORITY_AMBIGUOUS"
             ],
             "request_full_receipt": [
               "AUTHORITY_AMBIGUOUS"
@@ -451,7 +451,7 @@
           "parserEvidenceRefHash": "sha256:c73791fbc814a2e914ac0edb179f79cf37d20e371bf80433778fbd5bec701ba4",
           "routeDecisionInputHash": "sha256:f06bf1c1e832c08bef1119d7742551513f82be489b3a40c85c2be51584659969",
           "goldDecisionHash": "sha256:4dedea4cf75225c3065785c7c72a4c1a25bd44382a500eee406fe60d917e9f06",
-          "classifierDecisionHash": "sha256:750366308231537d41c377d819b235b482b5f946cfb07231eac1a5f8bb0319bc",
+          "classifierDecisionHash": "sha256:332b3e4624da50eae618c31e34aaa53264d129a7105176a804d977c67ede0944",
           "matchedGold": true,
           "selectedRoute": "abstain",
           "reasonCodes": [
@@ -465,7 +465,7 @@
               "AUTHORITY_AMBIGUOUS"
             ],
             "ask_human": [
-              "NO_SENSITIVE_PROMOTION"
+              "AUTHORITY_AMBIGUOUS"
             ],
             "request_full_receipt": [
               "AUTHORITY_AMBIGUOUS"

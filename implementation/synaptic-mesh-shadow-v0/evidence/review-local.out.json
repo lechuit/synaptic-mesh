@@ -3,8 +3,8 @@
     "artifact": "T-synaptic-mesh-review-local-runner-v0",
     "timestamp": "2026-05-07T15:05:00.000Z",
     "verdict": "pass",
-    "commands": 32,
-    "passCommands": 32,
+    "commands": 33,
+    "passCommands": 33,
     "failedCommands": [],
     "fixtureCount": 15,
     "fixtureParityVerdict": "pass",
@@ -95,6 +95,17 @@
     "realRedactedHandoffPackMayAllow": 0,
     "realRedactedHandoffPackCapabilityAttempts": 0,
     "realRedactedHandoffPackMismatch": 0,
+    "realRedactedHandoffReplayGateVerdict": "pass",
+    "realRedactedHandoffReplayGateBundleCount": 3,
+    "realRedactedHandoffReplayGateReviewRecordCount": 3,
+    "realRedactedHandoffReplayGateTraceCount": 3,
+    "realRedactedHandoffReplayGateObservationCount": 3,
+    "realRedactedHandoffReplayGateResultCount": 3,
+    "realRedactedHandoffReplayGateMismatchCount": 0,
+    "realRedactedHandoffReplayGateForbiddenEffectsDetectedCount": 0,
+    "realRedactedHandoffReplayGateMayBlockCount": 0,
+    "realRedactedHandoffReplayGateMayAllowCount": 0,
+    "realRedactedHandoffReplayGateCapabilityTrueCount": 0,
     "unsafeAllowSignals": [],
     "sourceFixtureMutation": false
   },
@@ -305,6 +316,13 @@
     {
       "id": "real-redacted-handoff-pack-tests",
       "command": "node implementation/synaptic-mesh-shadow-v0/tests/real-redacted-handoff-pack.mjs",
+      "status": 0,
+      "pass": true,
+      "stderr": ""
+    },
+    {
+      "id": "real-redacted-handoff-replay-gate-tests",
+      "command": "node implementation/synaptic-mesh-shadow-v0/tests/real-redacted-handoff-replay-gate.mjs",
       "status": 0,
       "pass": true,
       "stderr": ""
