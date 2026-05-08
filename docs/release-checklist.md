@@ -16,7 +16,7 @@ Run release gates from the package directory:
 
 ```bash
 cd implementation/synaptic-mesh-shadow-v0
-npm run release:check -- --target v0.1.12
+npm run release:check -- --target v0.1.13
 ```
 
 `release:check` verifies the manifest/docs package version, reports the explicit `releaseTarget`, reports the local Git `currentPublishedRelease` when available, and runs the release-critical local gates. If `--target` is omitted, it defaults to the manifest version and prints a warning so release PRs do not silently inherit a stale target.
@@ -59,6 +59,9 @@ It runs:
 - `npm run test:real-redacted-handoff-replay-gate`
 - `npm run test:real-redacted-adversarial-coverage`
 - `npm run test:manual-dry-run-contracts`
+- `npm run test:manual-dry-run-cli`
+- `npm run test:manual-dry-run-cli-negative-controls`
+- `npm run test:manual-dry-run-cli-real-redacted-handoffs`
 
 For auditability, keep the individual gate names visible in PR notes even when `release:check` is the command reviewers run.
 
@@ -77,7 +80,7 @@ For auditability, keep the individual gate names visible in PR notes even when `
 - Confirm source fixtures are not mutated by the review run (`sourceFixtureMutation: false` in local review evidence).
 - Confirm release-check output remains local-only and does not call network services or runtime tools.
 - Confirm real-redacted handoff evidence remains manually curated/redacted metadata only, with no raw handoff content, private paths, secrets, tool output, memory/config text, approval text, live observer, runtime integration, approval path, blocking/allowing, authorization, or enforcement.
-- Confirm manual dry-run command contracts remain pre-implementation schema evidence only: manual/offline, redacted-bundle input only, record-only local evidence output, no CLI binary, no live observer, no watcher/daemon, no network, no adapter/runtime integration, no tools, no memory/config writes, no publication, no approval path, no blocking/allowing, no authorization, and no enforcement.
+- Confirm manual dry-run command contracts and CLI remain manual/offline, explicit local file input only, already-redacted bundle input only, record-only local evidence output, no live observer, no watcher/daemon, no network, no adapter/runtime integration, no tools, no memory/config writes, no publication, no approval path, no blocking/allowing, no authorization, and no enforcement. Confirm CLI negative controls reject forbidden flags/claims and output path escapes without writing evidence or creating outside-evidence directories.
 
 ## CI expectations
 

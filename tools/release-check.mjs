@@ -40,6 +40,9 @@ const releaseGateScripts = [
   'test:real-redacted-handoff-replay-gate',
   'test:real-redacted-adversarial-coverage',
   'test:manual-dry-run-contracts',
+  'test:manual-dry-run-cli',
+  'test:manual-dry-run-cli-negative-controls',
+  'test:manual-dry-run-cli-real-redacted-handoffs',
 ];
 
 function runGit(args, options = {}) {
@@ -494,6 +497,67 @@ assert(realRedactedAdversarialCoverage?.summary?.externalPublicationImplemented 
 assert(realRedactedAdversarialCoverage?.summary?.approvalPathImplemented === false, 'real-redacted adversarial coverage must not implement approval path');
 assert(realRedactedAdversarialCoverage?.summary?.authorizationImplemented === false, 'real-redacted adversarial coverage must not implement authorization');
 assert(realRedactedAdversarialCoverage?.summary?.enforcementImplemented === false, 'real-redacted adversarial coverage must not implement enforcement');
+
+const manualDryRunCli = readJson(path.join(packageRoot, 'evidence/manual-dry-run-cli.out.json'));
+assert(manualDryRunCli?.summary?.verdict === 'pass', 'manual dry-run CLI evidence verdict must be pass');
+assert(manualDryRunCli?.summary?.recordOnly === true, 'manual dry-run CLI must remain record-only');
+assert(manualDryRunCli?.summary?.validationErrorCount === 0, 'manual dry-run CLI must validate generated artifacts');
+assert(manualDryRunCli?.summary?.forbiddenEffectsDetected === 0, 'manual dry-run CLI must detect zero forbidden effects');
+assert(manualDryRunCli?.summary?.capabilityTrueCount === 0, 'manual dry-run CLI must keep capabilities false');
+assert(manualDryRunCli?.summary?.rawUnredactedInputRead === false, 'manual dry-run CLI must not read raw unredacted input');
+assert(manualDryRunCli?.summary?.liveInputRead === false, 'manual dry-run CLI must not read live input');
+assert(manualDryRunCli?.summary?.networkUsed === false, 'manual dry-run CLI must not use network');
+assert(manualDryRunCli?.summary?.toolExecuted === false, 'manual dry-run CLI must not execute tools');
+assert(manualDryRunCli?.summary?.memoryWritten === false, 'manual dry-run CLI must not write memory');
+assert(manualDryRunCli?.summary?.configWritten === false, 'manual dry-run CLI must not write config');
+assert(manualDryRunCli?.summary?.publishedExternally === false, 'manual dry-run CLI must not publish externally');
+assert(manualDryRunCli?.summary?.approvalEntered === false, 'manual dry-run CLI must not enter approval path');
+assert(manualDryRunCli?.summary?.blocked === false, 'manual dry-run CLI must not block');
+assert(manualDryRunCli?.summary?.allowed === false, 'manual dry-run CLI must not allow');
+assert(manualDryRunCli?.summary?.enforced === false, 'manual dry-run CLI must not enforce');
+
+const manualDryRunNegativeControls = readJson(path.join(packageRoot, 'evidence/manual-dry-run-cli-negative-controls.out.json'));
+assert(manualDryRunNegativeControls?.summary?.verdict === 'pass', 'manual dry-run CLI negative controls verdict must be pass');
+assert(manualDryRunNegativeControls?.summary?.forbiddenCliFlagCases === manualDryRunNegativeControls?.summary?.forbiddenCliFlagRejections, 'manual dry-run CLI must reject all forbidden flags');
+assert(manualDryRunNegativeControls?.summary?.forbiddenInputCases === manualDryRunNegativeControls?.summary?.forbiddenInputRejections, 'manual dry-run CLI must reject all forbidden input claims');
+assert(manualDryRunNegativeControls?.summary?.symlinkOutputRejected === true, 'manual dry-run CLI must reject symlink outputs');
+assert(manualDryRunNegativeControls?.summary?.symlinkEscapeTargetWritten === false, 'manual dry-run CLI must not write through output symlinks');
+assert(manualDryRunNegativeControls?.summary?.outsideEvidenceDirRejected === true, 'manual dry-run CLI must reject outside evidence outputs');
+assert(manualDryRunNegativeControls?.summary?.outsideEvidenceDirCreated === false, 'manual dry-run CLI must not create outside evidence dirs');
+assert(manualDryRunNegativeControls?.summary?.symlinkParentRejected === true, 'manual dry-run CLI must reject symlinked output parents');
+assert(manualDryRunNegativeControls?.summary?.symlinkParentNestedCreated === false, 'manual dry-run CLI must not create nested dirs through symlinked parents');
+assert(manualDryRunNegativeControls?.summary?.recordOnly === true, 'manual dry-run CLI negative controls must remain record-only');
+assert(manualDryRunNegativeControls?.summary?.networkUsed === false, 'manual dry-run CLI negative controls must not use network');
+assert(manualDryRunNegativeControls?.summary?.toolExecuted === false, 'manual dry-run CLI negative controls must not execute tools');
+assert(manualDryRunNegativeControls?.summary?.memoryWritten === false, 'manual dry-run CLI negative controls must not write memory');
+assert(manualDryRunNegativeControls?.summary?.configWritten === false, 'manual dry-run CLI negative controls must not write config');
+assert(manualDryRunNegativeControls?.summary?.publishedExternally === false, 'manual dry-run CLI negative controls must not publish externally');
+assert(manualDryRunNegativeControls?.summary?.approvalEntered === false, 'manual dry-run CLI negative controls must not enter approval path');
+assert(manualDryRunNegativeControls?.summary?.blocked === false, 'manual dry-run CLI negative controls must not block');
+assert(manualDryRunNegativeControls?.summary?.allowed === false, 'manual dry-run CLI negative controls must not allow');
+assert(manualDryRunNegativeControls?.summary?.enforced === false, 'manual dry-run CLI negative controls must not enforce');
+
+const manualDryRunRealRedacted = readJson(path.join(packageRoot, 'evidence/manual-dry-run-cli-real-redacted-handoffs.out.json'));
+assert(manualDryRunRealRedacted?.summary?.verdict === 'pass', 'manual dry-run CLI real-redacted evidence verdict must be pass');
+assert(manualDryRunRealRedacted?.summary?.realRedactedHandoffCount === 3, 'manual dry-run CLI real-redacted gate must cover exactly 3 handoffs');
+assert(manualDryRunRealRedacted?.summary?.recordOnlyCount === 3, 'manual dry-run CLI real-redacted outputs must all be record-only');
+assert(manualDryRunRealRedacted?.summary?.validationErrorCount === 0, 'manual dry-run CLI real-redacted outputs must validate');
+assert(manualDryRunRealRedacted?.summary?.forbiddenEffectsDetectedCount === 0, 'manual dry-run CLI real-redacted outputs must detect zero forbidden effects');
+assert(manualDryRunRealRedacted?.summary?.capabilityTrueCount === 0, 'manual dry-run CLI real-redacted outputs must keep capabilities false');
+assert(manualDryRunRealRedacted?.summary?.falsePermitCount === 0, 'manual dry-run CLI real-redacted outputs must have zero false permits');
+assert(manualDryRunRealRedacted?.summary?.falseCompactCount === 0, 'manual dry-run CLI real-redacted outputs must have zero false compacts');
+assert(manualDryRunRealRedacted?.summary?.boundaryLossCount === 0, 'manual dry-run CLI real-redacted outputs must have zero boundary loss');
+assert(manualDryRunRealRedacted?.summary?.rawUnredactedInputReadCount === 0, 'manual dry-run CLI real-redacted gate must not read raw unredacted input');
+assert(manualDryRunRealRedacted?.summary?.liveInputReadCount === 0, 'manual dry-run CLI real-redacted gate must not read live input');
+assert(manualDryRunRealRedacted?.summary?.networkUsedCount === 0, 'manual dry-run CLI real-redacted gate must not use network');
+assert(manualDryRunRealRedacted?.summary?.toolExecutedCount === 0, 'manual dry-run CLI real-redacted gate must not execute tools');
+assert(manualDryRunRealRedacted?.summary?.memoryWrittenCount === 0, 'manual dry-run CLI real-redacted gate must not write memory');
+assert(manualDryRunRealRedacted?.summary?.configWrittenCount === 0, 'manual dry-run CLI real-redacted gate must not write config');
+assert(manualDryRunRealRedacted?.summary?.publishedExternallyCount === 0, 'manual dry-run CLI real-redacted gate must not publish externally');
+assert(manualDryRunRealRedacted?.summary?.approvalEnteredCount === 0, 'manual dry-run CLI real-redacted gate must not enter approval path');
+assert(manualDryRunRealRedacted?.summary?.blockedCount === 0, 'manual dry-run CLI real-redacted gate must not block');
+assert(manualDryRunRealRedacted?.summary?.allowedCount === 0, 'manual dry-run CLI real-redacted gate must not allow');
+assert(manualDryRunRealRedacted?.summary?.enforcedCount === 0, 'manual dry-run CLI real-redacted gate must not enforce');
 
 const reviewLocalCount = countLabel(reviewEvidence.summary.passCommands, reviewEvidence.summary.commands);
 const receiverAdapterCount = countLabel(receiverAdapterEvidence.summary.passCases, receiverAdapterEvidence.summary.totalCases);
