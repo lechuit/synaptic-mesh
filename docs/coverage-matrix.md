@@ -1,6 +1,6 @@
 # Coverage matrix
 
-This matrix summarizes what the current Synaptic Mesh local-shadow package covers before a v0.1.6 release decision. It is intentionally conservative: **covered** means a tracked deterministic gate exists; **partial** means useful evidence exists but important semantics are still outside the gate; **pending** means planned or desired but not implemented; **out of scope** means not a goal for this release line.
+This matrix summarizes what the current Synaptic Mesh local-shadow package covers before a v0.1.7 release decision. It is intentionally conservative: **covered** means a tracked deterministic gate exists; **partial** means useful evidence exists but important semantics are still outside the gate; **pending** means planned or desired but not implemented; **out of scope** means not a goal for this release line.
 
 ## Status legend
 
