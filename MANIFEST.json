@@ -1,13 +1,13 @@
 {
   "bundle": "synaptic-mesh",
-  "version": "0.1.8",
-  "generated": "2026-05-08T02:49:00Z",
-  "status": "unreleased_v0.1.9_track_manual_observation_scorecard_thresholds_offline_not_runtime_ready",
+  "version": "0.1.9",
+  "generated": "2026-05-08T03:02:00Z",
+  "status": "v0.1.9_manual_offline_ingestion_pre_live_shadow_readiness_public_review_package_not_runtime_ready",
   "repository": "https://github.com/lechuit/synaptic-mesh",
   "license": "Apache-2.0 for code; CC BY 4.0 for docs/prose unless otherwise noted",
-  "reproducibility": "expected_pass_local_shadow_gates_against_v0.1.8_baseline_plus_unreleased_v0.1.9_track_manual_observation_scorecard_thresholds_no_runtime",
+  "reproducibility": "expected_pass_local_shadow_gates_for_v0.1.9_manual_offline_ingestion_pre_live_shadow_readiness_no_runtime",
   "rawSourceCache": "excluded",
-  "runtimeBoundary": "unreleased_v0.1.9_track_manual_observation_scorecard_thresholds_only_no_live_observer_no_runtime_integration_no_tool_execution_no_memory_config_publication_approval_authorization_or_enforcement",
+  "runtimeBoundary": "v0.1.9_manual_offline_ingestion_pre_live_shadow_readiness_only_no_live_observer_no_runtime_integration_no_tool_execution_no_memory_config_publication_approval_authorization_or_enforcement",
   "files": [
     {
       "path": ".github/workflows/ci.yml",
@@ -76,8 +76,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 5554,
-      "sha256": "3123372f13b8919209104e29e6ae1c130dd694235d4766c59e0796e2cd2ea31f"
+      "bytes": 6301,
+      "sha256": "b341373151e45b9caae877caa2d0afe7fb4abe2a619ec4e8164345ce8c351aaa"
     },
     {
       "path": "RELEASE_CANDIDATE.md",
@@ -86,8 +86,8 @@
     },
     {
       "path": "RELEASE_NOTES.md",
-      "bytes": 5539,
-      "sha256": "9ca06083532ce1f73eb3c6fdc0d1abe8645793bd32350696fa8e95294ada30a1"
+      "bytes": 6721,
+      "sha256": "f7eec20859c3dc78bf1b464418e4e38dcaf5ad8733cdedfed37ef33dc075af33"
     },
     {
       "path": "design-notes/adapter-boundary-langgraph-mcp-v0.md",
@@ -176,28 +176,28 @@
     },
     {
       "path": "docs/manual-bundle-parser-evidence-replay.md",
-      "bytes": 1953,
-      "sha256": "eb203e8b44798a0e0bc6711c450fda92d5bbd8e5909c2b84c46625ab376df070"
+      "bytes": 1773,
+      "sha256": "71389067ce673be088eff93690a30968994c693cc643422e1997e97c0ff468e8"
     },
     {
       "path": "docs/manual-decisiontrace-live-shadow-replay.md",
-      "bytes": 2150,
-      "sha256": "f3a4f8c7553b0360b4327a36216255f09b735372d5a4951ccf6cf8f23d6b9300"
+      "bytes": 1970,
+      "sha256": "0ef1acc69e089605c7e473588165b5c440844e3d4b8635d9554d388bf06a9787"
     },
     {
       "path": "docs/manual-observation-bundles.md",
-      "bytes": 2748,
-      "sha256": "efd1a7b096c767fe0c8f1ea4065c9d2dc9bd0025465c0190a43485fae2c025a3"
+      "bytes": 2568,
+      "sha256": "0ddb7e67c648e8b2d845d5e454155e5c5b64bf6e0576e786b94cb087a65ee276"
     },
     {
       "path": "docs/manual-observation-redaction-fixtures.md",
-      "bytes": 2352,
-      "sha256": "e125da108165da834c005c4b1e971cd496b7900648ad8d829471fe201ad353e7"
+      "bytes": 2172,
+      "sha256": "655644e5fa439bc6c9809b73132862eb16f56917af3dd2491ec3bfe0dcf7bc56"
     },
     {
       "path": "docs/manual-observation-scorecard-thresholds.md",
-      "bytes": 1636,
-      "sha256": "cb3edf912fbbd7030ba1a53e08c3575dc93a9a9dac9daca703bb57fbea61f130"
+      "bytes": 1465,
+      "sha256": "3b71791cb8454170b3265db881fd2d9f9dfa845149a8128da43be4c373db8542"
     },
     {
       "path": "docs/parser-normalization-evidence.md",
@@ -222,7 +222,7 @@
     {
       "path": "docs/release-checklist.md",
       "bytes": 5705,
-      "sha256": "704fb33ec3f632f224783f128b6019860f082015a21912d96cebf68b6577a83b"
+      "sha256": "de4fbaadd2ac4fa5f1801acf9102a7d4be870e98e093fc9600482e36c073797e"
     },
     {
       "path": "docs/repo-structure.md",
@@ -271,8 +271,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/README.md",
-      "bytes": 8726,
-      "sha256": "c58ae2c6bb82bea548420a97e3879b02704525942ff002e1636b6b142df62bd9"
+      "bytes": 9623,
+      "sha256": "13d4b400f5058719b2702a343fad582999d479ed405beeab035b91871e3a3a89"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/bin/validate-receipt.mjs",

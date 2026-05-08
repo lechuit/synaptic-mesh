@@ -33,7 +33,7 @@ The reference currently covers:
 - synthetic handoff examples;
 - fixture parity over the canonical local fixture set;
 - normalized fixture summary output;
-- RouteDecision schema, threat-model mapping, wrong-route oracle fixture evidence, generated adversarial fixture variants, raw/parser adversarial fixture pressure, parser normalization evidence across all canonical routes, offline real-flow replay evidence, and deterministic route classifier shadow evidence;
+- RouteDecision schema, threat-model mapping, wrong-route oracle fixture evidence, generated adversarial fixture variants, raw/parser adversarial fixture pressure, parser normalization evidence across all canonical routes, offline real-flow replay evidence, deterministic route classifier shadow evidence, live-shadow shape/replay gates, and manual offline observation ingestion readiness gates;
 - deterministic local benchmark/overhead evidence comparing representation strategies (fixture proxy only, no live LLM/API calls);
 - one-command local review evidence.
 
@@ -142,7 +142,6 @@ implementation/synaptic-mesh-shadow-v0/evidence/
 Key files:
 
 - `review-local.out.json` — one-command local review summary;
-- `receipt-parser-validator.out.json` — parser/validator cases;
 - `receipt-transform-regression.out.json` — transform regression cases;
 - `authority-laundering-regression.out.json` — adversarial laundering regression cases;
 - `route-decision-schema.out.json` — RouteDecision schema shape-validation evidence;
@@ -158,6 +157,11 @@ Key files:
 - `decision-trace-schema.out.json` — validates 24 offline `DecisionTrace` records with parser/input/gold/classifier hash bindings; not a live observer, runtime gate, or authorization layer;
 - `real-flow-mutation-suite.out.json` — validates synthetic degradation mutations derived from clean real-flow cases; not live traffic or runtime enforcement;
 - `category-coverage-thresholds.out.json` — enforces offline route/category/mutation coverage thresholds and records next target of 30 real-flow cases; not a runtime readiness claim;
+- `manual-observation-bundle-schema.out.json` — validates manual/offline/redacted observation bundle shape; not live capture, runtime authorization, or monitoring;
+- `manual-observation-redaction-fixtures.out.json` — validates positive redacted fixtures and synthetic negative leakage labels; not redaction implementation;
+- `manual-bundle-parser-evidence-replay.out.json` — replays accepted manual bundles into parserEvidence shape with routeDecisionInput hash binding; not a classifier or runtime parser;
+- `manual-decisiontrace-live-shadow-replay.out.json` — replays manual parserEvidence rows into offline DecisionTrace and record-only LiveShadowObservation/Result records; not a live observer;
+- `manual-observation-scorecard-thresholds.out.json` — aggregates manual replay counters with zero-tolerance thresholds; not monitoring, authorization, or enforcement;
 - `route-classifier-shadow.out.json` — deterministic route classifier shadow evidence over parserEvidence fixtures; not raw parsing, live observation, runtime enforcement, tool authorization, or publication readiness;
 - `receiver-policy-adapter-contracts.out.json` — framework-shaped receiver adapter contract cases;
 - `cli-validator.out.json` — CLI behavior cases;

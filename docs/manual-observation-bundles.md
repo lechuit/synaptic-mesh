@@ -1,6 +1,6 @@
 # Manual observation bundles v0
 
-Status: unreleased v0.1.9-track offline schema gate. Not a live observer, not runtime integration, not monitoring, not enforcement, and not production/canary-ready.
+Status: v0.1.9 offline schema gate. Not a live observer, not runtime integration, not monitoring, not enforcement, and not production/canary-ready.
 
 A manual observation bundle is a hand-created, manually redacted bridge between synthetic fixtures and future real-world observation. It exists so real handoff-like artifacts can be represented safely before any live observer, daemon, watcher, adapter, MCP endpoint, tool integration, memory write, config write, publication, approval path, blocking, allowing, or enforcement exists.
 
@@ -50,12 +50,12 @@ The next safety question is not “can we observe live flows?” It is narrower:
 
 > Can we manually ingest redacted real-ish handoff artifacts without retaining raw/private content or creating authority?
 
-This schema is the first step. Later v0.1.9-track PRs may add redaction fixture packs and offline replay from manual bundles into parser evidence, DecisionTrace, LiveShadowObservationResult, and scorecards. Those follow-ups must remain manual/offline/local-shadow only.
+This schema is the first step. Later v0.1.9 offline gates add redaction fixture packs and offline replay from manual bundles into parser evidence, DecisionTrace, LiveShadowObservationResult, and scorecards. Those follow-ups must remain manual/offline/local-shadow only.
 
 ## Release boundary
 
-This is unreleased `v0.1.9-track` work. Repository release metadata remains at the latest published release until a dedicated v0.1.9 release PR is cut. During this track, `release:check -- --target v0.1.8` is a latest-published-release baseline/compatibility gate, not a claim that this work was released under v0.1.8.
+This is included in the `v0.1.9` public review package. `release:check -- --target v0.1.9` verifies this gate as local/offline evidence only, not runtime readiness.
 
 ## Redaction fixture follow-up
 
-The next unreleased v0.1.9-track gate is [Manual observation redaction fixture pack v0](manual-observation-redaction-fixtures.md). It adds positive redacted cases and synthetic negative leakage labels only; it does not implement redaction code, capture live traffic, read logs/sessions, execute tools, write memory/config, publish, approve, block, allow, or enforce.
+The next v0.1.9 offline gate is [Manual observation redaction fixture pack v0](manual-observation-redaction-fixtures.md). It adds positive redacted cases and synthetic negative leakage labels only; it does not implement redaction code, capture live traffic, read logs/sessions, execute tools, write memory/config, publish, approve, block, allow, or enforce.
