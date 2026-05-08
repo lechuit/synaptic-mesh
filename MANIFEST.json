@@ -76,8 +76,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 8700,
-      "sha256": "1c09d228f05db33eb6d3093aae5094f0c8bad52215748402f1f3c8ec473f0bde"
+      "bytes": 9066,
+      "sha256": "cb7ae3790b4a56a02fe1c803b20419feb84fccad07d7b33b59e41699e2ba0d8a"
     },
     {
       "path": "RELEASE_CANDIDATE.md",
@@ -86,8 +86,8 @@
     },
     {
       "path": "RELEASE_NOTES.md",
-      "bytes": 6070,
-      "sha256": "8dc3b8e46d54afcb2a04c4d658689a6f45810ec9e30bb1edb64c9fb6ad4ea8fe"
+      "bytes": 6919,
+      "sha256": "009bf932c3b4d0fa02ff8394ad88811d9e4d3d8ccfc67c99d46a197f6a3f224e"
     },
     {
       "path": "design-notes/adapter-boundary-langgraph-mcp-v0.md",
@@ -195,6 +195,11 @@
       "sha256": "be466b50231f50a957aa6b67f9672a056060b7070745b85f2f1e7611b0e5b9c6"
     },
     {
+      "path": "docs/manual-dry-run-pilot-cases.md",
+      "bytes": 3056,
+      "sha256": "67ae9b4f4dfb7177840fb41e978a58b5195b06086c89be3cd78359601dccdbd8"
+    },
+    {
       "path": "docs/manual-dry-run-pilot-checklist.md",
       "bytes": 1763,
       "sha256": "b874e68462e0351f4aff8149e5fd62d6b45c26fbafb0c89aa506cba8351434be"
@@ -271,13 +276,13 @@
     },
     {
       "path": "docs/release-checklist.md",
-      "bytes": 7959,
-      "sha256": "955c6a27d12ba4d1312d44805285013de42884566244d234b6fffd994dd27b06"
+      "bytes": 8390,
+      "sha256": "46e4e68359ef2dd448d8d4630453b5223aa973a7b70407840a7c3690b676c758"
     },
     {
       "path": "docs/repo-structure.md",
-      "bytes": 4897,
-      "sha256": "40020bd274e1db3f60e8f05923381161d48e5d0643e24d8e999caaae4565f1a7"
+      "bytes": 5047,
+      "sha256": "594a5b1df774860b59c92502eaebe6def871228eeacc9e4ffb09ef5e1b49805f"
     },
     {
       "path": "docs/threat-model-v0.md",
@@ -435,6 +440,11 @@
       "sha256": "9459707e64cac3001be5be0a2c923c4c1efdd10b40c2b126af4e422bc9a13128"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/manual-dry-run-cli-real-redacted-pilot-expanded.out.json",
+      "bytes": 14323,
+      "sha256": "2bb9ec028729ff59d02844245106a3755f98cf3ac27664655a761df1c02ad211"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/manual-dry-run-cli-real-redacted-pilot.out.json",
       "bytes": 7693,
       "sha256": "a36bf13dbae7a70185bed7dc48c10e681c1db76189d5486daf86ef98ce69a346"
@@ -493,6 +503,66 @@
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/manual-dry-run-cli.real-redacted-pilot-006.out.json",
       "bytes": 7716,
       "sha256": "5cbda8ceb56d4ca087a9482d69785cf05d753b085c50a8ee49316856845d245f"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/manual-dry-run-cli.real-redacted-pilot-expanded-001.out.json",
+      "bytes": 7741,
+      "sha256": "6ae293b16f2d756f0d1081f0d4071617a2a944f8d521b03a5b6ce2d71f90a453"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/manual-dry-run-cli.real-redacted-pilot-expanded-002.out.json",
+      "bytes": 7773,
+      "sha256": "2f4025f9326aff0ebb54212c78b65a324e3e265f2d59d3043e056d2cc79ccfcf"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/manual-dry-run-cli.real-redacted-pilot-expanded-003.out.json",
+      "bytes": 7901,
+      "sha256": "bc77d18aeb7e75602cf627c322e8c5d8ffdbd2677a3eebac169425b4cb3beb63"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/manual-dry-run-cli.real-redacted-pilot-expanded-004.out.json",
+      "bytes": 7613,
+      "sha256": "6c6e7c7cbee43fcf899722bd2636c9154639f77f199ceeb13bedfbe0aeab38a8"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/manual-dry-run-cli.real-redacted-pilot-expanded-005.out.json",
+      "bytes": 7741,
+      "sha256": "9ee450d55187d50a2c028680c079217d84d1a770ecf554614b165b8b1e342bd2"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/manual-dry-run-cli.real-redacted-pilot-expanded-006.out.json",
+      "bytes": 7741,
+      "sha256": "62af1772f1283e5ebbd92be7e9b4e290498e8eb365f8464cd70de0cdf6d26654"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/manual-dry-run-cli.real-redacted-pilot-expanded-007.out.json",
+      "bytes": 7677,
+      "sha256": "a102286c676fe3b01811bb658e7f2d4ea5c2a59efd5a9034ec7352f98ac5144a"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/manual-dry-run-cli.real-redacted-pilot-expanded-008.out.json",
+      "bytes": 7677,
+      "sha256": "63464fc51720af4718f89e2858fc57cc2cf74aaba627af39fea32f38ff64ecd3"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/manual-dry-run-cli.real-redacted-pilot-expanded-009.out.json",
+      "bytes": 7693,
+      "sha256": "33c8afe94f9b14593dce31ba25c63af54558d29745bf12ac172737dd66185ec6"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/manual-dry-run-cli.real-redacted-pilot-expanded-010.out.json",
+      "bytes": 7613,
+      "sha256": "1a6648b01b2146d4d048e57a89884d3222c5041488248ef1ac08e762f4a0aece"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/manual-dry-run-cli.real-redacted-pilot-expanded-011.out.json",
+      "bytes": 7645,
+      "sha256": "73e7d317a0ec530f6fb3cd7c73882f769c19380e51d1229478b8f1c71dc575a2"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/manual-dry-run-cli.real-redacted-pilot-expanded-012.out.json",
+      "bytes": 7725,
+      "sha256": "7a48f7f20c09e3feeefb76d191a476ae144be7433fb8feefc666027b8587a829"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/manual-dry-run-contracts.out.json",
@@ -735,6 +805,71 @@
       "sha256": "72495415fb0d40b83cf20ededf32821d3edb119d826eb8c9661051661c179fa8"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/fixtures/manual-dry-run-inputs/real-redacted-pilot-expanded-001.json",
+      "bytes": 3051,
+      "sha256": "35fdec83399ea0958ef401265b9833371749c6e70b433ed87439bdfd5c85796a"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/fixtures/manual-dry-run-inputs/real-redacted-pilot-expanded-002.json",
+      "bytes": 3061,
+      "sha256": "11e80ab4d090592c8c06390fa4dd72605ed77f0f1a50ad854f343ddcfb27f85f"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/fixtures/manual-dry-run-inputs/real-redacted-pilot-expanded-003.json",
+      "bytes": 3101,
+      "sha256": "04e17b93ab11dbe35c59d37b20749a8249cd9b08a68b45cbd8b1a6f305472709"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/fixtures/manual-dry-run-inputs/real-redacted-pilot-expanded-004.json",
+      "bytes": 3011,
+      "sha256": "e70f20b173c9fa49306477429f23c64393af541e95acb46753890b8fae29eb44"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/fixtures/manual-dry-run-inputs/real-redacted-pilot-expanded-005.json",
+      "bytes": 3051,
+      "sha256": "9107cae4e26e7876e2ac2ee310b7d6d522e20cc283ac6742c2c9d016e2a45447"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/fixtures/manual-dry-run-inputs/real-redacted-pilot-expanded-006.json",
+      "bytes": 3051,
+      "sha256": "5b24690e6f5d810a14b82471f2a6aa305becf21b6ef666a89257a77c854d9434"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/fixtures/manual-dry-run-inputs/real-redacted-pilot-expanded-007.json",
+      "bytes": 3031,
+      "sha256": "0e9b2775c2d3dbc64c6be2abd3d2e8665bb77c3df522b091a9b4cba9d52d7250"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/fixtures/manual-dry-run-inputs/real-redacted-pilot-expanded-008.json",
+      "bytes": 3031,
+      "sha256": "d9849cc431d697fcaf2d9806d44f49b3abb226e73b3880fb6491256b4c68bae7"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/fixtures/manual-dry-run-inputs/real-redacted-pilot-expanded-009.json",
+      "bytes": 3036,
+      "sha256": "206b8a60807b7e188b1cc9050f5e1bb9a0b125b7e7f77d223efd6ced80e7bd9a"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/fixtures/manual-dry-run-inputs/real-redacted-pilot-expanded-010.json",
+      "bytes": 3011,
+      "sha256": "2ab3401fcb82634803cb484fdaced2806d0b7b9563ad77d9a964a2133dcc7748"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/fixtures/manual-dry-run-inputs/real-redacted-pilot-expanded-011.json",
+      "bytes": 3021,
+      "sha256": "474c443e1e6e25c332ef1472df53111ff665fcef5a9ec6785840dbc5db7364d0"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/fixtures/manual-dry-run-inputs/real-redacted-pilot-expanded-012.json",
+      "bytes": 3046,
+      "sha256": "9ab683c7903afba9ab167a877f78aae1798baf7f2576d78c3fe0c08dce945444"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/fixtures/manual-dry-run-real-redacted-pilot-expanded.json",
+      "bytes": 56817,
+      "sha256": "a2832e9e1309ebac33da0bcfdd4f74af111eb0311eb7a211d853b00cffaa4887"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/fixtures/manual-observation-bundles.json",
       "bytes": 2520,
       "sha256": "a1b488c653b41cd8da5ab53b0db910784aaaf9172dc6714a73aa0b0cee340191"
@@ -801,8 +936,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/package.json",
-      "bytes": 9349,
-      "sha256": "da860428f68bfd2c69798e2173b162975417341846ee644f4642623db5ddfcae"
+      "bytes": 9549,
+      "sha256": "746f3078442901b484b34d1d23e3e9b8fa6d65ab41b5ec858ad220796aae9f07"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/action-context-packet.mjs",
@@ -978,6 +1113,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/tests/manual-dry-run-cli-real-redacted-handoffs.mjs",
       "bytes": 8579,
       "sha256": "3a20c565afd099d6cde65f9c17714f5e3ece5694567c170369eef94810935296"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/manual-dry-run-cli-real-redacted-pilot-expanded.mjs",
+      "bytes": 19764,
+      "sha256": "a5c4484fa503633cd45c4934cfdda2bd2ae4f3a2c5bd12a1d708d2a9501fef5f"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/manual-dry-run-cli-real-redacted-pilot.mjs",
@@ -1581,8 +1721,8 @@
     },
     {
       "path": "tools/release-check.mjs",
-      "bytes": 66708,
-      "sha256": "b23d70da73e9ceda2f356a7d89694cbf51b224ab5aeccfdd3c696c7f00fc3039"
+      "bytes": 71692,
+      "sha256": "b511669351e515522e8b018893cfb5da37de994b84f475faf4406f502c59331f"
     },
     {
       "path": "tools/verify-manifest.mjs",
