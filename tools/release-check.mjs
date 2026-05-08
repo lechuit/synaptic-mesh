@@ -30,6 +30,7 @@ const releaseGateScripts = [
   'test:live-shadow-forbidden-effects',
   'test:live-shadow-synthetic-replay',
   'test:live-shadow-drift-scorecard',
+  'test:manual-observation-bundle-schema',
 ];
 
 function runGit(args, options = {}) {
@@ -244,6 +245,28 @@ assert(liveShadowDriftScorecard?.summary?.memoryWriteImplemented === false, 'liv
 assert(liveShadowDriftScorecard?.summary?.configWriteImplemented === false, 'live-shadow drift scorecard must not implement config writes');
 assert(liveShadowDriftScorecard?.summary?.externalPublicationImplemented === false, 'live-shadow drift scorecard must not implement external publication');
 assert(liveShadowDriftScorecard?.summary?.enforcementImplemented === false, 'live-shadow drift scorecard must not implement enforcement');
+
+const manualObservationBundleSchema = readJson(path.join(packageRoot, 'evidence/manual-observation-bundle-schema.out.json'));
+assert(manualObservationBundleSchema?.summary?.verdict === 'pass', 'manual observation bundle schema verdict must be pass');
+assert(manualObservationBundleSchema?.summary?.mode === 'manual_offline_bundle_schema_only', 'manual observation bundle schema must remain manual/offline/schema-only');
+assert(manualObservationBundleSchema?.summary?.humanReviewRequiredForCapture === true, 'manual observation bundle capture must require human review');
+assert(manualObservationBundleSchema?.summary?.rawContentPersisted === false, 'manual observation bundle must not persist raw content');
+assert(manualObservationBundleSchema?.summary?.secretLikeValuePersisted === false, 'manual observation bundle must not persist secret-like values');
+assert(manualObservationBundleSchema?.summary?.toolOutputPersisted === false, 'manual observation bundle must not persist tool output');
+assert(manualObservationBundleSchema?.summary?.memoryTextPersisted === false, 'manual observation bundle must not persist memory text');
+assert(manualObservationBundleSchema?.summary?.configTextPersisted === false, 'manual observation bundle must not persist config text');
+assert(manualObservationBundleSchema?.summary?.approvalTextPersisted === false, 'manual observation bundle must not persist approval text');
+assert(manualObservationBundleSchema?.summary?.privatePathPersisted === false, 'manual observation bundle must not persist private paths');
+assert(manualObservationBundleSchema?.summary?.capabilityAttempts === 0, 'manual observation bundle must not include capability attempts');
+assert(manualObservationBundleSchema?.summary?.forbiddenEffects === 0, 'manual observation bundle must not include forbidden effects');
+assert(manualObservationBundleSchema?.summary?.liveObserverImplemented === false, 'manual observation bundle must not implement live observer');
+assert(manualObservationBundleSchema?.summary?.daemonImplemented === false, 'manual observation bundle must not implement daemon');
+assert(manualObservationBundleSchema?.summary?.watcherImplemented === false, 'manual observation bundle must not implement watcher');
+assert(manualObservationBundleSchema?.summary?.toolExecutionImplemented === false, 'manual observation bundle must not implement tool execution');
+assert(manualObservationBundleSchema?.summary?.memoryWriteImplemented === false, 'manual observation bundle must not implement memory writes');
+assert(manualObservationBundleSchema?.summary?.configWriteImplemented === false, 'manual observation bundle must not implement config writes');
+assert(manualObservationBundleSchema?.summary?.externalPublicationImplemented === false, 'manual observation bundle must not implement external publication');
+assert(manualObservationBundleSchema?.summary?.enforcementImplemented === false, 'manual observation bundle must not implement enforcement');
 
 const reviewLocalCount = countLabel(reviewEvidence.summary.passCommands, reviewEvidence.summary.commands);
 const receiverAdapterCount = countLabel(receiverAdapterEvidence.summary.passCases, receiverAdapterEvidence.summary.totalCases);

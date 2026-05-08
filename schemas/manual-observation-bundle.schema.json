@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/lechuit/synaptic-mesh/schemas/manual-observation-bundle.schema.json",
+  "title": "ManualObservationBundle evidence record",
+  "description": "Offline schema for manually captured, manually redacted handoff artifacts before any live observer exists. This validates bundle shape and no-effect boundaries only; it does not capture live traffic, read runtime logs, implement a watcher/daemon, execute tools, write memory/config, publish externally, block, allow, approve, or enforce.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "bundleId",
+    "captureMode",
+    "sourceKind",
+    "capturedAt",
+    "humanReviewRequiredForCapture",
+    "rawContentIncluded",
+    "redactedContentIncluded",
+    "redactedSnapshotRef",
+    "redactedSnapshotHash",
+    "containsSecrets",
+    "containsToolOutput",
+    "containsMemoryText",
+    "containsConfigText",
+    "containsApprovalText",
+    "containsPrivatePath",
+    "allowedProcessing",
+    "forbiddenEffects",
+    "auditReasonCodes"
+  ],
+  "properties": {
+    "schemaVersion": { "type": "string", "enum": ["manual-observation-bundle-v0"] },
+    "bundleId": { "type": "string", "pattern": "^mob_[a-z0-9_\\-]+$" },
+    "captureMode": { "type": "string", "enum": ["manual_offline"] },
+    "sourceKind": { "type": "string", "enum": ["handoff_artifact", "planner_coder_reviewer_handoff", "review_note"] },
+    "capturedAt": { "type": "string", "format": "date-time" },
+    "humanReviewRequiredForCapture": { "type": "boolean", "enum": [true] },
+    "rawContentIncluded": { "type": "boolean", "enum": [false] },
+    "redactedContentIncluded": { "type": "boolean", "enum": [true] },
+    "redactedSnapshotRef": { "type": "string", "pattern": "^redacted_snapshot_[a-z0-9_\\-]+$" },
+    "redactedSnapshotHash": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
+    "containsSecrets": { "type": "boolean", "enum": [false] },
+    "containsToolOutput": { "type": "boolean", "enum": [false] },
+    "containsMemoryText": { "type": "boolean", "enum": [false] },
+    "containsConfigText": { "type": "boolean", "enum": [false] },
+    "containsApprovalText": { "type": "boolean", "enum": [false] },
+    "containsPrivatePath": { "type": "boolean", "enum": [false] },
+    "allowedProcessing": { "type": "string", "enum": ["local_shadow_only"] },
+    "forbiddenEffects": {
+      "type": "array",
+      "minItems": 8,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": ["runtime", "tools", "memory_write", "config_write", "external_publication", "approval_path", "blocking", "allowing"]
+      }
+    },
+    "auditReasonCodes": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": [
+          "MANUAL_CAPTURE_ONLY",
+          "HUMAN_REVIEW_REQUIRED_FOR_CAPTURE",
+          "RAW_CONTENT_NOT_PERSISTED",
+          "REDACTED_SNAPSHOT_ONLY",
+          "LOCAL_SHADOW_ONLY",
+          "NO_OPERATIONAL_EFFECTS"
+        ]
+      }
+    }
+  }
+}
