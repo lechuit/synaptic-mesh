@@ -1,13 +1,13 @@
 {
   "bundle": "synaptic-mesh",
   "version": "0.1.7",
-  "generated": "2026-05-08T00:58:00Z",
-  "status": "decision_trace_hardening_plus_live_shadow_schema_offline_not_runtime_ready",
+  "generated": "2026-05-08T01:17:00Z",
+  "status": "unreleased_v0.1.8_track_live_shadow_synthetic_replay_offline_not_runtime_ready",
   "repository": "https://github.com/lechuit/synaptic-mesh",
   "license": "Apache-2.0 for code; CC BY 4.0 for docs/prose unless otherwise noted",
-  "reproducibility": "expected_pass_local_shadow_gates_decision_trace_mutation_thresholds_live_shadow_schema_no_runtime",
+  "reproducibility": "expected_pass_local_shadow_gates_against_v0.1.7_baseline_plus_unreleased_v0.1.8_track_live_shadow_synthetic_replay_no_runtime",
   "rawSourceCache": "excluded",
-  "runtimeBoundary": "ci_baseline_local_shadow_validation_only_no_runtime_integration_no_mcp_a2a_no_authorization_no_tool_execution_no_live_observer",
+  "runtimeBoundary": "unreleased_v0.1.8_track_ci_baseline_local_shadow_validation_only_no_runtime_integration_no_mcp_a2a_no_authorization_no_tool_execution_no_live_observer_no_daemon",
   "files": [
     {
       "path": ".github/workflows/ci.yml",
@@ -156,8 +156,13 @@
     },
     {
       "path": "docs/live-shadow-schemas.md",
-      "bytes": 3792,
-      "sha256": "c2585d4b4a9c54a4d7dd47db606ebfcc71e5f950c887cb360171e004888e06ba"
+      "bytes": 4419,
+      "sha256": "1740aed6fcd95b9e76e259dc0a69d39b9423043ffff5014212e5ea5f7c57deb2"
+    },
+    {
+      "path": "docs/live-shadow-synthetic-replay.md",
+      "bytes": 2903,
+      "sha256": "5f4e24d5691de39591be62b9ccfce3f4ad865d6143c56f89061f8f43241f3589"
     },
     {
       "path": "docs/parser-normalization-evidence.md",
@@ -305,6 +310,11 @@
       "sha256": "ff37b67a8e59fcf94f06b498c4f10e3d71667b9958a77157eb1e3a25c8fa1844"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-shadow-synthetic-replay.out.json",
+      "bytes": 57892,
+      "sha256": "055549ca5708ca41004256b6b774741214a0b3322aacf055c2626b03239be1db"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/normalized-fixture-summary.out.json",
       "bytes": 7269,
       "sha256": "321b6a59ffa1201067c356c98868f01bd92d1828fb98afde7a953e37b4ec4db7"
@@ -420,6 +430,11 @@
       "sha256": "0d60d457dd6bb9a42ea228d24d318f6179b8483b71d72caff06b580c40c0a408"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/fixtures/live-shadow-synthetic-replay.json",
+      "bytes": 1341,
+      "sha256": "57ad91f79327fe54fa78494846a50314a61cdce6add6f54ab4ba4fdc2c8c25a1"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/fixtures/manifest.json",
       "bytes": 1355,
       "sha256": "7e762ff92cc3c78db252f98f28f1bce46e5f0cce61b67ad18c18400dee81430f"
@@ -456,8 +471,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/package.json",
-      "bytes": 6529,
-      "sha256": "55cfe75352fc5718fbaec07f56e4ec56c6af266cd9fa23eba1df28e7245b3fc3"
+      "bytes": 6672,
+      "sha256": "603bd2db097221f93f378ba60e31586a51daa371aea9bcf229c530d5efe45f37"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/action-context-packet.mjs",
@@ -593,6 +608,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/tests/live-shadow-schema-helpers.mjs",
       "bytes": 3089,
       "sha256": "97ed12afda97b8da903552c3e26bcb31512251fedc81a7de0ed2e1821da95c3a"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/live-shadow-synthetic-replay.mjs",
+      "bytes": 8492,
+      "sha256": "1bd0f3cb38935cef2f0ae7ee8c70cafd5ec36bfd665ca6d69fb5460c5ebbd153"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/parser-normalization-evidence.mjs",
@@ -1116,8 +1136,8 @@
     },
     {
       "path": "tools/release-check.mjs",
-      "bytes": 15118,
-      "sha256": "25f3c0df050a0e631a755294fdbb0e8b33c0a4d69ef16609df7eb3056f08b3f2"
+      "bytes": 17324,
+      "sha256": "11723f0cc900eec153617ed17bef53df52b6fc128dc745c440470b9b07d02db5"
     },
     {
       "path": "tools/verify-manifest.mjs",
