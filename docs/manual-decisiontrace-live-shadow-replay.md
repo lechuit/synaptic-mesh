@@ -1,6 +1,6 @@
 # Manual DecisionTrace → LiveShadowObservation replay v0
 
-Status: v0.1.9 offline offline replay gate. Not live observation, not runtime integration, not monitoring, not authorization, not enforcement, and not production/canary-ready.
+Status: v0.1.9 offline replay gate. Not live observation, not runtime integration, not monitoring, not authorization, not enforcement, and not production/canary-ready.
 
 This gate replays manual bundle `parserEvidence` evidence into offline `DecisionTrace` records and then into `LiveShadowObservation` / `LiveShadowObservationResult` record shapes.
 

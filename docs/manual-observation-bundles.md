@@ -1,6 +1,6 @@
 # Manual observation bundles v0
 
-Status: v0.1.9 offline offline schema gate. Not a live observer, not runtime integration, not monitoring, not enforcement, and not production/canary-ready.
+Status: v0.1.9 offline schema gate. Not a live observer, not runtime integration, not monitoring, not enforcement, and not production/canary-ready.
 
 A manual observation bundle is a hand-created, manually redacted bridge between synthetic fixtures and future real-world observation. It exists so real handoff-like artifacts can be represented safely before any live observer, daemon, watcher, adapter, MCP endpoint, tool integration, memory write, config write, publication, approval path, blocking, allowing, or enforcement exists.
 

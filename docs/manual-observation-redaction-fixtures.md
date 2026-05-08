@@ -1,6 +1,6 @@
 # Manual observation redaction fixture pack v0
 
-Status: v0.1.9 offline offline fixture gate. Not redaction implementation, not live observation, not runtime integration, not monitoring, not enforcement, and not production/canary-ready.
+Status: v0.1.9 offline fixture gate. Not redaction implementation, not live observation, not runtime integration, not monitoring, not enforcement, and not production/canary-ready.
 
 This fixture pack defines positive redacted manual observation cases and negative synthetic leakage labels for the manual-offline ingestion track.
 

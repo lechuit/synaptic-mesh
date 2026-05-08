@@ -1,7 +1,7 @@
 {
   "bundle": "synaptic-mesh",
   "version": "0.1.9",
-  "generated": "2026-05-08T02:56:00Z",
+  "generated": "2026-05-08T02:58:00Z",
   "status": "v0.1.9_manual_offline_ingestion_pre_live_shadow_readiness_public_review_package_not_runtime_ready",
   "repository": "https://github.com/lechuit/synaptic-mesh",
   "license": "Apache-2.0 for code; CC BY 4.0 for docs/prose unless otherwise noted",
@@ -176,28 +176,28 @@
     },
     {
       "path": "docs/manual-bundle-parser-evidence-replay.md",
-      "bytes": 1781,
-      "sha256": "298a397311bf8a5799998ebc27edda5bfc67cd6e72717dda0d447d082f4b383b"
+      "bytes": 1773,
+      "sha256": "71389067ce673be088eff93690a30968994c693cc643422e1997e97c0ff468e8"
     },
     {
       "path": "docs/manual-decisiontrace-live-shadow-replay.md",
-      "bytes": 1978,
-      "sha256": "b000581912bbf173e335bec49439720bb16b9fe1cd41b3bde87f75ab98f30be6"
+      "bytes": 1970,
+      "sha256": "0ef1acc69e089605c7e473588165b5c440844e3d4b8635d9554d388bf06a9787"
     },
     {
       "path": "docs/manual-observation-bundles.md",
-      "bytes": 2576,
-      "sha256": "b8ada45012af854c9fd324df37d55cf26048202f90fab6ab51b0363a494e064a"
+      "bytes": 2568,
+      "sha256": "0ddb7e67c648e8b2d845d5e454155e5c5b64bf6e0576e786b94cb087a65ee276"
     },
     {
       "path": "docs/manual-observation-redaction-fixtures.md",
-      "bytes": 2180,
-      "sha256": "5b81ba7bd662843a1dd78d80c4d5817eac2f603dab2ed56dd2f8c39a902e494f"
+      "bytes": 2172,
+      "sha256": "655644e5fa439bc6c9809b73132862eb16f56917af3dd2491ec3bfe0dcf7bc56"
     },
     {
       "path": "docs/manual-observation-scorecard-thresholds.md",
-      "bytes": 1473,
-      "sha256": "59536d43e74b84623beb3d9673ce804a4a998d405d4a657012e45b8621d3b7c0"
+      "bytes": 1465,
+      "sha256": "3b71791cb8454170b3265db881fd2d9f9dfa845149a8128da43be4c373db8542"
     },
     {
       "path": "docs/parser-normalization-evidence.md",

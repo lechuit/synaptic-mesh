@@ -1,6 +1,6 @@
 # Manual observation scorecard thresholds v0
 
-Status: v0.1.9 offline offline threshold gate. Not live observation, not runtime integration, not monitoring, not authorization, not enforcement, and not production/canary-ready.
+Status: v0.1.9 offline threshold gate. Not live observation, not runtime integration, not monitoring, not authorization, not enforcement, and not production/canary-ready.
 
 This gate aggregates the manual `DecisionTrace → LiveShadowObservation` replay evidence and applies strict zero-tolerance thresholds.
 

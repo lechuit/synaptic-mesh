@@ -1,6 +1,6 @@
 # Manual bundle parserEvidence replay v0
 
-Status: v0.1.9 offline offline replay gate. Not classifier, not DecisionTrace generation, not live observation, not runtime integration, not monitoring, not enforcement, and not production/canary-ready.
+Status: v0.1.9 offline replay gate. Not classifier, not DecisionTrace generation, not live observation, not runtime integration, not monitoring, not enforcement, and not production/canary-ready.
 
 This gate replays valid manual observation bundles into `parserEvidence` shape using redacted bundle metadata only.
 
