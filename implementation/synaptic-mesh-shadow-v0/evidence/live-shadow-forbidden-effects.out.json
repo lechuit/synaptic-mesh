@@ -1,0 +1,45 @@
+{
+  "summary": {
+    "artifact": "T-synaptic-mesh-live-shadow-forbidden-effects-v0",
+    "timestamp": "2026-05-08T00:57:00.000Z",
+    "verdict": "pass",
+    "observationCount": 2,
+    "resultCount": 2,
+    "forbiddenOperationalTokens": [
+      "tool_execution",
+      "memory_write",
+      "config_write",
+      "external_publication",
+      "agent_instruction_write",
+      "approval_grant",
+      "block",
+      "allow",
+      "enforce"
+    ],
+    "violationCount": 0,
+    "mode": "offline_fixture_forbidden_effects_gate",
+    "observerImplemented": false,
+    "liveTrafficRead": false,
+    "daemonImplemented": false,
+    "adapterIntegrationImplemented": false,
+    "toolExecutionImplemented": false,
+    "memoryWriteImplemented": false,
+    "configWriteImplemented": false,
+    "externalPublicationImplemented": false,
+    "blockingAllowingOrApprovalImplemented": false
+  },
+  "violations": [],
+  "boundary": [
+    "offline_fixture_only",
+    "no_runtime",
+    "no_tool_execution",
+    "no_memory_write",
+    "no_config_write",
+    "no_publication",
+    "no_agent_instruction_write",
+    "no_approval_grant",
+    "no_block",
+    "no_allow",
+    "no_enforce"
+  ]
+}

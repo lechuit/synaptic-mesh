@@ -25,6 +25,9 @@ const releaseGateScripts = [
   'test:decision-trace-schema',
   'test:real-flow-mutation-suite',
   'test:category-coverage-thresholds',
+  'test:live-shadow-observation-schema',
+  'test:live-shadow-observation-result-schema',
+  'test:live-shadow-forbidden-effects',
 ];
 
 function runGit(args, options = {}) {
@@ -189,6 +192,22 @@ assert(categoryCoverageThresholds?.summary?.verdict === 'pass', 'category covera
 assert(categoryCoverageThresholds?.summary?.thresholdFailures === 0, 'category coverage thresholds must have zero failures');
 assert(categoryCoverageThresholds?.summary?.runtimeEnforcementImplemented === false, 'category coverage thresholds must not implement runtime enforcement');
 assert(categoryCoverageThresholds?.summary?.liveShadowObserverImplemented === false, 'category coverage thresholds must not implement live shadow observer');
+
+const liveShadowObservationSchema = readJson(path.join(packageRoot, 'evidence/live-shadow-observation-schema.out.json'));
+const liveShadowObservationResultSchema = readJson(path.join(packageRoot, 'evidence/live-shadow-observation-result-schema.out.json'));
+const liveShadowForbiddenEffects = readJson(path.join(packageRoot, 'evidence/live-shadow-forbidden-effects.out.json'));
+assert(liveShadowObservationSchema?.summary?.verdict === 'pass', 'live-shadow observation schema verdict must be pass');
+assert(liveShadowObservationSchema?.summary?.observerImplemented === false, 'live-shadow observation schema must not implement an observer');
+assert(liveShadowObservationSchema?.summary?.liveTrafficRead === false, 'live-shadow observation schema must not read live traffic');
+assert(liveShadowObservationResultSchema?.summary?.verdict === 'pass', 'live-shadow observation result schema verdict must be pass');
+assert(liveShadowObservationResultSchema?.summary?.mayBlockCount === 0, 'live-shadow observation result must not block');
+assert(liveShadowObservationResultSchema?.summary?.mayAllowCount === 0, 'live-shadow observation result must not allow');
+assert(liveShadowForbiddenEffects?.summary?.verdict === 'pass', 'live-shadow forbidden-effects gate verdict must be pass');
+assert(liveShadowForbiddenEffects?.summary?.violationCount === 0, 'live-shadow forbidden-effects gate must have zero violations');
+assert(liveShadowForbiddenEffects?.summary?.toolExecutionImplemented === false, 'live-shadow forbidden-effects gate must not implement tool execution');
+assert(liveShadowForbiddenEffects?.summary?.memoryWriteImplemented === false, 'live-shadow forbidden-effects gate must not implement memory writes');
+assert(liveShadowForbiddenEffects?.summary?.configWriteImplemented === false, 'live-shadow forbidden-effects gate must not implement config writes');
+assert(liveShadowForbiddenEffects?.summary?.externalPublicationImplemented === false, 'live-shadow forbidden-effects gate must not implement external publication');
 
 const reviewLocalCount = countLabel(reviewEvidence.summary.passCommands, reviewEvidence.summary.commands);
 const receiverAdapterCount = countLabel(receiverAdapterEvidence.summary.passCases, receiverAdapterEvidence.summary.totalCases);

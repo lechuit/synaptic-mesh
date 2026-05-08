@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/lechuit/synaptic-mesh/schemas/live-shadow-observation.schema.json",
+  "title": "LiveShadowObservation evidence record",
+  "description": "Offline schema for future passive live-shadow observation records. This validates record shape, audit linkage, and explicit no-effects boundaries only; it does not observe live traffic, read runtime logs, integrate adapters, execute tools, write memory, write config, publish externally, block, allow, approve, or enforce.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "observationId",
+    "flowId",
+    "observedAt",
+    "observerMode",
+    "effectBoundary",
+    "writeBoundary",
+    "sourceArtifactId",
+    "parserEvidenceRef",
+    "routeDecisionInputHash",
+    "classifierDecisionHash",
+    "decisionTraceHash",
+    "allowedInputs",
+    "forbiddenPaths",
+    "auditReasonCodes"
+  ],
+  "properties": {
+    "schemaVersion": { "type": "string", "enum": ["live-shadow-observation-v0"] },
+    "observationId": { "type": "string", "pattern": "^lso_[a-z0-9_\\-]+$" },
+    "flowId": { "type": "string", "minLength": 1 },
+    "observedAt": { "type": "string", "format": "date-time" },
+    "observerMode": { "type": "string", "enum": ["passive"] },
+    "effectBoundary": { "type": "string", "enum": ["no_effects"] },
+    "writeBoundary": { "type": "string", "enum": ["local_shadow_only"] },
+    "sourceArtifactId": { "type": "string", "minLength": 1 },
+    "parserEvidenceRef": { "type": "string", "minLength": 1 },
+    "routeDecisionInputHash": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
+    "classifierDecisionHash": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
+    "decisionTraceHash": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
+    "allowedInputs": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": ["decision_trace", "parser_evidence", "route_decision_input", "classifier_decision"]
+      }
+    },
+    "forbiddenPaths": {
+      "type": "array",
+      "minItems": 7,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": [
+          "runtime",
+          "tools",
+          "memory_write",
+          "config_write",
+          "external_publication",
+          "agent_instruction",
+          "approval_path"
+        ]
+      }
+    },
+    "auditReasonCodes": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": [
+          "LIVE_SHADOW_OBSERVE_ONLY",
+          "LIVE_SHADOW_NO_EFFECTS",
+          "LIVE_SHADOW_TRACE_ONLY",
+          "LIVE_SHADOW_LOCAL_ONLY",
+          "LIVE_SHADOW_DECISION_PATH_SEPARATED",
+          "LIVE_SHADOW_FORBIDDEN_RUNTIME_PATH",
+          "LIVE_SHADOW_FORBIDDEN_TOOL_PATH",
+          "LIVE_SHADOW_FORBIDDEN_MEMORY_WRITE",
+          "LIVE_SHADOW_FORBIDDEN_CONFIG_WRITE",
+          "LIVE_SHADOW_FORBIDDEN_EXTERNAL_PUBLICATION",
+          "LIVE_SHADOW_FORBIDDEN_AGENT_INSTRUCTION",
+          "LIVE_SHADOW_FORBIDDEN_APPROVAL_PATH"
+        ]
+      }
+    }
+  }
+}

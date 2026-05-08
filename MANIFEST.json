@@ -1,13 +1,13 @@
 {
   "bundle": "synaptic-mesh",
   "version": "0.1.7",
-  "generated": "2026-05-08T00:50:00Z",
-  "status": "decision_trace_hardening_release_candidate_not_runtime_ready",
+  "generated": "2026-05-08T00:58:00Z",
+  "status": "decision_trace_hardening_plus_live_shadow_schema_offline_not_runtime_ready",
   "repository": "https://github.com/lechuit/synaptic-mesh",
   "license": "Apache-2.0 for code; CC BY 4.0 for docs/prose unless otherwise noted",
-  "reproducibility": "expected_pass_local_shadow_gates_decision_trace_mutation_thresholds_no_runtime",
+  "reproducibility": "expected_pass_local_shadow_gates_decision_trace_mutation_thresholds_live_shadow_schema_no_runtime",
   "rawSourceCache": "excluded",
-  "runtimeBoundary": "ci_baseline_local_shadow_validation_only_no_runtime_integration_no_mcp_a2a_no_authorization_no_tool_execution",
+  "runtimeBoundary": "ci_baseline_local_shadow_validation_only_no_runtime_integration_no_mcp_a2a_no_authorization_no_tool_execution_no_live_observer",
   "files": [
     {
       "path": ".github/workflows/ci.yml",
@@ -155,6 +155,11 @@
       "sha256": "f7f3abdf4eb11768de1e1550647d6f8bf785df70e0be1d0547f4b9d63ca12e3f"
     },
     {
+      "path": "docs/live-shadow-schemas.md",
+      "bytes": 3792,
+      "sha256": "c2585d4b4a9c54a4d7dd47db606ebfcc71e5f950c887cb360171e004888e06ba"
+    },
+    {
       "path": "docs/parser-normalization-evidence.md",
       "bytes": 2130,
       "sha256": "015df89bb164c470b28dfa65b746c795601a53e2aff37fb79abbd8af94f3bd22"
@@ -285,6 +290,21 @@
       "sha256": "cd181e2f36e6e09f0b8f57a6b4714796ce46f30625c2e70db606d4761694276c"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-shadow-forbidden-effects.out.json",
+      "bytes": 1168,
+      "sha256": "9ac323d91ac10dc0f2abbb1e53c25014ff09948f8dfbe8004f89c0e29fa122ca"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-shadow-observation-result-schema.out.json",
+      "bytes": 1856,
+      "sha256": "87115a4b3e537532622f9b9cb5b073b764139bc475337aacc6c8fdb29bb9c1c4"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-shadow-observation-schema.out.json",
+      "bytes": 1607,
+      "sha256": "ff37b67a8e59fcf94f06b498c4f10e3d71667b9958a77157eb1e3a25c8fa1844"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/normalized-fixture-summary.out.json",
       "bytes": 7269,
       "sha256": "321b6a59ffa1201067c356c98868f01bd92d1828fb98afde7a953e37b4ec4db7"
@@ -390,6 +410,16 @@
       "sha256": "554e588f256dc0fbe040d3df91690f8c1ba5337467576446079392529311f20f"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/fixtures/live-shadow-observation-results.json",
+      "bytes": 1823,
+      "sha256": "25690e1977bb73b26d428609f439e2c7c83ada45c8fda65e7f30afdc8f01aca8"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/fixtures/live-shadow-observations.json",
+      "bytes": 2435,
+      "sha256": "0d60d457dd6bb9a42ea228d24d318f6179b8483b71d72caff06b580c40c0a408"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/fixtures/manifest.json",
       "bytes": 1355,
       "sha256": "7e762ff92cc3c78db252f98f28f1bce46e5f0cce61b67ad18c18400dee81430f"
@@ -426,8 +456,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/package.json",
-      "bytes": 6011,
-      "sha256": "4c4211dc712079df4e7fff99c319e9b5c054bab215e489c9874bdbd2b770cb82"
+      "bytes": 6529,
+      "sha256": "55cfe75352fc5718fbaec07f56e4ec56c6af266cd9fa23eba1df28e7245b3fc3"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/action-context-packet.mjs",
@@ -543,6 +573,26 @@
       "path": "implementation/synaptic-mesh-shadow-v0/tests/handoff-summary-compression-loss.mjs",
       "bytes": 4937,
       "sha256": "7169d11cec9dad5b7b95ce3d92d16ec18774d7421fcbaae5131bfd015619feee"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/live-shadow-forbidden-effects.mjs",
+      "bytes": 3617,
+      "sha256": "a810487e2c08721e1da6f1f89f3009a6cd2180f21e08e37c6a9fe8020d10cee0"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/live-shadow-observation-result-schema.mjs",
+      "bytes": 5492,
+      "sha256": "8c01ce2c2fcb8407290f387e057a15408aecd5c50bdb535e083139731ce4ed60"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/live-shadow-observation-schema.mjs",
+      "bytes": 4710,
+      "sha256": "b5ac0b8aab416e2fce73d68e760b0cb0ab5b15d4ff2d8b19acd5ca36c6e033b6"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/live-shadow-schema-helpers.mjs",
+      "bytes": 3089,
+      "sha256": "97ed12afda97b8da903552c3e26bcb31512251fedc81a7de0ed2e1821da95c3a"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/parser-normalization-evidence.mjs",
@@ -1015,6 +1065,16 @@
       "sha256": "3197b7df4d6d17e54cfa5a7fdb69f01c301f6ab83a0c422c841100f6f0da629c"
     },
     {
+      "path": "schemas/live-shadow-observation-result.schema.json",
+      "bytes": 3190,
+      "sha256": "36e5c936a7b2f7b11e623e4d6e7b504654c6705eda7e5ff2b90f3075d19438ad"
+    },
+    {
+      "path": "schemas/live-shadow-observation.schema.json",
+      "bytes": 3194,
+      "sha256": "7cd337d29375b6a294990ed4e932ba8faf621cf0b628c35bdddca6b371fc31c0"
+    },
+    {
       "path": "schemas/parser-evidence.schema.json",
       "bytes": 2028,
       "sha256": "2dfd0ac9e9f4ec86d493bad1b0fc9494a78b896251a295dea86c64aafc7d2ecd"
@@ -1056,8 +1116,8 @@
     },
     {
       "path": "tools/release-check.mjs",
-      "bytes": 12963,
-      "sha256": "1f2b93411d9b415ef3d8921140ce077d7fc1e9c4688a7d451b6ca09611d2628d"
+      "bytes": 15118,
+      "sha256": "25f3c0df050a0e631a755294fdbb0e8b33c0a4d69ef16609df7eb3056f08b3f2"
     },
     {
       "path": "tools/verify-manifest.mjs",
