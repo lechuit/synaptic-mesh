@@ -142,7 +142,6 @@ implementation/synaptic-mesh-shadow-v0/evidence/
 Key files:
 
 - `review-local.out.json` — one-command local review summary;
-- `receipt-parser-validator.out.json` — parser/validator cases;
 - `receipt-transform-regression.out.json` — transform regression cases;
 - `authority-laundering-regression.out.json` — adversarial laundering regression cases;
 - `route-decision-schema.out.json` — RouteDecision schema shape-validation evidence;

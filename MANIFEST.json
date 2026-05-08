@@ -1,7 +1,7 @@
 {
   "bundle": "synaptic-mesh",
   "version": "0.1.9",
-  "generated": "2026-05-08T02:58:00Z",
+  "generated": "2026-05-08T03:02:00Z",
   "status": "v0.1.9_manual_offline_ingestion_pre_live_shadow_readiness_public_review_package_not_runtime_ready",
   "repository": "https://github.com/lechuit/synaptic-mesh",
   "license": "Apache-2.0 for code; CC BY 4.0 for docs/prose unless otherwise noted",
@@ -271,8 +271,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/README.md",
-      "bytes": 9689,
-      "sha256": "9f1fa09c460de8ad94412746560fb469a3ff47de9859e75eafd0cf0105cf9e10"
+      "bytes": 9623,
+      "sha256": "13d4b400f5058719b2702a343fad582999d479ed405beeab035b91871e3a3a89"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/bin/validate-receipt.mjs",
