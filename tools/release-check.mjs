@@ -43,6 +43,7 @@ const releaseGateScripts = [
   'test:manual-dry-run-cli',
   'test:manual-dry-run-cli-negative-controls',
   'test:manual-dry-run-cli-real-redacted-handoffs',
+  'test:manual-dry-run-cli-real-redacted-pilot',
 ];
 
 function runGit(args, options = {}) {
@@ -558,6 +559,28 @@ assert(manualDryRunRealRedacted?.summary?.approvalEnteredCount === 0, 'manual dr
 assert(manualDryRunRealRedacted?.summary?.blockedCount === 0, 'manual dry-run CLI real-redacted gate must not block');
 assert(manualDryRunRealRedacted?.summary?.allowedCount === 0, 'manual dry-run CLI real-redacted gate must not allow');
 assert(manualDryRunRealRedacted?.summary?.enforcedCount === 0, 'manual dry-run CLI real-redacted gate must not enforce');
+
+const manualDryRunRealRedactedPilot = readJson(path.join(packageRoot, 'evidence/manual-dry-run-cli-real-redacted-pilot.out.json'));
+assert(manualDryRunRealRedactedPilot?.summary?.verdict === 'pass', 'manual dry-run CLI real-redacted pilot verdict must be pass');
+assert(manualDryRunRealRedactedPilot?.summary?.realRedactedPilotCount === 6, 'manual dry-run CLI real-redacted pilot must cover exactly 6 cases');
+assert(manualDryRunRealRedactedPilot?.summary?.recordOnlyCount === 6, 'manual dry-run CLI real-redacted pilot outputs must all be record-only');
+assert(manualDryRunRealRedactedPilot?.summary?.validationErrorCount === 0, 'manual dry-run CLI real-redacted pilot outputs must validate');
+assert(manualDryRunRealRedactedPilot?.summary?.forbiddenEffectsDetectedCount === 0, 'manual dry-run CLI real-redacted pilot outputs must detect zero forbidden effects');
+assert(manualDryRunRealRedactedPilot?.summary?.capabilityTrueCount === 0, 'manual dry-run CLI real-redacted pilot outputs must keep capabilities false');
+assert(manualDryRunRealRedactedPilot?.summary?.falsePermitCount === 0, 'manual dry-run CLI real-redacted pilot outputs must have zero false permits');
+assert(manualDryRunRealRedactedPilot?.summary?.falseCompactCount === 0, 'manual dry-run CLI real-redacted pilot outputs must have zero false compacts');
+assert(manualDryRunRealRedactedPilot?.summary?.boundaryLossCount === 0, 'manual dry-run CLI real-redacted pilot outputs must have zero boundary loss');
+assert(manualDryRunRealRedactedPilot?.summary?.rawUnredactedInputReadCount === 0, 'manual dry-run CLI real-redacted pilot must not read raw unredacted input');
+assert(manualDryRunRealRedactedPilot?.summary?.liveInputReadCount === 0, 'manual dry-run CLI real-redacted pilot must not read live input');
+assert(manualDryRunRealRedactedPilot?.summary?.networkUsedCount === 0, 'manual dry-run CLI real-redacted pilot must not use network');
+assert(manualDryRunRealRedactedPilot?.summary?.toolExecutedCount === 0, 'manual dry-run CLI real-redacted pilot must not execute tools');
+assert(manualDryRunRealRedactedPilot?.summary?.memoryWrittenCount === 0, 'manual dry-run CLI real-redacted pilot must not write memory');
+assert(manualDryRunRealRedactedPilot?.summary?.configWrittenCount === 0, 'manual dry-run CLI real-redacted pilot must not write config');
+assert(manualDryRunRealRedactedPilot?.summary?.publishedExternallyCount === 0, 'manual dry-run CLI real-redacted pilot must not publish externally');
+assert(manualDryRunRealRedactedPilot?.summary?.approvalEnteredCount === 0, 'manual dry-run CLI real-redacted pilot must not enter approval path');
+assert(manualDryRunRealRedactedPilot?.summary?.blockedCount === 0, 'manual dry-run CLI real-redacted pilot must not block');
+assert(manualDryRunRealRedactedPilot?.summary?.allowedCount === 0, 'manual dry-run CLI real-redacted pilot must not allow');
+assert(manualDryRunRealRedactedPilot?.summary?.enforcedCount === 0, 'manual dry-run CLI real-redacted pilot must not enforce');
 
 const reviewLocalCount = countLabel(reviewEvidence.summary.passCommands, reviewEvidence.summary.commands);
 const receiverAdapterCount = countLabel(receiverAdapterEvidence.summary.passCases, receiverAdapterEvidence.summary.totalCases);
