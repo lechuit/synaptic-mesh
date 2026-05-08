@@ -1,13 +1,13 @@
 {
   "bundle": "synaptic-mesh",
-  "version": "0.1.7",
-  "generated": "2026-05-08T01:35:00Z",
-  "status": "unreleased_v0.1.8_track_live_shadow_drift_scorecard_shape_offline_not_runtime_ready",
+  "version": "0.1.8",
+  "generated": "2026-05-08T01:38:00Z",
+  "status": "live_shadow_contract_hardening_release_candidate_not_runtime_ready",
   "repository": "https://github.com/lechuit/synaptic-mesh",
   "license": "Apache-2.0 for code; CC BY 4.0 for docs/prose unless otherwise noted",
-  "reproducibility": "expected_pass_local_shadow_gates_against_v0.1.7_baseline_plus_unreleased_v0.1.8_track_drift_scorecard_shape_no_runtime",
+  "reproducibility": "expected_pass_local_shadow_gates_live_shadow_contract_hardening_no_runtime",
   "rawSourceCache": "excluded",
-  "runtimeBoundary": "unreleased_v0.1.8_track_scorecard_shape_only_no_runtime_integration_no_mcp_a2a_no_authorization_no_tool_execution_no_live_observer_no_daemon_no_retention_scheduler",
+  "runtimeBoundary": "release_candidate_local_shadow_validation_only_no_runtime_integration_no_mcp_a2a_no_authorization_no_tool_execution_no_live_observer_no_daemon_no_retention_scheduler",
   "files": [
     {
       "path": ".github/workflows/ci.yml",
@@ -76,8 +76,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 5551,
-      "sha256": "7d53866884009b2c4172b53a7f322872502bb81c4209342cbb33eaeebad86396"
+      "bytes": 5554,
+      "sha256": "3123372f13b8919209104e29e6ae1c130dd694235d4766c59e0796e2cd2ea31f"
     },
     {
       "path": "RELEASE_CANDIDATE.md",
@@ -86,8 +86,8 @@
     },
     {
       "path": "RELEASE_NOTES.md",
-      "bytes": 3558,
-      "sha256": "77a0794198b50ee99202679ce02c20c0c08f04942edb12dae9abd0f829415aa1"
+      "bytes": 5539,
+      "sha256": "9ca06083532ce1f73eb3c6fdc0d1abe8645793bd32350696fa8e95294ada30a1"
     },
     {
       "path": "design-notes/adapter-boundary-langgraph-mcp-v0.md",
@@ -197,7 +197,7 @@
     {
       "path": "docs/release-checklist.md",
       "bytes": 5705,
-      "sha256": "2c4e6986087a814d11c65d56836fa041aff66b95412eb173b729697f876fbe77"
+      "sha256": "704fb33ec3f632f224783f128b6019860f082015a21912d96cebf68b6577a83b"
     },
     {
       "path": "docs/repo-structure.md",

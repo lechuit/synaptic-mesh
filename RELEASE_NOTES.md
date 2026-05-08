@@ -1,17 +1,19 @@
-# Release Notes — Synaptic Mesh v0.1.7
+# Release Notes — Synaptic Mesh v0.1.8
 
-Status: decision trace hardening release candidate / public review package update. Not runtime-ready; not production/canary/enforcement-ready.
+Status: live-shadow contract hardening release candidate / public review package update. Not runtime-ready; not production/canary/enforcement-ready.
 
-## Highlights since v0.1.6
+## Highlights since v0.1.7
 
-- Separated `goldDecision` from `classifierDecision`; deprecated `observedDecision` metadata and gated scorecards so they compare classifier output against gold decisions only.
-- Added offline `DecisionTrace` schema/evidence with parser/input/gold/classifier hash bindings.
-- Added synthetic real-flow mutation suite and category coverage thresholds to prove degraded behavior and avoid superficial route coverage.
-- Kept CI scoped to the local shadow package; this release does not add runtime/framework integration, MCP/A2A integration, tool execution, memory writes, publication, or enforcement behavior.
+- Added a design-only passive live-shadow observer boundary: future observers may record audit artifacts but must not become part of the decision path.
+- Added offline `LiveShadowObservation` and `LiveShadowObservationResult` schemas/fixtures with forbidden-effects gates and negative controls.
+- Added synthetic offline replay from DecisionTrace evidence into passive live-shadow observation/result records; all outputs remain `record_only`, `no_effects`, and `local_shadow_only`.
+- Added a design-only redaction/retention boundary for future live-shadow artifacts: raw prompts, transcripts, secrets, tool outputs, memory/config text, approval text, and private paths are redacted/refused by design.
+- Added aggregate-only live-shadow drift scorecard shape validation over synthetic replay evidence, with zero tolerated forbidden effects, capability attempts, raw content persistence, redaction implementation, retention scheduler, or enforcement.
+- Kept CI scoped to the local shadow package; this release does not add runtime/framework integration, live observer implementation, MCP/A2A integration, tool execution, memory writes, config writes, publication, approval paths, blocking/allowing, or enforcement behavior.
 
 ## Carried-forward package evidence
 
-The release package still includes earlier local-shadow gates from the v0.1.x line: reason-code vocabulary docs, conservative coverage matrix, raw/parser adversarial fixtures, adversarial fixture generation, and authority-overhead benchmark evidence. These remain current validation artifacts, but they are not new v0.1.7 delta items.
+The release package still includes earlier local-shadow gates from the v0.1.x line: reason-code vocabulary docs, conservative coverage matrix, raw/parser adversarial fixtures, adversarial fixture generation, authority-overhead benchmark evidence, decision traces, oracle/classifier separation, mutation degradation checks, and category coverage thresholds. These remain current validation artifacts, but they are not new v0.1.8 delta items.
 
 ## Validation snapshot
 
@@ -28,18 +30,27 @@ The release package still includes earlier local-shadow gates from the v0.1.x li
 - Adversarial fixture generator: pass 9/9 generated fixtures, oracle-derived expectations only
 - Raw/parser adversarial fixtures: pass 9/9 raw fixture/parser-pressure cases, annotation validation only
 - Parser normalization evidence: pass 24/24 raw handoff normalization cases, parserEvidence shape/input-hash validation only
-- Offline real-flow replay: pass 24/24 naturalistic handoff replay cases, gold-label/audit-log validation only, hash-bound to linked parser evidence
+- Offline real-flow replay: pass 24/24 naturalistic handoff replay cases, gold-decision/audit-log validation only, hash-bound to linked parser evidence
 - Deterministic route classifier shadow gate: pass 24/24 parser-evidence fixture decisions plus 24/24 real-flow scorecard, falsePermit 0, falseCompact 0, includes inconsistent sensitive-summary negative control, no runtime/live observer/tool authorization
+- DecisionTrace schema/evidence: pass 24/24 traces, matchedGold 24, mismatch 0, falsePermit 0, falseCompact 0, boundaryLoss 0
+- Real-flow mutation suite: pass 15/15 unique mutations, nonDegraded 0, falsePermit 0, falseCompact 0
+- Category coverage thresholds: pass, thresholdFailures 0
+- LiveShadowObservation schema: pass 2/2 observation fixtures plus negative controls; no observer/live traffic/daemon/adapter/tool/memory/config/publication/blocking/approval implementation
+- LiveShadowObservationResult schema: pass 2/2 result fixtures plus negative controls; all operational `may*` fields forced false
+- Live-shadow forbidden-effects gate: pass, violations 0
+- Synthetic live-shadow replay: pass 24 traces → 24 observations + 24 results, 48 valid records, forbidden effects 0, mayBlock/mayAllow/capabilityTrue 0
+- Live-shadow drift scorecard shape: pass 24 observations/24 results, validation errors 0, forbidden effects 0, capability attempts 0, capabilityTrue 0, rawContentPersisted false, redactionImplementationAdded false, retentionSchedulerImplemented false
 
 ## Compatibility note
 
-Synaptic Mesh remains a framework-agnostic protocol proposal. v0.1.7 strengthens release confidence with decision traces, oracle/classifier separation, mutation degradation checks, and category coverage thresholds, but does not ship real LangGraph, AutoGen, CrewAI, Semantic Kernel, MCP, or runtime host adapters. Real runtime adapters remain future work.
+Synaptic Mesh remains a framework-agnostic protocol proposal. v0.1.8 strengthens release confidence with passive live-shadow contracts, synthetic replay, redaction/retention design boundaries, and aggregate drift scorecard shape checks, but does not ship real LangGraph, AutoGen, CrewAI, Semantic Kernel, MCP, runtime host adapters, live observers, daemons, watchers, retention schedulers, or enforcement hooks. Real runtime/live-observer work remains future work.
 
 ## Operational non-release status
 
 - Not runtime/tooling integrated.
+- Not live-monitoring integrated.
 - Not production/canary/enforcement/L2+ ready.
-- Runtime or operational use requires a separate explicit maintainer decision.
+- Runtime, live observation, adapter, retention, or operational use requires a separate explicit maintainer decision.
 
 ## Public review requests
 
