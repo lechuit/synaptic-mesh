@@ -47,6 +47,7 @@ const releaseGateScripts = [
   'test:manual-dry-run-cli-pilot-failure-catalog',
   'test:manual-dry-run-cli-real-redacted-pilot-expanded',
   'test:manual-dry-run-cli-pilot-reproducibility',
+  'test:manual-dry-run-cli-pilot-reproducibility-negative-controls',
 ];
 
 function runGit(args, options = {}) {
@@ -687,6 +688,32 @@ assert(manualDryRunPilotReproducibility?.summary?.blockingImplemented === false,
 assert(manualDryRunPilotReproducibility?.summary?.allowingImplemented === false, 'manual dry-run CLI pilot reproducibility must not implement allowing');
 assert(manualDryRunPilotReproducibility?.summary?.authorizationImplemented === false, 'manual dry-run CLI pilot reproducibility must not implement authorization');
 assert(manualDryRunPilotReproducibility?.summary?.enforcementImplemented === false, 'manual dry-run CLI pilot reproducibility must not implement enforcement');
+
+const manualDryRunPilotReproducibilityNegativeControls = readJson(path.join(packageRoot, 'evidence/manual-dry-run-cli-pilot-reproducibility-negative-controls.out.json'));
+assert(manualDryRunPilotReproducibilityNegativeControls?.pilotReproducibilityNegativeControls === 'pass', 'manual dry-run CLI pilot reproducibility negative controls verdict must be pass');
+assert(manualDryRunPilotReproducibilityNegativeControls?.negativeControls >= 8, 'manual dry-run CLI pilot reproducibility negative controls must cover at least 8 cases');
+assert(manualDryRunPilotReproducibilityNegativeControls?.expectedRejects === manualDryRunPilotReproducibilityNegativeControls?.negativeControls, 'manual dry-run CLI pilot reproducibility negative controls must expect all controls to reject');
+assert(manualDryRunPilotReproducibilityNegativeControls?.unexpectedAccepts === 0, 'manual dry-run CLI pilot reproducibility negative controls must have zero unexpected accepts');
+assert(manualDryRunPilotReproducibilityNegativeControls?.expectedReasonCodeMisses === 0, 'manual dry-run CLI pilot reproducibility negative controls must match expected reason codes');
+assert(manualDryRunPilotReproducibilityNegativeControls?.coveredReasonCodes?.includes('NORMALIZED_OUTPUT_MISMATCH'), 'manual dry-run CLI pilot reproducibility negative controls must cover normalized output mismatch');
+assert(manualDryRunPilotReproducibilityNegativeControls?.coveredReasonCodes?.includes('COMMITTED_EVIDENCE_MISMATCH'), 'manual dry-run CLI pilot reproducibility negative controls must cover committed evidence mismatch');
+assert(manualDryRunPilotReproducibilityNegativeControls?.coveredReasonCodes?.includes('DECISION_TRACE_HASH_MISMATCH'), 'manual dry-run CLI pilot reproducibility negative controls must cover DecisionTrace hash mismatch');
+assert(manualDryRunPilotReproducibilityNegativeControls?.coveredReasonCodes?.includes('SCORECARD_MISMATCH'), 'manual dry-run CLI pilot reproducibility negative controls must cover scorecard mismatch');
+assert(manualDryRunPilotReproducibilityNegativeControls?.coveredReasonCodes?.includes('INPUT_MUTATION_DETECTED'), 'manual dry-run CLI pilot reproducibility negative controls must cover input mutation');
+assert(manualDryRunPilotReproducibilityNegativeControls?.coveredReasonCodes?.includes('FORBIDDEN_EFFECT_DETECTED'), 'manual dry-run CLI pilot reproducibility negative controls must cover forbidden effect');
+assert(manualDryRunPilotReproducibilityNegativeControls?.coveredReasonCodes?.includes('CAPABILITY_TRUE_DETECTED'), 'manual dry-run CLI pilot reproducibility negative controls must cover capability true');
+assert(manualDryRunPilotReproducibilityNegativeControls?.coveredReasonCodes?.includes('BOUNDARY_LOSS_DETECTED'), 'manual dry-run CLI pilot reproducibility negative controls must cover boundary loss');
+assert(manualDryRunPilotReproducibilityNegativeControls?.summary?.liveObserverImplemented === false, 'manual dry-run CLI pilot reproducibility negative controls must not implement live observer');
+assert(manualDryRunPilotReproducibilityNegativeControls?.summary?.runtimeIntegrationImplemented === false, 'manual dry-run CLI pilot reproducibility negative controls must not implement runtime integration');
+assert(manualDryRunPilotReproducibilityNegativeControls?.summary?.toolExecutionImplemented === false, 'manual dry-run CLI pilot reproducibility negative controls must not implement tool execution');
+assert(manualDryRunPilotReproducibilityNegativeControls?.summary?.memoryWriteImplemented === false, 'manual dry-run CLI pilot reproducibility negative controls must not implement memory writes');
+assert(manualDryRunPilotReproducibilityNegativeControls?.summary?.configWriteImplemented === false, 'manual dry-run CLI pilot reproducibility negative controls must not implement config writes');
+assert(manualDryRunPilotReproducibilityNegativeControls?.summary?.publicationImplemented === false, 'manual dry-run CLI pilot reproducibility negative controls must not implement publication');
+assert(manualDryRunPilotReproducibilityNegativeControls?.summary?.approvalPathImplemented === false, 'manual dry-run CLI pilot reproducibility negative controls must not implement approval path');
+assert(manualDryRunPilotReproducibilityNegativeControls?.summary?.blockingImplemented === false, 'manual dry-run CLI pilot reproducibility negative controls must not implement blocking');
+assert(manualDryRunPilotReproducibilityNegativeControls?.summary?.allowingImplemented === false, 'manual dry-run CLI pilot reproducibility negative controls must not implement allowing');
+assert(manualDryRunPilotReproducibilityNegativeControls?.summary?.authorizationImplemented === false, 'manual dry-run CLI pilot reproducibility negative controls must not implement authorization');
+assert(manualDryRunPilotReproducibilityNegativeControls?.summary?.enforcementImplemented === false, 'manual dry-run CLI pilot reproducibility negative controls must not implement enforcement');
 
 const reviewLocalCount = countLabel(reviewEvidence.summary.passCommands, reviewEvidence.summary.commands);
 const receiverAdapterCount = countLabel(receiverAdapterEvidence.summary.passCases, receiverAdapterEvidence.summary.totalCases);

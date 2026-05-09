@@ -66,6 +66,7 @@ It runs:
 - `npm run test:manual-dry-run-cli-pilot-failure-catalog`
 - `npm run test:manual-dry-run-cli-real-redacted-pilot-expanded`
 - `npm run test:manual-dry-run-cli-pilot-reproducibility`
+- `npm run test:manual-dry-run-cli-pilot-reproducibility-negative-controls`
 
 For auditability, keep the individual gate names visible in PR notes even when `release:check` is the command reviewers run.
 
@@ -88,6 +89,7 @@ For auditability, keep the individual gate names visible in PR notes even when `
 - Confirm manual dry-run pilot failure catalog rejects known misuse with clear reason codes, writes only local reject evidence for rejected cases, and writes no success evidence, normal DecisionTrace, normal LiveShadowObservationResult, or scorecard success row for rejected cases.
 - Confirm expanded real-redacted manual dry-run pilot evidence covers at least 12 already-redacted cases, one redaction review record per case, all record-only outputs, zero mismatches, zero forbidden effects, zero capability true count, zero false permits, zero false compacts, zero boundary loss, and no raw/private/secret/tool/memory/config/approval persistence.
 - Confirm manual dry-run pilot reproducibility evidence covers at least 12 already-redacted cases, two fresh runs per case, one canonical output comparison per case, zero return/write mismatches, zero normalized output mismatches, zero DecisionTrace hash mismatches, zero scorecard mismatches, zero committed evidence mismatches, zero input mutations, all record-only outputs, zero forbidden effects, zero capability true count, zero false permits, zero false compacts, zero boundary loss, and no raw/private/secret/tool/memory/config/approval persistence.
+- Confirm manual dry-run pilot reproducibility negative controls cover at least 8 intentionally perturbed controls, reject every control, have zero unexpected accepts, have zero expected reason-code misses, and cover normalized output mismatch, committed evidence mismatch, DecisionTrace hash mismatch, scorecard mismatch, input mutation, forbidden effect, capability true, and boundary-loss detections.
 
 ## CI expectations
 
