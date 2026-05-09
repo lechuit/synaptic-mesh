@@ -1,0 +1,307 @@
+{
+  "summary": {
+    "artifact": "T-synaptic-mesh-redaction-scanner-minimal-v0",
+    "timestamp": "2026-05-09T01:05:00.000Z",
+    "verdict": "pass",
+    "scanner": "implementation/synaptic-mesh-shadow-v0/src/redaction-scanner.mjs",
+    "fixture": "implementation/synaptic-mesh-shadow-v0/fixtures/redaction-scanner-minimal.json",
+    "policyFixture": "implementation/synaptic-mesh-shadow-v0/fixtures/redaction-policy.json",
+    "redactionGate": "pass",
+    "passCases": 2,
+    "blockCases": 9,
+    "rejectedBlockCases": 9,
+    "unexpectedPasses": 0,
+    "unexpectedRejects": 0,
+    "coveredReasonClasses": [
+      "approval_text",
+      "config_text",
+      "long_raw_prompt",
+      "memory_text",
+      "private_path",
+      "raw_content",
+      "secret_like_value",
+      "tool_output",
+      "unknown_sensitive_field"
+    ],
+    "rawPersisted": false,
+    "secretLikePersisted": false,
+    "privatePathPersisted": false,
+    "toolOutputPersisted": false,
+    "memoryTextPersisted": false,
+    "configTextPersisted": false,
+    "approvalTextPersisted": false,
+    "longRawPromptPersistedInPassOutput": false,
+    "unknownSensitiveFieldPersistedInPassOutput": false,
+    "mode": "manual_offline_redaction_scan_only",
+    "liveObserverImplemented": false,
+    "liveTrafficRead": false,
+    "daemonImplemented": false,
+    "watcherImplemented": false,
+    "adapterIntegrationImplemented": false,
+    "toolExecutionImplemented": false,
+    "memoryWriteImplemented": false,
+    "configWriteImplemented": false,
+    "externalPublicationImplemented": false,
+    "approvalPathImplemented": false,
+    "blockingImplemented": false,
+    "allowingImplemented": false,
+    "authorizationImplemented": false,
+    "enforcementImplemented": false,
+    "safetyClaimScope": "minimal_redaction_scanner_over_committed_fixtures_only_not_runtime_not_authorization_not_enforcement"
+  },
+  "expectedOutput": {
+    "redactionGate": "pass",
+    "rawPersisted": false,
+    "secretLikePersisted": false,
+    "privatePathPersisted": false,
+    "toolOutputPersisted": false,
+    "memoryTextPersisted": false,
+    "configTextPersisted": false,
+    "approvalTextPersisted": false
+  },
+  "passOutput": {
+    "redactionGate": "pass",
+    "rawPersisted": false,
+    "secretLikePersisted": false,
+    "privatePathPersisted": false,
+    "toolOutputPersisted": false,
+    "memoryTextPersisted": false,
+    "configTextPersisted": false,
+    "approvalTextPersisted": false
+  },
+  "passResults": [
+    {
+      "caseId": "redacted_metadata_only_001",
+      "redactionGate": "pass",
+      "rawPersisted": false,
+      "secretLikePersisted": false,
+      "privatePathPersisted": false,
+      "toolOutputPersisted": false,
+      "memoryTextPersisted": false,
+      "configTextPersisted": false,
+      "approvalTextPersisted": false,
+      "longRawPromptPersisted": false,
+      "unknownSensitiveFieldPersisted": false,
+      "reasonCodes": [],
+      "evidencePointers": [],
+      "boundary": "manual_offline_redaction_scan_only"
+    },
+    {
+      "caseId": "placeholder_summary_only_002",
+      "redactionGate": "pass",
+      "rawPersisted": false,
+      "secretLikePersisted": false,
+      "privatePathPersisted": false,
+      "toolOutputPersisted": false,
+      "memoryTextPersisted": false,
+      "configTextPersisted": false,
+      "approvalTextPersisted": false,
+      "longRawPromptPersisted": false,
+      "unknownSensitiveFieldPersisted": false,
+      "reasonCodes": [],
+      "evidencePointers": [],
+      "boundary": "manual_offline_redaction_scan_only"
+    }
+  ],
+  "blockResults": [
+    {
+      "caseId": "block_raw_content_persisted",
+      "redactionGate": "reject",
+      "rawPersisted": true,
+      "secretLikePersisted": false,
+      "privatePathPersisted": false,
+      "toolOutputPersisted": false,
+      "memoryTextPersisted": false,
+      "configTextPersisted": false,
+      "approvalTextPersisted": false,
+      "longRawPromptPersisted": false,
+      "unknownSensitiveFieldPersisted": false,
+      "reasonCodes": [
+        "REDACTION_RAW_CONTENT_PERSISTED"
+      ],
+      "evidencePointers": [
+        "raw_content"
+      ],
+      "boundary": "manual_offline_redaction_scan_only"
+    },
+    {
+      "caseId": "block_secret_like_value",
+      "redactionGate": "reject",
+      "rawPersisted": false,
+      "secretLikePersisted": true,
+      "privatePathPersisted": false,
+      "toolOutputPersisted": false,
+      "memoryTextPersisted": false,
+      "configTextPersisted": false,
+      "approvalTextPersisted": false,
+      "longRawPromptPersisted": false,
+      "unknownSensitiveFieldPersisted": false,
+      "reasonCodes": [
+        "REDACTION_SECRET_LIKE_VALUE_PERSISTED"
+      ],
+      "evidencePointers": [
+        "secret_like_value"
+      ],
+      "boundary": "manual_offline_redaction_scan_only"
+    },
+    {
+      "caseId": "block_private_path",
+      "redactionGate": "reject",
+      "rawPersisted": false,
+      "secretLikePersisted": false,
+      "privatePathPersisted": true,
+      "toolOutputPersisted": false,
+      "memoryTextPersisted": false,
+      "configTextPersisted": false,
+      "approvalTextPersisted": false,
+      "longRawPromptPersisted": false,
+      "unknownSensitiveFieldPersisted": false,
+      "reasonCodes": [
+        "REDACTION_PRIVATE_PATH_PERSISTED"
+      ],
+      "evidencePointers": [
+        "private_path"
+      ],
+      "boundary": "manual_offline_redaction_scan_only"
+    },
+    {
+      "caseId": "block_tool_output",
+      "redactionGate": "reject",
+      "rawPersisted": false,
+      "secretLikePersisted": false,
+      "privatePathPersisted": false,
+      "toolOutputPersisted": true,
+      "memoryTextPersisted": false,
+      "configTextPersisted": false,
+      "approvalTextPersisted": false,
+      "longRawPromptPersisted": false,
+      "unknownSensitiveFieldPersisted": false,
+      "reasonCodes": [
+        "REDACTION_TOOL_OUTPUT_PERSISTED"
+      ],
+      "evidencePointers": [
+        "tool_output"
+      ],
+      "boundary": "manual_offline_redaction_scan_only"
+    },
+    {
+      "caseId": "block_memory_text",
+      "redactionGate": "reject",
+      "rawPersisted": false,
+      "secretLikePersisted": false,
+      "privatePathPersisted": false,
+      "toolOutputPersisted": false,
+      "memoryTextPersisted": true,
+      "configTextPersisted": false,
+      "approvalTextPersisted": false,
+      "longRawPromptPersisted": false,
+      "unknownSensitiveFieldPersisted": false,
+      "reasonCodes": [
+        "REDACTION_MEMORY_TEXT_PERSISTED"
+      ],
+      "evidencePointers": [
+        "memory_text"
+      ],
+      "boundary": "manual_offline_redaction_scan_only"
+    },
+    {
+      "caseId": "block_config_text",
+      "redactionGate": "reject",
+      "rawPersisted": false,
+      "secretLikePersisted": false,
+      "privatePathPersisted": false,
+      "toolOutputPersisted": false,
+      "memoryTextPersisted": false,
+      "configTextPersisted": true,
+      "approvalTextPersisted": false,
+      "longRawPromptPersisted": false,
+      "unknownSensitiveFieldPersisted": false,
+      "reasonCodes": [
+        "REDACTION_CONFIG_TEXT_PERSISTED"
+      ],
+      "evidencePointers": [
+        "config_text"
+      ],
+      "boundary": "manual_offline_redaction_scan_only"
+    },
+    {
+      "caseId": "block_approval_text",
+      "redactionGate": "reject",
+      "rawPersisted": false,
+      "secretLikePersisted": false,
+      "privatePathPersisted": false,
+      "toolOutputPersisted": false,
+      "memoryTextPersisted": false,
+      "configTextPersisted": false,
+      "approvalTextPersisted": true,
+      "longRawPromptPersisted": false,
+      "unknownSensitiveFieldPersisted": false,
+      "reasonCodes": [
+        "REDACTION_APPROVAL_TEXT_PERSISTED"
+      ],
+      "evidencePointers": [
+        "approval_text"
+      ],
+      "boundary": "manual_offline_redaction_scan_only"
+    },
+    {
+      "caseId": "block_long_raw_prompt",
+      "redactionGate": "reject",
+      "rawPersisted": false,
+      "secretLikePersisted": false,
+      "privatePathPersisted": false,
+      "toolOutputPersisted": false,
+      "memoryTextPersisted": false,
+      "configTextPersisted": false,
+      "approvalTextPersisted": false,
+      "longRawPromptPersisted": true,
+      "unknownSensitiveFieldPersisted": false,
+      "reasonCodes": [
+        "REDACTION_LONG_RAW_PROMPT_PERSISTED"
+      ],
+      "evidencePointers": [
+        "long_raw_prompt"
+      ],
+      "boundary": "manual_offline_redaction_scan_only"
+    },
+    {
+      "caseId": "block_unknown_sensitive_field",
+      "redactionGate": "reject",
+      "rawPersisted": false,
+      "secretLikePersisted": false,
+      "privatePathPersisted": false,
+      "toolOutputPersisted": false,
+      "memoryTextPersisted": false,
+      "configTextPersisted": false,
+      "approvalTextPersisted": false,
+      "longRawPromptPersisted": false,
+      "unknownSensitiveFieldPersisted": true,
+      "reasonCodes": [
+        "REDACTION_UNKNOWN_SENSITIVE_FIELD_PERSISTED"
+      ],
+      "evidencePointers": [
+        "unknown_sensitive_field"
+      ],
+      "boundary": "manual_offline_redaction_scan_only"
+    }
+  ],
+  "boundary": [
+    "manual_offline_only",
+    "already_redacted_or_placeholder_fixtures_only",
+    "reject_only_redaction_gate",
+    "no_live_observation",
+    "no_runtime",
+    "no_daemon",
+    "no_watcher",
+    "no_adapter_integration",
+    "no_tool_execution",
+    "no_memory_write",
+    "no_config_write",
+    "no_external_publication",
+    "no_approval_path",
+    "no_blocking",
+    "no_allowing",
+    "no_authorization",
+    "no_enforcement"
+  ]
+}

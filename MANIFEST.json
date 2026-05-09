@@ -280,6 +280,11 @@
       "sha256": "54a9a0aea4a0b9ac0b2a05979f630defebbeab549baa7346f141c456cf9fd8f2"
     },
     {
+      "path": "docs/redaction-scanner-minimal.md",
+      "bytes": 1282,
+      "sha256": "5b8fd47737e50c863bdec60ecbafe84ec39df40ccd0eb3a968c9b63523561401"
+    },
+    {
       "path": "docs/release-checklist.md",
       "bytes": 9485,
       "sha256": "73afcad2a9b6fe1bbacf04d774b31a21e54e1027e5bd0b86f782a6401d28cdd6"
@@ -675,6 +680,11 @@
       "sha256": "515453ba5aaa845bb629f45ee4d375480c3e6af94ede5976bac9ffa88b91c3e6"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/redaction-scanner-minimal.out.json",
+      "bytes": 9533,
+      "sha256": "6535660ce60f5fcfae1aec7fc8307a16b86ffd180b3c795f8b4b3f47344e4fd6"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/review-local.out.json",
       "bytes": 13133,
       "sha256": "672b6f1cbbb95d2e3958200239e09e81e2e15797ce6e7e55291b3834f182167e"
@@ -950,6 +960,11 @@
       "sha256": "8b0faf7d68eda274353f9a5117298f4849b18194ba312a53ef921289c8c65277"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/fixtures/redaction-scanner-minimal.json",
+      "bytes": 3724,
+      "sha256": "bf7e7788486c3c26830a6fc7c338429ceb84a415b2c8835c488bbe6e5d29a118"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/fixtures/route-decision-wrong-routes.json",
       "bytes": 20671,
       "sha256": "d767f0e21802dd5d5054abd474d9404541c56d12c0a2d133da64c47d01701971"
@@ -961,8 +976,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/package.json",
-      "bytes": 10089,
-      "sha256": "afbf4faa9fa57fa2811fd0bc3d8bb1cbd4655bb97d5cc90f8a4aee492be0e721"
+      "bytes": 10265,
+      "sha256": "d176266a1707f256bffa23f2fac13ff7bd8445eb5d95fadfb8497b84797c04b6"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/action-context-packet.mjs",
@@ -1013,6 +1028,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/src/receiver-policy-adapter.mjs",
       "bytes": 3039,
       "sha256": "f5c11619ce7b143c9bbcf6999e4caa60e265691b93e5fd3410c67dbab3406a2c"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/src/redaction-scanner.mjs",
+      "bytes": 6509,
+      "sha256": "9865d300e718d203387241ba562074af5077be2f6b5f0e7500f8008d84e67d2b"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/route-classifier.mjs",
@@ -1278,6 +1298,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/tests/redaction-review-record-schema.mjs",
       "bytes": 9084,
       "sha256": "06a8bd393a881cb263c8b195ee84770b05a2c85e6317eb7da782c6ede44b9f2f"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/redaction-scanner-minimal.mjs",
+      "bytes": 5205,
+      "sha256": "c74181689714b4ff11a2d5cfb1376482dbc38f1df8a46d347ec923fd676f1539"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/review-local.mjs",
