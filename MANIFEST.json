@@ -266,8 +266,8 @@
     },
     {
       "path": "docs/reason-codes.md",
-      "bytes": 6465,
-      "sha256": "f03877eea989796760234a32178ed3cba5b5df09980eccfc7375e9e448d1cd86"
+      "bytes": 7167,
+      "sha256": "7bc899a56451393a8256bf3111c7110d675431aebc53581c30e6d44593bf8ae8"
     },
     {
       "path": "docs/redaction-policy.md",
@@ -293,6 +293,11 @@
       "path": "docs/repo-structure.md",
       "bytes": 5047,
       "sha256": "594a5b1df774860b59c92502eaebe6def871228eeacc9e4ffb09ef5e1b49805f"
+    },
+    {
+      "path": "docs/retention-negative-controls.md",
+      "bytes": 1170,
+      "sha256": "abe3b757af913ff50e153bd710caf3a1d1ea6af057fe3b1ca55bbc58dcad41cf"
     },
     {
       "path": "docs/retention-policy.md",
@@ -690,6 +695,11 @@
       "sha256": "6535660ce60f5fcfae1aec7fc8307a16b86ffd180b3c795f8b4b3f47344e4fd6"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/retention-negative-controls.out.json",
+      "bytes": 7232,
+      "sha256": "6083968c4c1aa9fb835ce5e5583b1560c3dee881118982aeadf23caeb9aec642"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/retention-policy-schema.out.json",
       "bytes": 3166,
       "sha256": "e3df9578d4e8399d844ddf0f0bbf2fc1e343dcb076387b5706ce95aab2ccdf46"
@@ -975,6 +985,11 @@
       "sha256": "bf7e7788486c3c26830a6fc7c338429ceb84a415b2c8835c488bbe6e5d29a118"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/fixtures/retention-negative-controls.json",
+      "bytes": 5193,
+      "sha256": "8bd618df5fde8345d2eefeb1d0726b9c896181ce703a55c6cad8f2e8e7327ffe"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/fixtures/retention-policy.json",
       "bytes": 1604,
       "sha256": "4ad2fd0799c60f332be8a5b3b745fef04ccc8e8cd208ef0cc46148519f538efe"
@@ -991,8 +1006,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/package.json",
-      "bytes": 10393,
-      "sha256": "de43ff3833e5791204772e189348cbe385b1fa1858122ee8e847975baed44f3e"
+      "bytes": 10572,
+      "sha256": "5d000a7477d4ae298c6bf5a965a0ebebdfeb2ca9dc242259066ab5ba501e815e"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/action-context-packet.mjs",
@@ -1048,6 +1063,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/src/redaction-scanner.mjs",
       "bytes": 6509,
       "sha256": "9865d300e718d203387241ba562074af5077be2f6b5f0e7500f8008d84e67d2b"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/src/retention-gate.mjs",
+      "bytes": 2698,
+      "sha256": "28cdb6763f767691ee5589c1e66179029a9cedd5fa010912f3d0dc86b65d2d37"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/route-classifier.mjs",
@@ -1318,6 +1338,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/tests/redaction-scanner-minimal.mjs",
       "bytes": 5205,
       "sha256": "c74181689714b4ff11a2d5cfb1376482dbc38f1df8a46d347ec923fd676f1539"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/retention-negative-controls.mjs",
+      "bytes": 4998,
+      "sha256": "d0e0bdd40bf71af12fe4e0ac26704422be816fe618015d1147b19cd8ea08f390"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/retention-policy-schema.mjs",
