@@ -1,13 +1,13 @@
 {
   "bundle": "synaptic-mesh",
-  "version": "0.1.16",
-  "generated": "2026-05-09T00:20:00Z",
-  "status": "v0.1.16_manual_dry_run_pilot_reproducibility_public_review_release_not_runtime_ready",
+  "version": "0.1.17",
+  "generated": "2026-05-09T01:15:00Z",
+  "status": "v0.1.17_redaction_retention_executable_gates_public_review_release_not_runtime_ready",
   "repository": "https://github.com/lechuit/synaptic-mesh",
   "license": "Apache-2.0 for code; CC BY 4.0 for docs/prose unless otherwise noted",
-  "reproducibility": "expected_pass_local_shadow_gates_for_v0.1.16_manual_dry_run_pilot_reproducibility_twelve_cases_two_runs_each_zero_normalized_output_mismatches",
+  "reproducibility": "expected_pass_local_shadow_gates_for_v0.1.17_redaction_retention_executable_gates_with_zero_redaction_persistence_and_retention_negative_controls_rejected",
   "rawSourceCache": "excluded",
-  "runtimeBoundary": "v0.1.16_manual_dry_run_pilot_reproducibility_local_record_only_no_live_observer_no_runtime_integration_no_tool_execution_no_memory_config_publication_approval_authorization_or_enforcement",
+  "runtimeBoundary": "v0.1.17_redaction_retention_executable_gates_local_fixture_metadata_only_no_live_observer_no_runtime_integration_no_tool_execution_no_memory_config_publication_approval_authorization_deletion_scheduler_or_enforcement",
   "files": [
     {
       "path": ".github/workflows/ci.yml",
@@ -76,8 +76,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 9743,
-      "sha256": "4ba32a8aee67bbf6d618026a1a4a4480b9f880aac80059741e4b796981252152"
+      "bytes": 10225,
+      "sha256": "ed556e446ff9360764790b5dbcb554c1dfc38eda09623e47e88c491e25c99d0f"
     },
     {
       "path": "RELEASE_CANDIDATE.md",
@@ -86,8 +86,8 @@
     },
     {
       "path": "RELEASE_NOTES.md",
-      "bytes": 7845,
-      "sha256": "639b4c2ef334e308a61699f474bf080d470ef9024ee411465301f28f221279d0"
+      "bytes": 6582,
+      "sha256": "290b2e736ff1108254aeffaaddcc571eac237993f3ac709ef1e32aba1dd4fe5b"
     },
     {
       "path": "design-notes/adapter-boundary-langgraph-mcp-v0.md",
@@ -286,8 +286,8 @@
     },
     {
       "path": "docs/release-checklist.md",
-      "bytes": 9485,
-      "sha256": "73afcad2a9b6fe1bbacf04d774b31a21e54e1027e5bd0b86f782a6401d28cdd6"
+      "bytes": 10668,
+      "sha256": "daca4219ce17c4a648f7afa08a6d6afc7a9d4e7f70a79ccf5a4b6d350ae3b002"
     },
     {
       "path": "docs/repo-structure.md",
@@ -1841,8 +1841,8 @@
     },
     {
       "path": "tools/release-check.mjs",
-      "bytes": 82136,
-      "sha256": "7d9f4dfff548b18bbd2ff77a53020cedb17b31386bdb4f600e334d80581dd6e1"
+      "bytes": 93740,
+      "sha256": "52c35aeabeaa997e2ffdccbb201e4b9797e08ac3bf3bea8ba899426665cb81a3"
     },
     {
       "path": "tools/verify-manifest.mjs",
