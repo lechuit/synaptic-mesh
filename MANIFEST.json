@@ -76,8 +76,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 9361,
-      "sha256": "deb1d3b2d17a7dcc231f73bf5a3a057eb432bd0839f3be3ec70565b1f0c03231"
+      "bytes": 9424,
+      "sha256": "cdcd333b86c86f5c8a55c3eb5766ba5822f4c90a8ce10cf513b25149e9e563dc"
     },
     {
       "path": "RELEASE_CANDIDATE.md",
@@ -86,8 +86,8 @@
     },
     {
       "path": "RELEASE_NOTES.md",
-      "bytes": 6845,
-      "sha256": "4a243472888e50abe175ba79660c6738fc87799f6eb617c237a8bb13e54858e6"
+      "bytes": 7028,
+      "sha256": "06cf8da6c01050f9bf7ed189d90311729dcdd8a928bbabd2c4f3fac3309b8679"
     },
     {
       "path": "design-notes/adapter-boundary-langgraph-mcp-v0.md",
@@ -196,8 +196,8 @@
     },
     {
       "path": "docs/manual-dry-run-pilot-cases.md",
-      "bytes": 3897,
-      "sha256": "bf14733e16cb0486bae7829c1f9e542632fb002041ab92b4fa5bb4a0712c9cac"
+      "bytes": 3961,
+      "sha256": "12994b7f8785bcdc1d874b442d026befbdacb5791a44a92c818e6eb2134d0382"
     },
     {
       "path": "docs/manual-dry-run-pilot-checklist.md",
@@ -276,8 +276,8 @@
     },
     {
       "path": "docs/release-checklist.md",
-      "bytes": 8942,
-      "sha256": "77511b1bd6e6d3577477136d497b1c61571c2caed5fe382d3accedbb29308d23"
+      "bytes": 9005,
+      "sha256": "5ef77a030db330a81d13c8b784145d5a48380cad21ce57aff0af24be000ab756"
     },
     {
       "path": "docs/repo-structure.md",
@@ -436,8 +436,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/manual-dry-run-cli-pilot-reproducibility.out.json",
-      "bytes": 19705,
-      "sha256": "3acbc5172d567c18ce8fa5a2e217fe0c5a6061fd35d5598eb8f4dd564bda935c"
+      "bytes": 30857,
+      "sha256": "174259d5df32117ea2aa3b951ce65a96279b2a086f464d0e218537a35eb02ec1"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/manual-dry-run-cli-real-redacted-handoffs.out.json",
@@ -1116,8 +1116,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/manual-dry-run-cli-pilot-reproducibility.mjs",
-      "bytes": 9634,
-      "sha256": "af99b3cc5a87e66c2a6677da5c78c3f158c4f33bd03c2d8835a6ed72bc140dcd"
+      "bytes": 11647,
+      "sha256": "672ad69b00629d36c84e8644068fd92c43a0afe798070060b2185cccf8a8fa56"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/manual-dry-run-cli-real-redacted-handoffs.mjs",
@@ -1731,8 +1731,8 @@
     },
     {
       "path": "tools/release-check.mjs",
-      "bytes": 76775,
-      "sha256": "e8f3cf837734288ac7935ee381f186f707ab682ecd323028dd1b1f1f3317c722"
+      "bytes": 77090,
+      "sha256": "d40b3a8a065bd29c3858460b36c232afec7eb65667332f71d5829291b3a25703"
     },
     {
       "path": "tools/verify-manifest.mjs",

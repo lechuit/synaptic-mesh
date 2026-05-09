@@ -66,6 +66,8 @@ Expected aggregate result:
   "returnWriteMismatches": 0,
   "normalizedOutputMismatches": 0,
   "committedEvidenceMismatches": 0,
+  "decisionTraceHashMismatches": 0,
+  "scorecardMismatches": 0,
   "inputMutations": 0,
   "forbiddenEffects": 0,
   "capabilityTrueCount": 0,
