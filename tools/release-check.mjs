@@ -181,7 +181,7 @@ assert(packageJson.version === '0.0.0-local', 'shadow package version must remai
 assert(packageJson.scripts?.['release:check'] === 'node ../../tools/release-check.mjs', 'package.json must wire npm run release:check to ../../tools/release-check.mjs');
 
 assertIncludes(readme, `# Synaptic Mesh ${manifestReleaseTag}`, 'README.md');
-assertIncludes(readme, `release candidate \`${manifestReleaseTag}\``, 'README.md');
+assertIncludes(readme, `public review release \`${manifestReleaseTag}\``, 'README.md');
 assertIncludes(readme, `Current ${manifestReleaseTag} status is narrower`, 'README.md');
 assertIncludes(releaseNotes, `# Release Notes — Synaptic Mesh ${manifestReleaseTag}`, 'RELEASE_NOTES.md');
 assertIncludes(releaseChecklist, 'npm run release:check', 'docs/release-checklist.md');
