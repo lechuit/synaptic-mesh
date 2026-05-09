@@ -35,6 +35,10 @@ const releaseGateScripts = [
   'test:manual-bundle-parser-evidence-replay',
   'test:manual-decisiontrace-live-shadow-replay',
   'test:manual-observation-scorecard-thresholds',
+  'test:redaction-policy-schema',
+  'test:redaction-scanner-minimal',
+  'test:retention-policy-schema',
+  'test:retention-negative-controls',
   'test:redaction-review-record-schema',
   'test:real-redacted-handoff-pack',
   'test:real-redacted-handoff-replay-gate',
@@ -405,6 +409,93 @@ assert(manualObservationScorecardThresholds?.summary?.configWriteImplemented ===
 assert(manualObservationScorecardThresholds?.summary?.externalPublicationImplemented === false, 'manual scorecard thresholds must not implement external publication');
 assert(manualObservationScorecardThresholds?.summary?.authorizationImplemented === false, 'manual scorecard thresholds must not implement authorization');
 assert(manualObservationScorecardThresholds?.summary?.enforcementImplemented === false, 'manual scorecard thresholds must not implement enforcement');
+
+const redactionPolicySchema = readJson(path.join(packageRoot, 'evidence/redaction-policy-schema.out.json'));
+assert(redactionPolicySchema?.summary?.verdict === 'pass', 'redaction policy schema verdict must be pass');
+assert(redactionPolicySchema?.summary?.redactionGate === 'reject_sensitive_persistence', 'redaction policy schema must be reject-sensitive-persistence');
+assert(redactionPolicySchema?.summary?.sensitiveFieldClasses === 9, 'redaction policy schema must cover 9 sensitive field classes');
+assert(redactionPolicySchema?.summary?.requiredOutputFlags === 7, 'redaction policy schema must require 7 output flags');
+assert(redactionPolicySchema?.summary?.rawContentPersisted === false, 'redaction policy schema must not persist raw content');
+assert(redactionPolicySchema?.summary?.secretLikePersisted === false, 'redaction policy schema must not persist secret-like values');
+assert(redactionPolicySchema?.summary?.privatePathPersisted === false, 'redaction policy schema must not persist private paths');
+assert(redactionPolicySchema?.summary?.toolOutputPersisted === false, 'redaction policy schema must not persist tool output');
+assert(redactionPolicySchema?.summary?.memoryTextPersisted === false, 'redaction policy schema must not persist memory text');
+assert(redactionPolicySchema?.summary?.configTextPersisted === false, 'redaction policy schema must not persist config text');
+assert(redactionPolicySchema?.summary?.approvalTextPersisted === false, 'redaction policy schema must not persist approval text');
+assert(redactionPolicySchema?.summary?.longRawPromptPersisted === false, 'redaction policy schema must not persist long raw prompt text');
+assert(redactionPolicySchema?.summary?.unknownSensitiveFieldPersisted === false, 'redaction policy schema must reject unknown sensitive fields');
+assert(redactionPolicySchema?.summary?.liveObserverImplemented === false, 'redaction policy schema must not implement live observer');
+assert(redactionPolicySchema?.summary?.toolExecutionImplemented === false, 'redaction policy schema must not implement tool execution');
+assert(redactionPolicySchema?.summary?.memoryWriteImplemented === false, 'redaction policy schema must not implement memory writes');
+assert(redactionPolicySchema?.summary?.configWriteImplemented === false, 'redaction policy schema must not implement config writes');
+assert(redactionPolicySchema?.summary?.externalPublicationImplemented === false, 'redaction policy schema must not implement external publication');
+assert(redactionPolicySchema?.summary?.authorizationImplemented === false, 'redaction policy schema must not implement authorization');
+assert(redactionPolicySchema?.summary?.enforcementImplemented === false, 'redaction policy schema must not implement enforcement');
+
+const redactionScannerMinimal = readJson(path.join(packageRoot, 'evidence/redaction-scanner-minimal.out.json'));
+assert(redactionScannerMinimal?.summary?.verdict === 'pass', 'redaction scanner minimal verdict must be pass');
+assert(redactionScannerMinimal?.summary?.redactionGate === 'pass', 'redaction scanner minimal pass summary must pass');
+assert(redactionScannerMinimal?.summary?.blockCases >= 9, 'redaction scanner minimal must cover at least 9 blocking classes');
+assert(redactionScannerMinimal?.summary?.rejectedBlockCases === redactionScannerMinimal?.summary?.blockCases, 'redaction scanner minimal must reject every block case');
+assert(redactionScannerMinimal?.summary?.unexpectedPasses === 0, 'redaction scanner minimal must have zero unexpected passes');
+assert(redactionScannerMinimal?.summary?.unexpectedRejects === 0, 'redaction scanner minimal must have zero unexpected rejects');
+for (const reasonClass of ['raw_content', 'secret_like_value', 'private_path', 'tool_output', 'memory_text', 'config_text', 'approval_text', 'long_raw_prompt', 'unknown_sensitive_field']) {
+  assert(redactionScannerMinimal?.summary?.coveredReasonClasses?.includes(reasonClass), `redaction scanner minimal must cover ${reasonClass}`);
+}
+assert(redactionScannerMinimal?.summary?.rawPersisted === false, 'redaction scanner pass output must report rawPersisted false');
+assert(redactionScannerMinimal?.summary?.secretLikePersisted === false, 'redaction scanner pass output must report secretLikePersisted false');
+assert(redactionScannerMinimal?.summary?.privatePathPersisted === false, 'redaction scanner pass output must report privatePathPersisted false');
+assert(redactionScannerMinimal?.summary?.toolOutputPersisted === false, 'redaction scanner pass output must report toolOutputPersisted false');
+assert(redactionScannerMinimal?.summary?.memoryTextPersisted === false, 'redaction scanner pass output must report memoryTextPersisted false');
+assert(redactionScannerMinimal?.summary?.configTextPersisted === false, 'redaction scanner pass output must report configTextPersisted false');
+assert(redactionScannerMinimal?.summary?.approvalTextPersisted === false, 'redaction scanner pass output must report approvalTextPersisted false');
+assert(redactionScannerMinimal?.summary?.liveObserverImplemented === false, 'redaction scanner minimal must not implement live observer');
+assert(redactionScannerMinimal?.summary?.toolExecutionImplemented === false, 'redaction scanner minimal must not implement tool execution');
+assert(redactionScannerMinimal?.summary?.memoryWriteImplemented === false, 'redaction scanner minimal must not implement memory writes');
+assert(redactionScannerMinimal?.summary?.configWriteImplemented === false, 'redaction scanner minimal must not implement config writes');
+assert(redactionScannerMinimal?.summary?.externalPublicationImplemented === false, 'redaction scanner minimal must not implement external publication');
+assert(redactionScannerMinimal?.summary?.authorizationImplemented === false, 'redaction scanner minimal must not implement authorization');
+assert(redactionScannerMinimal?.summary?.enforcementImplemented === false, 'redaction scanner minimal must not implement enforcement');
+
+const retentionPolicySchema = readJson(path.join(packageRoot, 'evidence/retention-policy-schema.out.json'));
+assert(retentionPolicySchema?.summary?.verdict === 'pass', 'retention policy schema verdict must be pass');
+assert(retentionPolicySchema?.summary?.retentionGate === 'validate_metadata_retention_ceiling', 'retention policy schema must validate metadata retention ceilings');
+assert(retentionPolicySchema?.summary?.artifactClasses === 5, 'retention policy schema must cover 5 artifact classes');
+assert(retentionPolicySchema?.summary?.rawLiveInputRetentionDays === 0, 'retention policy schema must keep raw live input retention at 0 days');
+assert(retentionPolicySchema?.summary?.redactedObservationRetentionDays <= 7, 'retention policy schema observation ceiling must be <= 7 days');
+assert(retentionPolicySchema?.summary?.redactedResultRetentionDays <= 7, 'retention policy schema result ceiling must be <= 7 days');
+assert(retentionPolicySchema?.summary?.aggregateScorecardRetentionDays <= 90, 'retention policy schema aggregate scorecard ceiling must be <= 90 days');
+assert(retentionPolicySchema?.summary?.rawContentPersisted === false, 'retention policy schema must not persist raw content');
+assert(retentionPolicySchema?.summary?.retentionSchedulerImplemented === false, 'retention policy schema must not implement retention scheduler');
+assert(retentionPolicySchema?.summary?.deletionImplemented === false, 'retention policy schema must not implement deletion');
+assert(retentionPolicySchema?.summary?.liveObserverImplemented === false, 'retention policy schema must not implement live observer');
+assert(retentionPolicySchema?.summary?.toolExecutionImplemented === false, 'retention policy schema must not implement tool execution');
+assert(retentionPolicySchema?.summary?.memoryWriteImplemented === false, 'retention policy schema must not implement memory writes');
+assert(retentionPolicySchema?.summary?.configWriteImplemented === false, 'retention policy schema must not implement config writes');
+assert(retentionPolicySchema?.summary?.externalPublicationImplemented === false, 'retention policy schema must not implement external publication');
+assert(retentionPolicySchema?.summary?.authorizationImplemented === false, 'retention policy schema must not implement authorization');
+assert(retentionPolicySchema?.summary?.enforcementImplemented === false, 'retention policy schema must not implement enforcement');
+
+const retentionNegativeControls = readJson(path.join(packageRoot, 'evidence/retention-negative-controls.out.json'));
+assert(retentionNegativeControls?.summary?.verdict === 'pass', 'retention negative controls verdict must be pass');
+assert(retentionNegativeControls?.summary?.negativeControls >= 13, 'retention negative controls must cover at least 13 cases');
+assert(retentionNegativeControls?.summary?.rejectedNegativeControls === retentionNegativeControls?.summary?.negativeControls, 'retention negative controls must reject every negative control');
+assert(retentionNegativeControls?.summary?.unexpectedPasses === 0, 'retention negative controls must have zero unexpected passes');
+assert(retentionNegativeControls?.summary?.unexpectedRejects === 0, 'retention negative controls must have zero unexpected rejects');
+for (const reasonCode of ['RETENTION_RAW_LIVE_INPUT_MUST_BE_ZERO_DAY', 'RETENTION_CEILING_EXCEEDED', 'RETENTION_UNKNOWN_CLASS_REJECTED', 'RETENTION_RAW_CONTENT_PERSISTED', 'RETENTION_REDACTION_STATUS_REQUIRED', 'RETENTION_AGGREGATE_ONLY_REQUIRED', 'RETENTION_PUBLIC_EVIDENCE_MUST_BE_SYNTHETIC_OR_NON_SENSITIVE', 'RETENTION_SCHEDULER_FORBIDDEN', 'RETENTION_DELETION_IMPLEMENTATION_FORBIDDEN', 'RETENTION_LIVE_OBSERVER_FORBIDDEN', 'RETENTION_RUNTIME_INTEGRATION_FORBIDDEN']) {
+  assert(retentionNegativeControls?.summary?.coveredReasonCodes?.includes(reasonCode), `retention negative controls must cover ${reasonCode}`);
+}
+assert(retentionNegativeControls?.summary?.rawLiveInputRetentionDays === 0, 'retention negative controls must keep raw live input retention at 0 days');
+assert(retentionNegativeControls?.summary?.rawContentPersisted === false, 'retention negative controls must not persist raw content');
+assert(retentionNegativeControls?.summary?.retentionSchedulerImplemented === false, 'retention negative controls must not implement retention scheduler');
+assert(retentionNegativeControls?.summary?.deletionImplemented === false, 'retention negative controls must not implement deletion');
+assert(retentionNegativeControls?.summary?.liveObserverImplemented === false, 'retention negative controls must not implement live observer');
+assert(retentionNegativeControls?.summary?.toolExecutionImplemented === false, 'retention negative controls must not implement tool execution');
+assert(retentionNegativeControls?.summary?.memoryWriteImplemented === false, 'retention negative controls must not implement memory writes');
+assert(retentionNegativeControls?.summary?.configWriteImplemented === false, 'retention negative controls must not implement config writes');
+assert(retentionNegativeControls?.summary?.externalPublicationImplemented === false, 'retention negative controls must not implement external publication');
+assert(retentionNegativeControls?.summary?.authorizationImplemented === false, 'retention negative controls must not implement authorization');
+assert(retentionNegativeControls?.summary?.enforcementImplemented === false, 'retention negative controls must not implement enforcement');
 
 const redactionReviewRecordSchema = readJson(path.join(packageRoot, 'evidence/redaction-review-record-schema.out.json'));
 assert(redactionReviewRecordSchema?.summary?.verdict === 'pass', 'redaction review record schema verdict must be pass');

@@ -16,7 +16,7 @@ Run release gates from the package directory:
 
 ```bash
 cd implementation/synaptic-mesh-shadow-v0
-npm run release:check -- --target v0.1.16
+npm run release:check -- --target v0.1.17
 ```
 
 `release:check` verifies the manifest/docs package version, reports the explicit `releaseTarget`, reports the local Git `currentPublishedRelease` when available, blocks release-candidate validation against an already-existing tag unless the current checkout is exactly that tagged commit, and runs the release-critical local gates. If `--target` is omitted, it defaults to the manifest version and prints a warning so release PRs do not silently inherit a stale target.
@@ -54,6 +54,10 @@ It runs:
 - `npm run test:manual-bundle-parser-evidence-replay`
 - `npm run test:manual-decisiontrace-live-shadow-replay`
 - `npm run test:manual-observation-scorecard-thresholds`
+- `npm run test:redaction-policy-schema`
+- `npm run test:redaction-scanner-minimal`
+- `npm run test:retention-policy-schema`
+- `npm run test:retention-negative-controls`
 - `npm run test:redaction-review-record-schema`
 - `npm run test:real-redacted-handoff-pack`
 - `npm run test:real-redacted-handoff-replay-gate`
@@ -90,6 +94,10 @@ For auditability, keep the individual gate names visible in PR notes even when `
 - Confirm expanded real-redacted manual dry-run pilot evidence covers at least 12 already-redacted cases, one redaction review record per case, all record-only outputs, zero mismatches, zero forbidden effects, zero capability true count, zero false permits, zero false compacts, zero boundary loss, and no raw/private/secret/tool/memory/config/approval persistence.
 - Confirm manual dry-run pilot reproducibility evidence covers at least 12 already-redacted cases, two fresh runs per case, one canonical output comparison per case, zero return/write mismatches, zero normalized output mismatches, zero DecisionTrace hash mismatches, zero scorecard mismatches, zero committed evidence mismatches, zero input mutations, all record-only outputs, zero forbidden effects, zero capability true count, zero false permits, zero false compacts, zero boundary loss, and no raw/private/secret/tool/memory/config/approval persistence.
 - Confirm manual dry-run pilot reproducibility negative controls cover at least 8 intentionally perturbed controls, reject every control, have zero unexpected accepts, have zero expected reason-code misses, and cover normalized output mismatch, committed evidence mismatch, DecisionTrace hash mismatch, scorecard mismatch, input mutation, forbidden effect, capability true, and boundary-loss detections.
+- Confirm redaction policy schema evidence covers 9 sensitive field classes, requires the 7 public output flags, and keeps raw/secret/private/tool/memory/config/approval/long-prompt/unknown-sensitive persistence false.
+- Confirm minimal redaction scanner evidence rejects raw content, secret-like values, private paths, tool output, memory text, config text, approval text, long raw prompts, and unknown sensitive fields while producing the compact pass output with all public persistence flags false.
+- Confirm retention policy schema evidence keeps raw live input retention at 0 days, redacted observation/result ceilings at or below 7 days, aggregate scorecard ceiling at or below 90 days, and scheduler/deletion implementation false.
+- Confirm retention negative controls reject over-retention, unknown classes, raw persistence, missing redaction status, non-aggregate scorecards, non-synthetic public evidence, scheduler/deletion/live-observer/runtime attempts, and do not implement deletion or a scheduler.
 
 ## CI expectations
 
