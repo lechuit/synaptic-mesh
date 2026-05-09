@@ -1,0 +1,310 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/lechuit/synaptic-mesh/schemas/retention-policy.schema.json",
+  "title": "RetentionPolicy executable gate contract",
+  "description": "Offline policy schema for retention metadata gates over already-redacted local-shadow evidence. This schema defines retention ceilings and refusal classes only; it does not implement deletion, scheduling, live observation, runtime integration, watcher/daemon behavior, tool execution, memory/config writes, external publication, approval paths, blocking/allowing, authorization, or enforcement.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "policyId",
+    "mode",
+    "retentionGate",
+    "defaultAction",
+    "artifactClasses",
+    "rawLiveInputRetentionDays",
+    "redactedObservationRetentionDays",
+    "redactedResultRetentionDays",
+    "aggregateScorecardRetentionDays",
+    "publicReleaseEvidenceRetention",
+    "rawContentPersisted",
+    "retentionSchedulerImplemented",
+    "deletionImplemented",
+    "boundary"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "enum": [
+        "retention-policy-v0"
+      ]
+    },
+    "policyId": {
+      "type": "string",
+      "pattern": "^retp_[a-z0-9_\\-]+$"
+    },
+    "mode": {
+      "type": "string",
+      "enum": [
+        "manual_offline_retention_policy_schema_only"
+      ]
+    },
+    "retentionGate": {
+      "type": "string",
+      "enum": [
+        "validate_metadata_retention_ceiling"
+      ]
+    },
+    "defaultAction": {
+      "type": "string",
+      "enum": [
+        "reject_unknown_retention_class"
+      ]
+    },
+    "artifactClasses": {
+      "type": "array",
+      "minItems": 5,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": [
+          "raw_live_input",
+          "redacted_observation_record",
+          "redacted_result_record",
+          "aggregate_scorecard",
+          "public_release_evidence"
+        ]
+      },
+      "allOf": [
+        {
+          "contains": {
+            "const": "raw_live_input"
+          }
+        },
+        {
+          "contains": {
+            "const": "redacted_observation_record"
+          }
+        },
+        {
+          "contains": {
+            "const": "redacted_result_record"
+          }
+        },
+        {
+          "contains": {
+            "const": "aggregate_scorecard"
+          }
+        },
+        {
+          "contains": {
+            "const": "public_release_evidence"
+          }
+        }
+      ]
+    },
+    "rawLiveInputRetentionDays": {
+      "type": "integer",
+      "enum": [
+        0
+      ]
+    },
+    "redactedObservationRetentionDays": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 7
+    },
+    "redactedResultRetentionDays": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 7
+    },
+    "aggregateScorecardRetentionDays": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 90
+    },
+    "publicReleaseEvidenceRetention": {
+      "type": "string",
+      "enum": [
+        "indefinite_if_synthetic_or_non_sensitive"
+      ]
+    },
+    "rawContentPersisted": {
+      "type": "boolean",
+      "enum": [
+        false
+      ]
+    },
+    "retentionSchedulerImplemented": {
+      "type": "boolean",
+      "enum": [
+        false
+      ]
+    },
+    "deletionImplemented": {
+      "type": "boolean",
+      "enum": [
+        false
+      ]
+    },
+    "boundary": {
+      "type": "array",
+      "minItems": 20,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": [
+          "manual_offline_only",
+          "already_redacted_or_placeholder_fixtures_only",
+          "retention_metadata_gate_only",
+          "raw_live_inputs_zero_day_do_not_persist",
+          "redacted_observations_short_local_window",
+          "redacted_results_short_local_window",
+          "aggregate_scorecards_metadata_only",
+          "public_release_evidence_synthetic_non_sensitive_only",
+          "unknown_retention_classes_rejected",
+          "no_raw_content_persistence",
+          "no_retention_scheduler",
+          "no_deletion_implementation",
+          "no_live_observation",
+          "no_runtime",
+          "no_daemon",
+          "no_watcher",
+          "no_adapter_integration",
+          "no_tool_execution",
+          "no_memory_write",
+          "no_config_write",
+          "no_external_publication",
+          "no_approval_path",
+          "no_blocking",
+          "no_allowing",
+          "no_authorization",
+          "no_enforcement"
+        ]
+      },
+      "allOf": [
+        {
+          "contains": {
+            "const": "manual_offline_only"
+          }
+        },
+        {
+          "contains": {
+            "const": "already_redacted_or_placeholder_fixtures_only"
+          }
+        },
+        {
+          "contains": {
+            "const": "retention_metadata_gate_only"
+          }
+        },
+        {
+          "contains": {
+            "const": "raw_live_inputs_zero_day_do_not_persist"
+          }
+        },
+        {
+          "contains": {
+            "const": "redacted_observations_short_local_window"
+          }
+        },
+        {
+          "contains": {
+            "const": "redacted_results_short_local_window"
+          }
+        },
+        {
+          "contains": {
+            "const": "aggregate_scorecards_metadata_only"
+          }
+        },
+        {
+          "contains": {
+            "const": "public_release_evidence_synthetic_non_sensitive_only"
+          }
+        },
+        {
+          "contains": {
+            "const": "unknown_retention_classes_rejected"
+          }
+        },
+        {
+          "contains": {
+            "const": "no_raw_content_persistence"
+          }
+        },
+        {
+          "contains": {
+            "const": "no_retention_scheduler"
+          }
+        },
+        {
+          "contains": {
+            "const": "no_deletion_implementation"
+          }
+        },
+        {
+          "contains": {
+            "const": "no_live_observation"
+          }
+        },
+        {
+          "contains": {
+            "const": "no_runtime"
+          }
+        },
+        {
+          "contains": {
+            "const": "no_daemon"
+          }
+        },
+        {
+          "contains": {
+            "const": "no_watcher"
+          }
+        },
+        {
+          "contains": {
+            "const": "no_adapter_integration"
+          }
+        },
+        {
+          "contains": {
+            "const": "no_tool_execution"
+          }
+        },
+        {
+          "contains": {
+            "const": "no_memory_write"
+          }
+        },
+        {
+          "contains": {
+            "const": "no_config_write"
+          }
+        },
+        {
+          "contains": {
+            "const": "no_external_publication"
+          }
+        },
+        {
+          "contains": {
+            "const": "no_approval_path"
+          }
+        },
+        {
+          "contains": {
+            "const": "no_blocking"
+          }
+        },
+        {
+          "contains": {
+            "const": "no_allowing"
+          }
+        },
+        {
+          "contains": {
+            "const": "no_authorization"
+          }
+        },
+        {
+          "contains": {
+            "const": "no_enforcement"
+          }
+        }
+      ]
+    }
+  }
+}
