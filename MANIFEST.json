@@ -270,6 +270,11 @@
       "sha256": "f03877eea989796760234a32178ed3cba5b5df09980eccfc7375e9e448d1cd86"
     },
     {
+      "path": "docs/redaction-policy.md",
+      "bytes": 997,
+      "sha256": "c7cfc9d4bffe4d5ee22ea48742a508c8a14bf16e8197b81902e94f1599c18513"
+    },
+    {
       "path": "docs/redaction-review-records.md",
       "bytes": 3321,
       "sha256": "54a9a0aea4a0b9ac0b2a05979f630defebbeab549baa7346f141c456cf9fd8f2"
@@ -660,6 +665,11 @@
       "sha256": "e7049c7647bf29a2445e0841614c8aefa88382b23efe0c22f30ec27ca56d627e"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/redaction-policy-schema.out.json",
+      "bytes": 3506,
+      "sha256": "b05982ee1b5da33136d83eca3b02e5a630c8f0ae53ab7d74349cb60a76241b4a"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/redaction-review-record-schema.out.json",
       "bytes": 4122,
       "sha256": "515453ba5aaa845bb629f45ee4d375480c3e6af94ede5976bac9ffa88b91c3e6"
@@ -930,6 +940,11 @@
       "sha256": "2c20850dbcfb5e5fc6c578d23309d9541c2826072fd1faf617366fea624d57f6"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/fixtures/redaction-policy.json",
+      "bytes": 1766,
+      "sha256": "922aa2073d5c9be17a16cec497ba673afb724e439941bdb41ef99c725022278c"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/fixtures/redaction-review-records.json",
       "bytes": 4361,
       "sha256": "8b0faf7d68eda274353f9a5117298f4849b18194ba312a53ef921289c8c65277"
@@ -946,8 +961,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/package.json",
-      "bytes": 9961,
-      "sha256": "b8a1712a9b639afa1c1ba9857460870d9551f91d473c5dd6722b34171b27c640"
+      "bytes": 10089,
+      "sha256": "afbf4faa9fa57fa2811fd0bc3d8bb1cbd4655bb97d5cc90f8a4aee492be0e721"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/action-context-packet.mjs",
@@ -1253,6 +1268,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/tests/receiver-policy-adapter-contracts.mjs",
       "bytes": 31515,
       "sha256": "196a8b073ef8e9177126a5dc60cd075bdbce333b57a535d4260d371127e9929f"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/redaction-policy-schema.mjs",
+      "bytes": 8402,
+      "sha256": "b596ce886d2d1cfda183a84bec8fba67e6d0396b89f2758ddce573311427d620"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/redaction-review-record-schema.mjs",
@@ -1703,6 +1723,11 @@
       "path": "schemas/receipt.schema.json",
       "bytes": 4129,
       "sha256": "a5a129a6925ec72b0712f69deff8bbf3cc787c426b16ed735cf21ede94761347"
+    },
+    {
+      "path": "schemas/redaction-policy.schema.json",
+      "bytes": 8797,
+      "sha256": "d0e23c11b9fb70e0e2e0e0c5f87c1b1926eb4b09c0527b314a5ffe2da89931d3"
     },
     {
       "path": "schemas/redaction-review-record.schema.json",
