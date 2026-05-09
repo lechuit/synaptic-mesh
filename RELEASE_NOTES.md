@@ -6,7 +6,7 @@ Status: manual dry-run pilot reproducibility release candidate / public review p
 
 - Added a manual dry-run pilot reproducibility gate over the 12-case expanded real-redacted pilot.
 - The gate runs each already-redacted pilot input twice, compares the two fresh outputs, and compares the fresh output against committed canonical evidence.
-- The gate verifies zero return/write mismatches, zero normalized output mismatches, zero committed evidence mismatches, and zero input mutations.
+- The gate verifies zero return/write mismatches, zero normalized output mismatches, zero DecisionTrace hash mismatches, zero scorecard mismatches, zero committed evidence mismatches, and zero input mutations.
 - The gate preserves strict record-only behavior and does not add live/runtime behavior.
 - Added `test:manual-dry-run-cli-pilot-reproducibility` and wired it into `check` and release validation.
 - Preserved the strict boundary: manual invocation only, explicit local file input only, already-redacted bundle only, required redaction review record, local evidence output only, `record_only` result only.
@@ -21,6 +21,8 @@ Status: manual dry-run pilot reproducibility release candidate / public review p
 - Return/write mismatches: 0.
 - Normalized output mismatches: 0.
 - Committed evidence mismatches: 0.
+- DecisionTrace hash mismatches: 0.
+- Scorecard mismatches: 0.
 - Input mutations: 0.
 - Forbidden effects: 0.
 - Capability true count: 0.
@@ -48,7 +50,7 @@ The release package still includes earlier local-shadow gates from the v0.1.x li
 - Manual dry-run CLI real-redacted pilot: pass 6/6, record-only 6, validation errors 0, forbidden effects 0, capabilityTrue 0, falsePermit 0, falseCompact 0, boundaryLoss 0.
 - Manual dry-run CLI pilot failure catalog: pass 14/14 expected rejects, unexpected accepts 0, success evidence for rejected cases 0, forbidden effects 0, capabilityTrue 0.
 - Manual dry-run CLI expanded real-redacted pilot: pass 12/12, redaction review records 12, record-only 12, validation errors 0, mismatches 0, forbidden effects 0, capabilityTrue 0, falsePermit 0, falseCompact 0, boundaryLoss 0, raw/private/secret/tool/memory/config/approval persistence false.
-- Manual dry-run CLI pilot reproducibility: pass 12/12, two fresh runs per case, canonical outputs compared 12, return/write mismatches 0, normalized output mismatches 0, committed evidence mismatches 0, input mutations 0, forbidden effects 0, capabilityTrue 0, falsePermit 0, falseCompact 0, boundaryLoss 0.
+- Manual dry-run CLI pilot reproducibility: pass 12/12, two fresh runs per case, canonical outputs compared 12, return/write mismatches 0, normalized output mismatches 0, DecisionTrace hash mismatches 0, scorecard mismatches 0, committed evidence mismatches 0, input mutations 0, forbidden effects 0, capabilityTrue 0, falsePermit 0, falseCompact 0, boundaryLoss 0.
 - Real-redacted handoff pack: pass 3/3 manually curated real-redacted bundles, 3 redaction review records, validation errors 0, mismatch 0, raw/private/secret/tool/memory/config/approval persistence false, forbidden effects 0, mayBlock 0, mayAllow 0, capability attempts 0.
 - Real-redacted handoff replay gate: pass 3 traces → 3 observations + 3 record-only results, validation errors 0, mismatch 0, falsePermit 0, falseCompact 0, boundaryLoss 0, forbidden effects detected 0, mayBlock 0, mayAllow 0, capabilityTrue 0.
 - Real-redacted adversarial coverage: pass 6 manually reviewed metadata/control cases, route counts `request_full_receipt: 1`, `request_policy_refresh: 1`, `ask_human: 3`, `block: 1`, validation errors 0, falsePermit 0, falseCompact 0, boundaryLoss 0, forbidden effects detected 0, mayBlock 0, mayAllow 0, capabilityTrue 0.

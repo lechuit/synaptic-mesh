@@ -661,6 +661,8 @@ assert(manualDryRunPilotReproducibility?.recordOnly === manualDryRunPilotReprodu
 assert(manualDryRunPilotReproducibility?.returnWriteMismatches === 0, 'manual dry-run CLI pilot reproducibility must have zero return/write mismatches');
 assert(manualDryRunPilotReproducibility?.normalizedOutputMismatches === 0, 'manual dry-run CLI pilot reproducibility must have zero normalized output mismatches');
 assert(manualDryRunPilotReproducibility?.committedEvidenceMismatches === 0, 'manual dry-run CLI pilot reproducibility must have zero committed evidence mismatches');
+assert(manualDryRunPilotReproducibility?.decisionTraceHashMismatches === 0, 'manual dry-run CLI pilot reproducibility must have zero DecisionTrace hash mismatches');
+assert(manualDryRunPilotReproducibility?.scorecardMismatches === 0, 'manual dry-run CLI pilot reproducibility must have zero scorecard mismatches');
 assert(manualDryRunPilotReproducibility?.inputMutations === 0, 'manual dry-run CLI pilot reproducibility must not mutate inputs');
 assert(manualDryRunPilotReproducibility?.forbiddenEffects === 0, 'manual dry-run CLI pilot reproducibility must have zero forbidden effects');
 assert(manualDryRunPilotReproducibility?.capabilityTrueCount === 0, 'manual dry-run CLI pilot reproducibility must keep capabilities false');

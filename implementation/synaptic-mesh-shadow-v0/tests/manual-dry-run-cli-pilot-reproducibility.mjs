@@ -35,8 +35,14 @@ const boundary = [
   'no_enforcement',
 ];
 
+function canonicalJson(value) {
+  if (Array.isArray(value)) return `[${value.map(canonicalJson).join(',')}]`;
+  if (value && typeof value === 'object') return `{${Object.keys(value).sort().map((key) => `${JSON.stringify(key)}:${canonicalJson(value[key])}`).join(',')}}`;
+  return JSON.stringify(value);
+}
+
 function sha256(value) {
-  return `sha256:${createHash('sha256').update(typeof value === 'string' ? value : JSON.stringify(value)).digest('hex')}`;
+  return `sha256:${createHash('sha256').update(typeof value === 'string' ? value : canonicalJson(value)).digest('hex')}`;
 }
 
 function normalizeOutput(value) {
@@ -46,6 +52,8 @@ function normalizeOutput(value) {
 const rows = [];
 let normalizedOutputMismatches = 0;
 let committedEvidenceMismatches = 0;
+let decisionTraceHashMismatches = 0;
+let scorecardMismatches = 0;
 let returnWriteMismatches = 0;
 let forbiddenEffects = 0;
 let capabilityTrueCount = 0;
@@ -88,10 +96,17 @@ try {
       && JSON.stringify(normalizeOutput(secondResult)) === JSON.stringify(normalizeOutput(secondWritten));
     const firstSecondMatch = JSON.stringify(normalizeOutput(firstWritten)) === JSON.stringify(normalizeOutput(secondWritten));
     const committedMatch = JSON.stringify(normalizeOutput(firstWritten)) === JSON.stringify(normalizeOutput(canonicalWritten));
+    const decisionTraceHashMatch = firstWritten.liveShadowObservation.decisionTraceHash === secondWritten.liveShadowObservation.decisionTraceHash
+      && firstWritten.liveShadowObservation.decisionTraceHash === canonicalWritten.liveShadowObservation.decisionTraceHash
+      && firstWritten.liveShadowObservation.decisionTraceHash === sha256(normalizeOutput(firstWritten.decisionTrace));
+    const scorecardMatch = JSON.stringify(normalizeOutput(firstWritten.scorecardRow)) === JSON.stringify(normalizeOutput(secondWritten.scorecardRow))
+      && JSON.stringify(normalizeOutput(firstWritten.scorecardRow)) === JSON.stringify(normalizeOutput(canonicalWritten.scorecardRow));
 
     if (!returnWriteMatch) returnWriteMismatches += 1;
     if (!firstSecondMatch) normalizedOutputMismatches += 1;
     if (!committedMatch) committedEvidenceMismatches += 1;
+    if (!decisionTraceHashMatch) decisionTraceHashMismatches += 1;
+    if (!scorecardMatch) scorecardMismatches += 1;
 
     assert.equal(firstWritten.manualDryRun, 'pass');
     assert.equal(firstWritten.recordOnly, true);
@@ -134,12 +149,22 @@ try {
       input: `implementation/synaptic-mesh-shadow-v0/${inputRel}`,
       canonicalOutput: `implementation/synaptic-mesh-shadow-v0/${canonicalRel}`,
       target: firstWritten.target,
+      normalizedOutputHash: sha256(normalizeOutput(firstWritten)),
       firstRunHash: sha256(normalizeOutput(firstWritten)),
       secondRunHash: sha256(normalizeOutput(secondWritten)),
       committedOutputHash: sha256(normalizeOutput(canonicalWritten)),
+      decisionTraceHash: firstWritten.liveShadowObservation.decisionTraceHash,
+      recomputedDecisionTraceHash: sha256(normalizeOutput(firstWritten.decisionTrace)),
+      secondDecisionTraceHash: secondWritten.liveShadowObservation.decisionTraceHash,
+      committedDecisionTraceHash: canonicalWritten.liveShadowObservation.decisionTraceHash,
+      scorecardRowHash: sha256(normalizeOutput(firstWritten.scorecardRow)),
+      secondScorecardRowHash: sha256(normalizeOutput(secondWritten.scorecardRow)),
+      committedScorecardRowHash: sha256(normalizeOutput(canonicalWritten.scorecardRow)),
       returnWriteMatch,
       firstSecondMatch,
       committedMatch,
+      decisionTraceHashMatch,
+      scorecardMatch,
       inputMutated: inputAfter !== inputBefore,
       manualDryRun: firstWritten.manualDryRun,
       recordOnly: firstWritten.recordOnly,
@@ -172,6 +197,8 @@ assert.equal(recordOnly, caseCount);
 assert.equal(returnWriteMismatches, 0);
 assert.equal(normalizedOutputMismatches, 0);
 assert.equal(committedEvidenceMismatches, 0);
+assert.equal(decisionTraceHashMismatches, 0);
+assert.equal(scorecardMismatches, 0);
 assert.equal(rows.filter((row) => row.inputMutated).length, 0);
 assert.equal(forbiddenEffects, 0);
 assert.equal(capabilityTrueCount, 0);
@@ -193,6 +220,8 @@ const output = {
   returnWriteMismatches,
   normalizedOutputMismatches,
   committedEvidenceMismatches,
+  decisionTraceHashMismatches,
+  scorecardMismatches,
   inputMutations: rows.filter((row) => row.inputMutated).length,
   forbiddenEffects,
   capabilityTrueCount,
