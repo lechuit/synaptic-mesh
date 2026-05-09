@@ -1,6 +1,6 @@
 # Synaptic Mesh v0.1.16
 
-Status: real-redacted manual dry-run pilot / pre-live shadow readiness release candidate `v0.1.16`; **not runtime-ready**; **not production/canary/enforcement-ready**.
+Status: real-redacted manual dry-run pilot / pre-live shadow readiness public review release `v0.1.16`; **not runtime-ready**; **not production/canary/enforcement-ready**.
 
 ## What this is
 

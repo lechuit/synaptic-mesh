@@ -1,6 +1,6 @@
 # Release Notes — Synaptic Mesh v0.1.16
 
-Status: manual dry-run pilot reproducibility release candidate / public review package update. Not runtime-ready; not production/canary/enforcement-ready.
+Status: manual dry-run pilot reproducibility public review package update. Not runtime-ready; not production/canary/enforcement-ready.
 
 ## Highlights since v0.1.15
 
