@@ -37,6 +37,8 @@ export function validateSchemaValue(schema, value, path = '$') {
   }
   if (schema.const !== undefined && value !== schema.const) errors.push(`${path}: const mismatch`);
   if (schema.enum && !schema.enum.includes(value)) errors.push(`${path}: enum mismatch`);
+  if (typeof value === 'number' && schema.minimum !== undefined && value < schema.minimum) errors.push(`${path}: below minimum`);
+  if (typeof value === 'number' && schema.maximum !== undefined && value > schema.maximum) errors.push(`${path}: above maximum`);
   if (schema.pattern && typeof value === 'string' && !(new RegExp(schema.pattern).test(value))) errors.push(`${path}: pattern mismatch`);
   if (schema.allOf) {
     for (const [index, candidate] of schema.allOf.entries()) {
