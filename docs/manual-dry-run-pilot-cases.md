@@ -79,6 +79,26 @@ Expected aggregate result:
 
 This gate is still local evidence only. It does not fetch, capture, observe, watch, ingest, approve, block, allow, authorize, enforce, publish, or write memory/config.
 
+## Reproducibility negative controls
+
+The negative-controls gate mutates in-memory copies of already-redacted/canonical evidence to prove the reproducibility comparator fails closed. It does not modify source fixtures and does not persist the mutated controls as canonical pilot evidence.
+
+Expected aggregate result:
+
+```json
+{
+  "pilotReproducibilityNegativeControls": "pass",
+  "negativeControls": 8,
+  "expectedRejects": 8,
+  "unexpectedAccepts": 0,
+  "expectedReasonCodeMisses": 0
+}
+```
+
+Covered reason codes include `NORMALIZED_OUTPUT_MISMATCH`, `COMMITTED_EVIDENCE_MISMATCH`, `DECISION_TRACE_HASH_MISMATCH`, `SCORECARD_MISMATCH`, `INPUT_MUTATION_DETECTED`, `FORBIDDEN_EFFECT_DETECTED`, `CAPABILITY_TRUE_DETECTED`, and `BOUNDARY_LOSS_DETECTED`.
+
+These controls are comparator/evidence tests only. They do not fetch, capture, observe, watch, ingest, approve, block, allow, authorize, enforce, publish, or write memory/config.
+
 ## Classifier route vs CLI effect
 
 A classifier route label, including a future `block` route if one is present in pilot evidence, is not a CLI action.

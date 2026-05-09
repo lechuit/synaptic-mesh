@@ -1,0 +1,267 @@
+{
+  "pilotReproducibilityNegativeControls": "pass",
+  "artifact": "T-synaptic-mesh-manual-dry-run-cli-pilot-reproducibility-negative-controls-v0",
+  "timestamp": "2026-05-09T00:12:00.000Z",
+  "sourceCanonicalEvidence": "implementation/synaptic-mesh-shadow-v0/evidence/manual-dry-run-cli.real-redacted-pilot-expanded-001.out.json",
+  "negativeControls": 8,
+  "expectedRejects": 8,
+  "unexpectedAccepts": 0,
+  "expectedReasonCodeMisses": 0,
+  "coveredReasonCodes": [
+    "BOUNDARY_LOSS_DETECTED",
+    "CAPABILITY_TRUE_DETECTED",
+    "COMMITTED_EVIDENCE_MISMATCH",
+    "DECISION_TRACE_HASH_MISMATCH",
+    "FORBIDDEN_EFFECT_DETECTED",
+    "INPUT_MUTATION_DETECTED",
+    "NORMALIZED_OUTPUT_MISMATCH",
+    "SCORECARD_MISMATCH"
+  ],
+  "summary": {
+    "safetyClaimScope": "manual_dry_run_cli_pilot_reproducibility_negative_controls_local_evidence_only_not_live_observer_not_runtime_not_authorization",
+    "liveObserverImplemented": false,
+    "runtimeIntegrationImplemented": false,
+    "toolExecutionImplemented": false,
+    "toolExecutionAllowed": false,
+    "memoryWriteImplemented": false,
+    "configWriteImplemented": false,
+    "publicationImplemented": false,
+    "approvalPathImplemented": false,
+    "blockingImplemented": false,
+    "allowingImplemented": false,
+    "authorizationImplemented": false,
+    "enforcementImplemented": false
+  },
+  "rows": [
+    {
+      "controlId": "neg-001-second-output-normalized-mismatch",
+      "expectedReasonCodes": [
+        "NORMALIZED_OUTPUT_MISMATCH"
+      ],
+      "actualReasonCodes": [
+        "NORMALIZED_OUTPUT_MISMATCH"
+      ],
+      "rejected": true,
+      "matchedExpectedReasonCodes": true,
+      "firstRunHash": "sha256:5b27c2292f82b7d9f9cfcb0e6d0ecdc230f26639d153e1f6566a45b72ba2981b",
+      "secondRunHash": "sha256:dfbb3d1b04bd8853ab2f5adaca98a12019e2cfc99980c02cc4fc4604b4110d83",
+      "committedOutputHash": "sha256:5b27c2292f82b7d9f9cfcb0e6d0ecdc230f26639d153e1f6566a45b72ba2981b",
+      "decisionTraceHash": "sha256:a95b146ac71c0b877bdb7ff87ad4251d9b6fbc93f2efce94aa71c1a43d39aecd",
+      "recomputedDecisionTraceHash": "sha256:a95b146ac71c0b877bdb7ff87ad4251d9b6fbc93f2efce94aa71c1a43d39aecd",
+      "scorecardRowHash": "sha256:b74fc6c2988e9afbd5ce1d1dc177f8179ed4bc5f37413ecf2a8066bead59d6c1",
+      "firstSecondMatch": false,
+      "committedMatch": true,
+      "decisionTraceHashMatch": true,
+      "scorecardMatch": true,
+      "inputMutated": false,
+      "forbiddenEffects": 0,
+      "capabilityTrueCount": 0
+    },
+    {
+      "controlId": "neg-002-committed-evidence-mismatch",
+      "expectedReasonCodes": [
+        "COMMITTED_EVIDENCE_MISMATCH"
+      ],
+      "actualReasonCodes": [
+        "COMMITTED_EVIDENCE_MISMATCH"
+      ],
+      "rejected": true,
+      "matchedExpectedReasonCodes": true,
+      "firstRunHash": "sha256:5b27c2292f82b7d9f9cfcb0e6d0ecdc230f26639d153e1f6566a45b72ba2981b",
+      "secondRunHash": "sha256:5b27c2292f82b7d9f9cfcb0e6d0ecdc230f26639d153e1f6566a45b72ba2981b",
+      "committedOutputHash": "sha256:81541fc0533cc220de7ba729c8a32b3e74a96a76546f292229cef8fdd96a9b84",
+      "decisionTraceHash": "sha256:a95b146ac71c0b877bdb7ff87ad4251d9b6fbc93f2efce94aa71c1a43d39aecd",
+      "recomputedDecisionTraceHash": "sha256:a95b146ac71c0b877bdb7ff87ad4251d9b6fbc93f2efce94aa71c1a43d39aecd",
+      "scorecardRowHash": "sha256:b74fc6c2988e9afbd5ce1d1dc177f8179ed4bc5f37413ecf2a8066bead59d6c1",
+      "firstSecondMatch": true,
+      "committedMatch": false,
+      "decisionTraceHashMatch": true,
+      "scorecardMatch": true,
+      "inputMutated": false,
+      "forbiddenEffects": 0,
+      "capabilityTrueCount": 0
+    },
+    {
+      "controlId": "neg-003-decisiontrace-hash-mismatch",
+      "expectedReasonCodes": [
+        "DECISION_TRACE_HASH_MISMATCH"
+      ],
+      "actualReasonCodes": [
+        "NORMALIZED_OUTPUT_MISMATCH",
+        "COMMITTED_EVIDENCE_MISMATCH",
+        "DECISION_TRACE_HASH_MISMATCH"
+      ],
+      "rejected": true,
+      "matchedExpectedReasonCodes": true,
+      "firstRunHash": "sha256:8eaf4dde4a58c532c575ecb93522f45dfa16861862f773bf387f8c38f197c77a",
+      "secondRunHash": "sha256:5b27c2292f82b7d9f9cfcb0e6d0ecdc230f26639d153e1f6566a45b72ba2981b",
+      "committedOutputHash": "sha256:5b27c2292f82b7d9f9cfcb0e6d0ecdc230f26639d153e1f6566a45b72ba2981b",
+      "decisionTraceHash": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+      "recomputedDecisionTraceHash": "sha256:a95b146ac71c0b877bdb7ff87ad4251d9b6fbc93f2efce94aa71c1a43d39aecd",
+      "scorecardRowHash": "sha256:b74fc6c2988e9afbd5ce1d1dc177f8179ed4bc5f37413ecf2a8066bead59d6c1",
+      "firstSecondMatch": false,
+      "committedMatch": false,
+      "decisionTraceHashMatch": false,
+      "scorecardMatch": true,
+      "inputMutated": false,
+      "forbiddenEffects": 0,
+      "capabilityTrueCount": 0
+    },
+    {
+      "controlId": "neg-004-scorecard-mismatch",
+      "expectedReasonCodes": [
+        "SCORECARD_MISMATCH"
+      ],
+      "actualReasonCodes": [
+        "NORMALIZED_OUTPUT_MISMATCH",
+        "COMMITTED_EVIDENCE_MISMATCH",
+        "SCORECARD_MISMATCH"
+      ],
+      "rejected": true,
+      "matchedExpectedReasonCodes": true,
+      "firstRunHash": "sha256:5b27c2292f82b7d9f9cfcb0e6d0ecdc230f26639d153e1f6566a45b72ba2981b",
+      "secondRunHash": "sha256:5ca0b56cfa97b7bd0a3f32364df8f30e2fb4471b0416a7b76a5818ce6979d2d2",
+      "committedOutputHash": "sha256:5ca0b56cfa97b7bd0a3f32364df8f30e2fb4471b0416a7b76a5818ce6979d2d2",
+      "decisionTraceHash": "sha256:a95b146ac71c0b877bdb7ff87ad4251d9b6fbc93f2efce94aa71c1a43d39aecd",
+      "recomputedDecisionTraceHash": "sha256:a95b146ac71c0b877bdb7ff87ad4251d9b6fbc93f2efce94aa71c1a43d39aecd",
+      "scorecardRowHash": "sha256:b74fc6c2988e9afbd5ce1d1dc177f8179ed4bc5f37413ecf2a8066bead59d6c1",
+      "firstSecondMatch": false,
+      "committedMatch": false,
+      "decisionTraceHashMatch": true,
+      "scorecardMatch": false,
+      "inputMutated": false,
+      "forbiddenEffects": 0,
+      "capabilityTrueCount": 0
+    },
+    {
+      "controlId": "neg-005-input-mutation",
+      "expectedReasonCodes": [
+        "INPUT_MUTATION_DETECTED"
+      ],
+      "actualReasonCodes": [
+        "INPUT_MUTATION_DETECTED"
+      ],
+      "rejected": true,
+      "matchedExpectedReasonCodes": true,
+      "firstRunHash": "sha256:5b27c2292f82b7d9f9cfcb0e6d0ecdc230f26639d153e1f6566a45b72ba2981b",
+      "secondRunHash": "sha256:5b27c2292f82b7d9f9cfcb0e6d0ecdc230f26639d153e1f6566a45b72ba2981b",
+      "committedOutputHash": "sha256:5b27c2292f82b7d9f9cfcb0e6d0ecdc230f26639d153e1f6566a45b72ba2981b",
+      "decisionTraceHash": "sha256:a95b146ac71c0b877bdb7ff87ad4251d9b6fbc93f2efce94aa71c1a43d39aecd",
+      "recomputedDecisionTraceHash": "sha256:a95b146ac71c0b877bdb7ff87ad4251d9b6fbc93f2efce94aa71c1a43d39aecd",
+      "scorecardRowHash": "sha256:b74fc6c2988e9afbd5ce1d1dc177f8179ed4bc5f37413ecf2a8066bead59d6c1",
+      "firstSecondMatch": true,
+      "committedMatch": true,
+      "decisionTraceHashMatch": true,
+      "scorecardMatch": true,
+      "inputMutated": true,
+      "forbiddenEffects": 0,
+      "capabilityTrueCount": 0
+    },
+    {
+      "controlId": "neg-006-forbidden-effect",
+      "expectedReasonCodes": [
+        "COMMITTED_EVIDENCE_MISMATCH",
+        "FORBIDDEN_EFFECT_DETECTED"
+      ],
+      "actualReasonCodes": [
+        "NORMALIZED_OUTPUT_MISMATCH",
+        "COMMITTED_EVIDENCE_MISMATCH",
+        "FORBIDDEN_EFFECT_DETECTED"
+      ],
+      "rejected": true,
+      "matchedExpectedReasonCodes": true,
+      "firstRunHash": "sha256:bb3833c69223194df8b9550e5a9a8f4600ae167a88758cd91e577ed44cc75a81",
+      "secondRunHash": "sha256:5b27c2292f82b7d9f9cfcb0e6d0ecdc230f26639d153e1f6566a45b72ba2981b",
+      "committedOutputHash": "sha256:5b27c2292f82b7d9f9cfcb0e6d0ecdc230f26639d153e1f6566a45b72ba2981b",
+      "decisionTraceHash": "sha256:a95b146ac71c0b877bdb7ff87ad4251d9b6fbc93f2efce94aa71c1a43d39aecd",
+      "recomputedDecisionTraceHash": "sha256:a95b146ac71c0b877bdb7ff87ad4251d9b6fbc93f2efce94aa71c1a43d39aecd",
+      "scorecardRowHash": "sha256:b74fc6c2988e9afbd5ce1d1dc177f8179ed4bc5f37413ecf2a8066bead59d6c1",
+      "firstSecondMatch": false,
+      "committedMatch": false,
+      "decisionTraceHashMatch": true,
+      "scorecardMatch": true,
+      "inputMutated": false,
+      "forbiddenEffects": 1,
+      "capabilityTrueCount": 0
+    },
+    {
+      "controlId": "neg-007-capability-true",
+      "expectedReasonCodes": [
+        "CAPABILITY_TRUE_DETECTED",
+        "COMMITTED_EVIDENCE_MISMATCH",
+        "SCORECARD_MISMATCH"
+      ],
+      "actualReasonCodes": [
+        "NORMALIZED_OUTPUT_MISMATCH",
+        "COMMITTED_EVIDENCE_MISMATCH",
+        "SCORECARD_MISMATCH",
+        "CAPABILITY_TRUE_DETECTED"
+      ],
+      "rejected": true,
+      "matchedExpectedReasonCodes": true,
+      "firstRunHash": "sha256:d1e2834eec54a7a1af329d83df13a665e6288467d563c19135fb0e6038d65689",
+      "secondRunHash": "sha256:5b27c2292f82b7d9f9cfcb0e6d0ecdc230f26639d153e1f6566a45b72ba2981b",
+      "committedOutputHash": "sha256:5b27c2292f82b7d9f9cfcb0e6d0ecdc230f26639d153e1f6566a45b72ba2981b",
+      "decisionTraceHash": "sha256:a95b146ac71c0b877bdb7ff87ad4251d9b6fbc93f2efce94aa71c1a43d39aecd",
+      "recomputedDecisionTraceHash": "sha256:a95b146ac71c0b877bdb7ff87ad4251d9b6fbc93f2efce94aa71c1a43d39aecd",
+      "scorecardRowHash": "sha256:b34fd66ae6447b84b5ab5343d7e9577780cfc5e2cfa21a4aabe3a66561c9a877",
+      "firstSecondMatch": false,
+      "committedMatch": false,
+      "decisionTraceHashMatch": true,
+      "scorecardMatch": false,
+      "inputMutated": false,
+      "forbiddenEffects": 0,
+      "capabilityTrueCount": 1
+    },
+    {
+      "controlId": "neg-008-boundary-loss",
+      "expectedReasonCodes": [
+        "COMMITTED_EVIDENCE_MISMATCH",
+        "DECISION_TRACE_HASH_MISMATCH",
+        "BOUNDARY_LOSS_DETECTED"
+      ],
+      "actualReasonCodes": [
+        "NORMALIZED_OUTPUT_MISMATCH",
+        "COMMITTED_EVIDENCE_MISMATCH",
+        "DECISION_TRACE_HASH_MISMATCH",
+        "BOUNDARY_LOSS_DETECTED"
+      ],
+      "rejected": true,
+      "matchedExpectedReasonCodes": true,
+      "firstRunHash": "sha256:9c7d752df75da297b66c90f5e36d07131c2cf79747b284f8bf84ab9a936ddff7",
+      "secondRunHash": "sha256:5b27c2292f82b7d9f9cfcb0e6d0ecdc230f26639d153e1f6566a45b72ba2981b",
+      "committedOutputHash": "sha256:5b27c2292f82b7d9f9cfcb0e6d0ecdc230f26639d153e1f6566a45b72ba2981b",
+      "decisionTraceHash": "sha256:a95b146ac71c0b877bdb7ff87ad4251d9b6fbc93f2efce94aa71c1a43d39aecd",
+      "recomputedDecisionTraceHash": "sha256:09f534047b96d3580a45eb76890aafa3ce16a768b4743177044940aa93f5f498",
+      "scorecardRowHash": "sha256:b74fc6c2988e9afbd5ce1d1dc177f8179ed4bc5f37413ecf2a8066bead59d6c1",
+      "firstSecondMatch": false,
+      "committedMatch": false,
+      "decisionTraceHashMatch": false,
+      "scorecardMatch": true,
+      "inputMutated": false,
+      "forbiddenEffects": 0,
+      "capabilityTrueCount": 0
+    }
+  ],
+  "boundary": [
+    "manual_invocation_only",
+    "explicit_local_file_input_only",
+    "already_redacted_bundle_only",
+    "redaction_review_record_required",
+    "local_evidence_output_only",
+    "record_only",
+    "no_live_observer",
+    "no_watcher",
+    "no_daemon",
+    "no_network",
+    "no_tool_execution",
+    "no_memory_write",
+    "no_config_write",
+    "no_publication",
+    "no_approval_path",
+    "no_blocking",
+    "no_allowing",
+    "no_authorization",
+    "no_enforcement"
+  ]
+}
