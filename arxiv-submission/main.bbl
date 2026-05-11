@@ -1,0 +1,138 @@
+\begin{thebibliography}{19}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[{Amazon Web Services}(2026)]{R17_AWS2026_AgentCoreMemory}
+{Amazon Web Services}.
+\newblock Add memory to your {Amazon Bedrock AgentCore} agent, 2026.
+\newblock URL
+  \url{https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/memory.html}.
+\newblock Accessed: 2026-05-07.
+
+\bibitem[Erman et~al.(1980)Erman, Hayes-Roth, Lesser, and
+  Reddy]{R10_Erman1980_HearsayII}
+Lee~D. Erman, Frederick Hayes-Roth, Victor~R. Lesser, and D.~Raj Reddy.
+\newblock The {Hearsay-II} speech-understanding system: Integrating knowledge
+  to resolve uncertainty.
+\newblock \emph{ACM Computing Surveys}, 12\penalty0 (2):\penalty0 213--253,
+  1980.
+\newblock \doi{10.1145/356810.356816}.
+
+\bibitem[Ferraiolo and Kuhn(1992)]{R03_FerraioloKuhn1992_RBAC}
+David~F. Ferraiolo and D.~Richard Kuhn.
+\newblock Role-based access controls.
+\newblock In \emph{15th National Computer Security Conference}, pages 554--563,
+  1992.
+
+\bibitem[Gao et~al.(2023)Gao, Xiong, Gao, Jia, Pan,
+  et~al.]{R02_Gao2023_RAGSurvey}
+Yunfan Gao, Yun Xiong, Xinyu Gao, Kangxiang Jia, Jinliu Pan, et~al.
+\newblock Retrieval-augmented generation for large language models: A survey,
+  2023.
+
+\bibitem[{Google Cloud}(2026)]{R18_GoogleCloud2026_MemoryBank}
+{Google Cloud}.
+\newblock Agent platform memory bank, 2026.
+\newblock URL
+  \url{https://docs.cloud.google.com/gemini-enterprise-agent-platform/scale/memory-bank}.
+\newblock Accessed: 2026-05-07.
+
+\bibitem[Hu et~al.(2014)Hu, Ferraiolo, Kuhn, Friedman, Lang, Cogdell,
+  Schnitzer, Sandlin, Miller, and Scarfone]{R04_Hu2014_ABAC}
+Vincent~C. Hu, David Ferraiolo, Rick Kuhn, Arthur~R. Friedman, Alan~J. Lang,
+  Margaret~M. Cogdell, Adam Schnitzer, Kenneth Sandlin, Robert Miller, and
+  Karen Scarfone.
+\newblock Guide to attribute based access control ({ABAC}) definition and
+  considerations.
+\newblock Technical Report Special Publication 800-162, National Institute of
+  Standards and Technology, 2014.
+
+\bibitem[{LangChain / LangGraph project}(2026)]{R16_LangGraph2026_Persistence}
+{LangChain / LangGraph project}.
+\newblock {LangGraph} persistence documentation, 2026.
+\newblock URL
+  \url{https://docs.langchain.com/oss/python/langgraph/persistence}.
+\newblock Accessed: 2026-05-07.
+
+\bibitem[Lewis et~al.(2020)Lewis, Perez, Piktus, Petroni, Karpukhin, Goyal,
+  K{\"u}ttler, Lewis, Yih, Rockt{\"a}schel, Riedel, and
+  Kiela]{R01_Lewis2020_RAG}
+Patrick Lewis, Ethan Perez, Aleksandra Piktus, Fabio Petroni, Vladimir
+  Karpukhin, Naman Goyal, Heinrich K{\"u}ttler, Mike Lewis, Wen-tau Yih, Tim
+  Rockt{\"a}schel, Sebastian Riedel, and Douwe Kiela.
+\newblock Retrieval-augmented generation for knowledge-intensive {NLP} tasks.
+\newblock In \emph{Advances in Neural Information Processing Systems},
+  volume~33, pages 9459--9474, 2020.
+
+\bibitem[Liu et~al.(2026)]{R19_Liu2026_MemoryCurse}
+Jiayuan Liu et~al.
+\newblock The memory curse: How expanded recall erodes cooperative intent in
+  {LLM} agents, 2026.
+
+\bibitem[Moreau and Missier(2013)]{R07_MoreauMissier2013_PROVDM}
+Luc Moreau and Paolo Missier.
+\newblock {PROV-DM}: The {PROV} data model.
+\newblock {W3C} recommendation, World Wide Web Consortium, 2013.
+\newblock URL \url{https://www.w3.org/TR/prov-dm/}.
+
+\bibitem[{Open Policy Agent project}(2026)]{R08_OpenPolicyAgent2026_Docs}
+{Open Policy Agent project}.
+\newblock Open policy agent ({OPA}) documentation, 2026.
+\newblock URL \url{https://www.openpolicyagent.org/docs}.
+\newblock Accessed: 2026-05-07.
+
+\bibitem[Packer et~al.(2023)Packer, Wooders, Lin, Fang, Patil, Stoica, and
+  Gonzalez]{R14_Packer2023_MemGPT}
+Charles Packer, Sarah Wooders, Kevin Lin, Vivian Fang, Shishir~G. Patil, Ion
+  Stoica, and Joseph~E. Gonzalez.
+\newblock {MemGPT}: Towards {LLM}s as operating systems, 2023.
+
+\bibitem[Park et~al.(2023)Park, O'Brien, Cai, Morris, Liang, and
+  Bernstein]{R12_Park2023_GenerativeAgents}
+Joon~Sung Park, Joseph O'Brien, Carrie~J. Cai, Meredith~Ringel Morris, Percy
+  Liang, and Michael~S. Bernstein.
+\newblock Generative agents: Interactive simulacra of human behavior.
+\newblock In \emph{Proceedings of the 36th Annual {ACM} Symposium on User
+  Interface Software and Technology}, pages 1--22, 2023.
+\newblock \doi{10.1145/3586183.3606763}.
+
+\bibitem[Romanchuk and Bondar(2026)]{R20_Romanchuk2026_SemanticLaundering}
+Andriy Romanchuk and Sergiy Bondar.
+\newblock Semantic laundering in {AI} agent architectures: Why tool boundaries
+  do not confer epistemic warrant, 2026.
+
+\bibitem[Rose et~al.(2020)Rose, Borchert, Mitchell, and
+  Connelly]{R05_Rose2020_ZeroTrust}
+Scott Rose, Oliver Borchert, Stu Mitchell, and Sean Connelly.
+\newblock Zero trust architecture.
+\newblock Technical Report Special Publication 800-207, National Institute of
+  Standards and Technology, 2020.
+
+\bibitem[Shinn et~al.(2023)Shinn, Cassano, Berman, Gopinath, Narasimhan, and
+  Yao]{R13_Shinn2023_Reflexion}
+Noah Shinn, Federico Cassano, Edward Berman, Ashwin Gopinath, Karthik
+  Narasimhan, and Shunyu Yao.
+\newblock Reflexion: Language agents with verbal reinforcement learning, 2023.
+
+\bibitem[Tallam(2026)]{R22_Tallam2026_AuthorizationPropagation}
+Krti Tallam.
+\newblock Authorization propagation in multi-agent {AI} systems: Identity
+  governance as infrastructure, 2026.
+
+\bibitem[Wu et~al.(2023)Wu, Bansal, Zhang, Wu, Li, Zhu, Jiang, Zhang, Zhang,
+  Liu, Awadallah, White, Burger, and Wang]{R15_Wu2023_AutoGen}
+Qingyun Wu, Gagan Bansal, Jieyu Zhang, Yiran Wu, Beibin Li, Erkang Zhu,
+  Li~Jiang, Xiaoyun Zhang, Shaokun Zhang, Jiale Liu, Ahmed~Hassan Awadallah,
+  Ryen~W. White, Doug Burger, and Chi Wang.
+\newblock {AutoGen}: Enabling next-gen {LLM} applications via multi-agent
+  conversation, 2023.
+
+\bibitem[Zhang et~al.(2026)Zhang, Peetathawatchai, Tram\`{e}r, and
+  Shafran]{R21_Zhang2026_AdversarialAuthority}
+Jie Zhang, Pura Peetathawatchai, Florian Tram\`{e}r, and Avital Shafran.
+\newblock Laundering {AI} authority with adversarial examples, 2026.
+
+\end{thebibliography}
