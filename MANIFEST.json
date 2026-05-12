@@ -245,6 +245,11 @@
       "sha256": "015df89bb164c470b28dfa65b746c795601a53e2aff37fb79abbd8af94f3bd22"
     },
     {
+      "path": "docs/passive-live-shadow-canary-runbook.md",
+      "bytes": 6720,
+      "sha256": "18250c1988eacc8168b6f2457791a6654594d2b379209d39d3a3fee21588420d"
+    },
+    {
       "path": "docs/raw-parser-adversarial.md",
       "bytes": 2677,
       "sha256": "5edf47824506cbe62b18bfa18bc12b80414d751472797b0cac6eeb4abc0230de"
@@ -301,8 +306,8 @@
     },
     {
       "path": "docs/repo-structure.md",
-      "bytes": 5047,
-      "sha256": "594a5b1df774860b59c92502eaebe6def871228eeacc9e4ffb09ef5e1b49805f"
+      "bytes": 5266,
+      "sha256": "1a357cd118494c61b646bae68d0d3a81042f1877a276415028d58c19089a1d74"
     },
     {
       "path": "docs/retention-negative-controls.md",

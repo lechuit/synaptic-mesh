@@ -29,6 +29,7 @@ Synaptic Mesh keeps protocol, implementation, research, and evidence separate so
 - [Manual dry-run pilot failure catalog](manual-dry-run-pilot-failure-catalog.md) documents local reject-only pilot cases that must not emit success evidence or add operational powers.
 - [Manual dry-run pilot runbook](manual-dry-run-pilot-runbook.md) and [checklist](manual-dry-run-pilot-checklist.md) document the human process for running already-redacted bundles without changing the manual/local/offline/record-only boundary.
 - [Manual dry-run pilot cases](manual-dry-run-pilot-cases.md) documents the expanded 12-case real-redacted pilot pack and its record-only thresholds.
+- [Passive live-shadow canary runbook](passive-live-shadow-canary-runbook.md) documents the human operator process for already-redacted, opt-in canary packets while preserving passive/record-only/no-effects boundaries.
 
 ## Scaling rules
 
