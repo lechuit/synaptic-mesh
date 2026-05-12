@@ -86,8 +86,8 @@
     },
     {
       "path": "RELEASE_NOTES.md",
-      "bytes": 3672,
-      "sha256": "f5cf522826b9069e4624d3ce071fe75fca17f388458413b217dbd3b90e977e55"
+      "bytes": 5384,
+      "sha256": "189fa04f62802ac3bb51cf8447aba210564d68b1e1c37cde13ddf423021e9554"
     },
     {
       "path": "design-notes/adapter-boundary-langgraph-mcp-v0.md",
