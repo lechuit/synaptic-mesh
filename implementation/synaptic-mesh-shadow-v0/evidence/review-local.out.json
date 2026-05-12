@@ -3,8 +3,8 @@
     "artifact": "T-synaptic-mesh-review-local-runner-v0",
     "timestamp": "2026-05-07T15:05:00.000Z",
     "verdict": "pass",
-    "commands": 34,
-    "passCommands": 34,
+    "commands": 35,
+    "passCommands": 35,
     "failedCommands": [],
     "fixtureCount": 15,
     "fixtureParityVerdict": "pass",
@@ -122,6 +122,14 @@
     "realRedactedAdversarialCoverageMayBlockCount": 0,
     "realRedactedAdversarialCoverageMayAllowCount": 0,
     "realRedactedAdversarialCoverageCapabilityTrueCount": 0,
+    "passiveCanarySourceBoundaryStressVerdict": "pass",
+    "passiveCanarySourceBoundaryStressMalformedSourceTupleRejects": 2,
+    "passiveCanarySourceBoundaryStressStaleDigestRejects": 1,
+    "passiveCanarySourceBoundaryStressMissingMtimeRejects": 1,
+    "passiveCanarySourceBoundaryStressWrongLaneRejects": 1,
+    "passiveCanarySourceBoundaryStressOutputContainmentRejects": 1,
+    "passiveCanarySourceBoundaryStressPassCapabilityTrueCount": 0,
+    "passiveCanarySourceBoundaryStressAutomaticAgentConsumptionImplemented": false,
     "unsafeAllowSignals": [],
     "sourceFixtureMutation": false
   },
@@ -346,6 +354,13 @@
     {
       "id": "real-redacted-adversarial-coverage-tests",
       "command": "node implementation/synaptic-mesh-shadow-v0/tests/real-redacted-adversarial-coverage.mjs",
+      "status": 0,
+      "pass": true,
+      "stderr": ""
+    },
+    {
+      "id": "passive-live-shadow-canary-source-boundary-stress-tests",
+      "command": "node implementation/synaptic-mesh-shadow-v0/tests/passive-live-shadow-canary-source-boundary-stress.mjs",
       "status": 0,
       "pass": true,
       "stderr": ""

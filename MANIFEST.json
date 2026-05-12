@@ -1,13 +1,13 @@
 {
   "bundle": "synaptic-mesh",
-  "version": "0.2.1",
-  "generated": "2026-05-12T12:50:00Z",
-  "status": "v0.2.1_passive_canary_reproducibility_and_failure_hardening_manual_local_opt_in_record_only_no_effects_not_runtime_ready",
+  "version": "0.2.3",
+  "generated": "2026-05-12T13:55:00Z",
+  "status": "v0.2.3_passive_canary_source_boundary_stress_manual_local_opt_in_record_only_no_effects_not_runtime_ready",
   "repository": "https://github.com/lechuit/synaptic-mesh",
   "license": "Apache-2.0 for code; CC BY 4.0 for docs/prose unless otherwise noted",
-  "reproducibility": "expected_pass_local_shadow_gates_for_v0.2.1_with_passive_canary_reproducibility_two_runs_two_pass_cases_eight_expected_rejects_zero_normalized_output_mismatches_zero_reason_set_mismatches_zero_scorecard_mismatches_zero_boundary_verdict_mismatches_zero_pass_capability_true_count_zero_pass_forbidden_effects_no_live_traffic_runtime_memory_config_publication_publication_automation_agent_instruction_approval_block_allow_authorization_deletion_retention_scheduler_or_enforcement",
+  "reproducibility": "expected_pass_local_shadow_gates_for_v0.2.3_with_passive_canary_source_boundary_stress_malformed_source_tuple_stale_digest_missing_mtime_wrong_source_lane_output_containment_hardening_zero_unexpected_accepts_zero_unexpected_rejects_zero_pass_capability_true_count_no_live_traffic_runtime_tools_memory_config_publication_approval_block_allow_authorization_enforcement_or_automatic_agent_consumption",
   "rawSourceCache": "excluded",
-  "runtimeBoundary": "v0.2.1_manual_local_opt_in_passive_canary_reproducibility_hardening_only_same_canary_packet_same_normalized_output_same_reason_set_same_scorecard_same_boundary_verdict_record_only_local_evidence_no_live_traffic_read_no_raw_input_persistence_no_memory_writes_no_MemoryAtom_no_live_observer_daemon_no_runtime_integration_no_daemon_no_watcher_no_adapter_integration_no_tool_authorization_no_external_publication_no_publication_automation_no_agent_instruction_write_no_approval_blocking_allowing_authorization_deletion_retention_scheduler_or_enforcement",
+  "runtimeBoundary": "v0.2.3_manual_local_opt_in_passive_canary_source_boundary_stress_only_record_only_local_evidence_no_live_traffic_read_no_raw_input_persistence_no_runtime_integration_no_daemon_no_watcher_no_adapter_integration_no_tool_execution_no_memory_write_no_config_write_no_external_publication_no_publication_automation_no_agent_instruction_write_no_approval_blocking_allowing_authorization_deletion_retention_scheduler_enforcement_or_automatic_agent_consumption",
   "files": [
     {
       "path": ".github/workflows/ci.yml",
@@ -76,8 +76,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 13125,
-      "sha256": "f9c6bbb9240209403c2d9e23fcc5b3a3e4e349e8f63064cb696be6a7b6fc35ee"
+      "bytes": 13700,
+      "sha256": "478c6876fa98b9775a4ac60b9ab62a158fb4956dd27873a424f1b522a3cb7172"
     },
     {
       "path": "RELEASE_CANDIDATE.md",
@@ -86,8 +86,8 @@
     },
     {
       "path": "RELEASE_NOTES.md",
-      "bytes": 2669,
-      "sha256": "37a1923ab9ef153adf4fe31627b5fb0f224c17d6c69b0a66fd4fd26ffda83ac9"
+      "bytes": 3076,
+      "sha256": "acabe221bca9c93b8ea41a9dbb2ca948c62bfee283b44b0f60f7df62b3629b8f"
     },
     {
       "path": "design-notes/adapter-boundary-langgraph-mcp-v0.md",
@@ -156,8 +156,8 @@
     },
     {
       "path": "docs/coverage-matrix.md",
-      "bytes": 7996,
-      "sha256": "4af61f5781b6628c666f46dc626d5ed3ed965105061bb1508ef6146a5f39d993"
+      "bytes": 8566,
+      "sha256": "5fed03bf6a6e3841113c74e410d3ab276ebe99198d6722990a70c26d3888897c"
     },
     {
       "path": "docs/decision-counterfactual-reviewer-guide.md",
@@ -301,8 +301,8 @@
     },
     {
       "path": "docs/release-ladder-v0.2-alpha.md",
-      "bytes": 2136,
-      "sha256": "b202cb6bc29ef04422e952bdd7bf8e2ef935f28adcc93d7b2a90a4d771d28f78"
+      "bytes": 4917,
+      "sha256": "e9d0203335472db77cac54e56932e05a9fd07a4b8c4dbb905688ffe94f477eef"
     },
     {
       "path": "docs/repo-structure.md",
@@ -361,8 +361,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/README.md",
-      "bytes": 11787,
-      "sha256": "5e80c5335e8279e6b4ca4da652f49af534b87710efc67f391170f636c9287b5f"
+      "bytes": 11850,
+      "sha256": "ccb482021794faad885e682e4f08302bb0ac3bc8a8254bff103f281f13ef22bd"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/bin/manual-dry-run.mjs",
@@ -670,9 +670,14 @@
       "sha256": "449d59f5aff30c5475e5fe4d449596128f0c1834b3e90cf3cbf558a4060465ec"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-live-shadow-canary-source-boundary-stress.out.json",
+      "bytes": 4095,
+      "sha256": "64540e1341c2ba412f95fc2f7b4dfb88f87ccd81812f521ebfa8f6dbe263f535"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-live-shadow-canary.out.json",
       "bytes": 5510,
-      "sha256": "403c11718a2b340ed45e0f4b4516fdf84fb69e9bde2bdf3235475d2769167f3f"
+      "sha256": "5260c4c039ee395395224a2ffc645de8c1c8a76983f17166804a1669e3917124"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/raw-parser-adversarial.out.json",
@@ -756,8 +761,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/review-local.out.json",
-      "bytes": 13133,
-      "sha256": "672b6f1cbbb95d2e3958200239e09e81e2e15797ce6e7e55291b3834f182167e"
+      "bytes": 13930,
+      "sha256": "210a86eaf34b67ed101d50186908a5ce7c7b1b0cbe17ae355966a436fc7bd92c"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/route-classifier-shadow.out.json",
@@ -1005,9 +1010,14 @@
       "sha256": "3b71d8cdfde64823e8103c6245af7e194df6f18dc9423cbad60be31c9d281c6b"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/fixtures/passive-live-shadow-canary-source-boundary-stress.json",
+      "bytes": 8034,
+      "sha256": "8ccb9e9caff8c57387a58fe3226bbb934c7fc524b580ff00cfa93e3847299d5b"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/fixtures/passive-live-shadow-canary.json",
       "bytes": 8863,
-      "sha256": "044a4196e5e0c5ef8d5c80ec3b0a3ce08dece3ec03681c255678f6253c730978"
+      "sha256": "d2e8f50d93e6608d4761cc8de4ab05e6f4c8f1a771e5121625b69e95a7369e48"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/fixtures/raw-parser-adversarial.json",
@@ -1081,8 +1091,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/package.json",
-      "bytes": 11738,
-      "sha256": "ddbbf47784c8b8192cd2c657df2782996552cb32ae6952183c1803f098230963"
+      "bytes": 11944,
+      "sha256": "bd56e3ab5f592a476f177f6f6fe5debaddba2e93438fb0d758ad9f42da9159cb"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/action-context-packet.mjs",
@@ -1350,9 +1360,14 @@
       "sha256": "cc7148153ca47c703222c81082fabcf57712a2ff0c6a2757792ca7978a8b11fd"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-live-shadow-canary-source-boundary-stress.mjs",
+      "bytes": 10074,
+      "sha256": "a8befd2774a35502cb8e149315292dcebc6348cb934622b3a0094ea88f915e4b"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-live-shadow-canary.mjs",
       "bytes": 8540,
-      "sha256": "115580395ff86dc89abab45190f2695c8216682260fe6a357d07de512b831269"
+      "sha256": "30e8fe21f3af9389d1c35d14bda54152db8edc5e1628ba3bc2e46bc867d58e26"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/raw-parser-adversarial.mjs",
@@ -1461,8 +1476,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/review-local.mjs",
-      "bytes": 32728,
-      "sha256": "b5ae8d627639b11d1adaa6319ed13bd26589991718b2b222453f00081f746142"
+      "bytes": 37537,
+      "sha256": "5764e42ff66adfd050f76c180d52ac160f55a22e7418b2288bf3252c0af3fb62"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/route-classifier-shadow.mjs",
@@ -1961,8 +1976,8 @@
     },
     {
       "path": "tools/release-check.mjs",
-      "bytes": 115294,
-      "sha256": "7148f8314249bebd1a074cf7510b1bf392766682e30f4e383f4b0509ab2a8c44"
+      "bytes": 119297,
+      "sha256": "4f77b2e875b1a8a27c2adb08caccf4100fd608755f42c7d10a8e23e93cedbc07"
     },
     {
       "path": "tools/verify-manifest.mjs",

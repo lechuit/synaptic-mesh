@@ -40,7 +40,7 @@ The reference currently covers:
 Current local gates observed in `evidence/review-local.out.json`:
 
 - review-local verdict: `pass`;
-- commands: `34/34` passing;
+- commands: `35/35` passing;
 - fixture parity: `15/15` passing;
 - normalized summary fixtures: `15`;
 - unsafe allow signals: `0`;
@@ -81,6 +81,7 @@ npm run test:handoff
 npm run test:decision-counterfactual-checklist
 npm run test:decision-counterfactual-reproducibility
 npm run test:decision-counterfactual-failure-catalog
+npm run test:passive-live-shadow-canary-source-boundary-stress
 npm run test:compression
 npm run test:receipt-schema
 npm run test:adversarial-generator
