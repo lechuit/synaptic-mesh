@@ -1,0 +1,466 @@
+{
+  "summary": {
+    "artifact": "T-synaptic-mesh-redaction-retention-executable-gates-v0",
+    "timestamp": "2026-05-12T04:10:00.000Z",
+    "verdict": "pass",
+    "fixture": "implementation/synaptic-mesh-shadow-v0/fixtures/redaction-retention-executable-gates.json",
+    "redactionScanner": "implementation/synaptic-mesh-shadow-v0/src/redaction-scanner.mjs",
+    "retentionGate": "implementation/synaptic-mesh-shadow-v0/src/retention-gate.mjs",
+    "passCases": 3,
+    "expectedRejects": 7,
+    "unexpectedPasses": 0,
+    "unexpectedRejects": 0,
+    "redactionRejectedBeforeRetention": 2,
+    "retentionRejectedAfterRedactionPass": 5,
+    "coveredReasonCodes": [
+      "REDACTION_GATE_REJECTED",
+      "REDACTION_PRIVATE_PATH_PERSISTED",
+      "REDACTION_SECRET_LIKE_VALUE_PERSISTED",
+      "RETENTION_CEILING_EXCEEDED",
+      "RETENTION_DELETION_IMPLEMENTATION_FORBIDDEN",
+      "RETENTION_GATE_REJECTED",
+      "RETENTION_LIVE_OBSERVER_FORBIDDEN",
+      "RETENTION_REDACTION_STATUS_REQUIRED",
+      "RETENTION_RUNTIME_INTEGRATION_FORBIDDEN",
+      "RETENTION_SCHEDULER_FORBIDDEN",
+      "RETENTION_UNKNOWN_CLASS_REJECTED"
+    ],
+    "rawPersistedInPassOutput": false,
+    "secretLikePersistedInPassOutput": false,
+    "privatePathPersistedInPassOutput": false,
+    "retentionSchedulerImplemented": false,
+    "deletionImplemented": false,
+    "mode": "manual_offline_redaction_retention_gate_only",
+    "liveObserverImplemented": false,
+    "liveTrafficRead": false,
+    "daemonImplemented": false,
+    "watcherImplemented": false,
+    "adapterIntegrationImplemented": false,
+    "toolExecutionImplemented": false,
+    "memoryWriteImplemented": false,
+    "configWriteImplemented": false,
+    "externalPublicationImplemented": false,
+    "publicationAutomationImplemented": false,
+    "approvalPathImplemented": false,
+    "blockingImplemented": false,
+    "allowingImplemented": false,
+    "authorizationImplemented": false,
+    "enforcementImplemented": false,
+    "safetyClaimScope": "redaction_retention_executable_gate_composition_over_committed_fixtures_only_not_runtime_not_authorization_not_enforcement"
+  },
+  "passResults": [
+    {
+      "caseId": "pass_redacted_observation_within_ceiling",
+      "composedGate": "pass",
+      "redactionGate": "pass",
+      "retentionGate": "pass",
+      "reasonCodes": [],
+      "redactionReasonCodes": [],
+      "retentionReasonCodes": [],
+      "redactionResult": {
+        "caseId": "pass_redacted_observation_within_ceiling_redaction",
+        "redactionGate": "pass",
+        "rawPersisted": false,
+        "secretLikePersisted": false,
+        "privatePathPersisted": false,
+        "toolOutputPersisted": false,
+        "memoryTextPersisted": false,
+        "configTextPersisted": false,
+        "approvalTextPersisted": false,
+        "longRawPromptPersisted": false,
+        "unknownSensitiveFieldPersisted": false,
+        "reasonCodes": [],
+        "evidencePointers": [],
+        "boundary": "manual_offline_redaction_scan_only"
+      },
+      "retentionResult": {
+        "caseId": "pass_redacted_observation_within_ceiling_retention",
+        "retentionGate": "pass",
+        "artifactClass": "redacted_observation_record",
+        "retentionDays": 7,
+        "reasonCodes": [],
+        "boundary": "manual_offline_retention_gate_only"
+      },
+      "boundary": "manual_offline_redaction_retention_gate_only"
+    },
+    {
+      "caseId": "pass_aggregate_scorecard_metadata_only",
+      "composedGate": "pass",
+      "redactionGate": "pass",
+      "retentionGate": "pass",
+      "reasonCodes": [],
+      "redactionReasonCodes": [],
+      "retentionReasonCodes": [],
+      "redactionResult": {
+        "caseId": "pass_aggregate_scorecard_metadata_only_redaction",
+        "redactionGate": "pass",
+        "rawPersisted": false,
+        "secretLikePersisted": false,
+        "privatePathPersisted": false,
+        "toolOutputPersisted": false,
+        "memoryTextPersisted": false,
+        "configTextPersisted": false,
+        "approvalTextPersisted": false,
+        "longRawPromptPersisted": false,
+        "unknownSensitiveFieldPersisted": false,
+        "reasonCodes": [],
+        "evidencePointers": [],
+        "boundary": "manual_offline_redaction_scan_only"
+      },
+      "retentionResult": {
+        "caseId": "pass_aggregate_scorecard_metadata_only_retention",
+        "retentionGate": "pass",
+        "artifactClass": "aggregate_scorecard",
+        "retentionDays": 90,
+        "reasonCodes": [],
+        "boundary": "manual_offline_retention_gate_only"
+      },
+      "boundary": "manual_offline_redaction_retention_gate_only"
+    },
+    {
+      "caseId": "pass_public_release_evidence_synthetic_only",
+      "composedGate": "pass",
+      "redactionGate": "pass",
+      "retentionGate": "pass",
+      "reasonCodes": [],
+      "redactionReasonCodes": [],
+      "retentionReasonCodes": [],
+      "redactionResult": {
+        "caseId": "pass_public_release_evidence_synthetic_only_redaction",
+        "redactionGate": "pass",
+        "rawPersisted": false,
+        "secretLikePersisted": false,
+        "privatePathPersisted": false,
+        "toolOutputPersisted": false,
+        "memoryTextPersisted": false,
+        "configTextPersisted": false,
+        "approvalTextPersisted": false,
+        "longRawPromptPersisted": false,
+        "unknownSensitiveFieldPersisted": false,
+        "reasonCodes": [],
+        "evidencePointers": [],
+        "boundary": "manual_offline_redaction_scan_only"
+      },
+      "retentionResult": {
+        "caseId": "pass_public_release_evidence_synthetic_only_retention",
+        "retentionGate": "pass",
+        "artifactClass": "public_release_evidence",
+        "retentionDays": null,
+        "reasonCodes": [],
+        "boundary": "manual_offline_retention_gate_only"
+      },
+      "boundary": "manual_offline_redaction_retention_gate_only"
+    }
+  ],
+  "rejectResults": [
+    {
+      "caseId": "reject_redaction_secret_before_retention",
+      "composedGate": "reject",
+      "redactionGate": "reject",
+      "retentionGate": "pass",
+      "reasonCodes": [
+        "REDACTION_GATE_REJECTED",
+        "REDACTION_SECRET_LIKE_VALUE_PERSISTED"
+      ],
+      "redactionReasonCodes": [
+        "REDACTION_SECRET_LIKE_VALUE_PERSISTED"
+      ],
+      "retentionReasonCodes": [],
+      "redactionResult": {
+        "caseId": "reject_redaction_secret_before_retention_redaction",
+        "redactionGate": "reject",
+        "rawPersisted": false,
+        "secretLikePersisted": true,
+        "privatePathPersisted": false,
+        "toolOutputPersisted": false,
+        "memoryTextPersisted": false,
+        "configTextPersisted": false,
+        "approvalTextPersisted": false,
+        "longRawPromptPersisted": false,
+        "unknownSensitiveFieldPersisted": false,
+        "reasonCodes": [
+          "REDACTION_SECRET_LIKE_VALUE_PERSISTED"
+        ],
+        "evidencePointers": [
+          "secret_like_value"
+        ],
+        "boundary": "manual_offline_redaction_scan_only"
+      },
+      "retentionResult": {
+        "caseId": "reject_redaction_secret_before_retention_retention",
+        "retentionGate": "pass",
+        "artifactClass": "public_release_evidence",
+        "retentionDays": null,
+        "reasonCodes": [],
+        "boundary": "manual_offline_retention_gate_only"
+      },
+      "boundary": "manual_offline_redaction_retention_gate_only"
+    },
+    {
+      "caseId": "reject_redaction_private_path_before_retention",
+      "composedGate": "reject",
+      "redactionGate": "reject",
+      "retentionGate": "pass",
+      "reasonCodes": [
+        "REDACTION_GATE_REJECTED",
+        "REDACTION_PRIVATE_PATH_PERSISTED"
+      ],
+      "redactionReasonCodes": [
+        "REDACTION_PRIVATE_PATH_PERSISTED"
+      ],
+      "retentionReasonCodes": [],
+      "redactionResult": {
+        "caseId": "reject_redaction_private_path_before_retention_redaction",
+        "redactionGate": "reject",
+        "rawPersisted": false,
+        "secretLikePersisted": false,
+        "privatePathPersisted": true,
+        "toolOutputPersisted": false,
+        "memoryTextPersisted": false,
+        "configTextPersisted": false,
+        "approvalTextPersisted": false,
+        "longRawPromptPersisted": false,
+        "unknownSensitiveFieldPersisted": false,
+        "reasonCodes": [
+          "REDACTION_PRIVATE_PATH_PERSISTED"
+        ],
+        "evidencePointers": [
+          "private_path"
+        ],
+        "boundary": "manual_offline_redaction_scan_only"
+      },
+      "retentionResult": {
+        "caseId": "reject_redaction_private_path_before_retention_retention",
+        "retentionGate": "pass",
+        "artifactClass": "redacted_result_record",
+        "retentionDays": 7,
+        "reasonCodes": [],
+        "boundary": "manual_offline_retention_gate_only"
+      },
+      "boundary": "manual_offline_redaction_retention_gate_only"
+    },
+    {
+      "caseId": "reject_retention_over_ceiling_after_redaction_pass",
+      "composedGate": "reject",
+      "redactionGate": "pass",
+      "retentionGate": "reject",
+      "reasonCodes": [
+        "RETENTION_CEILING_EXCEEDED",
+        "RETENTION_GATE_REJECTED"
+      ],
+      "redactionReasonCodes": [],
+      "retentionReasonCodes": [
+        "RETENTION_CEILING_EXCEEDED"
+      ],
+      "redactionResult": {
+        "caseId": "reject_retention_over_ceiling_after_redaction_pass_redaction",
+        "redactionGate": "pass",
+        "rawPersisted": false,
+        "secretLikePersisted": false,
+        "privatePathPersisted": false,
+        "toolOutputPersisted": false,
+        "memoryTextPersisted": false,
+        "configTextPersisted": false,
+        "approvalTextPersisted": false,
+        "longRawPromptPersisted": false,
+        "unknownSensitiveFieldPersisted": false,
+        "reasonCodes": [],
+        "evidencePointers": [],
+        "boundary": "manual_offline_redaction_scan_only"
+      },
+      "retentionResult": {
+        "caseId": "reject_retention_over_ceiling_after_redaction_pass_retention",
+        "retentionGate": "reject",
+        "reasonCodes": [
+          "RETENTION_CEILING_EXCEEDED"
+        ],
+        "boundary": "manual_offline_retention_gate_only"
+      },
+      "boundary": "manual_offline_redaction_retention_gate_only"
+    },
+    {
+      "caseId": "reject_missing_redaction_status_after_redaction_pass",
+      "composedGate": "reject",
+      "redactionGate": "pass",
+      "retentionGate": "reject",
+      "reasonCodes": [
+        "RETENTION_GATE_REJECTED",
+        "RETENTION_REDACTION_STATUS_REQUIRED"
+      ],
+      "redactionReasonCodes": [],
+      "retentionReasonCodes": [
+        "RETENTION_REDACTION_STATUS_REQUIRED"
+      ],
+      "redactionResult": {
+        "caseId": "reject_missing_redaction_status_after_redaction_pass_redaction",
+        "redactionGate": "pass",
+        "rawPersisted": false,
+        "secretLikePersisted": false,
+        "privatePathPersisted": false,
+        "toolOutputPersisted": false,
+        "memoryTextPersisted": false,
+        "configTextPersisted": false,
+        "approvalTextPersisted": false,
+        "longRawPromptPersisted": false,
+        "unknownSensitiveFieldPersisted": false,
+        "reasonCodes": [],
+        "evidencePointers": [],
+        "boundary": "manual_offline_redaction_scan_only"
+      },
+      "retentionResult": {
+        "caseId": "reject_missing_redaction_status_after_redaction_pass_retention",
+        "retentionGate": "reject",
+        "reasonCodes": [
+          "RETENTION_REDACTION_STATUS_REQUIRED"
+        ],
+        "boundary": "manual_offline_retention_gate_only"
+      },
+      "boundary": "manual_offline_redaction_retention_gate_only"
+    },
+    {
+      "caseId": "reject_unknown_retention_class_after_redaction_pass",
+      "composedGate": "reject",
+      "redactionGate": "pass",
+      "retentionGate": "reject",
+      "reasonCodes": [
+        "RETENTION_GATE_REJECTED",
+        "RETENTION_UNKNOWN_CLASS_REJECTED"
+      ],
+      "redactionReasonCodes": [],
+      "retentionReasonCodes": [
+        "RETENTION_UNKNOWN_CLASS_REJECTED"
+      ],
+      "redactionResult": {
+        "caseId": "reject_unknown_retention_class_after_redaction_pass_redaction",
+        "redactionGate": "pass",
+        "rawPersisted": false,
+        "secretLikePersisted": false,
+        "privatePathPersisted": false,
+        "toolOutputPersisted": false,
+        "memoryTextPersisted": false,
+        "configTextPersisted": false,
+        "approvalTextPersisted": false,
+        "longRawPromptPersisted": false,
+        "unknownSensitiveFieldPersisted": false,
+        "reasonCodes": [],
+        "evidencePointers": [],
+        "boundary": "manual_offline_redaction_scan_only"
+      },
+      "retentionResult": {
+        "caseId": "reject_unknown_retention_class_after_redaction_pass_retention",
+        "retentionGate": "reject",
+        "reasonCodes": [
+          "RETENTION_UNKNOWN_CLASS_REJECTED"
+        ],
+        "boundary": "manual_offline_retention_gate_only"
+      },
+      "boundary": "manual_offline_redaction_retention_gate_only"
+    },
+    {
+      "caseId": "reject_scheduler_or_deletion_pressure",
+      "composedGate": "reject",
+      "redactionGate": "pass",
+      "retentionGate": "reject",
+      "reasonCodes": [
+        "RETENTION_DELETION_IMPLEMENTATION_FORBIDDEN",
+        "RETENTION_GATE_REJECTED",
+        "RETENTION_SCHEDULER_FORBIDDEN"
+      ],
+      "redactionReasonCodes": [],
+      "retentionReasonCodes": [
+        "RETENTION_DELETION_IMPLEMENTATION_FORBIDDEN",
+        "RETENTION_SCHEDULER_FORBIDDEN"
+      ],
+      "redactionResult": {
+        "caseId": "reject_scheduler_or_deletion_pressure_redaction",
+        "redactionGate": "pass",
+        "rawPersisted": false,
+        "secretLikePersisted": false,
+        "privatePathPersisted": false,
+        "toolOutputPersisted": false,
+        "memoryTextPersisted": false,
+        "configTextPersisted": false,
+        "approvalTextPersisted": false,
+        "longRawPromptPersisted": false,
+        "unknownSensitiveFieldPersisted": false,
+        "reasonCodes": [],
+        "evidencePointers": [],
+        "boundary": "manual_offline_redaction_scan_only"
+      },
+      "retentionResult": {
+        "caseId": "reject_scheduler_or_deletion_pressure_retention",
+        "retentionGate": "reject",
+        "reasonCodes": [
+          "RETENTION_DELETION_IMPLEMENTATION_FORBIDDEN",
+          "RETENTION_SCHEDULER_FORBIDDEN"
+        ],
+        "boundary": "manual_offline_retention_gate_only"
+      },
+      "boundary": "manual_offline_redaction_retention_gate_only"
+    },
+    {
+      "caseId": "reject_runtime_or_live_pressure",
+      "composedGate": "reject",
+      "redactionGate": "pass",
+      "retentionGate": "reject",
+      "reasonCodes": [
+        "RETENTION_GATE_REJECTED",
+        "RETENTION_LIVE_OBSERVER_FORBIDDEN",
+        "RETENTION_RUNTIME_INTEGRATION_FORBIDDEN"
+      ],
+      "redactionReasonCodes": [],
+      "retentionReasonCodes": [
+        "RETENTION_LIVE_OBSERVER_FORBIDDEN",
+        "RETENTION_RUNTIME_INTEGRATION_FORBIDDEN"
+      ],
+      "redactionResult": {
+        "caseId": "reject_runtime_or_live_pressure_redaction",
+        "redactionGate": "pass",
+        "rawPersisted": false,
+        "secretLikePersisted": false,
+        "privatePathPersisted": false,
+        "toolOutputPersisted": false,
+        "memoryTextPersisted": false,
+        "configTextPersisted": false,
+        "approvalTextPersisted": false,
+        "longRawPromptPersisted": false,
+        "unknownSensitiveFieldPersisted": false,
+        "reasonCodes": [],
+        "evidencePointers": [],
+        "boundary": "manual_offline_redaction_scan_only"
+      },
+      "retentionResult": {
+        "caseId": "reject_runtime_or_live_pressure_retention",
+        "retentionGate": "reject",
+        "reasonCodes": [
+          "RETENTION_LIVE_OBSERVER_FORBIDDEN",
+          "RETENTION_RUNTIME_INTEGRATION_FORBIDDEN"
+        ],
+        "boundary": "manual_offline_retention_gate_only"
+      },
+      "boundary": "manual_offline_redaction_retention_gate_only"
+    }
+  ],
+  "boundary": [
+    "manual_offline_only",
+    "committed_fixtures_only",
+    "redaction_first_retention_second",
+    "local_evidence_output_only",
+    "record_only",
+    "no_live_observation",
+    "no_runtime",
+    "no_daemon",
+    "no_watcher",
+    "no_adapter_integration",
+    "no_tool_execution",
+    "no_memory_write",
+    "no_config_write",
+    "no_external_publication",
+    "no_publication_automation",
+    "no_approval_path",
+    "no_blocking",
+    "no_allowing",
+    "no_authorization",
+    "no_enforcement"
+  ]
+}

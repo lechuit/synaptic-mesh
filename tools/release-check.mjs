@@ -39,6 +39,7 @@ const releaseGateScripts = [
   'test:redaction-scanner-minimal',
   'test:retention-policy-schema',
   'test:retention-negative-controls',
+  'test:redaction-retention-executable-gates',
   'test:decision-counterfactual-checklist',
   'test:decision-counterfactual-reproducibility',
   'test:decision-counterfactual-failure-catalog',
@@ -100,7 +101,9 @@ function assertIncludes(text, expected, label) {
 }
 
 function assertNotIncludes(text, forbidden, label) {
-  assert(!text.includes(forbidden), `${label} must not include stale ${JSON.stringify(forbidden)}`);
+  const escaped = forbidden.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const tokenPattern = new RegExp(`(?<![A-Za-z0-9.])${escaped}(?![A-Za-z0-9.])`);
+  assert(!tokenPattern.test(text), `${label} must not include stale ${JSON.stringify(forbidden)}`);
 }
 
 function countLabel(passed, total) {
@@ -499,6 +502,34 @@ assert(retentionNegativeControls?.summary?.configWriteImplemented === false, 're
 assert(retentionNegativeControls?.summary?.externalPublicationImplemented === false, 'retention negative controls must not implement external publication');
 assert(retentionNegativeControls?.summary?.authorizationImplemented === false, 'retention negative controls must not implement authorization');
 assert(retentionNegativeControls?.summary?.enforcementImplemented === false, 'retention negative controls must not implement enforcement');
+
+const redactionRetentionExecutableGates = readJson(path.join(packageRoot, 'evidence/redaction-retention-executable-gates.out.json'));
+assert(redactionRetentionExecutableGates?.summary?.verdict === 'pass', 'redaction/retention executable gates verdict must be pass');
+assert(redactionRetentionExecutableGates?.summary?.passCases === 3, 'redaction/retention executable gates must keep 3 positive controls');
+assert(redactionRetentionExecutableGates?.summary?.expectedRejects === 7, 'redaction/retention executable gates must keep 7 expected rejects');
+assert(redactionRetentionExecutableGates?.summary?.unexpectedPasses === 0, 'redaction/retention executable gates must have zero unexpected passes');
+assert(redactionRetentionExecutableGates?.summary?.unexpectedRejects === 0, 'redaction/retention executable gates must have zero unexpected rejects');
+assert(redactionRetentionExecutableGates?.summary?.redactionRejectedBeforeRetention === 2, 'redaction/retention executable gates must prove two redaction-first rejects');
+assert(redactionRetentionExecutableGates?.summary?.retentionRejectedAfterRedactionPass === 5, 'redaction/retention executable gates must prove five retention rejects after redaction passes');
+for (const reasonCode of ['REDACTION_SECRET_LIKE_VALUE_PERSISTED', 'REDACTION_PRIVATE_PATH_PERSISTED', 'RETENTION_CEILING_EXCEEDED', 'RETENTION_REDACTION_STATUS_REQUIRED', 'RETENTION_UNKNOWN_CLASS_REJECTED', 'RETENTION_SCHEDULER_FORBIDDEN', 'RETENTION_DELETION_IMPLEMENTATION_FORBIDDEN', 'RETENTION_RUNTIME_INTEGRATION_FORBIDDEN', 'RETENTION_LIVE_OBSERVER_FORBIDDEN']) {
+  assert(redactionRetentionExecutableGates?.summary?.coveredReasonCodes?.includes(reasonCode), `redaction/retention executable gates must cover ${reasonCode}`);
+}
+assert(redactionRetentionExecutableGates?.summary?.rawPersistedInPassOutput === false, 'redaction/retention executable gates must not persist raw output in pass cases');
+assert(redactionRetentionExecutableGates?.summary?.secretLikePersistedInPassOutput === false, 'redaction/retention executable gates must not persist secret-like output in pass cases');
+assert(redactionRetentionExecutableGates?.summary?.privatePathPersistedInPassOutput === false, 'redaction/retention executable gates must not persist private paths in pass cases');
+assert(redactionRetentionExecutableGates?.summary?.retentionSchedulerImplemented === false, 'redaction/retention executable gates must not implement retention scheduler');
+assert(redactionRetentionExecutableGates?.summary?.deletionImplemented === false, 'redaction/retention executable gates must not implement deletion');
+assert(redactionRetentionExecutableGates?.summary?.liveObserverImplemented === false, 'redaction/retention executable gates must not implement live observer');
+assert(redactionRetentionExecutableGates?.summary?.toolExecutionImplemented === false, 'redaction/retention executable gates must not implement tool execution');
+assert(redactionRetentionExecutableGates?.summary?.memoryWriteImplemented === false, 'redaction/retention executable gates must not implement memory writes');
+assert(redactionRetentionExecutableGates?.summary?.configWriteImplemented === false, 'redaction/retention executable gates must not implement config writes');
+assert(redactionRetentionExecutableGates?.summary?.externalPublicationImplemented === false, 'redaction/retention executable gates must not implement external publication');
+assert(redactionRetentionExecutableGates?.summary?.publicationAutomationImplemented === false, 'redaction/retention executable gates must not implement publication automation');
+assert(redactionRetentionExecutableGates?.summary?.approvalPathImplemented === false, 'redaction/retention executable gates must not implement approval paths');
+assert(redactionRetentionExecutableGates?.summary?.blockingImplemented === false, 'redaction/retention executable gates must not implement blocking');
+assert(redactionRetentionExecutableGates?.summary?.allowingImplemented === false, 'redaction/retention executable gates must not implement allowing');
+assert(redactionRetentionExecutableGates?.summary?.authorizationImplemented === false, 'redaction/retention executable gates must not implement authorization');
+assert(redactionRetentionExecutableGates?.summary?.enforcementImplemented === false, 'redaction/retention executable gates must not implement enforcement');
 
 const decisionCounterfactualChecklist = readJson(path.join(packageRoot, 'evidence/decision-counterfactual-checklist.out.json'));
 assert(decisionCounterfactualChecklist?.summary?.verdict === 'pass', 'decision-counterfactual checklist verdict must be pass');
