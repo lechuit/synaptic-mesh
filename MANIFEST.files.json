@@ -69,8 +69,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 13700,
-      "sha256": "478c6876fa98b9775a4ac60b9ab62a158fb4956dd27873a424f1b522a3cb7172"
+      "bytes": 3070,
+      "sha256": "24b7ac6ab1ef1e33e97bbf0f538d7d42fca78cc94d20f0930acd62aea2d3a264"
     },
     {
       "path": "RELEASE_CANDIDATE.md",
@@ -294,13 +294,18 @@
     },
     {
       "path": "docs/release-ladder-v0.2-alpha.md",
+      "bytes": 212,
+      "sha256": "e5d3cce11945bb0e56149d80c2d409d408bd3cfd3bb226f647c79397fc451220"
+    },
+    {
+      "path": "docs/release-ladder.md",
       "bytes": 4917,
       "sha256": "e9d0203335472db77cac54e56932e05a9fd07a4b8c4dbb905688ffe94f477eef"
     },
     {
       "path": "docs/repo-structure.md",
-      "bytes": 5465,
-      "sha256": "ba269af298e5f32b58e7caf1592e1a558c8fde5ebf9e7fad97821cf542edc78e"
+      "bytes": 5759,
+      "sha256": "2133590f4ad03574a11f4b8372b5eab6957b3e3e73645019b6b74b8936196d92"
     },
     {
       "path": "docs/retention-negative-controls.md",
@@ -311,6 +316,11 @@
       "path": "docs/retention-policy.md",
       "bytes": 1096,
       "sha256": "9fdadee94e53e2954eb62cc1d57f61768cd95895a2a9ab6e967aa4494556a3db"
+    },
+    {
+      "path": "docs/status-v0.2.3.md",
+      "bytes": 13842,
+      "sha256": "49afeeda1dbd7038180c7a4b3f21a0d3167f26101c60858b64aca956a90fc192"
     },
     {
       "path": "docs/threat-model-v0.md",
