@@ -84,4 +84,5 @@ jobs:
           path: |
             implementation/synaptic-mesh-shadow-v0/evidence/*.out.json
             MANIFEST.json
+            MANIFEST.files.json
           if-no-files-found: warn

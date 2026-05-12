@@ -29,8 +29,8 @@ The current project boundary remains local shadow only. These decisions do not c
    - Evidence should support review and reproducibility, not imply external enforcement.
 
 4. Verify the tracked-file manifest as a repository gate.
-   - `MANIFEST.json` must match tracked files and file hashes.
-   - `npm run verify:manifest`, `npm run check`, and `npm run review:local` should fail on missing, extra, or stale manifest entries.
+   - `MANIFEST.json` carries the small human-readable release metadata; `MANIFEST.files.json` carries generated tracked-file bytes and hashes.
+   - `npm run manifest:update` regenerates the file inventory, and `npm run verify:manifest`, `npm run check`, and `npm run review:local` should fail on missing, extra, or stale manifest entries.
 
 5. Preserve small PR and review discipline.
    - Prefer behavior-preserving refactors, narrow seams, and docs/design notes over broad migrations.

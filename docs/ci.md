@@ -14,7 +14,7 @@ The baseline job runs from `implementation/synaptic-mesh-shadow-v0` and executes
 8. `npm run test:route-decision-schema`
 9. `npm run test:threat-model-routes`
 
-The workflow uploads the generated shadow evidence JSON files and `MANIFEST.json` as a `shadow-baseline-evidence` artifact for review. Review evidence records commands with a stable `node` label so local and GitHub runners do not diverge only because of host-specific executable paths.
+The workflow uploads the generated shadow evidence JSON files plus `MANIFEST.json` and `MANIFEST.files.json` as a `shadow-baseline-evidence` artifact for review. Review evidence records commands with a stable `node` label so local and GitHub runners do not diverge only because of host-specific executable paths.
 
 ## Boundary
 
