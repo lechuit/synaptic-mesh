@@ -1094,8 +1094,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/package.json",
-      "bytes": 12055,
-      "sha256": "cbe97238062b8fa4b782aae3bbd85c86fd5a177a4ce1e883d98382403aace071"
+      "bytes": 12197,
+      "sha256": "ef62f18b811a38c22f84b1418b04b8d40333c3b679f5351c979df2bcb07a399c"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/action-context-packet.mjs",
