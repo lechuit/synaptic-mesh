@@ -68,6 +68,7 @@ Current codes:
 - `DECISION_COUNTERFACTUAL_BLOCKED_EFFECTS_REQUIRED` — blocked effects are missing.
 - `DECISION_COUNTERFACTUAL_FALLBACK_REQUIRED` — fallback/fetch/abstain path is missing.
 - `DECISION_COUNTERFACTUAL_SIMILARITY_NOT_AUTHORITY` — similar memory text is only a recall hint, not action authority.
+- `DECISION_COUNTERFACTUAL_RECENCY_NOT_AUTHORITY` — wall-clock recency alone is only a recall hint, not action authority.
 - `DECISION_COUNTERFACTUAL_WRONG_LANE_PRESSURE_REJECTED` — wrong-lane branch pressure invalidates local continuation.
 - `DECISION_COUNTERFACTUAL_PAUSED_PROJECT_PRESSURE_REJECTED` — paused-project pressure invalidates local continuation.
 - `DECISION_COUNTERFACTUAL_NEW_USER_CORRECTION_WINS` — newest explicit user correction determines next-action selection.

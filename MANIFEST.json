@@ -76,8 +76,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 10905,
-      "sha256": "989033bb1ccd5b3a1f05e9032952725d33a9bb7db7351494f710df27789bcec1"
+      "bytes": 11186,
+      "sha256": "195e38b09df37810f9607c5f61cdbee58ce19aeb5ffe831f296f6d4d87110786"
     },
     {
       "path": "RELEASE_CANDIDATE.md",
@@ -156,8 +156,8 @@
     },
     {
       "path": "docs/coverage-matrix.md",
-      "bytes": 6150,
-      "sha256": "1b58d5eeedea3a3a99778c2adfacc1e440143b039fd55993b33ef838c3f75af2"
+      "bytes": 6495,
+      "sha256": "b2d7d8696dfe2ae92f130bbbeed9c7bff5153e44e2041a59b0bb25c04daf82f5"
     },
     {
       "path": "docs/deterministic-route-classifier.md",
@@ -266,8 +266,8 @@
     },
     {
       "path": "docs/reason-codes.md",
-      "bytes": 9552,
-      "sha256": "98739845bda127adb40d3b94e5e956b493e06d3e55f10c603894eb11137c2c1d"
+      "bytes": 9676,
+      "sha256": "42f51343ae836b659fa0eb6508a8a191150bf849bf353b0f0065e42caea8f8d3"
     },
     {
       "path": "docs/redaction-policy.md",
@@ -346,8 +346,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/README.md",
-      "bytes": 11681,
-      "sha256": "f71240d9e566990011560b9421edaa5b029320c393ac162117d9f3c81f9a14a3"
+      "bytes": 11787,
+      "sha256": "5e80c5335e8279e6b4ca4da652f49af534b87710efc67f391170f636c9287b5f"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/bin/manual-dry-run.mjs",
@@ -403,6 +403,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/decision-counterfactual-checklist.out.json",
       "bytes": 7740,
       "sha256": "9389350819c5688cf9922ad0ed545754f3d441e06aa4f399b127d236925cd217"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/decision-counterfactual-failure-catalog.out.json",
+      "bytes": 4472,
+      "sha256": "22763b97335283a4eab0af2ffd3cab786c4220a8b6fe49a5042575555d28b36e"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/decision-counterfactual-reproducibility.out.json",
@@ -770,6 +775,11 @@
       "sha256": "d72c086fa8efbbada67dbb8e50376c239492c67ac0351a50f49b2f7a0655e5e0"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/fixtures/decision-counterfactual-failure-catalog.json",
+      "bytes": 4945,
+      "sha256": "e17ddfe3f22357656dc5228dc5d2385649b618737cfa86cc62f5375c536906d6"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/fixtures/generated-adversarial-routes.json",
       "bytes": 33019,
       "sha256": "554e588f256dc0fbe040d3df91690f8c1ba5337467576446079392529311f20f"
@@ -1021,8 +1031,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/package.json",
-      "bytes": 10906,
-      "sha256": "ab12d6629b23e5a4dfee097e3d8ba411ec7ea20fb11a32401fb216fb2eff97c8"
+      "bytes": 11082,
+      "sha256": "f604f6e265c49d1da5a1453acb089f694a3ec55ab3b4030c920db5307a32acfe"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/action-context-packet.mjs",
@@ -1143,6 +1153,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/tests/decision-counterfactual-checklist.mjs",
       "bytes": 7711,
       "sha256": "36a648bf22c1a1d400a0fa2fa0d7794269dc1f3a1e13f9a66eeb0c7a44c5aa83"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/decision-counterfactual-failure-catalog.mjs",
+      "bytes": 4431,
+      "sha256": "295b7909560aa67ce19083833554d3a291cc04b13ad5140b9e6aadc8371172c2"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/decision-counterfactual-reproducibility.mjs",
@@ -1876,8 +1891,8 @@
     },
     {
       "path": "tools/release-check.mjs",
-      "bytes": 98667,
-      "sha256": "460a02d0afb2983320b6cadf86ec8cfe56bf4499de5eba463c8bae77e45c3951"
+      "bytes": 100992,
+      "sha256": "4a5c71ccb2422eb9d52c464d65660f2b5572e3821d516d264c34a75b228d0df6"
     },
     {
       "path": "tools/verify-manifest.mjs",

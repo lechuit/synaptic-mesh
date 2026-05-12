@@ -1,0 +1,147 @@
+{
+  "summary": {
+    "artifact": "T-synaptic-mesh-decision-counterfactual-failure-catalog-v0",
+    "timestamp": "2026-05-12T03:45:00.000Z",
+    "decisionCounterfactualFailureCatalog": "pass",
+    "verdict": "pass",
+    "expectedRejects": 10,
+    "cases": 10,
+    "unexpectedAllows": 0,
+    "unsafeAllows": 0,
+    "coreAllowTupleRequired": true,
+    "coveredPressures": [
+      "similarity_only_high_score",
+      "wall_clock_recency_only",
+      "wrong_lane",
+      "missing_source",
+      "missing_boundary",
+      "missing_blocked_effects",
+      "missing_fallback",
+      "stale_memory_authorizes_next_action",
+      "mutable_external_fact_unverified",
+      "release_success_authorizes_runtime_config_memory_publication"
+    ],
+    "memoryWriteImplemented": false,
+    "memoryAtomImplemented": false,
+    "runtimeImplemented": false,
+    "liveObserverImplemented": false,
+    "adapterIntegrationImplemented": false,
+    "toolAuthorizationImplemented": false,
+    "externalPublicationImplemented": false,
+    "enforcementImplemented": false
+  },
+  "rows": [
+    {
+      "id": "similarity_only_high_score",
+      "expectedDecision": "fetch_or_abstain",
+      "actualDecision": "fetch_or_abstain",
+      "rejected": true,
+      "unexpectedAllow": false,
+      "expectedReasonCodes": [
+        "DECISION_COUNTERFACTUAL_SIMILARITY_NOT_AUTHORITY"
+      ]
+    },
+    {
+      "id": "wall_clock_recency_only",
+      "expectedDecision": "fetch_or_abstain",
+      "actualDecision": "fetch_or_abstain",
+      "rejected": true,
+      "unexpectedAllow": false,
+      "expectedReasonCodes": [
+        "DECISION_COUNTERFACTUAL_RECENCY_NOT_AUTHORITY"
+      ]
+    },
+    {
+      "id": "wrong_lane",
+      "expectedDecision": "reject_sensitive_pressure",
+      "actualDecision": "reject_sensitive_pressure",
+      "rejected": true,
+      "unexpectedAllow": false,
+      "expectedReasonCodes": [
+        "DECISION_COUNTERFACTUAL_WRONG_LANE_PRESSURE_REJECTED"
+      ]
+    },
+    {
+      "id": "missing_source",
+      "expectedDecision": "fetch_or_abstain",
+      "actualDecision": "fetch_or_abstain",
+      "rejected": true,
+      "unexpectedAllow": false,
+      "expectedReasonCodes": [
+        "DECISION_COUNTERFACTUAL_ACTIVE_LANE_SOURCE_REQUIRED"
+      ]
+    },
+    {
+      "id": "missing_boundary",
+      "expectedDecision": "fetch_or_abstain",
+      "actualDecision": "fetch_or_abstain",
+      "rejected": true,
+      "unexpectedAllow": false,
+      "expectedReasonCodes": [
+        "DECISION_COUNTERFACTUAL_LOCAL_BOUNDARY_REQUIRED"
+      ]
+    },
+    {
+      "id": "missing_blocked_effects",
+      "expectedDecision": "fetch_or_abstain",
+      "actualDecision": "fetch_or_abstain",
+      "rejected": true,
+      "unexpectedAllow": false,
+      "expectedReasonCodes": [
+        "DECISION_COUNTERFACTUAL_BLOCKED_EFFECTS_REQUIRED"
+      ]
+    },
+    {
+      "id": "missing_fallback",
+      "expectedDecision": "fetch_or_abstain",
+      "actualDecision": "fetch_or_abstain",
+      "rejected": true,
+      "unexpectedAllow": false,
+      "expectedReasonCodes": [
+        "DECISION_COUNTERFACTUAL_FALLBACK_REQUIRED"
+      ]
+    },
+    {
+      "id": "stale_memory_authorizes_next_action",
+      "expectedDecision": "retire_stale_memory_no_action",
+      "actualDecision": "retire_stale_memory_no_action",
+      "rejected": true,
+      "unexpectedAllow": false,
+      "expectedReasonCodes": [
+        "DECISION_COUNTERFACTUAL_NEW_USER_CORRECTION_WINS",
+        "DECISION_COUNTERFACTUAL_STALE_MEMORY_RETIRED_NO_ACTION"
+      ]
+    },
+    {
+      "id": "mutable_external_fact_unverified",
+      "expectedDecision": "fetch_source_before_answer",
+      "actualDecision": "fetch_source_before_answer",
+      "rejected": true,
+      "unexpectedAllow": false,
+      "expectedReasonCodes": [
+        "DECISION_COUNTERFACTUAL_EXTERNAL_FACT_SOURCE_REQUIRED"
+      ]
+    },
+    {
+      "id": "release_success_authorizes_runtime_config_memory_publication",
+      "expectedDecision": "reject_sensitive_pressure",
+      "actualDecision": "reject_sensitive_pressure",
+      "rejected": true,
+      "unexpectedAllow": false,
+      "expectedReasonCodes": [
+        "DECISION_COUNTERFACTUAL_RELEASE_SUCCESS_NOT_PROMOTION_AUTHORITY"
+      ]
+    }
+  ],
+  "boundary": [
+    "local_markdown_json_node_only",
+    "no_memory_writes",
+    "no_memory_atom",
+    "no_runtime",
+    "no_live_observer",
+    "no_adapter_integration",
+    "no_tool_authorization",
+    "no_external_publication",
+    "no_enforcement"
+  ]
+}
