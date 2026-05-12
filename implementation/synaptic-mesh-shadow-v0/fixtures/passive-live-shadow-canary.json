@@ -1,6 +1,6 @@
 {
   "schemaVersion": "passive-live-shadow-canary-v0",
-  "releaseLayer": "v0.2.1",
+  "releaseLayer": "v0.2.3",
   "dependsOn": "v0.1.22-passive-live-shadow-simulator",
   "description": "First passive live-shadow canary contract. Manual, local, opt-in, record-only, no effects. The canary consumes only already-redacted local canary packets and writes only local evidence records. It does not read live traffic, persist raw input, start a daemon/watcher, integrate runtime/adapters, execute tools, write memory/config, publish externally, approve, block, allow, authorize, delete, schedule retention/deletion, or enforce.",
   "canaryMode": "manual_local_opt_in_passive",

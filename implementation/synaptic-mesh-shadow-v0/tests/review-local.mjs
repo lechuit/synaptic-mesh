@@ -137,6 +137,10 @@ const commands = [
     args: [resolve(packageRoot, 'tests/real-redacted-adversarial-coverage.mjs')],
   },
   {
+    id: 'passive-live-shadow-canary-source-boundary-stress-tests',
+    args: [resolve(packageRoot, 'tests/passive-live-shadow-canary-source-boundary-stress.mjs')],
+  },
+  {
     id: 'fixture-parity-harness',
     args: [resolve(packageRoot, 'tests/fixture-parity.mjs')],
   },
@@ -177,6 +181,7 @@ const redactionReviewRecordSchema = readEvidenceJson('implementation/synaptic-me
 const realRedactedHandoffPack = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/real-redacted-handoff-pack.out.json');
 const realRedactedHandoffReplayGate = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/real-redacted-handoff-replay-gate.out.json');
 const realRedactedAdversarialCoverage = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/real-redacted-adversarial-coverage.out.json');
+const passiveCanarySourceBoundaryStress = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/passive-live-shadow-canary-source-boundary-stress.out.json');
 
 const unsafeAllowSignals = [
   ...(fixtureParity?.summary?.nonRegressionUnsafeAllowFixtures ?? []),
@@ -274,6 +279,27 @@ if (Number(realRedactedAdversarialCoverage?.summary?.mayBlockCount ?? 1) !== 0) 
 if (Number(realRedactedAdversarialCoverage?.summary?.mayAllowCount ?? 1) !== 0) unsafeAllowSignals.push('real-redacted-adversarial-coverage-may-allow');
 if (Number(realRedactedAdversarialCoverage?.summary?.capabilityTrueCount ?? 1) !== 0) unsafeAllowSignals.push('real-redacted-adversarial-coverage-capability-true');
 if (realRedactedAdversarialCoverage?.summary?.rawContentPersisted !== false) unsafeAllowSignals.push('real-redacted-adversarial-coverage-raw-content');
+if (passiveCanarySourceBoundaryStress?.summary?.verdict !== 'pass') unsafeAllowSignals.push('passive-canary-source-boundary-stress');
+if (Number(passiveCanarySourceBoundaryStress?.summary?.unexpectedAccepts ?? 1) !== 0) unsafeAllowSignals.push('passive-canary-source-boundary-stress-unexpected-accepts');
+if (Number(passiveCanarySourceBoundaryStress?.summary?.unexpectedRejects ?? 1) !== 0) unsafeAllowSignals.push('passive-canary-source-boundary-stress-unexpected-rejects');
+if (Number(passiveCanarySourceBoundaryStress?.summary?.staleDigestRejects ?? 0) < 1) unsafeAllowSignals.push('passive-canary-source-boundary-stress-missing-stale-digest');
+if (Number(passiveCanarySourceBoundaryStress?.summary?.missingMtimeRejects ?? 0) < 1) unsafeAllowSignals.push('passive-canary-source-boundary-stress-missing-mtime');
+if (Number(passiveCanarySourceBoundaryStress?.summary?.wrongLaneRejects ?? 0) < 1) unsafeAllowSignals.push('passive-canary-source-boundary-stress-missing-wrong-lane');
+if (Number(passiveCanarySourceBoundaryStress?.summary?.outputContainmentRejects ?? 0) < 1) unsafeAllowSignals.push('passive-canary-source-boundary-stress-missing-output-containment');
+if (Number(passiveCanarySourceBoundaryStress?.summary?.passCapabilityTrueCount ?? 1) !== 0) unsafeAllowSignals.push('passive-canary-source-boundary-stress-capability-true');
+if (passiveCanarySourceBoundaryStress?.summary?.recordOnly !== true) unsafeAllowSignals.push('passive-canary-source-boundary-stress-not-record-only');
+if (passiveCanarySourceBoundaryStress?.summary?.noEffects !== true) unsafeAllowSignals.push('passive-canary-source-boundary-stress-effects');
+if (passiveCanarySourceBoundaryStress?.summary?.runtimeIntegrated !== false) unsafeAllowSignals.push('passive-canary-source-boundary-stress-runtime');
+if (passiveCanarySourceBoundaryStress?.summary?.toolExecutionImplemented !== false) unsafeAllowSignals.push('passive-canary-source-boundary-stress-tools');
+if (passiveCanarySourceBoundaryStress?.summary?.memoryWriteImplemented !== false) unsafeAllowSignals.push('passive-canary-source-boundary-stress-memory');
+if (passiveCanarySourceBoundaryStress?.summary?.configWriteImplemented !== false) unsafeAllowSignals.push('passive-canary-source-boundary-stress-config');
+if (passiveCanarySourceBoundaryStress?.summary?.externalPublicationImplemented !== false) unsafeAllowSignals.push('passive-canary-source-boundary-stress-publication');
+if (passiveCanarySourceBoundaryStress?.summary?.approvalPathImplemented !== false) unsafeAllowSignals.push('passive-canary-source-boundary-stress-approval');
+if (passiveCanarySourceBoundaryStress?.summary?.blockingImplemented !== false) unsafeAllowSignals.push('passive-canary-source-boundary-stress-blocking');
+if (passiveCanarySourceBoundaryStress?.summary?.allowingImplemented !== false) unsafeAllowSignals.push('passive-canary-source-boundary-stress-allowing');
+if (passiveCanarySourceBoundaryStress?.summary?.authorizationImplemented !== false) unsafeAllowSignals.push('passive-canary-source-boundary-stress-authorization');
+if (passiveCanarySourceBoundaryStress?.summary?.enforcementImplemented !== false) unsafeAllowSignals.push('passive-canary-source-boundary-stress-enforcement');
+if (passiveCanarySourceBoundaryStress?.summary?.automaticAgentConsumptionImplemented !== false) unsafeAllowSignals.push('passive-canary-source-boundary-stress-automatic-agent-consumption');
 
 const summary = {
   artifact: 'T-synaptic-mesh-review-local-runner-v0',
@@ -388,6 +414,14 @@ const summary = {
   realRedactedAdversarialCoverageMayBlockCount: realRedactedAdversarialCoverage?.summary?.mayBlockCount ?? null,
   realRedactedAdversarialCoverageMayAllowCount: realRedactedAdversarialCoverage?.summary?.mayAllowCount ?? null,
   realRedactedAdversarialCoverageCapabilityTrueCount: realRedactedAdversarialCoverage?.summary?.capabilityTrueCount ?? null,
+  passiveCanarySourceBoundaryStressVerdict: passiveCanarySourceBoundaryStress?.summary?.verdict ?? null,
+  passiveCanarySourceBoundaryStressMalformedSourceTupleRejects: passiveCanarySourceBoundaryStress?.summary?.malformedSourceTupleRejects ?? null,
+  passiveCanarySourceBoundaryStressStaleDigestRejects: passiveCanarySourceBoundaryStress?.summary?.staleDigestRejects ?? null,
+  passiveCanarySourceBoundaryStressMissingMtimeRejects: passiveCanarySourceBoundaryStress?.summary?.missingMtimeRejects ?? null,
+  passiveCanarySourceBoundaryStressWrongLaneRejects: passiveCanarySourceBoundaryStress?.summary?.wrongLaneRejects ?? null,
+  passiveCanarySourceBoundaryStressOutputContainmentRejects: passiveCanarySourceBoundaryStress?.summary?.outputContainmentRejects ?? null,
+  passiveCanarySourceBoundaryStressPassCapabilityTrueCount: passiveCanarySourceBoundaryStress?.summary?.passCapabilityTrueCount ?? null,
+  passiveCanarySourceBoundaryStressAutomaticAgentConsumptionImplemented: passiveCanarySourceBoundaryStress?.summary?.automaticAgentConsumptionImplemented ?? null,
   unsafeAllowSignals,
   sourceFixtureMutation: false,
 };

@@ -31,6 +31,7 @@ const releaseGateScripts = [
   'test:live-input-source-boundary-contracts',
   'test:passive-live-shadow-canary',
   'test:passive-live-shadow-canary-reproducibility',
+  'test:passive-live-shadow-canary-source-boundary-stress',
   'test:live-shadow-synthetic-replay',
   'test:live-shadow-drift-scorecard',
   'test:manual-observation-bundle-schema',
@@ -272,6 +273,7 @@ assert(liveShadowForbiddenEffects?.summary?.externalPublicationImplemented === f
 
 const passiveLiveShadowCanary = readJson(path.join(packageRoot, 'evidence/passive-live-shadow-canary.out.json'));
 const passiveCanaryReproducibility = readJson(path.join(packageRoot, 'evidence/passive-live-shadow-canary-reproducibility.out.json'));
+const passiveCanarySourceBoundaryStress = readJson(path.join(packageRoot, 'evidence/passive-live-shadow-canary-source-boundary-stress.out.json'));
 const liveInputSourceBoundaryContracts = readJson(path.join(packageRoot, 'evidence/live-input-source-boundary-contracts.out.json'));
 assert(liveInputSourceBoundaryContracts?.summary?.verdict === 'pass', 'live input/source boundary contracts verdict must be pass');
 assert(liveInputSourceBoundaryContracts?.summary?.passCases === 2, 'live input/source boundary contracts must keep 2 positive controls');
@@ -341,6 +343,32 @@ assert(passiveCanaryReproducibility?.scorecardMismatches === 0, 'passive canary 
 assert(passiveCanaryReproducibility?.boundaryVerdictMismatches === 0, 'passive canary reproducibility must have zero boundary verdict mismatches');
 assert(passiveCanaryReproducibility?.capabilityTrueCount === 0, 'passive canary reproducibility pass cases must keep capability true count zero');
 assert(passiveCanaryReproducibility?.forbiddenEffects === 0, 'passive canary reproducibility pass cases must keep forbidden effects zero');
+
+assert(passiveCanarySourceBoundaryStress?.summary?.verdict === 'pass', 'passive canary source-boundary stress verdict must be pass');
+assert(passiveCanarySourceBoundaryStress?.summary?.releaseLayer === manifestReleaseTag, 'passive canary source-boundary stress release layer must match release target');
+assert(passiveCanarySourceBoundaryStress?.summary?.passCases === 1, 'passive canary source-boundary stress must keep 1 positive control');
+assert(passiveCanarySourceBoundaryStress?.summary?.rejectCases === 5, 'passive canary source-boundary stress must keep 5 expected rejects');
+assert(passiveCanarySourceBoundaryStress?.summary?.unexpectedAccepts === 0, 'passive canary source-boundary stress must have zero unexpected accepts');
+assert(passiveCanarySourceBoundaryStress?.summary?.unexpectedRejects === 0, 'passive canary source-boundary stress must have zero unexpected rejects');
+assert(passiveCanarySourceBoundaryStress?.summary?.malformedSourceTupleRejects >= 1, 'passive canary source-boundary stress must cover malformed source tuple rejects');
+assert(passiveCanarySourceBoundaryStress?.summary?.staleDigestRejects >= 1, 'passive canary source-boundary stress must cover stale digest rejects');
+assert(passiveCanarySourceBoundaryStress?.summary?.missingMtimeRejects >= 1, 'passive canary source-boundary stress must cover missing mtime rejects');
+assert(passiveCanarySourceBoundaryStress?.summary?.wrongLaneRejects >= 1, 'passive canary source-boundary stress must cover wrong source lane rejects');
+assert(passiveCanarySourceBoundaryStress?.summary?.outputContainmentRejects >= 1, 'passive canary source-boundary stress must cover output containment rejects');
+assert(passiveCanarySourceBoundaryStress?.summary?.passCapabilityTrueCount === 0, 'passive canary source-boundary stress pass cases must keep capability true count zero');
+assert(passiveCanarySourceBoundaryStress?.summary?.recordOnly === true, 'passive canary source-boundary stress must remain record-only');
+assert(passiveCanarySourceBoundaryStress?.summary?.noEffects === true, 'passive canary source-boundary stress must remain no-effects');
+assert(passiveCanarySourceBoundaryStress?.summary?.runtimeIntegrated === false, 'passive canary source-boundary stress must not integrate runtime');
+assert(passiveCanarySourceBoundaryStress?.summary?.toolExecutionImplemented === false, 'passive canary source-boundary stress must not execute tools');
+assert(passiveCanarySourceBoundaryStress?.summary?.memoryWriteImplemented === false, 'passive canary source-boundary stress must not write memory');
+assert(passiveCanarySourceBoundaryStress?.summary?.configWriteImplemented === false, 'passive canary source-boundary stress must not write config');
+assert(passiveCanarySourceBoundaryStress?.summary?.externalPublicationImplemented === false, 'passive canary source-boundary stress must not publish externally');
+assert(passiveCanarySourceBoundaryStress?.summary?.approvalPathImplemented === false, 'passive canary source-boundary stress must not enter approval path');
+assert(passiveCanarySourceBoundaryStress?.summary?.blockingImplemented === false, 'passive canary source-boundary stress must not block');
+assert(passiveCanarySourceBoundaryStress?.summary?.allowingImplemented === false, 'passive canary source-boundary stress must not allow');
+assert(passiveCanarySourceBoundaryStress?.summary?.authorizationImplemented === false, 'passive canary source-boundary stress must not authorize');
+assert(passiveCanarySourceBoundaryStress?.summary?.enforcementImplemented === false, 'passive canary source-boundary stress must not enforce');
+assert(passiveCanarySourceBoundaryStress?.summary?.automaticAgentConsumptionImplemented === false, 'passive canary source-boundary stress must not be consumed automatically by agents');
 
 const liveShadowSyntheticReplay = readJson(path.join(packageRoot, 'evidence/live-shadow-synthetic-replay.out.json'));
 assert(liveShadowSyntheticReplay?.summary?.verdict === 'pass', 'live-shadow synthetic replay verdict must be pass');
