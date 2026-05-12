@@ -319,8 +319,8 @@
     },
     {
       "path": "docs/status-v0.2.3.md",
-      "bytes": 13862,
-      "sha256": "233d6fbfabfd3b6d1c3d88ce53f84c48dab36c513883e49770fe4fd5642c3a5b"
+      "bytes": 13842,
+      "sha256": "49afeeda1dbd7038180c7a4b3f21a0d3167f26101c60858b64aca956a90fc192"
     },
     {
       "path": "docs/threat-model-v0.md",

@@ -61,7 +61,7 @@ Included:
 
 - paper draft: `paper/synaptic-mesh-paper-v0.md`
 - specs: `specs/`
-- docs: [`docs/reason-codes.md`](docs/reason-codes.md), [`docs/coverage-matrix.md`](docs/coverage-matrix.md), and live-shadow design/schema docs stabilize review vocabulary and coverage status
+- docs: [`reason-codes.md`](reason-codes.md), [`coverage-matrix.md`](coverage-matrix.md), and live-shadow design/schema docs stabilize review vocabulary and coverage status
 - local shadow/reference implementation: `implementation/synaptic-mesh-shadow-v0/`
 - bibliography and review artifacts: `research-package/`
 - reproducibility snapshot: `evidence/`
