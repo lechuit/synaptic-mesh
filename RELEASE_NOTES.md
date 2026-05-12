@@ -1,68 +1,58 @@
-# Release Notes — Synaptic Mesh v0.1.17
+# Release Notes — Synaptic Mesh v0.1.18
 
-Status: redaction/retention executable-gates public review package update. Not runtime-ready; not production/canary/enforcement-ready.
+Status: decision-counterfactual memory retrieval checklist public review package update. Not runtime-ready; not production/canary/enforcement-ready.
 
-## Highlights since v0.1.16
+## Highlights since the previous release
 
-- Added a redaction policy schema gate covering raw content, secret-like values, private paths, tool output, memory text, config text, approval text, long raw prompts, and unknown sensitive fields.
-- Added a minimal executable redaction scanner over committed synthetic/already-redacted fixtures.
-- The redaction scanner produces the expected compact pass output:
+- Added `specs/decision-counterfactual-receiver-rule-v0.5.md`, a compact local advisory checklist for deciding when a memory-derived fragment may influence the next local action.
+- Added `schemas/decision-counterfactual-checklist.schema.json` for the checklist fixture contract.
+- Added 16 deterministic fixtures in `implementation/synaptic-mesh-shadow-v0/fixtures/decision-counterfactual-checklist.json`, derived from the chat-fragment ablation and live user-correction sample.
+- Added `implementation/synaptic-mesh-shadow-v0/tests/decision-counterfactual-checklist.mjs`, a deterministic local gate that validates schema shape, reason-code vocabulary, negative controls, and expected decisions.
+- Added evidence output at `implementation/synaptic-mesh-shadow-v0/evidence/decision-counterfactual-checklist.out.json`.
+- Added `DECISION_COUNTERFACTUAL_*` reason codes to the public reason-code vocabulary.
+- Updated the coverage matrix with the checklist row and its conservative scope.
 
-```json
-{
-  "redactionGate": "pass",
-  "rawPersisted": false,
-  "secretLikePersisted": false,
-  "privatePathPersisted": false,
-  "toolOutputPersisted": false,
-  "memoryTextPersisted": false,
-  "configTextPersisted": false,
-  "approvalTextPersisted": false
-}
-```
+## Conservative release statement
 
-- Added a retention policy schema gate with explicit metadata ceilings: raw live input 0 days, redacted observations/results up to 7 days, aggregate scorecards up to 90 days, and public release evidence only when synthetic/non-sensitive.
-- Added retention negative controls for raw input retention, over-ceiling retention, unknown classes, raw persistence, missing redaction status, non-aggregate scorecards, non-synthetic public evidence, scheduler/deletion/live-observer/runtime attempts.
-- Wired the new redaction/retention gates into local `check` and `release:check` validation.
-- Preserved the strict boundary: committed fixture/evidence validation only; no live observer, watcher, daemon, adapter/MCP/A2A integration, runtime host integration, tool execution, memory/config writes, external publication, approval path, blocking, allowing, authorization, deletion, retention scheduler, or enforcement.
+Adds a local advisory decision-counterfactual memory retrieval checklist.
+It proves only local fixture behavior.
+It does not add memory writes, MemoryAtom, runtime, live observer, adapter integration, tool authorization, publication, or enforcement.
 
-## New v0.1.17 evidence
+## New v0.1.18 evidence
 
-- Redaction policy schema: pass; 9 sensitive field classes; 7 required public output flags; raw/secret/private/tool/memory/config/approval/long-prompt/unknown-sensitive persistence all false.
-- Minimal redaction scanner: pass; 2 pass cases; 9/9 blocking classes rejected; unexpected passes 0; unexpected rejects 0.
-- Redaction scanner covered classes: raw content, secret-like value, private path, tool output, memory text, config text, approval text, long raw prompt, unknown sensitive field.
-- Retention policy schema: pass; 5 artifact classes; raw live input retention 0 days; redacted observation/result ceilings 7 days; aggregate scorecard ceiling 90 days; no scheduler/deletion implementation.
-- Retention negative controls: pass; 13/13 expected rejects; unexpected passes 0; unexpected rejects 0.
-- Retention reason codes covered: `RETENTION_RAW_LIVE_INPUT_MUST_BE_ZERO_DAY`, `RETENTION_CEILING_EXCEEDED`, `RETENTION_UNKNOWN_CLASS_REJECTED`, `RETENTION_RAW_CONTENT_PERSISTED`, `RETENTION_REDACTION_STATUS_REQUIRED`, `RETENTION_AGGREGATE_ONLY_REQUIRED`, `RETENTION_PUBLIC_EVIDENCE_MUST_BE_SYNTHETIC_OR_NON_SENSITIVE`, `RETENTION_SCHEDULER_FORBIDDEN`, `RETENTION_DELETION_IMPLEMENTATION_FORBIDDEN`, `RETENTION_LIVE_OBSERVER_FORBIDDEN`, `RETENTION_RUNTIME_INTEGRATION_FORBIDDEN`.
+- Decision-counterfactual checklist schema: pass.
+- Checklist fixtures: 16/16 pass.
+- Source experiment families: `chat_fragment_ablation_v0`, `live_user_correction_sample_v0`.
+- Unsafe allows: 0.
+- Negative controls: 8.
+- Reason codes covered: 15.
+- Capability/boundary claims remain false: memory writes, MemoryAtom, runtime, live observer, adapter integration, tool authorization, external publication, and enforcement are not implemented.
 
 ## Carried-forward package evidence
 
-The release package still includes earlier local-shadow gates from the v0.1.x line: reason-code vocabulary docs, conservative coverage matrix, raw/parser adversarial fixtures, adversarial fixture generation, authority-overhead benchmark evidence, decision traces, oracle/classifier separation, mutation degradation checks, category coverage thresholds, passive live-shadow schemas, synthetic live-shadow replay, aggregate drift scorecard shape checks, manual observation bundles, manual redaction fixtures, parserEvidence replay, manual DecisionTrace/live-shadow replay, strict manual scorecard thresholds, RedactionReviewRecord audit gates, the 3-case real-redacted handoff pack, real-redacted replay gate, 6-case real-redacted adversarial coverage gate, manual dry-run command/result contract schemas, the manual dry-run CLI skeleton, forbidden-effects CLI gates, the 3-case CLI real-redacted positive path, 6-case real-redacted pilot, 14-case failure catalog, runbook/checklist, 12-case expanded real-redacted pilot, pilot reproducibility gate, and reproducibility negative controls. These remain current validation artifacts, but they are not new v0.1.17 delta items.
+The release package still includes earlier local-shadow gates from the v0.1.x line: reason-code vocabulary docs, conservative coverage matrix, raw/parser adversarial fixtures, adversarial fixture generation, authority-overhead benchmark evidence, decision traces, oracle/classifier separation, mutation degradation checks, category coverage thresholds, passive live-shadow schemas, synthetic live-shadow replay, aggregate drift scorecard shape checks, manual observation bundles, manual redaction fixtures, parserEvidence replay, manual DecisionTrace/live-shadow replay, strict manual scorecard thresholds, RedactionReviewRecord audit gates, the real-redacted handoff pack, real-redacted replay gate, real-redacted adversarial coverage gate, manual dry-run command/result contract schemas, the manual dry-run CLI skeleton, forbidden-effects CLI gates, real-redacted positive path, real-redacted pilot, failure catalog, runbook/checklist, expanded pilot, pilot reproducibility gate, reproducibility negative controls, and redaction/retention executable gates. These remain current validation artifacts, but they are not new v0.1.18 delta items.
 
 ## Validation snapshot
 
-- review-local: pass 34/34
-- receiver adapter contracts: pass 59/59
-- fixture parity: 15/15
-- unsafe allow signals: 0
-- source fixture mutation: false
-- Redaction policy schema: pass, 9 sensitive field classes, 7 output flags, validation errors 0.
-- Minimal redaction scanner: pass, 2 pass cases, 9 block cases, rejected block cases 9, unexpected passes 0, unexpected rejects 0.
-- Retention policy schema: pass, 5 artifact classes, raw live input retention 0 days, observation/result ceilings 7 days, aggregate ceiling 90 days, scheduler/deletion implemented false.
-- Retention negative controls: pass, 13 negative controls, rejected negative controls 13, unexpected passes 0, unexpected rejects 0.
-- Manual dry-run CLI pilot reproducibility: pass 12/12, two fresh runs per case, canonical outputs compared 12, return/write mismatches 0, normalized output mismatches 0, DecisionTrace hash mismatches 0, scorecard mismatches 0, committed evidence mismatches 0, input mutations 0, forbidden effects 0, capabilityTrue 0, falsePermit 0, falseCompact 0, boundaryLoss 0.
-- Manual dry-run CLI pilot reproducibility negative controls: pass 8/8 expected rejects, unexpected accepts 0, expected reason-code misses 0.
+- Decision-counterfactual checklist: pass 16/16, unsafe allows 0.
+- Redaction policy schema/minimal scanner and retention policy/negative controls remain part of `check` and `release:check`.
+- Manual dry-run CLI pilot reproducibility and reproducibility negative controls remain part of `release:check`.
+- Full release validation is expected through:
+
+```bash
+npm --prefix implementation/synaptic-mesh-shadow-v0 run release:check -- --target v0.1.18
+```
 
 ## Compatibility note
 
-Synaptic Mesh remains a framework-agnostic protocol proposal. v0.1.17 turns redaction/retention review boundaries into executable local fixture gates. It does not capture live traffic, run a live observer, retain raw prompts, schedule deletion, or authorize runtime actions.
+Synaptic Mesh remains a framework-agnostic protocol proposal. v0.1.18 adds a local advisory checklist for decision-counterfactual memory retrieval. It does not capture live traffic, run a live observer, write memory, create MemoryAtom records, integrate adapters/tools, publish externally, or authorize runtime actions.
 
 ## Operational non-release status
 
 - Not runtime/tooling integrated.
 - Not live-monitoring integrated.
 - Not production/canary/enforcement/L2+ ready.
-- Runtime, live observation, adapter, retention scheduler, deletion, authorization, approval, or operational use requires a separate explicit maintainer decision.
+- Runtime, live observation, adapter, MemoryAtom, memory writing, tool authorization, publication, approval, or operational use requires a separate explicit maintainer decision.
 
 ## Public review requests
 

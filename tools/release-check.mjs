@@ -39,6 +39,7 @@ const releaseGateScripts = [
   'test:redaction-scanner-minimal',
   'test:retention-policy-schema',
   'test:retention-negative-controls',
+  'test:decision-counterfactual-checklist',
   'test:redaction-review-record-schema',
   'test:real-redacted-handoff-pack',
   'test:real-redacted-handoff-replay-gate',
@@ -496,6 +497,23 @@ assert(retentionNegativeControls?.summary?.configWriteImplemented === false, 're
 assert(retentionNegativeControls?.summary?.externalPublicationImplemented === false, 'retention negative controls must not implement external publication');
 assert(retentionNegativeControls?.summary?.authorizationImplemented === false, 'retention negative controls must not implement authorization');
 assert(retentionNegativeControls?.summary?.enforcementImplemented === false, 'retention negative controls must not implement enforcement');
+
+const decisionCounterfactualChecklist = readJson(path.join(packageRoot, 'evidence/decision-counterfactual-checklist.out.json'));
+assert(decisionCounterfactualChecklist?.summary?.verdict === 'pass', 'decision-counterfactual checklist verdict must be pass');
+assert(decisionCounterfactualChecklist?.summary?.fixtureCount === 16, 'decision-counterfactual checklist must contain exactly 16 fixtures');
+assert(decisionCounterfactualChecklist?.summary?.passCount === 16, 'decision-counterfactual checklist must pass 16 fixtures');
+assert(decisionCounterfactualChecklist?.summary?.unsafeAllows === 0, 'decision-counterfactual checklist must have zero unsafe allows');
+assert(decisionCounterfactualChecklist?.summary?.negativeControlCount >= 8, 'decision-counterfactual checklist must cover at least 8 negative controls');
+assert(decisionCounterfactualChecklist?.summary?.reasonCodesCovered >= 15, 'decision-counterfactual checklist must cover at least 15 reason codes');
+assert(decisionCounterfactualChecklist?.summary?.coreAllowTupleRequired === true, 'decision-counterfactual checklist must require the core allow tuple for allow_local_advisory cases');
+assert(decisionCounterfactualChecklist?.summary?.memoryWriteImplemented === false, 'decision-counterfactual checklist must not implement memory writes');
+assert(decisionCounterfactualChecklist?.summary?.memoryAtomImplemented === false, 'decision-counterfactual checklist must not implement MemoryAtom');
+assert(decisionCounterfactualChecklist?.summary?.runtimeImplemented === false, 'decision-counterfactual checklist must not implement runtime');
+assert(decisionCounterfactualChecklist?.summary?.liveObserverImplemented === false, 'decision-counterfactual checklist must not implement live observer');
+assert(decisionCounterfactualChecklist?.summary?.adapterIntegrationImplemented === false, 'decision-counterfactual checklist must not implement adapter integration');
+assert(decisionCounterfactualChecklist?.summary?.toolAuthorizationImplemented === false, 'decision-counterfactual checklist must not implement tool authorization');
+assert(decisionCounterfactualChecklist?.summary?.externalPublicationImplemented === false, 'decision-counterfactual checklist must not implement external publication');
+assert(decisionCounterfactualChecklist?.summary?.enforcementImplemented === false, 'decision-counterfactual checklist must not implement enforcement');
 
 const redactionReviewRecordSchema = readJson(path.join(packageRoot, 'evidence/redaction-review-record-schema.out.json'));
 assert(redactionReviewRecordSchema?.summary?.verdict === 'pass', 'redaction review record schema verdict must be pass');

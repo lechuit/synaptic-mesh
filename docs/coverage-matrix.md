@@ -1,6 +1,6 @@
 # Coverage matrix
 
-This matrix summarizes what the current Synaptic Mesh local-shadow package covers before a v0.1.7 release decision. It is intentionally conservative: **covered** means a tracked deterministic gate exists; **partial** means useful evidence exists but important semantics are still outside the gate; **pending** means planned or desired but not implemented; **out of scope** means not a goal for this release line.
+This matrix summarizes what the current Synaptic Mesh local-shadow package covers before the current release decision. It is intentionally conservative: **covered** means a tracked deterministic gate exists; **partial** means useful evidence exists but important semantics are still outside the gate; **pending** means planned or desired but not implemented; **out of scope** means not a goal for this release line.
 
 ## Status legend
 
@@ -29,6 +29,7 @@ This matrix summarizes what the current Synaptic Mesh local-shadow package cover
 | Source freshness / digest drift | Source freshness regression/profile tests and route fixtures | Covered | Deterministic digest/mtime/run-id drift cases are checked in local fixtures. |
 | Framework adapter packet shapes | Receiver adapter contract tests (`test:receiver-adapters`) | Covered | Generic, LangGraph-like, AutoGen-like, CrewAI-like, Semantic Kernel-like, and MCP-like packet shapes are contract-shaped only; no real framework adapters are included. |
 | Deterministic classifier behavior | Route classifier shadow gate (`test:route-classifier-shadow`) | Partial | Covers deterministic routing over hand-authored `parserEvidence` + `routeDecisionInput` fixtures. It is not raw parsing, live traffic, runtime enforcement, or semantic robustness proof. |
+| Decision-counterfactual memory retrieval checklist | Decision-counterfactual receiver checklist (`test:decision-counterfactual-checklist`) | Covered | 16 local advisory fixtures derived from the chat-fragment ablation and live user-correction sample. Proves only local fixture behavior; no memory writes, MemoryAtom, runtime, live observer, adapter integration, tool authorization, publication, or enforcement. |
 | Runtime enforcement | None | Out of scope | The package is review/local-shadow only; it does not authorize tools, write memory, publish, or enforce runtime policy. |
 | Production/canary readiness | None | Out of scope | Release gates support public review and fixture reproducibility, not deployment readiness. |
 

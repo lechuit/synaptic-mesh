@@ -1,13 +1,13 @@
 {
   "bundle": "synaptic-mesh",
-  "version": "0.1.17",
-  "generated": "2026-05-09T01:15:00Z",
-  "status": "v0.1.17_redaction_retention_executable_gates_public_review_release_not_runtime_ready",
+  "version": "0.1.18",
+  "generated": "2026-05-12T03:20:00Z",
+  "status": "v0.1.18_decision_counterfactual_checklist_public_review_release_not_runtime_ready",
   "repository": "https://github.com/lechuit/synaptic-mesh",
   "license": "Apache-2.0 for code; CC BY 4.0 for docs/prose unless otherwise noted",
-  "reproducibility": "expected_pass_local_shadow_gates_for_v0.1.17_redaction_retention_executable_gates_with_zero_redaction_persistence_and_retention_negative_controls_rejected",
+  "reproducibility": "expected_pass_local_shadow_gates_for_v0.1.18_decision_counterfactual_checklist_with_sixteen_fixtures_zero_unsafe_allows_and_no_runtime_memory_publication_or_enforcement",
   "rawSourceCache": "excluded",
-  "runtimeBoundary": "v0.1.17_redaction_retention_executable_gates_local_fixture_metadata_only_no_live_observer_no_runtime_integration_no_tool_execution_no_memory_config_publication_approval_authorization_deletion_scheduler_or_enforcement",
+  "runtimeBoundary": "v0.1.18_decision_counterfactual_checklist_local_fixture_metadata_only_no_memory_writes_no_MemoryAtom_no_live_observer_no_runtime_integration_no_adapter_integration_no_tool_authorization_no_external_publication_no_approval_authorization_scheduler_deletion_or_enforcement",
   "files": [
     {
       "path": ".github/workflows/ci.yml",
@@ -76,8 +76,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 10225,
-      "sha256": "ed556e446ff9360764790b5dbcb554c1dfc38eda09623e47e88c491e25c99d0f"
+      "bytes": 10623,
+      "sha256": "7945f061cc3a08b0f8033b5c37bafba01e56086b5f48894cc01874fbcee1632c"
     },
     {
       "path": "RELEASE_CANDIDATE.md",
@@ -86,8 +86,8 @@
     },
     {
       "path": "RELEASE_NOTES.md",
-      "bytes": 6582,
-      "sha256": "290b2e736ff1108254aeffaaddcc571eac237993f3ac709ef1e32aba1dd4fe5b"
+      "bytes": 4782,
+      "sha256": "7e4415ebf97c87c2fd1d6698bd48a823ad1f08774301b9b6ee470568f154dacc"
     },
     {
       "path": "design-notes/adapter-boundary-langgraph-mcp-v0.md",
@@ -156,8 +156,8 @@
     },
     {
       "path": "docs/coverage-matrix.md",
-      "bytes": 5384,
-      "sha256": "0bbb6c8dadd4bca1e809ea0c94eabe8a1a7e1afd8e0ab153e7975828a638970c"
+      "bytes": 5802,
+      "sha256": "77aeb0dbdeb363e0ccb68ef14e29d263fba2c257858c93052afd57833b31e7e0"
     },
     {
       "path": "docs/deterministic-route-classifier.md",
@@ -266,8 +266,8 @@
     },
     {
       "path": "docs/reason-codes.md",
-      "bytes": 7167,
-      "sha256": "7bc899a56451393a8256bf3111c7110d675431aebc53581c30e6d44593bf8ae8"
+      "bytes": 9552,
+      "sha256": "98739845bda127adb40d3b94e5e956b493e06d3e55f10c603894eb11137c2c1d"
     },
     {
       "path": "docs/redaction-policy.md",
@@ -346,8 +346,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/README.md",
-      "bytes": 11437,
-      "sha256": "d5a6e210007b688401be44097b91cc77d0a1392a564bdb6d121f8eab8e2b717a"
+      "bytes": 11575,
+      "sha256": "0a807737bd88ca0645aa3a9b7188e0d438b0519e0cc8d76cc9b877a2b11a246d"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/bin/manual-dry-run.mjs",
@@ -398,6 +398,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/cli-validator.out.json",
       "bytes": 1739,
       "sha256": "0626cb1fba1151112184335dd4d1492af7e59f12c7497a1060860ab00fd391e0"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/decision-counterfactual-checklist.out.json",
+      "bytes": 7740,
+      "sha256": "9389350819c5688cf9922ad0ed545754f3d441e06aa4f399b127d236925cd217"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/decision-trace-schema.out.json",
@@ -755,6 +760,11 @@
       "sha256": "81c84d844fb368a60f81683bb2378b88fd251ee371087f9091031d6e36d64e59"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/fixtures/decision-counterfactual-checklist.json",
+      "bytes": 10134,
+      "sha256": "d72c086fa8efbbada67dbb8e50376c239492c67ac0351a50f49b2f7a0655e5e0"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/fixtures/generated-adversarial-routes.json",
       "bytes": 33019,
       "sha256": "554e588f256dc0fbe040d3df91690f8c1ba5337467576446079392529311f20f"
@@ -1006,8 +1016,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/package.json",
-      "bytes": 10572,
-      "sha256": "5d000a7477d4ae298c6bf5a965a0ebebdfeb2ca9dc242259066ab5ba501e815e"
+      "bytes": 10730,
+      "sha256": "f41b595e5c59a61beb399a382acd368146b90d78a8a895fa0ad39615c0ac0370"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/action-context-packet.mjs",
@@ -1123,6 +1133,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/tests/cli-validator.mjs",
       "bytes": 4289,
       "sha256": "c12267a8d617a73d236b62140bdd44b5b5db92188ba034d04a47fa84805cfaae"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/decision-counterfactual-checklist.mjs",
+      "bytes": 7711,
+      "sha256": "36a648bf22c1a1d400a0fa2fa0d7794269dc1f3a1e13f9a66eeb0c7a44c5aa83"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/decision-trace-schema.mjs",
@@ -1745,6 +1760,11 @@
       "sha256": "a7001f3ff3244fb0cb575647b6f8a747785bc064ed7796f9f3be874cba79f7ae"
     },
     {
+      "path": "schemas/decision-counterfactual-checklist.schema.json",
+      "bytes": 4314,
+      "sha256": "3e887703d425383fc309cbac6ba668e9c5d5adccd6088af3d199553d7dd7863d"
+    },
+    {
       "path": "schemas/decision-trace.schema.json",
       "bytes": 3265,
       "sha256": "3197b7df4d6d17e54cfa5a7fdb69f01c301f6ab83a0c422c841100f6f0da629c"
@@ -1825,6 +1845,11 @@
       "sha256": "a5a7c1e7b2802a47df8d97e21c36cd980772761112b6b202249e310ac0bb6f63"
     },
     {
+      "path": "specs/decision-counterfactual-receiver-rule-v0.5.md",
+      "bytes": 2599,
+      "sha256": "03ffb66df93730c4cd02844c0c266e012bb3f62b753361be743ec77837794d47"
+    },
+    {
       "path": "specs/framework-adapter-matrix-v0.md",
       "bytes": 4624,
       "sha256": "a28780a3777978332738279c7aa07742c32d0890a2112e366eb0a6c3e044036e"
@@ -1841,8 +1866,8 @@
     },
     {
       "path": "tools/release-check.mjs",
-      "bytes": 93740,
-      "sha256": "52c35aeabeaa997e2ffdccbb201e4b9797e08ac3bf3bea8ba899426665cb81a3"
+      "bytes": 96190,
+      "sha256": "a6e3b9c64426de175b2ffdaa362edafe2e4d0d20bdb491d6696dfcc6bc47ff72"
     },
     {
       "path": "tools/verify-manifest.mjs",
