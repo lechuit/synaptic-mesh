@@ -6,24 +6,46 @@ Status: decision-counterfactual checklist robustness public review package updat
 
 - Added `implementation/synaptic-mesh-shadow-v0/tests/decision-counterfactual-reproducibility.mjs`, a deterministic local reproducibility gate for the decision-counterfactual checklist.
 - Added evidence output at `implementation/synaptic-mesh-shadow-v0/evidence/decision-counterfactual-reproducibility.out.json`.
-- Wired the reproducibility gate into local `check` and `release:check` validation.
-- Updated coverage and README references for the checklist robustness line.
+- Added `implementation/synaptic-mesh-shadow-v0/tests/decision-counterfactual-failure-catalog.mjs`, a deterministic local failure catalog for checklist misuse pressure.
+- Added evidence output at `implementation/synaptic-mesh-shadow-v0/evidence/decision-counterfactual-failure-catalog.out.json`.
+- Added `docs/decision-counterfactual-reviewer-guide.md`, a human reviewer guide for evaluating retrieved-memory fragments before they influence local advisory decisions.
+- Wired the reproducibility and failure-catalog gates into local `check` and `release:check` validation.
+- Updated coverage, reason-code docs, README references, and the manifest for the checklist robustness line.
 
 ## Conservative release statement
 
-Adds robustness evidence for the local advisory decision-counterfactual memory retrieval checklist.
-It proves only local fixture reproducibility over committed fixtures.
-It does not add memory writes, MemoryAtom, runtime, live observer, adapter integration, tool authorization, publication, or enforcement.
+Adds robustness evidence and reviewer documentation for the local advisory decision-counterfactual memory retrieval checklist.
+It proves only local fixture reproducibility and local expected-reject behavior over committed fixtures.
+It does not add memory writes, MemoryAtom, runtime, live observer, adapter integration, tool authorization, external publication automation, approval paths, blocking/allowing, or enforcement.
 
 ## New v0.1.19 evidence
 
 - Decision-counterfactual reproducibility: pass.
-- Runs: 2.
-- Fixtures: 16.
+- Reproducibility runs: 2.
+- Reproducibility fixtures: 16.
 - Normalized output mismatches: 0.
+- Decision-counterfactual failure catalog: pass.
+- Expected rejects: 10.
+- Unexpected allows: 0.
 - Unsafe allows: 0.
 - Core allow tuple required: true.
-- Capability/boundary claims remain false: memory writes, MemoryAtom, runtime, live observer, adapter integration, tool authorization, external publication, and enforcement are not implemented.
+- Reviewer guide status: documentation-only companion; coverage is marked Partial because no deterministic gate is claimed for the human guide itself.
+- Capability/boundary claims remain false: memory writes, MemoryAtom, runtime, live observer, adapter integration, tool authorization, external publication automation, approval paths, blocking/allowing, and enforcement are not implemented.
+
+## Failure catalog pressure cases
+
+The new failure catalog keeps the checklist conservative against:
+
+- similarity-only high score;
+- wall-clock recency only;
+- wrong active lane;
+- missing source;
+- missing boundary;
+- missing blocked effects;
+- missing fallback;
+- stale memory trying to authorize a next action;
+- unverified mutable external fact;
+- release success trying to authorize runtime/config/memory/publication/tool effects.
 
 ## Carried-forward package evidence
 
@@ -33,6 +55,7 @@ The release package still includes earlier local-shadow gates from the v0.1.x li
 
 - Decision-counterfactual checklist: pass 16/16, unsafe allows 0.
 - Decision-counterfactual reproducibility: pass 2 runs, normalized output mismatches 0, unsafe allows 0.
+- Decision-counterfactual failure catalog: pass 10 expected rejects, unexpected allows 0, unsafe allows 0.
 - Full release validation is expected through:
 
 ```bash
@@ -41,11 +64,11 @@ npm --prefix implementation/synaptic-mesh-shadow-v0 run release:check -- --targe
 
 ## Compatibility note
 
-Synaptic Mesh remains a framework-agnostic protocol proposal. v0.1.19 adds local reproducibility evidence for the decision-counterfactual checklist. It does not capture live traffic, run a live observer, write memory, create MemoryAtom records, integrate adapters/tools, publish externally, or authorize runtime actions.
+Synaptic Mesh remains a framework-agnostic protocol proposal. v0.1.19 adds local reproducibility evidence, a local expected-reject failure catalog, and a documentation-only reviewer guide for the decision-counterfactual checklist. It does not capture live traffic, run a live observer, write memory, create MemoryAtom records, integrate adapters/tools, publish externally, authorize runtime actions, create approval paths, block actions, allow actions, or enforce policy.
 
 ## Operational non-release status
 
 - Not runtime/tooling integrated.
 - Not live-monitoring integrated.
 - Not production/canary/enforcement/L2+ ready.
-- Runtime, live observation, adapter, MemoryAtom, memory writing, tool authorization, publication, approval, or operational use requires a separate explicit maintainer decision.
+- Runtime, live observation, adapter, MemoryAtom, memory writing, tool authorization, external publication automation, approval, blocking/allowing, enforcement, or operational use requires a separate explicit maintainer decision.
