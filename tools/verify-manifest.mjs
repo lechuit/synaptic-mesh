@@ -4,7 +4,9 @@ import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { execFileSync } from 'node:child_process';
 
-const manifestFileName = 'MANIFEST.json';
+const metadataFileName = 'MANIFEST.json';
+const filesFileName = 'MANIFEST.files.json';
+const manifestFileNames = new Set([metadataFileName, filesFileName]);
 
 function repoRoot() {
   try {
@@ -20,7 +22,7 @@ function trackedFiles(root) {
     .toString('utf8')
     .split('\0')
     .filter(Boolean)
-    .filter((filePath) => filePath !== manifestFileName)
+    .filter((filePath) => !manifestFileNames.has(filePath))
     .sort();
 }
 
@@ -43,15 +45,26 @@ function diffSorted(left, right) {
   return left.filter((value) => !rightSet.has(value));
 }
 
-const root = repoRoot();
-const manifestPath = path.join(root, manifestFileName);
-const manifest = JSON.parse(await readFile(manifestPath, 'utf8'));
-
-if (!Array.isArray(manifest.files)) {
-  throw new Error('MANIFEST.json must contain a files array.');
+async function readJson(filePath) {
+  return JSON.parse(await readFile(filePath, 'utf8'));
 }
 
-const entries = manifest.files;
+const root = repoRoot();
+const metadataPath = path.join(root, metadataFileName);
+const filesPath = path.join(root, filesFileName);
+const metadata = await readJson(metadataPath);
+const filesManifest = await readJson(filesPath);
+const entriesSource = filesFileName;
+
+if (Array.isArray(metadata.files)) {
+  throw new Error(`${metadataFileName} must not contain files[]; ${filesFileName} is the generated file inventory. Run npm run manifest:update.`);
+}
+
+if (!Array.isArray(filesManifest.files)) {
+  throw new Error(`${entriesSource} must contain a files array.`);
+}
+
+const entries = filesManifest.files;
 const manifestPaths = entries.map((entry) => entry.path);
 const trackedPaths = trackedFiles(root);
 const errors = [];
@@ -70,10 +83,10 @@ if (duplicates.length > 0) {
 const missingFromManifest = diffSorted(trackedPaths, manifestPaths);
 const extraInManifest = diffSorted(manifestPaths, trackedPaths);
 if (missingFromManifest.length > 0) {
-  errors.push(`Tracked files missing from MANIFEST.json: ${missingFromManifest.join(', ')}`);
+  errors.push(`Tracked files missing from ${entriesSource}: ${missingFromManifest.join(', ')}`);
 }
 if (extraInManifest.length > 0) {
-  errors.push(`Manifest entries not tracked by git: ${extraInManifest.join(', ')}`);
+  errors.push(`${entriesSource} entries not tracked by git: ${extraInManifest.join(', ')}`);
 }
 
 for (const entry of entries) {
@@ -98,8 +111,8 @@ for (const entry of entries) {
 }
 
 if (errors.length > 0) {
-  console.error(JSON.stringify({ status: 'fail', manifest: manifestFileName, errors }, null, 2));
+  console.error(JSON.stringify({ status: 'fail', metadata: metadataFileName, filesManifest: entriesSource, errors }, null, 2));
   process.exit(1);
 }
 
-console.log(JSON.stringify({ status: 'pass', manifest: manifestFileName, files: entries.length }, null, 2));
+console.log(JSON.stringify({ status: 'pass', metadata: metadataFileName, filesManifest: entriesSource, files: entries.length }, null, 2));

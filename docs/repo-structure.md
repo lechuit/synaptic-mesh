@@ -13,7 +13,7 @@ Synaptic Mesh keeps protocol, implementation, research, and evidence separate so
 - `paper/` — manuscript-oriented material.
 - `docs/` — repository operation, layout guidance, review vocabulary, and conservative coverage status that do not define runtime authority. ADRs live under `docs/adr/`; concept notes live under `docs/concepts/`.
 - `design-notes/` — short implementation design notes for changes that should stay smaller than a full spec; `live-shadow-observer-v0.md` is design-only and adds no runtime observer.
-- `tools/` — repo-local validation utilities, including the package-wired manifest verification guard.
+- `tools/` — repo-local validation utilities, including the package-wired manifest verification and update guards.
 
 ## Architecture decisions
 
@@ -38,7 +38,7 @@ Synaptic Mesh keeps protocol, implementation, research, and evidence separate so
 3. Keep IO at the edges: CLIs in `bin/`, contract/evidence writers in `tests/`, small filesystem/process adapters in `src/adapters/`, and historical outputs under `evidence/` or `runs/`.
 4. Add adapter/framework mappings as narrow ports that translate framework packet shapes into the stable receiver-policy input shape; test runners may also use narrow adapters when that prevents orchestration IO from leaking into policy/core modules.
 5. Avoid large file moves in behavior PRs. If a migration is needed, do it in a dedicated layout PR with manifest/evidence regeneration.
-6. Keep `MANIFEST.json` current with tracked repository files; `npm run verify:manifest`, `npm run check`, and `npm run review:local` should fail when tracked file bytes or hashes drift.
+6. Keep release metadata and file inventory separate: `MANIFEST.json` is the small human-readable metadata file, while `MANIFEST.files.json` is the generated tracked-file byte/hash inventory. Run `npm run manifest:update` after tracked file changes; `npm run verify:manifest`, `npm run check`, and `npm run review:local` should fail when tracked file bytes or hashes drift.
 
 ## Suggested next package boundary
 
