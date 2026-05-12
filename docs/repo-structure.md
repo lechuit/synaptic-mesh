@@ -11,7 +11,7 @@ Synaptic Mesh keeps protocol, implementation, research, and evidence separate so
 - `runs/` — experiment-specific artifacts kept immutable enough for reproduction.
 - `evidence/` — top-level reproducibility snapshots that are intentionally separate from implementation-local evidence.
 - `paper/` — manuscript-oriented material.
-- `docs/` — repository operation, layout guidance, review vocabulary, and conservative coverage status that do not define runtime authority. ADRs live under `docs/adr/`; concept notes live under `docs/concepts/`.
+- `docs/` — repository operation, layout guidance, review vocabulary, full status snapshots, release ladder, and conservative coverage status that do not define runtime authority. ADRs live under `docs/adr/`; concept notes live under `docs/concepts/`.
 - `design-notes/` — short implementation design notes for changes that should stay smaller than a full spec; `live-shadow-observer-v0.md` is design-only and adds no runtime observer.
 - `tools/` — repo-local validation utilities, including the package-wired manifest verification and update guards.
 
@@ -21,6 +21,8 @@ Synaptic Mesh keeps protocol, implementation, research, and evidence separate so
 - [ADR 0002: Authority claim model](adr/0002-authority-claim-model.md) documents the local shadow authority-claim taxonomy, receiver verification rule, and boundary that keeps sender labels from becoming authority.
 - [RouteDecision schema v0](concepts/route-decision-v0.md) documents the first formal schema and its local shadow shape-validation boundary.
 - [Reason code vocabulary](reason-codes.md) documents current stable reason-code categories and representative codes without turning them into runtime authority.
+- [Status snapshot v0.2.3](status-v0.2.3.md) preserves the full public-review package snapshot that used to live in the root README.
+- [Release ladder](release-ladder.md) records the roadmap and explicit boundaries through the advisory-only report alpha.
 - [Coverage matrix](coverage-matrix.md) separates covered, partial, pending, and out-of-scope claims before release decisions.
 - [Parser normalization evidence](parser-normalization-evidence.md) documents the local-shadow bridge from raw handoffs to auditable `parserEvidence` / route-decision input shape.
 - [Offline real-flow replay](real-flow-replay.md) documents naturalistic handoff replay with gold labels, scorecards, and audit logs without live observer behavior.
