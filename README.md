@@ -1,6 +1,6 @@
-# Synaptic Mesh v0.1.17
+# Synaptic Mesh v0.1.18
 
-Status: redaction/retention executable gates / pre-live shadow readiness public review release `v0.1.17`; **not runtime-ready**; **not production/canary/enforcement-ready**.
+Status: decision-counterfactual checklist / pre-live shadow readiness public review release `v0.1.18`; **not runtime-ready**; **not production/canary/enforcement-ready**.
 
 ## What this is
 
@@ -10,7 +10,7 @@ A public review package for Synaptic Mesh / Multi-Agent Memory Authority Protoco
 
 Synaptic Mesh is intended to be **framework-agnostic**: the protocol idea should apply to any agent stack that retrieves, summarizes, compresses, or hands off memory-derived context.
 
-Current v0.1.17 status is narrower:
+Current v0.1.18 status is narrower:
 
 - validated with the included local shadow workflow;
 - shipped as a standalone reference package and fixture suite, not integrated with any production/runtime host;
@@ -19,6 +19,7 @@ Current v0.1.17 status is narrower:
 - adds a design-only passive live-shadow observer boundary: the observer may observe future decision artifacts but cannot become part of the decision path;
 - adds offline `LiveShadowObservation` and `LiveShadowObservationResult` schemas, fixtures, and forbidden-effects gates;
 - adds synthetic offline replay from DecisionTrace evidence into passive observation/result records; all results remain `record_only`, `no_effects`, and `local_shadow_only`;
+- adds a local advisory decision-counterfactual memory retrieval checklist with 16 deterministic fixtures, schema validation, evidence output, and reason codes; this proves only local fixture behavior and does not add memory writes, MemoryAtom, runtime, live observer, adapter integration, tool authorization, publication, or enforcement;
 - adds executable local redaction gates for committed fixture evidence: redaction policy schema, minimal redaction scanner, and pass-output contract for metadata-only cases;
 - adds executable retention metadata gates: retention policy schema and negative controls for zero-day raw input, retention ceilings, unknown retention classes, raw persistence, missing redaction status, non-aggregate scorecards, non-synthetic public evidence, scheduler/deletion/live-observer/runtime attempts; no deletion or retention scheduler is implemented;
 - adds aggregate-only live-shadow drift scorecard shape validation over synthetic replay evidence; it stores counts/bucket labels, not raw prompts, transcripts, secrets, tool outputs, memory/config text, approval text, or private paths;
@@ -69,7 +70,7 @@ From this bundle root:
 npm --prefix implementation/synaptic-mesh-shadow-v0 run review:local
 ```
 
-Expected current result: 34/34 commands pass, fixture parity 15/15, RouteDecision schema 17/17 fixture records, threat-model route mappings 11/11, RouteDecision wrong-route fixtures 9/9, generated adversarial fixtures 9/9, raw/parser adversarial fixtures 9/9, parser normalization fixtures 24/24, real-flow replay fixtures 24/24, classifier scorecard 24/24, decision traces 24/24, real-flow mutations 15/15, category coverage thresholds pass, live-shadow observation schemas pass, live-shadow synthetic replay 24 observations/24 results, live-shadow drift scorecard 24 observations/24 results, manual observation bundles 2/2, manual redaction fixture pack 2 positive/8 negative, redaction policy schema/minimal scanner, retention policy schema/negative controls, manual parserEvidence replay 2/2, manual DecisionTrace/live-shadow replay 2 traces/2 observations/2 results, manual scorecard thresholds pass, redaction review records pass, real-redacted handoff pack 3/3, real-redacted replay gate 3 traces/3 observations/3 results, real-redacted adversarial coverage 6 cases with routes request_full_receipt/request_policy_refresh/ask_human/block, manual dry-run contracts 2 commands/2 results with 21 command negative controls and 39 result negative controls, manual dry-run CLI skeleton/negative controls/3 real-redacted positive handoffs/6-case real-redacted pilot/14-case failure catalog/12-case expanded pilot plus pilot reproducibility gate/reproducibility negative controls all pass with zero forbidden effects/capabilities, Receipt schema valid/invalid fixtures 1/4, authority overhead benchmark 6 fixtures/4 modes, unsafe allow signals 0, source fixture mutation false.
+Expected current result: 34/34 commands pass, fixture parity 15/15, RouteDecision schema 17/17 fixture records, threat-model route mappings 11/11, RouteDecision wrong-route fixtures 9/9, generated adversarial fixtures 9/9, raw/parser adversarial fixtures 9/9, parser normalization fixtures 24/24, real-flow replay fixtures 24/24, classifier scorecard 24/24, decision traces 24/24, real-flow mutations 15/15, category coverage thresholds pass, live-shadow observation schemas pass, live-shadow synthetic replay 24 observations/24 results, live-shadow drift scorecard 24 observations/24 results, manual observation bundles 2/2, manual redaction fixture pack 2 positive/8 negative, decision-counterfactual checklist 16/16 with unsafe allows 0, redaction policy schema/minimal scanner, retention policy schema/negative controls, manual parserEvidence replay 2/2, manual DecisionTrace/live-shadow replay 2 traces/2 observations/2 results, manual scorecard thresholds pass, redaction review records pass, real-redacted handoff pack 3/3, real-redacted replay gate 3 traces/3 observations/3 results, real-redacted adversarial coverage 6 cases with routes request_full_receipt/request_policy_refresh/ask_human/block, manual dry-run contracts 2 commands/2 results with 21 command negative controls and 39 result negative controls, manual dry-run CLI skeleton/negative controls/3 real-redacted positive handoffs/6-case real-redacted pilot/14-case failure catalog/12-case expanded pilot plus pilot reproducibility gate/reproducibility negative controls all pass with zero forbidden effects/capabilities, Receipt schema valid/invalid fixtures 1/4, authority overhead benchmark 6 fixtures/4 modes, unsafe allow signals 0, source fixture mutation false.
 
 For adapter-shaped contract coverage specifically:
 
@@ -82,7 +83,7 @@ Expected current result: 59/59 cases pass, unsafe allows 0.
 For release/package verification:
 
 ```bash
-npm --prefix implementation/synaptic-mesh-shadow-v0 run release:check -- --target v0.1.17
+npm --prefix implementation/synaptic-mesh-shadow-v0 run release:check -- --target v0.1.18
 ```
 
 ## Citation/source policy

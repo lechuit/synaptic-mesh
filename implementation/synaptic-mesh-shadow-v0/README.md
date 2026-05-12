@@ -33,7 +33,7 @@ The reference currently covers:
 - synthetic handoff examples;
 - fixture parity over the canonical local fixture set;
 - normalized fixture summary output;
-- RouteDecision schema, threat-model mapping, wrong-route oracle fixture evidence, generated adversarial fixture variants, raw/parser adversarial fixture pressure, parser normalization evidence across all canonical routes, offline real-flow replay evidence, deterministic route classifier shadow evidence, live-shadow shape/replay gates, manual offline observation ingestion readiness gates, and manual dry-run CLI gates over explicit already-redacted local files;
+- RouteDecision schema, threat-model mapping, wrong-route oracle fixture evidence, generated adversarial fixture variants, raw/parser adversarial fixture pressure, parser normalization evidence across all canonical routes, offline real-flow replay evidence, deterministic route classifier shadow evidence, decision-counterfactual checklist fixtures, live-shadow shape/replay gates, manual offline observation ingestion readiness gates, and manual dry-run CLI gates over explicit already-redacted local files;
 - deterministic local benchmark/overhead evidence comparing representation strategies (fixture proxy only, no live LLM/API calls);
 - one-command local review evidence.
 
@@ -78,6 +78,7 @@ npm run test:receipt
 npm run test:transform
 npm run test:cli
 npm run test:handoff
+npm run test:decision-counterfactual-checklist
 npm run test:compression
 npm run test:receipt-schema
 npm run test:adversarial-generator
@@ -106,6 +107,7 @@ npm run test:receipt
 npm run test:transform
 npm run test:cli
 npm run test:handoff
+npm run test:decision-counterfactual-checklist
 ```
 
 ## CLI usage

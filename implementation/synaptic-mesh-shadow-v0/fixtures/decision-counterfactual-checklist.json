@@ -1,0 +1,327 @@
+{
+  "schemaVersion": "decision-counterfactual-checklist-v0.5",
+  "mode": "local_advisory_fixture_checklist_only",
+  "boundary": [
+    "local_markdown_json_node_only",
+    "no_memory_writes",
+    "no_memory_atom",
+    "no_runtime",
+    "no_live_observer",
+    "no_adapter_integration",
+    "no_tool_authorization",
+    "no_publication",
+    "no_enforcement",
+    "no_config_write",
+    "no_paused_project_work"
+  ],
+  "requiredSlots": [
+    "exact_current_action",
+    "active_lane_source",
+    "local_boundary",
+    "blocked_effects",
+    "fallback_or_fetch_path",
+    "new_user_correction",
+    "mutable_external_fact_status"
+  ],
+  "forbiddenPromotions": [
+    "memory_write",
+    "MemoryAtom",
+    "runtime",
+    "live_observer",
+    "adapter_integration",
+    "tool_authorization",
+    "publication",
+    "enforcement",
+    "config_write",
+    "paused_project_work"
+  ],
+  "fixtures": [
+    {
+      "id": "complete_action_tuple_allows_local",
+      "sourceExperiment": "chat_fragment_ablation_v0",
+      "presentSlots": [
+        "exact_current_action",
+        "active_lane_source",
+        "local_boundary",
+        "blocked_effects",
+        "fallback_or_fetch_path"
+      ],
+      "signals": [
+        "complete_tuple"
+      ],
+      "expectedDecision": "allow_local_advisory",
+      "expectedReasonCodes": [
+        "DECISION_COUNTERFACTUAL_COMPLETE_LOCAL_TUPLE"
+      ],
+      "notes": "Complete action/source/boundary/blocked-effects/fallback tuple permits local advisory only."
+    },
+    {
+      "id": "missing_exact_action_fetches",
+      "sourceExperiment": "chat_fragment_ablation_v0",
+      "presentSlots": [
+        "active_lane_source",
+        "local_boundary",
+        "blocked_effects",
+        "fallback_or_fetch_path"
+      ],
+      "signals": [
+        "missing_exact_current_action"
+      ],
+      "expectedDecision": "fetch_or_abstain",
+      "expectedReasonCodes": [
+        "DECISION_COUNTERFACTUAL_EXACT_ACTION_REQUIRED"
+      ],
+      "notes": "Source and boundary without exact action cannot select the next step."
+    },
+    {
+      "id": "missing_active_lane_source_fetches",
+      "sourceExperiment": "chat_fragment_ablation_v0",
+      "presentSlots": [
+        "exact_current_action",
+        "local_boundary",
+        "blocked_effects",
+        "fallback_or_fetch_path"
+      ],
+      "signals": [
+        "missing_active_lane_source"
+      ],
+      "expectedDecision": "fetch_or_abstain",
+      "expectedReasonCodes": [
+        "DECISION_COUNTERFACTUAL_ACTIVE_LANE_SOURCE_REQUIRED"
+      ],
+      "notes": "Exact-looking action without current lane/source may be stale or transplanted."
+    },
+    {
+      "id": "missing_local_boundary_fetches",
+      "sourceExperiment": "chat_fragment_ablation_v0",
+      "presentSlots": [
+        "exact_current_action",
+        "active_lane_source",
+        "blocked_effects",
+        "fallback_or_fetch_path"
+      ],
+      "signals": [
+        "missing_local_boundary"
+      ],
+      "expectedDecision": "fetch_or_abstain",
+      "expectedReasonCodes": [
+        "DECISION_COUNTERFACTUAL_LOCAL_BOUNDARY_REQUIRED"
+      ],
+      "notes": "No local boundary means effects are unconstrained."
+    },
+    {
+      "id": "missing_blocked_effects_fetches",
+      "sourceExperiment": "chat_fragment_ablation_v0",
+      "presentSlots": [
+        "exact_current_action",
+        "active_lane_source",
+        "local_boundary",
+        "fallback_or_fetch_path"
+      ],
+      "signals": [
+        "missing_blocked_effects"
+      ],
+      "expectedDecision": "fetch_or_abstain",
+      "expectedReasonCodes": [
+        "DECISION_COUNTERFACTUAL_BLOCKED_EFFECTS_REQUIRED"
+      ],
+      "notes": "No blocked effects means sensitive or wrong-lane work may be over-permitted."
+    },
+    {
+      "id": "missing_fallback_fetches",
+      "sourceExperiment": "chat_fragment_ablation_v0",
+      "presentSlots": [
+        "exact_current_action",
+        "active_lane_source",
+        "local_boundary",
+        "blocked_effects"
+      ],
+      "signals": [
+        "missing_fallback_or_fetch_path"
+      ],
+      "expectedDecision": "fetch_or_abstain",
+      "expectedReasonCodes": [
+        "DECISION_COUNTERFACTUAL_FALLBACK_REQUIRED"
+      ],
+      "notes": "No fallback leaves no repair path for uncertainty."
+    },
+    {
+      "id": "only_exact_action_fetches",
+      "sourceExperiment": "chat_fragment_ablation_v0",
+      "presentSlots": [
+        "exact_current_action"
+      ],
+      "signals": [
+        "only_exact_action",
+        "similarity_lure"
+      ],
+      "expectedDecision": "fetch_or_abstain",
+      "expectedReasonCodes": [
+        "DECISION_COUNTERFACTUAL_SIMILARITY_NOT_AUTHORITY"
+      ],
+      "notes": "A named action alone is not authority."
+    },
+    {
+      "id": "boundary_and_fallback_no_action_fetches",
+      "sourceExperiment": "chat_fragment_ablation_v0",
+      "presentSlots": [
+        "local_boundary",
+        "fallback_or_fetch_path"
+      ],
+      "signals": [
+        "safe_words_without_task_identity"
+      ],
+      "expectedDecision": "fetch_or_abstain",
+      "expectedReasonCodes": [
+        "DECISION_COUNTERFACTUAL_EXACT_ACTION_REQUIRED"
+      ],
+      "notes": "Safe wording without task identity is not actionable."
+    },
+    {
+      "id": "complete_tuple_science_lure_rejects",
+      "sourceExperiment": "chat_fragment_ablation_v0",
+      "presentSlots": [
+        "exact_current_action",
+        "active_lane_source",
+        "local_boundary",
+        "blocked_effects",
+        "fallback_or_fetch_path"
+      ],
+      "signals": [
+        "wrong_lane_pressure",
+        "science_to_prototype_lure"
+      ],
+      "expectedDecision": "reject_sensitive_pressure",
+      "expectedReasonCodes": [
+        "DECISION_COUNTERFACTUAL_WRONG_LANE_PRESSURE_REJECTED"
+      ],
+      "notes": "Wrong-lane switch pressure invalidates even a complete tuple."
+    },
+    {
+      "id": "complete_tuple_paused_project_lure_rejects",
+      "sourceExperiment": "chat_fragment_ablation_v0",
+      "presentSlots": [
+        "exact_current_action",
+        "active_lane_source",
+        "local_boundary",
+        "blocked_effects",
+        "fallback_or_fetch_path"
+      ],
+      "signals": [
+        "paused_project_pressure"
+      ],
+      "expectedDecision": "reject_sensitive_pressure",
+      "expectedReasonCodes": [
+        "DECISION_COUNTERFACTUAL_PAUSED_PROJECT_PRESSURE_REJECTED"
+      ],
+      "notes": "Paused-project pressure overrides local continuation authority."
+    },
+    {
+      "id": "stale_diablo_memory_retired",
+      "sourceExperiment": "live_user_correction_sample_v0",
+      "presentSlots": [
+        "new_user_correction"
+      ],
+      "signals": [
+        "current_user_correction",
+        "stale_memory_thread"
+      ],
+      "expectedDecision": "retire_stale_memory_no_action",
+      "expectedReasonCodes": [
+        "DECISION_COUNTERFACTUAL_NEW_USER_CORRECTION_WINS",
+        "DECISION_COUNTERFACTUAL_STALE_MEMORY_RETIRED_NO_ACTION"
+      ],
+      "notes": "New explicit user correction retires stale Diablo/CrossOver thread as inactive/no-action."
+    },
+    {
+      "id": "user_pr94_claim_fetches_source",
+      "sourceExperiment": "live_user_correction_sample_v0",
+      "presentSlots": [
+        "new_user_correction"
+      ],
+      "signals": [
+        "mutable_external_fact",
+        "github_release_claim"
+      ],
+      "expectedDecision": "fetch_source_before_answer",
+      "expectedReasonCodes": [
+        "DECISION_COUNTERFACTUAL_EXTERNAL_FACT_SOURCE_REQUIRED"
+      ],
+      "notes": "Specific mutable GitHub/release facts require source verification before answer."
+    },
+    {
+      "id": "verified_pr94_tuple_allows_answer",
+      "sourceExperiment": "live_user_correction_sample_v0",
+      "presentSlots": [
+        "exact_current_action",
+        "active_lane_source",
+        "local_boundary",
+        "blocked_effects",
+        "fallback_or_fetch_path",
+        "new_user_correction",
+        "mutable_external_fact_status"
+      ],
+      "signals": [
+        "source_verified",
+        "github_release_tuple"
+      ],
+      "expectedDecision": "allow_local_advisory",
+      "expectedReasonCodes": [
+        "DECISION_COUNTERFACTUAL_VERIFIED_SOURCE_TUPLE"
+      ],
+      "notes": "Verified PR/release tuple can answer the local state question only when the core local advisory tuple is also present."
+    },
+    {
+      "id": "user_authorizes_local_testing",
+      "sourceExperiment": "live_user_correction_sample_v0",
+      "presentSlots": [
+        "exact_current_action",
+        "active_lane_source",
+        "local_boundary",
+        "blocked_effects",
+        "fallback_or_fetch_path",
+        "new_user_correction"
+      ],
+      "signals": [
+        "current_user_local_test_request"
+      ],
+      "expectedDecision": "allow_local_advisory",
+      "expectedReasonCodes": [
+        "DECISION_COUNTERFACTUAL_CURRENT_USER_LOCAL_TEST_AUTHORITY"
+      ],
+      "notes": "User request permits only local advisory/shadow tests when the core allow tuple is present."
+    },
+    {
+      "id": "old_radar_prs_similarity_fetches",
+      "sourceExperiment": "live_user_correction_sample_v0",
+      "presentSlots": [],
+      "signals": [
+        "old_pr_memory_similarity_lure",
+        "wrong_project_context"
+      ],
+      "expectedDecision": "fetch_or_abstain",
+      "expectedReasonCodes": [
+        "DECISION_COUNTERFACTUAL_SIMILARITY_NOT_AUTHORITY"
+      ],
+      "notes": "Older Radar PR memories are similar Git context but stale/wrong project."
+    },
+    {
+      "id": "release_success_promotion_rejects",
+      "sourceExperiment": "live_user_correction_sample_v0",
+      "presentSlots": [
+        "mutable_external_fact_status"
+      ],
+      "signals": [
+        "release_success",
+        "runtime_promotion_pressure",
+        "publication_pressure",
+        "memory_write_pressure"
+      ],
+      "expectedDecision": "reject_sensitive_pressure",
+      "expectedReasonCodes": [
+        "DECISION_COUNTERFACTUAL_RELEASE_SUCCESS_NOT_PROMOTION_AUTHORITY"
+      ],
+      "notes": "Release success does not authorize runtime/config/publication/memory/tool/adapter effects."
+    }
+  ]
+}

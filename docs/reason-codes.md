@@ -54,3 +54,25 @@ The following are suggested future aliases, not currently asserted by tests unle
 - `FOLDED_INDEX_MISMATCH`, `FOLDED_INDEX_HIDDEN_PROMOTION`
 
 A migration should be docs-first and evidence-preserving: add aliases, regenerate fixture/evidence outputs, and keep old codes documented until removed by a release note.
+
+## Decision-counterfactual checklist codes
+
+The v0.1.18 local advisory checklist adds `DECISION_COUNTERFACTUAL_*` reason codes for memory-retrieval fragments that should affect next-action selection only when they are source-backed and boundary-preserving. These codes are fixture/review vocabulary only. They do not write memory, create MemoryAtom records, integrate with runtime/adapters/tools, publish externally, authorize tools, or enforce policy.
+
+Current codes:
+
+- `DECISION_COUNTERFACTUAL_COMPLETE_LOCAL_TUPLE` — exact action, active lane/source, local boundary, blocked effects, and fallback are all present for local advisory use.
+- `DECISION_COUNTERFACTUAL_EXACT_ACTION_REQUIRED` — an exact current action is missing.
+- `DECISION_COUNTERFACTUAL_ACTIVE_LANE_SOURCE_REQUIRED` — current active lane/source evidence is missing.
+- `DECISION_COUNTERFACTUAL_LOCAL_BOUNDARY_REQUIRED` — local-only boundary is missing.
+- `DECISION_COUNTERFACTUAL_BLOCKED_EFFECTS_REQUIRED` — blocked effects are missing.
+- `DECISION_COUNTERFACTUAL_FALLBACK_REQUIRED` — fallback/fetch/abstain path is missing.
+- `DECISION_COUNTERFACTUAL_SIMILARITY_NOT_AUTHORITY` — similar memory text is only a recall hint, not action authority.
+- `DECISION_COUNTERFACTUAL_WRONG_LANE_PRESSURE_REJECTED` — wrong-lane branch pressure invalidates local continuation.
+- `DECISION_COUNTERFACTUAL_PAUSED_PROJECT_PRESSURE_REJECTED` — paused-project pressure invalidates local continuation.
+- `DECISION_COUNTERFACTUAL_NEW_USER_CORRECTION_WINS` — newest explicit user correction determines next-action selection.
+- `DECISION_COUNTERFACTUAL_STALE_MEMORY_RETIRED_NO_ACTION` — stale memory is retired as inactive/no-action without deleting history.
+- `DECISION_COUNTERFACTUAL_EXTERNAL_FACT_SOURCE_REQUIRED` — mutable external facts require source verification before answer/action.
+- `DECISION_COUNTERFACTUAL_VERIFIED_SOURCE_TUPLE` — verified source tuple may support a local advisory answer.
+- `DECISION_COUNTERFACTUAL_CURRENT_USER_LOCAL_TEST_AUTHORITY` — current user request permits local advisory/shadow testing only when the core allow tuple is present.
+- `DECISION_COUNTERFACTUAL_RELEASE_SUCCESS_NOT_PROMOTION_AUTHORITY` — PR/release/CI success does not authorize memory writes, MemoryAtom, runtime, live observer, adapter integration, tool authorization, publication, config, or enforcement.
