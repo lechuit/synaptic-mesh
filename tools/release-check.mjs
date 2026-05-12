@@ -30,6 +30,7 @@ const releaseGateScripts = [
   'test:live-shadow-forbidden-effects',
   'test:live-input-source-boundary-contracts',
   'test:passive-live-shadow-canary',
+  'test:passive-live-shadow-canary-reproducibility',
   'test:live-shadow-synthetic-replay',
   'test:live-shadow-drift-scorecard',
   'test:manual-observation-bundle-schema',
@@ -270,6 +271,7 @@ assert(liveShadowForbiddenEffects?.summary?.configWriteImplemented === false, 'l
 assert(liveShadowForbiddenEffects?.summary?.externalPublicationImplemented === false, 'live-shadow forbidden-effects gate must not implement external publication');
 
 const passiveLiveShadowCanary = readJson(path.join(packageRoot, 'evidence/passive-live-shadow-canary.out.json'));
+const passiveCanaryReproducibility = readJson(path.join(packageRoot, 'evidence/passive-live-shadow-canary-reproducibility.out.json'));
 const liveInputSourceBoundaryContracts = readJson(path.join(packageRoot, 'evidence/live-input-source-boundary-contracts.out.json'));
 assert(liveInputSourceBoundaryContracts?.summary?.verdict === 'pass', 'live input/source boundary contracts verdict must be pass');
 assert(liveInputSourceBoundaryContracts?.summary?.passCases === 2, 'live input/source boundary contracts must keep 2 positive controls');
@@ -328,6 +330,17 @@ assert(passiveLiveShadowCanary?.summary?.authorizationImplemented === false, 'pa
 assert(passiveLiveShadowCanary?.summary?.deletionImplemented === false, 'passive canary must not delete');
 assert(passiveLiveShadowCanary?.summary?.retentionSchedulerImplemented === false, 'passive canary must not implement retention scheduler');
 assert(passiveLiveShadowCanary?.summary?.enforcementImplemented === false, 'passive canary must not enforce');
+
+assert(passiveCanaryReproducibility?.passiveCanaryReproducibility === 'pass', 'passive canary reproducibility verdict must be pass');
+assert(passiveCanaryReproducibility?.runs === 2, 'passive canary reproducibility must run twice');
+assert(passiveCanaryReproducibility?.passCases === 2, 'passive canary reproducibility must cover 2 pass cases');
+assert(passiveCanaryReproducibility?.rejectCases === 8, 'passive canary reproducibility must cover 8 reject cases');
+assert(passiveCanaryReproducibility?.normalizedOutputMismatches === 0, 'passive canary reproducibility must have zero normalized output mismatches');
+assert(passiveCanaryReproducibility?.reasonSetMismatches === 0, 'passive canary reproducibility must have zero reason-set mismatches');
+assert(passiveCanaryReproducibility?.scorecardMismatches === 0, 'passive canary reproducibility must have zero scorecard mismatches');
+assert(passiveCanaryReproducibility?.boundaryVerdictMismatches === 0, 'passive canary reproducibility must have zero boundary verdict mismatches');
+assert(passiveCanaryReproducibility?.capabilityTrueCount === 0, 'passive canary reproducibility pass cases must keep capability true count zero');
+assert(passiveCanaryReproducibility?.forbiddenEffects === 0, 'passive canary reproducibility pass cases must keep forbidden effects zero');
 
 const liveShadowSyntheticReplay = readJson(path.join(packageRoot, 'evidence/live-shadow-synthetic-replay.out.json'));
 assert(liveShadowSyntheticReplay?.summary?.verdict === 'pass', 'live-shadow synthetic replay verdict must be pass');

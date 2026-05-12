@@ -3,7 +3,7 @@
     "artifact": "T-synaptic-mesh-passive-live-shadow-canary-v0",
     "timestamp": "2026-05-12T12:00:00.000Z",
     "verdict": "pass",
-    "releaseLayer": "v0.2.0-alpha",
+    "releaseLayer": "v0.2.1",
     "dependsOn": "v0.1.22-passive-live-shadow-simulator",
     "canaryMode": "manual_local_opt_in_passive",
     "passCases": 2,
