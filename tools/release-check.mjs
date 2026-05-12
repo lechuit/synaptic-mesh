@@ -40,6 +40,7 @@ const releaseGateScripts = [
   'test:retention-policy-schema',
   'test:retention-negative-controls',
   'test:decision-counterfactual-checklist',
+  'test:decision-counterfactual-reproducibility',
   'test:redaction-review-record-schema',
   'test:real-redacted-handoff-pack',
   'test:real-redacted-handoff-replay-gate',
@@ -514,6 +515,22 @@ assert(decisionCounterfactualChecklist?.summary?.adapterIntegrationImplemented =
 assert(decisionCounterfactualChecklist?.summary?.toolAuthorizationImplemented === false, 'decision-counterfactual checklist must not implement tool authorization');
 assert(decisionCounterfactualChecklist?.summary?.externalPublicationImplemented === false, 'decision-counterfactual checklist must not implement external publication');
 assert(decisionCounterfactualChecklist?.summary?.enforcementImplemented === false, 'decision-counterfactual checklist must not implement enforcement');
+
+const decisionCounterfactualReproducibility = readJson(path.join(packageRoot, 'evidence/decision-counterfactual-reproducibility.out.json'));
+assert(decisionCounterfactualReproducibility?.summary?.decisionCounterfactualReproducibility === 'pass', 'decision-counterfactual reproducibility gate must pass');
+assert(decisionCounterfactualReproducibility?.summary?.runs === 2, 'decision-counterfactual reproducibility must run twice');
+assert(decisionCounterfactualReproducibility?.summary?.fixtures === 16, 'decision-counterfactual reproducibility must reuse 16 fixtures');
+assert(decisionCounterfactualReproducibility?.summary?.normalizedOutputMismatches === 0, 'decision-counterfactual reproducibility must have zero normalized output mismatches');
+assert(decisionCounterfactualReproducibility?.summary?.unsafeAllows === 0, 'decision-counterfactual reproducibility must have zero unsafe allows');
+assert(decisionCounterfactualReproducibility?.summary?.coreAllowTupleRequired === true, 'decision-counterfactual reproducibility must preserve the core allow tuple requirement');
+assert(decisionCounterfactualReproducibility?.summary?.memoryWriteImplemented === false, 'decision-counterfactual reproducibility must not implement memory writes');
+assert(decisionCounterfactualReproducibility?.summary?.memoryAtomImplemented === false, 'decision-counterfactual reproducibility must not implement MemoryAtom');
+assert(decisionCounterfactualReproducibility?.summary?.runtimeImplemented === false, 'decision-counterfactual reproducibility must not implement runtime');
+assert(decisionCounterfactualReproducibility?.summary?.liveObserverImplemented === false, 'decision-counterfactual reproducibility must not implement live observer');
+assert(decisionCounterfactualReproducibility?.summary?.adapterIntegrationImplemented === false, 'decision-counterfactual reproducibility must not implement adapter integration');
+assert(decisionCounterfactualReproducibility?.summary?.toolAuthorizationImplemented === false, 'decision-counterfactual reproducibility must not implement tool authorization');
+assert(decisionCounterfactualReproducibility?.summary?.externalPublicationImplemented === false, 'decision-counterfactual reproducibility must not implement external publication');
+assert(decisionCounterfactualReproducibility?.summary?.enforcementImplemented === false, 'decision-counterfactual reproducibility must not implement enforcement');
 
 const redactionReviewRecordSchema = readJson(path.join(packageRoot, 'evidence/redaction-review-record-schema.out.json'));
 assert(redactionReviewRecordSchema?.summary?.verdict === 'pass', 'redaction review record schema verdict must be pass');

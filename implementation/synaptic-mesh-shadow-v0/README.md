@@ -79,6 +79,7 @@ npm run test:transform
 npm run test:cli
 npm run test:handoff
 npm run test:decision-counterfactual-checklist
+npm run test:decision-counterfactual-reproducibility
 npm run test:compression
 npm run test:receipt-schema
 npm run test:adversarial-generator
@@ -108,6 +109,7 @@ npm run test:transform
 npm run test:cli
 npm run test:handoff
 npm run test:decision-counterfactual-checklist
+npm run test:decision-counterfactual-reproducibility
 ```
 
 ## CLI usage

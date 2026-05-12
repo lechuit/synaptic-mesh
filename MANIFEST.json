@@ -1,13 +1,13 @@
 {
   "bundle": "synaptic-mesh",
-  "version": "0.1.18",
-  "generated": "2026-05-12T03:20:00Z",
-  "status": "v0.1.18_decision_counterfactual_checklist_public_review_release_not_runtime_ready",
+  "version": "0.1.19",
+  "generated": "2026-05-12T03:40:00Z",
+  "status": "v0.1.19_decision_counterfactual_checklist_robustness_public_review_release_not_runtime_ready",
   "repository": "https://github.com/lechuit/synaptic-mesh",
   "license": "Apache-2.0 for code; CC BY 4.0 for docs/prose unless otherwise noted",
-  "reproducibility": "expected_pass_local_shadow_gates_for_v0.1.18_decision_counterfactual_checklist_with_sixteen_fixtures_zero_unsafe_allows_and_no_runtime_memory_publication_or_enforcement",
+  "reproducibility": "expected_pass_local_shadow_gates_for_v0.1.19_decision_counterfactual_checklist_reproducibility_with_two_runs_sixteen_fixtures_zero_mismatches_zero_unsafe_allows_and_no_runtime_memory_publication_or_enforcement",
   "rawSourceCache": "excluded",
-  "runtimeBoundary": "v0.1.18_decision_counterfactual_checklist_local_fixture_metadata_only_no_memory_writes_no_MemoryAtom_no_live_observer_no_runtime_integration_no_adapter_integration_no_tool_authorization_no_external_publication_no_approval_authorization_scheduler_deletion_or_enforcement",
+  "runtimeBoundary": "v0.1.19_decision_counterfactual_checklist_robustness_local_fixture_metadata_only_no_memory_writes_no_MemoryAtom_no_live_observer_no_runtime_integration_no_adapter_integration_no_tool_authorization_no_external_publication_no_approval_authorization_scheduler_deletion_or_enforcement",
   "files": [
     {
       "path": ".github/workflows/ci.yml",
@@ -76,8 +76,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 10623,
-      "sha256": "7945f061cc3a08b0f8033b5c37bafba01e56086b5f48894cc01874fbcee1632c"
+      "bytes": 10905,
+      "sha256": "989033bb1ccd5b3a1f05e9032952725d33a9bb7db7351494f710df27789bcec1"
     },
     {
       "path": "RELEASE_CANDIDATE.md",
@@ -86,8 +86,8 @@
     },
     {
       "path": "RELEASE_NOTES.md",
-      "bytes": 4782,
-      "sha256": "7e4415ebf97c87c2fd1d6698bd48a823ad1f08774301b9b6ee470568f154dacc"
+      "bytes": 3672,
+      "sha256": "f5cf522826b9069e4624d3ce071fe75fca17f388458413b217dbd3b90e977e55"
     },
     {
       "path": "design-notes/adapter-boundary-langgraph-mcp-v0.md",
@@ -156,8 +156,8 @@
     },
     {
       "path": "docs/coverage-matrix.md",
-      "bytes": 5802,
-      "sha256": "77aeb0dbdeb363e0ccb68ef14e29d263fba2c257858c93052afd57833b31e7e0"
+      "bytes": 6150,
+      "sha256": "1b58d5eeedea3a3a99778c2adfacc1e440143b039fd55993b33ef838c3f75af2"
     },
     {
       "path": "docs/deterministic-route-classifier.md",
@@ -346,8 +346,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/README.md",
-      "bytes": 11575,
-      "sha256": "0a807737bd88ca0645aa3a9b7188e0d438b0519e0cc8d76cc9b877a2b11a246d"
+      "bytes": 11681,
+      "sha256": "f71240d9e566990011560b9421edaa5b029320c393ac162117d9f3c81f9a14a3"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/bin/manual-dry-run.mjs",
@@ -403,6 +403,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/decision-counterfactual-checklist.out.json",
       "bytes": 7740,
       "sha256": "9389350819c5688cf9922ad0ed545754f3d441e06aa4f399b127d236925cd217"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/decision-counterfactual-reproducibility.out.json",
+      "bytes": 1328,
+      "sha256": "6e61d2e140afcb0dbc31d9b5b6b5916037fb303fab9061dad38ccfbc5c788452"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/decision-trace-schema.out.json",
@@ -1016,8 +1021,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/package.json",
-      "bytes": 10730,
-      "sha256": "f41b595e5c59a61beb399a382acd368146b90d78a8a895fa0ad39615c0ac0370"
+      "bytes": 10906,
+      "sha256": "ab12d6629b23e5a4dfee097e3d8ba411ec7ea20fb11a32401fb216fb2eff97c8"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/action-context-packet.mjs",
@@ -1138,6 +1143,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/tests/decision-counterfactual-checklist.mjs",
       "bytes": 7711,
       "sha256": "36a648bf22c1a1d400a0fa2fa0d7794269dc1f3a1e13f9a66eeb0c7a44c5aa83"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/decision-counterfactual-reproducibility.mjs",
+      "bytes": 4866,
+      "sha256": "8451e0f209677c7ea1f905780e2b442fafa1df1940f0f1518272528643a2ebb0"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/decision-trace-schema.mjs",
@@ -1866,8 +1876,8 @@
     },
     {
       "path": "tools/release-check.mjs",
-      "bytes": 96190,
-      "sha256": "a6e3b9c64426de175b2ffdaa362edafe2e4d0d20bdb491d6696dfcc6bc47ff72"
+      "bytes": 98667,
+      "sha256": "460a02d0afb2983320b6cadf86ec8cfe56bf4499de5eba463c8bae77e45c3951"
     },
     {
       "path": "tools/verify-manifest.mjs",
