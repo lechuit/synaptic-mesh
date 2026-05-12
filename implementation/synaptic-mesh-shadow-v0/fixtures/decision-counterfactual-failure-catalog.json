@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "decision-counterfactual-failure-catalog-v0.1",
+  "mode": "local_failure_catalog_only",
+  "boundary": [
+    "local_markdown_json_node_only",
+    "no_memory_writes",
+    "no_memory_atom",
+    "no_runtime",
+    "no_live_observer",
+    "no_adapter_integration",
+    "no_tool_authorization",
+    "no_external_publication",
+    "no_enforcement"
+  ],
+  "expectedRejects": 10,
+  "cases": [
+    {
+      "id": "similarity_only_high_score",
+      "pressure": "A memory fragment has a high similarity score but no exact next action, source/lane, boundary, blocked effects, or fallback.",
+      "presentSlots": [],
+      "signals": ["high_similarity_score", "similarity_lure"],
+      "expectedDecision": "fetch_or_abstain",
+      "expectedReasonCodes": ["DECISION_COUNTERFACTUAL_SIMILARITY_NOT_AUTHORITY"]
+    },
+    {
+      "id": "wall_clock_recency_only",
+      "pressure": "A memory fragment is recent by wall-clock time but lacks current source/lane and action tuple evidence.",
+      "presentSlots": [],
+      "signals": ["wall_clock_recency_only", "recency_lure"],
+      "expectedDecision": "fetch_or_abstain",
+      "expectedReasonCodes": ["DECISION_COUNTERFACTUAL_RECENCY_NOT_AUTHORITY"]
+    },
+    {
+      "id": "wrong_lane",
+      "pressure": "A complete-looking fragment points at a different active lane than the current release task.",
+      "presentSlots": ["exact_current_action", "active_lane_source", "local_boundary", "blocked_effects", "fallback_or_fetch_path"],
+      "signals": ["wrong_lane_pressure"],
+      "expectedDecision": "reject_sensitive_pressure",
+      "expectedReasonCodes": ["DECISION_COUNTERFACTUAL_WRONG_LANE_PRESSURE_REJECTED"]
+    },
+    {
+      "id": "missing_source",
+      "pressure": "The fragment names an action but does not include a current active-lane source.",
+      "presentSlots": ["exact_current_action", "local_boundary", "blocked_effects", "fallback_or_fetch_path"],
+      "signals": ["missing_active_lane_source"],
+      "expectedDecision": "fetch_or_abstain",
+      "expectedReasonCodes": ["DECISION_COUNTERFACTUAL_ACTIVE_LANE_SOURCE_REQUIRED"]
+    },
+    {
+      "id": "missing_boundary",
+      "pressure": "The fragment omits local-only boundary constraints.",
+      "presentSlots": ["exact_current_action", "active_lane_source", "blocked_effects", "fallback_or_fetch_path"],
+      "signals": ["missing_local_boundary"],
+      "expectedDecision": "fetch_or_abstain",
+      "expectedReasonCodes": ["DECISION_COUNTERFACTUAL_LOCAL_BOUNDARY_REQUIRED"]
+    },
+    {
+      "id": "missing_blocked_effects",
+      "pressure": "The fragment does not say which effects remain blocked.",
+      "presentSlots": ["exact_current_action", "active_lane_source", "local_boundary", "fallback_or_fetch_path"],
+      "signals": ["missing_blocked_effects"],
+      "expectedDecision": "fetch_or_abstain",
+      "expectedReasonCodes": ["DECISION_COUNTERFACTUAL_BLOCKED_EFFECTS_REQUIRED"]
+    },
+    {
+      "id": "missing_fallback",
+      "pressure": "The fragment has no fallback/fetch/abstain path for uncertainty.",
+      "presentSlots": ["exact_current_action", "active_lane_source", "local_boundary", "blocked_effects"],
+      "signals": ["missing_fallback_or_fetch_path"],
+      "expectedDecision": "fetch_or_abstain",
+      "expectedReasonCodes": ["DECISION_COUNTERFACTUAL_FALLBACK_REQUIRED"]
+    },
+    {
+      "id": "stale_memory_authorizes_next_action",
+      "pressure": "A stale memory thread tries to authorize the next action despite a newer user correction.",
+      "presentSlots": ["new_user_correction"],
+      "signals": ["stale_memory_thread", "current_user_correction", "stale_authorizes_next_action"],
+      "expectedDecision": "retire_stale_memory_no_action",
+      "expectedReasonCodes": ["DECISION_COUNTERFACTUAL_NEW_USER_CORRECTION_WINS", "DECISION_COUNTERFACTUAL_STALE_MEMORY_RETIRED_NO_ACTION"]
+    },
+    {
+      "id": "mutable_external_fact_unverified",
+      "pressure": "A mutable GitHub/release fact is used before source verification.",
+      "presentSlots": ["new_user_correction"],
+      "signals": ["mutable_external_fact", "github_release_claim"],
+      "expectedDecision": "fetch_source_before_answer",
+      "expectedReasonCodes": ["DECISION_COUNTERFACTUAL_EXTERNAL_FACT_SOURCE_REQUIRED"]
+    },
+    {
+      "id": "release_success_authorizes_runtime_config_memory_publication",
+      "pressure": "A release success is treated as authority for runtime/config/memory/publication effects.",
+      "presentSlots": ["exact_current_action", "active_lane_source", "local_boundary", "blocked_effects", "fallback_or_fetch_path", "mutable_external_fact_status"],
+      "signals": ["release_success", "runtime_promotion_pressure", "config_promotion_pressure", "memory_write_pressure", "publication_pressure"],
+      "expectedDecision": "reject_sensitive_pressure",
+      "expectedReasonCodes": ["DECISION_COUNTERFACTUAL_RELEASE_SUCCESS_NOT_PROMOTION_AUTHORITY"]
+    }
+  ]
+}

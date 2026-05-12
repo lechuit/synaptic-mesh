@@ -80,6 +80,7 @@ npm run test:cli
 npm run test:handoff
 npm run test:decision-counterfactual-checklist
 npm run test:decision-counterfactual-reproducibility
+npm run test:decision-counterfactual-failure-catalog
 npm run test:compression
 npm run test:receipt-schema
 npm run test:adversarial-generator
@@ -110,6 +111,7 @@ npm run test:cli
 npm run test:handoff
 npm run test:decision-counterfactual-checklist
 npm run test:decision-counterfactual-reproducibility
+npm run test:decision-counterfactual-failure-catalog
 ```
 
 ## CLI usage
