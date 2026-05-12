@@ -28,6 +28,7 @@ const releaseGateScripts = [
   'test:live-shadow-observation-schema',
   'test:live-shadow-observation-result-schema',
   'test:live-shadow-forbidden-effects',
+  'test:live-input-source-boundary-contracts',
   'test:live-shadow-synthetic-replay',
   'test:live-shadow-drift-scorecard',
   'test:manual-observation-bundle-schema',
@@ -266,6 +267,35 @@ assert(liveShadowForbiddenEffects?.summary?.toolExecutionImplemented === false, 
 assert(liveShadowForbiddenEffects?.summary?.memoryWriteImplemented === false, 'live-shadow forbidden-effects gate must not implement memory writes');
 assert(liveShadowForbiddenEffects?.summary?.configWriteImplemented === false, 'live-shadow forbidden-effects gate must not implement config writes');
 assert(liveShadowForbiddenEffects?.summary?.externalPublicationImplemented === false, 'live-shadow forbidden-effects gate must not implement external publication');
+
+const liveInputSourceBoundaryContracts = readJson(path.join(packageRoot, 'evidence/live-input-source-boundary-contracts.out.json'));
+assert(liveInputSourceBoundaryContracts?.summary?.verdict === 'pass', 'live input/source boundary contracts verdict must be pass');
+assert(liveInputSourceBoundaryContracts?.summary?.passCases === 2, 'live input/source boundary contracts must keep 2 positive controls');
+assert(liveInputSourceBoundaryContracts?.summary?.expectedRejects === 9, 'live input/source boundary contracts must keep 9 expected rejects');
+assert(liveInputSourceBoundaryContracts?.summary?.unexpectedPasses === 0, 'live input/source boundary contracts must have zero unexpected passes');
+assert(liveInputSourceBoundaryContracts?.summary?.unexpectedRejects === 0, 'live input/source boundary contracts must have zero unexpected rejects');
+for (const reasonCode of ['LIVE_INPUT_SOURCE_KIND_FORBIDDEN', 'LIVE_INPUT_ALREADY_REDACTED_REQUIRED', 'LIVE_INPUT_RAW_PERSISTENCE_FORBIDDEN', 'SOURCE_DIGEST_REQUIRED', 'SOURCE_MTIME_REQUIRED', 'LIVE_OUTPUT_RECORD_ONLY_REQUIRED', 'FORBIDDEN_EFFECT_TUPLE_INCOMPLETE', 'LIVE_OBSERVER_FORBIDDEN', 'RUNTIME_INTEGRATION_FORBIDDEN', 'DAEMON_FORBIDDEN', 'WATCHER_FORBIDDEN', 'PUBLICATION_AUTOMATION_FORBIDDEN', 'DELETION_FORBIDDEN', 'RETENTION_SCHEDULER_FORBIDDEN']) {
+  assert(liveInputSourceBoundaryContracts?.summary?.coveredReasonCodes?.includes(reasonCode), `live input/source boundary contracts must cover ${reasonCode}`);
+}
+assert(liveInputSourceBoundaryContracts?.summary?.liveInputRead === false, 'live input/source boundary contracts must not read live input');
+assert(liveInputSourceBoundaryContracts?.summary?.rawInputPersisted === false, 'live input/source boundary contracts must not persist raw input');
+assert(liveInputSourceBoundaryContracts?.summary?.liveObserverImplemented === false, 'live input/source boundary contracts must not implement live observer');
+assert(liveInputSourceBoundaryContracts?.summary?.runtimeIntegrationImplemented === false, 'live input/source boundary contracts must not implement runtime integration');
+assert(liveInputSourceBoundaryContracts?.summary?.daemonImplemented === false, 'live input/source boundary contracts must not implement daemon');
+assert(liveInputSourceBoundaryContracts?.summary?.watcherImplemented === false, 'live input/source boundary contracts must not implement watcher');
+assert(liveInputSourceBoundaryContracts?.summary?.adapterIntegrationImplemented === false, 'live input/source boundary contracts must not implement adapter integration');
+assert(liveInputSourceBoundaryContracts?.summary?.toolExecutionImplemented === false, 'live input/source boundary contracts must not implement tool execution');
+assert(liveInputSourceBoundaryContracts?.summary?.memoryWriteImplemented === false, 'live input/source boundary contracts must not implement memory writes');
+assert(liveInputSourceBoundaryContracts?.summary?.configWriteImplemented === false, 'live input/source boundary contracts must not implement config writes');
+assert(liveInputSourceBoundaryContracts?.summary?.externalPublicationImplemented === false, 'live input/source boundary contracts must not implement external publication');
+assert(liveInputSourceBoundaryContracts?.summary?.publicationAutomationImplemented === false, 'live input/source boundary contracts must not implement publication automation');
+assert(liveInputSourceBoundaryContracts?.summary?.approvalPathImplemented === false, 'live input/source boundary contracts must not implement approval paths');
+assert(liveInputSourceBoundaryContracts?.summary?.blockingImplemented === false, 'live input/source boundary contracts must not implement blocking');
+assert(liveInputSourceBoundaryContracts?.summary?.allowingImplemented === false, 'live input/source boundary contracts must not implement allowing');
+assert(liveInputSourceBoundaryContracts?.summary?.authorizationImplemented === false, 'live input/source boundary contracts must not implement authorization');
+assert(liveInputSourceBoundaryContracts?.summary?.deletionImplemented === false, 'live input/source boundary contracts must not implement deletion');
+assert(liveInputSourceBoundaryContracts?.summary?.retentionSchedulerImplemented === false, 'live input/source boundary contracts must not implement retention scheduling');
+assert(liveInputSourceBoundaryContracts?.summary?.enforcementImplemented === false, 'live input/source boundary contracts must not implement enforcement');
 
 const liveShadowSyntheticReplay = readJson(path.join(packageRoot, 'evidence/live-shadow-synthetic-replay.out.json'));
 assert(liveShadowSyntheticReplay?.summary?.verdict === 'pass', 'live-shadow synthetic replay verdict must be pass');
