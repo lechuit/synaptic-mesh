@@ -1,0 +1,249 @@
+{
+  "summary": {
+    "artifact": "T-synaptic-mesh-live-input-source-boundary-contracts-v0",
+    "timestamp": "2026-05-12T04:35:00.000Z",
+    "verdict": "pass",
+    "fixture": "implementation/synaptic-mesh-shadow-v0/fixtures/live-input-source-boundary-contracts.json",
+    "passCases": 2,
+    "expectedRejects": 7,
+    "unexpectedPasses": 0,
+    "unexpectedRejects": 0,
+    "requiredTuple": [
+      "explicit_source_kind",
+      "already_redacted_input",
+      "source_artifact_id",
+      "source_artifact_path",
+      "source_digest",
+      "source_mtime",
+      "source_run_id",
+      "receiver_now",
+      "record_only_output",
+      "forbidden_effects"
+    ],
+    "coveredReasonCodes": [
+      "FORBIDDEN_EFFECT_TUPLE_INCOMPLETE",
+      "LIVE_INPUT_ALREADY_REDACTED_REQUIRED",
+      "LIVE_INPUT_RAW_PERSISTENCE_FORBIDDEN",
+      "LIVE_INPUT_SOURCE_KIND_FORBIDDEN",
+      "LIVE_OBSERVER_FORBIDDEN",
+      "LIVE_OUTPUT_RECORD_ONLY_REQUIRED",
+      "RUNTIME_INTEGRATION_FORBIDDEN",
+      "SOURCE_DIGEST_REQUIRED",
+      "SOURCE_MTIME_REQUIRED"
+    ],
+    "mode": "manual_offline_live_input_source_boundary_contract_only",
+    "liveInputRead": false,
+    "rawInputPersisted": false,
+    "liveObserverImplemented": false,
+    "runtimeIntegrationImplemented": false,
+    "daemonImplemented": false,
+    "watcherImplemented": false,
+    "adapterIntegrationImplemented": false,
+    "toolExecutionImplemented": false,
+    "memoryWriteImplemented": false,
+    "configWriteImplemented": false,
+    "externalPublicationImplemented": false,
+    "publicationAutomationImplemented": false,
+    "approvalPathImplemented": false,
+    "blockingImplemented": false,
+    "allowingImplemented": false,
+    "authorizationImplemented": false,
+    "enforcementImplemented": false,
+    "safetyClaimScope": "live_input_source_boundary_contracts_over_committed_already_redacted_fixtures_only_not_live_observer_not_runtime_not_authorization_not_enforcement"
+  },
+  "passResults": [
+    {
+      "caseId": "pass_manual_redacted_bundle_full_source_tuple",
+      "boundaryGate": "pass",
+      "reasonCodes": [],
+      "missingForbiddenEffects": [],
+      "sourceKind": "manual_redacted_bundle",
+      "inputBoundary": "already_redacted",
+      "outputBoundary": "record_only_local_evidence",
+      "sourceTupleComplete": true,
+      "boundary": "manual_offline_live_input_source_boundary_contract_only"
+    },
+    {
+      "caseId": "pass_manual_control_message_full_source_tuple",
+      "boundaryGate": "pass",
+      "reasonCodes": [],
+      "missingForbiddenEffects": [],
+      "sourceKind": "manual_control_message",
+      "inputBoundary": "already_redacted",
+      "outputBoundary": "record_only_local_evidence",
+      "sourceTupleComplete": true,
+      "boundary": "manual_offline_live_input_source_boundary_contract_only"
+    }
+  ],
+  "rejectResults": [
+    {
+      "caseId": "reject_live_input_source_kind",
+      "boundaryGate": "reject",
+      "reasonCodes": [
+        "FORBIDDEN_EFFECT_TUPLE_INCOMPLETE",
+        "LIVE_INPUT_SOURCE_KIND_FORBIDDEN"
+      ],
+      "missingForbiddenEffects": [
+        "config_write",
+        "external_publication",
+        "approval_path",
+        "blocking",
+        "allowing",
+        "authorization"
+      ],
+      "sourceKind": "live_telegram_stream",
+      "inputBoundary": "already_redacted",
+      "outputBoundary": "record_only_local_evidence",
+      "sourceTupleComplete": true,
+      "boundary": "manual_offline_live_input_source_boundary_contract_only"
+    },
+    {
+      "caseId": "reject_raw_input_boundary",
+      "boundaryGate": "reject",
+      "reasonCodes": [
+        "FORBIDDEN_EFFECT_TUPLE_INCOMPLETE",
+        "LIVE_INPUT_ALREADY_REDACTED_REQUIRED",
+        "LIVE_INPUT_RAW_PERSISTENCE_FORBIDDEN"
+      ],
+      "missingForbiddenEffects": [
+        "live_traffic_read",
+        "tool_execution",
+        "config_write",
+        "external_publication",
+        "approval_path",
+        "blocking",
+        "allowing",
+        "authorization"
+      ],
+      "sourceKind": "manual_redacted_bundle",
+      "inputBoundary": "raw_unredacted",
+      "outputBoundary": "record_only_local_evidence",
+      "sourceTupleComplete": true,
+      "boundary": "manual_offline_live_input_source_boundary_contract_only"
+    },
+    {
+      "caseId": "reject_missing_source_digest",
+      "boundaryGate": "reject",
+      "reasonCodes": [
+        "FORBIDDEN_EFFECT_TUPLE_INCOMPLETE",
+        "SOURCE_DIGEST_REQUIRED"
+      ],
+      "missingForbiddenEffects": [
+        "tool_execution",
+        "config_write",
+        "external_publication",
+        "approval_path",
+        "blocking",
+        "allowing",
+        "authorization"
+      ],
+      "sourceKind": "manual_redacted_bundle",
+      "inputBoundary": "already_redacted",
+      "outputBoundary": "record_only_local_evidence",
+      "sourceTupleComplete": false,
+      "boundary": "manual_offline_live_input_source_boundary_contract_only"
+    },
+    {
+      "caseId": "reject_missing_source_mtime",
+      "boundaryGate": "reject",
+      "reasonCodes": [
+        "FORBIDDEN_EFFECT_TUPLE_INCOMPLETE",
+        "SOURCE_MTIME_REQUIRED"
+      ],
+      "missingForbiddenEffects": [
+        "tool_execution",
+        "config_write",
+        "external_publication",
+        "approval_path",
+        "blocking",
+        "allowing",
+        "authorization"
+      ],
+      "sourceKind": "manual_redacted_bundle",
+      "inputBoundary": "already_redacted",
+      "outputBoundary": "record_only_local_evidence",
+      "sourceTupleComplete": false,
+      "boundary": "manual_offline_live_input_source_boundary_contract_only"
+    },
+    {
+      "caseId": "reject_output_boundary_not_record_only",
+      "boundaryGate": "reject",
+      "reasonCodes": [
+        "FORBIDDEN_EFFECT_TUPLE_INCOMPLETE",
+        "LIVE_OUTPUT_RECORD_ONLY_REQUIRED"
+      ],
+      "missingForbiddenEffects": [
+        "tool_execution",
+        "config_write",
+        "external_publication",
+        "approval_path",
+        "blocking",
+        "allowing",
+        "authorization"
+      ],
+      "sourceKind": "manual_redacted_bundle",
+      "inputBoundary": "already_redacted",
+      "outputBoundary": "runtime_decision_path",
+      "sourceTupleComplete": true,
+      "boundary": "manual_offline_live_input_source_boundary_contract_only"
+    },
+    {
+      "caseId": "reject_forbidden_effect_missing_memory_write",
+      "boundaryGate": "reject",
+      "reasonCodes": [
+        "FORBIDDEN_EFFECT_TUPLE_INCOMPLETE"
+      ],
+      "missingForbiddenEffects": [
+        "memory_write",
+        "config_write",
+        "approval_path",
+        "blocking",
+        "allowing",
+        "authorization"
+      ],
+      "sourceKind": "manual_redacted_bundle",
+      "inputBoundary": "already_redacted",
+      "outputBoundary": "record_only_local_evidence",
+      "sourceTupleComplete": true,
+      "boundary": "manual_offline_live_input_source_boundary_contract_only"
+    },
+    {
+      "caseId": "reject_runtime_or_observer_pressure",
+      "boundaryGate": "reject",
+      "reasonCodes": [
+        "LIVE_OBSERVER_FORBIDDEN",
+        "RUNTIME_INTEGRATION_FORBIDDEN"
+      ],
+      "missingForbiddenEffects": [],
+      "sourceKind": "manual_redacted_bundle",
+      "inputBoundary": "already_redacted",
+      "outputBoundary": "record_only_local_evidence",
+      "sourceTupleComplete": true,
+      "boundary": "manual_offline_live_input_source_boundary_contract_only"
+    }
+  ],
+  "boundary": [
+    "manual_offline_only",
+    "committed_fixtures_only",
+    "already_redacted_input_only",
+    "explicit_source_tuple_required",
+    "local_evidence_output_only",
+    "record_only",
+    "no_live_traffic_read",
+    "no_live_observation",
+    "no_runtime",
+    "no_daemon",
+    "no_watcher",
+    "no_adapter_integration",
+    "no_tool_execution",
+    "no_memory_write",
+    "no_config_write",
+    "no_external_publication",
+    "no_publication_automation",
+    "no_approval_path",
+    "no_blocking",
+    "no_allowing",
+    "no_authorization",
+    "no_enforcement"
+  ]
+}

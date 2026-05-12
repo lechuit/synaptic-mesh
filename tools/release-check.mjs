@@ -28,6 +28,7 @@ const releaseGateScripts = [
   'test:live-shadow-observation-schema',
   'test:live-shadow-observation-result-schema',
   'test:live-shadow-forbidden-effects',
+  'test:live-input-source-boundary-contracts',
   'test:live-shadow-synthetic-replay',
   'test:live-shadow-drift-scorecard',
   'test:manual-observation-bundle-schema',
