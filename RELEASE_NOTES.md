@@ -5,7 +5,7 @@ Status: live-input/source-boundary contracts public review package update. Not r
 ## Highlights since the previous release
 
 - Added `implementation/synaptic-mesh-shadow-v0/tests/live-input-source-boundary-contracts.mjs`, a deterministic local boundary-contract gate for future live-input/source handoff candidates.
-- Added `implementation/synaptic-mesh-shadow-v0/fixtures/live-input-source-boundary-contracts.json`, with 2 positive controls and 7 expected rejects.
+- Added `implementation/synaptic-mesh-shadow-v0/fixtures/live-input-source-boundary-contracts.json`, with 2 positive controls and 9 expected rejects.
 - Added committed evidence at `implementation/synaptic-mesh-shadow-v0/evidence/live-input-source-boundary-contracts.out.json`.
 - Wired the boundary-contract gate into local `check` and `release:check` validation.
 - Updated README, coverage, reason-code docs, release metadata, and manifest target to `v0.1.21`.
@@ -14,17 +14,17 @@ Status: live-input/source-boundary contracts public review package update. Not r
 
 Adds local boundary contracts for representing future live-input/source candidates as explicit already-redacted source tuples with record-only output and complete forbidden-effect boundaries.
 It proves only local fixture behavior over committed synthetic/metadata-only fixtures.
-It does not add live traffic reads, memory writes, MemoryAtom, runtime, live observer, adapter integration, tool authorization, external publication automation, approval paths, blocking/allowing, or enforcement.
+It does not add live traffic reads, raw input persistence, memory writes, MemoryAtom, runtime, live observer, daemon, watcher, adapter integration, tool authorization, external publication automation, approval paths, blocking/allowing, authorization, deletion, retention scheduler, or enforcement.
 
 ## New v0.1.21 evidence
 
 - Live-input/source-boundary contracts: pass.
 - Pass cases: 2.
-- Expected rejects: 7.
+- Expected rejects: 9.
 - Unexpected passes: 0.
 - Unexpected rejects: 0.
-- Required tuple: explicit source kind, already-redacted input, source artifact id/path/digest/mtime/run id, receiver clock, record-only output, forbidden effects.
-- Capability/boundary claims remain false: live input read, raw input persistence, memory writes, MemoryAtom, runtime, live observer, adapter integration, tool authorization, external publication automation, approval paths, blocking/allowing, authorization, and enforcement are not implemented.
+- Required tuple: explicit source kind, already-redacted input, source artifact id/path/digest/mtime/run id, receiver clock, record-only output, and complete forbidden-effect tuple including raw input persistence, daemon/watcher, publication automation, deletion, and retention scheduler boundaries.
+- Capability/boundary claims remain false: live input read, raw input persistence, memory writes, MemoryAtom, runtime, live observer, daemon, watcher, adapter integration, tool authorization, external publication automation, approval paths, blocking/allowing, authorization, deletion, retention scheduler, and enforcement are not implemented.
 
 ## Boundary pressure cases
 
@@ -36,7 +36,8 @@ The new gate keeps the pre-live boundary conservative against:
 - missing source mtime;
 - non-record-only output boundary;
 - incomplete forbidden-effect tuple;
-- runtime or live-observer pressure.
+- runtime or live-observer pressure;
+- daemon, watcher, publication-automation, deletion, or retention-scheduler pressure.
 
 ## Carried-forward package evidence
 
@@ -44,7 +45,7 @@ The release package still includes earlier local-shadow gates from the v0.1.x li
 
 ## Validation snapshot
 
-- Live-input/source-boundary contracts: pass 2 positive controls, 7 expected rejects, unexpected passes 0, unexpected rejects 0.
+- Live-input/source-boundary contracts: pass 2 positive controls, 9 expected rejects, unexpected passes 0, unexpected rejects 0.
 - Full release validation is expected through:
 
 ```bash
@@ -53,11 +54,11 @@ npm --prefix implementation/synaptic-mesh-shadow-v0 run release:check -- --targe
 
 ## Compatibility note
 
-Synaptic Mesh remains a framework-agnostic protocol proposal. v0.1.21 adds local live-input/source-boundary contracts over committed already-redacted fixtures. It does not capture live traffic, run a live observer, write memory, create MemoryAtom records, integrate adapters/tools, publish externally, authorize runtime actions, create approval paths, block actions, allow actions, or enforce policy.
+Synaptic Mesh remains a framework-agnostic protocol proposal. v0.1.21 adds local live-input/source-boundary contracts over committed already-redacted fixtures. It does not capture live traffic, persist raw input, run a live observer, start daemons/watchers, write memory, create MemoryAtom records, integrate adapters/tools, publish externally or automate publication, authorize runtime actions, create approval paths, block actions, allow actions, delete, schedule retention/deletion, or enforce policy.
 
 ## Operational non-release status
 
 - Not runtime/tooling integrated.
 - Not live-monitoring integrated.
 - Not production/canary/enforcement/L2+ ready.
-- Runtime, live observation, adapter, MemoryAtom, memory writing, tool authorization, external publication automation, approval, blocking/allowing, enforcement, or operational use requires a separate explicit maintainer decision.
+- Runtime, live observation, daemon/watcher, adapter, MemoryAtom, memory writing, tool authorization, external publication automation, approval, blocking/allowing, authorization, deletion, retention scheduler, enforcement, or operational use requires a separate explicit maintainer decision.

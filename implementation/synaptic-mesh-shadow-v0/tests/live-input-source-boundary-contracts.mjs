@@ -14,14 +14,23 @@ const fixture = JSON.parse(await readFile(fixturePath, 'utf8'));
 const allowedSourceKinds = new Set(['manual_redacted_bundle', 'manual_control_message']);
 const requiredForbiddenEffects = [
   'live_traffic_read',
+  'raw_input_persistence',
+  'live_observer',
+  'runtime_integration',
+  'daemon',
+  'watcher',
+  'adapter_integration',
   'tool_execution',
   'memory_write',
   'config_write',
   'external_publication',
+  'publication_automation',
   'approval_path',
   'blocking',
   'allowing',
   'authorization',
+  'deletion',
+  'retention_scheduler',
   'enforcement',
 ];
 const requiredBoundary = [
@@ -32,6 +41,7 @@ const requiredBoundary = [
   'local_evidence_output_only',
   'record_only',
   'no_live_traffic_read',
+  'no_raw_input_persistence',
   'no_live_observation',
   'no_runtime',
   'no_daemon',
@@ -46,6 +56,8 @@ const requiredBoundary = [
   'no_blocking',
   'no_allowing',
   'no_authorization',
+  'no_deletion',
+  'no_retention_scheduler',
   'no_enforcement',
 ];
 
@@ -53,6 +65,8 @@ assert.equal(fixture.schemaVersion, 'live-input-source-boundary-contracts-v0');
 assert.equal(fixture.mode, 'manual_offline_live_input_source_boundary_contract_only');
 assert.match(fixture.description, /local and already-redacted/);
 assert.match(fixture.description, /do not read live traffic/);
+assert.match(fixture.description, /persist raw input/);
+assert.match(fixture.description, /schedule retention\/deletion/);
 for (const boundaryLabel of requiredBoundary) assert.ok(fixture.boundary.includes(boundaryLabel), `fixture boundary must include ${boundaryLabel}`);
 
 function isSha256(value) {
@@ -81,15 +95,20 @@ function evaluateBoundary(row) {
   if (missingForbiddenEffects.length > 0) reasonCodes.push('FORBIDDEN_EFFECT_TUPLE_INCOMPLETE');
   if (row.liveObserverImplemented === true) reasonCodes.push('LIVE_OBSERVER_FORBIDDEN');
   if (row.runtimeIntegrationImplemented === true) reasonCodes.push('RUNTIME_INTEGRATION_FORBIDDEN');
+  if (row.daemonImplemented === true) reasonCodes.push('DAEMON_FORBIDDEN');
+  if (row.watcherImplemented === true) reasonCodes.push('WATCHER_FORBIDDEN');
   if (row.adapterIntegrationImplemented === true) reasonCodes.push('ADAPTER_INTEGRATION_FORBIDDEN');
   if (row.toolExecutionImplemented === true) reasonCodes.push('TOOL_EXECUTION_FORBIDDEN');
   if (row.memoryWriteImplemented === true) reasonCodes.push('MEMORY_WRITE_FORBIDDEN');
   if (row.configWriteImplemented === true) reasonCodes.push('CONFIG_WRITE_FORBIDDEN');
   if (row.externalPublicationImplemented === true) reasonCodes.push('EXTERNAL_PUBLICATION_FORBIDDEN');
+  if (row.publicationAutomationImplemented === true) reasonCodes.push('PUBLICATION_AUTOMATION_FORBIDDEN');
   if (row.approvalPathImplemented === true) reasonCodes.push('APPROVAL_PATH_FORBIDDEN');
   if (row.blockingImplemented === true) reasonCodes.push('BLOCKING_FORBIDDEN');
   if (row.allowingImplemented === true) reasonCodes.push('ALLOWING_FORBIDDEN');
   if (row.authorizationImplemented === true) reasonCodes.push('AUTHORIZATION_FORBIDDEN');
+  if (row.deletionImplemented === true) reasonCodes.push('DELETION_FORBIDDEN');
+  if (row.retentionSchedulerImplemented === true) reasonCodes.push('RETENTION_SCHEDULER_FORBIDDEN');
   if (row.enforcementImplemented === true) reasonCodes.push('ENFORCEMENT_FORBIDDEN');
 
   return {
@@ -127,7 +146,7 @@ const unexpectedRejects = passResults.filter((result) => result.boundaryGate !==
 const coveredReasonCodes = [...new Set(rejectResults.flatMap((result) => result.reasonCodes))].sort();
 
 assert.equal(passResults.length, 2, 'fixture must keep two positive controls');
-assert.equal(rejectResults.length, 7, 'fixture must keep seven expected rejects');
+assert.equal(rejectResults.length, 9, 'fixture must keep nine expected rejects');
 assert.deepEqual(unexpectedPasses, [], 'reject cases must not pass');
 assert.deepEqual(unexpectedRejects, [], 'pass cases must not reject');
 for (const reasonCode of [
@@ -140,6 +159,11 @@ for (const reasonCode of [
   'FORBIDDEN_EFFECT_TUPLE_INCOMPLETE',
   'LIVE_OBSERVER_FORBIDDEN',
   'RUNTIME_INTEGRATION_FORBIDDEN',
+  'DAEMON_FORBIDDEN',
+  'WATCHER_FORBIDDEN',
+  'PUBLICATION_AUTOMATION_FORBIDDEN',
+  'DELETION_FORBIDDEN',
+  'RETENTION_SCHEDULER_FORBIDDEN',
 ]) {
   assert.ok(coveredReasonCodes.includes(reasonCode), `fixture must cover ${reasonCode}`);
 }
@@ -173,8 +197,10 @@ const output = {
     blockingImplemented: false,
     allowingImplemented: false,
     authorizationImplemented: false,
+    deletionImplemented: false,
+    retentionSchedulerImplemented: false,
     enforcementImplemented: false,
-    safetyClaimScope: 'live_input_source_boundary_contracts_over_committed_already_redacted_fixtures_only_not_live_observer_not_runtime_not_authorization_not_enforcement',
+    safetyClaimScope: 'live_input_source_boundary_contracts_over_committed_already_redacted_fixtures_only_no_live_traffic_no_raw_input_persistence_no_live_observer_no_runtime_no_daemon_no_watcher_no_adapter_no_tool_execution_no_memory_write_no_config_write_no_publication_automation_no_approval_no_blocking_no_allowing_no_authorization_no_deletion_no_retention_scheduler_no_enforcement',
   },
   passResults,
   rejectResults,

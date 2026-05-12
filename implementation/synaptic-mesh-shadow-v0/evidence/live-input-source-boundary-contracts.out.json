@@ -5,7 +5,7 @@
     "verdict": "pass",
     "fixture": "implementation/synaptic-mesh-shadow-v0/fixtures/live-input-source-boundary-contracts.json",
     "passCases": 2,
-    "expectedRejects": 7,
+    "expectedRejects": 9,
     "unexpectedPasses": 0,
     "unexpectedRejects": 0,
     "requiredTuple": [
@@ -21,15 +21,20 @@
       "forbidden_effects"
     ],
     "coveredReasonCodes": [
+      "DAEMON_FORBIDDEN",
+      "DELETION_FORBIDDEN",
       "FORBIDDEN_EFFECT_TUPLE_INCOMPLETE",
       "LIVE_INPUT_ALREADY_REDACTED_REQUIRED",
       "LIVE_INPUT_RAW_PERSISTENCE_FORBIDDEN",
       "LIVE_INPUT_SOURCE_KIND_FORBIDDEN",
       "LIVE_OBSERVER_FORBIDDEN",
       "LIVE_OUTPUT_RECORD_ONLY_REQUIRED",
+      "PUBLICATION_AUTOMATION_FORBIDDEN",
+      "RETENTION_SCHEDULER_FORBIDDEN",
       "RUNTIME_INTEGRATION_FORBIDDEN",
       "SOURCE_DIGEST_REQUIRED",
-      "SOURCE_MTIME_REQUIRED"
+      "SOURCE_MTIME_REQUIRED",
+      "WATCHER_FORBIDDEN"
     ],
     "mode": "manual_offline_live_input_source_boundary_contract_only",
     "liveInputRead": false,
@@ -48,8 +53,10 @@
     "blockingImplemented": false,
     "allowingImplemented": false,
     "authorizationImplemented": false,
+    "deletionImplemented": false,
+    "retentionSchedulerImplemented": false,
     "enforcementImplemented": false,
-    "safetyClaimScope": "live_input_source_boundary_contracts_over_committed_already_redacted_fixtures_only_not_live_observer_not_runtime_not_authorization_not_enforcement"
+    "safetyClaimScope": "live_input_source_boundary_contracts_over_committed_already_redacted_fixtures_only_no_live_traffic_no_raw_input_persistence_no_live_observer_no_runtime_no_daemon_no_watcher_no_adapter_no_tool_execution_no_memory_write_no_config_write_no_publication_automation_no_approval_no_blocking_no_allowing_no_authorization_no_deletion_no_retention_scheduler_no_enforcement"
   },
   "passResults": [
     {
@@ -80,17 +87,9 @@
       "caseId": "reject_live_input_source_kind",
       "boundaryGate": "reject",
       "reasonCodes": [
-        "FORBIDDEN_EFFECT_TUPLE_INCOMPLETE",
         "LIVE_INPUT_SOURCE_KIND_FORBIDDEN"
       ],
-      "missingForbiddenEffects": [
-        "config_write",
-        "external_publication",
-        "approval_path",
-        "blocking",
-        "allowing",
-        "authorization"
-      ],
+      "missingForbiddenEffects": [],
       "sourceKind": "live_telegram_stream",
       "inputBoundary": "already_redacted",
       "outputBoundary": "record_only_local_evidence",
@@ -101,20 +100,10 @@
       "caseId": "reject_raw_input_boundary",
       "boundaryGate": "reject",
       "reasonCodes": [
-        "FORBIDDEN_EFFECT_TUPLE_INCOMPLETE",
         "LIVE_INPUT_ALREADY_REDACTED_REQUIRED",
         "LIVE_INPUT_RAW_PERSISTENCE_FORBIDDEN"
       ],
-      "missingForbiddenEffects": [
-        "live_traffic_read",
-        "tool_execution",
-        "config_write",
-        "external_publication",
-        "approval_path",
-        "blocking",
-        "allowing",
-        "authorization"
-      ],
+      "missingForbiddenEffects": [],
       "sourceKind": "manual_redacted_bundle",
       "inputBoundary": "raw_unredacted",
       "outputBoundary": "record_only_local_evidence",
@@ -125,18 +114,9 @@
       "caseId": "reject_missing_source_digest",
       "boundaryGate": "reject",
       "reasonCodes": [
-        "FORBIDDEN_EFFECT_TUPLE_INCOMPLETE",
         "SOURCE_DIGEST_REQUIRED"
       ],
-      "missingForbiddenEffects": [
-        "tool_execution",
-        "config_write",
-        "external_publication",
-        "approval_path",
-        "blocking",
-        "allowing",
-        "authorization"
-      ],
+      "missingForbiddenEffects": [],
       "sourceKind": "manual_redacted_bundle",
       "inputBoundary": "already_redacted",
       "outputBoundary": "record_only_local_evidence",
@@ -147,18 +127,9 @@
       "caseId": "reject_missing_source_mtime",
       "boundaryGate": "reject",
       "reasonCodes": [
-        "FORBIDDEN_EFFECT_TUPLE_INCOMPLETE",
         "SOURCE_MTIME_REQUIRED"
       ],
-      "missingForbiddenEffects": [
-        "tool_execution",
-        "config_write",
-        "external_publication",
-        "approval_path",
-        "blocking",
-        "allowing",
-        "authorization"
-      ],
+      "missingForbiddenEffects": [],
       "sourceKind": "manual_redacted_bundle",
       "inputBoundary": "already_redacted",
       "outputBoundary": "record_only_local_evidence",
@@ -169,18 +140,9 @@
       "caseId": "reject_output_boundary_not_record_only",
       "boundaryGate": "reject",
       "reasonCodes": [
-        "FORBIDDEN_EFFECT_TUPLE_INCOMPLETE",
         "LIVE_OUTPUT_RECORD_ONLY_REQUIRED"
       ],
-      "missingForbiddenEffects": [
-        "tool_execution",
-        "config_write",
-        "external_publication",
-        "approval_path",
-        "blocking",
-        "allowing",
-        "authorization"
-      ],
+      "missingForbiddenEffects": [],
       "sourceKind": "manual_redacted_bundle",
       "inputBoundary": "already_redacted",
       "outputBoundary": "runtime_decision_path",
@@ -194,12 +156,21 @@
         "FORBIDDEN_EFFECT_TUPLE_INCOMPLETE"
       ],
       "missingForbiddenEffects": [
+        "raw_input_persistence",
+        "live_observer",
+        "runtime_integration",
+        "daemon",
+        "watcher",
+        "adapter_integration",
         "memory_write",
         "config_write",
+        "publication_automation",
         "approval_path",
         "blocking",
         "allowing",
-        "authorization"
+        "authorization",
+        "deletion",
+        "retention_scheduler"
       ],
       "sourceKind": "manual_redacted_bundle",
       "inputBoundary": "already_redacted",
@@ -220,6 +191,35 @@
       "outputBoundary": "record_only_local_evidence",
       "sourceTupleComplete": true,
       "boundary": "manual_offline_live_input_source_boundary_contract_only"
+    },
+    {
+      "caseId": "reject_daemon_watcher_publication_automation_pressure",
+      "boundaryGate": "reject",
+      "reasonCodes": [
+        "DAEMON_FORBIDDEN",
+        "PUBLICATION_AUTOMATION_FORBIDDEN",
+        "WATCHER_FORBIDDEN"
+      ],
+      "missingForbiddenEffects": [],
+      "sourceKind": "manual_redacted_bundle",
+      "inputBoundary": "already_redacted",
+      "outputBoundary": "record_only_local_evidence",
+      "sourceTupleComplete": true,
+      "boundary": "manual_offline_live_input_source_boundary_contract_only"
+    },
+    {
+      "caseId": "reject_deletion_or_retention_scheduler_pressure",
+      "boundaryGate": "reject",
+      "reasonCodes": [
+        "DELETION_FORBIDDEN",
+        "RETENTION_SCHEDULER_FORBIDDEN"
+      ],
+      "missingForbiddenEffects": [],
+      "sourceKind": "manual_redacted_bundle",
+      "inputBoundary": "already_redacted",
+      "outputBoundary": "record_only_local_evidence",
+      "sourceTupleComplete": true,
+      "boundary": "manual_offline_live_input_source_boundary_contract_only"
     }
   ],
   "boundary": [
@@ -230,6 +230,7 @@
     "local_evidence_output_only",
     "record_only",
     "no_live_traffic_read",
+    "no_raw_input_persistence",
     "no_live_observation",
     "no_runtime",
     "no_daemon",
@@ -244,6 +245,8 @@
     "no_blocking",
     "no_allowing",
     "no_authorization",
+    "no_deletion",
+    "no_retention_scheduler",
     "no_enforcement"
   ]
 }

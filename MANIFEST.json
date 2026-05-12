@@ -1,13 +1,13 @@
 {
   "bundle": "synaptic-mesh",
   "version": "0.1.21",
-  "generated": "2026-05-12T04:35:00Z",
+  "generated": "2026-05-12T04:55:00Z",
   "status": "v0.1.21_live_input_source_boundary_contracts_public_review_release_not_runtime_ready",
   "repository": "https://github.com/lechuit/synaptic-mesh",
   "license": "Apache-2.0 for code; CC BY 4.0 for docs/prose unless otherwise noted",
-  "reproducibility": "expected_pass_local_shadow_gates_for_v0.1.21_live_input_source_boundary_contracts_with_two_pass_cases_seven_expected_rejects_zero_unexpected_passes_zero_unexpected_rejects_and_no_live_traffic_runtime_memory_publication_or_enforcement",
+  "reproducibility": "expected_pass_local_shadow_gates_for_v0.1.21_live_input_source_boundary_contracts_with_two_pass_cases_nine_expected_rejects_zero_unexpected_passes_zero_unexpected_rejects_and_no_live_traffic_runtime_memory_publication_deletion_retention_scheduler_or_enforcement",
   "rawSourceCache": "excluded",
-  "runtimeBoundary": "v0.1.21_live_input_source_boundary_contracts_local_fixture_metadata_only_no_live_traffic_read_no_memory_writes_no_MemoryAtom_no_live_observer_no_runtime_integration_no_adapter_integration_no_tool_authorization_no_external_publication_no_approval_blocking_allowing_authorization_or_enforcement",
+  "runtimeBoundary": "v0.1.21_live_input_source_boundary_contracts_local_fixture_metadata_only_no_live_traffic_read_no_raw_input_persistence_no_memory_writes_no_MemoryAtom_no_live_observer_no_runtime_integration_no_daemon_no_watcher_no_adapter_integration_no_tool_authorization_no_external_publication_no_publication_automation_no_approval_blocking_allowing_authorization_deletion_retention_scheduler_or_enforcement",
   "files": [
     {
       "path": ".github/workflows/ci.yml",
@@ -76,8 +76,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 11903,
-      "sha256": "5d905a4b120de3a8bab3222b411bd79b87d40f01588b96055b7c4246e46290e2"
+      "bytes": 12088,
+      "sha256": "d74c4486edcd55f38d6b7083f1e798b793a423c4fc673bff6f877f4a4ef28460"
     },
     {
       "path": "RELEASE_CANDIDATE.md",
@@ -86,8 +86,8 @@
     },
     {
       "path": "RELEASE_NOTES.md",
-      "bytes": 4697,
-      "sha256": "fd95abe162fa6f31bc0a1eae88c9363ce917e3d2cbeb4e146aaf20426b76cea2"
+      "bytes": 5219,
+      "sha256": "7eb2691c2a83a2d458300e5e5bdb04b716df7313131575bcb1249c51a8776fc8"
     },
     {
       "path": "design-notes/adapter-boundary-langgraph-mcp-v0.md",
@@ -156,8 +156,8 @@
     },
     {
       "path": "docs/coverage-matrix.md",
-      "bytes": 7820,
-      "sha256": "e0836a03a6e868a96336dfde59bccd1fd24b34ca243773db517e14579ce4e8f9"
+      "bytes": 7996,
+      "sha256": "4af61f5781b6628c666f46dc626d5ed3ed965105061bb1508ef6146a5f39d993"
     },
     {
       "path": "docs/decision-counterfactual-reviewer-guide.md",
@@ -271,8 +271,8 @@
     },
     {
       "path": "docs/reason-codes.md",
-      "bytes": 10789,
-      "sha256": "3654e6a0ccb3e6674d0b4348b365a8c628dfcaca4c9b0d5cd003f328881d4906"
+      "bytes": 11025,
+      "sha256": "cc21c7615fbf1f8877dd659fa086f0a502bcdd59b228376e325b6344d106bc42"
     },
     {
       "path": "docs/redaction-policy.md",
@@ -431,8 +431,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-input-source-boundary-contracts.out.json",
-      "bytes": 7982,
-      "sha256": "729b9070276c7d97821d9eaf74e83884237f550d800c3cf490feb7ff2c30e86a"
+      "bytes": 8689,
+      "sha256": "35af90af0456aff58ae85af3239cb05377aff6260d1e433a5ca78497e893138c"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-shadow-drift-scorecard-shape.out.json",
@@ -801,8 +801,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/fixtures/live-input-source-boundary-contracts.json",
-      "bytes": 8798,
-      "sha256": "d705f5a482f85c953e0c93912a415a30da6275248a79e5b5fa20dea175622fbc"
+      "bytes": 14900,
+      "sha256": "ff9113cd45b09c81d926cf01e14fada4b74ed8aff63e2ec8ae273a4226236d65"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/fixtures/live-shadow-drift-scorecard.json",
@@ -1206,8 +1206,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/live-input-source-boundary-contracts.mjs",
-      "bytes": 8476,
-      "sha256": "8791ed790676570b93f3fe4e88bec8e61521b39a7281d8e9f43b8bbaea280493"
+      "bytes": 9735,
+      "sha256": "a3547e1ba81569d34daaab0f23c4c56eb4129e8f1ee39a73d4d51463f8053b31"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/live-shadow-drift-scorecard-shape.mjs",
@@ -1926,8 +1926,8 @@
     },
     {
       "path": "tools/release-check.mjs",
-      "bytes": 105615,
-      "sha256": "0deed17bc2666b43f97765a5d2958a9a3963dd6684295d3b16f1a98c9875bfd4"
+      "bytes": 110091,
+      "sha256": "e2f297e840b006e23c9b22d7936d53696689e951e9be9e6d0a4d4ffb7eab5f1f"
     },
     {
       "path": "tools/verify-manifest.mjs",
