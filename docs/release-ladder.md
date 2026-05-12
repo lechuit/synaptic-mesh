@@ -1,6 +1,8 @@
 # Release ladder to v0.3.0-alpha
 
-This ladder records the intended boundary between the late v0.1.x hardening line, the first passive canary releases, and the first advisory-only human-readable report alpha.
+This ladder records the intended boundary between the late v0.1.x hardening line, the passive canary hardening sequence, and the first advisory-only human-readable report alpha.
+
+Strategic rule: keep hardening the receiver's distrust of inputs before adding more human-readable advisory output. No step in this ladder adds MemoryAtom, real adapters, runtime integration, tool execution, permanent memory, automatic agent consumption, approval, blocking, allowing, authorization, enforcement, or production safety claims.
 
 ## v0.1.18 — decision-counterfactual memory retrieval checklist
 
@@ -83,9 +85,26 @@ Boundary:
 
 Executable gate: `test:passive-live-shadow-canary-source-boundary-stress`.
 
-## v0.2.4 — canary drift scorecard
+## v0.2.4 — passive canary drift scorecard
 
-Score repeated canary packets for route drift, trace drift, and reason-code drift.
+Detect whether a passive canary produces changed decisions, reason sets, scorecards, or trace hashes when its normalized input has not changed.
+
+Planned metrics:
+
+- `routeDriftCount`
+- `reasonCodeDriftCount`
+- `boundaryVerdictDriftCount`
+- `scorecardDriftCount`
+- `traceHashDriftCount`
+- `normalizedOutputMismatchCount`
+
+Required invariants:
+
+- `mayBlock = 0`
+- `mayAllow = 0`
+- `capabilityTrueCount = 0`
+- `forbiddenEffects = 0`
+- `automaticAgentConsumptionImplemented = false`
 
 Boundary remains local deterministic evidence only. Drift rows must not become runtime authority, automatic gating for agents, approval signals, blocking/allowing decisions, or production safety claims.
 
@@ -93,7 +112,43 @@ Boundary remains local deterministic evidence only. Drift rows must not become r
 
 Expand the passive canary pack to roughly 10–20 manual opt-in, already-redacted packets.
 
+Target coverage:
+
+- valid redacted packet;
+- missing opt-in;
+- raw input pressure;
+- runtime pressure;
+- memory/config pressure;
+- publication pressure;
+- wrong lane;
+- stale digest;
+- missing mtime;
+- malformed tuple;
+- output containment;
+- advisory-looking text;
+- agent-consumption pressure.
+
 Boundary remains manual, local, opt-in, already-redacted, record-only, and no-effects. The pack may improve coverage, but it still does not authorize runtime behavior.
+
+## v0.2.6 — source-boundary stress expansion
+
+Expand the v0.2.3 source-boundary stress family with rarer source/output/path cases before introducing human-readable advisory reports.
+
+Target coverage:
+
+- digest mismatch distinct from stale digest;
+- suspicious future `sourceMtime`;
+- invalid `sourceMtime` format;
+- source path traversal;
+- source path symlink pressure;
+- source path Unicode/bidi/confusable pressure;
+- source lane alias confusion;
+- duplicate `sourceArtifactId`;
+- correct source digest with wrong source lane;
+- indirect symlink pressure in output path;
+- syntactically valid output path whose parent is not allowed.
+
+Boundary remains committed local fixtures only, already-redacted local canary metadata only, record-only local evidence, and no-effects. It must not read live traffic, follow untrusted symlinks for authority, start watchers/daemons, write memory/config, publish, approve, block, allow, authorize, delete, schedule retention, enforce, or feed reports automatically to agents.
 
 ## v0.3.0-alpha — advisory-only human-readable report
 
@@ -103,7 +158,18 @@ First human-readable advisory report over passive canary evidence. Example repor
 - `would fetch_source`
 - `would reject_sensitive_pressure`
 
-The report must not be consumed automatically by agents. Advisory is not authority.
+Hard rule: **advisory is not authority**. The report must not be consumed automatically by agents.
+
+Required hard flags:
+
+- `consumedByAgent = false`
+- `mayBlock = false`
+- `mayAllow = false`
+- `mayApprove = false`
+- `mayExecuteTool = false`
+- `mayWriteMemory = false`
+- `mayWriteConfig = false`
+- `mayPublishExternally = false`
 
 Boundary:
 
