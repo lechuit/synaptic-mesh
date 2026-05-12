@@ -141,6 +141,10 @@ const commands = [
     args: [resolve(packageRoot, 'tests/passive-live-shadow-canary-source-boundary-stress.mjs')],
   },
   {
+    id: 'passive-live-shadow-canary-drift-scorecard-tests',
+    args: [resolve(packageRoot, 'tests/passive-live-shadow-canary-drift-scorecard.mjs')],
+  },
+  {
     id: 'fixture-parity-harness',
     args: [resolve(packageRoot, 'tests/fixture-parity.mjs')],
   },
@@ -182,6 +186,7 @@ const realRedactedHandoffPack = readEvidenceJson('implementation/synaptic-mesh-s
 const realRedactedHandoffReplayGate = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/real-redacted-handoff-replay-gate.out.json');
 const realRedactedAdversarialCoverage = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/real-redacted-adversarial-coverage.out.json');
 const passiveCanarySourceBoundaryStress = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/passive-live-shadow-canary-source-boundary-stress.out.json');
+const passiveCanaryDriftScorecard = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/passive-live-shadow-canary-drift-scorecard.out.json');
 
 const unsafeAllowSignals = [
   ...(fixtureParity?.summary?.nonRegressionUnsafeAllowFixtures ?? []),
@@ -300,6 +305,30 @@ if (passiveCanarySourceBoundaryStress?.summary?.allowingImplemented !== false) u
 if (passiveCanarySourceBoundaryStress?.summary?.authorizationImplemented !== false) unsafeAllowSignals.push('passive-canary-source-boundary-stress-authorization');
 if (passiveCanarySourceBoundaryStress?.summary?.enforcementImplemented !== false) unsafeAllowSignals.push('passive-canary-source-boundary-stress-enforcement');
 if (passiveCanarySourceBoundaryStress?.summary?.automaticAgentConsumptionImplemented !== false) unsafeAllowSignals.push('passive-canary-source-boundary-stress-automatic-agent-consumption');
+if (passiveCanaryDriftScorecard?.summary?.verdict !== 'pass') unsafeAllowSignals.push('passive-canary-drift-scorecard');
+if (Number(passiveCanaryDriftScorecard?.summary?.routeDriftCount ?? 1) !== 0) unsafeAllowSignals.push('passive-canary-drift-scorecard-route-drift');
+if (Number(passiveCanaryDriftScorecard?.summary?.reasonCodeDriftCount ?? 1) !== 0) unsafeAllowSignals.push('passive-canary-drift-scorecard-reason-code-drift');
+if (Number(passiveCanaryDriftScorecard?.summary?.boundaryVerdictDriftCount ?? 1) !== 0) unsafeAllowSignals.push('passive-canary-drift-scorecard-boundary-verdict-drift');
+if (Number(passiveCanaryDriftScorecard?.summary?.scorecardDriftCount ?? 1) !== 0) unsafeAllowSignals.push('passive-canary-drift-scorecard-scorecard-drift');
+if (Number(passiveCanaryDriftScorecard?.summary?.traceHashDriftCount ?? 1) !== 0) unsafeAllowSignals.push('passive-canary-drift-scorecard-trace-hash-drift');
+if (Number(passiveCanaryDriftScorecard?.summary?.normalizedOutputMismatchCount ?? 1) !== 0) unsafeAllowSignals.push('passive-canary-drift-scorecard-normalized-output-mismatch');
+if (Number(passiveCanaryDriftScorecard?.summary?.mayBlockCount ?? 1) !== 0) unsafeAllowSignals.push('passive-canary-drift-scorecard-may-block');
+if (Number(passiveCanaryDriftScorecard?.summary?.mayAllowCount ?? 1) !== 0) unsafeAllowSignals.push('passive-canary-drift-scorecard-may-allow');
+if (Number(passiveCanaryDriftScorecard?.summary?.capabilityTrueCount ?? 1) !== 0) unsafeAllowSignals.push('passive-canary-drift-scorecard-capability-true');
+if (Number(passiveCanaryDriftScorecard?.summary?.forbiddenEffects ?? 1) !== 0) unsafeAllowSignals.push('passive-canary-drift-scorecard-forbidden-effects');
+if (passiveCanaryDriftScorecard?.summary?.scorecardAuthority !== false) unsafeAllowSignals.push('passive-canary-drift-scorecard-authority');
+if (passiveCanaryDriftScorecard?.summary?.consumedByAgent !== false) unsafeAllowSignals.push('passive-canary-drift-scorecard-agent-consumption');
+if (passiveCanaryDriftScorecard?.summary?.automaticAgentConsumptionImplemented !== false) unsafeAllowSignals.push('passive-canary-drift-scorecard-automatic-agent-consumption');
+if (passiveCanaryDriftScorecard?.summary?.runtimeIntegrated !== false) unsafeAllowSignals.push('passive-canary-drift-scorecard-runtime');
+if (passiveCanaryDriftScorecard?.summary?.toolExecutionImplemented !== false) unsafeAllowSignals.push('passive-canary-drift-scorecard-tools');
+if (passiveCanaryDriftScorecard?.summary?.memoryWriteImplemented !== false) unsafeAllowSignals.push('passive-canary-drift-scorecard-memory');
+if (passiveCanaryDriftScorecard?.summary?.configWriteImplemented !== false) unsafeAllowSignals.push('passive-canary-drift-scorecard-config');
+if (passiveCanaryDriftScorecard?.summary?.externalPublicationImplemented !== false) unsafeAllowSignals.push('passive-canary-drift-scorecard-publication');
+if (passiveCanaryDriftScorecard?.summary?.approvalPathImplemented !== false) unsafeAllowSignals.push('passive-canary-drift-scorecard-approval');
+if (passiveCanaryDriftScorecard?.summary?.blockingImplemented !== false) unsafeAllowSignals.push('passive-canary-drift-scorecard-blocking');
+if (passiveCanaryDriftScorecard?.summary?.allowingImplemented !== false) unsafeAllowSignals.push('passive-canary-drift-scorecard-allowing');
+if (passiveCanaryDriftScorecard?.summary?.authorizationImplemented !== false) unsafeAllowSignals.push('passive-canary-drift-scorecard-authorization');
+if (passiveCanaryDriftScorecard?.summary?.enforcementImplemented !== false) unsafeAllowSignals.push('passive-canary-drift-scorecard-enforcement');
 
 const summary = {
   artifact: 'T-synaptic-mesh-review-local-runner-v0',
@@ -422,6 +451,19 @@ const summary = {
   passiveCanarySourceBoundaryStressOutputContainmentRejects: passiveCanarySourceBoundaryStress?.summary?.outputContainmentRejects ?? null,
   passiveCanarySourceBoundaryStressPassCapabilityTrueCount: passiveCanarySourceBoundaryStress?.summary?.passCapabilityTrueCount ?? null,
   passiveCanarySourceBoundaryStressAutomaticAgentConsumptionImplemented: passiveCanarySourceBoundaryStress?.summary?.automaticAgentConsumptionImplemented ?? null,
+  passiveCanaryDriftScorecardVerdict: passiveCanaryDriftScorecard?.summary?.verdict ?? null,
+  passiveCanaryDriftScorecardComparedRows: passiveCanaryDriftScorecard?.summary?.comparedRows ?? null,
+  passiveCanaryDriftScorecardRouteDriftCount: passiveCanaryDriftScorecard?.summary?.routeDriftCount ?? null,
+  passiveCanaryDriftScorecardReasonCodeDriftCount: passiveCanaryDriftScorecard?.summary?.reasonCodeDriftCount ?? null,
+  passiveCanaryDriftScorecardBoundaryVerdictDriftCount: passiveCanaryDriftScorecard?.summary?.boundaryVerdictDriftCount ?? null,
+  passiveCanaryDriftScorecardScorecardDriftCount: passiveCanaryDriftScorecard?.summary?.scorecardDriftCount ?? null,
+  passiveCanaryDriftScorecardTraceHashDriftCount: passiveCanaryDriftScorecard?.summary?.traceHashDriftCount ?? null,
+  passiveCanaryDriftScorecardNormalizedOutputMismatchCount: passiveCanaryDriftScorecard?.summary?.normalizedOutputMismatchCount ?? null,
+  passiveCanaryDriftScorecardMayBlockCount: passiveCanaryDriftScorecard?.summary?.mayBlockCount ?? null,
+  passiveCanaryDriftScorecardMayAllowCount: passiveCanaryDriftScorecard?.summary?.mayAllowCount ?? null,
+  passiveCanaryDriftScorecardCapabilityTrueCount: passiveCanaryDriftScorecard?.summary?.capabilityTrueCount ?? null,
+  passiveCanaryDriftScorecardForbiddenEffects: passiveCanaryDriftScorecard?.summary?.forbiddenEffects ?? null,
+  passiveCanaryDriftScorecardAutomaticAgentConsumptionImplemented: passiveCanaryDriftScorecard?.summary?.automaticAgentConsumptionImplemented ?? null,
   unsafeAllowSignals,
   sourceFixtureMutation: false,
 };
