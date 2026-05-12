@@ -53,23 +53,11 @@ const root = repoRoot();
 const metadataPath = path.join(root, metadataFileName);
 const filesPath = path.join(root, filesFileName);
 const metadata = await readJson(metadataPath);
-let filesManifest;
-let entriesSource;
-
-try {
-  filesManifest = await readJson(filesPath);
-  entriesSource = filesFileName;
-} catch (error) {
-  if (Array.isArray(metadata.files)) {
-    filesManifest = { files: metadata.files };
-    entriesSource = `${metadataFileName} legacy files[]`;
-  } else {
-    throw new Error(`${filesFileName} is required when ${metadataFileName} does not contain legacy files[] (${error.message})`);
-  }
-}
+const filesManifest = await readJson(filesPath);
+const entriesSource = filesFileName;
 
 if (Array.isArray(metadata.files)) {
-  throw new Error(`${metadataFileName} must not contain files[] when ${filesFileName} is present; run npm run manifest:update`);
+  throw new Error(`${metadataFileName} must not contain files[]; ${filesFileName} is the generated file inventory. Run npm run manifest:update.`);
 }
 
 if (!Array.isArray(filesManifest.files)) {

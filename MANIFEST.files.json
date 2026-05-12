@@ -1979,8 +1979,8 @@
     },
     {
       "path": "tools/verify-manifest.mjs",
-      "bytes": 4152,
-      "sha256": "a16690e1f6d2bdda83220142355306646910c6f3f111af0853d795379ab4ee95"
+      "bytes": 3825,
+      "sha256": "cfb015867c7871256ce46bd094e5f830a7a6ca79f4f0303f9be33216e98c92e7"
     }
   ]
 }
