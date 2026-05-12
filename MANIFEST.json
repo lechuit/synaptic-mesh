@@ -1,13 +1,13 @@
 {
   "bundle": "synaptic-mesh",
-  "version": "0.1.21",
-  "generated": "2026-05-12T04:55:00Z",
-  "status": "v0.1.21_live_input_source_boundary_contracts_public_review_release_not_runtime_ready",
+  "version": "0.2.0-alpha",
+  "generated": "2026-05-12T12:12:00Z",
+  "status": "v0.2.0-alpha_first_passive_live_shadow_canary_manual_local_opt_in_record_only_no_effects_not_runtime_ready",
   "repository": "https://github.com/lechuit/synaptic-mesh",
   "license": "Apache-2.0 for code; CC BY 4.0 for docs/prose unless otherwise noted",
-  "reproducibility": "expected_pass_local_shadow_gates_for_v0.1.21_live_input_source_boundary_contracts_with_two_pass_cases_nine_expected_rejects_zero_unexpected_passes_zero_unexpected_rejects_and_no_live_traffic_runtime_memory_publication_deletion_retention_scheduler_or_enforcement",
+  "reproducibility": "expected_pass_local_shadow_gates_for_v0.2.0-alpha_with_v0.1.22_passive_live_shadow_simulator_and_first_manual_local_opt_in_record_only_no_effects_canary_two_pass_cases_eight_expected_rejects_zero_unexpected_accepts_zero_unexpected_rejects_no_live_traffic_runtime_memory_config_publication_publication_automation_agent_instruction_approval_block_allow_authorization_deletion_retention_scheduler_or_enforcement",
   "rawSourceCache": "excluded",
-  "runtimeBoundary": "v0.1.21_live_input_source_boundary_contracts_local_fixture_metadata_only_no_live_traffic_read_no_raw_input_persistence_no_memory_writes_no_MemoryAtom_no_live_observer_no_runtime_integration_no_daemon_no_watcher_no_adapter_integration_no_tool_authorization_no_external_publication_no_publication_automation_no_approval_blocking_allowing_authorization_deletion_retention_scheduler_or_enforcement",
+  "runtimeBoundary": "v0.2.0-alpha_manual_local_opt_in_passive_canary_contract_only_already_redacted_local_canary_packets_record_only_local_evidence_no_live_traffic_read_no_raw_input_persistence_no_memory_writes_no_MemoryAtom_no_live_observer_daemon_no_runtime_integration_no_daemon_no_watcher_no_adapter_integration_no_tool_authorization_no_external_publication_no_publication_automation_no_agent_instruction_write_no_approval_blocking_allowing_authorization_deletion_retention_scheduler_or_enforcement",
   "files": [
     {
       "path": ".github/workflows/ci.yml",
@@ -76,8 +76,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 12088,
-      "sha256": "d74c4486edcd55f38d6b7083f1e798b793a423c4fc673bff6f877f4a4ef28460"
+      "bytes": 12836,
+      "sha256": "c0d7209a1a2c39ed9fef540089d0cfad287148380e6ac4d36f8a11b4a89427f1"
     },
     {
       "path": "RELEASE_CANDIDATE.md",
@@ -86,8 +86,8 @@
     },
     {
       "path": "RELEASE_NOTES.md",
-      "bytes": 5219,
-      "sha256": "7eb2691c2a83a2d458300e5e5bdb04b716df7313131575bcb1249c51a8776fc8"
+      "bytes": 5403,
+      "sha256": "10e5f8707edcf8b84338ba55c0579181feecce737f6e29999d85f83f99d14e78"
     },
     {
       "path": "design-notes/adapter-boundary-langgraph-mcp-v0.md",
@@ -293,6 +293,11 @@
       "path": "docs/release-checklist.md",
       "bytes": 10668,
       "sha256": "daca4219ce17c4a648f7afa08a6d6afc7a9d4e7f70a79ccf5a4b6d350ae3b002"
+    },
+    {
+      "path": "docs/release-ladder-v0.2-alpha.md",
+      "bytes": 2136,
+      "sha256": "b202cb6bc29ef04422e952bdd7bf8e2ef935f28adcc93d7b2a90a4d771d28f78"
     },
     {
       "path": "docs/repo-structure.md",
@@ -655,6 +660,11 @@
       "sha256": "8fddbe73c403ce63243cbcae2c6dcc2cdf86881b90ea3e421731677cb31f96b9"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-live-shadow-canary.out.json",
+      "bytes": 5516,
+      "sha256": "4f2f9a66c1cd6ccd8ab9e5c1a8e9d770ebb669df35005e5302d7d23b7f8ddcfd"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/raw-parser-adversarial.out.json",
       "bytes": 4847,
       "sha256": "04c4afdd2a2918e8ef1a4882dbf62e6a34b121c4e3f6a2f3ff0bafc40d5f841f"
@@ -985,6 +995,11 @@
       "sha256": "3b71d8cdfde64823e8103c6245af7e194df6f18dc9423cbad60be31c9d281c6b"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/fixtures/passive-live-shadow-canary.json",
+      "bytes": 8869,
+      "sha256": "87e021016c8504ad2c00c91d7cf8422a94df5fa40bd22bdd77f1784cda2932f3"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/fixtures/raw-parser-adversarial.json",
       "bytes": 19424,
       "sha256": "014bc6507037d55811fe16ba51c8d76f65b12bc267eab345a711b95ad4c5f609"
@@ -1056,8 +1071,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/package.json",
-      "bytes": 11416,
-      "sha256": "e4e83051aa7906676a0ccc89678f474dc87047d85bd5ca9efc8ef7f8579c71af"
+      "bytes": 11553,
+      "sha256": "2811ef95c22e13d6874379b08311892791988fb50c8944d2b42ed06d316db28f"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/action-context-packet.mjs",
@@ -1318,6 +1333,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/tests/partial-receipt-degrade.mjs",
       "bytes": 7103,
       "sha256": "e9d4557033171c6862f990e3f26eaf6da65931355a30cdd1d9e6e9ab2f41da10"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-live-shadow-canary.mjs",
+      "bytes": 8546,
+      "sha256": "35ae92ac821c4190eb4bf763fb3bafa931bf49be61a42bee0a1691f320b5240e"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/raw-parser-adversarial.mjs",
@@ -1926,8 +1946,8 @@
     },
     {
       "path": "tools/release-check.mjs",
-      "bytes": 110091,
-      "sha256": "e2f297e840b006e23c9b22d7936d53696689e951e9be9e6d0a4d4ffb7eab5f1f"
+      "bytes": 113786,
+      "sha256": "cdca782deaed1b5c51055877abe2700bf6faaf353f8c389cb55a8acc73a1db5c"
     },
     {
       "path": "tools/verify-manifest.mjs",

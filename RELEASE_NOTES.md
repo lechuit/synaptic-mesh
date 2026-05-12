@@ -1,64 +1,71 @@
-# Release Notes — Synaptic Mesh v0.1.21
+# Release Notes — Synaptic Mesh v0.2.0-alpha
 
-Status: live-input/source-boundary contracts public review package update. Not runtime-ready; not production/canary/enforcement-ready.
+Status: first passive live-shadow canary alpha. Manual, local, opt-in, record-only, no effects. Not runtime-ready; not production/enforcement-ready.
 
-## Highlights since the previous release
+## Release ladder
 
-- Added `implementation/synaptic-mesh-shadow-v0/tests/live-input-source-boundary-contracts.mjs`, a deterministic local boundary-contract gate for future live-input/source handoff candidates.
-- Added `implementation/synaptic-mesh-shadow-v0/fixtures/live-input-source-boundary-contracts.json`, with 2 positive controls and 9 expected rejects.
-- Added committed evidence at `implementation/synaptic-mesh-shadow-v0/evidence/live-input-source-boundary-contracts.out.json`.
-- Wired the boundary-contract gate into local `check` and `release:check` validation.
-- Updated README, coverage, reason-code docs, release metadata, and manifest target to `v0.1.21`.
+- `v0.1.18` — decision-counterfactual memory retrieval checklist.
+- `v0.1.19` — checklist robustness: reproducibility, failure catalog, reviewer guide.
+- `v0.1.20` — executable redaction/retention gates before live-shaped work.
+- `v0.1.21` — live input/source boundary contracts.
+- `v0.1.22` — passive live-shadow simulator: simulate live-shaped observation/result flow without reading live traffic.
+- `v0.2.0-alpha` — first passive live-shadow canary: manual, local, opt-in, record-only, no effects.
+
+See `docs/release-ladder-v0.2-alpha.md`.
+
+## Highlights since v0.1.21
+
+- Added `implementation/synaptic-mesh-shadow-v0/fixtures/passive-live-shadow-canary.json`, a canary contract with 2 allowed manual opt-in controls and 8 reject controls.
+- Added `implementation/synaptic-mesh-shadow-v0/tests/passive-live-shadow-canary.mjs`, an executable gate for the alpha canary boundary.
+- Added committed evidence at `implementation/synaptic-mesh-shadow-v0/evidence/passive-live-shadow-canary.out.json`.
+- Wired the canary gate into local `check` and `release:check` validation.
+- Updated release metadata/docs/manifest target to `v0.2.0-alpha` and documented the `v0.1.22` simulator layer separately from the alpha canary layer.
 
 ## Conservative release statement
 
-Adds local boundary contracts for representing future live-input/source candidates as explicit already-redacted source tuples with record-only output and complete forbidden-effect boundaries.
-It proves only local fixture behavior over committed synthetic/metadata-only fixtures.
-It does not add live traffic reads, raw input persistence, memory writes, MemoryAtom, runtime, live observer, daemon, watcher, adapter integration, tool authorization, external publication automation, approval paths, blocking/allowing, authorization, deletion, retention scheduler, or enforcement.
+`v0.2.0-alpha` proves only local fixture behavior for a first passive live-shadow canary contract. The canary is manual, local, opt-in, record-only, and no-effects. It consumes only already-redacted local canary packets and writes only local evidence records.
 
-## New v0.1.21 evidence
+It does not read live traffic, persist raw input, start a daemon/watcher, integrate runtime/adapters, execute tools, write memory/config, publish externally, enter approval paths, block, allow, authorize, delete, schedule retention/deletion, or enforce policy.
 
-- Live-input/source-boundary contracts: pass.
+## New v0.2.0-alpha evidence
+
+- Passive live-shadow canary: pass.
 - Pass cases: 2.
-- Expected rejects: 9.
-- Unexpected passes: 0.
+- Reject cases: 8.
+- Unexpected accepts: 0.
 - Unexpected rejects: 0.
-- Required tuple: explicit source kind, already-redacted input, source artifact id/path/digest/mtime/run id, receiver clock, record-only output, and complete forbidden-effect tuple including raw input persistence, daemon/watcher, publication automation, deletion, and retention scheduler boundaries.
-- Capability/boundary claims remain false: live input read, raw input persistence, memory writes, MemoryAtom, runtime, live observer, daemon, watcher, adapter integration, tool authorization, external publication automation, approval paths, blocking/allowing, authorization, deletion, retention scheduler, and enforcement are not implemented.
+- Passing capability-true count: 0.
+- Required tuple: explicit opt-in, manual redacted canary packet source, source artifact id/path/digest/mtime, receiver time, already-redacted input, record-only local evidence output, passive observer mode, and no-effects boundary.
+- Reject coverage includes missing opt-in, live stream source, explicit live-traffic-read pressure, raw input/raw persistence, runtime/daemon pressure, allowing/authorization pressure, memory/config/publication effects, publication automation, and agent-instruction modification.
 
-## Boundary pressure cases
+## v0.1.22 simulator layer carried into this alpha
 
-The new gate keeps the pre-live boundary conservative against:
+The alpha carries forward the passive live-shadow simulator gate:
 
-- live stream/source kinds;
-- raw or unredacted input boundaries;
-- missing source digest;
-- missing source mtime;
-- non-record-only output boundary;
-- incomplete forbidden-effect tuple;
-- runtime or live-observer pressure;
-- daemon, watcher, publication-automation, deletion, or retention-scheduler pressure.
+- `test:live-shadow-synthetic-replay` maps committed offline `DecisionTrace` evidence into passive `LiveShadowObservation`/`LiveShadowObservationResult` records.
+- It does not read live traffic or implement a live observer.
+- All synthetic replay results remain record-only, local-shadow-only, and no-effects.
 
 ## Carried-forward package evidence
 
-The release package still includes earlier local-shadow gates from the v0.1.x line: reason-code vocabulary docs, conservative coverage matrix, raw/parser adversarial fixtures, adversarial fixture generation, authority-overhead benchmark evidence, decision traces, oracle/classifier separation, mutation degradation checks, category coverage thresholds, passive live-shadow schemas, synthetic live-shadow replay, aggregate drift scorecard shape checks, manual observation bundles, manual redaction fixtures, parserEvidence replay, manual DecisionTrace/live-shadow replay, strict manual scorecard thresholds, RedactionReviewRecord audit gates, the real-redacted handoff pack, real-redacted replay gate, real-redacted adversarial coverage gate, manual dry-run command/result contract schemas, the manual dry-run CLI skeleton, forbidden-effects CLI gates, real-redacted positive path, real-redacted pilot, failure catalog, runbook/checklist, expanded pilot, pilot reproducibility gate, reproducibility negative controls, redaction/retention policy and composition gates, and the decision-counterfactual checklist robustness gates. These remain current validation artifacts, but they are not new v0.1.21 delta items.
+The release package still includes earlier local-shadow gates from the v0.1.x line: reason-code vocabulary docs, conservative coverage matrix, raw/parser adversarial fixtures, adversarial fixture generation, authority-overhead benchmark evidence, decision traces, oracle/classifier separation, mutation degradation checks, category coverage thresholds, passive live-shadow schemas, synthetic live-shadow replay, aggregate drift scorecard shape checks, manual observation bundles, manual redaction fixtures, parserEvidence replay, manual DecisionTrace/live-shadow replay, strict manual scorecard thresholds, RedactionReviewRecord audit gates, real-redacted handoff gates, manual dry-run gates, pilot reproducibility gates, redaction/retention gates, decision-counterfactual checklist robustness gates, and live-input/source-boundary contracts. These remain current validation artifacts, but the new alpha delta is the manual opt-in canary contract and gate.
 
 ## Validation snapshot
 
-- Live-input/source-boundary contracts: pass 2 positive controls, 9 expected rejects, unexpected passes 0, unexpected rejects 0.
+- Passive live-shadow canary: pass 2 positive controls, 8 expected rejects, unexpected accepts 0, unexpected rejects 0.
 - Full release validation is expected through:
 
 ```bash
-npm --prefix implementation/synaptic-mesh-shadow-v0 run release:check -- --target v0.1.21
+npm --prefix implementation/synaptic-mesh-shadow-v0 run release:check -- --target v0.2.0-alpha
 ```
 
 ## Compatibility note
 
-Synaptic Mesh remains a framework-agnostic protocol proposal. v0.1.21 adds local live-input/source-boundary contracts over committed already-redacted fixtures. It does not capture live traffic, persist raw input, run a live observer, start daemons/watchers, write memory, create MemoryAtom records, integrate adapters/tools, publish externally or automate publication, authorize runtime actions, create approval paths, block actions, allow actions, delete, schedule retention/deletion, or enforce policy.
+Synaptic Mesh remains a framework-agnostic protocol proposal. `v0.2.0-alpha` adds a first manual/local/opt-in passive canary contract over already-redacted local packets. It does not capture live traffic, persist raw input, run a live daemon, start watchers, write memory, create MemoryAtom records, integrate adapters/tools, publish externally or automate publication, authorize runtime actions, create approval paths, block actions, allow actions, delete, schedule retention/deletion, or enforce policy.
 
 ## Operational non-release status
 
 - Not runtime/tooling integrated.
 - Not live-monitoring integrated.
-- Not production/canary/enforcement/L2+ ready.
+- Not production/enforcement/L2+ ready.
 - Runtime, live observation, daemon/watcher, adapter, MemoryAtom, memory writing, tool authorization, external publication automation, approval, blocking/allowing, authorization, deletion, retention scheduler, enforcement, or operational use requires a separate explicit maintainer decision.
