@@ -12,7 +12,7 @@ const evidencePath = resolve(packageRoot, 'evidence/passive-live-shadow-canary.o
 
 const fixture = JSON.parse(await readFile(fixturePath, 'utf8'));
 
-assert.equal(fixture.releaseLayer, 'v0.2.0-alpha');
+assert.equal(fixture.releaseLayer, 'v0.2.1');
 assert.equal(fixture.dependsOn, 'v0.1.22-passive-live-shadow-simulator');
 assert.equal(fixture.canaryMode, 'manual_local_opt_in_passive');
 assert.equal(fixture.inputBoundary, 'already_redacted_local_canary_packet_only');

@@ -1,0 +1,160 @@
+{
+  "passiveCanaryReproducibility": "pass",
+  "artifact": "T-synaptic-mesh-passive-live-shadow-canary-reproducibility-v0",
+  "timestamp": "2026-05-12T12:45:00.000Z",
+  "runs": 2,
+  "passCases": 2,
+  "rejectCases": 8,
+  "normalizedOutputMismatches": 0,
+  "reasonSetMismatches": 0,
+  "scorecardMismatches": 0,
+  "boundaryVerdictMismatches": 0,
+  "capabilityTrueCount": 0,
+  "forbiddenEffects": 0,
+  "runDigests": [
+    {
+      "runIndex": 1,
+      "digest": "4a20a620c6162c1ccf6ba377f7f7c7f25a8d7743ce2d45d3a869c1e818c2e7b8"
+    },
+    {
+      "runIndex": 2,
+      "digest": "4a20a620c6162c1ccf6ba377f7f7c7f25a8d7743ce2d45d3a869c1e818c2e7b8"
+    }
+  ],
+  "mismatches": [],
+  "scorecard": [
+    {
+      "caseId": "pass_manual_opt_in_redacted_canary_packet_001",
+      "accepted": true,
+      "reasonSet": [],
+      "boundaryVerdict": "allow_record_only",
+      "recordOnly": true,
+      "capabilityTrueCount": 0,
+      "forbiddenEffects": 0
+    },
+    {
+      "caseId": "pass_manual_opt_in_redacted_canary_packet_002",
+      "accepted": true,
+      "reasonSet": [],
+      "boundaryVerdict": "allow_record_only",
+      "recordOnly": true,
+      "capabilityTrueCount": 0,
+      "forbiddenEffects": 0
+    },
+    {
+      "caseId": "reject_missing_opt_in",
+      "accepted": false,
+      "reasonSet": [
+        "CANARY_OPT_IN_REQUIRED",
+        "CANARY_SOURCE_TUPLE_REQUIRED"
+      ],
+      "boundaryVerdict": "reject_no_effects_boundary",
+      "recordOnly": true,
+      "capabilityTrueCount": 0,
+      "forbiddenEffects": 0
+    },
+    {
+      "caseId": "reject_live_stream_source",
+      "accepted": false,
+      "reasonSet": [
+        "CANARY_LIVE_SOURCE_FORBIDDEN",
+        "CANARY_SOURCE_TUPLE_REQUIRED"
+      ],
+      "boundaryVerdict": "reject_no_effects_boundary",
+      "recordOnly": true,
+      "capabilityTrueCount": 0,
+      "forbiddenEffects": 1
+    },
+    {
+      "caseId": "reject_raw_input",
+      "accepted": false,
+      "reasonSet": [
+        "CANARY_ALREADY_REDACTED_REQUIRED",
+        "CANARY_RAW_PERSISTENCE_FORBIDDEN",
+        "CANARY_SOURCE_TUPLE_REQUIRED"
+      ],
+      "boundaryVerdict": "reject_no_effects_boundary",
+      "recordOnly": true,
+      "capabilityTrueCount": 0,
+      "forbiddenEffects": 1
+    },
+    {
+      "caseId": "reject_runtime_daemon_pressure",
+      "accepted": false,
+      "reasonSet": [
+        "CANARY_DAEMON_FORBIDDEN",
+        "CANARY_RUNTIME_FORBIDDEN",
+        "CANARY_SOURCE_TUPLE_REQUIRED"
+      ],
+      "boundaryVerdict": "reject_no_effects_boundary",
+      "recordOnly": true,
+      "capabilityTrueCount": 0,
+      "forbiddenEffects": 2
+    },
+    {
+      "caseId": "reject_authorization_or_allowing",
+      "accepted": false,
+      "reasonSet": [
+        "CANARY_ALLOWING_FORBIDDEN",
+        "CANARY_AUTHORIZATION_FORBIDDEN",
+        "CANARY_SOURCE_TUPLE_REQUIRED"
+      ],
+      "boundaryVerdict": "reject_no_effects_boundary",
+      "recordOnly": true,
+      "capabilityTrueCount": 1,
+      "forbiddenEffects": 2
+    },
+    {
+      "caseId": "reject_memory_config_publication_effects",
+      "accepted": false,
+      "reasonSet": [
+        "CANARY_CONFIG_WRITE_FORBIDDEN",
+        "CANARY_MEMORY_WRITE_FORBIDDEN",
+        "CANARY_PUBLICATION_FORBIDDEN",
+        "CANARY_SOURCE_TUPLE_REQUIRED"
+      ],
+      "boundaryVerdict": "reject_no_effects_boundary",
+      "recordOnly": true,
+      "capabilityTrueCount": 0,
+      "forbiddenEffects": 3
+    },
+    {
+      "caseId": "reject_live_traffic_read_pressure",
+      "accepted": false,
+      "reasonSet": [
+        "CANARY_LIVE_TRAFFIC_READ_FORBIDDEN"
+      ],
+      "boundaryVerdict": "reject_no_effects_boundary",
+      "recordOnly": true,
+      "capabilityTrueCount": 0,
+      "forbiddenEffects": 1
+    },
+    {
+      "caseId": "reject_publication_automation_or_agent_instruction_effects",
+      "accepted": false,
+      "reasonSet": [
+        "CANARY_AGENT_INSTRUCTION_WRITE_FORBIDDEN",
+        "CANARY_PUBLICATION_AUTOMATION_FORBIDDEN"
+      ],
+      "boundaryVerdict": "reject_no_effects_boundary",
+      "recordOnly": true,
+      "capabilityTrueCount": 1,
+      "forbiddenEffects": 2
+    }
+  ],
+  "boundary": [
+    "manual_local_opt_in_passive_canary_only",
+    "same_packet_same_normalized_output",
+    "same_packet_same_reason_set",
+    "same_packet_same_scorecard",
+    "same_packet_same_boundary_verdict",
+    "no_live_traffic_read",
+    "no_runtime_integration",
+    "no_tool_execution",
+    "no_memory_write",
+    "no_config_write",
+    "no_publication",
+    "no_agent_instruction_write",
+    "no_approval_block_allow_authorize_or_enforce"
+  ]
+}

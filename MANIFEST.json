@@ -1,13 +1,13 @@
 {
   "bundle": "synaptic-mesh",
-  "version": "0.2.0-alpha",
-  "generated": "2026-05-12T12:12:00Z",
-  "status": "v0.2.0-alpha_first_passive_live_shadow_canary_manual_local_opt_in_record_only_no_effects_not_runtime_ready",
+  "version": "0.2.1",
+  "generated": "2026-05-12T12:50:00Z",
+  "status": "v0.2.1_passive_canary_reproducibility_and_failure_hardening_manual_local_opt_in_record_only_no_effects_not_runtime_ready",
   "repository": "https://github.com/lechuit/synaptic-mesh",
   "license": "Apache-2.0 for code; CC BY 4.0 for docs/prose unless otherwise noted",
-  "reproducibility": "expected_pass_local_shadow_gates_for_v0.2.0-alpha_with_v0.1.22_passive_live_shadow_simulator_and_first_manual_local_opt_in_record_only_no_effects_canary_two_pass_cases_eight_expected_rejects_zero_unexpected_accepts_zero_unexpected_rejects_no_live_traffic_runtime_memory_config_publication_publication_automation_agent_instruction_approval_block_allow_authorization_deletion_retention_scheduler_or_enforcement",
+  "reproducibility": "expected_pass_local_shadow_gates_for_v0.2.1_with_passive_canary_reproducibility_two_runs_two_pass_cases_eight_expected_rejects_zero_normalized_output_mismatches_zero_reason_set_mismatches_zero_scorecard_mismatches_zero_boundary_verdict_mismatches_zero_pass_capability_true_count_zero_pass_forbidden_effects_no_live_traffic_runtime_memory_config_publication_publication_automation_agent_instruction_approval_block_allow_authorization_deletion_retention_scheduler_or_enforcement",
   "rawSourceCache": "excluded",
-  "runtimeBoundary": "v0.2.0-alpha_manual_local_opt_in_passive_canary_contract_only_already_redacted_local_canary_packets_record_only_local_evidence_no_live_traffic_read_no_raw_input_persistence_no_memory_writes_no_MemoryAtom_no_live_observer_daemon_no_runtime_integration_no_daemon_no_watcher_no_adapter_integration_no_tool_authorization_no_external_publication_no_publication_automation_no_agent_instruction_write_no_approval_blocking_allowing_authorization_deletion_retention_scheduler_or_enforcement",
+  "runtimeBoundary": "v0.2.1_manual_local_opt_in_passive_canary_reproducibility_hardening_only_same_canary_packet_same_normalized_output_same_reason_set_same_scorecard_same_boundary_verdict_record_only_local_evidence_no_live_traffic_read_no_raw_input_persistence_no_memory_writes_no_MemoryAtom_no_live_observer_daemon_no_runtime_integration_no_daemon_no_watcher_no_adapter_integration_no_tool_authorization_no_external_publication_no_publication_automation_no_agent_instruction_write_no_approval_blocking_allowing_authorization_deletion_retention_scheduler_or_enforcement",
   "files": [
     {
       "path": ".github/workflows/ci.yml",
@@ -76,8 +76,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 12836,
-      "sha256": "c0d7209a1a2c39ed9fef540089d0cfad287148380e6ac4d36f8a11b4a89427f1"
+      "bytes": 13125,
+      "sha256": "f9c6bbb9240209403c2d9e23fcc5b3a3e4e349e8f63064cb696be6a7b6fc35ee"
     },
     {
       "path": "RELEASE_CANDIDATE.md",
@@ -86,8 +86,8 @@
     },
     {
       "path": "RELEASE_NOTES.md",
-      "bytes": 5403,
-      "sha256": "10e5f8707edcf8b84338ba55c0579181feecce737f6e29999d85f83f99d14e78"
+      "bytes": 2669,
+      "sha256": "37a1923ab9ef153adf4fe31627b5fb0f224c17d6c69b0a66fd4fd26ffda83ac9"
     },
     {
       "path": "design-notes/adapter-boundary-langgraph-mcp-v0.md",
@@ -660,9 +660,14 @@
       "sha256": "8fddbe73c403ce63243cbcae2c6dcc2cdf86881b90ea3e421731677cb31f96b9"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-live-shadow-canary-reproducibility.out.json",
+      "bytes": 4565,
+      "sha256": "449d59f5aff30c5475e5fe4d449596128f0c1834b3e90cf3cbf558a4060465ec"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-live-shadow-canary.out.json",
-      "bytes": 5516,
-      "sha256": "4f2f9a66c1cd6ccd8ab9e5c1a8e9d770ebb669df35005e5302d7d23b7f8ddcfd"
+      "bytes": 5510,
+      "sha256": "403c11718a2b340ed45e0f4b4516fdf84fb69e9bde2bdf3235475d2769167f3f"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/raw-parser-adversarial.out.json",
@@ -996,8 +1001,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/fixtures/passive-live-shadow-canary.json",
-      "bytes": 8869,
-      "sha256": "87e021016c8504ad2c00c91d7cf8422a94df5fa40bd22bdd77f1784cda2932f3"
+      "bytes": 8863,
+      "sha256": "044a4196e5e0c5ef8d5c80ec3b0a3ce08dece3ec03681c255678f6253c730978"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/fixtures/raw-parser-adversarial.json",
@@ -1071,8 +1076,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/package.json",
-      "bytes": 11553,
-      "sha256": "2811ef95c22e13d6874379b08311892791988fb50c8944d2b42ed06d316db28f"
+      "bytes": 11738,
+      "sha256": "ddbbf47784c8b8192cd2c657df2782996552cb32ae6952183c1803f098230963"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/action-context-packet.mjs",
@@ -1335,9 +1340,14 @@
       "sha256": "e9d4557033171c6862f990e3f26eaf6da65931355a30cdd1d9e6e9ab2f41da10"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-live-shadow-canary-reproducibility.mjs",
+      "bytes": 8966,
+      "sha256": "cc7148153ca47c703222c81082fabcf57712a2ff0c6a2757792ca7978a8b11fd"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-live-shadow-canary.mjs",
-      "bytes": 8546,
-      "sha256": "35ae92ac821c4190eb4bf763fb3bafa931bf49be61a42bee0a1691f320b5240e"
+      "bytes": 8540,
+      "sha256": "115580395ff86dc89abab45190f2695c8216682260fe6a357d07de512b831269"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/raw-parser-adversarial.mjs",
@@ -1946,8 +1956,8 @@
     },
     {
       "path": "tools/release-check.mjs",
-      "bytes": 113786,
-      "sha256": "cdca782deaed1b5c51055877abe2700bf6faaf353f8c389cb55a8acc73a1db5c"
+      "bytes": 115294,
+      "sha256": "7148f8314249bebd1a074cf7510b1bf392766682e30f4e383f4b0509ab2a8c44"
     },
     {
       "path": "tools/verify-manifest.mjs",
