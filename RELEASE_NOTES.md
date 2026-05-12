@@ -1,74 +1,66 @@
-# Release Notes — Synaptic Mesh v0.1.19
+# Release Notes — Synaptic Mesh v0.1.20
 
-Status: decision-counterfactual checklist robustness public review package update. Not runtime-ready; not production/canary/enforcement-ready.
+Status: redaction/retention executable-gate composition public review package update. Not runtime-ready; not production/canary/enforcement-ready.
 
 ## Highlights since the previous release
 
-- Added `implementation/synaptic-mesh-shadow-v0/tests/decision-counterfactual-reproducibility.mjs`, a deterministic local reproducibility gate for the decision-counterfactual checklist.
-- Added evidence output at `implementation/synaptic-mesh-shadow-v0/evidence/decision-counterfactual-reproducibility.out.json`.
-- Added `implementation/synaptic-mesh-shadow-v0/tests/decision-counterfactual-failure-catalog.mjs`, a deterministic local failure catalog for checklist misuse pressure.
-- Added evidence output at `implementation/synaptic-mesh-shadow-v0/evidence/decision-counterfactual-failure-catalog.out.json`.
-- Added `docs/decision-counterfactual-reviewer-guide.md`, a human reviewer guide for evaluating retrieved-memory fragments before they influence local advisory decisions.
-- Wired the reproducibility and failure-catalog gates into local `check` and `release:check` validation.
-- Updated coverage, reason-code docs, README references, and the manifest for the checklist robustness line.
+- Added `implementation/synaptic-mesh-shadow-v0/tests/redaction-retention-executable-gates.mjs`, a deterministic local composition gate for redaction-first / retention-second evidence checks.
+- Added `implementation/synaptic-mesh-shadow-v0/fixtures/redaction-retention-executable-gates.json`, with 3 positive controls and 7 expected rejects.
+- Added committed evidence at `implementation/synaptic-mesh-shadow-v0/evidence/redaction-retention-executable-gates.out.json`.
+- Wired the composition gate into local `check` and `release:check` validation.
+- Updated README, coverage, reason-code docs, release metadata, and manifest target to `v0.1.20`.
+- Tightened release-check stale-version matching so a stale token like `v0.1.2` is not falsely detected inside `v0.1.20`.
 
 ## Conservative release statement
 
-Adds robustness evidence and reviewer documentation for the local advisory decision-counterfactual memory retrieval checklist.
-It proves only local fixture reproducibility and local expected-reject behavior over committed fixtures.
-It does not add memory writes, MemoryAtom, runtime, live observer, adapter integration, tool authorization, external publication automation, approval paths, blocking/allowing, or enforcement.
+Adds a local executable composition gate that requires redaction to pass before retention can pass and keeps retention rejects explicit after redaction passes.
+It proves only local fixture behavior over committed synthetic/metadata-only fixtures.
+It does not add memory writes, MemoryAtom, runtime, live observer, adapter integration, tool authorization, external publication automation, approval paths, blocking/allowing, deletion implementation, retention scheduler, or enforcement.
 
-## New v0.1.19 evidence
+## New v0.1.20 evidence
 
-- Decision-counterfactual reproducibility: pass.
-- Reproducibility runs: 2.
-- Reproducibility fixtures: 16.
-- Normalized output mismatches: 0.
-- Decision-counterfactual failure catalog: pass.
-- Expected rejects: 10.
-- Unexpected allows: 0.
-- Unsafe allows: 0.
-- Core allow tuple required: true.
-- Reviewer guide status: documentation-only companion; coverage is marked Partial because no deterministic gate is claimed for the human guide itself.
-- Capability/boundary claims remain false: memory writes, MemoryAtom, runtime, live observer, adapter integration, tool authorization, external publication automation, approval paths, blocking/allowing, and enforcement are not implemented.
+- Redaction/retention executable composition: pass.
+- Pass cases: 3.
+- Expected rejects: 7.
+- Unexpected passes: 0.
+- Unexpected rejects: 0.
+- Redaction-first rejects before retention can matter: 2.
+- Retention rejects after redaction passes: 5.
+- Scheduler/deletion/live-observer/runtime pressure remains reject-only and local.
+- Capability/boundary claims remain false: memory writes, MemoryAtom, runtime, live observer, adapter integration, tool authorization, external publication automation, approval paths, blocking/allowing, deletion implementation, retention scheduler, and enforcement are not implemented.
 
-## Failure catalog pressure cases
+## Composition pressure cases
 
-The new failure catalog keeps the checklist conservative against:
+The new gate keeps the composition conservative against:
 
-- similarity-only high score;
-- wall-clock recency only;
-- wrong active lane;
-- missing source;
-- missing boundary;
-- missing blocked effects;
-- missing fallback;
-- stale memory trying to authorize a next action;
-- unverified mutable external fact;
-- release success trying to authorize runtime/config/memory/publication/tool effects.
+- secret-like value persistence before retention can matter;
+- private-path persistence before retention can matter;
+- retention ceiling exceeded after redaction passes;
+- missing redaction status after redaction passes;
+- unknown retention class after redaction passes;
+- retention scheduler or deletion implementation pressure;
+- runtime or live-observer pressure.
 
 ## Carried-forward package evidence
 
-The release package still includes earlier local-shadow gates from the v0.1.x line: reason-code vocabulary docs, conservative coverage matrix, raw/parser adversarial fixtures, adversarial fixture generation, authority-overhead benchmark evidence, decision traces, oracle/classifier separation, mutation degradation checks, category coverage thresholds, passive live-shadow schemas, synthetic live-shadow replay, aggregate drift scorecard shape checks, manual observation bundles, manual redaction fixtures, parserEvidence replay, manual DecisionTrace/live-shadow replay, strict manual scorecard thresholds, RedactionReviewRecord audit gates, the real-redacted handoff pack, real-redacted replay gate, real-redacted adversarial coverage gate, manual dry-run command/result contract schemas, the manual dry-run CLI skeleton, forbidden-effects CLI gates, real-redacted positive path, real-redacted pilot, failure catalog, runbook/checklist, expanded pilot, pilot reproducibility gate, reproducibility negative controls, redaction/retention executable gates, and the decision-counterfactual checklist. These remain current validation artifacts, but they are not new v0.1.19 delta items.
+The release package still includes earlier local-shadow gates from the v0.1.x line: reason-code vocabulary docs, conservative coverage matrix, raw/parser adversarial fixtures, adversarial fixture generation, authority-overhead benchmark evidence, decision traces, oracle/classifier separation, mutation degradation checks, category coverage thresholds, passive live-shadow schemas, synthetic live-shadow replay, aggregate drift scorecard shape checks, manual observation bundles, manual redaction fixtures, parserEvidence replay, manual DecisionTrace/live-shadow replay, strict manual scorecard thresholds, RedactionReviewRecord audit gates, the real-redacted handoff pack, real-redacted replay gate, real-redacted adversarial coverage gate, manual dry-run command/result contract schemas, the manual dry-run CLI skeleton, forbidden-effects CLI gates, real-redacted positive path, real-redacted pilot, failure catalog, runbook/checklist, expanded pilot, pilot reproducibility gate, reproducibility negative controls, redaction/retention policy gates, and the decision-counterfactual checklist robustness gates. These remain current validation artifacts, but they are not new v0.1.20 delta items.
 
 ## Validation snapshot
 
-- Decision-counterfactual checklist: pass 16/16, unsafe allows 0.
-- Decision-counterfactual reproducibility: pass 2 runs, normalized output mismatches 0, unsafe allows 0.
-- Decision-counterfactual failure catalog: pass 10 expected rejects, unexpected allows 0, unsafe allows 0.
+- Redaction/retention executable composition: pass 3 positive controls, 7 expected rejects, unexpected passes 0, unexpected rejects 0.
 - Full release validation is expected through:
 
 ```bash
-npm --prefix implementation/synaptic-mesh-shadow-v0 run release:check -- --target v0.1.19
+npm --prefix implementation/synaptic-mesh-shadow-v0 run release:check -- --target v0.1.20
 ```
 
 ## Compatibility note
 
-Synaptic Mesh remains a framework-agnostic protocol proposal. v0.1.19 adds local reproducibility evidence, a local expected-reject failure catalog, and a documentation-only reviewer guide for the decision-counterfactual checklist. It does not capture live traffic, run a live observer, write memory, create MemoryAtom records, integrate adapters/tools, publish externally, authorize runtime actions, create approval paths, block actions, allow actions, or enforce policy.
+Synaptic Mesh remains a framework-agnostic protocol proposal. v0.1.20 adds a local redaction/retention composition gate over committed fixtures. It does not capture live traffic, run a live observer, write memory, create MemoryAtom records, integrate adapters/tools, publish externally, authorize runtime actions, create approval paths, block actions, allow actions, schedule retention, delete files, or enforce policy.
 
 ## Operational non-release status
 
 - Not runtime/tooling integrated.
 - Not live-monitoring integrated.
 - Not production/canary/enforcement/L2+ ready.
-- Runtime, live observation, adapter, MemoryAtom, memory writing, tool authorization, external publication automation, approval, blocking/allowing, enforcement, or operational use requires a separate explicit maintainer decision.
+- Runtime, live observation, adapter, MemoryAtom, memory writing, tool authorization, external publication automation, approval, blocking/allowing, deletion, retention scheduling, enforcement, or operational use requires a separate explicit maintainer decision.

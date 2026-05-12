@@ -1,13 +1,13 @@
 {
   "bundle": "synaptic-mesh",
-  "version": "0.1.19",
-  "generated": "2026-05-12T03:40:00Z",
-  "status": "v0.1.19_decision_counterfactual_checklist_robustness_public_review_release_not_runtime_ready",
+  "version": "0.1.20",
+  "generated": "2026-05-12T04:20:00Z",
+  "status": "v0.1.20_redaction_retention_executable_gate_composition_public_review_release_not_runtime_ready",
   "repository": "https://github.com/lechuit/synaptic-mesh",
   "license": "Apache-2.0 for code; CC BY 4.0 for docs/prose unless otherwise noted",
-  "reproducibility": "expected_pass_local_shadow_gates_for_v0.1.19_decision_counterfactual_checklist_reproducibility_with_two_runs_sixteen_fixtures_zero_mismatches_zero_unsafe_allows_and_no_runtime_memory_publication_or_enforcement",
+  "reproducibility": "expected_pass_local_shadow_gates_for_v0.1.20_redaction_retention_composition_with_three_pass_cases_seven_expected_rejects_zero_unexpected_passes_zero_unexpected_rejects_and_no_runtime_memory_publication_scheduler_deletion_or_enforcement",
   "rawSourceCache": "excluded",
-  "runtimeBoundary": "v0.1.19_decision_counterfactual_checklist_robustness_local_fixture_metadata_only_no_memory_writes_no_MemoryAtom_no_live_observer_no_runtime_integration_no_adapter_integration_no_tool_authorization_no_external_publication_no_approval_authorization_scheduler_deletion_or_enforcement",
+  "runtimeBoundary": "v0.1.20_redaction_retention_composition_local_fixture_metadata_only_no_memory_writes_no_MemoryAtom_no_live_observer_no_runtime_integration_no_adapter_integration_no_tool_authorization_no_external_publication_no_approval_authorization_scheduler_deletion_blocking_allowing_or_enforcement",
   "files": [
     {
       "path": ".github/workflows/ci.yml",
@@ -76,8 +76,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 11306,
-      "sha256": "46830856b95c6f2398e42dc9b9ddf2a0d63fd8b026b0b0737cf9f4aad04b704c"
+      "bytes": 11598,
+      "sha256": "80cdab0c9706d83ea577ade209dd4dd152baecffd95d677eb1eea5ed59cbd1bc"
     },
     {
       "path": "RELEASE_CANDIDATE.md",
@@ -86,8 +86,8 @@
     },
     {
       "path": "RELEASE_NOTES.md",
-      "bytes": 5384,
-      "sha256": "189fa04f62802ac3bb51cf8447aba210564d68b1e1c37cde13ddf423021e9554"
+      "bytes": 5021,
+      "sha256": "1a94ded327394b164a9caae3c2a18f994447ff614b6e330087931ec26ff68605"
     },
     {
       "path": "design-notes/adapter-boundary-langgraph-mcp-v0.md",
@@ -156,8 +156,8 @@
     },
     {
       "path": "docs/coverage-matrix.md",
-      "bytes": 6872,
-      "sha256": "3d9ff3282e8c804a761e76f98d2698f2b3456dd60d0e1835e9674cb133edd0a2"
+      "bytes": 7381,
+      "sha256": "55c86205281db14dd58dc0b39e3dcb840e762a19c8c0a5304deff2750614a38a"
     },
     {
       "path": "docs/decision-counterfactual-reviewer-guide.md",
@@ -271,8 +271,8 @@
     },
     {
       "path": "docs/reason-codes.md",
-      "bytes": 9676,
-      "sha256": "42f51343ae836b659fa0eb6508a8a191150bf849bf353b0f0065e42caea8f8d3"
+      "bytes": 10169,
+      "sha256": "29edbdafd48550082b77946d385cb3c04f21052b61fb97934b9c16d299219ccc"
     },
     {
       "path": "docs/redaction-policy.md",
@@ -705,6 +705,11 @@
       "sha256": "b05982ee1b5da33136d83eca3b02e5a630c8f0ae53ab7d74349cb60a76241b4a"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/redaction-retention-executable-gates.out.json",
+      "bytes": 16511,
+      "sha256": "4f7290fec8a8e0bafc63fc1c6c0e3c82106d0fb7cbe05474315e5596b39cdb9f"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/redaction-review-record-schema.out.json",
       "bytes": 4122,
       "sha256": "515453ba5aaa845bb629f45ee4d375480c3e6af94ede5976bac9ffa88b91c3e6"
@@ -1005,6 +1010,11 @@
       "sha256": "922aa2073d5c9be17a16cec497ba673afb724e439941bdb41ef99c725022278c"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/fixtures/redaction-retention-executable-gates.json",
+      "bytes": 7049,
+      "sha256": "aa9719412efa104e097f485a0790a5b7bc327e5563cf3b1e44e90c85e8e9db4b"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/fixtures/redaction-review-records.json",
       "bytes": 4361,
       "sha256": "8b0faf7d68eda274353f9a5117298f4849b18194ba312a53ef921289c8c65277"
@@ -1036,8 +1046,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/package.json",
-      "bytes": 11082,
-      "sha256": "f604f6e265c49d1da5a1453acb089f694a3ec55ab3b4030c920db5307a32acfe"
+      "bytes": 11249,
+      "sha256": "288574da9ccf352476a54fdec1fb8b13dbedabb9e794abce161a695f5890084d"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/action-context-packet.mjs",
@@ -1373,6 +1383,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/tests/redaction-policy-schema.mjs",
       "bytes": 8402,
       "sha256": "b596ce886d2d1cfda183a84bec8fba67e6d0396b89f2758ddce573311427d620"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/redaction-retention-executable-gates.mjs",
+      "bytes": 7785,
+      "sha256": "8463dc839c904b76472948bdc992439bd5d86e59772d556c30efba072cb4d516"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/redaction-review-record-schema.mjs",
@@ -1896,8 +1911,8 @@
     },
     {
       "path": "tools/release-check.mjs",
-      "bytes": 100992,
-      "sha256": "4a5c71ccb2422eb9d52c464d65660f2b5572e3821d516d264c34a75b228d0df6"
+      "bytes": 105568,
+      "sha256": "026d3993f12f67c6e4ff370195a9b64ffbd7c7d46a25e76362642d729f481949"
     },
     {
       "path": "tools/verify-manifest.mjs",
