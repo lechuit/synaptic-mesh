@@ -76,8 +76,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 11186,
-      "sha256": "195e38b09df37810f9607c5f61cdbee58ce19aeb5ffe831f296f6d4d87110786"
+      "bytes": 11306,
+      "sha256": "46830856b95c6f2398e42dc9b9ddf2a0d63fd8b026b0b0737cf9f4aad04b704c"
     },
     {
       "path": "RELEASE_CANDIDATE.md",
@@ -156,8 +156,13 @@
     },
     {
       "path": "docs/coverage-matrix.md",
-      "bytes": 6495,
-      "sha256": "b2d7d8696dfe2ae92f130bbbeed9c7bff5153e44e2041a59b0bb25c04daf82f5"
+      "bytes": 6872,
+      "sha256": "3d9ff3282e8c804a761e76f98d2698f2b3456dd60d0e1835e9674cb133edd0a2"
+    },
+    {
+      "path": "docs/decision-counterfactual-reviewer-guide.md",
+      "bytes": 4092,
+      "sha256": "d1cceb0346f8bb46a883c8ed78f294b444dcb76a4551e23aefe38d4b8a5f3f92"
     },
     {
       "path": "docs/deterministic-route-classifier.md",
