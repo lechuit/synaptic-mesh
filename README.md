@@ -1,6 +1,6 @@
-# Synaptic Mesh v0.1.21
+# Synaptic Mesh v0.2.0-alpha
 
-Status: live-input/source-boundary contracts public review release `v0.1.21`; **not runtime-ready**; **not production/canary/enforcement-ready**.
+Status: first passive live-shadow canary alpha public review release `v0.2.0-alpha`; **manual, local, opt-in, record-only, no effects**; **not runtime-ready**; **not production/enforcement-ready**.
 
 ## What this is
 
@@ -10,7 +10,7 @@ A public review package for Synaptic Mesh / Multi-Agent Memory Authority Protoco
 
 Synaptic Mesh is intended to be **framework-agnostic**: the protocol idea should apply to any agent stack that retrieves, summarizes, compresses, or hands off memory-derived context.
 
-Current v0.1.21 status is narrower:
+Current v0.2.0-alpha status is narrower:
 
 - validated with the included local shadow workflow;
 - shipped as a standalone reference package and fixture suite, not integrated with any production/runtime host;
@@ -27,6 +27,8 @@ Current v0.1.21 status is narrower:
 - adds executable retention metadata gates: retention policy schema and negative controls for zero-day raw input, retention ceilings, unknown retention classes, raw persistence, missing redaction status, non-aggregate scorecards, non-synthetic public evidence, scheduler/deletion/live-observer/runtime attempts; no deletion or retention scheduler is implemented;
 - adds an executable redaction/retention composition gate over committed fixtures: redaction must pass before retention can pass, retention ceilings/status/classes remain enforced after redaction passes, and scheduler/deletion/live-observer/runtime pressure remains reject-only;
 - adds live-input/source-boundary contracts over committed already-redacted fixtures: future live/input candidates must be represented as explicit source tuples with already-redacted input, record-only output, complete forbidden-effect tuple including raw input persistence, daemon/watcher, publication automation, deletion, and retention-scheduler boundaries, and no live observer/runtime/daemon/watcher/publication-automation/deletion/retention-scheduler path;
+- carries the `v0.1.22` passive live-shadow simulator layer: committed offline DecisionTrace evidence is mapped into live-shaped passive observation/result records without reading live traffic or implementing a live observer;
+- adds the `v0.2.0-alpha` first passive live-shadow canary contract: manual, local, opt-in, already-redacted canary packets only, record-only local evidence, no effects, and explicit rejects for missing opt-in, live stream sources, raw input, runtime/daemon pressure, allowing/authorization pressure, and memory/config/publication effects;
 - adds aggregate-only live-shadow drift scorecard shape validation over synthetic replay evidence; it stores counts/bucket labels, not raw prompts, transcripts, secrets, tool outputs, memory/config text, approval text, or private paths;
 - adds manual/offline/redacted observation bundle schemas and fixtures for pre-live-shadow handoff readiness;
 - adds `RedactionReviewRecord` audit records and a manual real-handoff capture protocol before any real-redacted replay artifacts are accepted;
@@ -65,7 +67,7 @@ Included:
 - not runtime/tooling integration;
 - not live monitoring;
 - not a safety certification;
-- not an enforcement/canary/L2+ operational artifact.
+- not an autonomous/live/runtime canary, enforcement artifact, or L2+ operational artifact.
 
 ## Quick local review
 
@@ -75,7 +77,7 @@ From this bundle root:
 npm --prefix implementation/synaptic-mesh-shadow-v0 run review:local
 ```
 
-Expected current result: 34/34 commands pass, fixture parity 15/15, RouteDecision schema 17/17 fixture records, threat-model route mappings 11/11, RouteDecision wrong-route fixtures 9/9, generated adversarial fixtures 9/9, raw/parser adversarial fixtures 9/9, parser normalization fixtures 24/24, real-flow replay fixtures 24/24, classifier scorecard 24/24, decision traces 24/24, real-flow mutations 15/15, category coverage thresholds pass, live-shadow observation schemas pass, live-shadow synthetic replay 24 observations/24 results, live-shadow drift scorecard 24 observations/24 results, manual observation bundles 2/2, manual redaction fixture pack 2 positive/8 negative, decision-counterfactual checklist 16/16 with unsafe allows 0, reproducibility gate 2/2 with normalized mismatches 0, failure catalog 10/10 expected rejects, redaction policy schema/minimal scanner, retention policy schema/negative controls, redaction/retention composition gate, live-input/source-boundary contracts, manual parserEvidence replay 2/2, manual DecisionTrace/live-shadow replay 2 traces/2 observations/2 results, manual scorecard thresholds pass, redaction review records pass, real-redacted handoff pack 3/3, real-redacted replay gate 3 traces/3 observations/3 results, real-redacted adversarial coverage 6 cases with routes request_full_receipt/request_policy_refresh/ask_human/block, manual dry-run contracts 2 commands/2 results with 21 command negative controls and 39 result negative controls, manual dry-run CLI skeleton/negative controls/3 real-redacted positive handoffs/6-case real-redacted pilot/14-case failure catalog/12-case expanded pilot plus pilot reproducibility gate/reproducibility negative controls all pass with zero forbidden effects/capabilities, Receipt schema valid/invalid fixtures 1/4, authority overhead benchmark 6 fixtures/4 modes, unsafe allow signals 0, source fixture mutation false.
+Expected current result: 34/34 commands pass, fixture parity 15/15, RouteDecision schema 17/17 fixture records, threat-model route mappings 11/11, RouteDecision wrong-route fixtures 9/9, generated adversarial fixtures 9/9, raw/parser adversarial fixtures 9/9, parser normalization fixtures 24/24, real-flow replay fixtures 24/24, classifier scorecard 24/24, decision traces 24/24, real-flow mutations 15/15, category coverage thresholds pass, live-shadow observation schemas pass, live-shadow synthetic replay 24 observations/24 results, live-shadow drift scorecard 24 observations/24 results, manual observation bundles 2/2, manual redaction fixture pack 2 positive/8 negative, decision-counterfactual checklist 16/16 with unsafe allows 0, reproducibility gate 2/2 with normalized mismatches 0, failure catalog 10/10 expected rejects, redaction policy schema/minimal scanner, retention policy schema/negative controls, redaction/retention composition gate, live-input/source-boundary contracts, manual parserEvidence replay 2/2, manual DecisionTrace/live-shadow replay 2 traces/2 observations/2 results, manual scorecard thresholds pass, redaction review records pass, real-redacted handoff pack 3/3, real-redacted replay gate 3 traces/3 observations/3 results, real-redacted adversarial coverage 6 cases with routes request_full_receipt/request_policy_refresh/ask_human/block, manual dry-run contracts 2 commands/2 results with 21 command negative controls and 39 result negative controls, manual dry-run CLI skeleton/negative controls/3 real-redacted positive handoffs/6-case real-redacted pilot/14-case failure catalog/12-case expanded pilot plus pilot reproducibility gate/reproducibility negative controls all pass with zero forbidden effects/capabilities, passive live-shadow canary 2 pass/8 reject controls, Receipt schema valid/invalid fixtures 1/4, authority overhead benchmark 6 fixtures/4 modes, unsafe allow signals 0, source fixture mutation false.
 
 For adapter-shaped contract coverage specifically:
 
@@ -88,7 +90,7 @@ Expected current result: 59/59 cases pass, unsafe allows 0.
 For release/package verification:
 
 ```bash
-npm --prefix implementation/synaptic-mesh-shadow-v0 run release:check -- --target v0.1.21
+npm --prefix implementation/synaptic-mesh-shadow-v0 run release:check -- --target v0.2.0-alpha
 ```
 
 ## Citation/source policy
@@ -107,4 +109,4 @@ The most useful feedback right now is tracked in these starter issues:
 
 ## Runtime boundary
 
-Runtime/tooling integration, live observation, config changes, permanent memory promotion, publication, canary, enforcement, production, or L2+ operational use require a separate explicit maintainer approval track. This package is for protocol, citation, fixture, and reference-implementation review only.
+Runtime/tooling integration, live observation, config changes, permanent memory promotion, publication, autonomous/live/runtime canary, enforcement, production, or L2+ operational use require a separate explicit maintainer approval track. This package is for protocol, citation, fixture, and reference-implementation review only.

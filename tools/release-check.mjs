@@ -29,6 +29,7 @@ const releaseGateScripts = [
   'test:live-shadow-observation-result-schema',
   'test:live-shadow-forbidden-effects',
   'test:live-input-source-boundary-contracts',
+  'test:passive-live-shadow-canary',
   'test:live-shadow-synthetic-replay',
   'test:live-shadow-drift-scorecard',
   'test:manual-observation-bundle-schema',
@@ -112,7 +113,7 @@ function countLabel(passed, total) {
 }
 
 function previousPatchVersionLabels(version) {
-  const match = version.match(/^(?<major>\d+)\.(?<minor>\d+)\.(?<patch>\d+)$/);
+  const match = version.match(/^(?<major>\d+)\.(?<minor>\d+)\.(?<patch>\d+)(?:-[0-9A-Za-z.-]+)?$/);
   if (!match) return [];
   const patch = Number(match.groups.patch);
   if (patch <= 0) return [];
@@ -177,11 +178,11 @@ const headCommit = runGit(['rev-parse', 'HEAD']);
 const staleVersions = [...new Set([...previousPatchVersionLabels(manifestVersion), 'v0.1.2', '0.1.2'])]
   .filter((version) => version !== manifestReleaseTag && version !== manifestVersion);
 
-assert(/^\d+\.\d+\.\d+$/.test(manifestVersion), `MANIFEST.json version must be semver-like; got ${manifestVersion}`);
-assert(/^v\d+\.\d+\.\d+$/.test(releaseTarget), `release target must be a v-prefixed semver tag such as v0.1.4; got ${releaseTarget}`);
+assert(/^\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?$/.test(manifestVersion), `MANIFEST.json version must be semver-like, optionally with prerelease suffix; got ${manifestVersion}`);
+assert(/^v\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?$/.test(releaseTarget), `release target must be a v-prefixed semver/prerelease tag such as v0.2.0-alpha; got ${releaseTarget}`);
 assert(releaseTarget === manifestReleaseTag, `release target ${releaseTarget} must equal MANIFEST.json version ${manifestReleaseTag}`);
 if (!args.target) {
-  console.warn(`release:check defaulting --target to MANIFEST.json version ${manifestReleaseTag}; pass -- --target vX.Y.Z for release/tag verification.`);
+  console.warn(`release:check defaulting --target to MANIFEST.json version ${manifestReleaseTag}; pass -- --target vX.Y.Z[-prerelease] for release/tag verification.`);
 }
 assert(
   !releaseTargetCommit || releaseTargetCommit === headCommit,
@@ -268,6 +269,7 @@ assert(liveShadowForbiddenEffects?.summary?.memoryWriteImplemented === false, 'l
 assert(liveShadowForbiddenEffects?.summary?.configWriteImplemented === false, 'live-shadow forbidden-effects gate must not implement config writes');
 assert(liveShadowForbiddenEffects?.summary?.externalPublicationImplemented === false, 'live-shadow forbidden-effects gate must not implement external publication');
 
+const passiveLiveShadowCanary = readJson(path.join(packageRoot, 'evidence/passive-live-shadow-canary.out.json'));
 const liveInputSourceBoundaryContracts = readJson(path.join(packageRoot, 'evidence/live-input-source-boundary-contracts.out.json'));
 assert(liveInputSourceBoundaryContracts?.summary?.verdict === 'pass', 'live input/source boundary contracts verdict must be pass');
 assert(liveInputSourceBoundaryContracts?.summary?.passCases === 2, 'live input/source boundary contracts must keep 2 positive controls');
@@ -296,6 +298,36 @@ assert(liveInputSourceBoundaryContracts?.summary?.authorizationImplemented === f
 assert(liveInputSourceBoundaryContracts?.summary?.deletionImplemented === false, 'live input/source boundary contracts must not implement deletion');
 assert(liveInputSourceBoundaryContracts?.summary?.retentionSchedulerImplemented === false, 'live input/source boundary contracts must not implement retention scheduling');
 assert(liveInputSourceBoundaryContracts?.summary?.enforcementImplemented === false, 'live input/source boundary contracts must not implement enforcement');
+
+assert(passiveLiveShadowCanary?.summary?.verdict === 'pass', 'passive live-shadow canary verdict must be pass');
+assert(passiveLiveShadowCanary?.summary?.releaseLayer === manifestReleaseTag, 'passive live-shadow canary release layer must match release target');
+assert(passiveLiveShadowCanary?.summary?.dependsOn === 'v0.1.22-passive-live-shadow-simulator', 'passive canary must depend on v0.1.22 simulator layer');
+assert(passiveLiveShadowCanary?.summary?.manual === true, 'passive canary must be manual');
+assert(passiveLiveShadowCanary?.summary?.local === true, 'passive canary must be local');
+assert(passiveLiveShadowCanary?.summary?.optInRequired === true, 'passive canary must require opt-in');
+assert(passiveLiveShadowCanary?.summary?.recordOnly === true, 'passive canary must be record-only');
+assert(passiveLiveShadowCanary?.summary?.noEffects === true, 'passive canary must be no-effects');
+assert(passiveLiveShadowCanary?.summary?.unexpectedAccepts === 0, 'passive canary must have zero unexpected accepts');
+assert(passiveLiveShadowCanary?.summary?.unexpectedRejects === 0, 'passive canary must have zero unexpected rejects');
+assert(passiveLiveShadowCanary?.summary?.passCapabilityTrueCount === 0, 'passive canary pass cases must keep capability booleans false');
+assert(passiveLiveShadowCanary?.summary?.liveTrafficRead === false, 'passive canary must not read live traffic');
+assert(passiveLiveShadowCanary?.summary?.rawInputPersisted === false, 'passive canary must not persist raw input');
+assert(passiveLiveShadowCanary?.summary?.publicationAutomationImplemented === false, 'passive canary must not automate publication');
+assert(passiveLiveShadowCanary?.summary?.agentInstructionWriteImplemented === false, 'passive canary must not write agent instructions');
+assert(passiveLiveShadowCanary?.summary?.runtimeIntegrated === false, 'passive canary must not integrate runtime');
+assert(passiveLiveShadowCanary?.summary?.daemonImplemented === false, 'passive canary must not implement daemon');
+assert(passiveLiveShadowCanary?.summary?.watcherImplemented === false, 'passive canary must not implement watcher');
+assert(passiveLiveShadowCanary?.summary?.toolExecutionImplemented === false, 'passive canary must not execute tools');
+assert(passiveLiveShadowCanary?.summary?.memoryWriteImplemented === false, 'passive canary must not write memory');
+assert(passiveLiveShadowCanary?.summary?.configWriteImplemented === false, 'passive canary must not write config');
+assert(passiveLiveShadowCanary?.summary?.externalPublicationImplemented === false, 'passive canary must not publish externally');
+assert(passiveLiveShadowCanary?.summary?.approvalPathImplemented === false, 'passive canary must not enter approval path');
+assert(passiveLiveShadowCanary?.summary?.blockingImplemented === false, 'passive canary must not block');
+assert(passiveLiveShadowCanary?.summary?.allowingImplemented === false, 'passive canary must not allow');
+assert(passiveLiveShadowCanary?.summary?.authorizationImplemented === false, 'passive canary must not authorize');
+assert(passiveLiveShadowCanary?.summary?.deletionImplemented === false, 'passive canary must not delete');
+assert(passiveLiveShadowCanary?.summary?.retentionSchedulerImplemented === false, 'passive canary must not implement retention scheduler');
+assert(passiveLiveShadowCanary?.summary?.enforcementImplemented === false, 'passive canary must not enforce');
 
 const liveShadowSyntheticReplay = readJson(path.join(packageRoot, 'evidence/live-shadow-synthetic-replay.out.json'));
 assert(liveShadowSyntheticReplay?.summary?.verdict === 'pass', 'live-shadow synthetic replay verdict must be pass');
