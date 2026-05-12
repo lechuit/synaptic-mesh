@@ -1978,6 +1978,11 @@
       "sha256": "5b649da3dedf544cd61ac7b9fc16c3391fd02d44368a3f4fa187bceff4bdfc02"
     },
     {
+      "path": "tools/check-unicode-guard.mjs",
+      "bytes": 3239,
+      "sha256": "aade5ce9541eccba9fb0d858c75d787ae211aeeb2b484d735318d519234aff97"
+    },
+    {
       "path": "tools/release-check.mjs",
       "bytes": 119297,
       "sha256": "4f77b2e875b1a8a27c2adb08caccf4100fd608755f42c7d10a8e23e93cedbc07"
