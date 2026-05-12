@@ -1,0 +1,54 @@
+{
+  "schemaVersion": "passive-live-shadow-canary-drift-scorecard-v0",
+  "releaseLayer": "v0.2.4",
+  "dependsOn": "v0.2.3-canary-source-boundary-stress",
+  "description": "Deterministic local passive canary drift scorecard fixture. It compares repeated evaluations of unchanged normalized source-boundary canary rows and records route, reason-code, boundary-verdict, scorecard, trace-hash, and normalized-output drift counts. It is local evidence only and does not become authority for agents.",
+  "mode": "manual_local_opt_in_passive_drift_scorecard_record_only",
+  "sourceFixture": "implementation/synaptic-mesh-shadow-v0/fixtures/passive-live-shadow-canary-source-boundary-stress.json",
+  "sourceEvidence": "implementation/synaptic-mesh-shadow-v0/evidence/passive-live-shadow-canary-source-boundary-stress.out.json",
+  "metrics": [
+    "routeDriftCount",
+    "reasonCodeDriftCount",
+    "boundaryVerdictDriftCount",
+    "scorecardDriftCount",
+    "traceHashDriftCount",
+    "normalizedOutputMismatchCount"
+  ],
+  "requiredInvariants": {
+    "mayBlockCount": 0,
+    "mayAllowCount": 0,
+    "capabilityTrueCount": 0,
+    "forbiddenEffects": 0,
+    "automaticAgentConsumptionImplemented": false
+  },
+  "forbiddenEffects": [
+    "live_traffic_read",
+    "raw_input_persistence",
+    "runtime_integration",
+    "daemon",
+    "watcher",
+    "adapter_integration",
+    "tool_execution",
+    "memory_write",
+    "config_write",
+    "external_publication",
+    "approval_path",
+    "blocking",
+    "allowing",
+    "authorization",
+    "deletion",
+    "retention_scheduler",
+    "enforcement",
+    "automatic_agent_consumption",
+    "agent_consumed_scorecard_authority"
+  ],
+  "boundary": [
+    "manual_local_opt_in_passive_canary_only",
+    "unchanged_normalized_input_only",
+    "record_only_local_evidence",
+    "scorecard_is_not_authority",
+    "not_consumed_automatically_by_agents",
+    "no_approval_block_allow_authorize_or_enforce",
+    "no_runtime_tools_memory_config_publication_or_external_effects"
+  ]
+}

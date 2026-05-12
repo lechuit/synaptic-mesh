@@ -108,6 +108,8 @@ Required invariants:
 
 Boundary remains local deterministic evidence only. Drift rows must not become runtime authority, automatic gating for agents, approval signals, blocking/allowing decisions, or production safety claims.
 
+Executable gate: `test:passive-live-shadow-canary-drift-scorecard`.
+
 ## v0.2.5 — expanded passive canary pack
 
 Expand the passive canary pack to roughly 10–20 manual opt-in, already-redacted packets.

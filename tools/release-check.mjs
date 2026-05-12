@@ -32,6 +32,7 @@ const releaseGateScripts = [
   'test:passive-live-shadow-canary',
   'test:passive-live-shadow-canary-reproducibility',
   'test:passive-live-shadow-canary-source-boundary-stress',
+  'test:passive-live-shadow-canary-drift-scorecard',
   'test:live-shadow-synthetic-replay',
   'test:live-shadow-drift-scorecard',
   'test:manual-observation-bundle-schema',
@@ -274,6 +275,7 @@ assert(liveShadowForbiddenEffects?.summary?.externalPublicationImplemented === f
 const passiveLiveShadowCanary = readJson(path.join(packageRoot, 'evidence/passive-live-shadow-canary.out.json'));
 const passiveCanaryReproducibility = readJson(path.join(packageRoot, 'evidence/passive-live-shadow-canary-reproducibility.out.json'));
 const passiveCanarySourceBoundaryStress = readJson(path.join(packageRoot, 'evidence/passive-live-shadow-canary-source-boundary-stress.out.json'));
+const passiveCanaryDriftScorecard = readJson(path.join(packageRoot, 'evidence/passive-live-shadow-canary-drift-scorecard.out.json'));
 const liveInputSourceBoundaryContracts = readJson(path.join(packageRoot, 'evidence/live-input-source-boundary-contracts.out.json'));
 assert(liveInputSourceBoundaryContracts?.summary?.verdict === 'pass', 'live input/source boundary contracts verdict must be pass');
 assert(liveInputSourceBoundaryContracts?.summary?.passCases === 2, 'live input/source boundary contracts must keep 2 positive controls');
@@ -304,7 +306,7 @@ assert(liveInputSourceBoundaryContracts?.summary?.retentionSchedulerImplemented 
 assert(liveInputSourceBoundaryContracts?.summary?.enforcementImplemented === false, 'live input/source boundary contracts must not implement enforcement');
 
 assert(passiveLiveShadowCanary?.summary?.verdict === 'pass', 'passive live-shadow canary verdict must be pass');
-assert(passiveLiveShadowCanary?.summary?.releaseLayer === manifestReleaseTag, 'passive live-shadow canary release layer must match release target');
+assert(passiveLiveShadowCanary?.summary?.releaseLayer === 'v0.2.3', 'passive live-shadow canary release layer must remain v0.2.3 baseline evidence');
 assert(passiveLiveShadowCanary?.summary?.dependsOn === 'v0.1.22-passive-live-shadow-simulator', 'passive canary must depend on v0.1.22 simulator layer');
 assert(passiveLiveShadowCanary?.summary?.manual === true, 'passive canary must be manual');
 assert(passiveLiveShadowCanary?.summary?.local === true, 'passive canary must be local');
@@ -345,7 +347,7 @@ assert(passiveCanaryReproducibility?.capabilityTrueCount === 0, 'passive canary 
 assert(passiveCanaryReproducibility?.forbiddenEffects === 0, 'passive canary reproducibility pass cases must keep forbidden effects zero');
 
 assert(passiveCanarySourceBoundaryStress?.summary?.verdict === 'pass', 'passive canary source-boundary stress verdict must be pass');
-assert(passiveCanarySourceBoundaryStress?.summary?.releaseLayer === manifestReleaseTag, 'passive canary source-boundary stress release layer must match release target');
+assert(passiveCanarySourceBoundaryStress?.summary?.releaseLayer === 'v0.2.3', 'passive canary source-boundary stress release layer must remain v0.2.3 baseline evidence');
 assert(passiveCanarySourceBoundaryStress?.summary?.passCases === 1, 'passive canary source-boundary stress must keep 1 positive control');
 assert(passiveCanarySourceBoundaryStress?.summary?.rejectCases === 5, 'passive canary source-boundary stress must keep 5 expected rejects');
 assert(passiveCanarySourceBoundaryStress?.summary?.unexpectedAccepts === 0, 'passive canary source-boundary stress must have zero unexpected accepts');
@@ -369,6 +371,35 @@ assert(passiveCanarySourceBoundaryStress?.summary?.allowingImplemented === false
 assert(passiveCanarySourceBoundaryStress?.summary?.authorizationImplemented === false, 'passive canary source-boundary stress must not authorize');
 assert(passiveCanarySourceBoundaryStress?.summary?.enforcementImplemented === false, 'passive canary source-boundary stress must not enforce');
 assert(passiveCanarySourceBoundaryStress?.summary?.automaticAgentConsumptionImplemented === false, 'passive canary source-boundary stress must not be consumed automatically by agents');
+
+assert(passiveCanaryDriftScorecard?.summary?.verdict === 'pass', 'passive canary drift scorecard verdict must be pass');
+assert(passiveCanaryDriftScorecard?.summary?.releaseLayer === manifestReleaseTag, 'passive canary drift scorecard release layer must match release target');
+assert(passiveCanaryDriftScorecard?.summary?.dependsOn === 'v0.2.3-canary-source-boundary-stress', 'passive canary drift scorecard must depend on v0.2.3 source-boundary stress');
+assert(passiveCanaryDriftScorecard?.summary?.mode === 'manual_local_opt_in_passive_drift_scorecard_record_only', 'passive canary drift scorecard mode must remain record-only');
+assert(passiveCanaryDriftScorecard?.summary?.comparedRows === 6, 'passive canary drift scorecard must compare 6 source-boundary rows');
+assert(passiveCanaryDriftScorecard?.summary?.routeDriftCount === 0, 'passive canary drift scorecard routeDriftCount must be 0');
+assert(passiveCanaryDriftScorecard?.summary?.reasonCodeDriftCount === 0, 'passive canary drift scorecard reasonCodeDriftCount must be 0');
+assert(passiveCanaryDriftScorecard?.summary?.boundaryVerdictDriftCount === 0, 'passive canary drift scorecard boundaryVerdictDriftCount must be 0');
+assert(passiveCanaryDriftScorecard?.summary?.scorecardDriftCount === 0, 'passive canary drift scorecard scorecardDriftCount must be 0');
+assert(passiveCanaryDriftScorecard?.summary?.traceHashDriftCount === 0, 'passive canary drift scorecard traceHashDriftCount must be 0');
+assert(passiveCanaryDriftScorecard?.summary?.normalizedOutputMismatchCount === 0, 'passive canary drift scorecard normalizedOutputMismatchCount must be 0');
+assert(passiveCanaryDriftScorecard?.summary?.mayBlockCount === 0, 'passive canary drift scorecard mayBlockCount must be 0');
+assert(passiveCanaryDriftScorecard?.summary?.mayAllowCount === 0, 'passive canary drift scorecard mayAllowCount must be 0');
+assert(passiveCanaryDriftScorecard?.summary?.capabilityTrueCount === 0, 'passive canary drift scorecard capabilityTrueCount must be 0');
+assert(passiveCanaryDriftScorecard?.summary?.forbiddenEffects === 0, 'passive canary drift scorecard forbiddenEffects must be 0');
+assert(passiveCanaryDriftScorecard?.summary?.scorecardAuthority === false, 'passive canary drift scorecard must not be authority');
+assert(passiveCanaryDriftScorecard?.summary?.consumedByAgent === false, 'passive canary drift scorecard must not be consumed by agents');
+assert(passiveCanaryDriftScorecard?.summary?.automaticAgentConsumptionImplemented === false, 'passive canary drift scorecard must not implement automatic agent consumption');
+assert(passiveCanaryDriftScorecard?.summary?.runtimeIntegrated === false, 'passive canary drift scorecard must not integrate runtime');
+assert(passiveCanaryDriftScorecard?.summary?.toolExecutionImplemented === false, 'passive canary drift scorecard must not execute tools');
+assert(passiveCanaryDriftScorecard?.summary?.memoryWriteImplemented === false, 'passive canary drift scorecard must not write memory');
+assert(passiveCanaryDriftScorecard?.summary?.configWriteImplemented === false, 'passive canary drift scorecard must not write config');
+assert(passiveCanaryDriftScorecard?.summary?.externalPublicationImplemented === false, 'passive canary drift scorecard must not publish externally');
+assert(passiveCanaryDriftScorecard?.summary?.approvalPathImplemented === false, 'passive canary drift scorecard must not enter approval path');
+assert(passiveCanaryDriftScorecard?.summary?.blockingImplemented === false, 'passive canary drift scorecard must not block');
+assert(passiveCanaryDriftScorecard?.summary?.allowingImplemented === false, 'passive canary drift scorecard must not allow');
+assert(passiveCanaryDriftScorecard?.summary?.authorizationImplemented === false, 'passive canary drift scorecard must not authorize');
+assert(passiveCanaryDriftScorecard?.summary?.enforcementImplemented === false, 'passive canary drift scorecard must not enforce');
 
 const liveShadowSyntheticReplay = readJson(path.join(packageRoot, 'evidence/live-shadow-synthetic-replay.out.json'));
 assert(liveShadowSyntheticReplay?.summary?.verdict === 'pass', 'live-shadow synthetic replay verdict must be pass');
