@@ -33,6 +33,7 @@ const releaseGateScripts = [
   'test:passive-live-shadow-canary-reproducibility',
   'test:passive-live-shadow-canary-source-boundary-stress',
   'test:passive-live-shadow-canary-drift-scorecard',
+  'test:passive-live-shadow-canary-expanded-pack',
   'test:live-shadow-synthetic-replay',
   'test:live-shadow-drift-scorecard',
   'test:manual-observation-bundle-schema',
@@ -166,6 +167,8 @@ assert(
 );
 
 const manifest = readJson(path.join(repoRoot, 'MANIFEST.json'));
+const filesManifest = readJson(path.join(repoRoot, 'MANIFEST.files.json'));
+const manifestFilePaths = new Set((filesManifest.files ?? []).map((file) => file.path));
 const packageJson = readJson(path.join(packageRoot, 'package.json'));
 const readme = readFileSync(path.join(repoRoot, 'README.md'), 'utf8');
 const releaseNotes = readFileSync(path.join(repoRoot, 'RELEASE_NOTES.md'), 'utf8');
@@ -205,6 +208,15 @@ assertIncludes(releaseChecklist, 'no production, canary, enforcement, or safety-
 
 for (const staleVersion of staleVersions) {
   assertNotIncludes(readme, staleVersion, 'README.md');
+}
+
+for (const requiredManifestPath of [
+  'docs/status-v0.2.5.md',
+  'implementation/synaptic-mesh-shadow-v0/tests/passive-live-shadow-canary-expanded-pack.mjs',
+  'implementation/synaptic-mesh-shadow-v0/fixtures/passive-live-shadow-canary-expanded-pack.json',
+  'implementation/synaptic-mesh-shadow-v0/evidence/passive-live-shadow-canary-expanded-pack.out.json',
+]) {
+  assert(manifestFilePaths.has(requiredManifestPath), `MANIFEST.files.json must include ${requiredManifestPath}`);
 }
 
 for (const scriptName of releaseGateScripts) {
@@ -276,6 +288,7 @@ const passiveLiveShadowCanary = readJson(path.join(packageRoot, 'evidence/passiv
 const passiveCanaryReproducibility = readJson(path.join(packageRoot, 'evidence/passive-live-shadow-canary-reproducibility.out.json'));
 const passiveCanarySourceBoundaryStress = readJson(path.join(packageRoot, 'evidence/passive-live-shadow-canary-source-boundary-stress.out.json'));
 const passiveCanaryDriftScorecard = readJson(path.join(packageRoot, 'evidence/passive-live-shadow-canary-drift-scorecard.out.json'));
+const passiveCanaryExpandedPack = readJson(path.join(packageRoot, 'evidence/passive-live-shadow-canary-expanded-pack.out.json'));
 const liveInputSourceBoundaryContracts = readJson(path.join(packageRoot, 'evidence/live-input-source-boundary-contracts.out.json'));
 assert(liveInputSourceBoundaryContracts?.summary?.verdict === 'pass', 'live input/source boundary contracts verdict must be pass');
 assert(liveInputSourceBoundaryContracts?.summary?.passCases === 2, 'live input/source boundary contracts must keep 2 positive controls');
@@ -373,7 +386,7 @@ assert(passiveCanarySourceBoundaryStress?.summary?.enforcementImplemented === fa
 assert(passiveCanarySourceBoundaryStress?.summary?.automaticAgentConsumptionImplemented === false, 'passive canary source-boundary stress must not be consumed automatically by agents');
 
 assert(passiveCanaryDriftScorecard?.summary?.verdict === 'pass', 'passive canary drift scorecard verdict must be pass');
-assert(passiveCanaryDriftScorecard?.summary?.releaseLayer === manifestReleaseTag, 'passive canary drift scorecard release layer must match release target');
+assert(passiveCanaryDriftScorecard?.summary?.releaseLayer === 'v0.2.4', 'passive canary drift scorecard release layer must remain v0.2.4 baseline evidence');
 assert(passiveCanaryDriftScorecard?.summary?.dependsOn === 'v0.2.3-canary-source-boundary-stress', 'passive canary drift scorecard must depend on v0.2.3 source-boundary stress');
 assert(passiveCanaryDriftScorecard?.summary?.mode === 'manual_local_opt_in_passive_drift_scorecard_record_only', 'passive canary drift scorecard mode must remain record-only');
 assert(passiveCanaryDriftScorecard?.summary?.comparedRows === 6, 'passive canary drift scorecard must compare 6 source-boundary rows');
@@ -400,6 +413,53 @@ assert(passiveCanaryDriftScorecard?.summary?.blockingImplemented === false, 'pas
 assert(passiveCanaryDriftScorecard?.summary?.allowingImplemented === false, 'passive canary drift scorecard must not allow');
 assert(passiveCanaryDriftScorecard?.summary?.authorizationImplemented === false, 'passive canary drift scorecard must not authorize');
 assert(passiveCanaryDriftScorecard?.summary?.enforcementImplemented === false, 'passive canary drift scorecard must not enforce');
+
+assert(passiveCanaryExpandedPack?.summary?.verdict === 'pass', 'passive canary expanded pack verdict must be pass');
+assert(passiveCanaryExpandedPack?.summary?.releaseLayer === manifestReleaseTag, 'passive canary expanded pack release layer must match release target');
+assert(passiveCanaryExpandedPack?.summary?.dependsOn === 'v0.2.4-passive-canary-drift-scorecard', 'passive canary expanded pack must depend on v0.2.4 drift scorecard');
+assert(passiveCanaryExpandedPack?.summary?.mode === 'manual_local_opt_in_passive_expanded_canary_pack_record_only', 'passive canary expanded pack mode must remain record-only');
+assert(passiveCanaryExpandedPack?.summary?.totalCases >= 10 && passiveCanaryExpandedPack?.summary?.totalCases <= 20, 'passive canary expanded pack must include 10-20 rows');
+assert(passiveCanaryExpandedPack?.summary?.targetCoverageCount === 13, 'passive canary expanded pack must track 13 target coverage labels');
+assert(passiveCanaryExpandedPack?.summary?.coveredTargetCoverageCount === 13, 'passive canary expanded pack must cover all target labels');
+assert(passiveCanaryExpandedPack?.summary?.unexpectedAccepts === 0, 'passive canary expanded pack must have zero unexpected accepts');
+assert(passiveCanaryExpandedPack?.summary?.unexpectedRejects === 0, 'passive canary expanded pack must have zero unexpected rejects');
+assert(passiveCanaryExpandedPack?.summary?.acceptedForbiddenEffectsDetectedCount === 0, 'passive canary expanded pack accepted rows must have zero forbidden effects');
+assert(passiveCanaryExpandedPack?.summary?.passCapabilityTrueCount === 0, 'passive canary expanded pack pass rows must keep capability true count zero');
+for (const [field, label] of [
+  ['optInRejects', 'missing opt-in'],
+  ['rawInputRejects', 'raw input pressure'],
+  ['runtimeRejects', 'runtime pressure'],
+  ['memoryWriteRejects', 'memory pressure'],
+  ['configWriteRejects', 'config pressure'],
+  ['publicationRejects', 'publication pressure'],
+  ['wrongLaneRejects', 'wrong lane'],
+  ['staleDigestRejects', 'stale digest'],
+  ['missingMtimeRejects', 'missing mtime'],
+  ['malformedTupleRejects', 'malformed tuple'],
+  ['outputContainmentRejects', 'output containment'],
+  ['agentConsumptionPressureRejects', 'agent consumption pressure'],
+]) {
+  assert(passiveCanaryExpandedPack?.summary?.[field] >= 1, `passive canary expanded pack must cover ${label}`);
+}
+assert(passiveCanaryExpandedPack?.summary?.manual === true, 'passive canary expanded pack must be manual');
+assert(passiveCanaryExpandedPack?.summary?.local === true, 'passive canary expanded pack must be local');
+assert(passiveCanaryExpandedPack?.summary?.optInRequired === true, 'passive canary expanded pack must require opt-in');
+assert(passiveCanaryExpandedPack?.summary?.alreadyRedactedOnly === true, 'passive canary expanded pack must remain already-redacted only');
+assert(passiveCanaryExpandedPack?.summary?.recordOnly === true, 'passive canary expanded pack must be record-only');
+assert(passiveCanaryExpandedPack?.summary?.noEffects === true, 'passive canary expanded pack must be no-effects');
+assert(passiveCanaryExpandedPack?.summary?.scorecardAuthority === false, 'passive canary expanded pack must not be authority');
+assert(passiveCanaryExpandedPack?.summary?.consumedByAgent === false, 'passive canary expanded pack must not be consumed by agents');
+assert(passiveCanaryExpandedPack?.summary?.automaticAgentConsumptionImplemented === false, 'passive canary expanded pack must not implement automatic agent consumption');
+assert(passiveCanaryExpandedPack?.summary?.runtimeIntegrated === false, 'passive canary expanded pack must not integrate runtime');
+assert(passiveCanaryExpandedPack?.summary?.toolExecutionImplemented === false, 'passive canary expanded pack must not execute tools');
+assert(passiveCanaryExpandedPack?.summary?.memoryWriteImplemented === false, 'passive canary expanded pack must not write memory');
+assert(passiveCanaryExpandedPack?.summary?.configWriteImplemented === false, 'passive canary expanded pack must not write config');
+assert(passiveCanaryExpandedPack?.summary?.externalPublicationImplemented === false, 'passive canary expanded pack must not publish externally');
+assert(passiveCanaryExpandedPack?.summary?.approvalPathImplemented === false, 'passive canary expanded pack must not enter approval path');
+assert(passiveCanaryExpandedPack?.summary?.blockingImplemented === false, 'passive canary expanded pack must not block');
+assert(passiveCanaryExpandedPack?.summary?.allowingImplemented === false, 'passive canary expanded pack must not allow');
+assert(passiveCanaryExpandedPack?.summary?.authorizationImplemented === false, 'passive canary expanded pack must not authorize');
+assert(passiveCanaryExpandedPack?.summary?.enforcementImplemented === false, 'passive canary expanded pack must not enforce');
 
 const liveShadowSyntheticReplay = readJson(path.join(packageRoot, 'evidence/live-shadow-synthetic-replay.out.json'));
 assert(liveShadowSyntheticReplay?.summary?.verdict === 'pass', 'live-shadow synthetic replay verdict must be pass');

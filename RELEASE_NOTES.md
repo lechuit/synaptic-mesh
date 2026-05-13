@@ -1,38 +1,52 @@
-# Release Notes — Synaptic Mesh v0.2.4
+# Release Notes — Synaptic Mesh v0.2.5
 
-Status: passive canary drift scorecard. Manual, local, opt-in, record-only, no effects. Not runtime-ready; not production/enforcement-ready.
+Status: expanded passive canary pack. Manual, local, opt-in, record-only, no effects. Not runtime-ready; not production/enforcement-ready.
 
 ## Why this release
 
-Before expanding the passive canary pack or adding human-readable advisory reports, the canary needs a deterministic drift scorecard: unchanged normalized inputs should preserve route, reason-code set, boundary verdict, scorecard digest, trace hash, and normalized output.
+After v0.2.4 added a deterministic drift scorecard, the next risk is coverage breadth. v0.2.5 expands the passive canary pack to a small reviewable set of 15 already-redacted local packet rows while preserving the same no-effects boundary.
 
-## Highlights since v0.2.3
+## Highlights since v0.2.4
 
-- Added `implementation/synaptic-mesh-shadow-v0/tests/passive-live-shadow-canary-drift-scorecard.mjs`.
-- Added committed fixture/evidence for passive canary drift scoring:
-  - `implementation/synaptic-mesh-shadow-v0/fixtures/passive-live-shadow-canary-drift-scorecard.json`
-  - `implementation/synaptic-mesh-shadow-v0/evidence/passive-live-shadow-canary-drift-scorecard.out.json`
-- Wired the drift scorecard gate into local `check`, `review:local`, and `release:check` validation.
-- Kept v0.2.3 source-boundary stress evidence as the baseline dependency for v0.2.4.
+- Added `implementation/synaptic-mesh-shadow-v0/tests/passive-live-shadow-canary-expanded-pack.mjs`.
+- Added committed fixture/evidence for the expanded passive canary pack:
+  - `implementation/synaptic-mesh-shadow-v0/fixtures/passive-live-shadow-canary-expanded-pack.json`
+  - `implementation/synaptic-mesh-shadow-v0/evidence/passive-live-shadow-canary-expanded-pack.out.json`
+- Wired the expanded pack gate into local `check`, `review:local`, and `release:check` validation.
+- Kept the pack to 15 rows for reviewability while covering all target labels.
 
-## New v0.2.4 evidence
+## Coverage
 
-Expected output shape:
+The expanded pack covers:
+
+- valid redacted packet;
+- missing opt-in;
+- raw input pressure;
+- runtime pressure;
+- memory/config pressure;
+- publication pressure;
+- wrong lane;
+- stale digest;
+- missing mtime;
+- malformed tuple;
+- output containment;
+- advisory-looking text;
+- agent-consumption pressure.
+
+## Expected v0.2.5 evidence
 
 ```json
 {
   "verdict": "pass",
-  "comparedRows": 6,
-  "routeDriftCount": 0,
-  "reasonCodeDriftCount": 0,
-  "boundaryVerdictDriftCount": 0,
-  "scorecardDriftCount": 0,
-  "traceHashDriftCount": 0,
-  "normalizedOutputMismatchCount": 0,
-  "mayBlockCount": 0,
-  "mayAllowCount": 0,
-  "capabilityTrueCount": 0,
-  "forbiddenEffects": 0,
+  "releaseLayer": "v0.2.5",
+  "totalCases": 15,
+  "passCases": 3,
+  "rejectCases": 12,
+  "coveredTargetCoverageCount": 13,
+  "unexpectedAccepts": 0,
+  "unexpectedRejects": 0,
+  "acceptedForbiddenEffectsDetectedCount": 0,
+  "passCapabilityTrueCount": 0,
   "scorecardAuthority": false,
   "consumedByAgent": false,
   "automaticAgentConsumptionImplemented": false
@@ -41,25 +55,14 @@ Expected output shape:
 
 ## Conservative release statement
 
-`v0.2.4` proves only local deterministic scorecard behavior over committed passive canary source-boundary fixtures. The drift scorecard is evidence, not authority. It does not add live traffic reads, raw input persistence, runtime integration, live observer daemon, watcher, adapter integration, tool execution, memory/config writes, external publication, publication automation, agent-instruction writes, automatic agent consumption, approval paths, blocking, allowing, authorization, deletion, retention scheduler, or enforcement.
+`v0.2.5` proves only local deterministic expanded-pack coverage over committed passive canary fixtures. It does not add live traffic reads, raw input persistence, runtime integration, live observer daemon, watcher, adapter integration, tool execution, memory/config writes, external publication, publication automation, agent-instruction writes, automatic agent consumption, approval paths, blocking, allowing, authorization, deletion, retention scheduler, or enforcement.
 
 ## Validation snapshot
 
-- Passive canary drift scorecard: pass.
-- Compared rows: 6.
-- Route drift: 0.
-- Reason-code drift: 0.
-- Boundary-verdict drift: 0.
-- Scorecard drift: 0.
-- Trace-hash drift: 0.
-- Normalized-output mismatch: 0.
-- Capability-true count: 0.
-- Forbidden effects: 0.
-- Automatic agent consumption implemented: false.
-- Full release validation is expected through:
+Expected validation command:
 
 ```bash
-npm --prefix implementation/synaptic-mesh-shadow-v0 run release:check -- --target v0.2.4
+npm --prefix implementation/synaptic-mesh-shadow-v0 run release:check -- --target v0.2.5
 ```
 
 ## Operational non-release status

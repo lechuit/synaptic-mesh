@@ -3,8 +3,8 @@
     "artifact": "T-synaptic-mesh-review-local-runner-v0",
     "timestamp": "2026-05-07T15:05:00.000Z",
     "verdict": "pass",
-    "commands": 36,
-    "passCommands": 36,
+    "commands": 37,
+    "passCommands": 37,
     "failedCommands": [],
     "fixtureCount": 15,
     "fixtureParityVerdict": "pass",
@@ -143,6 +143,16 @@
     "passiveCanaryDriftScorecardCapabilityTrueCount": 0,
     "passiveCanaryDriftScorecardForbiddenEffects": 0,
     "passiveCanaryDriftScorecardAutomaticAgentConsumptionImplemented": false,
+    "passiveCanaryExpandedPackVerdict": "pass",
+    "passiveCanaryExpandedPackTotalCases": 15,
+    "passiveCanaryExpandedPackPassCases": 3,
+    "passiveCanaryExpandedPackRejectCases": 12,
+    "passiveCanaryExpandedPackCoveredTargetCoverageCount": 13,
+    "passiveCanaryExpandedPackUnexpectedAccepts": 0,
+    "passiveCanaryExpandedPackUnexpectedRejects": 0,
+    "passiveCanaryExpandedPackAcceptedForbiddenEffectsDetectedCount": 0,
+    "passiveCanaryExpandedPackPassCapabilityTrueCount": 0,
+    "passiveCanaryExpandedPackAutomaticAgentConsumptionImplemented": false,
     "unsafeAllowSignals": [],
     "sourceFixtureMutation": false
   },
@@ -381,6 +391,13 @@
     {
       "id": "passive-live-shadow-canary-drift-scorecard-tests",
       "command": "node implementation/synaptic-mesh-shadow-v0/tests/passive-live-shadow-canary-drift-scorecard.mjs",
+      "status": 0,
+      "pass": true,
+      "stderr": ""
+    },
+    {
+      "id": "passive-live-shadow-canary-expanded-pack-tests",
+      "command": "node implementation/synaptic-mesh-shadow-v0/tests/passive-live-shadow-canary-expanded-pack.mjs",
       "status": 0,
       "pass": true,
       "stderr": ""

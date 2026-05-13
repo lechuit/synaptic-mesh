@@ -132,6 +132,8 @@ Target coverage:
 
 Boundary remains manual, local, opt-in, already-redacted, record-only, and no-effects. The pack may improve coverage, but it still does not authorize runtime behavior.
 
+Executable gate: `test:passive-live-shadow-canary-expanded-pack`.
+
 ## v0.2.6 — source-boundary stress expansion
 
 Expand the v0.2.3 source-boundary stress family with rarer source/output/path cases before introducing human-readable advisory reports.
