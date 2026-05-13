@@ -42,6 +42,7 @@ const releaseGateScripts = [
   'test:passive-live-shadow-canary-advisory-reviewer-runbook',
   'test:passive-live-shadow-canary-advisory-public-review-package',
   'test:read-only-adapter-public-review-package',
+  'test:read-only-adapter-human-review-go-no-go',
   'test:live-shadow-synthetic-replay',
   'test:live-shadow-drift-scorecard',
   'test:manual-observation-bundle-schema',
@@ -205,6 +206,21 @@ assert(
 assert(packageJson.private === true, 'shadow package must remain private for release checks');
 assert(packageJson.version === '0.0.0-local', 'shadow package version must remain 0.0.0-local unless publication scope changes');
 assert(packageJson.scripts?.['release:check'] === 'node ../../tools/release-check.mjs', 'package.json must wire npm run release:check to ../../tools/release-check.mjs');
+if (manifestReleaseTag === 'v0.4.6') {
+  assertIncludes(manifest.reproducibility, 'human_review_findings_go_no_go_record', 'MANIFEST.json reproducibility');
+  assertIncludes(manifest.reproducibility, 'v0.4.6', 'MANIFEST.json reproducibility');
+  assertIncludes(manifest.reproducibility, 'go_to_real_adapter_design_true', 'MANIFEST.json reproducibility');
+  assertIncludes(manifest.reproducibility, 'go_to_real_adapter_implementation_false', 'MANIFEST.json reproducibility');
+  assertIncludes(manifest.runtimeBoundary, 'design_only_allowed', 'MANIFEST.json runtimeBoundary');
+  assertIncludes(manifest.runtimeBoundary, 'no_v0_5_alpha_implementation', 'MANIFEST.json runtimeBoundary');
+  assertIncludes(manifest.runtimeBoundary, 'no_real_adapter', 'MANIFEST.json runtimeBoundary');
+  assertIncludes(manifest.runtimeBoundary, 'no_framework_integration', 'MANIFEST.json runtimeBoundary');
+  assertIncludes(manifest.runtimeBoundary, 'no_live_traffic', 'MANIFEST.json runtimeBoundary');
+  assertIncludes(manifest.runtimeBoundary, 'no_tool_execution', 'MANIFEST.json runtimeBoundary');
+  assertIncludes(manifest.runtimeBoundary, 'no_memory_write', 'MANIFEST.json runtimeBoundary');
+  assertIncludes(manifest.runtimeBoundary, 'no_config_write', 'MANIFEST.json runtimeBoundary');
+}
+
 if (manifestReleaseTag === 'v0.4.5') {
   assertIncludes(manifest.reproducibility, 'read_only_adapter_boundary_public_review_package', 'MANIFEST.json reproducibility');
   assertIncludes(manifest.reproducibility, 'v0.4.5', 'MANIFEST.json reproducibility');
@@ -286,6 +302,11 @@ for (const requiredManifestPath of [
   'implementation/synaptic-mesh-shadow-v0/evidence/read-only-adapter-simulated-v0.4.4.out.json',
   'implementation/synaptic-mesh-shadow-v0/evidence/read-only-adapter-public-review-package-v0.4.5.out.json',
   'implementation/synaptic-mesh-shadow-v0/fixtures/read-only-adapter-public-review-package-v0.4.5.json',
+  'docs/status-v0.4.6.md',
+  'docs/read-only-adapter-human-review-findings-go-no-go-v0.4.6.md',
+  'implementation/synaptic-mesh-shadow-v0/tests/read-only-adapter-human-review-go-no-go.mjs',
+  'implementation/synaptic-mesh-shadow-v0/fixtures/read-only-adapter-human-review-go-no-go-v0.4.6.json',
+  'implementation/synaptic-mesh-shadow-v0/evidence/read-only-adapter-human-review-go-no-go-v0.4.6.out.json',
 ]) {
   assert(manifestFilePaths.has(requiredManifestPath), `MANIFEST.files.json must include ${requiredManifestPath}`);
 }
@@ -1438,6 +1459,33 @@ assertOptionalCountMatches(
   'RELEASE_NOTES.md',
   'receiver adapter contracts',
 );
+
+const humanReviewGoNoGo = readJson(path.join(packageRoot, 'evidence/read-only-adapter-human-review-go-no-go-v0.4.6.out.json'));
+if (manifestReleaseTag === 'v0.4.6') {
+  assert(humanReviewGoNoGo?.summary?.adapterBoundaryHumanReview === 'pass', 'adapter boundary human review verdict must be pass');
+  assert(humanReviewGoNoGo?.summary?.humanReviewFindingsGoNoGo === 'pass', 'human review go/no-go verdict must be pass');
+  assert(humanReviewGoNoGo?.summary?.reviewedRelease === 'v0.4.5', 'human review go/no-go must review v0.4.5');
+  assert(humanReviewGoNoGo?.summary?.goForPublicReviewOnly === true, 'human review go/no-go must permit public review-only status');
+  assert(humanReviewGoNoGo?.summary?.goToRealAdapterDesign === true, 'human review go/no-go may permit real adapter design');
+  assert(humanReviewGoNoGo?.summary?.goToRealAdapterImplementation === false, 'human review go/no-go must not permit real adapter implementation');
+  assert(humanReviewGoNoGo?.summary?.requiresMaintainerDecisionForImplementation === true, 'human review go/no-go must require maintainer decision for implementation');
+  assert(humanReviewGoNoGo?.summary?.openBlockingRisks === 0, 'human review go/no-go must have zero open blocking risks');
+  assert(humanReviewGoNoGo?.summary?.realAdapterAuthorized === false, 'human review go/no-go must not authorize a real adapter');
+  assert(humanReviewGoNoGo?.summary?.frameworkIntegrationAuthorized === false, 'human review go/no-go must not authorize framework integration');
+  assert(humanReviewGoNoGo?.summary?.liveTrafficAuthorized === false, 'human review go/no-go must not authorize live traffic');
+  assert(humanReviewGoNoGo?.summary?.toolExecution === false, 'human review go/no-go must not execute tools');
+  assert(humanReviewGoNoGo?.summary?.memoryWrite === false, 'human review go/no-go must not write memory');
+  assert(humanReviewGoNoGo?.summary?.configWrite === false, 'human review go/no-go must not write config');
+  assert(humanReviewGoNoGo?.summary?.externalPublicationByAdapter === false, 'human review go/no-go must not publish externally by adapter');
+  assert(humanReviewGoNoGo?.summary?.approvalEmission === false, 'human review go/no-go must not emit approvals');
+  assert(humanReviewGoNoGo?.summary?.machineReadablePolicyDecision === false, 'human review go/no-go must not emit machine-readable policy decisions');
+  assert(humanReviewGoNoGo?.summary?.agentConsumed === false, 'human review go/no-go must not be agent-consumed');
+  assert(humanReviewGoNoGo?.summary?.mayBlock === false, 'human review go/no-go must not block');
+  assert(humanReviewGoNoGo?.summary?.mayAllow === false, 'human review go/no-go must not allow');
+  assert(humanReviewGoNoGo?.summary?.authorization === false, 'human review go/no-go must not authorize');
+  assert(humanReviewGoNoGo?.summary?.enforcement === false, 'human review go/no-go must not enforce');
+  assert(humanReviewGoNoGo?.summary?.independentLocalReviews === 2, 'human review go/no-go must record two independent local reviews');
+}
 
 const readOnlyAdapterPublicReview = readJson(path.join(packageRoot, 'evidence/read-only-adapter-public-review-package-v0.4.5.out.json'));
 if (manifestReleaseTag === 'v0.4.5') {

@@ -1,0 +1,31 @@
+{
+  "humanReviewFindingsGoNoGo": "pass",
+  "releaseLayer": "v0.4.6",
+  "goForPublicReviewOnly": true,
+  "realAdapterAuthorized": false,
+  "frameworkIntegrationAuthorized": false,
+  "liveTrafficAuthorized": false,
+  "toolExecution": false,
+  "memoryWrite": false,
+  "configWrite": false,
+  "externalPublicationByAdapter": false,
+  "approvalEmission": false,
+  "machineReadablePolicyDecision": false,
+  "agentConsumed": false,
+  "mayBlock": false,
+  "mayAllow": false,
+  "authorization": false,
+  "enforcement": false,
+  "independentLocalReviews": 2,
+  "independentLocalReviewVerdicts": [
+    "APPROVE",
+    "APPROVE"
+  ],
+  "failures": [],
+  "adapterBoundaryHumanReview": "pass",
+  "reviewedRelease": "v0.4.5",
+  "goToRealAdapterDesign": true,
+  "goToRealAdapterImplementation": false,
+  "requiresMaintainerDecisionForImplementation": true,
+  "openBlockingRisks": 0
+}
