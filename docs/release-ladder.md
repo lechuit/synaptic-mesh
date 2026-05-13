@@ -154,6 +154,8 @@ Target coverage:
 
 Boundary remains committed local fixtures only, already-redacted local canary metadata only, record-only local evidence, and no-effects. It must not read live traffic, follow untrusted symlinks for authority, start watchers/daemons, write memory/config, publish, approve, block, allow, authorize, delete, schedule retention, enforce, or feed reports automatically to agents.
 
+Executable gate: `test:passive-live-shadow-canary-source-boundary-expansion`.
+
 ## v0.3.0-alpha — advisory-only human-readable report
 
 First human-readable advisory report over passive canary evidence. Example report language may include:

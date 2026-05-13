@@ -141,6 +141,10 @@ const commands = [
     args: [resolve(packageRoot, 'tests/passive-live-shadow-canary-source-boundary-stress.mjs')],
   },
   {
+    id: 'passive-live-shadow-canary-source-boundary-expansion-tests',
+    args: [resolve(packageRoot, 'tests/passive-live-shadow-canary-source-boundary-expansion.mjs')],
+  },
+  {
     id: 'passive-live-shadow-canary-drift-scorecard-tests',
     args: [resolve(packageRoot, 'tests/passive-live-shadow-canary-drift-scorecard.mjs')],
   },
@@ -190,6 +194,7 @@ const realRedactedHandoffPack = readEvidenceJson('implementation/synaptic-mesh-s
 const realRedactedHandoffReplayGate = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/real-redacted-handoff-replay-gate.out.json');
 const realRedactedAdversarialCoverage = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/real-redacted-adversarial-coverage.out.json');
 const passiveCanarySourceBoundaryStress = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/passive-live-shadow-canary-source-boundary-stress.out.json');
+const passiveCanarySourceBoundaryExpansion = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/passive-live-shadow-canary-source-boundary-expansion.out.json');
 const passiveCanaryDriftScorecard = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/passive-live-shadow-canary-drift-scorecard.out.json');
 const passiveCanaryExpandedPack = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/passive-live-shadow-canary-expanded-pack.out.json');
 
@@ -361,6 +366,46 @@ if (passiveCanaryExpandedPack?.summary?.blockingImplemented !== false) unsafeAll
 if (passiveCanaryExpandedPack?.summary?.allowingImplemented !== false) unsafeAllowSignals.push('passive-canary-expanded-pack-allowing');
 if (passiveCanaryExpandedPack?.summary?.authorizationImplemented !== false) unsafeAllowSignals.push('passive-canary-expanded-pack-authorization');
 if (passiveCanaryExpandedPack?.summary?.enforcementImplemented !== false) unsafeAllowSignals.push('passive-canary-expanded-pack-enforcement');
+if (passiveCanarySourceBoundaryExpansion?.summary?.verdict !== 'pass') unsafeAllowSignals.push('passive-canary-source-boundary-expansion');
+if (Number(passiveCanarySourceBoundaryExpansion?.summary?.coveredTargetCoverageCount ?? 0) !== 11) unsafeAllowSignals.push('passive-canary-source-boundary-expansion-coverage');
+if (Number(passiveCanarySourceBoundaryExpansion?.summary?.unexpectedAccepts ?? 1) !== 0) unsafeAllowSignals.push('passive-canary-source-boundary-expansion-unexpected-accepts');
+if (Number(passiveCanarySourceBoundaryExpansion?.summary?.unexpectedRejects ?? 1) !== 0) unsafeAllowSignals.push('passive-canary-source-boundary-expansion-unexpected-rejects');
+if (Number(passiveCanarySourceBoundaryExpansion?.summary?.passCapabilityTrueCount ?? 1) !== 0) unsafeAllowSignals.push('passive-canary-source-boundary-expansion-pass-capability-true');
+for (const [field, label] of [
+  ['digestBindingMismatchRejects', 'digest binding mismatch'],
+  ['futureMtimeRejects', 'future mtime'],
+  ['invalidMtimeRejects', 'invalid mtime'],
+  ['sourcePathTraversalRejects', 'source traversal'],
+  ['sourceSymlinkRejects', 'source symlink'],
+  ['sourceUnicodeControlRejects', 'source unicode control'],
+  ['sourceLaneAliasRejects', 'source lane alias'],
+  ['duplicateSourceArtifactIdRejects', 'duplicate source artifact id'],
+  ['wrongLaneRejects', 'wrong lane'],
+  ['outputSymlinkRejects', 'output symlink'],
+  ['outputContainmentRejects', 'output containment'],
+]) {
+  if (Number(passiveCanarySourceBoundaryExpansion?.summary?.[field] ?? 0) < 1) unsafeAllowSignals.push(`passive-canary-source-boundary-expansion-missing-${label}`);
+}
+if (passiveCanarySourceBoundaryExpansion?.summary?.manual !== true) unsafeAllowSignals.push('passive-canary-source-boundary-expansion-not-manual');
+if (passiveCanarySourceBoundaryExpansion?.summary?.local !== true) unsafeAllowSignals.push('passive-canary-source-boundary-expansion-not-local');
+if (passiveCanarySourceBoundaryExpansion?.summary?.optInRequired !== true) unsafeAllowSignals.push('passive-canary-source-boundary-expansion-not-opt-in');
+if (passiveCanarySourceBoundaryExpansion?.summary?.alreadyRedactedOnly !== true) unsafeAllowSignals.push('passive-canary-source-boundary-expansion-not-redacted');
+if (passiveCanarySourceBoundaryExpansion?.summary?.recordOnly !== true) unsafeAllowSignals.push('passive-canary-source-boundary-expansion-not-record-only');
+if (passiveCanarySourceBoundaryExpansion?.summary?.noEffects !== true) unsafeAllowSignals.push('passive-canary-source-boundary-expansion-effects');
+if (passiveCanarySourceBoundaryExpansion?.summary?.readsLiveTraffic !== false) unsafeAllowSignals.push('passive-canary-source-boundary-expansion-live-traffic');
+if (passiveCanarySourceBoundaryExpansion?.summary?.followsSourceSymlinkForAuthority !== false) unsafeAllowSignals.push('passive-canary-source-boundary-expansion-source-symlink-follow');
+if (passiveCanarySourceBoundaryExpansion?.summary?.followsOutputSymlinkForAuthority !== false) unsafeAllowSignals.push('passive-canary-source-boundary-expansion-output-symlink-follow');
+if (passiveCanarySourceBoundaryExpansion?.summary?.automaticAgentConsumptionImplemented !== false) unsafeAllowSignals.push('passive-canary-source-boundary-expansion-automatic-agent-consumption');
+if (passiveCanarySourceBoundaryExpansion?.summary?.runtimeIntegrated !== false) unsafeAllowSignals.push('passive-canary-source-boundary-expansion-runtime');
+if (passiveCanarySourceBoundaryExpansion?.summary?.toolExecutionImplemented !== false) unsafeAllowSignals.push('passive-canary-source-boundary-expansion-tools');
+if (passiveCanarySourceBoundaryExpansion?.summary?.memoryWriteImplemented !== false) unsafeAllowSignals.push('passive-canary-source-boundary-expansion-memory');
+if (passiveCanarySourceBoundaryExpansion?.summary?.configWriteImplemented !== false) unsafeAllowSignals.push('passive-canary-source-boundary-expansion-config');
+if (passiveCanarySourceBoundaryExpansion?.summary?.externalPublicationImplemented !== false) unsafeAllowSignals.push('passive-canary-source-boundary-expansion-publication');
+if (passiveCanarySourceBoundaryExpansion?.summary?.approvalPathImplemented !== false) unsafeAllowSignals.push('passive-canary-source-boundary-expansion-approval');
+if (passiveCanarySourceBoundaryExpansion?.summary?.blockingImplemented !== false) unsafeAllowSignals.push('passive-canary-source-boundary-expansion-blocking');
+if (passiveCanarySourceBoundaryExpansion?.summary?.allowingImplemented !== false) unsafeAllowSignals.push('passive-canary-source-boundary-expansion-allowing');
+if (passiveCanarySourceBoundaryExpansion?.summary?.authorizationImplemented !== false) unsafeAllowSignals.push('passive-canary-source-boundary-expansion-authorization');
+if (passiveCanarySourceBoundaryExpansion?.summary?.enforcementImplemented !== false) unsafeAllowSignals.push('passive-canary-source-boundary-expansion-enforcement');
 
 const summary = {
   artifact: 'T-synaptic-mesh-review-local-runner-v0',
@@ -506,6 +551,15 @@ const summary = {
   passiveCanaryExpandedPackAcceptedForbiddenEffectsDetectedCount: passiveCanaryExpandedPack?.summary?.acceptedForbiddenEffectsDetectedCount ?? null,
   passiveCanaryExpandedPackPassCapabilityTrueCount: passiveCanaryExpandedPack?.summary?.passCapabilityTrueCount ?? null,
   passiveCanaryExpandedPackAutomaticAgentConsumptionImplemented: passiveCanaryExpandedPack?.summary?.automaticAgentConsumptionImplemented ?? null,
+  passiveCanarySourceBoundaryExpansionVerdict: passiveCanarySourceBoundaryExpansion?.summary?.verdict ?? null,
+  passiveCanarySourceBoundaryExpansionRejectCases: passiveCanarySourceBoundaryExpansion?.summary?.rejectCases ?? null,
+  passiveCanarySourceBoundaryExpansionCoveredTargetCoverageCount: passiveCanarySourceBoundaryExpansion?.summary?.coveredTargetCoverageCount ?? null,
+  passiveCanarySourceBoundaryExpansionDigestBindingMismatchRejects: passiveCanarySourceBoundaryExpansion?.summary?.digestBindingMismatchRejects ?? null,
+  passiveCanarySourceBoundaryExpansionFutureMtimeRejects: passiveCanarySourceBoundaryExpansion?.summary?.futureMtimeRejects ?? null,
+  passiveCanarySourceBoundaryExpansionSourcePathTraversalRejects: passiveCanarySourceBoundaryExpansion?.summary?.sourcePathTraversalRejects ?? null,
+  passiveCanarySourceBoundaryExpansionSourceSymlinkRejects: passiveCanarySourceBoundaryExpansion?.summary?.sourceSymlinkRejects ?? null,
+  passiveCanarySourceBoundaryExpansionSourceUnicodeControlRejects: passiveCanarySourceBoundaryExpansion?.summary?.sourceUnicodeControlRejects ?? null,
+  passiveCanarySourceBoundaryExpansionAutomaticAgentConsumptionImplemented: passiveCanarySourceBoundaryExpansion?.summary?.automaticAgentConsumptionImplemented ?? null,
   unsafeAllowSignals,
   sourceFixtureMutation: false,
 };

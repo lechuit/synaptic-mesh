@@ -3,8 +3,8 @@
     "artifact": "T-synaptic-mesh-review-local-runner-v0",
     "timestamp": "2026-05-07T15:05:00.000Z",
     "verdict": "pass",
-    "commands": 37,
-    "passCommands": 37,
+    "commands": 38,
+    "passCommands": 38,
     "failedCommands": [],
     "fixtureCount": 15,
     "fixtureParityVerdict": "pass",
@@ -153,6 +153,15 @@
     "passiveCanaryExpandedPackAcceptedForbiddenEffectsDetectedCount": 0,
     "passiveCanaryExpandedPackPassCapabilityTrueCount": 0,
     "passiveCanaryExpandedPackAutomaticAgentConsumptionImplemented": false,
+    "passiveCanarySourceBoundaryExpansionVerdict": "pass",
+    "passiveCanarySourceBoundaryExpansionRejectCases": 12,
+    "passiveCanarySourceBoundaryExpansionCoveredTargetCoverageCount": 11,
+    "passiveCanarySourceBoundaryExpansionDigestBindingMismatchRejects": 1,
+    "passiveCanarySourceBoundaryExpansionFutureMtimeRejects": 1,
+    "passiveCanarySourceBoundaryExpansionSourcePathTraversalRejects": 1,
+    "passiveCanarySourceBoundaryExpansionSourceSymlinkRejects": 1,
+    "passiveCanarySourceBoundaryExpansionSourceUnicodeControlRejects": 1,
+    "passiveCanarySourceBoundaryExpansionAutomaticAgentConsumptionImplemented": false,
     "unsafeAllowSignals": [],
     "sourceFixtureMutation": false
   },
@@ -384,6 +393,13 @@
     {
       "id": "passive-live-shadow-canary-source-boundary-stress-tests",
       "command": "node implementation/synaptic-mesh-shadow-v0/tests/passive-live-shadow-canary-source-boundary-stress.mjs",
+      "status": 0,
+      "pass": true,
+      "stderr": ""
+    },
+    {
+      "id": "passive-live-shadow-canary-source-boundary-expansion-tests",
+      "command": "node implementation/synaptic-mesh-shadow-v0/tests/passive-live-shadow-canary-source-boundary-expansion.mjs",
       "status": 0,
       "pass": true,
       "stderr": ""
