@@ -39,6 +39,7 @@ const releaseGateScripts = [
   'test:passive-live-shadow-canary-advisory-unicode-bidi-guard',
   'test:passive-live-shadow-canary-advisory-report-failure-catalog',
   'test:passive-live-shadow-canary-advisory-report-reproducibility',
+  'test:passive-live-shadow-canary-advisory-reviewer-runbook',
   'test:live-shadow-synthetic-replay',
   'test:live-shadow-drift-scorecard',
   'test:manual-observation-bundle-schema',
@@ -202,11 +203,13 @@ assert(
 assert(packageJson.private === true, 'shadow package must remain private for release checks');
 assert(packageJson.version === '0.0.0-local', 'shadow package version must remain 0.0.0-local unless publication scope changes');
 assert(packageJson.scripts?.['release:check'] === 'node ../../tools/release-check.mjs', 'package.json must wire npm run release:check to ../../tools/release-check.mjs');
-if (manifestReleaseTag === 'v0.3.3') {
-  assertIncludes(manifest.reproducibility, 'advisory_report_reproducibility', 'MANIFEST.json reproducibility');
-  assertIncludes(manifest.reproducibility, 'runs_2', 'MANIFEST.json reproducibility');
-  assertIncludes(manifest.reproducibility, 'mismatches_0', 'MANIFEST.json reproducibility');
-  assertIncludes(manifest.reproducibility, 'expected_rejects_6', 'MANIFEST.json reproducibility');
+if (manifestReleaseTag === 'v0.3.4') {
+  assertIncludes(manifest.reproducibility, 'advisory_reviewer_runbook', 'MANIFEST.json reproducibility');
+  assertIncludes(manifest.reproducibility, 'required_phrases_10', 'MANIFEST.json reproducibility');
+  assertIncludes(manifest.reproducibility, 'sections_6', 'MANIFEST.json reproducibility');
+  assertIncludes(manifest.reproducibility, 'missing_0', 'MANIFEST.json reproducibility');
+  assertIncludes(manifest.reproducibility, 'forbidden_0', 'MANIFEST.json reproducibility');
+  assertIncludes(manifest.reproducibility, 'commands_6', 'MANIFEST.json reproducibility');
   assertNotIncludes(manifest.reproducibility, 'expected_rejects_10', 'MANIFEST.json reproducibility');
   assertNotIncludes(manifest.reproducibility, 'expected_rejects_12', 'MANIFEST.json reproducibility');
 }
@@ -224,6 +227,8 @@ for (const staleVersion of staleVersions) {
 }
 
 for (const requiredManifestPath of [
+  'docs/status-v0.3.4.md',
+  'docs/advisory-report-reviewer-runbook.md',
   'docs/status-v0.3.3.md',
   'docs/status-v0.3.2.md',
   'docs/status-v0.3.1.md',
@@ -248,6 +253,9 @@ for (const requiredManifestPath of [
   'implementation/synaptic-mesh-shadow-v0/tests/passive-live-shadow-canary-advisory-report-reproducibility.mjs',
   'implementation/synaptic-mesh-shadow-v0/fixtures/passive-live-shadow-canary-advisory-report-reproducibility.json',
   'implementation/synaptic-mesh-shadow-v0/evidence/passive-live-shadow-canary-advisory-report-reproducibility.out.json',
+  'implementation/synaptic-mesh-shadow-v0/tests/passive-live-shadow-canary-advisory-reviewer-runbook.mjs',
+  'implementation/synaptic-mesh-shadow-v0/fixtures/passive-live-shadow-canary-advisory-reviewer-runbook.json',
+  'implementation/synaptic-mesh-shadow-v0/evidence/passive-live-shadow-canary-advisory-reviewer-runbook.out.json',
 ]) {
   assert(manifestFilePaths.has(requiredManifestPath), `MANIFEST.files.json must include ${requiredManifestPath}`);
 }
@@ -328,6 +336,7 @@ const passiveCanaryAdvisoryReportText = readFileSync(path.join(packageRoot, 'evi
 const passiveCanaryAdvisoryUnicodeBidiGuard = readJson(path.join(packageRoot, 'evidence/passive-live-shadow-canary-advisory-unicode-bidi-guard.out.json'));
 const passiveCanaryAdvisoryReportFailureCatalog = readJson(path.join(packageRoot, 'evidence/passive-live-shadow-canary-advisory-report-failure-catalog.out.json'));
 const passiveCanaryAdvisoryReportReproducibility = readJson(path.join(packageRoot, 'evidence/passive-live-shadow-canary-advisory-report-reproducibility.out.json'));
+const passiveCanaryAdvisoryReviewerRunbook = readJson(path.join(packageRoot, 'evidence/passive-live-shadow-canary-advisory-reviewer-runbook.out.json'));
 const liveInputSourceBoundaryContracts = readJson(path.join(packageRoot, 'evidence/live-input-source-boundary-contracts.out.json'));
 assert(liveInputSourceBoundaryContracts?.summary?.verdict === 'pass', 'live input/source boundary contracts verdict must be pass');
 assert(liveInputSourceBoundaryContracts?.summary?.passCases === 2, 'live input/source boundary contracts must keep 2 positive controls');
@@ -661,6 +670,43 @@ assert(passiveCanaryAdvisoryReportReproducibility?.summary?.allowingImplemented 
 assert(passiveCanaryAdvisoryReportReproducibility?.summary?.authorizationImplemented === false, 'passive canary advisory report reproducibility must not authorize');
 assert(passiveCanaryAdvisoryReportReproducibility?.summary?.enforcementImplemented === false, 'passive canary advisory report reproducibility must not enforce');
 assert(passiveCanaryAdvisoryReportReproducibility?.summary?.automaticAgentConsumptionImplemented === false, 'passive canary advisory report reproducibility must not be consumed automatically by agents');
+
+assert(passiveCanaryAdvisoryReviewerRunbook?.summary?.advisoryReviewerRunbook === 'pass', 'passive canary advisory reviewer runbook verdict must be pass');
+assert(passiveCanaryAdvisoryReviewerRunbook?.summary?.releaseLayer === 'v0.3.4', 'passive canary advisory reviewer runbook release layer must remain v0.3.4 baseline evidence');
+assert(passiveCanaryAdvisoryReviewerRunbook?.summary?.dependsOn === 'v0.3.3-advisory-report-reproducibility', 'passive canary advisory reviewer runbook must depend on v0.3.3 reproducibility');
+assert(passiveCanaryAdvisoryReviewerRunbook?.summary?.mode === 'manual_local_advisory_reviewer_runbook_record_only', 'passive canary advisory reviewer runbook mode must remain record-only');
+assert(passiveCanaryAdvisoryReviewerRunbook?.summary?.requiredPhrases === 10, 'passive canary advisory reviewer runbook must keep 10 required phrases');
+assert(passiveCanaryAdvisoryReviewerRunbook?.summary?.missingRequiredPhrases === 0, 'passive canary advisory reviewer runbook must have zero missing required phrases');
+assert(passiveCanaryAdvisoryReviewerRunbook?.summary?.requiredSections === 6, 'passive canary advisory reviewer runbook must keep 6 required sections');
+assert(passiveCanaryAdvisoryReviewerRunbook?.summary?.missingRequiredSections === 0, 'passive canary advisory reviewer runbook must have zero missing sections');
+assert(passiveCanaryAdvisoryReviewerRunbook?.summary?.forbiddenPhraseFindings === 0, 'passive canary advisory reviewer runbook must have zero forbidden phrase findings');
+assert(passiveCanaryAdvisoryReviewerRunbook?.summary?.requiredCommands === 6, 'passive canary advisory reviewer runbook must keep 6 required commands');
+assert(passiveCanaryAdvisoryReviewerRunbook?.summary?.missingCommands === 0, 'passive canary advisory reviewer runbook must have zero missing commands');
+assert(passiveCanaryAdvisoryReviewerRunbook?.summary?.failureCatalogExpectedRejects === 12, 'passive canary advisory reviewer runbook must preserve v0.3.2 failure catalog count');
+assert(passiveCanaryAdvisoryReviewerRunbook?.summary?.failureCatalogUnexpectedAccepts === 0, 'passive canary advisory reviewer runbook must preserve zero failure catalog unexpected accepts');
+assert(passiveCanaryAdvisoryReviewerRunbook?.summary?.reproducibilityRuns === 2, 'passive canary advisory reviewer runbook must preserve v0.3.3 run count');
+assert(passiveCanaryAdvisoryReviewerRunbook?.summary?.reproducibilityMismatches === 0, 'passive canary advisory reviewer runbook must preserve zero reproducibility mismatches');
+assert(passiveCanaryAdvisoryReviewerRunbook?.summary?.unicodeTextFindings === 0, 'passive canary advisory reviewer runbook must preserve zero unicode text findings');
+assert(passiveCanaryAdvisoryReviewerRunbook?.summary?.unicodeMachineReadableFindings === 0, 'passive canary advisory reviewer runbook must preserve zero unicode machine-readable findings');
+assert(passiveCanaryAdvisoryReviewerRunbook?.summary?.machineReadablePolicyDecision === false, 'passive canary advisory reviewer runbook must not become machine-readable policy');
+assert(passiveCanaryAdvisoryReviewerRunbook?.summary?.consumedByAgent === false, 'passive canary advisory reviewer runbook must not be agent-consumed');
+assert(passiveCanaryAdvisoryReviewerRunbook?.summary?.authoritative === false, 'passive canary advisory reviewer runbook must not be authoritative');
+assert(passiveCanaryAdvisoryReviewerRunbook?.summary?.mayApprove === false, 'passive canary advisory reviewer runbook must not approve');
+assert(passiveCanaryAdvisoryReviewerRunbook?.summary?.mayBlock === false, 'passive canary advisory reviewer runbook must not block');
+assert(passiveCanaryAdvisoryReviewerRunbook?.summary?.mayAllow === false, 'passive canary advisory reviewer runbook must not allow');
+assert(passiveCanaryAdvisoryReviewerRunbook?.summary?.mayAuthorize === false, 'passive canary advisory reviewer runbook must not authorize');
+assert(passiveCanaryAdvisoryReviewerRunbook?.summary?.mayEnforce === false, 'passive canary advisory reviewer runbook must not enforce');
+assert(passiveCanaryAdvisoryReviewerRunbook?.summary?.runtimeIntegrated === false, 'passive canary advisory reviewer runbook must not integrate runtime');
+assert(passiveCanaryAdvisoryReviewerRunbook?.summary?.toolExecutionImplemented === false, 'passive canary advisory reviewer runbook must not execute tools');
+assert(passiveCanaryAdvisoryReviewerRunbook?.summary?.memoryWriteImplemented === false, 'passive canary advisory reviewer runbook must not write memory');
+assert(passiveCanaryAdvisoryReviewerRunbook?.summary?.configWriteImplemented === false, 'passive canary advisory reviewer runbook must not write config');
+assert(passiveCanaryAdvisoryReviewerRunbook?.summary?.externalPublicationImplemented === false, 'passive canary advisory reviewer runbook must not publish externally');
+assert(passiveCanaryAdvisoryReviewerRunbook?.summary?.approvalPathImplemented === false, 'passive canary advisory reviewer runbook must not enter approval path');
+assert(passiveCanaryAdvisoryReviewerRunbook?.summary?.blockingImplemented === false, 'passive canary advisory reviewer runbook must not block');
+assert(passiveCanaryAdvisoryReviewerRunbook?.summary?.allowingImplemented === false, 'passive canary advisory reviewer runbook must not allow');
+assert(passiveCanaryAdvisoryReviewerRunbook?.summary?.authorizationImplemented === false, 'passive canary advisory reviewer runbook must not authorize');
+assert(passiveCanaryAdvisoryReviewerRunbook?.summary?.enforcementImplemented === false, 'passive canary advisory reviewer runbook must not enforce');
+assert(passiveCanaryAdvisoryReviewerRunbook?.summary?.automaticAgentConsumptionImplemented === false, 'passive canary advisory reviewer runbook must not be consumed automatically by agents');
 
 const liveShadowSyntheticReplay = readJson(path.join(packageRoot, 'evidence/live-shadow-synthetic-replay.out.json'));
 assert(liveShadowSyntheticReplay?.summary?.verdict === 'pass', 'live-shadow synthetic replay verdict must be pass');

@@ -3,8 +3,8 @@
     "artifact": "T-synaptic-mesh-review-local-runner-v0",
     "timestamp": "2026-05-07T15:05:00.000Z",
     "verdict": "pass",
-    "commands": 42,
-    "passCommands": 42,
+    "commands": 43,
+    "passCommands": 43,
     "failedCommands": [],
     "fixtureCount": 15,
     "fixtureParityVerdict": "pass",
@@ -187,6 +187,11 @@
     "passiveCanaryAdvisoryReportReproducibilityMismatches": 0,
     "passiveCanaryAdvisoryReportReproducibilityExpectedRejects": 6,
     "passiveCanaryAdvisoryReportReproducibilityUnexpectedAccepts": 0,
+    "passiveCanaryAdvisoryReviewerRunbookVerdict": "pass",
+    "passiveCanaryAdvisoryReviewerRunbookMissingRequiredPhrases": 0,
+    "passiveCanaryAdvisoryReviewerRunbookMissingRequiredSections": 0,
+    "passiveCanaryAdvisoryReviewerRunbookForbiddenPhraseFindings": 0,
+    "passiveCanaryAdvisoryReviewerRunbookMissingCommands": 0,
     "unsafeAllowSignals": [],
     "sourceFixtureMutation": false
   },
@@ -467,6 +472,13 @@
     {
       "id": "passive-live-shadow-canary-advisory-report-reproducibility-tests",
       "command": "node implementation/synaptic-mesh-shadow-v0/tests/passive-live-shadow-canary-advisory-report-reproducibility.mjs",
+      "status": 0,
+      "pass": true,
+      "stderr": ""
+    },
+    {
+      "id": "passive-live-shadow-canary-advisory-reviewer-runbook-tests",
+      "command": "node implementation/synaptic-mesh-shadow-v0/tests/passive-live-shadow-canary-advisory-reviewer-runbook.mjs",
       "status": 0,
       "pass": true,
       "stderr": ""

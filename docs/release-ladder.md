@@ -245,3 +245,22 @@ Expected result: 2 runs, zero normalized-output mismatches, 6 expected rejects, 
 Boundary remains local deterministic evidence checking only. The reproducibility gate is not runtime protection, not authority, not agent-consumed policy, and not enforcement.
 
 Executable gate: `test:passive-live-shadow-canary-advisory-report-reproducibility`.
+
+## v0.3.4 — advisory reviewer runbook
+
+Add a concise human-review runbook for advisory report evidence.
+
+Target checks:
+
+- required non-authority phrases including `ADVISORY ONLY` and `Advisory no es authority`;
+- required sections for purpose, commands, checklist, stop conditions, wording, and boundary;
+- local command checklist for advisory report, Unicode/bidi guard, failure catalog, reproducibility, `review:local`, and release check;
+- stop conditions for policy/approval/block/allow/authorization/enforcement/tool/memory/config/publication drift;
+- public wording guidance to say “two independent local reviews” when reviews are local/subagent-based;
+- forbidden authority phrases absent from the runbook.
+
+Expected result: required phrases 10/10, required sections 6/6, required commands 6/6, zero forbidden phrase findings, and no machine-policy, agent-consumed, authoritative, block, or allow flags.
+
+Boundary remains human-readable local review guidance only. The runbook is not runtime protection, not authority, not agent-consumed policy, and not enforcement.
+
+Executable gate: `test:passive-live-shadow-canary-advisory-reviewer-runbook`.
