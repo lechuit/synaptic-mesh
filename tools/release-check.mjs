@@ -35,6 +35,7 @@ const releaseGateScripts = [
   'test:passive-live-shadow-canary-source-boundary-expansion',
   'test:passive-live-shadow-canary-drift-scorecard',
   'test:passive-live-shadow-canary-expanded-pack',
+  'test:passive-live-shadow-canary-advisory-report',
   'test:live-shadow-synthetic-replay',
   'test:live-shadow-drift-scorecard',
   'test:manual-observation-bundle-schema',
@@ -212,6 +213,7 @@ for (const staleVersion of staleVersions) {
 }
 
 for (const requiredManifestPath of [
+  'docs/status-v0.3.0-alpha.md',
   'docs/status-v0.2.6.md',
   'docs/status-v0.2.5.md',
   'implementation/synaptic-mesh-shadow-v0/tests/passive-live-shadow-canary-expanded-pack.mjs',
@@ -220,6 +222,9 @@ for (const requiredManifestPath of [
   'implementation/synaptic-mesh-shadow-v0/tests/passive-live-shadow-canary-source-boundary-expansion.mjs',
   'implementation/synaptic-mesh-shadow-v0/fixtures/passive-live-shadow-canary-source-boundary-expansion.json',
   'implementation/synaptic-mesh-shadow-v0/evidence/passive-live-shadow-canary-source-boundary-expansion.out.json',
+  'implementation/synaptic-mesh-shadow-v0/tests/passive-live-shadow-canary-advisory-report.mjs',
+  'implementation/synaptic-mesh-shadow-v0/evidence/passive-live-shadow-canary-advisory-report.out.json',
+  'implementation/synaptic-mesh-shadow-v0/evidence/passive-live-shadow-canary-advisory-report.out.md',
 ]) {
   assert(manifestFilePaths.has(requiredManifestPath), `MANIFEST.files.json must include ${requiredManifestPath}`);
 }
@@ -295,6 +300,8 @@ const passiveCanarySourceBoundaryStress = readJson(path.join(packageRoot, 'evide
 const passiveCanarySourceBoundaryExpansion = readJson(path.join(packageRoot, 'evidence/passive-live-shadow-canary-source-boundary-expansion.out.json'));
 const passiveCanaryDriftScorecard = readJson(path.join(packageRoot, 'evidence/passive-live-shadow-canary-drift-scorecard.out.json'));
 const passiveCanaryExpandedPack = readJson(path.join(packageRoot, 'evidence/passive-live-shadow-canary-expanded-pack.out.json'));
+const passiveCanaryAdvisoryReport = readJson(path.join(packageRoot, 'evidence/passive-live-shadow-canary-advisory-report.out.json'));
+const passiveCanaryAdvisoryReportText = readFileSync(path.join(packageRoot, 'evidence/passive-live-shadow-canary-advisory-report.out.md'), 'utf8');
 const liveInputSourceBoundaryContracts = readJson(path.join(packageRoot, 'evidence/live-input-source-boundary-contracts.out.json'));
 assert(liveInputSourceBoundaryContracts?.summary?.verdict === 'pass', 'live input/source boundary contracts verdict must be pass');
 assert(liveInputSourceBoundaryContracts?.summary?.passCases === 2, 'live input/source boundary contracts must keep 2 positive controls');
@@ -392,7 +399,7 @@ assert(passiveCanarySourceBoundaryStress?.summary?.enforcementImplemented === fa
 assert(passiveCanarySourceBoundaryStress?.summary?.automaticAgentConsumptionImplemented === false, 'passive canary source-boundary stress must not be consumed automatically by agents');
 
 assert(passiveCanarySourceBoundaryExpansion?.summary?.verdict === 'pass', 'passive canary source-boundary expansion verdict must be pass');
-assert(passiveCanarySourceBoundaryExpansion?.summary?.releaseLayer === manifestReleaseTag, 'passive canary source-boundary expansion release layer must match release target');
+assert(passiveCanarySourceBoundaryExpansion?.summary?.releaseLayer === 'v0.2.6', 'passive canary source-boundary expansion release layer must remain v0.2.6 baseline evidence');
 assert(passiveCanarySourceBoundaryExpansion?.summary?.dependsOn === 'v0.2.5-expanded-passive-canary-pack', 'passive canary source-boundary expansion must depend on v0.2.5 expanded pack');
 assert(passiveCanarySourceBoundaryExpansion?.summary?.mode === 'manual_local_opt_in_passive_record_only_source_boundary_expansion', 'passive canary source-boundary expansion mode must remain record-only');
 assert(passiveCanarySourceBoundaryExpansion?.summary?.targetCoverageCount === 11, 'passive canary source-boundary expansion must track 11 target coverage labels');
@@ -511,6 +518,35 @@ assert(passiveCanaryExpandedPack?.summary?.blockingImplemented === false, 'passi
 assert(passiveCanaryExpandedPack?.summary?.allowingImplemented === false, 'passive canary expanded pack must not allow');
 assert(passiveCanaryExpandedPack?.summary?.authorizationImplemented === false, 'passive canary expanded pack must not authorize');
 assert(passiveCanaryExpandedPack?.summary?.enforcementImplemented === false, 'passive canary expanded pack must not enforce');
+
+assert(passiveCanaryAdvisoryReport?.summary?.verdict === 'pass', 'passive canary advisory report verdict must be pass');
+assert(passiveCanaryAdvisoryReport?.summary?.releaseLayer === manifestReleaseTag, 'passive canary advisory report release layer must match release target');
+assert(passiveCanaryAdvisoryReport?.summary?.dependsOn === 'v0.2.6-source-boundary-stress-expansion', 'passive canary advisory report must depend on v0.2.6 source-boundary expansion');
+assert(passiveCanaryAdvisoryReport?.summary?.mode === 'human_readable_advisory_only_non_authoritative_record_only', 'passive canary advisory report mode must remain advisory-only');
+assert(passiveCanaryAdvisoryReport?.summary?.sourceEvidenceCount === 4, 'passive canary advisory report must summarize 4 source evidence artifacts');
+assert(passiveCanaryAdvisoryReport?.summary?.reportBytes === Buffer.byteLength(passiveCanaryAdvisoryReportText), 'passive canary advisory report byte count must match markdown evidence');
+assert(passiveCanaryAdvisoryReport?.summary?.advisoryOnly === true, 'passive canary advisory report must be advisory-only');
+assert(passiveCanaryAdvisoryReport?.summary?.humanReadableOnly === true, 'passive canary advisory report must be human-readable only');
+assert(passiveCanaryAdvisoryReport?.summary?.nonAuthoritative === true, 'passive canary advisory report must be non-authoritative');
+assert(passiveCanaryAdvisoryReport?.summary?.machineReadablePolicyDecision === false, 'passive canary advisory report must not be a machine-readable policy decision');
+assert(passiveCanaryAdvisoryReport?.summary?.consumedByAgent === false, 'passive canary advisory report must not be consumed by agents');
+assert(passiveCanaryAdvisoryReport?.summary?.automaticAgentConsumptionImplemented === false, 'passive canary advisory report must not implement automatic agent consumption');
+assert(passiveCanaryAdvisoryReport?.summary?.runtimeIntegrated === false, 'passive canary advisory report must not integrate runtime');
+assert(passiveCanaryAdvisoryReport?.summary?.toolExecutionImplemented === false, 'passive canary advisory report must not execute tools');
+assert(passiveCanaryAdvisoryReport?.summary?.memoryWriteImplemented === false, 'passive canary advisory report must not write memory');
+assert(passiveCanaryAdvisoryReport?.summary?.configWriteImplemented === false, 'passive canary advisory report must not write config');
+assert(passiveCanaryAdvisoryReport?.summary?.externalPublicationImplemented === false, 'passive canary advisory report must not publish externally');
+assert(passiveCanaryAdvisoryReport?.summary?.approvalPathImplemented === false, 'passive canary advisory report must not enter approval path');
+assert(passiveCanaryAdvisoryReport?.summary?.blockingImplemented === false, 'passive canary advisory report must not block');
+assert(passiveCanaryAdvisoryReport?.summary?.allowingImplemented === false, 'passive canary advisory report must not allow');
+assert(passiveCanaryAdvisoryReport?.summary?.authorizationImplemented === false, 'passive canary advisory report must not authorize');
+assert(passiveCanaryAdvisoryReport?.summary?.enforcementImplemented === false, 'passive canary advisory report must not enforce');
+assertIncludes(passiveCanaryAdvisoryReportText, 'ADVISORY ONLY', 'passive canary advisory report');
+assertIncludes(passiveCanaryAdvisoryReportText, 'Advisory no es authority', 'passive canary advisory report');
+assertIncludes(passiveCanaryAdvisoryReportText, 'not automatically consumed by agents', 'passive canary advisory report');
+assertNotIncludes(passiveCanaryAdvisoryReportText, 'approved for execution', 'passive canary advisory report');
+assertNotIncludes(passiveCanaryAdvisoryReportText, 'permission granted', 'passive canary advisory report');
+assertNotIncludes(passiveCanaryAdvisoryReportText, 'automatic consumption enabled', 'passive canary advisory report');
 
 const liveShadowSyntheticReplay = readJson(path.join(packageRoot, 'evidence/live-shadow-synthetic-replay.out.json'));
 assert(liveShadowSyntheticReplay?.summary?.verdict === 'pass', 'live-shadow synthetic replay verdict must be pass');

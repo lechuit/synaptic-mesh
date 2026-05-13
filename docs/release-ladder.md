@@ -186,3 +186,5 @@ Boundary:
 - no automatic consumption by agents;
 - no approval path;
 - no block/allow/authorization/enforcement.
+
+Executable gate: `test:passive-live-shadow-canary-advisory-report`.
