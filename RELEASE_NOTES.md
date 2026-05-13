@@ -1,74 +1,63 @@
-# Release Notes — Synaptic Mesh v0.4.6
+# Release Notes — Synaptic Mesh v0.4.7
 
-Status: human review findings / go-no-go record. Manual, local, explicit/redacted input only, record-only, no effects. Not runtime-ready; not production/enforcement-ready.
+Status: first real adapter design note. Design-only, manual, local, explicit/redacted input only, record-only, no effects. Not runtime-ready; not production/enforcement-ready.
 
 ## Why this release
 
-After the read-only adapter boundary public review package, v0.4.6 records the human review findings and go/no-go decision for v0.4.5.
+After v0.4.6 closed human review of v0.4.5, v0.4.7 records the first possible real adapter design. It is deliberately the most boring adapter shape:
 
-The result is intentionally narrow:
+```text
+read-only local-file adapter
+input: one explicit already-redacted local file
+output: evidence record-only
+```
 
-- go for holding v0.4.x as public review-only evidence;
-- go for designing the first real adapter boundary;
-- no-go for real adapter implementation;
-- no-go for framework integration or runtime behavior without a separate explicit maintainer decision.
+This release authorizes design discussion only. It does not authorize implementation.
 
 ## Highlights since the previous release
 
-- Added `docs/read-only-adapter-human-review-findings-go-no-go-v0.4.6.md`.
-- Added `docs/status-v0.4.6.md`.
-- Added `implementation/synaptic-mesh-shadow-v0/tests/read-only-adapter-human-review-go-no-go.mjs`.
-- Added fixture/evidence for the v0.4.6 go/no-go record.
+- Added `docs/first-real-adapter-design-note-v0.4.7.md`.
+- Added `docs/status-v0.4.7.md`.
+- Added `implementation/synaptic-mesh-shadow-v0/tests/first-real-adapter-design-note.mjs`.
+- Added fixture/evidence for the v0.4.7 design note.
 - Wired the new gate into local `check` and `release:check` validation.
 
-## Expected v0.4.6 evidence
+## Expected v0.4.7 evidence
 
 ```json
 {
-  "adapterBoundaryHumanReview": "pass",
-  "humanReviewFindingsGoNoGo": "pass",
-  "releaseLayer": "v0.4.6",
-  "reviewedRelease": "v0.4.5",
-  "goForPublicReviewOnly": true,
-  "goToRealAdapterDesign": true,
-  "goToRealAdapterImplementation": false,
+  "firstRealAdapterDesignNote": "pass",
+  "releaseLayer": "v0.4.7",
+  "basedOnHumanReview": "v0.4.6",
+  "candidateAdapter": "read_only_local_file_adapter",
+  "designOnly": true,
+  "implementationAuthorized": false,
+  "goToHazardCatalog": true,
+  "goToV050AlphaImplementation": false,
   "requiresMaintainerDecisionForImplementation": true,
-  "openBlockingRisks": 0,
-  "realAdapterAuthorized": false,
-  "frameworkIntegrationAuthorized": false,
-  "liveTrafficAuthorized": false,
-  "toolExecution": false,
-  "memoryWrite": false,
-  "configWrite": false,
-  "externalPublicationByAdapter": false,
-  "approvalEmission": false,
-  "machineReadablePolicyDecision": false,
-  "agentConsumed": false,
-  "mayBlock": false,
-  "mayAllow": false,
-  "authorization": false,
-  "enforcement": false,
-  "independentLocalReviews": 2
+  "inputLimit": "one_explicit_already_redacted_local_file",
+  "outputLimit": "evidence_record_only"
 }
 ```
 
 ## Conservative release statement
 
-`v0.4.6` proves only that local human-review findings and go/no-go record checks pass against committed docs/evidence. It does not add v0.5.0-alpha implementation, a real adapter, MCP, LangGraph, GitHub bot, watcher, daemon, network calls, live traffic reads, raw input persistence, runtime integration, tool execution, memory/config writes, external publication by the adapter, publication automation, agent-instruction writes, automatic agent consumption, machine-readable policy decisions, approval paths, blocking, allowing, authorization, deletion, retention scheduler, or enforcement.
+`v0.4.7` proves only that the design note checks pass against committed docs/evidence. It does not add v0.5.0-alpha implementation, a real adapter, MCP, A2A, LangGraph, GitHub bot, watcher, daemon, directory scan, glob, directory traversal, symlink escape, URL input, network call, live traffic reads, raw input persistence, runtime integration, tool execution, memory/config writes, external publication, publication automation, agent-instruction writes, automatic agent consumption, machine-readable policy decisions, approval paths, blocking, allowing, authorization, deletion, retention scheduler, or enforcement.
 
 ## Validation snapshot
 
 Expected validation command:
 
 ```bash
-npm --prefix implementation/synaptic-mesh-shadow-v0 run release:check -- --target v0.4.6
+npm --prefix implementation/synaptic-mesh-shadow-v0 run release:check -- --target v0.4.7
 ```
 
 ## Operational non-release status
 
 - Not runtime/tooling integrated.
 - Not live-monitoring integrated.
-- Not a real adapter.
+- Not implemented.
 - Not production/enforcement/L2+ ready.
-- The go/no-go record remains review evidence, not an action source. Advisory no es authority.
-- Do not implement `v0.5.0-alpha` or any real adapter without explicit maintainer approval. Design-only work may proceed.
+- The design note remains review evidence, not an action source. Advisory no es authority.
+- Next allowed step: `v0.4.8 — adapter implementation hazard catalog`.
+- Do not implement `v0.5.0-alpha` or any real adapter without explicit maintainer approval.

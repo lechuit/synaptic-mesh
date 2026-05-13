@@ -43,6 +43,7 @@ const releaseGateScripts = [
   'test:passive-live-shadow-canary-advisory-public-review-package',
   'test:read-only-adapter-public-review-package',
   'test:read-only-adapter-human-review-go-no-go',
+  'test:first-real-adapter-design-note',
   'test:live-shadow-synthetic-replay',
   'test:live-shadow-drift-scorecard',
   'test:manual-observation-bundle-schema',
@@ -206,6 +207,26 @@ assert(
 assert(packageJson.private === true, 'shadow package must remain private for release checks');
 assert(packageJson.version === '0.0.0-local', 'shadow package version must remain 0.0.0-local unless publication scope changes');
 assert(packageJson.scripts?.['release:check'] === 'node ../../tools/release-check.mjs', 'package.json must wire npm run release:check to ../../tools/release-check.mjs');
+if (manifestReleaseTag === 'v0.4.7') {
+  assertIncludes(manifest.reproducibility, 'first_real_adapter_design_note', 'MANIFEST.json reproducibility');
+  assertIncludes(manifest.reproducibility, 'read_only_local_file_adapter', 'MANIFEST.json reproducibility');
+  assertIncludes(manifest.reproducibility, 'one_explicit_already_redacted_local_file', 'MANIFEST.json reproducibility');
+  assertIncludes(manifest.reproducibility, 'go_to_hazard_catalog_true', 'MANIFEST.json reproducibility');
+  assertIncludes(manifest.reproducibility, 'go_to_v0_5_alpha_implementation_false', 'MANIFEST.json reproducibility');
+  assertIncludes(manifest.runtimeBoundary, 'no_real_adapter_implementation', 'MANIFEST.json runtimeBoundary');
+  assertIncludes(manifest.runtimeBoundary, 'no_mcp', 'MANIFEST.json runtimeBoundary');
+  assertIncludes(manifest.runtimeBoundary, 'no_langgraph', 'MANIFEST.json runtimeBoundary');
+  assertIncludes(manifest.runtimeBoundary, 'no_github_bot', 'MANIFEST.json runtimeBoundary');
+  assertIncludes(manifest.runtimeBoundary, 'no_watcher', 'MANIFEST.json runtimeBoundary');
+  assertIncludes(manifest.runtimeBoundary, 'no_daemon', 'MANIFEST.json runtimeBoundary');
+  assertIncludes(manifest.runtimeBoundary, 'no_directory_scan', 'MANIFEST.json runtimeBoundary');
+  assertIncludes(manifest.runtimeBoundary, 'no_glob', 'MANIFEST.json runtimeBoundary');
+  assertIncludes(manifest.runtimeBoundary, 'no_directory_traversal', 'MANIFEST.json runtimeBoundary');
+  assertIncludes(manifest.runtimeBoundary, 'no_symlink_escape', 'MANIFEST.json runtimeBoundary');
+  assertIncludes(manifest.runtimeBoundary, 'no_url_input', 'MANIFEST.json runtimeBoundary');
+  assertIncludes(manifest.runtimeBoundary, 'no_network_call', 'MANIFEST.json runtimeBoundary');
+}
+
 if (manifestReleaseTag === 'v0.4.6') {
   assertIncludes(manifest.reproducibility, 'human_review_findings_go_no_go_record', 'MANIFEST.json reproducibility');
   assertIncludes(manifest.reproducibility, 'v0.4.6', 'MANIFEST.json reproducibility');
@@ -307,6 +328,11 @@ for (const requiredManifestPath of [
   'implementation/synaptic-mesh-shadow-v0/tests/read-only-adapter-human-review-go-no-go.mjs',
   'implementation/synaptic-mesh-shadow-v0/fixtures/read-only-adapter-human-review-go-no-go-v0.4.6.json',
   'implementation/synaptic-mesh-shadow-v0/evidence/read-only-adapter-human-review-go-no-go-v0.4.6.out.json',
+  'docs/status-v0.4.7.md',
+  'docs/first-real-adapter-design-note-v0.4.7.md',
+  'implementation/synaptic-mesh-shadow-v0/tests/first-real-adapter-design-note.mjs',
+  'implementation/synaptic-mesh-shadow-v0/fixtures/first-real-adapter-design-note-v0.4.7.json',
+  'implementation/synaptic-mesh-shadow-v0/evidence/first-real-adapter-design-note-v0.4.7.out.json',
 ]) {
   assert(manifestFilePaths.has(requiredManifestPath), `MANIFEST.files.json must include ${requiredManifestPath}`);
 }
@@ -1459,6 +1485,21 @@ assertOptionalCountMatches(
   'RELEASE_NOTES.md',
   'receiver adapter contracts',
 );
+
+const firstRealAdapterDesignNote = readJson(path.join(packageRoot, 'evidence/first-real-adapter-design-note-v0.4.7.out.json'));
+if (manifestReleaseTag === 'v0.4.7') {
+  assert(firstRealAdapterDesignNote?.summary?.firstRealAdapterDesignNote === 'pass', 'first real adapter design note verdict must be pass');
+  assert(firstRealAdapterDesignNote?.summary?.candidateAdapter === 'read_only_local_file_adapter', 'candidate adapter must be read-only local-file adapter');
+  assert(firstRealAdapterDesignNote?.summary?.designOnly === true, 'first real adapter design note must remain design-only');
+  assert(firstRealAdapterDesignNote?.summary?.implementationAuthorized === false, 'first real adapter design note must not authorize implementation');
+  assert(firstRealAdapterDesignNote?.summary?.goToHazardCatalog === true, 'first real adapter design note must route next to hazard catalog');
+  assert(firstRealAdapterDesignNote?.summary?.goToV050AlphaImplementation === false, 'first real adapter design note must not route to v0.5.0 implementation');
+  assert(firstRealAdapterDesignNote?.summary?.inputLimit === 'one_explicit_already_redacted_local_file', 'input limit must be one explicit already-redacted local file');
+  assert(firstRealAdapterDesignNote?.summary?.outputLimit === 'evidence_record_only', 'output limit must be evidence record-only');
+  for (const forbidden of ['globAllowed','directoryInputAllowed','directoryTraversalAllowed','symlinkEscapeAllowed','urlInputAllowed','networkAllowed','watcherAllowed','daemonAllowed','frameworkSdkAllowed','mcpAllowed','langGraphAllowed','githubBotAllowed','toolExecution','memoryWrite','configWrite','externalPublication','agentInstruction','approvalEmission','mayBlock','mayAllow','authorization','enforcement']) {
+    assert(firstRealAdapterDesignNote?.summary?.[forbidden] === false, `first real adapter design note must keep ${forbidden} false`);
+  }
+}
 
 const humanReviewGoNoGo = readJson(path.join(packageRoot, 'evidence/read-only-adapter-human-review-go-no-go-v0.4.6.out.json'));
 if (manifestReleaseTag === 'v0.4.6') {

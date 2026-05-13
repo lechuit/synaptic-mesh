@@ -1,12 +1,12 @@
-# Synaptic Mesh v0.4.6
+# Synaptic Mesh v0.4.7
 
-Status: human review findings / go-no-go public review release `v0.4.6`; **manual, local, explicit/redacted input only, record-only, no effects**; **not runtime-ready**; **not production/enforcement-ready**.
+Status: first real adapter design note public review release `v0.4.7`; **manual, local, explicit/redacted input only, record-only, no effects**; **not runtime-ready**; **not production/enforcement-ready**.
 
 ## What this is
 
 Synaptic Mesh / Multi-Agent Memory Authority Protocol is a protocol proposal for preserving authority, source status, and boundary receipts through multi-agent memory transforms: retrieval, summary, compression, handoff, and review.
 
-Current v0.4.6 status is narrower than the long-term protocol goal: this repository ships a **human review findings / go-no-go record** for the read-only adapter boundary package. It records go for public review-only status and go for designing the first real adapter boundary, while keeping implementation, framework integration, and runtime behavior unauthorized without a separate explicit maintainer decision.
+Current v0.4.7 status is narrower than the long-term protocol goal: this repository ships a **first real adapter design note** only. It designs the boring read-only local-file adapter candidate while keeping implementation, framework integration, and runtime behavior unauthorized without a separate explicit maintainer decision.
 
 ## Quick local review
 
@@ -20,14 +20,14 @@ For adapter-shaped contract coverage:
 
 ```bash
 npm --prefix implementation/synaptic-mesh-shadow-v0 run test:receiver-adapters
-npm --prefix implementation/synaptic-mesh-shadow-v0 run test:read-only-adapter-human-review-go-no-go
+npm --prefix implementation/synaptic-mesh-shadow-v0 run test:first-real-adapter-design-note
 ```
 
 For exact published-release verification, check out the release tag first:
 
 ```bash
-git checkout v0.4.6
-npm --prefix implementation/synaptic-mesh-shadow-v0 run release:check -- --target v0.4.6
+git checkout v0.4.7
+npm --prefix implementation/synaptic-mesh-shadow-v0 run release:check -- --target v0.4.7
 ```
 
 For unreleased PRs, use the [release checklist](docs/release-checklist.md) with the next intended target.
@@ -46,8 +46,8 @@ For unreleased PRs, use the [release checklist](docs/release-checklist.md) with 
 
 ## Where to read next
 
-- [Full v0.4.6 status snapshot](docs/status-v0.4.6.md) — complete release snapshot, included gates, expected review results, and boundaries.
-- [Human review findings / go-no-go record](docs/read-only-adapter-human-review-findings-go-no-go-v0.4.6.md) — human review findings and go/no-go status for v0.4.x.
+- [Full v0.4.7 status snapshot](docs/status-v0.4.7.md) — complete release snapshot, included gates, expected review results, and boundaries.
+- [First real adapter design note](docs/first-real-adapter-design-note-v0.4.7.md) — design-only note for the read-only local-file adapter candidate.
 - [Read-only adapter reviewer runbook](docs/read-only-adapter-reviewer-runbook-v0.4.3.md) — human-facing boundary review checklist.
 - [Release ladder](docs/release-ladder.md) — roadmap from passive canary work toward advisory-only reporting, with explicit non-authority boundaries.
 - [Coverage matrix](docs/coverage-matrix.md) — covered, partial, pending, and out-of-scope claims.
