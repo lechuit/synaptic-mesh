@@ -145,6 +145,10 @@ const commands = [
     args: [resolve(packageRoot, 'tests/passive-live-shadow-canary-drift-scorecard.mjs')],
   },
   {
+    id: 'passive-live-shadow-canary-expanded-pack-tests',
+    args: [resolve(packageRoot, 'tests/passive-live-shadow-canary-expanded-pack.mjs')],
+  },
+  {
     id: 'fixture-parity-harness',
     args: [resolve(packageRoot, 'tests/fixture-parity.mjs')],
   },
@@ -187,6 +191,7 @@ const realRedactedHandoffReplayGate = readEvidenceJson('implementation/synaptic-
 const realRedactedAdversarialCoverage = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/real-redacted-adversarial-coverage.out.json');
 const passiveCanarySourceBoundaryStress = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/passive-live-shadow-canary-source-boundary-stress.out.json');
 const passiveCanaryDriftScorecard = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/passive-live-shadow-canary-drift-scorecard.out.json');
+const passiveCanaryExpandedPack = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/passive-live-shadow-canary-expanded-pack.out.json');
 
 const unsafeAllowSignals = [
   ...(fixtureParity?.summary?.nonRegressionUnsafeAllowFixtures ?? []),
@@ -329,6 +334,33 @@ if (passiveCanaryDriftScorecard?.summary?.blockingImplemented !== false) unsafeA
 if (passiveCanaryDriftScorecard?.summary?.allowingImplemented !== false) unsafeAllowSignals.push('passive-canary-drift-scorecard-allowing');
 if (passiveCanaryDriftScorecard?.summary?.authorizationImplemented !== false) unsafeAllowSignals.push('passive-canary-drift-scorecard-authorization');
 if (passiveCanaryDriftScorecard?.summary?.enforcementImplemented !== false) unsafeAllowSignals.push('passive-canary-drift-scorecard-enforcement');
+if (passiveCanaryExpandedPack?.summary?.verdict !== 'pass') unsafeAllowSignals.push('passive-canary-expanded-pack');
+if (Number(passiveCanaryExpandedPack?.summary?.totalCases ?? 0) < 10) unsafeAllowSignals.push('passive-canary-expanded-pack-too-small');
+if (Number(passiveCanaryExpandedPack?.summary?.totalCases ?? 99) > 20) unsafeAllowSignals.push('passive-canary-expanded-pack-too-large');
+if (Number(passiveCanaryExpandedPack?.summary?.coveredTargetCoverageCount ?? 0) !== 13) unsafeAllowSignals.push('passive-canary-expanded-pack-coverage');
+if (Number(passiveCanaryExpandedPack?.summary?.unexpectedAccepts ?? 1) !== 0) unsafeAllowSignals.push('passive-canary-expanded-pack-unexpected-accepts');
+if (Number(passiveCanaryExpandedPack?.summary?.unexpectedRejects ?? 1) !== 0) unsafeAllowSignals.push('passive-canary-expanded-pack-unexpected-rejects');
+if (Number(passiveCanaryExpandedPack?.summary?.acceptedForbiddenEffectsDetectedCount ?? 1) !== 0) unsafeAllowSignals.push('passive-canary-expanded-pack-accepted-forbidden-effects');
+if (Number(passiveCanaryExpandedPack?.summary?.passCapabilityTrueCount ?? 1) !== 0) unsafeAllowSignals.push('passive-canary-expanded-pack-pass-capability-true');
+if (passiveCanaryExpandedPack?.summary?.manual !== true) unsafeAllowSignals.push('passive-canary-expanded-pack-not-manual');
+if (passiveCanaryExpandedPack?.summary?.local !== true) unsafeAllowSignals.push('passive-canary-expanded-pack-not-local');
+if (passiveCanaryExpandedPack?.summary?.optInRequired !== true) unsafeAllowSignals.push('passive-canary-expanded-pack-not-opt-in');
+if (passiveCanaryExpandedPack?.summary?.alreadyRedactedOnly !== true) unsafeAllowSignals.push('passive-canary-expanded-pack-not-redacted');
+if (passiveCanaryExpandedPack?.summary?.recordOnly !== true) unsafeAllowSignals.push('passive-canary-expanded-pack-not-record-only');
+if (passiveCanaryExpandedPack?.summary?.noEffects !== true) unsafeAllowSignals.push('passive-canary-expanded-pack-effects');
+if (passiveCanaryExpandedPack?.summary?.scorecardAuthority !== false) unsafeAllowSignals.push('passive-canary-expanded-pack-authority');
+if (passiveCanaryExpandedPack?.summary?.consumedByAgent !== false) unsafeAllowSignals.push('passive-canary-expanded-pack-agent-consumption');
+if (passiveCanaryExpandedPack?.summary?.automaticAgentConsumptionImplemented !== false) unsafeAllowSignals.push('passive-canary-expanded-pack-automatic-agent-consumption');
+if (passiveCanaryExpandedPack?.summary?.runtimeIntegrated !== false) unsafeAllowSignals.push('passive-canary-expanded-pack-runtime');
+if (passiveCanaryExpandedPack?.summary?.toolExecutionImplemented !== false) unsafeAllowSignals.push('passive-canary-expanded-pack-tools');
+if (passiveCanaryExpandedPack?.summary?.memoryWriteImplemented !== false) unsafeAllowSignals.push('passive-canary-expanded-pack-memory');
+if (passiveCanaryExpandedPack?.summary?.configWriteImplemented !== false) unsafeAllowSignals.push('passive-canary-expanded-pack-config');
+if (passiveCanaryExpandedPack?.summary?.externalPublicationImplemented !== false) unsafeAllowSignals.push('passive-canary-expanded-pack-publication');
+if (passiveCanaryExpandedPack?.summary?.approvalPathImplemented !== false) unsafeAllowSignals.push('passive-canary-expanded-pack-approval');
+if (passiveCanaryExpandedPack?.summary?.blockingImplemented !== false) unsafeAllowSignals.push('passive-canary-expanded-pack-blocking');
+if (passiveCanaryExpandedPack?.summary?.allowingImplemented !== false) unsafeAllowSignals.push('passive-canary-expanded-pack-allowing');
+if (passiveCanaryExpandedPack?.summary?.authorizationImplemented !== false) unsafeAllowSignals.push('passive-canary-expanded-pack-authorization');
+if (passiveCanaryExpandedPack?.summary?.enforcementImplemented !== false) unsafeAllowSignals.push('passive-canary-expanded-pack-enforcement');
 
 const summary = {
   artifact: 'T-synaptic-mesh-review-local-runner-v0',
@@ -464,6 +496,16 @@ const summary = {
   passiveCanaryDriftScorecardCapabilityTrueCount: passiveCanaryDriftScorecard?.summary?.capabilityTrueCount ?? null,
   passiveCanaryDriftScorecardForbiddenEffects: passiveCanaryDriftScorecard?.summary?.forbiddenEffects ?? null,
   passiveCanaryDriftScorecardAutomaticAgentConsumptionImplemented: passiveCanaryDriftScorecard?.summary?.automaticAgentConsumptionImplemented ?? null,
+  passiveCanaryExpandedPackVerdict: passiveCanaryExpandedPack?.summary?.verdict ?? null,
+  passiveCanaryExpandedPackTotalCases: passiveCanaryExpandedPack?.summary?.totalCases ?? null,
+  passiveCanaryExpandedPackPassCases: passiveCanaryExpandedPack?.summary?.passCases ?? null,
+  passiveCanaryExpandedPackRejectCases: passiveCanaryExpandedPack?.summary?.rejectCases ?? null,
+  passiveCanaryExpandedPackCoveredTargetCoverageCount: passiveCanaryExpandedPack?.summary?.coveredTargetCoverageCount ?? null,
+  passiveCanaryExpandedPackUnexpectedAccepts: passiveCanaryExpandedPack?.summary?.unexpectedAccepts ?? null,
+  passiveCanaryExpandedPackUnexpectedRejects: passiveCanaryExpandedPack?.summary?.unexpectedRejects ?? null,
+  passiveCanaryExpandedPackAcceptedForbiddenEffectsDetectedCount: passiveCanaryExpandedPack?.summary?.acceptedForbiddenEffectsDetectedCount ?? null,
+  passiveCanaryExpandedPackPassCapabilityTrueCount: passiveCanaryExpandedPack?.summary?.passCapabilityTrueCount ?? null,
+  passiveCanaryExpandedPackAutomaticAgentConsumptionImplemented: passiveCanaryExpandedPack?.summary?.automaticAgentConsumptionImplemented ?? null,
   unsafeAllowSignals,
   sourceFixtureMutation: false,
 };
