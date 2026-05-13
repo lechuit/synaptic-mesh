@@ -1,0 +1,225 @@
+{
+  "artifact": "T-synaptic-mesh-read-only-local-file-adapter-negative-controls-v0.5.0-alpha-pr3",
+  "timestamp": "2026-05-13T23:25:00.000Z",
+  "summary": {
+    "readOnlyLocalFileAdapterNegativeControls": "pass",
+    "negativeCases": 17,
+    "unexpectedAccepts": 0,
+    "forbiddenEffects": 0,
+    "capabilityTrueCount": 0,
+    "sourceFilesRead": 0,
+    "networkPrimitiveFindings": 0,
+    "rawClassifierLeakFindings": 0
+  },
+  "rows": [
+    {
+      "id": "H01",
+      "hazard": "raw_input",
+      "accepted": false,
+      "sourceFileRead": false,
+      "capabilityTrueCount": 0,
+      "forbiddenEffects": 0,
+      "reasons": [
+        "sourceAlreadyRedacted must be true",
+        "rawContentPersisted must be false",
+        "redactionReviewRecord.rawContentPersisted must be false",
+        "redactionReviewRecord.sourceAlreadyRedacted must be true",
+        "rawInputAllowed must be false"
+      ]
+    },
+    {
+      "id": "H02",
+      "hazard": "url_input_and_network_attempt",
+      "accepted": false,
+      "sourceFileRead": false,
+      "capabilityTrueCount": 0,
+      "forbiddenEffects": 0,
+      "reasons": [
+        "sourceFilePath must not be URL/network input",
+        "networkAllowed must be false"
+      ]
+    },
+    {
+      "id": "H03",
+      "hazard": "directory_input",
+      "accepted": false,
+      "sourceFileRead": false,
+      "capabilityTrueCount": 0,
+      "forbiddenEffects": 0,
+      "reasons": [
+        "sourceFilePath must name one file, not a directory",
+        "directoryInputAllowed must be false"
+      ]
+    },
+    {
+      "id": "H04",
+      "hazard": "glob_input",
+      "accepted": false,
+      "sourceFileRead": false,
+      "capabilityTrueCount": 0,
+      "forbiddenEffects": 0,
+      "reasons": [
+        "sourceFilePath must not include glob characters",
+        "globAllowed must be false"
+      ]
+    },
+    {
+      "id": "H05",
+      "hazard": "path_traversal",
+      "accepted": false,
+      "sourceFileRead": false,
+      "capabilityTrueCount": 0,
+      "forbiddenEffects": 0,
+      "reasons": [
+        "sourceFilePath must not include parent traversal"
+      ]
+    },
+    {
+      "id": "H06",
+      "hazard": "symlink_escape",
+      "accepted": false,
+      "sourceFileRead": false,
+      "capabilityTrueCount": 0,
+      "forbiddenEffects": 0,
+      "reasons": [
+        "source path must be a regular file",
+        "source path must not be a symlink"
+      ]
+    },
+    {
+      "id": "H07",
+      "hazard": "output_outside_evidence",
+      "accepted": false,
+      "sourceFileRead": false,
+      "capabilityTrueCount": 0,
+      "forbiddenEffects": 0,
+      "reasons": [
+        "read-only local-file adapter evidence path is fixed"
+      ]
+    },
+    {
+      "id": "H08",
+      "hazard": "agent_consumed_output",
+      "accepted": false,
+      "sourceFileRead": false,
+      "capabilityTrueCount": 0,
+      "forbiddenEffects": 0,
+      "reasons": [
+        "additional input property agentConsumed is forbidden"
+      ]
+    },
+    {
+      "id": "H09",
+      "hazard": "machine_readable_policy",
+      "accepted": false,
+      "sourceFileRead": false,
+      "capabilityTrueCount": 0,
+      "forbiddenEffects": 0,
+      "reasons": [
+        "additional input property machineReadablePolicyDecision is forbidden"
+      ]
+    },
+    {
+      "id": "H10",
+      "hazard": "tool_execution",
+      "accepted": false,
+      "sourceFileRead": false,
+      "capabilityTrueCount": 0,
+      "forbiddenEffects": 0,
+      "reasons": [
+        "additional input property toolExecution is forbidden"
+      ]
+    },
+    {
+      "id": "H11",
+      "hazard": "memory_write",
+      "accepted": false,
+      "sourceFileRead": false,
+      "capabilityTrueCount": 0,
+      "forbiddenEffects": 0,
+      "reasons": [
+        "additional input property memoryWrite is forbidden"
+      ]
+    },
+    {
+      "id": "H12",
+      "hazard": "config_write",
+      "accepted": false,
+      "sourceFileRead": false,
+      "capabilityTrueCount": 0,
+      "forbiddenEffects": 0,
+      "reasons": [
+        "additional input property configWrite is forbidden"
+      ]
+    },
+    {
+      "id": "H13",
+      "hazard": "external_publication",
+      "accepted": false,
+      "sourceFileRead": false,
+      "capabilityTrueCount": 0,
+      "forbiddenEffects": 0,
+      "reasons": [
+        "additional input property externalPublication is forbidden"
+      ]
+    },
+    {
+      "id": "H14",
+      "hazard": "approval",
+      "accepted": false,
+      "sourceFileRead": false,
+      "capabilityTrueCount": 0,
+      "forbiddenEffects": 0,
+      "reasons": [
+        "additional input property approvalEmission is forbidden"
+      ]
+    },
+    {
+      "id": "H15",
+      "hazard": "block_allow",
+      "accepted": false,
+      "sourceFileRead": false,
+      "capabilityTrueCount": 0,
+      "forbiddenEffects": 0,
+      "reasons": [
+        "additional input property mayBlock is forbidden",
+        "additional input property mayAllow is forbidden"
+      ]
+    },
+    {
+      "id": "H16",
+      "hazard": "authorization",
+      "accepted": false,
+      "sourceFileRead": false,
+      "capabilityTrueCount": 0,
+      "forbiddenEffects": 0,
+      "reasons": [
+        "additional input property authorization is forbidden"
+      ]
+    },
+    {
+      "id": "H17",
+      "hazard": "enforcement",
+      "accepted": false,
+      "sourceFileRead": false,
+      "capabilityTrueCount": 0,
+      "forbiddenEffects": 0,
+      "reasons": [
+        "additional input property enforcement is forbidden"
+      ]
+    }
+  ],
+  "staticFindings": [],
+  "rawClassifierLeakFindings": [],
+  "boundary": [
+    "real_adapter_negative_controls",
+    "reject_raw_input",
+    "reject_url_or_network_input",
+    "reject_directory_glob_traversal_symlink_escape",
+    "reject_output_escape",
+    "reject_tools_memory_config_publication",
+    "reject_approval_block_allow_authorization_enforcement",
+    "reject_agent_consumed_and_machine_policy_output",
+    "record_only"
+  ]
+}
