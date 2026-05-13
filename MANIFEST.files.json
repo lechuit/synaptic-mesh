@@ -69,8 +69,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 3745,
-      "sha256": "a3e1bacd58dcff3b945bb5630402c4941e59b457ca5027454da83dffaca9895b"
+      "bytes": 3634,
+      "sha256": "fadc73c7ea718ab1dee66a9edfd03a599f6a830131bd21f46ffc8539ac1ea4c8"
     },
     {
       "path": "RELEASE_CANDIDATE.md",
@@ -79,8 +79,8 @@
     },
     {
       "path": "RELEASE_NOTES.md",
-      "bytes": 3026,
-      "sha256": "43b58f72b475991e837ab5b5254f238d5ced60528f1633a07f790548a00b1ee4"
+      "bytes": 2658,
+      "sha256": "407553cc0a612f15f719d7baaa83420a6c9928505679b981ccb156929b6780c6"
     },
     {
       "path": "design-notes/adapter-boundary-langgraph-mcp-v0.md",
@@ -171,6 +171,11 @@
       "path": "docs/deterministic-route-classifier.md",
       "bytes": 1621,
       "sha256": "f7f3abdf4eb11768de1e1550647d6f8bf785df70e0be1d0547f4b9d63ca12e3f"
+    },
+    {
+      "path": "docs/first-real-adapter-design-note-v0.4.7.md",
+      "bytes": 4822,
+      "sha256": "81933120ebc2db325c5b43e39b663a1ad718c04a2d2e497d491e9709401a7b2a"
     },
     {
       "path": "docs/live-shadow-drift-scorecard.md",
@@ -418,6 +423,11 @@
       "sha256": "237f33ee0cf757d6e60acab74c4d800e54565a0814f1187e0cf7c267328121ed"
     },
     {
+      "path": "docs/status-v0.4.7.md",
+      "bytes": 2153,
+      "sha256": "4e2a7699acc69e52f0b321a10c95aca3c7625f88a78495345d174dc246ade24d"
+    },
+    {
       "path": "docs/threat-model-v0.md",
       "bytes": 6211,
       "sha256": "b00847bd4db3b2878165eda2866257420e7da8bbbdecaaad8e6aaefce2256d38"
@@ -531,6 +541,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/decision-trace-schema.out.json",
       "bytes": 37466,
       "sha256": "dbbb2a4284c3f8c1a7d2f26936d006d394e618d84da8ea4d90a613b5732423bb"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/first-real-adapter-design-note-v0.4.7.out.json",
+      "bytes": 1930,
+      "sha256": "8d09f023fa2c212bfc961716121a83207d53a76ee5f68353a15512b179f9fedf"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/fixture-parity.out.json",
@@ -998,6 +1013,11 @@
       "sha256": "e17ddfe3f22357656dc5228dc5d2385649b618737cfa86cc62f5375c536906d6"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/fixtures/first-real-adapter-design-note-v0.4.7.json",
+      "bytes": 1067,
+      "sha256": "4f965b7fdddba0a10ba8680c66a28b4d6c208cd1779237707bd7e63a74118517"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/fixtures/generated-adversarial-routes.json",
       "bytes": 33019,
       "sha256": "554e588f256dc0fbe040d3df91690f8c1ba5337467576446079392529311f20f"
@@ -1319,8 +1339,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/package.json",
-      "bytes": 14445,
-      "sha256": "a22553c25d2e9d10018442750bfd81d6dbf974a69a3c1be3ad33c8947b962754"
+      "bytes": 14594,
+      "sha256": "57262408b074d1af3ea20eeb66ab5da5b889877f1171dd4012fe142e0befbab0"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/action-context-packet.mjs",
@@ -1456,6 +1476,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/tests/decision-trace-schema.mjs",
       "bytes": 10395,
       "sha256": "dbaf2effc1438a53de882df87e903dbf97e0b13d2225fed8b0b125c2811fca45"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/first-real-adapter-design-note.mjs",
+      "bytes": 4729,
+      "sha256": "9a0e14f6f67ec490fd4d146fc02e7ebeb19cd2257328d691bdccc844db169063"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/fixture-parity.mjs",
@@ -2264,8 +2289,8 @@
     },
     {
       "path": "tools/release-check.mjs",
-      "bytes": 178944,
-      "sha256": "a880344818637c1db7c64bdfb01f80d3b11db834f235fb6e449ec6157fb549dd"
+      "bytes": 183000,
+      "sha256": "30cd8d526921ae1a1475d032c9590988de11d8829dd595d95883e50e111eac81"
     },
     {
       "path": "tools/update-manifest.mjs",
