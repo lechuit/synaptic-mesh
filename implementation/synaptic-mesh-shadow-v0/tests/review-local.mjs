@@ -173,6 +173,10 @@ const commands = [
     args: [resolve(packageRoot, 'tests/passive-live-shadow-canary-advisory-reviewer-runbook.mjs')],
   },
   {
+    id: 'passive-live-shadow-canary-advisory-public-review-package-tests',
+    args: [resolve(packageRoot, 'tests/passive-live-shadow-canary-advisory-public-review-package.mjs')],
+  },
+  {
     id: 'fixture-parity-harness',
     args: [resolve(packageRoot, 'tests/fixture-parity.mjs')],
   },
@@ -222,6 +226,7 @@ const passiveCanaryAdvisoryUnicodeBidiGuard = readEvidenceJson('implementation/s
 const passiveCanaryAdvisoryReportFailureCatalog = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/passive-live-shadow-canary-advisory-report-failure-catalog.out.json');
 const passiveCanaryAdvisoryReportReproducibility = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/passive-live-shadow-canary-advisory-report-reproducibility.out.json');
 const passiveCanaryAdvisoryReviewerRunbook = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/passive-live-shadow-canary-advisory-reviewer-runbook.out.json');
+const passiveCanaryAdvisoryPublicReviewPackage = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/passive-live-shadow-canary-advisory-public-review-package.out.json');
 
 const unsafeAllowSignals = [
   ...(fixtureParity?.summary?.nonRegressionUnsafeAllowFixtures ?? []),
@@ -517,6 +522,23 @@ if (passiveCanaryAdvisoryReviewerRunbook?.summary?.blockingImplemented !== false
 if (passiveCanaryAdvisoryReviewerRunbook?.summary?.allowingImplemented !== false) unsafeAllowSignals.push('passive-canary-advisory-reviewer-runbook-allowing');
 if (passiveCanaryAdvisoryReviewerRunbook?.summary?.authorizationImplemented !== false) unsafeAllowSignals.push('passive-canary-advisory-reviewer-runbook-authorization');
 if (passiveCanaryAdvisoryReviewerRunbook?.summary?.enforcementImplemented !== false) unsafeAllowSignals.push('passive-canary-advisory-reviewer-runbook-enforcement');
+if (passiveCanaryAdvisoryPublicReviewPackage?.summary?.advisoryPublicReviewPackage !== 'pass') unsafeAllowSignals.push('passive-canary-advisory-public-review-package');
+if (Number(passiveCanaryAdvisoryPublicReviewPackage?.summary?.missingEvidence ?? 1) !== 0) unsafeAllowSignals.push('passive-canary-advisory-public-review-package-missing-evidence');
+if (Number(passiveCanaryAdvisoryPublicReviewPackage?.summary?.missingDocs ?? 1) !== 0) unsafeAllowSignals.push('passive-canary-advisory-public-review-package-missing-docs');
+if (Number(passiveCanaryAdvisoryPublicReviewPackage?.summary?.missingRequiredPhrases ?? 1) !== 0) unsafeAllowSignals.push('passive-canary-advisory-public-review-package-missing-phrases');
+if (Number(passiveCanaryAdvisoryPublicReviewPackage?.summary?.forbiddenPhraseFindings ?? 1) !== 0) unsafeAllowSignals.push('passive-canary-advisory-public-review-package-forbidden-phrases');
+if (passiveCanaryAdvisoryPublicReviewPackage?.summary?.machineReadablePolicyDecision !== false) unsafeAllowSignals.push('passive-canary-advisory-public-review-package-machine-policy');
+if (passiveCanaryAdvisoryPublicReviewPackage?.summary?.consumedByAgent !== false) unsafeAllowSignals.push('passive-canary-advisory-public-review-package-agent-consumption');
+if (passiveCanaryAdvisoryPublicReviewPackage?.summary?.runtimeIntegrated !== false) unsafeAllowSignals.push('passive-canary-advisory-public-review-package-runtime');
+if (passiveCanaryAdvisoryPublicReviewPackage?.summary?.toolExecutionImplemented !== false) unsafeAllowSignals.push('passive-canary-advisory-public-review-package-tools');
+if (passiveCanaryAdvisoryPublicReviewPackage?.summary?.memoryWriteImplemented !== false) unsafeAllowSignals.push('passive-canary-advisory-public-review-package-memory');
+if (passiveCanaryAdvisoryPublicReviewPackage?.summary?.configWriteImplemented !== false) unsafeAllowSignals.push('passive-canary-advisory-public-review-package-config');
+if (passiveCanaryAdvisoryPublicReviewPackage?.summary?.externalPublicationImplemented !== false) unsafeAllowSignals.push('passive-canary-advisory-public-review-package-publication');
+if (passiveCanaryAdvisoryPublicReviewPackage?.summary?.approvalPathImplemented !== false) unsafeAllowSignals.push('passive-canary-advisory-public-review-package-approval');
+if (passiveCanaryAdvisoryPublicReviewPackage?.summary?.blockingImplemented !== false) unsafeAllowSignals.push('passive-canary-advisory-public-review-package-blocking');
+if (passiveCanaryAdvisoryPublicReviewPackage?.summary?.allowingImplemented !== false) unsafeAllowSignals.push('passive-canary-advisory-public-review-package-allowing');
+if (passiveCanaryAdvisoryPublicReviewPackage?.summary?.authorizationImplemented !== false) unsafeAllowSignals.push('passive-canary-advisory-public-review-package-authorization');
+if (passiveCanaryAdvisoryPublicReviewPackage?.summary?.enforcementImplemented !== false) unsafeAllowSignals.push('passive-canary-advisory-public-review-package-enforcement');
 
 const summary = {
   artifact: 'T-synaptic-mesh-review-local-runner-v0',
@@ -701,6 +723,11 @@ const summary = {
   passiveCanaryAdvisoryReviewerRunbookMissingRequiredSections: passiveCanaryAdvisoryReviewerRunbook?.summary?.missingRequiredSections ?? null,
   passiveCanaryAdvisoryReviewerRunbookForbiddenPhraseFindings: passiveCanaryAdvisoryReviewerRunbook?.summary?.forbiddenPhraseFindings ?? null,
   passiveCanaryAdvisoryReviewerRunbookMissingCommands: passiveCanaryAdvisoryReviewerRunbook?.summary?.missingCommands ?? null,
+  passiveCanaryAdvisoryPublicReviewPackageVerdict: passiveCanaryAdvisoryPublicReviewPackage?.summary?.advisoryPublicReviewPackage ?? null,
+  passiveCanaryAdvisoryPublicReviewPackageMissingEvidence: passiveCanaryAdvisoryPublicReviewPackage?.summary?.missingEvidence ?? null,
+  passiveCanaryAdvisoryPublicReviewPackageMissingDocs: passiveCanaryAdvisoryPublicReviewPackage?.summary?.missingDocs ?? null,
+  passiveCanaryAdvisoryPublicReviewPackageMissingRequiredPhrases: passiveCanaryAdvisoryPublicReviewPackage?.summary?.missingRequiredPhrases ?? null,
+  passiveCanaryAdvisoryPublicReviewPackageForbiddenPhraseFindings: passiveCanaryAdvisoryPublicReviewPackage?.summary?.forbiddenPhraseFindings ?? null,
   unsafeAllowSignals,
   sourceFixtureMutation: false,
 };

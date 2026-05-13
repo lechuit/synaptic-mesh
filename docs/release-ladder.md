@@ -264,3 +264,21 @@ Expected result: required phrases 10/10, required sections 6/6, required command
 Boundary remains human-readable local review guidance only. The runbook is not runtime protection, not authority, not agent-consumed policy, and not enforcement.
 
 Executable gate: `test:passive-live-shadow-canary-advisory-reviewer-runbook`.
+
+## v0.3.5 — advisory public review package
+
+Add a compact public review package that indexes advisory report hardening evidence from v0.3.0-alpha through v0.3.5.
+
+Target checks:
+
+- required evidence paths for advisory report, Unicode/bidi guard, failure catalog, reproducibility, and reviewer runbook;
+- required docs/status/runbook/package paths;
+- public-review phrases including `ADVISORY ONLY`, `Advisory no es authority`, and “two independent local reviews”;
+- pinned evidence counts: failure catalog 12/0, reproducibility 2/0, runbook 10/6/6, Unicode 0/0;
+- forbidden authority phrases absent from public review package.
+
+Expected result: required evidence 6/6, required docs 7/7, required phrases 10/10, zero forbidden phrase findings, and no machine-policy, agent-consumed, authoritative, block, or allow flags.
+
+Boundary remains human-readable local/public review evidence only. The package is not runtime protection, not authority, not agent-consumed policy, and not enforcement.
+
+Executable gate: `test:passive-live-shadow-canary-advisory-public-review-package`.
