@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/lechuit/synaptic-mesh/schemas/read-only-local-file-adapter-result.schema.json",
+  "title": "Read-only local file adapter result v0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "adapterRunId",
+    "recordOnly",
+    "sourceFileRead",
+    "sourceFilePath",
+    "sourceArtifactDigestVerified",
+    "parserEvidenceProduced",
+    "classifierDecisionProduced",
+    "decisionTraceProduced",
+    "advisoryReportProduced",
+    "toolExecution",
+    "memoryWrite",
+    "configWrite",
+    "externalPublication",
+    "approvalEmission",
+    "machineReadablePolicyDecision",
+    "agentConsumed",
+    "mayBlock",
+    "mayAllow",
+    "authorization",
+    "enforcement"
+  ],
+  "properties": {
+    "schemaVersion": { "const": "read-only-local-file-adapter-result-v0" },
+    "adapterRunId": {
+      "type": "string",
+      "pattern": "^adapter_run_[a-zA-Z0-9_-]+$"
+    },
+    "recordOnly": { "const": true },
+    "sourceFileRead": { "const": true },
+    "sourceFilePath": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*[*?\\[\\]{}])(?!(?:[a-zA-Z][a-zA-Z0-9+.-]*:|//)).+[^/]$"
+    },
+    "sourceArtifactDigestVerified": { "const": true },
+    "parserEvidenceProduced": { "const": true },
+    "classifierDecisionProduced": { "const": true },
+    "decisionTraceProduced": { "const": true },
+    "advisoryReportProduced": { "const": true },
+    "toolExecution": { "const": false },
+    "memoryWrite": { "const": false },
+    "configWrite": { "const": false },
+    "externalPublication": { "const": false },
+    "approvalEmission": { "const": false },
+    "machineReadablePolicyDecision": { "const": false },
+    "agentConsumed": { "const": false },
+    "mayBlock": { "const": false },
+    "mayAllow": { "const": false },
+    "authorization": { "const": false },
+    "enforcement": { "const": false }
+  }
+}
