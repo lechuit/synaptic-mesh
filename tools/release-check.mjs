@@ -47,6 +47,7 @@ const releaseGateScripts = [
   'test:adapter-implementation-hazard-catalog',
   'test:read-only-local-file-adapter-schema',
   'test:read-only-local-file-adapter',
+  'test:read-only-local-file-adapter-negative-controls',
   'test:live-shadow-synthetic-replay',
   'test:live-shadow-drift-scorecard',
   'test:manual-observation-bundle-schema',
@@ -360,11 +361,13 @@ for (const requiredManifestPath of [
   'schemas/read-only-local-file-adapter-result.schema.json',
   'implementation/synaptic-mesh-shadow-v0/tests/read-only-local-file-adapter-schema.mjs',
   'implementation/synaptic-mesh-shadow-v0/tests/read-only-local-file-adapter.mjs',
+  'implementation/synaptic-mesh-shadow-v0/tests/read-only-local-file-adapter-negative-controls.mjs',
   'implementation/synaptic-mesh-shadow-v0/src/adapters/read-only-local-file-adapter.mjs',
   'implementation/synaptic-mesh-shadow-v0/fixtures/read-only-local-file-adapter-inputs.json',
   'implementation/synaptic-mesh-shadow-v0/fixtures/read-only-local-file-adapter-results.json',
   'implementation/synaptic-mesh-shadow-v0/evidence/read-only-local-file-adapter-schema.out.json',
   'implementation/synaptic-mesh-shadow-v0/evidence/read-only-local-file-adapter/read-only-local-file-adapter.out.json',
+  'implementation/synaptic-mesh-shadow-v0/evidence/read-only-local-file-adapter-negative-controls.out.json',
 ]) {
   assert(manifestFilePaths.has(requiredManifestPath), `MANIFEST.files.json must include ${requiredManifestPath}`);
 }
@@ -1521,6 +1524,7 @@ assertOptionalCountMatches(
 const adapterImplementationHazardCatalog = readJson(path.join(packageRoot, 'evidence/adapter-implementation-hazard-catalog-v0.4.8.out.json'));
 const readOnlyLocalFileAdapterSchema = readJson(path.join(packageRoot, 'evidence/read-only-local-file-adapter-schema.out.json'));
 const readOnlyLocalFileAdapter = readJson(path.join(packageRoot, 'evidence/read-only-local-file-adapter/read-only-local-file-adapter.out.json'));
+const readOnlyLocalFileAdapterNegativeControls = readJson(path.join(packageRoot, 'evidence/read-only-local-file-adapter-negative-controls.out.json'));
 assert(readOnlyLocalFileAdapterSchema?.summary?.readOnlyLocalFileAdapterSchema === 'pass', 'read-only local-file adapter schema verdict must be pass');
 assert(readOnlyLocalFileAdapterSchema?.summary?.schemaOnly === true, 'read-only local-file adapter schema evidence must remain schema-only');
 assert(readOnlyLocalFileAdapterSchema?.summary?.sourceAlreadyRedacted === true, 'read-only local-file adapter schema must require redacted input');
@@ -1538,6 +1542,14 @@ assert(readOnlyLocalFileAdapter?.summary?.classifierDecisionProduced === true, '
 assert(readOnlyLocalFileAdapter?.summary?.decisionTraceProduced === true, 'read-only local-file adapter must produce decision trace');
 assert(readOnlyLocalFileAdapter?.summary?.advisoryReportProduced === true, 'read-only local-file adapter must produce advisory report');
 assert(readOnlyLocalFileAdapter?.summary?.recordOnly === true, 'read-only local-file adapter must be record-only');
+assert(readOnlyLocalFileAdapterNegativeControls?.summary?.readOnlyLocalFileAdapterNegativeControls === 'pass', 'read-only local-file adapter negative controls verdict must be pass');
+assert(readOnlyLocalFileAdapterNegativeControls?.summary?.negativeCases === 17, 'read-only local-file adapter negative controls must cover 17 cases');
+assert(readOnlyLocalFileAdapterNegativeControls?.summary?.unexpectedAccepts === 0, 'read-only local-file adapter negative controls must have zero unexpected accepts');
+assert(readOnlyLocalFileAdapterNegativeControls?.summary?.forbiddenEffects === 0, 'read-only local-file adapter negative controls must have zero forbidden effects');
+assert(readOnlyLocalFileAdapterNegativeControls?.summary?.capabilityTrueCount === 0, 'read-only local-file adapter negative controls must have zero true capability flags');
+assert(readOnlyLocalFileAdapterNegativeControls?.summary?.sourceFilesRead === 0, 'read-only local-file adapter negative controls must reject before source file reads');
+assert(readOnlyLocalFileAdapterNegativeControls?.summary?.networkPrimitiveFindings === 0, 'read-only local-file adapter negative controls must have zero network primitive findings');
+assert(readOnlyLocalFileAdapterNegativeControls?.summary?.rawClassifierLeakFindings === 0, 'read-only local-file adapter negative controls must have zero raw classifier leak findings');
 assert(readOnlyLocalFileAdapter?.decisionTrace?.rawClassifierDecisionPersisted === false, 'read-only local-file adapter must not persist raw classifier decision');
 assert(readOnlyLocalFileAdapter?.classifierDecision === undefined, 'read-only local-file adapter evidence must not persist classifierDecision');
 for (const forbidden of ['toolExecution','memoryWrite','configWrite','externalPublication','approvalEmission','machineReadablePolicyDecision','agentConsumed','mayBlock','mayAllow','authorization','enforcement']) {

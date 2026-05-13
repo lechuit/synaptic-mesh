@@ -893,6 +893,11 @@
       "sha256": "07c5b1afeb785e2ad67df02b9b2d2d3648e771afe06ed4a817cf7bd83ca846fa"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/read-only-local-file-adapter-negative-controls.out.json",
+      "bytes": 5949,
+      "sha256": "c2df25503e8b466f0edb526646c4bee4c645cbf3194cde50d0aa8e498b762b5a"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/read-only-local-file-adapter-schema.out.json",
       "bytes": 5134,
       "sha256": "31bbd2bf0bcc1367a8ed812429a51fb9f980e13e36c63eb07319d1ab701d3a48"
@@ -1384,8 +1389,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/package.json",
-      "bytes": 15133,
-      "sha256": "ea5b1dd4c1c9b624aa53d5d32cf7e48f28b71614f650419841b7e9ea819afe26"
+      "bytes": 15330,
+      "sha256": "6dfc2f4bb821550effdd07800e0809ed6b9d7924fab53e30f93118ec70e69c21"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/action-context-packet.mjs",
@@ -1399,8 +1404,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/adapters/read-only-local-file-adapter.mjs",
-      "bytes": 12554,
-      "sha256": "cf644d747aed8fd22c5ba64d337907f097681b988b9f5e83d6cdf064bde6d8c3"
+      "bytes": 13399,
+      "sha256": "d9eb97cb398e902224b475449b454df726eaff4df3c825c50a7e4d883f50d9b7"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/adapters/review-local-io.mjs",
@@ -1736,6 +1741,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/tests/read-only-adapter-public-review-package.mjs",
       "bytes": 6548,
       "sha256": "a544ab6b4600a9eb1fd989a3410df29e48d66fa0c65978ecae3edb503e4ecbeb"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/read-only-local-file-adapter-negative-controls.mjs",
+      "bytes": 8891,
+      "sha256": "cbaa9836d671bef45958a4ad4a75a5be25c272461bef9fb4085dec83b64eee5a"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/read-only-local-file-adapter-schema.mjs",
@@ -2364,8 +2374,8 @@
     },
     {
       "path": "tools/release-check.mjs",
-      "bytes": 190742,
-      "sha256": "1484417277e7b28f3cdd6c86fe7ed8888e2ac3f9539f4e0c337aecf4ba1d3b53"
+      "bytes": 192539,
+      "sha256": "f4805f446dd0105a2fef47afc399983e7cc23c50f76e3d24f7f8964302bf857a"
     },
     {
       "path": "tools/update-manifest.mjs",

@@ -9,6 +9,28 @@ const ADAPTER_MODE = 'manual_local_file_read_only';
 const ADAPTER_EVIDENCE_DIRECTORY = 'implementation/synaptic-mesh-shadow-v0/evidence/read-only-local-file-adapter';
 const ADAPTER_EVIDENCE_FILENAME = 'read-only-local-file-adapter.out.json';
 
+const ALLOWED_INPUT_KEYS = Object.freeze(new Set([
+  'schemaVersion',
+  'adapterMode',
+  'sourceFilePath',
+  'sourceArtifactDigest',
+  'sourceAlreadyRedacted',
+  'rawInputAllowed',
+  'networkAllowed',
+  'directoryInputAllowed',
+  'globAllowed',
+  'watcherAllowed',
+  'daemonAllowed',
+  'redactionReviewRecord',
+  'rawContentPersisted',
+]));
+
+const ALLOWED_REDACTION_REVIEW_RECORD_KEYS = Object.freeze(new Set([
+  'reviewed',
+  'rawContentPersisted',
+  'sourceAlreadyRedacted',
+]));
+
 const FORBIDDEN_INPUT_TRUE_FLAGS = Object.freeze([
   'rawInputAllowed',
   'networkAllowed',
@@ -81,6 +103,9 @@ export async function runReadOnlyLocalFileAdapter(input = {}, options = {}) {
 
 export function validateAdapterInput(input = {}) {
   const reasons = [];
+  for (const key of Object.keys(input ?? {})) {
+    if (!ALLOWED_INPUT_KEYS.has(key)) reasons.push(`additional input property ${key} is forbidden`);
+  }
   if (input.schemaVersion !== INPUT_SCHEMA_VERSION) reasons.push('schemaVersion must be read-only-local-file-adapter-input-v0');
   if (input.adapterMode !== ADAPTER_MODE) reasons.push('adapterMode must be manual_local_file_read_only');
   if (typeof input.sourceFilePath !== 'string' || input.sourceFilePath.length === 0) reasons.push('sourceFilePath must be non-empty string');
@@ -96,6 +121,9 @@ export function validateAdapterInput(input = {}) {
   if (!input.redactionReviewRecord || typeof input.redactionReviewRecord !== 'object') {
     reasons.push('redactionReviewRecord must be present');
   } else {
+    for (const key of Object.keys(input.redactionReviewRecord)) {
+      if (!ALLOWED_REDACTION_REVIEW_RECORD_KEYS.has(key)) reasons.push(`additional redactionReviewRecord property ${key} is forbidden`);
+    }
     if (input.redactionReviewRecord.reviewed !== true) reasons.push('redactionReviewRecord.reviewed must be true');
     if (input.redactionReviewRecord.rawContentPersisted !== false) reasons.push('redactionReviewRecord.rawContentPersisted must be false');
     if (input.redactionReviewRecord.sourceAlreadyRedacted !== true) reasons.push('redactionReviewRecord.sourceAlreadyRedacted must be true');
