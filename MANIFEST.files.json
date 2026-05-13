@@ -69,8 +69,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 3063,
-      "sha256": "7f2ec794fb1359cd3e9d4b758bf164c96008b6ee549af1fd3c8abbaed8853ee0"
+      "bytes": 3582,
+      "sha256": "26b8514fe7700baf38e0f1ad4367153ef0c41a417243917435c1625099710d6f"
     },
     {
       "path": "RELEASE_CANDIDATE.md",
@@ -79,8 +79,8 @@
     },
     {
       "path": "RELEASE_NOTES.md",
-      "bytes": 2543,
-      "sha256": "cc5e19b4b4f2362bb8c51a7f3f268e4a25abfb09fe38af0035cc2a5c490fa4bb"
+      "bytes": 3020,
+      "sha256": "b753f10d83ce19957789d714c4ee77ec52f199ca077d73ae411f91eff4e42410"
     },
     {
       "path": "design-notes/adapter-boundary-langgraph-mcp-v0.md",
@@ -258,6 +258,31 @@
       "sha256": "5edf47824506cbe62b18bfa18bc12b80414d751472797b0cac6eeb4abc0230de"
     },
     {
+      "path": "docs/read-only-adapter-boundary-contracts-v0.4.0-alpha.md",
+      "bytes": 3635,
+      "sha256": "db4a58518a6cc4912cc229efdbfd0f55dc380021cc00f68bc217a2f326a8e115"
+    },
+    {
+      "path": "docs/read-only-adapter-misuse-failure-catalog-v0.4.1.md",
+      "bytes": 5572,
+      "sha256": "41590e02b540c48d04878262d5c30ef5fa11b3d73d7b9cfc55f6ab70efad60a1"
+    },
+    {
+      "path": "docs/read-only-adapter-public-review-package-v0.4.5.md",
+      "bytes": 6114,
+      "sha256": "21e60c6f0e171906110e802af034ebf02c6b69a49cc537c33d5e4b7476645c71"
+    },
+    {
+      "path": "docs/read-only-adapter-reproducibility-drift-gate-v0.4.2.md",
+      "bytes": 4673,
+      "sha256": "866d080ae3a989c969a84e47ab5f5cf30dcfd5fcf52a9f767cfc543851dff703"
+    },
+    {
+      "path": "docs/read-only-adapter-reviewer-runbook-v0.4.3.md",
+      "bytes": 5717,
+      "sha256": "072a307f76fed2d8f2178738472f1200ca339bd2b70561a84b9548b67d316abc"
+    },
+    {
       "path": "docs/real-flow-replay.md",
       "bytes": 2626,
       "sha256": "0cce7504c180f2e96abec00a8d9e4b9dbb31048cb49f2f1c0c41e2c42f997a54"
@@ -376,6 +401,11 @@
       "path": "docs/status-v0.3.5.md",
       "bytes": 2394,
       "sha256": "89b8a04f58993321ba3e8e7ce66bf192407845bc5ee7eb0ea12c393ce7188857"
+    },
+    {
+      "path": "docs/status-v0.4.5.md",
+      "bytes": 4795,
+      "sha256": "b65d5f65e2d5f88ad65e475abc9d07d6da6dc8a463ba99c81ed57970bed3e01c"
     },
     {
       "path": "docs/threat-model-v0.md",
@@ -793,6 +823,31 @@
       "sha256": "04c4afdd2a2918e8ef1a4882dbf62e6a34b121c4e3f6a2f3ff0bafc40d5f841f"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/read-only-adapter-contracts.out.json",
+      "bytes": 392,
+      "sha256": "86051b5f5e41b2f4fc922ffbcab476c8b8814d70cbb9a08b516eb7255adc4862"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/read-only-adapter-misuse-failure-catalog-v0.4.1.out.json",
+      "bytes": 6307,
+      "sha256": "735c8dff4145a2930387f8b189b13bd6a58f2b969b16a1cfb41dadab57b6f56d"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/read-only-adapter-public-review-package-v0.4.5.out.json",
+      "bytes": 1161,
+      "sha256": "9d02de5a38672ad266aecee8da14dd3092f0f4e5e8f945d64703b6cabcc92f67"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/read-only-adapter-reproducibility-drift-gate-v0.4.2.out.json",
+      "bytes": 4835,
+      "sha256": "c2ba69e4b1d838614f49c0dc34d126d8ad647426b30d2dcc1edfed78f92d0732"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/read-only-adapter-simulated-v0.4.4.out.json",
+      "bytes": 3488,
+      "sha256": "07c5b1afeb785e2ad67df02b9b2d2d3648e771afe06ed4a817cf7bd83ca846fa"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/real-flow-classifier-scorecard.out.json",
       "bytes": 51170,
       "sha256": "640181c1fddf356737e24972b2b41d966512a1358a8e3d5fb0682b05afb271ba"
@@ -1173,6 +1228,11 @@
       "sha256": "014bc6507037d55811fe16ba51c8d76f65b12bc267eab345a711b95ad4c5f609"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/fixtures/read-only-adapter-public-review-package-v0.4.5.json",
+      "bytes": 646,
+      "sha256": "696a7e835aa2dab11808b9e381a5fea442d1234f6d47a43b893d83fc06a2d0ae"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/fixtures/real-flow-replay.json",
       "bytes": 36363,
       "sha256": "ce736167d87a47c8e8e0343246f3e30973564a47b9d5f158cc0f77bdf9a26ff6"
@@ -1239,8 +1299,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/package.json",
-      "bytes": 14093,
-      "sha256": "a095a8dbc84ef171abcb0f1eaf3fac42329190a21697223216cbb612dcb30815"
+      "bytes": 14269,
+      "sha256": "ffe7dee6ff7a7dc19765c44ab051786ea479cb85b2e29125a2b602fee6e1d355"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/action-context-packet.mjs",
@@ -1566,6 +1626,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/tests/raw-parser-adversarial.mjs",
       "bytes": 12692,
       "sha256": "78aca758610c3934b5d05c538b98777ed5d74c4a0829f50e0f842e2cbcd74aaf"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/read-only-adapter-public-review-package.mjs",
+      "bytes": 6548,
+      "sha256": "a544ab6b4600a9eb1fd989a3410df29e48d66fa0c65978ecae3edb503e4ecbeb"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/real-flow-classifier-scorecard.mjs",
@@ -2174,8 +2239,8 @@
     },
     {
       "path": "tools/release-check.mjs",
-      "bytes": 170220,
-      "sha256": "ec122446da10d19ff6dfe217d608341ba1569e59714bdf7505b349d1a2ee7065"
+      "bytes": 174185,
+      "sha256": "608276f2b4631f7c535d86038eec0e36f563367c88f9a70eed5c69c71d8214ad"
     },
     {
       "path": "tools/update-manifest.mjs",

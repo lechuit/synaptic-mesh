@@ -1,0 +1,100 @@
+{
+  "readOnlyAdapterSimulated": "pass",
+  "fixtureId": "ROA-SIM-001",
+  "adapterReal": false,
+  "fakeLocalOnly": true,
+  "inputWasExplicitRedactedFixture": true,
+  "outputRecordOnly": true,
+  "parserEvidence": {
+    "kind": "parserEvidence",
+    "fixtureId": "ROA-SIM-001",
+    "inputBoundary": "explicit_pre_redacted_local_fixture_only",
+    "sourceRef": "local-fixture://read-only-adapter-simulated-v0.4.4.fixture.json#redactedInput",
+    "sourceDigest": "sha256:2dd5df343c640bf47265fd805c10350a281b433822143b5e3cdf12d7aa14aba2",
+    "claims": [
+      {
+        "index": 0,
+        "recordId": "r1",
+        "textDigest": "sha256:93db52e9ae535f7f094a19e614f5fab44f005af1463ac5d7a1f64fa35516d59c",
+        "redactionCount": 1,
+        "evidenceText": "[REDACTED_USER] asks whether Synaptic Mesh can shape local evidence without becoming an action source."
+      },
+      {
+        "index": 1,
+        "recordId": "r2",
+        "textDigest": "sha256:f15d13c6c8e2b4777bd1f81ac85fe8b5f772bde8f00ec161a8b6b9ccb8aee377",
+        "redactionCount": 0,
+        "evidenceText": "Boundary: adapter may emit parserEvidence, descriptive classifierDecision, DecisionTrace, and advisory report only."
+      },
+      {
+        "index": 2,
+        "recordId": "r3",
+        "textDigest": "sha256:80931a91ef4b259402eca5f0a2108901e2118bc1829afe1f8222b890ea183dbd",
+        "redactionCount": 0,
+        "evidenceText": "Forbidden: tools, memory/config writes, publication, approval, block/allow, enforcement, live traffic, framework integration."
+      }
+    ]
+  },
+  "classifierDecision": {
+    "kind": "classifierDecision_as_descriptive_evidence_not_policy",
+    "evidenceOnly": true,
+    "humanReviewRequiredForAction": true,
+    "toolExecution": false,
+    "memoryWrite": false,
+    "configWrite": false,
+    "externalPublication": false,
+    "approvalEmission": false,
+    "machineReadablePolicyDecision": false,
+    "agentConsumed": false,
+    "mayBlock": false,
+    "mayAllow": false,
+    "enforcement": false,
+    "realAdapter": false,
+    "frameworkIntegration": false,
+    "liveTraffic": false
+  },
+  "decisionTrace": {
+    "kind": "DecisionTrace",
+    "steps": [
+      "accept_explicit_pre_redacted_local_fixture",
+      "shape_parserEvidence_without_side_effects",
+      "emit_classifierDecision_as_descriptive_evidence_not_policy",
+      "emit_human_reviewable_advisory_report",
+      "deny_all_action_authority"
+    ],
+    "traceDigest": "sha256:f5c93657d2618c27d370810cbd91553735a96f47fc9815fa62febfd8be7852c3"
+  },
+  "advisoryReport": {
+    "kind": "human_readable_advisory_report",
+    "verdict": "simulated_read_only_adapter_pass",
+    "summary": "Fake local adapter shaped redacted fixture into evidence records without action authority.",
+    "passDoesNotAuthorize": [
+      "real_adapter",
+      "framework_integration",
+      "live_traffic",
+      "tool_execution",
+      "memory_write",
+      "config_write",
+      "publication",
+      "approval",
+      "block_allow",
+      "enforcement",
+      "agent_consumption"
+    ]
+  },
+  "toolExecution": false,
+  "memoryWrite": false,
+  "configWrite": false,
+  "externalPublication": false,
+  "approvalEmission": false,
+  "machineReadablePolicyDecision": false,
+  "agentConsumed": false,
+  "mayBlock": false,
+  "mayAllow": false,
+  "enforcement": false,
+  "realAdapter": false,
+  "frameworkIntegration": false,
+  "liveTraffic": false,
+  "failures": [],
+  "digest": "sha256:c1859fbc07a91834efca229183ef49530da6f4b95f250e62ce7a1d8f4cb9d1f8"
+}
