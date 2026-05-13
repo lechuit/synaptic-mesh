@@ -32,6 +32,7 @@ const criticalRoots = [
   'implementation/synaptic-mesh-shadow-v0/README.md',
   'implementation/synaptic-mesh-shadow-v0/package.json',
   'implementation/synaptic-mesh-shadow-v0/fixtures',
+  'implementation/synaptic-mesh-shadow-v0/evidence',
   'implementation/synaptic-mesh-shadow-v0/tests',
   'implementation/synaptic-mesh-shadow-v0/src',
   'implementation/synaptic-mesh-shadow-v0/bin',

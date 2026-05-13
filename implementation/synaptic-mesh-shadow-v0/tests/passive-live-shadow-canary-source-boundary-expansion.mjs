@@ -75,7 +75,7 @@ function evaluate(record) {
   if (!pathInside(record.sourceArtifactPath, fixture.allowedSourceRoot)) reasonCodes.push('CANARY_SOURCE_PATH_CONTAINMENT_REQUIRED');
   if (hasTraversal(record.sourceArtifactPath)) reasonCodes.push('CANARY_SOURCE_PATH_TRAVERSAL');
   if (record.sourcePathKind === 'symlink') reasonCodes.push('CANARY_SOURCE_SYMLINK_FORBIDDEN');
-  if (hasForbiddenUnicodeControl(record.sourceArtifactPath)) reasonCodes.push('CANARY_SOURCE_PATH_UNICODE_CONTROL');
+  if (hasForbiddenUnicodeControl(record.sourceArtifactPath) || (record.sourcePathSimulatedForbiddenCodePoints ?? []).length > 0) reasonCodes.push('CANARY_SOURCE_PATH_UNICODE_CONTROL');
   if ((sourceArtifactIdCounts.get(record.sourceArtifactId) ?? 0) > 1) reasonCodes.push('CANARY_SOURCE_ARTIFACT_ID_DUPLICATE');
 
   if (!pathInside(record.outputArtifactPath, fixture.allowedOutputRoot)) reasonCodes.push('CANARY_OUTPUT_CONTAINMENT_REQUIRED');

@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "passive-live-shadow-canary-advisory-unicode-bidi-guard-v0",
+  "releaseLayer": "v0.3.1",
+  "dependsOn": "v0.3.0-alpha-advisory-report",
+  "description": "Escaped negative controls for advisory/report unicode and bidi hygiene. The fixture intentionally stores escaped unicode sequences rather than literal invisible controls in the source file.",
+  "mode": "manual_local_advisory_unicode_bidi_guard_record_only",
+  "positiveControls": [
+    {
+      "caseId": "positive_ascii_reason_code_and_paths",
+      "reasonCodes": [
+        "CANARY_SOURCE_DIGEST_BINDING_MISMATCH",
+        "CANARY_OUTPUT_CONTAINMENT_REQUIRED"
+      ],
+      "sourceArtifactPath": "implementation/synaptic-mesh-shadow-v0/fixtures/manual-dry-run-inputs/redacted-packet.json",
+      "outputArtifactPath": "implementation/synaptic-mesh-shadow-v0/evidence/passive-live-shadow-canary-advisory-report.out.md",
+      "machineReadableField": "human_readable_advisory_only_non_authoritative_record_only"
+    }
+  ],
+  "negativeControls": [
+    {
+      "caseId": "negative_bidi_source_path",
+      "field": "sourceArtifactPath",
+      "value": "implementation/synaptic-mesh-shadow-v0/fixtures/manual-dry-run-inputs/canary-\u202ejson.txt",
+      "expectedReasonCodes": ["UNICODE_BIDI_CONTROL_FORBIDDEN"]
+    },
+    {
+      "caseId": "negative_zero_width_reason_code",
+      "field": "reasonCode",
+      "value": "CANARY\u200bSOURCE_DIGEST_STALE",
+      "expectedReasonCodes": ["UNICODE_INVISIBLE_CONTROL_FORBIDDEN", "REASON_CODE_ASCII_TOKEN_REQUIRED"]
+    },
+    {
+      "caseId": "negative_confusable_source_path",
+      "field": "sourceArtifactPath",
+      "value": "implementation/synaptic-mesh-shadow-v0/fixtures/manual-dry-run-inputs/c\u0430nary.json",
+      "expectedReasonCodes": ["SOURCE_PATH_ASCII_REQUIRED", "UNICODE_CONFUSABLE_PATH_FORBIDDEN"]
+    },
+    {
+      "caseId": "negative_machine_field_invisible",
+      "field": "machineReadableField",
+      "value": "record_only\u2060local_evidence",
+      "expectedReasonCodes": ["UNICODE_INVISIBLE_CONTROL_FORBIDDEN", "MACHINE_FIELD_ASCII_PRINTABLE_REQUIRED"]
+    }
+  ]
+}

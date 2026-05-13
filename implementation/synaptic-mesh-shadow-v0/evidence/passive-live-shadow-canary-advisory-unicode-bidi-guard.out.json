@@ -1,0 +1,106 @@
+{
+  "summary": {
+    "artifact": "T-synaptic-mesh-passive-live-shadow-canary-advisory-unicode-bidi-guard-v0",
+    "timestamp": "2026-05-13T03:20:00.000Z",
+    "verdict": "pass",
+    "releaseLayer": "v0.3.1",
+    "dependsOn": "v0.3.0-alpha-advisory-report",
+    "mode": "manual_local_advisory_unicode_bidi_guard_record_only",
+    "scanRoots": [
+      "docs",
+      "RELEASE_NOTES.md",
+      "README.md",
+      "implementation/synaptic-mesh-shadow-v0/evidence",
+      "implementation/synaptic-mesh-shadow-v0/fixtures"
+    ],
+    "machineReadableJsonFiles": [
+      "implementation/synaptic-mesh-shadow-v0/evidence/passive-live-shadow-canary-advisory-report.out.json",
+      "implementation/synaptic-mesh-shadow-v0/evidence/passive-live-shadow-canary-advisory-unicode-bidi-guard.out.json",
+      "implementation/synaptic-mesh-shadow-v0/evidence/passive-live-shadow-canary-expanded-pack.out.json",
+      "implementation/synaptic-mesh-shadow-v0/evidence/passive-live-shadow-canary-source-boundary-expansion.out.json",
+      "implementation/synaptic-mesh-shadow-v0/fixtures/passive-live-shadow-canary-advisory-unicode-bidi-guard.json",
+      "implementation/synaptic-mesh-shadow-v0/fixtures/passive-live-shadow-canary-expanded-pack.json",
+      "implementation/synaptic-mesh-shadow-v0/fixtures/passive-live-shadow-canary-source-boundary-expansion.json"
+    ],
+    "positiveControls": 1,
+    "negativeControls": 4,
+    "textFindings": 0,
+    "machineReadableFindings": 0,
+    "reasonCodeAsciiTokenRequired": true,
+    "sourcePathAsciiRequired": true,
+    "sourcePathConfusableGuard": true,
+    "hiddenBidiControlsForbidden": true,
+    "advisoryReportGuardDocumented": true,
+    "advisoryOnly": true,
+    "nonAuthoritative": true,
+    "runtimeIntegrated": false,
+    "toolExecutionImplemented": false,
+    "memoryWriteImplemented": false,
+    "configWriteImplemented": false,
+    "externalPublicationImplemented": false,
+    "approvalPathImplemented": false,
+    "blockingImplemented": false,
+    "allowingImplemented": false,
+    "authorizationImplemented": false,
+    "enforcementImplemented": false,
+    "automaticAgentConsumptionImplemented": false,
+    "safetyClaimScope": "advisory_report_unicode_bidi_hygiene_only_not_authority_not_runtime_not_enforcement"
+  },
+  "positiveResults": [
+    {
+      "caseId": "positive_ascii_reason_code_and_paths",
+      "reasonCodes": []
+    }
+  ],
+  "negativeResults": [
+    {
+      "caseId": "negative_bidi_source_path",
+      "field": "sourceArtifactPath",
+      "reasonCodes": [
+        "SOURCE_PATH_ASCII_REQUIRED",
+        "UNICODE_BIDI_CONTROL_FORBIDDEN"
+      ]
+    },
+    {
+      "caseId": "negative_zero_width_reason_code",
+      "field": "reasonCode",
+      "reasonCodes": [
+        "REASON_CODE_ASCII_TOKEN_REQUIRED",
+        "UNICODE_INVISIBLE_CONTROL_FORBIDDEN"
+      ]
+    },
+    {
+      "caseId": "negative_confusable_source_path",
+      "field": "sourceArtifactPath",
+      "reasonCodes": [
+        "SOURCE_PATH_ASCII_REQUIRED",
+        "UNICODE_CONFUSABLE_PATH_FORBIDDEN"
+      ]
+    },
+    {
+      "caseId": "negative_machine_field_invisible",
+      "field": "machineReadableField",
+      "reasonCodes": [
+        "MACHINE_FIELD_ASCII_PRINTABLE_REQUIRED",
+        "UNICODE_INVISIBLE_CONTROL_FORBIDDEN"
+      ]
+    }
+  ],
+  "textFindings": [],
+  "machineReadableFindings": [],
+  "boundary": [
+    "local_text_hygiene_only",
+    "not_runtime",
+    "not_authority",
+    "not_agent_consumed",
+    "no_tools",
+    "no_memory_write",
+    "no_config_write",
+    "no_publication",
+    "no_approval",
+    "no_blocking",
+    "no_allowing",
+    "no_authorization",
+    "no_enforcement"
+  ]
+}

@@ -1,12 +1,12 @@
-# Synaptic Mesh v0.3.0-alpha
+# Synaptic Mesh v0.3.1
 
-Status: advisory-only human-readable passive canary report alpha public review release `v0.3.0-alpha`; **manual, local, opt-in, record-only, no effects**; **not runtime-ready**; **not production/enforcement-ready**.
+Status: advisory report Unicode/bidi guard public review release `v0.3.1`; **manual, local, opt-in, record-only, no effects**; **not runtime-ready**; **not production/enforcement-ready**.
 
 ## What this is
 
 Synaptic Mesh / Multi-Agent Memory Authority Protocol is a protocol proposal for preserving authority, source status, and boundary receipts through multi-agent memory transforms: retrieval, summary, compression, handoff, and review.
 
-Current v0.3.0-alpha status is narrower than the long-term protocol goal: this repository ships a **local shadow review package** with deterministic fixtures, evidence, and checks. It does not ship runtime integration.
+Current v0.3.1 status is narrower than the long-term protocol goal: this repository ships a **local shadow review package** with deterministic fixtures, evidence, and checks. It does not ship runtime integration.
 
 ## Quick local review
 
@@ -25,8 +25,8 @@ npm --prefix implementation/synaptic-mesh-shadow-v0 run test:receiver-adapters
 For exact published-release verification, check out the release tag first:
 
 ```bash
-git checkout v0.3.0-alpha
-npm --prefix implementation/synaptic-mesh-shadow-v0 run release:check -- --target v0.3.0-alpha
+git checkout v0.3.1
+npm --prefix implementation/synaptic-mesh-shadow-v0 run release:check -- --target v0.3.1
 ```
 
 For unreleased PRs, use the [release checklist](docs/release-checklist.md) with the next intended target.
@@ -43,7 +43,7 @@ For unreleased PRs, use the [release checklist](docs/release-checklist.md) with 
 
 ## Where to read next
 
-- [Full v0.3.0-alpha status snapshot](docs/status-v0.3.0-alpha.md) — complete release snapshot, included gates, expected review results, and boundaries.
+- [Full v0.3.1 status snapshot](docs/status-v0.3.1.md) — complete release snapshot, included gates, expected review results, and boundaries.
 - [Release ladder](docs/release-ladder.md) — roadmap from passive canary work toward advisory-only reporting, with explicit non-authority boundaries.
 - [Coverage matrix](docs/coverage-matrix.md) — covered, partial, pending, and out-of-scope claims.
 - [Passive canary runbook](docs/passive-live-shadow-canary-runbook.md) — human operator process for already-redacted opt-in canary packets.
