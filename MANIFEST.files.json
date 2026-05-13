@@ -69,8 +69,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 3582,
-      "sha256": "26b8514fe7700baf38e0f1ad4367153ef0c41a417243917435c1625099710d6f"
+      "bytes": 3745,
+      "sha256": "a3e1bacd58dcff3b945bb5630402c4941e59b457ca5027454da83dffaca9895b"
     },
     {
       "path": "RELEASE_CANDIDATE.md",
@@ -79,8 +79,8 @@
     },
     {
       "path": "RELEASE_NOTES.md",
-      "bytes": 3020,
-      "sha256": "b753f10d83ce19957789d714c4ee77ec52f199ca077d73ae411f91eff4e42410"
+      "bytes": 3026,
+      "sha256": "43b58f72b475991e837ab5b5254f238d5ced60528f1633a07f790548a00b1ee4"
     },
     {
       "path": "design-notes/adapter-boundary-langgraph-mcp-v0.md",
@@ -263,6 +263,11 @@
       "sha256": "db4a58518a6cc4912cc229efdbfd0f55dc380021cc00f68bc217a2f326a8e115"
     },
     {
+      "path": "docs/read-only-adapter-human-review-findings-go-no-go-v0.4.6.md",
+      "bytes": 5927,
+      "sha256": "9644d7a8b5d65e090a32104b5178bf77a1f253faa3558e5e7a6fb2a751114fb2"
+    },
+    {
       "path": "docs/read-only-adapter-misuse-failure-catalog-v0.4.1.md",
       "bytes": 5572,
       "sha256": "41590e02b540c48d04878262d5c30ef5fa11b3d73d7b9cfc55f6ab70efad60a1"
@@ -406,6 +411,11 @@
       "path": "docs/status-v0.4.5.md",
       "bytes": 4795,
       "sha256": "b65d5f65e2d5f88ad65e475abc9d07d6da6dc8a463ba99c81ed57970bed3e01c"
+    },
+    {
+      "path": "docs/status-v0.4.6.md",
+      "bytes": 2849,
+      "sha256": "237f33ee0cf757d6e60acab74c4d800e54565a0814f1187e0cf7c267328121ed"
     },
     {
       "path": "docs/threat-model-v0.md",
@@ -828,6 +838,11 @@
       "sha256": "86051b5f5e41b2f4fc922ffbcab476c8b8814d70cbb9a08b516eb7255adc4862"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/read-only-adapter-human-review-go-no-go-v0.4.6.out.json",
+      "bytes": 1508,
+      "sha256": "0f3b4c3a8b8556cefa3863038073b920920f2c1731b0d86e7009c31c395de8cd"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/read-only-adapter-misuse-failure-catalog-v0.4.1.out.json",
       "bytes": 6307,
       "sha256": "735c8dff4145a2930387f8b189b13bd6a58f2b969b16a1cfb41dadab57b6f56d"
@@ -1228,6 +1243,11 @@
       "sha256": "014bc6507037d55811fe16ba51c8d76f65b12bc267eab345a711b95ad4c5f609"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/fixtures/read-only-adapter-human-review-go-no-go-v0.4.6.json",
+      "bytes": 867,
+      "sha256": "b2f2e4e649a185a5dff8797403056d509ef2c53de3749a92fc694ee41b92350e"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/fixtures/read-only-adapter-public-review-package-v0.4.5.json",
       "bytes": 646,
       "sha256": "696a7e835aa2dab11808b9e381a5fea442d1234f6d47a43b893d83fc06a2d0ae"
@@ -1299,8 +1319,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/package.json",
-      "bytes": 14269,
-      "sha256": "ffe7dee6ff7a7dc19765c44ab051786ea479cb85b2e29125a2b602fee6e1d355"
+      "bytes": 14445,
+      "sha256": "a22553c25d2e9d10018442750bfd81d6dbf974a69a3c1be3ad33c8947b962754"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/action-context-packet.mjs",
@@ -1626,6 +1646,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/tests/raw-parser-adversarial.mjs",
       "bytes": 12692,
       "sha256": "78aca758610c3934b5d05c538b98777ed5d74c4a0829f50e0f842e2cbcd74aaf"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/read-only-adapter-human-review-go-no-go.mjs",
+      "bytes": 4482,
+      "sha256": "21c6d90c8484b33bfaaf0bd64bfbcb104c4de7bcc7f2c108233b09747062c989"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/read-only-adapter-public-review-package.mjs",
@@ -2239,8 +2264,8 @@
     },
     {
       "path": "tools/release-check.mjs",
-      "bytes": 174185,
-      "sha256": "608276f2b4631f7c535d86038eec0e36f563367c88f9a70eed5c69c71d8214ad"
+      "bytes": 178944,
+      "sha256": "a880344818637c1db7c64bdfb01f80d3b11db834f235fb6e449ec6157fb549dd"
     },
     {
       "path": "tools/update-manifest.mjs",
