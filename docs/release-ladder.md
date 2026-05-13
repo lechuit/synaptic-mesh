@@ -205,3 +205,26 @@ Target coverage:
 Boundary remains local deterministic evidence hygiene only. The guard is not runtime protection, not authority, not agent-consumed policy, and not enforcement.
 
 Executable gate: `test:passive-live-shadow-canary-advisory-unicode-bidi-guard`.
+
+## v0.3.2 — advisory report misuse/failure catalog
+
+Add a dedicated negative-control catalog for advisory report misuse.
+
+Target rejects:
+
+- machine-readable policy decision flags;
+- agent-consumption flags;
+- approval-like instructions;
+- block/allow instructions;
+- authorization and enforcement language;
+- tool execution commands;
+- memory/config write commands;
+- publication automation language;
+- agent-instruction mutation language;
+- missing non-authority or human-readable-only markers.
+
+Expected result: 12 expected rejects, zero unexpected accepts, and no machine-policy, agent-consumed, authoritative, block, or allow flags.
+
+Boundary remains local deterministic report-misuse testing only. The catalog is not runtime protection, not authority, not agent-consumed policy, and not enforcement.
+
+Executable gate: `test:passive-live-shadow-canary-advisory-report-failure-catalog`.

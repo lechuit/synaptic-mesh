@@ -69,8 +69,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 3067,
-      "sha256": "4da99a6c5225de27613145b609943b7c6cdb596bdd0ae2eb65d54a42852afc52"
+      "bytes": 3071,
+      "sha256": "f4cb746af3b43572543b564e3dcb61477cd086ae64103c15afc5bcd6d2cd4a4d"
     },
     {
       "path": "RELEASE_CANDIDATE.md",
@@ -79,8 +79,8 @@
     },
     {
       "path": "RELEASE_NOTES.md",
-      "bytes": 2811,
-      "sha256": "f60ee4a50e3e8832236940924a42bcaff0f4caa62092a40ab662dc36a33ac5dd"
+      "bytes": 2583,
+      "sha256": "b17fd3c440b268ef2f73715c5446f192316126aa822a17175114096f80b2af10"
     },
     {
       "path": "design-notes/adapter-boundary-langgraph-mcp-v0.md",
@@ -149,8 +149,8 @@
     },
     {
       "path": "docs/coverage-matrix.md",
-      "bytes": 10678,
-      "sha256": "b2558c00af947f8a7a6dba4a3003a1134ce53bf29d5e8e2d09b148f5c98e912d"
+      "bytes": 11051,
+      "sha256": "e9d04cd028b4968d6c3844795c7aa93fa8cdbe2bcc5c50a85773702363b68380"
     },
     {
       "path": "docs/decision-counterfactual-reviewer-guide.md",
@@ -299,8 +299,8 @@
     },
     {
       "path": "docs/release-ladder.md",
-      "bytes": 8249,
-      "sha256": "12909357ad15802c217d47dd6eddf3a841a5681f75533970b85df5a9664a8ac6"
+      "bytes": 9143,
+      "sha256": "d2cabc80377574843704a92d61ac8ad2c4c526997832833ab67b171e9864a5c8"
     },
     {
       "path": "docs/repo-structure.md",
@@ -348,6 +348,11 @@
       "sha256": "edde6276952772519d4f53cd1661fefff82b6edc64e9408894527b942e202c48"
     },
     {
+      "path": "docs/status-v0.3.2.md",
+      "bytes": 2307,
+      "sha256": "e4e069a9db0a380d3473290c06bcd30d1ab6184c9cba2b0cf02d198a0e10ff25"
+    },
+    {
       "path": "docs/threat-model-v0.md",
       "bytes": 6211,
       "sha256": "b00847bd4db3b2878165eda2866257420e7da8bbbdecaaad8e6aaefce2256d38"
@@ -390,7 +395,7 @@
     {
       "path": "implementation/synaptic-mesh-shadow-v0/README.md",
       "bytes": 11850,
-      "sha256": "377a053e30c14608b9ed2489599960439b96bb05ba563cd3cffc93f376a0031e"
+      "sha256": "e5810c28e4c80cc2883f8b292eef3a4e6d179a6f4e9662e16b50fb5b742ef5df"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/bin/manual-dry-run.mjs",
@@ -693,6 +698,11 @@
       "sha256": "8fddbe73c403ce63243cbcae2c6dcc2cdf86881b90ea3e421731677cb31f96b9"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-live-shadow-canary-advisory-report-failure-catalog.out.json",
+      "bytes": 3990,
+      "sha256": "a9b480057f0d0ab220f86a9c877837b84d4ae19d248472f973db19571d798032"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-live-shadow-canary-advisory-report.out.json",
       "bytes": 2287,
       "sha256": "ec1b70cc0b8cc3c7105863cfab31d3cc34fe4cf7767996eafe5ed57c0977252c"
@@ -819,8 +829,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/review-local.out.json",
-      "bytes": 18049,
-      "sha256": "377e674ef4619aa72e0952f4db8acb85370b966e201eccb4a2ee3a3ab70322f2"
+      "bytes": 18818,
+      "sha256": "9525018b026e25e29973702633f23e7f339b078c16b09e623bde1a99107d749f"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/route-classifier-shadow.out.json",
@@ -1068,6 +1078,11 @@
       "sha256": "3b71d8cdfde64823e8103c6245af7e194df6f18dc9423cbad60be31c9d281c6b"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/fixtures/passive-live-shadow-canary-advisory-report-failure-catalog.json",
+      "bytes": 3831,
+      "sha256": "7fba5baecf2d49dec74156c934eb9f9ba31c9a1a62205c88590440c1618df7d0"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/fixtures/passive-live-shadow-canary-advisory-unicode-bidi-guard.json",
       "bytes": 2112,
       "sha256": "ac2807de6e5af9a84b10423d634dd1078602d01f869d732f2e1d594ac0d7128f"
@@ -1169,8 +1184,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/package.json",
-      "bytes": 13182,
-      "sha256": "4b4b792f3181fd62a1db5cb6bd728df701284a7e4af105aebc4fd1fd7ee0e4f8"
+      "bytes": 13415,
+      "sha256": "72836b7a194effa6c0743d872c49319144234061f0d3145666a836074ff2ee07"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/action-context-packet.mjs",
@@ -1433,6 +1448,11 @@
       "sha256": "e9d4557033171c6862f990e3f26eaf6da65931355a30cdd1d9e6e9ab2f41da10"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-live-shadow-canary-advisory-report-failure-catalog.mjs",
+      "bytes": 9037,
+      "sha256": "dc2c8a7111f7d61cb441bd8994220fd9f1c7cde698076a553af8c051cdbde9d8"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-live-shadow-canary-advisory-report.mjs",
       "bytes": 8523,
       "sha256": "50f9afae93682f1526a401e75e8309c71ab6eb605f7c3a1b57531547527af15b"
@@ -1579,8 +1599,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/review-local.mjs",
-      "bytes": 62921,
-      "sha256": "03c1d26f42fb3f4f8efafb96651929329e7c851f467cd7eb26ad69adfee91e40"
+      "bytes": 67245,
+      "sha256": "519c1b0d8a8dad05afe0eb8a6f29f29031b09875a159fdade9507eee6d489ce8"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/route-classifier-shadow.mjs",
@@ -2084,8 +2104,8 @@
     },
     {
       "path": "tools/release-check.mjs",
-      "bytes": 144347,
-      "sha256": "8a54529806b3b8ae0c2cb74f1b1532230800a19db0bd81b979eeb4085f1eb809"
+      "bytes": 150426,
+      "sha256": "cbfb11b1478723a0de54c76ac63f91cc304b84816a7cc80d168a46a04136431e"
     },
     {
       "path": "tools/update-manifest.mjs",
