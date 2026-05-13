@@ -1,31 +1,32 @@
-# Release Notes — Synaptic Mesh v0.3.2
+# Release Notes — Synaptic Mesh v0.3.3
 
-Status: advisory report misuse/failure catalog. Manual, local, opt-in, record-only, no effects. Not runtime-ready; not production/enforcement-ready.
+Status: advisory report reproducibility/drift gate. Manual, local, opt-in, record-only, no effects. Not runtime-ready; not production/enforcement-ready.
 
 ## Why this release
 
-After v0.3.0-alpha added the human-readable advisory report and v0.3.1 added Unicode/bidi hygiene, v0.3.2 tests the next risk: someone treating advisory evidence as authority. This release adds a failure catalog that rejects report candidates when they attempt to become machine-readable policy, agent-consumed instructions, approvals, block/allow signals, authorization, enforcement, tool commands, memory/config writes, publication automation, or agent-instruction mutations.
+After v0.3.2 added a misuse/failure catalog for the human-readable advisory report, v0.3.3 adds a reproducibility/drift gate. The goal is to make report evidence reviewable and stable before any runtime, memory, or adapter work is considered.
 
-## Highlights since v0.3.1
+## Highlights since v0.3.2
 
-- Added `implementation/synaptic-mesh-shadow-v0/tests/passive-live-shadow-canary-advisory-report-failure-catalog.mjs`.
-- Added failure-catalog fixture/evidence:
-  - `implementation/synaptic-mesh-shadow-v0/fixtures/passive-live-shadow-canary-advisory-report-failure-catalog.json`
-  - `implementation/synaptic-mesh-shadow-v0/evidence/passive-live-shadow-canary-advisory-report-failure-catalog.out.json`
+- Added `implementation/synaptic-mesh-shadow-v0/tests/passive-live-shadow-canary-advisory-report-reproducibility.mjs`.
+- Added reproducibility fixture/evidence:
+  - `implementation/synaptic-mesh-shadow-v0/fixtures/passive-live-shadow-canary-advisory-report-reproducibility.json`
+  - `implementation/synaptic-mesh-shadow-v0/evidence/passive-live-shadow-canary-advisory-report-reproducibility.out.json`
 - Wired the new gate into local `check`, `review:local`, and `release:check` validation.
-- Extended release checks to pin zero unexpected accepts and no machine-policy / agent-consumption / authority flags.
+- Extended release checks to pin two deterministic report runs, zero normalized mismatches, six drift negative controls, and no machine-policy / agent-consumption / authority flags.
 
-## Expected v0.3.2 evidence
+## Expected v0.3.3 evidence
 
 ```json
 {
-  "advisoryReportFailureCatalog": "pass",
-  "releaseLayer": "v0.3.2",
-  "expectedRejects": 12,
+  "advisoryReportReproducibility": "pass",
+  "releaseLayer": "v0.3.3",
+  "runs": 2,
+  "normalizedOutputMismatches": 0,
+  "expectedRejects": 6,
   "unexpectedAccepts": 0,
   "machineReadablePolicyDecision": false,
   "consumedByAgent": false,
-  "authoritative": false,
   "mayBlock": false,
   "mayAllow": false
 }
@@ -33,14 +34,14 @@ After v0.3.0-alpha added the human-readable advisory report and v0.3.1 added Uni
 
 ## Conservative release statement
 
-`v0.3.2` proves only that local advisory report misuse negative controls are rejected by deterministic local gates. It does not add live traffic reads, raw input persistence, runtime integration, live observer daemon, watcher, adapter integration, tool execution, memory/config writes, external publication, publication automation, agent-instruction writes, automatic agent consumption, machine-readable policy decisions, approval paths, blocking, allowing, authorization, deletion, retention scheduler, or enforcement.
+`v0.3.3` proves only that local advisory report reproducibility/drift controls pass against committed evidence. It does not add live traffic reads, raw input persistence, runtime integration, live observer daemon, watcher, adapter integration, tool execution, memory/config writes, external publication, publication automation, agent-instruction writes, automatic agent consumption, machine-readable policy decisions, approval paths, blocking, allowing, authorization, deletion, retention scheduler, or enforcement.
 
 ## Validation snapshot
 
 Expected validation command:
 
 ```bash
-npm --prefix implementation/synaptic-mesh-shadow-v0 run release:check -- --target v0.3.2
+npm --prefix implementation/synaptic-mesh-shadow-v0 run release:check -- --target v0.3.3
 ```
 
 ## Operational non-release status

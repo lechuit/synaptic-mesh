@@ -38,6 +38,7 @@ const releaseGateScripts = [
   'test:passive-live-shadow-canary-advisory-report',
   'test:passive-live-shadow-canary-advisory-unicode-bidi-guard',
   'test:passive-live-shadow-canary-advisory-report-failure-catalog',
+  'test:passive-live-shadow-canary-advisory-report-reproducibility',
   'test:live-shadow-synthetic-replay',
   'test:live-shadow-drift-scorecard',
   'test:manual-observation-bundle-schema',
@@ -201,9 +202,13 @@ assert(
 assert(packageJson.private === true, 'shadow package must remain private for release checks');
 assert(packageJson.version === '0.0.0-local', 'shadow package version must remain 0.0.0-local unless publication scope changes');
 assert(packageJson.scripts?.['release:check'] === 'node ../../tools/release-check.mjs', 'package.json must wire npm run release:check to ../../tools/release-check.mjs');
-if (manifestReleaseTag === 'v0.3.2') {
-  assertIncludes(manifest.reproducibility, 'expected_rejects_12', 'MANIFEST.json reproducibility');
+if (manifestReleaseTag === 'v0.3.3') {
+  assertIncludes(manifest.reproducibility, 'advisory_report_reproducibility', 'MANIFEST.json reproducibility');
+  assertIncludes(manifest.reproducibility, 'runs_2', 'MANIFEST.json reproducibility');
+  assertIncludes(manifest.reproducibility, 'mismatches_0', 'MANIFEST.json reproducibility');
+  assertIncludes(manifest.reproducibility, 'expected_rejects_6', 'MANIFEST.json reproducibility');
   assertNotIncludes(manifest.reproducibility, 'expected_rejects_10', 'MANIFEST.json reproducibility');
+  assertNotIncludes(manifest.reproducibility, 'expected_rejects_12', 'MANIFEST.json reproducibility');
 }
 
 assertIncludes(readme, `# Synaptic Mesh ${manifestReleaseTag}`, 'README.md');
@@ -219,6 +224,7 @@ for (const staleVersion of staleVersions) {
 }
 
 for (const requiredManifestPath of [
+  'docs/status-v0.3.3.md',
   'docs/status-v0.3.2.md',
   'docs/status-v0.3.1.md',
   'docs/status-v0.3.0-alpha.md',
@@ -239,6 +245,9 @@ for (const requiredManifestPath of [
   'implementation/synaptic-mesh-shadow-v0/tests/passive-live-shadow-canary-advisory-report-failure-catalog.mjs',
   'implementation/synaptic-mesh-shadow-v0/fixtures/passive-live-shadow-canary-advisory-report-failure-catalog.json',
   'implementation/synaptic-mesh-shadow-v0/evidence/passive-live-shadow-canary-advisory-report-failure-catalog.out.json',
+  'implementation/synaptic-mesh-shadow-v0/tests/passive-live-shadow-canary-advisory-report-reproducibility.mjs',
+  'implementation/synaptic-mesh-shadow-v0/fixtures/passive-live-shadow-canary-advisory-report-reproducibility.json',
+  'implementation/synaptic-mesh-shadow-v0/evidence/passive-live-shadow-canary-advisory-report-reproducibility.out.json',
 ]) {
   assert(manifestFilePaths.has(requiredManifestPath), `MANIFEST.files.json must include ${requiredManifestPath}`);
 }
@@ -318,6 +327,7 @@ const passiveCanaryAdvisoryReport = readJson(path.join(packageRoot, 'evidence/pa
 const passiveCanaryAdvisoryReportText = readFileSync(path.join(packageRoot, 'evidence/passive-live-shadow-canary-advisory-report.out.md'), 'utf8');
 const passiveCanaryAdvisoryUnicodeBidiGuard = readJson(path.join(packageRoot, 'evidence/passive-live-shadow-canary-advisory-unicode-bidi-guard.out.json'));
 const passiveCanaryAdvisoryReportFailureCatalog = readJson(path.join(packageRoot, 'evidence/passive-live-shadow-canary-advisory-report-failure-catalog.out.json'));
+const passiveCanaryAdvisoryReportReproducibility = readJson(path.join(packageRoot, 'evidence/passive-live-shadow-canary-advisory-report-reproducibility.out.json'));
 const liveInputSourceBoundaryContracts = readJson(path.join(packageRoot, 'evidence/live-input-source-boundary-contracts.out.json'));
 assert(liveInputSourceBoundaryContracts?.summary?.verdict === 'pass', 'live input/source boundary contracts verdict must be pass');
 assert(liveInputSourceBoundaryContracts?.summary?.passCases === 2, 'live input/source boundary contracts must keep 2 positive controls');
@@ -621,6 +631,36 @@ assert(passiveCanaryAdvisoryReportFailureCatalog?.summary?.allowingImplemented =
 assert(passiveCanaryAdvisoryReportFailureCatalog?.summary?.authorizationImplemented === false, 'passive canary advisory report failure catalog must not authorize');
 assert(passiveCanaryAdvisoryReportFailureCatalog?.summary?.enforcementImplemented === false, 'passive canary advisory report failure catalog must not enforce');
 assert(passiveCanaryAdvisoryReportFailureCatalog?.summary?.automaticAgentConsumptionImplemented === false, 'passive canary advisory report failure catalog must not be consumed automatically by agents');
+
+assert(passiveCanaryAdvisoryReportReproducibility?.summary?.advisoryReportReproducibility === 'pass', 'passive canary advisory report reproducibility verdict must be pass');
+assert(passiveCanaryAdvisoryReportReproducibility?.summary?.releaseLayer === 'v0.3.3', 'passive canary advisory report reproducibility release layer must remain v0.3.3 baseline evidence');
+assert(passiveCanaryAdvisoryReportReproducibility?.summary?.dependsOn === 'v0.3.2-advisory-report-failure-catalog', 'passive canary advisory report reproducibility must depend on v0.3.2 failure catalog');
+assert(passiveCanaryAdvisoryReportReproducibility?.summary?.mode === 'manual_local_advisory_report_reproducibility_drift_record_only', 'passive canary advisory report reproducibility mode must remain record-only');
+assert(passiveCanaryAdvisoryReportReproducibility?.summary?.runs === 2, 'passive canary advisory report reproducibility must run twice');
+assert(passiveCanaryAdvisoryReportReproducibility?.summary?.normalizedOutputMismatches === 0, 'passive canary advisory report reproducibility must have zero normalized output mismatches');
+assert(passiveCanaryAdvisoryReportReproducibility?.summary?.committedMarkdownBytes === passiveCanaryAdvisoryReportReproducibility?.summary?.advisorySummaryReportBytes, 'passive canary advisory report reproducibility byte counts must match');
+assert(passiveCanaryAdvisoryReportReproducibility?.summary?.expectedRejects === 6, 'passive canary advisory report reproducibility must keep 6 expected rejects');
+assert(passiveCanaryAdvisoryReportReproducibility?.summary?.unexpectedAccepts === 0, 'passive canary advisory report reproducibility must have zero unexpected accepts');
+assert(passiveCanaryAdvisoryReportReproducibility?.summary?.expectedReasonCodeMisses === 0, 'passive canary advisory report reproducibility must have zero expected reason-code misses');
+assert(passiveCanaryAdvisoryReportReproducibility?.summary?.machineReadablePolicyDecision === false, 'passive canary advisory report reproducibility must not become machine-readable policy');
+assert(passiveCanaryAdvisoryReportReproducibility?.summary?.consumedByAgent === false, 'passive canary advisory report reproducibility must not be agent-consumed');
+assert(passiveCanaryAdvisoryReportReproducibility?.summary?.authoritative === false, 'passive canary advisory report reproducibility must not be authoritative');
+assert(passiveCanaryAdvisoryReportReproducibility?.summary?.mayApprove === false, 'passive canary advisory report reproducibility must not approve');
+assert(passiveCanaryAdvisoryReportReproducibility?.summary?.mayBlock === false, 'passive canary advisory report reproducibility must not block');
+assert(passiveCanaryAdvisoryReportReproducibility?.summary?.mayAllow === false, 'passive canary advisory report reproducibility must not allow');
+assert(passiveCanaryAdvisoryReportReproducibility?.summary?.mayAuthorize === false, 'passive canary advisory report reproducibility must not authorize');
+assert(passiveCanaryAdvisoryReportReproducibility?.summary?.mayEnforce === false, 'passive canary advisory report reproducibility must not enforce');
+assert(passiveCanaryAdvisoryReportReproducibility?.summary?.runtimeIntegrated === false, 'passive canary advisory report reproducibility must not integrate runtime');
+assert(passiveCanaryAdvisoryReportReproducibility?.summary?.toolExecutionImplemented === false, 'passive canary advisory report reproducibility must not execute tools');
+assert(passiveCanaryAdvisoryReportReproducibility?.summary?.memoryWriteImplemented === false, 'passive canary advisory report reproducibility must not write memory');
+assert(passiveCanaryAdvisoryReportReproducibility?.summary?.configWriteImplemented === false, 'passive canary advisory report reproducibility must not write config');
+assert(passiveCanaryAdvisoryReportReproducibility?.summary?.externalPublicationImplemented === false, 'passive canary advisory report reproducibility must not publish externally');
+assert(passiveCanaryAdvisoryReportReproducibility?.summary?.approvalPathImplemented === false, 'passive canary advisory report reproducibility must not enter approval path');
+assert(passiveCanaryAdvisoryReportReproducibility?.summary?.blockingImplemented === false, 'passive canary advisory report reproducibility must not block');
+assert(passiveCanaryAdvisoryReportReproducibility?.summary?.allowingImplemented === false, 'passive canary advisory report reproducibility must not allow');
+assert(passiveCanaryAdvisoryReportReproducibility?.summary?.authorizationImplemented === false, 'passive canary advisory report reproducibility must not authorize');
+assert(passiveCanaryAdvisoryReportReproducibility?.summary?.enforcementImplemented === false, 'passive canary advisory report reproducibility must not enforce');
+assert(passiveCanaryAdvisoryReportReproducibility?.summary?.automaticAgentConsumptionImplemented === false, 'passive canary advisory report reproducibility must not be consumed automatically by agents');
 
 const liveShadowSyntheticReplay = readJson(path.join(packageRoot, 'evidence/live-shadow-synthetic-replay.out.json'));
 assert(liveShadowSyntheticReplay?.summary?.verdict === 'pass', 'live-shadow synthetic replay verdict must be pass');
