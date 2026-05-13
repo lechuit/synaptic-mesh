@@ -161,6 +161,10 @@ const commands = [
     args: [resolve(packageRoot, 'tests/passive-live-shadow-canary-advisory-unicode-bidi-guard.mjs')],
   },
   {
+    id: 'passive-live-shadow-canary-advisory-report-failure-catalog-tests',
+    args: [resolve(packageRoot, 'tests/passive-live-shadow-canary-advisory-report-failure-catalog.mjs')],
+  },
+  {
     id: 'fixture-parity-harness',
     args: [resolve(packageRoot, 'tests/fixture-parity.mjs')],
   },
@@ -207,6 +211,7 @@ const passiveCanaryDriftScorecard = readEvidenceJson('implementation/synaptic-me
 const passiveCanaryExpandedPack = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/passive-live-shadow-canary-expanded-pack.out.json');
 const passiveCanaryAdvisoryReport = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/passive-live-shadow-canary-advisory-report.out.json');
 const passiveCanaryAdvisoryUnicodeBidiGuard = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/passive-live-shadow-canary-advisory-unicode-bidi-guard.out.json');
+const passiveCanaryAdvisoryReportFailureCatalog = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/passive-live-shadow-canary-advisory-report-failure-catalog.out.json');
 
 const unsafeAllowSignals = [
   ...(fixtureParity?.summary?.nonRegressionUnsafeAllowFixtures ?? []),
@@ -453,6 +458,23 @@ if (passiveCanaryAdvisoryUnicodeBidiGuard?.summary?.blockingImplemented !== fals
 if (passiveCanaryAdvisoryUnicodeBidiGuard?.summary?.allowingImplemented !== false) unsafeAllowSignals.push('passive-canary-advisory-unicode-bidi-allowing');
 if (passiveCanaryAdvisoryUnicodeBidiGuard?.summary?.authorizationImplemented !== false) unsafeAllowSignals.push('passive-canary-advisory-unicode-bidi-authorization');
 if (passiveCanaryAdvisoryUnicodeBidiGuard?.summary?.enforcementImplemented !== false) unsafeAllowSignals.push('passive-canary-advisory-unicode-bidi-enforcement');
+if (passiveCanaryAdvisoryReportFailureCatalog?.summary?.advisoryReportFailureCatalog !== 'pass') unsafeAllowSignals.push('passive-canary-advisory-report-failure-catalog');
+if (Number(passiveCanaryAdvisoryReportFailureCatalog?.summary?.unexpectedAccepts ?? 1) !== 0) unsafeAllowSignals.push('passive-canary-advisory-report-failure-catalog-unexpected-accepts');
+if (Number(passiveCanaryAdvisoryReportFailureCatalog?.summary?.expectedReasonCodeMisses ?? 1) !== 0) unsafeAllowSignals.push('passive-canary-advisory-report-failure-catalog-reason-misses');
+if (passiveCanaryAdvisoryReportFailureCatalog?.summary?.machineReadablePolicyDecision !== false) unsafeAllowSignals.push('passive-canary-advisory-report-failure-catalog-machine-policy');
+if (passiveCanaryAdvisoryReportFailureCatalog?.summary?.consumedByAgent !== false) unsafeAllowSignals.push('passive-canary-advisory-report-failure-catalog-agent-consumption');
+if (passiveCanaryAdvisoryReportFailureCatalog?.summary?.authoritative !== false) unsafeAllowSignals.push('passive-canary-advisory-report-failure-catalog-authority');
+if (passiveCanaryAdvisoryReportFailureCatalog?.summary?.mayBlock !== false) unsafeAllowSignals.push('passive-canary-advisory-report-failure-catalog-may-block');
+if (passiveCanaryAdvisoryReportFailureCatalog?.summary?.mayAllow !== false) unsafeAllowSignals.push('passive-canary-advisory-report-failure-catalog-may-allow');
+if (passiveCanaryAdvisoryReportFailureCatalog?.summary?.toolExecutionImplemented !== false) unsafeAllowSignals.push('passive-canary-advisory-report-failure-catalog-tools');
+if (passiveCanaryAdvisoryReportFailureCatalog?.summary?.memoryWriteImplemented !== false) unsafeAllowSignals.push('passive-canary-advisory-report-failure-catalog-memory');
+if (passiveCanaryAdvisoryReportFailureCatalog?.summary?.configWriteImplemented !== false) unsafeAllowSignals.push('passive-canary-advisory-report-failure-catalog-config');
+if (passiveCanaryAdvisoryReportFailureCatalog?.summary?.externalPublicationImplemented !== false) unsafeAllowSignals.push('passive-canary-advisory-report-failure-catalog-publication');
+if (passiveCanaryAdvisoryReportFailureCatalog?.summary?.approvalPathImplemented !== false) unsafeAllowSignals.push('passive-canary-advisory-report-failure-catalog-approval');
+if (passiveCanaryAdvisoryReportFailureCatalog?.summary?.blockingImplemented !== false) unsafeAllowSignals.push('passive-canary-advisory-report-failure-catalog-blocking');
+if (passiveCanaryAdvisoryReportFailureCatalog?.summary?.allowingImplemented !== false) unsafeAllowSignals.push('passive-canary-advisory-report-failure-catalog-allowing');
+if (passiveCanaryAdvisoryReportFailureCatalog?.summary?.authorizationImplemented !== false) unsafeAllowSignals.push('passive-canary-advisory-report-failure-catalog-authorization');
+if (passiveCanaryAdvisoryReportFailureCatalog?.summary?.enforcementImplemented !== false) unsafeAllowSignals.push('passive-canary-advisory-report-failure-catalog-enforcement');
 
 const summary = {
   artifact: 'T-synaptic-mesh-review-local-runner-v0',
@@ -620,6 +642,13 @@ const summary = {
   passiveCanaryAdvisoryUnicodeBidiGuardSourcePathAsciiRequired: passiveCanaryAdvisoryUnicodeBidiGuard?.summary?.sourcePathAsciiRequired ?? null,
   passiveCanaryAdvisoryUnicodeBidiGuardSourcePathConfusableGuard: passiveCanaryAdvisoryUnicodeBidiGuard?.summary?.sourcePathConfusableGuard ?? null,
   passiveCanaryAdvisoryUnicodeBidiGuardAutomaticAgentConsumptionImplemented: passiveCanaryAdvisoryUnicodeBidiGuard?.summary?.automaticAgentConsumptionImplemented ?? null,
+  passiveCanaryAdvisoryReportFailureCatalogVerdict: passiveCanaryAdvisoryReportFailureCatalog?.summary?.advisoryReportFailureCatalog ?? null,
+  passiveCanaryAdvisoryReportFailureCatalogExpectedRejects: passiveCanaryAdvisoryReportFailureCatalog?.summary?.expectedRejects ?? null,
+  passiveCanaryAdvisoryReportFailureCatalogUnexpectedAccepts: passiveCanaryAdvisoryReportFailureCatalog?.summary?.unexpectedAccepts ?? null,
+  passiveCanaryAdvisoryReportFailureCatalogMachineReadablePolicyDecision: passiveCanaryAdvisoryReportFailureCatalog?.summary?.machineReadablePolicyDecision ?? null,
+  passiveCanaryAdvisoryReportFailureCatalogConsumedByAgent: passiveCanaryAdvisoryReportFailureCatalog?.summary?.consumedByAgent ?? null,
+  passiveCanaryAdvisoryReportFailureCatalogMayBlock: passiveCanaryAdvisoryReportFailureCatalog?.summary?.mayBlock ?? null,
+  passiveCanaryAdvisoryReportFailureCatalogMayAllow: passiveCanaryAdvisoryReportFailureCatalog?.summary?.mayAllow ?? null,
   unsafeAllowSignals,
   sourceFixtureMutation: false,
 };

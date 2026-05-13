@@ -37,6 +37,7 @@ const releaseGateScripts = [
   'test:passive-live-shadow-canary-expanded-pack',
   'test:passive-live-shadow-canary-advisory-report',
   'test:passive-live-shadow-canary-advisory-unicode-bidi-guard',
+  'test:passive-live-shadow-canary-advisory-report-failure-catalog',
   'test:live-shadow-synthetic-replay',
   'test:live-shadow-drift-scorecard',
   'test:manual-observation-bundle-schema',
@@ -200,6 +201,10 @@ assert(
 assert(packageJson.private === true, 'shadow package must remain private for release checks');
 assert(packageJson.version === '0.0.0-local', 'shadow package version must remain 0.0.0-local unless publication scope changes');
 assert(packageJson.scripts?.['release:check'] === 'node ../../tools/release-check.mjs', 'package.json must wire npm run release:check to ../../tools/release-check.mjs');
+if (manifestReleaseTag === 'v0.3.2') {
+  assertIncludes(manifest.reproducibility, 'expected_rejects_12', 'MANIFEST.json reproducibility');
+  assertNotIncludes(manifest.reproducibility, 'expected_rejects_10', 'MANIFEST.json reproducibility');
+}
 
 assertIncludes(readme, `# Synaptic Mesh ${manifestReleaseTag}`, 'README.md');
 assertIncludes(readme, `public review release \`${manifestReleaseTag}\``, 'README.md');
@@ -214,6 +219,7 @@ for (const staleVersion of staleVersions) {
 }
 
 for (const requiredManifestPath of [
+  'docs/status-v0.3.2.md',
   'docs/status-v0.3.1.md',
   'docs/status-v0.3.0-alpha.md',
   'docs/status-v0.2.6.md',
@@ -230,6 +236,9 @@ for (const requiredManifestPath of [
   'implementation/synaptic-mesh-shadow-v0/tests/passive-live-shadow-canary-advisory-unicode-bidi-guard.mjs',
   'implementation/synaptic-mesh-shadow-v0/fixtures/passive-live-shadow-canary-advisory-unicode-bidi-guard.json',
   'implementation/synaptic-mesh-shadow-v0/evidence/passive-live-shadow-canary-advisory-unicode-bidi-guard.out.json',
+  'implementation/synaptic-mesh-shadow-v0/tests/passive-live-shadow-canary-advisory-report-failure-catalog.mjs',
+  'implementation/synaptic-mesh-shadow-v0/fixtures/passive-live-shadow-canary-advisory-report-failure-catalog.json',
+  'implementation/synaptic-mesh-shadow-v0/evidence/passive-live-shadow-canary-advisory-report-failure-catalog.out.json',
 ]) {
   assert(manifestFilePaths.has(requiredManifestPath), `MANIFEST.files.json must include ${requiredManifestPath}`);
 }
@@ -308,6 +317,7 @@ const passiveCanaryExpandedPack = readJson(path.join(packageRoot, 'evidence/pass
 const passiveCanaryAdvisoryReport = readJson(path.join(packageRoot, 'evidence/passive-live-shadow-canary-advisory-report.out.json'));
 const passiveCanaryAdvisoryReportText = readFileSync(path.join(packageRoot, 'evidence/passive-live-shadow-canary-advisory-report.out.md'), 'utf8');
 const passiveCanaryAdvisoryUnicodeBidiGuard = readJson(path.join(packageRoot, 'evidence/passive-live-shadow-canary-advisory-unicode-bidi-guard.out.json'));
+const passiveCanaryAdvisoryReportFailureCatalog = readJson(path.join(packageRoot, 'evidence/passive-live-shadow-canary-advisory-report-failure-catalog.out.json'));
 const liveInputSourceBoundaryContracts = readJson(path.join(packageRoot, 'evidence/live-input-source-boundary-contracts.out.json'));
 assert(liveInputSourceBoundaryContracts?.summary?.verdict === 'pass', 'live input/source boundary contracts verdict must be pass');
 assert(liveInputSourceBoundaryContracts?.summary?.passCases === 2, 'live input/source boundary contracts must keep 2 positive controls');
@@ -555,7 +565,7 @@ assertNotIncludes(passiveCanaryAdvisoryReportText, 'permission granted', 'passiv
 assertNotIncludes(passiveCanaryAdvisoryReportText, 'automatic consumption enabled', 'passive canary advisory report');
 
 assert(passiveCanaryAdvisoryUnicodeBidiGuard?.summary?.verdict === 'pass', 'passive canary advisory unicode/bidi guard verdict must be pass');
-assert(passiveCanaryAdvisoryUnicodeBidiGuard?.summary?.releaseLayer === manifestReleaseTag, 'passive canary advisory unicode/bidi guard release layer must match release target');
+assert(passiveCanaryAdvisoryUnicodeBidiGuard?.summary?.releaseLayer === 'v0.3.1', 'passive canary advisory unicode/bidi guard release layer must remain v0.3.1 baseline evidence');
 assert(passiveCanaryAdvisoryUnicodeBidiGuard?.summary?.dependsOn === 'v0.3.0-alpha-advisory-report', 'passive canary advisory unicode/bidi guard must depend on v0.3.0-alpha advisory report');
 assert(passiveCanaryAdvisoryUnicodeBidiGuard?.summary?.mode === 'manual_local_advisory_unicode_bidi_guard_record_only', 'passive canary advisory unicode/bidi guard mode must remain record-only');
 assert(passiveCanaryAdvisoryUnicodeBidiGuard?.summary?.positiveControls >= 1, 'passive canary advisory unicode/bidi guard must include positive controls');
@@ -579,6 +589,38 @@ assert(passiveCanaryAdvisoryUnicodeBidiGuard?.summary?.blockingImplemented === f
 assert(passiveCanaryAdvisoryUnicodeBidiGuard?.summary?.allowingImplemented === false, 'passive canary advisory unicode/bidi guard must not allow');
 assert(passiveCanaryAdvisoryUnicodeBidiGuard?.summary?.authorizationImplemented === false, 'passive canary advisory unicode/bidi guard must not authorize');
 assert(passiveCanaryAdvisoryUnicodeBidiGuard?.summary?.enforcementImplemented === false, 'passive canary advisory unicode/bidi guard must not enforce');
+
+assert(passiveCanaryAdvisoryReportFailureCatalog?.summary?.advisoryReportFailureCatalog === 'pass', 'passive canary advisory report failure catalog verdict must be pass');
+assert(passiveCanaryAdvisoryReportFailureCatalog?.summary?.releaseLayer === 'v0.3.2', 'passive canary advisory report failure catalog release layer must remain v0.3.2 baseline evidence');
+assert(passiveCanaryAdvisoryReportFailureCatalog?.summary?.dependsOn === 'v0.3.1-advisory-unicode-bidi-guard', 'passive canary advisory report failure catalog must depend on v0.3.1 guard');
+assert(passiveCanaryAdvisoryReportFailureCatalog?.summary?.mode === 'manual_local_advisory_report_failure_catalog_record_only', 'passive canary advisory report failure catalog mode must remain record-only');
+assert(passiveCanaryAdvisoryReportFailureCatalog?.summary?.expectedRejects === 12, 'passive canary advisory report failure catalog must keep 12 expected rejects');
+assert(passiveCanaryAdvisoryReportFailureCatalog?.summary?.unexpectedAccepts === 0, 'passive canary advisory report failure catalog must have zero unexpected accepts');
+assert(passiveCanaryAdvisoryReportFailureCatalog?.summary?.expectedReasonCodeMisses === 0, 'passive canary advisory report failure catalog must have zero expected reason-code misses');
+assert(passiveCanaryAdvisoryReportFailureCatalog?.summary?.machineReadablePolicyDecision === false, 'passive canary advisory report failure catalog must not become machine-readable policy');
+assert(passiveCanaryAdvisoryReportFailureCatalog?.summary?.consumedByAgent === false, 'passive canary advisory report failure catalog must not be agent-consumed');
+assert(passiveCanaryAdvisoryReportFailureCatalog?.summary?.authoritative === false, 'passive canary advisory report failure catalog must not be authoritative');
+assert(passiveCanaryAdvisoryReportFailureCatalog?.summary?.mayApprove === false, 'passive canary advisory report failure catalog must not approve');
+assert(passiveCanaryAdvisoryReportFailureCatalog?.summary?.mayBlock === false, 'passive canary advisory report failure catalog must not block');
+assert(passiveCanaryAdvisoryReportFailureCatalog?.summary?.mayAllow === false, 'passive canary advisory report failure catalog must not allow');
+assert(passiveCanaryAdvisoryReportFailureCatalog?.summary?.mayAuthorize === false, 'passive canary advisory report failure catalog must not authorize');
+assert(passiveCanaryAdvisoryReportFailureCatalog?.summary?.mayEnforce === false, 'passive canary advisory report failure catalog must not enforce');
+assert(passiveCanaryAdvisoryReportFailureCatalog?.summary?.mayExecuteTool === false, 'passive canary advisory report failure catalog must not execute tools');
+assert(passiveCanaryAdvisoryReportFailureCatalog?.summary?.mayWriteMemory === false, 'passive canary advisory report failure catalog must not write memory');
+assert(passiveCanaryAdvisoryReportFailureCatalog?.summary?.mayWriteConfig === false, 'passive canary advisory report failure catalog must not write config');
+assert(passiveCanaryAdvisoryReportFailureCatalog?.summary?.mayPublishExternally === false, 'passive canary advisory report failure catalog must not publish externally');
+assert(passiveCanaryAdvisoryReportFailureCatalog?.summary?.mayMutateAgentInstruction === false, 'passive canary advisory report failure catalog must not mutate agent instructions');
+assert(passiveCanaryAdvisoryReportFailureCatalog?.summary?.runtimeIntegrated === false, 'passive canary advisory report failure catalog must not integrate runtime');
+assert(passiveCanaryAdvisoryReportFailureCatalog?.summary?.toolExecutionImplemented === false, 'passive canary advisory report failure catalog must not execute tools');
+assert(passiveCanaryAdvisoryReportFailureCatalog?.summary?.memoryWriteImplemented === false, 'passive canary advisory report failure catalog must not write memory');
+assert(passiveCanaryAdvisoryReportFailureCatalog?.summary?.configWriteImplemented === false, 'passive canary advisory report failure catalog must not write config');
+assert(passiveCanaryAdvisoryReportFailureCatalog?.summary?.externalPublicationImplemented === false, 'passive canary advisory report failure catalog must not publish externally');
+assert(passiveCanaryAdvisoryReportFailureCatalog?.summary?.approvalPathImplemented === false, 'passive canary advisory report failure catalog must not enter approval path');
+assert(passiveCanaryAdvisoryReportFailureCatalog?.summary?.blockingImplemented === false, 'passive canary advisory report failure catalog must not block');
+assert(passiveCanaryAdvisoryReportFailureCatalog?.summary?.allowingImplemented === false, 'passive canary advisory report failure catalog must not allow');
+assert(passiveCanaryAdvisoryReportFailureCatalog?.summary?.authorizationImplemented === false, 'passive canary advisory report failure catalog must not authorize');
+assert(passiveCanaryAdvisoryReportFailureCatalog?.summary?.enforcementImplemented === false, 'passive canary advisory report failure catalog must not enforce');
+assert(passiveCanaryAdvisoryReportFailureCatalog?.summary?.automaticAgentConsumptionImplemented === false, 'passive canary advisory report failure catalog must not be consumed automatically by agents');
 
 const liveShadowSyntheticReplay = readJson(path.join(packageRoot, 'evidence/live-shadow-synthetic-replay.out.json'));
 assert(liveShadowSyntheticReplay?.summary?.verdict === 'pass', 'live-shadow synthetic replay verdict must be pass');
