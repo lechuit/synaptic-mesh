@@ -298,6 +298,11 @@
       "sha256": "072a307f76fed2d8f2178738472f1200ca339bd2b70561a84b9548b67d316abc"
     },
     {
+      "path": "docs/read-only-local-file-adapter-canary-runbook.md",
+      "bytes": 6493,
+      "sha256": "3b1221f6d9b1e31e5fc39ff39a5e5642b1de24db9288417ad564961e56ca91ee"
+    },
+    {
       "path": "docs/real-flow-replay.md",
       "bytes": 2626,
       "sha256": "0cce7504c180f2e96abec00a8d9e4b9dbb31048cb49f2f1c0c41e2c42f997a54"
@@ -893,6 +898,11 @@
       "sha256": "07c5b1afeb785e2ad67df02b9b2d2d3648e771afe06ed4a817cf7bd83ca846fa"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/read-only-local-file-adapter-canary-runbook.out.json",
+      "bytes": 2502,
+      "sha256": "4c09368f653c71d6fc18da14e5bc9d9ed4b010d52e10c665c9c2823496470854"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/read-only-local-file-adapter-negative-controls.out.json",
       "bytes": 5949,
       "sha256": "c2df25503e8b466f0edb526646c4bee4c645cbf3194cde50d0aa8e498b762b5a"
@@ -1313,6 +1323,11 @@
       "sha256": "696a7e835aa2dab11808b9e381a5fea442d1234f6d47a43b893d83fc06a2d0ae"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/fixtures/read-only-local-file-adapter-canary-runbook.json",
+      "bytes": 2433,
+      "sha256": "f20a800d331e0b025b77d302f33810cf76c6be3359f11528a0ece106eaadff94"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/fixtures/read-only-local-file-adapter-inputs.json",
       "bytes": 2610,
       "sha256": "0cb17256497548dac58a33cfbfd92029dc58977de05ed25797be897878432b91"
@@ -1394,8 +1409,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/package.json",
-      "bytes": 15494,
-      "sha256": "8ea380af5f8636ccee8b1bc69bfbfd713fd8fd22e87082cc300ad7e4f2459ca6"
+      "bytes": 15682,
+      "sha256": "39c337645463ceeafe940c414bc266dfd691eeef1ebd654cadd9bd9399435b27"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/action-context-packet.mjs",
@@ -1746,6 +1761,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/tests/read-only-adapter-public-review-package.mjs",
       "bytes": 6548,
       "sha256": "a544ab6b4600a9eb1fd989a3410df29e48d66fa0c65978ecae3edb503e4ecbeb"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/read-only-local-file-adapter-canary-runbook.mjs",
+      "bytes": 8232,
+      "sha256": "4e31fc4d3733646a02fbb7750689dd8bf644bb31d2b7d05c69648d94342742dc"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/read-only-local-file-adapter-canary.mjs",
@@ -2384,8 +2404,8 @@
     },
     {
       "path": "tools/release-check.mjs",
-      "bytes": 195076,
-      "sha256": "5a20fc73471ae0ee610802fa4405d6877b51f7af8203174868b1a489e3d35b85"
+      "bytes": 200430,
+      "sha256": "2986ed45066ea7abfb4d7aea968546ad8cf9d9ec9fb102e596b2153a8926b1bb"
     },
     {
       "path": "tools/update-manifest.mjs",
