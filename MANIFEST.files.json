@@ -69,8 +69,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 3634,
-      "sha256": "fadc73c7ea718ab1dee66a9edfd03a599f6a830131bd21f46ffc8539ac1ea4c8"
+      "bytes": 3717,
+      "sha256": "e6f86c456a564f1540cdc5c72de680e49324daf1e8c4c331782879c0c46f42ef"
     },
     {
       "path": "RELEASE_CANDIDATE.md",
@@ -79,8 +79,8 @@
     },
     {
       "path": "RELEASE_NOTES.md",
-      "bytes": 2658,
-      "sha256": "407553cc0a612f15f719d7baaa83420a6c9928505679b981ccb156929b6780c6"
+      "bytes": 2326,
+      "sha256": "4bbbf585e78ab3d1b3aa6f29de20d83fb264f2e0abd03b72def1be2a0062cdc0"
     },
     {
       "path": "design-notes/adapter-boundary-langgraph-mcp-v0.md",
@@ -106,6 +106,11 @@
       "path": "design-notes/scalable-design-patterns-v0.md",
       "bytes": 1078,
       "sha256": "2aa0bd6bee2c8f926a1a2e3414f32f194881d273947b5fdf0eede0938ba54f60"
+    },
+    {
+      "path": "docs/adapter-implementation-hazard-catalog-v0.4.8.md",
+      "bytes": 3966,
+      "sha256": "8b1571184852ba5e262588f879bb5235c2376b230cdb0fe00b834750eca052d2"
     },
     {
       "path": "docs/adr/0001-shadow-receiver-architecture.md",
@@ -428,6 +433,11 @@
       "sha256": "4e2a7699acc69e52f0b321a10c95aca3c7625f88a78495345d174dc246ade24d"
     },
     {
+      "path": "docs/status-v0.4.8.md",
+      "bytes": 2061,
+      "sha256": "fb29f28e383943138cfd2e50826b9ab30c9cb8433deadd294c8dd6d717cce2f4"
+    },
+    {
       "path": "docs/threat-model-v0.md",
       "bytes": 6211,
       "sha256": "b00847bd4db3b2878165eda2866257420e7da8bbbdecaaad8e6aaefce2256d38"
@@ -486,6 +496,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/action-policy-contracts.out.json",
       "bytes": 7409,
       "sha256": "4c76b83d258324142de7d4233f744066e41eaa212d7f83b2d3476cfb673352d7"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/adapter-implementation-hazard-catalog-v0.4.8.out.json",
+      "bytes": 1483,
+      "sha256": "4cb5ca4b926526b5927506a0a8b87dc4eab2f2bb38967dec47d83dffe709f8a6"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/adversarial-fixture-generator.out.json",
@@ -993,6 +1008,11 @@
       "sha256": "3099c5c1f4daf861fab180dd0ee34d321838afe73962814fdd7f1744c41675a0"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/fixtures/adapter-implementation-hazard-catalog-v0.4.8.json",
+      "bytes": 2308,
+      "sha256": "44d62b592fa92744348b7ebf9f2d575cdd0fc995c771a91202c1457d1aeb3057"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/fixtures/authority-claim-routes.json",
       "bytes": 30223,
       "sha256": "55fd623a71105701e6dba5de966bb5b9870e83f34b877051132f82d2bdeada13"
@@ -1339,8 +1359,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/package.json",
-      "bytes": 14594,
-      "sha256": "57262408b074d1af3ea20eeb66ab5da5b889877f1171dd4012fe142e0befbab0"
+      "bytes": 14764,
+      "sha256": "fe1ca90270cca4940b5cb3d6e078fcccc2467ee2c5c588ba6a15542c5e948f54"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/action-context-packet.mjs",
@@ -1421,6 +1441,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/tests/action-policy-contracts.mjs",
       "bytes": 3928,
       "sha256": "f5383131c56f53b4703f97e5fc073fd614e73638dbbfa6b444fa9ea07e33685d"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/adapter-implementation-hazard-catalog.mjs",
+      "bytes": 5843,
+      "sha256": "fd715a2fad6e0d6189a9310996187feacbb7405c4d68b6bbc9822615a3743fee"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/adversarial-fixture-generator.mjs",
@@ -2289,8 +2314,8 @@
     },
     {
       "path": "tools/release-check.mjs",
-      "bytes": 183000,
-      "sha256": "30cd8d526921ae1a1475d032c9590988de11d8829dd595d95883e50e111eac81"
+      "bytes": 186370,
+      "sha256": "578bb963aa34bb375588de37cbe802be7c93161a0f4508c8abc34c73ad2dff1e"
     },
     {
       "path": "tools/update-manifest.mjs",

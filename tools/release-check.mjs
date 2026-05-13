@@ -44,6 +44,7 @@ const releaseGateScripts = [
   'test:read-only-adapter-public-review-package',
   'test:read-only-adapter-human-review-go-no-go',
   'test:first-real-adapter-design-note',
+  'test:adapter-implementation-hazard-catalog',
   'test:live-shadow-synthetic-replay',
   'test:live-shadow-drift-scorecard',
   'test:manual-observation-bundle-schema',
@@ -207,6 +208,21 @@ assert(
 assert(packageJson.private === true, 'shadow package must remain private for release checks');
 assert(packageJson.version === '0.0.0-local', 'shadow package version must remain 0.0.0-local unless publication scope changes');
 assert(packageJson.scripts?.['release:check'] === 'node ../../tools/release-check.mjs', 'package.json must wire npm run release:check to ../../tools/release-check.mjs');
+if (manifestReleaseTag === 'v0.4.8') {
+  assertIncludes(manifest.reproducibility, 'adapter_implementation_hazard_catalog', 'MANIFEST.json reproducibility');
+  assertIncludes(manifest.reproducibility, 'reject_raw_input', 'MANIFEST.json reproducibility');
+  assertIncludes(manifest.reproducibility, 'url_input', 'MANIFEST.json reproducibility');
+  assertIncludes(manifest.reproducibility, 'directory_input', 'MANIFEST.json reproducibility');
+  assertIncludes(manifest.reproducibility, 'symlink_escape', 'MANIFEST.json reproducibility');
+  assertIncludes(manifest.reproducibility, 'machine_policy_leak', 'MANIFEST.json reproducibility');
+  assertIncludes(manifest.reproducibility, 'unexpected_accepts_0', 'MANIFEST.json reproducibility');
+  assertIncludes(manifest.reproducibility, 'go_to_v0_5_alpha_canary_if_still_green', 'MANIFEST.json reproducibility');
+  assertIncludes(manifest.runtimeBoundary, 'pre_implementation', 'MANIFEST.json runtimeBoundary');
+  assertIncludes(manifest.runtimeBoundary, 'no_real_adapter_implementation', 'MANIFEST.json runtimeBoundary');
+  assertIncludes(manifest.runtimeBoundary, 'no_url_input', 'MANIFEST.json runtimeBoundary');
+  assertIncludes(manifest.runtimeBoundary, 'no_network_call', 'MANIFEST.json runtimeBoundary');
+}
+
 if (manifestReleaseTag === 'v0.4.7') {
   assertIncludes(manifest.reproducibility, 'first_real_adapter_design_note', 'MANIFEST.json reproducibility');
   assertIncludes(manifest.reproducibility, 'read_only_local_file_adapter', 'MANIFEST.json reproducibility');
@@ -333,6 +349,11 @@ for (const requiredManifestPath of [
   'implementation/synaptic-mesh-shadow-v0/tests/first-real-adapter-design-note.mjs',
   'implementation/synaptic-mesh-shadow-v0/fixtures/first-real-adapter-design-note-v0.4.7.json',
   'implementation/synaptic-mesh-shadow-v0/evidence/first-real-adapter-design-note-v0.4.7.out.json',
+  'docs/status-v0.4.8.md',
+  'docs/adapter-implementation-hazard-catalog-v0.4.8.md',
+  'implementation/synaptic-mesh-shadow-v0/tests/adapter-implementation-hazard-catalog.mjs',
+  'implementation/synaptic-mesh-shadow-v0/fixtures/adapter-implementation-hazard-catalog-v0.4.8.json',
+  'implementation/synaptic-mesh-shadow-v0/evidence/adapter-implementation-hazard-catalog-v0.4.8.out.json',
 ]) {
   assert(manifestFilePaths.has(requiredManifestPath), `MANIFEST.files.json must include ${requiredManifestPath}`);
 }
@@ -1485,6 +1506,19 @@ assertOptionalCountMatches(
   'RELEASE_NOTES.md',
   'receiver adapter contracts',
 );
+
+const adapterImplementationHazardCatalog = readJson(path.join(packageRoot, 'evidence/adapter-implementation-hazard-catalog-v0.4.8.out.json'));
+if (manifestReleaseTag === 'v0.4.8') {
+  assert(adapterImplementationHazardCatalog?.summary?.adapterImplementationHazardCatalog === 'pass', 'adapter implementation hazard catalog verdict must be pass');
+  assert(adapterImplementationHazardCatalog?.summary?.implementationAuthorized === false, 'adapter implementation hazard catalog must not authorize implementation');
+  assert(adapterImplementationHazardCatalog?.summary?.goToV050AlphaCanaryIfStillGreen === true, 'adapter implementation hazard catalog may route to v0.5.0-alpha canary if still green');
+  assert(adapterImplementationHazardCatalog?.summary?.hazardCases === 17, 'adapter implementation hazard catalog must cover 17 hazards');
+  assert(adapterImplementationHazardCatalog?.summary?.rejectedOrDowngraded === 17, 'adapter implementation hazard catalog must reject/downgrade 17 hazards');
+  assert(adapterImplementationHazardCatalog?.summary?.unexpectedAccepts === 0, 'adapter implementation hazard catalog must have zero unexpected accepts');
+  for (const forbidden of ['rawInputAllowed','urlInputAllowed','directoryInputAllowed','globAllowed','directoryTraversalAllowed','symlinkEscapeAllowed','outputOutsideEvidenceAllowed','agentConsumed','machineReadablePolicyDecision','toolExecution','memoryWrite','configWrite','externalPublication','approvalEmission','mayBlock','mayAllow','authorization','enforcement']) {
+    assert(adapterImplementationHazardCatalog?.summary?.[forbidden] === false, `adapter implementation hazard catalog must keep ${forbidden} false`);
+  }
+}
 
 const firstRealAdapterDesignNote = readJson(path.join(packageRoot, 'evidence/first-real-adapter-design-note-v0.4.7.out.json'));
 if (manifestReleaseTag === 'v0.4.7') {
