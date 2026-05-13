@@ -69,8 +69,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 3131,
-      "sha256": "bd23ec6edbc580a1e1e09a57ca3d199065f6e4502007a6dd0db78e833e19a452"
+      "bytes": 3067,
+      "sha256": "4da99a6c5225de27613145b609943b7c6cdb596bdd0ae2eb65d54a42852afc52"
     },
     {
       "path": "RELEASE_CANDIDATE.md",
@@ -79,8 +79,8 @@
     },
     {
       "path": "RELEASE_NOTES.md",
-      "bytes": 2602,
-      "sha256": "6e2ee6ee0a4f7b5d97eceb78df4490043a6fecdade900683b6f108870343fa88"
+      "bytes": 2811,
+      "sha256": "f60ee4a50e3e8832236940924a42bcaff0f4caa62092a40ab662dc36a33ac5dd"
     },
     {
       "path": "design-notes/adapter-boundary-langgraph-mcp-v0.md",
@@ -149,8 +149,8 @@
     },
     {
       "path": "docs/coverage-matrix.md",
-      "bytes": 10303,
-      "sha256": "8d9977794d878f058e43623bf3eed358b6d662dd6a044e91a9f1918c219f3a37"
+      "bytes": 10678,
+      "sha256": "b2558c00af947f8a7a6dba4a3003a1134ce53bf29d5e8e2d09b148f5c98e912d"
     },
     {
       "path": "docs/decision-counterfactual-reviewer-guide.md",
@@ -299,8 +299,8 @@
     },
     {
       "path": "docs/release-ladder.md",
-      "bytes": 7510,
-      "sha256": "2ab358336525a55f8845c82196e507cb0fdfb09438c57e3a0edac1751ae80e5a"
+      "bytes": 8249,
+      "sha256": "12909357ad15802c217d47dd6eddf3a841a5681f75533970b85df5a9664a8ac6"
     },
     {
       "path": "docs/repo-structure.md",
@@ -341,6 +341,11 @@
       "path": "docs/status-v0.3.0-alpha.md",
       "bytes": 2267,
       "sha256": "24c44a22762dd8dcba6d79c90adcbdff1dd7b5c016d2e749fef77417fead78f7"
+    },
+    {
+      "path": "docs/status-v0.3.1.md",
+      "bytes": 2474,
+      "sha256": "edde6276952772519d4f53cd1661fefff82b6edc64e9408894527b942e202c48"
     },
     {
       "path": "docs/threat-model-v0.md",
@@ -385,7 +390,7 @@
     {
       "path": "implementation/synaptic-mesh-shadow-v0/README.md",
       "bytes": 11850,
-      "sha256": "9309a9722cb7d86341aa754081a81593a4a240e186cf2025bb12d7593e5b1bfe"
+      "sha256": "377a053e30c14608b9ed2489599960439b96bb05ba563cd3cffc93f376a0031e"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/bin/manual-dry-run.mjs",
@@ -698,6 +703,11 @@
       "sha256": "e738d76cb063a86ffaf95791cfbee6d15d080c3bdb3a4d64a13921ca6e518535"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-live-shadow-canary-advisory-unicode-bidi-guard.out.json",
+      "bytes": 3632,
+      "sha256": "bca49f74e075a03eb248009d7fa76e8ed34d92195ddacaee3103fec4f33ad838"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-live-shadow-canary-drift-scorecard.out.json",
       "bytes": 8269,
       "sha256": "e2eacb1fa4c9a7d046022e9f29d151fbbf8d5ca028ce5acb5bb7e0b6775af006"
@@ -809,8 +819,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/review-local.out.json",
-      "bytes": 17265,
-      "sha256": "bd8c409f19a34fc29cf9b180a823e4e93009bb799d11b32d34b4014aeb12030f"
+      "bytes": 18049,
+      "sha256": "377e674ef4619aa72e0952f4db8acb85370b966e201eccb4a2ee3a3ab70322f2"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/route-classifier-shadow.out.json",
@@ -1058,6 +1068,11 @@
       "sha256": "3b71d8cdfde64823e8103c6245af7e194df6f18dc9423cbad60be31c9d281c6b"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/fixtures/passive-live-shadow-canary-advisory-unicode-bidi-guard.json",
+      "bytes": 2112,
+      "sha256": "ac2807de6e5af9a84b10423d634dd1078602d01f869d732f2e1d594ac0d7128f"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/fixtures/passive-live-shadow-canary-drift-scorecard.json",
       "bytes": 2008,
       "sha256": "1452bcb60137e9c39578a819330564f2ba3828b70225493882b9be1f1ce787ef"
@@ -1069,8 +1084,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/fixtures/passive-live-shadow-canary-source-boundary-expansion.json",
-      "bytes": 23384,
-      "sha256": "9c58263abe2e40faf4ef699094c0eec86e076769824e55b48aff34fd548da058"
+      "bytes": 23460,
+      "sha256": "976d78c31845dbf3b80355323227b02dc68134bd199532d7a0b3661e34155b7c"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/fixtures/passive-live-shadow-canary-source-boundary-stress.json",
@@ -1154,8 +1169,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/package.json",
-      "bytes": 12961,
-      "sha256": "4ac37a0cf783c6efc3d383472644030311e52f7d2c048e1f96720467bbba89cc"
+      "bytes": 13182,
+      "sha256": "4b4b792f3181fd62a1db5cb6bd728df701284a7e4af105aebc4fd1fd7ee0e4f8"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/action-context-packet.mjs",
@@ -1423,6 +1438,11 @@
       "sha256": "50f9afae93682f1526a401e75e8309c71ab6eb605f7c3a1b57531547527af15b"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-live-shadow-canary-advisory-unicode-bidi-guard.mjs",
+      "bytes": 11253,
+      "sha256": "ef8a2e84f8130473e979a449700a0e1f830f2c438027f273ed1d5490eaadd1bc"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-live-shadow-canary-drift-scorecard.mjs",
       "bytes": 14575,
       "sha256": "76dbcc728a73de2d46e4377feb9ebb144f3fbae4ee1fad025fc86fffc659be56"
@@ -1439,8 +1459,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-live-shadow-canary-source-boundary-expansion.mjs",
-      "bytes": 13537,
-      "sha256": "8917ab0608a0959b794e8e57fe162b9db712a83b1556a2620ad007acd766e12b"
+      "bytes": 13605,
+      "sha256": "4e630b6d376b7eba8838df015f099abb4b237967380a9148a06fd5ac817c2217"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-live-shadow-canary-source-boundary-stress.mjs",
@@ -1559,8 +1579,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/review-local.mjs",
-      "bytes": 58285,
-      "sha256": "c659607ff3c6f2d801a23ff8daf915b807a19d3f6e600f1d0bae7e20a03cf354"
+      "bytes": 62921,
+      "sha256": "03c1d26f42fb3f4f8efafb96651929329e7c851f467cd7eb26ad69adfee91e40"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/route-classifier-shadow.mjs",
@@ -2059,13 +2079,13 @@
     },
     {
       "path": "tools/check-unicode-guard.mjs",
-      "bytes": 3239,
-      "sha256": "aade5ce9541eccba9fb0d858c75d787ae211aeeb2b484d735318d519234aff97"
+      "bytes": 3292,
+      "sha256": "2a25c48666a2db29c9287e4fc36473276e720b66ae904b2d56009a5b0077e446"
     },
     {
       "path": "tools/release-check.mjs",
-      "bytes": 139627,
-      "sha256": "9c1d2f08c97cc584305a84194d4c94c76c55b891c9f3d1a5b300116eeb34bea2"
+      "bytes": 144347,
+      "sha256": "8a54529806b3b8ae0c2cb74f1b1532230800a19db0bd81b979eeb4085f1eb809"
     },
     {
       "path": "tools/update-manifest.mjs",

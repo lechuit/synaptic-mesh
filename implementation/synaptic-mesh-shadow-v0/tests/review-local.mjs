@@ -157,6 +157,10 @@ const commands = [
     args: [resolve(packageRoot, 'tests/passive-live-shadow-canary-advisory-report.mjs')],
   },
   {
+    id: 'passive-live-shadow-canary-advisory-unicode-bidi-guard-tests',
+    args: [resolve(packageRoot, 'tests/passive-live-shadow-canary-advisory-unicode-bidi-guard.mjs')],
+  },
+  {
     id: 'fixture-parity-harness',
     args: [resolve(packageRoot, 'tests/fixture-parity.mjs')],
   },
@@ -202,6 +206,7 @@ const passiveCanarySourceBoundaryExpansion = readEvidenceJson('implementation/sy
 const passiveCanaryDriftScorecard = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/passive-live-shadow-canary-drift-scorecard.out.json');
 const passiveCanaryExpandedPack = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/passive-live-shadow-canary-expanded-pack.out.json');
 const passiveCanaryAdvisoryReport = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/passive-live-shadow-canary-advisory-report.out.json');
+const passiveCanaryAdvisoryUnicodeBidiGuard = readEvidenceJson('implementation/synaptic-mesh-shadow-v0/evidence/passive-live-shadow-canary-advisory-unicode-bidi-guard.out.json');
 
 const unsafeAllowSignals = [
   ...(fixtureParity?.summary?.nonRegressionUnsafeAllowFixtures ?? []),
@@ -428,6 +433,26 @@ if (passiveCanaryAdvisoryReport?.summary?.blockingImplemented !== false) unsafeA
 if (passiveCanaryAdvisoryReport?.summary?.allowingImplemented !== false) unsafeAllowSignals.push('passive-canary-advisory-report-allowing');
 if (passiveCanaryAdvisoryReport?.summary?.authorizationImplemented !== false) unsafeAllowSignals.push('passive-canary-advisory-report-authorization');
 if (passiveCanaryAdvisoryReport?.summary?.enforcementImplemented !== false) unsafeAllowSignals.push('passive-canary-advisory-report-enforcement');
+if (passiveCanaryAdvisoryUnicodeBidiGuard?.summary?.verdict !== 'pass') unsafeAllowSignals.push('passive-canary-advisory-unicode-bidi-guard');
+if (Number(passiveCanaryAdvisoryUnicodeBidiGuard?.summary?.textFindings ?? 1) !== 0) unsafeAllowSignals.push('passive-canary-advisory-unicode-bidi-text-findings');
+if (Number(passiveCanaryAdvisoryUnicodeBidiGuard?.summary?.machineReadableFindings ?? 1) !== 0) unsafeAllowSignals.push('passive-canary-advisory-unicode-bidi-machine-readable-findings');
+if (passiveCanaryAdvisoryUnicodeBidiGuard?.summary?.reasonCodeAsciiTokenRequired !== true) unsafeAllowSignals.push('passive-canary-advisory-unicode-bidi-reason-code-guard');
+if (passiveCanaryAdvisoryUnicodeBidiGuard?.summary?.sourcePathAsciiRequired !== true) unsafeAllowSignals.push('passive-canary-advisory-unicode-bidi-source-path-ascii');
+if (passiveCanaryAdvisoryUnicodeBidiGuard?.summary?.sourcePathConfusableGuard !== true) unsafeAllowSignals.push('passive-canary-advisory-unicode-bidi-confusable-guard');
+if (passiveCanaryAdvisoryUnicodeBidiGuard?.summary?.hiddenBidiControlsForbidden !== true) unsafeAllowSignals.push('passive-canary-advisory-unicode-bidi-hidden-controls');
+if (passiveCanaryAdvisoryUnicodeBidiGuard?.summary?.advisoryOnly !== true) unsafeAllowSignals.push('passive-canary-advisory-unicode-bidi-not-advisory');
+if (passiveCanaryAdvisoryUnicodeBidiGuard?.summary?.nonAuthoritative !== true) unsafeAllowSignals.push('passive-canary-advisory-unicode-bidi-authority');
+if (passiveCanaryAdvisoryUnicodeBidiGuard?.summary?.automaticAgentConsumptionImplemented !== false) unsafeAllowSignals.push('passive-canary-advisory-unicode-bidi-agent-consumption');
+if (passiveCanaryAdvisoryUnicodeBidiGuard?.summary?.runtimeIntegrated !== false) unsafeAllowSignals.push('passive-canary-advisory-unicode-bidi-runtime');
+if (passiveCanaryAdvisoryUnicodeBidiGuard?.summary?.toolExecutionImplemented !== false) unsafeAllowSignals.push('passive-canary-advisory-unicode-bidi-tools');
+if (passiveCanaryAdvisoryUnicodeBidiGuard?.summary?.memoryWriteImplemented !== false) unsafeAllowSignals.push('passive-canary-advisory-unicode-bidi-memory');
+if (passiveCanaryAdvisoryUnicodeBidiGuard?.summary?.configWriteImplemented !== false) unsafeAllowSignals.push('passive-canary-advisory-unicode-bidi-config');
+if (passiveCanaryAdvisoryUnicodeBidiGuard?.summary?.externalPublicationImplemented !== false) unsafeAllowSignals.push('passive-canary-advisory-unicode-bidi-publication');
+if (passiveCanaryAdvisoryUnicodeBidiGuard?.summary?.approvalPathImplemented !== false) unsafeAllowSignals.push('passive-canary-advisory-unicode-bidi-approval');
+if (passiveCanaryAdvisoryUnicodeBidiGuard?.summary?.blockingImplemented !== false) unsafeAllowSignals.push('passive-canary-advisory-unicode-bidi-blocking');
+if (passiveCanaryAdvisoryUnicodeBidiGuard?.summary?.allowingImplemented !== false) unsafeAllowSignals.push('passive-canary-advisory-unicode-bidi-allowing');
+if (passiveCanaryAdvisoryUnicodeBidiGuard?.summary?.authorizationImplemented !== false) unsafeAllowSignals.push('passive-canary-advisory-unicode-bidi-authorization');
+if (passiveCanaryAdvisoryUnicodeBidiGuard?.summary?.enforcementImplemented !== false) unsafeAllowSignals.push('passive-canary-advisory-unicode-bidi-enforcement');
 
 const summary = {
   artifact: 'T-synaptic-mesh-review-local-runner-v0',
@@ -588,6 +613,13 @@ const summary = {
   passiveCanaryAdvisoryReportNonAuthoritative: passiveCanaryAdvisoryReport?.summary?.nonAuthoritative ?? null,
   passiveCanaryAdvisoryReportMachineReadablePolicyDecision: passiveCanaryAdvisoryReport?.summary?.machineReadablePolicyDecision ?? null,
   passiveCanaryAdvisoryReportAutomaticAgentConsumptionImplemented: passiveCanaryAdvisoryReport?.summary?.automaticAgentConsumptionImplemented ?? null,
+  passiveCanaryAdvisoryUnicodeBidiGuardVerdict: passiveCanaryAdvisoryUnicodeBidiGuard?.summary?.verdict ?? null,
+  passiveCanaryAdvisoryUnicodeBidiGuardTextFindings: passiveCanaryAdvisoryUnicodeBidiGuard?.summary?.textFindings ?? null,
+  passiveCanaryAdvisoryUnicodeBidiGuardMachineReadableFindings: passiveCanaryAdvisoryUnicodeBidiGuard?.summary?.machineReadableFindings ?? null,
+  passiveCanaryAdvisoryUnicodeBidiGuardReasonCodeAsciiTokenRequired: passiveCanaryAdvisoryUnicodeBidiGuard?.summary?.reasonCodeAsciiTokenRequired ?? null,
+  passiveCanaryAdvisoryUnicodeBidiGuardSourcePathAsciiRequired: passiveCanaryAdvisoryUnicodeBidiGuard?.summary?.sourcePathAsciiRequired ?? null,
+  passiveCanaryAdvisoryUnicodeBidiGuardSourcePathConfusableGuard: passiveCanaryAdvisoryUnicodeBidiGuard?.summary?.sourcePathConfusableGuard ?? null,
+  passiveCanaryAdvisoryUnicodeBidiGuardAutomaticAgentConsumptionImplemented: passiveCanaryAdvisoryUnicodeBidiGuard?.summary?.automaticAgentConsumptionImplemented ?? null,
   unsafeAllowSignals,
   sourceFixtureMutation: false,
 };

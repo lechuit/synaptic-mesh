@@ -3,8 +3,8 @@
     "artifact": "T-synaptic-mesh-review-local-runner-v0",
     "timestamp": "2026-05-07T15:05:00.000Z",
     "verdict": "pass",
-    "commands": 39,
-    "passCommands": 39,
+    "commands": 40,
+    "passCommands": 40,
     "failedCommands": [],
     "fixtureCount": 15,
     "fixtureParityVerdict": "pass",
@@ -168,6 +168,13 @@
     "passiveCanaryAdvisoryReportNonAuthoritative": true,
     "passiveCanaryAdvisoryReportMachineReadablePolicyDecision": false,
     "passiveCanaryAdvisoryReportAutomaticAgentConsumptionImplemented": false,
+    "passiveCanaryAdvisoryUnicodeBidiGuardVerdict": "pass",
+    "passiveCanaryAdvisoryUnicodeBidiGuardTextFindings": 0,
+    "passiveCanaryAdvisoryUnicodeBidiGuardMachineReadableFindings": 0,
+    "passiveCanaryAdvisoryUnicodeBidiGuardReasonCodeAsciiTokenRequired": true,
+    "passiveCanaryAdvisoryUnicodeBidiGuardSourcePathAsciiRequired": true,
+    "passiveCanaryAdvisoryUnicodeBidiGuardSourcePathConfusableGuard": true,
+    "passiveCanaryAdvisoryUnicodeBidiGuardAutomaticAgentConsumptionImplemented": false,
     "unsafeAllowSignals": [],
     "sourceFixtureMutation": false
   },
@@ -427,6 +434,13 @@
     {
       "id": "passive-live-shadow-canary-advisory-report-tests",
       "command": "node implementation/synaptic-mesh-shadow-v0/tests/passive-live-shadow-canary-advisory-report.mjs",
+      "status": 0,
+      "pass": true,
+      "stderr": ""
+    },
+    {
+      "id": "passive-live-shadow-canary-advisory-unicode-bidi-guard-tests",
+      "command": "node implementation/synaptic-mesh-shadow-v0/tests/passive-live-shadow-canary-advisory-unicode-bidi-guard.mjs",
       "status": 0,
       "pass": true,
       "stderr": ""

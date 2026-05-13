@@ -188,3 +188,20 @@ Boundary:
 - no block/allow/authorization/enforcement.
 
 Executable gate: `test:passive-live-shadow-canary-advisory-report`.
+
+## v0.3.1 — advisory report Unicode/bidi guard
+
+Formalize Unicode/bidi hygiene around advisory reports and selected machine-readable evidence fields.
+
+Target coverage:
+
+- no hidden/bidi controls in docs, evidence, fixtures, and reports;
+- no invisible characters in reason codes;
+- reason codes remain ASCII token strings;
+- source/output paths remain ASCII-printable;
+- dangerous source-path confusables are detected;
+- selected machine-readable fields remain free of invisible/bidi controls.
+
+Boundary remains local deterministic evidence hygiene only. The guard is not runtime protection, not authority, not agent-consumed policy, and not enforcement.
+
+Executable gate: `test:passive-live-shadow-canary-advisory-unicode-bidi-guard`.

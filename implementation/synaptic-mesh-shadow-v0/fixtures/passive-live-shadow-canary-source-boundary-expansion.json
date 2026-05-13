@@ -262,7 +262,7 @@
       "sourceKind": "manual_redacted_canary_packet",
       "sourceLane": "manual_opt_in_redacted_canary_pack",
       "sourceArtifactId": "canary-source-boundary-unicode-path",
-      "sourceArtifactPath": "implementation/synaptic-mesh-shadow-v0/fixtures/manual-dry-run-inputs/canary-\u202ejson.txt",
+      "sourceArtifactPath": "implementation/synaptic-mesh-shadow-v0/fixtures/manual-dry-run-inputs/canary-U202E-json.txt",
       "sourceDigest": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
       "expectedSourceDigest": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
       "computedSourceDigest": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
@@ -288,6 +288,9 @@
       },
       "expectedReasonCodes": [
         "CANARY_SOURCE_PATH_UNICODE_CONTROL"
+      ],
+      "sourcePathSimulatedForbiddenCodePoints": [
+        "U+202E"
       ]
     },
     {

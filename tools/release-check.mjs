@@ -36,6 +36,7 @@ const releaseGateScripts = [
   'test:passive-live-shadow-canary-drift-scorecard',
   'test:passive-live-shadow-canary-expanded-pack',
   'test:passive-live-shadow-canary-advisory-report',
+  'test:passive-live-shadow-canary-advisory-unicode-bidi-guard',
   'test:live-shadow-synthetic-replay',
   'test:live-shadow-drift-scorecard',
   'test:manual-observation-bundle-schema',
@@ -213,6 +214,7 @@ for (const staleVersion of staleVersions) {
 }
 
 for (const requiredManifestPath of [
+  'docs/status-v0.3.1.md',
   'docs/status-v0.3.0-alpha.md',
   'docs/status-v0.2.6.md',
   'docs/status-v0.2.5.md',
@@ -225,6 +227,9 @@ for (const requiredManifestPath of [
   'implementation/synaptic-mesh-shadow-v0/tests/passive-live-shadow-canary-advisory-report.mjs',
   'implementation/synaptic-mesh-shadow-v0/evidence/passive-live-shadow-canary-advisory-report.out.json',
   'implementation/synaptic-mesh-shadow-v0/evidence/passive-live-shadow-canary-advisory-report.out.md',
+  'implementation/synaptic-mesh-shadow-v0/tests/passive-live-shadow-canary-advisory-unicode-bidi-guard.mjs',
+  'implementation/synaptic-mesh-shadow-v0/fixtures/passive-live-shadow-canary-advisory-unicode-bidi-guard.json',
+  'implementation/synaptic-mesh-shadow-v0/evidence/passive-live-shadow-canary-advisory-unicode-bidi-guard.out.json',
 ]) {
   assert(manifestFilePaths.has(requiredManifestPath), `MANIFEST.files.json must include ${requiredManifestPath}`);
 }
@@ -302,6 +307,7 @@ const passiveCanaryDriftScorecard = readJson(path.join(packageRoot, 'evidence/pa
 const passiveCanaryExpandedPack = readJson(path.join(packageRoot, 'evidence/passive-live-shadow-canary-expanded-pack.out.json'));
 const passiveCanaryAdvisoryReport = readJson(path.join(packageRoot, 'evidence/passive-live-shadow-canary-advisory-report.out.json'));
 const passiveCanaryAdvisoryReportText = readFileSync(path.join(packageRoot, 'evidence/passive-live-shadow-canary-advisory-report.out.md'), 'utf8');
+const passiveCanaryAdvisoryUnicodeBidiGuard = readJson(path.join(packageRoot, 'evidence/passive-live-shadow-canary-advisory-unicode-bidi-guard.out.json'));
 const liveInputSourceBoundaryContracts = readJson(path.join(packageRoot, 'evidence/live-input-source-boundary-contracts.out.json'));
 assert(liveInputSourceBoundaryContracts?.summary?.verdict === 'pass', 'live input/source boundary contracts verdict must be pass');
 assert(liveInputSourceBoundaryContracts?.summary?.passCases === 2, 'live input/source boundary contracts must keep 2 positive controls');
@@ -520,7 +526,7 @@ assert(passiveCanaryExpandedPack?.summary?.authorizationImplemented === false, '
 assert(passiveCanaryExpandedPack?.summary?.enforcementImplemented === false, 'passive canary expanded pack must not enforce');
 
 assert(passiveCanaryAdvisoryReport?.summary?.verdict === 'pass', 'passive canary advisory report verdict must be pass');
-assert(passiveCanaryAdvisoryReport?.summary?.releaseLayer === manifestReleaseTag, 'passive canary advisory report release layer must match release target');
+assert(passiveCanaryAdvisoryReport?.summary?.releaseLayer === 'v0.3.0-alpha', 'passive canary advisory report release layer must remain v0.3.0-alpha baseline evidence');
 assert(passiveCanaryAdvisoryReport?.summary?.dependsOn === 'v0.2.6-source-boundary-stress-expansion', 'passive canary advisory report must depend on v0.2.6 source-boundary expansion');
 assert(passiveCanaryAdvisoryReport?.summary?.mode === 'human_readable_advisory_only_non_authoritative_record_only', 'passive canary advisory report mode must remain advisory-only');
 assert(passiveCanaryAdvisoryReport?.summary?.sourceEvidenceCount === 4, 'passive canary advisory report must summarize 4 source evidence artifacts');
@@ -547,6 +553,32 @@ assertIncludes(passiveCanaryAdvisoryReportText, 'not automatically consumed by a
 assertNotIncludes(passiveCanaryAdvisoryReportText, 'approved for execution', 'passive canary advisory report');
 assertNotIncludes(passiveCanaryAdvisoryReportText, 'permission granted', 'passive canary advisory report');
 assertNotIncludes(passiveCanaryAdvisoryReportText, 'automatic consumption enabled', 'passive canary advisory report');
+
+assert(passiveCanaryAdvisoryUnicodeBidiGuard?.summary?.verdict === 'pass', 'passive canary advisory unicode/bidi guard verdict must be pass');
+assert(passiveCanaryAdvisoryUnicodeBidiGuard?.summary?.releaseLayer === manifestReleaseTag, 'passive canary advisory unicode/bidi guard release layer must match release target');
+assert(passiveCanaryAdvisoryUnicodeBidiGuard?.summary?.dependsOn === 'v0.3.0-alpha-advisory-report', 'passive canary advisory unicode/bidi guard must depend on v0.3.0-alpha advisory report');
+assert(passiveCanaryAdvisoryUnicodeBidiGuard?.summary?.mode === 'manual_local_advisory_unicode_bidi_guard_record_only', 'passive canary advisory unicode/bidi guard mode must remain record-only');
+assert(passiveCanaryAdvisoryUnicodeBidiGuard?.summary?.positiveControls >= 1, 'passive canary advisory unicode/bidi guard must include positive controls');
+assert(passiveCanaryAdvisoryUnicodeBidiGuard?.summary?.negativeControls >= 4, 'passive canary advisory unicode/bidi guard must include negative controls');
+assert(passiveCanaryAdvisoryUnicodeBidiGuard?.summary?.textFindings === 0, 'passive canary advisory unicode/bidi guard must have zero text findings');
+assert(passiveCanaryAdvisoryUnicodeBidiGuard?.summary?.machineReadableFindings === 0, 'passive canary advisory unicode/bidi guard must have zero machine-readable findings');
+assert(passiveCanaryAdvisoryUnicodeBidiGuard?.summary?.reasonCodeAsciiTokenRequired === true, 'passive canary advisory unicode/bidi guard must require ASCII reason-code tokens');
+assert(passiveCanaryAdvisoryUnicodeBidiGuard?.summary?.sourcePathAsciiRequired === true, 'passive canary advisory unicode/bidi guard must require ASCII source/output paths');
+assert(passiveCanaryAdvisoryUnicodeBidiGuard?.summary?.sourcePathConfusableGuard === true, 'passive canary advisory unicode/bidi guard must detect path confusables');
+assert(passiveCanaryAdvisoryUnicodeBidiGuard?.summary?.hiddenBidiControlsForbidden === true, 'passive canary advisory unicode/bidi guard must forbid hidden/bidi controls');
+assert(passiveCanaryAdvisoryUnicodeBidiGuard?.summary?.advisoryOnly === true, 'passive canary advisory unicode/bidi guard must be advisory-only');
+assert(passiveCanaryAdvisoryUnicodeBidiGuard?.summary?.nonAuthoritative === true, 'passive canary advisory unicode/bidi guard must be non-authoritative');
+assert(passiveCanaryAdvisoryUnicodeBidiGuard?.summary?.automaticAgentConsumptionImplemented === false, 'passive canary advisory unicode/bidi guard must not implement automatic agent consumption');
+assert(passiveCanaryAdvisoryUnicodeBidiGuard?.summary?.runtimeIntegrated === false, 'passive canary advisory unicode/bidi guard must not integrate runtime');
+assert(passiveCanaryAdvisoryUnicodeBidiGuard?.summary?.toolExecutionImplemented === false, 'passive canary advisory unicode/bidi guard must not execute tools');
+assert(passiveCanaryAdvisoryUnicodeBidiGuard?.summary?.memoryWriteImplemented === false, 'passive canary advisory unicode/bidi guard must not write memory');
+assert(passiveCanaryAdvisoryUnicodeBidiGuard?.summary?.configWriteImplemented === false, 'passive canary advisory unicode/bidi guard must not write config');
+assert(passiveCanaryAdvisoryUnicodeBidiGuard?.summary?.externalPublicationImplemented === false, 'passive canary advisory unicode/bidi guard must not publish externally');
+assert(passiveCanaryAdvisoryUnicodeBidiGuard?.summary?.approvalPathImplemented === false, 'passive canary advisory unicode/bidi guard must not enter approval path');
+assert(passiveCanaryAdvisoryUnicodeBidiGuard?.summary?.blockingImplemented === false, 'passive canary advisory unicode/bidi guard must not block');
+assert(passiveCanaryAdvisoryUnicodeBidiGuard?.summary?.allowingImplemented === false, 'passive canary advisory unicode/bidi guard must not allow');
+assert(passiveCanaryAdvisoryUnicodeBidiGuard?.summary?.authorizationImplemented === false, 'passive canary advisory unicode/bidi guard must not authorize');
+assert(passiveCanaryAdvisoryUnicodeBidiGuard?.summary?.enforcementImplemented === false, 'passive canary advisory unicode/bidi guard must not enforce');
 
 const liveShadowSyntheticReplay = readJson(path.join(packageRoot, 'evidence/live-shadow-synthetic-replay.out.json'));
 assert(liveShadowSyntheticReplay?.summary?.verdict === 'pass', 'live-shadow synthetic replay verdict must be pass');
