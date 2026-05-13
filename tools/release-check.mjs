@@ -45,6 +45,8 @@ const releaseGateScripts = [
   'test:read-only-adapter-human-review-go-no-go',
   'test:first-real-adapter-design-note',
   'test:adapter-implementation-hazard-catalog',
+  'test:read-only-local-file-adapter-schema',
+  'test:read-only-local-file-adapter',
   'test:live-shadow-synthetic-replay',
   'test:live-shadow-drift-scorecard',
   'test:manual-observation-bundle-schema',
@@ -354,6 +356,15 @@ for (const requiredManifestPath of [
   'implementation/synaptic-mesh-shadow-v0/tests/adapter-implementation-hazard-catalog.mjs',
   'implementation/synaptic-mesh-shadow-v0/fixtures/adapter-implementation-hazard-catalog-v0.4.8.json',
   'implementation/synaptic-mesh-shadow-v0/evidence/adapter-implementation-hazard-catalog-v0.4.8.out.json',
+  'schemas/read-only-local-file-adapter-input.schema.json',
+  'schemas/read-only-local-file-adapter-result.schema.json',
+  'implementation/synaptic-mesh-shadow-v0/tests/read-only-local-file-adapter-schema.mjs',
+  'implementation/synaptic-mesh-shadow-v0/tests/read-only-local-file-adapter.mjs',
+  'implementation/synaptic-mesh-shadow-v0/src/adapters/read-only-local-file-adapter.mjs',
+  'implementation/synaptic-mesh-shadow-v0/fixtures/read-only-local-file-adapter-inputs.json',
+  'implementation/synaptic-mesh-shadow-v0/fixtures/read-only-local-file-adapter-results.json',
+  'implementation/synaptic-mesh-shadow-v0/evidence/read-only-local-file-adapter-schema.out.json',
+  'implementation/synaptic-mesh-shadow-v0/evidence/read-only-local-file-adapter/read-only-local-file-adapter.out.json',
 ]) {
   assert(manifestFilePaths.has(requiredManifestPath), `MANIFEST.files.json must include ${requiredManifestPath}`);
 }
@@ -1508,6 +1519,31 @@ assertOptionalCountMatches(
 );
 
 const adapterImplementationHazardCatalog = readJson(path.join(packageRoot, 'evidence/adapter-implementation-hazard-catalog-v0.4.8.out.json'));
+const readOnlyLocalFileAdapterSchema = readJson(path.join(packageRoot, 'evidence/read-only-local-file-adapter-schema.out.json'));
+const readOnlyLocalFileAdapter = readJson(path.join(packageRoot, 'evidence/read-only-local-file-adapter/read-only-local-file-adapter.out.json'));
+assert(readOnlyLocalFileAdapterSchema?.summary?.readOnlyLocalFileAdapterSchema === 'pass', 'read-only local-file adapter schema verdict must be pass');
+assert(readOnlyLocalFileAdapterSchema?.summary?.schemaOnly === true, 'read-only local-file adapter schema evidence must remain schema-only');
+assert(readOnlyLocalFileAdapterSchema?.summary?.sourceAlreadyRedacted === true, 'read-only local-file adapter schema must require redacted input');
+assert(readOnlyLocalFileAdapterSchema?.summary?.redactionReviewRecordPresent === true, 'read-only local-file adapter schema must require redaction review record');
+assert(readOnlyLocalFileAdapterSchema?.summary?.rawContentPersisted === false, 'read-only local-file adapter schema must forbid raw content persistence');
+assert(readOnlyLocalFileAdapterSchema?.summary?.recordOnly === true, 'read-only local-file adapter schema result must be record-only');
+assert(readOnlyLocalFileAdapter?.summary?.readOnlyLocalFileAdapter === 'pass', 'read-only local-file adapter skeleton verdict must be pass');
+assert(readOnlyLocalFileAdapter?.summary?.adapterSkeleton === true, 'read-only local-file adapter evidence must be skeleton only');
+assert(readOnlyLocalFileAdapter?.summary?.adapterDecidesAuthority === false, 'read-only local-file adapter must not decide authority');
+assert(readOnlyLocalFileAdapter?.summary?.callsExistingPipeline === true, 'read-only local-file adapter must call the existing pipeline');
+assert(readOnlyLocalFileAdapter?.summary?.sourceFileRead === true, 'read-only local-file adapter must read the explicit source file in its positive skeleton test');
+assert(readOnlyLocalFileAdapter?.summary?.sourceArtifactDigestVerified === true, 'read-only local-file adapter must verify source digest');
+assert(readOnlyLocalFileAdapter?.summary?.parserEvidenceProduced === true, 'read-only local-file adapter must produce parser evidence');
+assert(readOnlyLocalFileAdapter?.summary?.classifierDecisionProduced === true, 'read-only local-file adapter must call classifier decision stage');
+assert(readOnlyLocalFileAdapter?.summary?.decisionTraceProduced === true, 'read-only local-file adapter must produce decision trace');
+assert(readOnlyLocalFileAdapter?.summary?.advisoryReportProduced === true, 'read-only local-file adapter must produce advisory report');
+assert(readOnlyLocalFileAdapter?.summary?.recordOnly === true, 'read-only local-file adapter must be record-only');
+assert(readOnlyLocalFileAdapter?.decisionTrace?.rawClassifierDecisionPersisted === false, 'read-only local-file adapter must not persist raw classifier decision');
+assert(readOnlyLocalFileAdapter?.classifierDecision === undefined, 'read-only local-file adapter evidence must not persist classifierDecision');
+for (const forbidden of ['toolExecution','memoryWrite','configWrite','externalPublication','approvalEmission','machineReadablePolicyDecision','agentConsumed','mayBlock','mayAllow','authorization','enforcement']) {
+  assert(readOnlyLocalFileAdapterSchema?.summary?.[forbidden] === false, `read-only local-file adapter schema must keep ${forbidden} false`);
+  assert(readOnlyLocalFileAdapter?.summary?.[forbidden] === false, `read-only local-file adapter must keep ${forbidden} false`);
+}
 if (manifestReleaseTag === 'v0.4.8') {
   assert(adapterImplementationHazardCatalog?.summary?.adapterImplementationHazardCatalog === 'pass', 'adapter implementation hazard catalog verdict must be pass');
   assert(adapterImplementationHazardCatalog?.summary?.implementationAuthorized === false, 'adapter implementation hazard catalog must not authorize implementation');

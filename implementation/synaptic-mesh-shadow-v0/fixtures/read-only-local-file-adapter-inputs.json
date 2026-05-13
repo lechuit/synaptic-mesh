@@ -11,17 +11,104 @@
       "directoryInputAllowed": false,
       "globAllowed": false,
       "watcherAllowed": false,
-      "daemonAllowed": false
+      "daemonAllowed": false,
+      "redactionReviewRecord": {
+        "reviewed": true,
+        "rawContentPersisted": false,
+        "sourceAlreadyRedacted": true
+      },
+      "rawContentPersisted": false
     }
   ],
   "invalid": [
-    { "id": "raw-input", "patch": { "sourceAlreadyRedacted": false } },
-    { "id": "network", "patch": { "networkAllowed": true } },
-    { "id": "directory", "patch": { "directoryInputAllowed": true, "sourceFilePath": "implementation/synaptic-mesh-shadow-v0/fixtures/redacted/" } },
-    { "id": "glob", "patch": { "globAllowed": true, "sourceFilePath": "implementation/synaptic-mesh-shadow-v0/fixtures/redacted/*.json" } },
-    { "id": "watcher", "patch": { "watcherAllowed": true } },
-    { "id": "daemon", "patch": { "daemonAllowed": true } },
-    { "id": "url", "patch": { "sourceFilePath": "https://example.invalid/redacted.json" } },
-    { "id": "traversal", "patch": { "sourceFilePath": "../secret.json" } }
+    {
+      "id": "raw-input",
+      "patch": {
+        "sourceAlreadyRedacted": false
+      }
+    },
+    {
+      "id": "network",
+      "patch": {
+        "networkAllowed": true
+      }
+    },
+    {
+      "id": "directory",
+      "patch": {
+        "directoryInputAllowed": true,
+        "sourceFilePath": "implementation/synaptic-mesh-shadow-v0/fixtures/redacted/"
+      }
+    },
+    {
+      "id": "glob",
+      "patch": {
+        "globAllowed": true,
+        "sourceFilePath": "implementation/synaptic-mesh-shadow-v0/fixtures/redacted/*.json"
+      }
+    },
+    {
+      "id": "watcher",
+      "patch": {
+        "watcherAllowed": true
+      }
+    },
+    {
+      "id": "daemon",
+      "patch": {
+        "daemonAllowed": true
+      }
+    },
+    {
+      "id": "url",
+      "patch": {
+        "sourceFilePath": "https://example.invalid/redacted.json"
+      }
+    },
+    {
+      "id": "traversal",
+      "patch": {
+        "sourceFilePath": "../secret.json"
+      }
+    },
+    {
+      "id": "missing-redaction-review-record",
+      "remove": [
+        "redactionReviewRecord"
+      ]
+    },
+    {
+      "id": "raw-content-persisted",
+      "patch": {
+        "rawContentPersisted": true,
+        "redactionReviewRecord": {
+          "reviewed": true,
+          "rawContentPersisted": true,
+          "sourceAlreadyRedacted": true
+        }
+      }
+    },
+    {
+      "id": "redaction-not-reviewed",
+      "patch": {
+        "redactionReviewRecord": {
+          "reviewed": false,
+          "rawContentPersisted": false,
+          "sourceAlreadyRedacted": true
+        }
+      }
+    },
+    {
+      "id": "ssh-url",
+      "patch": {
+        "sourceFilePath": "ssh://example.invalid/redacted.json"
+      }
+    },
+    {
+      "id": "git-url",
+      "patch": {
+        "sourceFilePath": "git://example.invalid/redacted.json"
+      }
+    }
   ]
 }
