@@ -1,68 +1,64 @@
-# Release Notes — Synaptic Mesh v0.2.5
+# Release Notes — Synaptic Mesh v0.2.6
 
-Status: expanded passive canary pack. Manual, local, opt-in, record-only, no effects. Not runtime-ready; not production/enforcement-ready.
+Status: source-boundary stress expansion. Manual, local, opt-in, record-only, no effects. Not runtime-ready; not production/enforcement-ready.
 
 ## Why this release
 
-After v0.2.4 added a deterministic drift scorecard, the next risk is coverage breadth. v0.2.5 expands the passive canary pack to a small reviewable set of 15 already-redacted local packet rows while preserving the same no-effects boundary.
+After v0.2.5 broadened the passive canary pack, v0.2.6 expands source/output boundary stress before any human-readable advisory report work. The goal is to harden receiver distrust of source metadata and path-shaped inputs while staying entirely local and record-only.
 
-## Highlights since v0.2.4
+## Highlights since v0.2.5
 
-- Added `implementation/synaptic-mesh-shadow-v0/tests/passive-live-shadow-canary-expanded-pack.mjs`.
-- Added committed fixture/evidence for the expanded passive canary pack:
-  - `implementation/synaptic-mesh-shadow-v0/fixtures/passive-live-shadow-canary-expanded-pack.json`
-  - `implementation/synaptic-mesh-shadow-v0/evidence/passive-live-shadow-canary-expanded-pack.out.json`
-- Wired the expanded pack gate into local `check`, `review:local`, and `release:check` validation.
-- Kept the pack to 15 rows for reviewability while covering all target labels.
+- Added `implementation/synaptic-mesh-shadow-v0/tests/passive-live-shadow-canary-source-boundary-expansion.mjs`.
+- Added committed fixture/evidence for the v0.2.6 expansion:
+  - `implementation/synaptic-mesh-shadow-v0/fixtures/passive-live-shadow-canary-source-boundary-expansion.json`
+  - `implementation/synaptic-mesh-shadow-v0/evidence/passive-live-shadow-canary-source-boundary-expansion.out.json`
+- Wired the new gate into local `check`, `review:local`, and `release:check` validation.
+- Kept v0.2.3 and v0.2.4 evidence as baseline layers while v0.2.6 adds a distinct rare-case expansion.
 
 ## Coverage
 
-The expanded pack covers:
+The source-boundary expansion covers:
 
-- valid redacted packet;
-- missing opt-in;
-- raw input pressure;
-- runtime pressure;
-- memory/config pressure;
-- publication pressure;
-- wrong lane;
-- stale digest;
-- missing mtime;
-- malformed tuple;
-- output containment;
-- advisory-looking text;
-- agent-consumption pressure.
+- digest mismatch distinct from stale digest;
+- suspicious future `sourceMtime`;
+- invalid `sourceMtime` format;
+- source path traversal;
+- source path symlink pressure;
+- source path Unicode/bidi/confusable pressure;
+- source lane alias confusion;
+- duplicate `sourceArtifactId`;
+- correct source digest with wrong source lane;
+- indirect symlink pressure in output path;
+- syntactically valid output path whose parent is not allowed.
 
-## Expected v0.2.5 evidence
+## Expected v0.2.6 evidence
 
 ```json
 {
   "verdict": "pass",
-  "releaseLayer": "v0.2.5",
-  "totalCases": 15,
-  "passCases": 3,
-  "rejectCases": 12,
-  "coveredTargetCoverageCount": 13,
+  "releaseLayer": "v0.2.6",
+  "targetCoverageCount": 11,
+  "coveredTargetCoverageCount": 11,
   "unexpectedAccepts": 0,
   "unexpectedRejects": 0,
-  "acceptedForbiddenEffectsDetectedCount": 0,
   "passCapabilityTrueCount": 0,
-  "scorecardAuthority": false,
-  "consumedByAgent": false,
+  "readsLiveTraffic": false,
+  "followsSourceSymlinkForAuthority": false,
+  "followsOutputSymlinkForAuthority": false,
   "automaticAgentConsumptionImplemented": false
 }
 ```
 
 ## Conservative release statement
 
-`v0.2.5` proves only local deterministic expanded-pack coverage over committed passive canary fixtures. It does not add live traffic reads, raw input persistence, runtime integration, live observer daemon, watcher, adapter integration, tool execution, memory/config writes, external publication, publication automation, agent-instruction writes, automatic agent consumption, approval paths, blocking, allowing, authorization, deletion, retention scheduler, or enforcement.
+`v0.2.6` proves only local deterministic source-boundary expansion coverage over committed already-redacted passive canary metadata. It does not add live traffic reads, raw input persistence, runtime integration, live observer daemon, watcher, adapter integration, tool execution, memory/config writes, external publication, publication automation, agent-instruction writes, automatic agent consumption, approval paths, blocking, allowing, authorization, deletion, retention scheduler, symlink-following authority, or enforcement.
 
 ## Validation snapshot
 
 Expected validation command:
 
 ```bash
-npm --prefix implementation/synaptic-mesh-shadow-v0 run release:check -- --target v0.2.5
+npm --prefix implementation/synaptic-mesh-shadow-v0 run release:check -- --target v0.2.6
 ```
 
 ## Operational non-release status

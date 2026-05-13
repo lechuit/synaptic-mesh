@@ -1,0 +1,325 @@
+{
+  "summary": {
+    "artifact": "T-synaptic-mesh-passive-live-shadow-canary-source-boundary-expansion-v0",
+    "timestamp": "2026-05-13T02:30:00.000Z",
+    "verdict": "pass",
+    "releaseLayer": "v0.2.6",
+    "dependsOn": "v0.2.5-expanded-passive-canary-pack",
+    "mode": "manual_local_opt_in_passive_record_only_source_boundary_expansion",
+    "passCases": 1,
+    "rejectCases": 12,
+    "targetCoverageCount": 11,
+    "coveredTargetCoverageCount": 11,
+    "acceptedCount": 1,
+    "unexpectedAccepts": 0,
+    "unexpectedRejects": 0,
+    "digestBindingMismatchRejects": 1,
+    "futureMtimeRejects": 1,
+    "invalidMtimeRejects": 1,
+    "sourcePathTraversalRejects": 1,
+    "sourcePathContainmentRejects": 1,
+    "sourceSymlinkRejects": 1,
+    "sourceUnicodeControlRejects": 1,
+    "sourceLaneAliasRejects": 1,
+    "duplicateSourceArtifactIdRejects": 2,
+    "wrongLaneRejects": 2,
+    "outputSymlinkRejects": 1,
+    "outputContainmentRejects": 1,
+    "passCapabilityTrueCount": 0,
+    "manual": true,
+    "local": true,
+    "optInRequired": true,
+    "alreadyRedactedOnly": true,
+    "recordOnly": true,
+    "noEffects": true,
+    "writesOnlyLocalEvidence": true,
+    "readsLiveTraffic": false,
+    "followsSourceSymlinkForAuthority": false,
+    "followsOutputSymlinkForAuthority": false,
+    "runtimeIntegrated": false,
+    "daemonImplemented": false,
+    "watcherImplemented": false,
+    "adapterIntegrated": false,
+    "toolExecutionImplemented": false,
+    "memoryWriteImplemented": false,
+    "configWriteImplemented": false,
+    "externalPublicationImplemented": false,
+    "approvalPathImplemented": false,
+    "blockingImplemented": false,
+    "allowingImplemented": false,
+    "authorizationImplemented": false,
+    "deletionImplemented": false,
+    "retentionSchedulerImplemented": false,
+    "enforcementImplemented": false,
+    "automaticAgentConsumptionImplemented": false,
+    "safetyClaimScope": "source_boundary_expansion_for_manual_local_opt_in_passive_canary_only_not_runtime_not_authority_not_agent_consumed"
+  },
+  "passResults": [
+    {
+      "caseId": "pass_expanded_source_boundary_regular_packet_001",
+      "coverageLabel": "valid_source_boundary_packet",
+      "accepted": true,
+      "reasonCodes": [],
+      "sourceTupleComplete": true,
+      "digestValid": true,
+      "digestBindingMismatch": false,
+      "staleDigest": false,
+      "sourceLaneMatches": true,
+      "sourceContained": true,
+      "outputContained": true,
+      "capabilityTrueCount": 0,
+      "forbiddenEffectsDetected": []
+    }
+  ],
+  "rejectResults": [
+    {
+      "caseId": "reject_source_digest_binding_mismatch",
+      "coverageLabel": "digest_mismatch_distinct_from_stale_digest",
+      "accepted": false,
+      "reasonCodes": [
+        "CANARY_SOURCE_DIGEST_BINDING_MISMATCH"
+      ],
+      "sourceTupleComplete": true,
+      "digestValid": true,
+      "digestBindingMismatch": true,
+      "staleDigest": false,
+      "sourceLaneMatches": true,
+      "sourceContained": true,
+      "outputContained": true,
+      "capabilityTrueCount": 0,
+      "forbiddenEffectsDetected": []
+    },
+    {
+      "caseId": "reject_future_source_mtime",
+      "coverageLabel": "future_source_mtime",
+      "accepted": false,
+      "reasonCodes": [
+        "CANARY_SOURCE_MTIME_FUTURE"
+      ],
+      "sourceTupleComplete": true,
+      "digestValid": true,
+      "digestBindingMismatch": false,
+      "staleDigest": false,
+      "sourceLaneMatches": true,
+      "sourceContained": true,
+      "outputContained": true,
+      "capabilityTrueCount": 0,
+      "forbiddenEffectsDetected": []
+    },
+    {
+      "caseId": "reject_invalid_source_mtime_format",
+      "coverageLabel": "invalid_source_mtime_format",
+      "accepted": false,
+      "reasonCodes": [
+        "CANARY_SOURCE_MTIME_REQUIRED"
+      ],
+      "sourceTupleComplete": true,
+      "digestValid": true,
+      "digestBindingMismatch": false,
+      "staleDigest": false,
+      "sourceLaneMatches": true,
+      "sourceContained": true,
+      "outputContained": true,
+      "capabilityTrueCount": 0,
+      "forbiddenEffectsDetected": []
+    },
+    {
+      "caseId": "reject_source_path_traversal",
+      "coverageLabel": "source_path_traversal",
+      "accepted": false,
+      "reasonCodes": [
+        "CANARY_SOURCE_PATH_CONTAINMENT_REQUIRED",
+        "CANARY_SOURCE_PATH_TRAVERSAL"
+      ],
+      "sourceTupleComplete": true,
+      "digestValid": true,
+      "digestBindingMismatch": false,
+      "staleDigest": false,
+      "sourceLaneMatches": true,
+      "sourceContained": false,
+      "outputContained": true,
+      "capabilityTrueCount": 0,
+      "forbiddenEffectsDetected": []
+    },
+    {
+      "caseId": "reject_source_path_symlink_pressure",
+      "coverageLabel": "source_path_symlink_pressure",
+      "accepted": false,
+      "reasonCodes": [
+        "CANARY_SOURCE_SYMLINK_FORBIDDEN"
+      ],
+      "sourceTupleComplete": true,
+      "digestValid": true,
+      "digestBindingMismatch": false,
+      "staleDigest": false,
+      "sourceLaneMatches": true,
+      "sourceContained": true,
+      "outputContained": true,
+      "capabilityTrueCount": 0,
+      "forbiddenEffectsDetected": [
+        "CANARY_SOURCE_SYMLINK_FORBIDDEN"
+      ]
+    },
+    {
+      "caseId": "reject_source_path_unicode_bidi_pressure",
+      "coverageLabel": "source_path_unicode_bidi_confusable_pressure",
+      "accepted": false,
+      "reasonCodes": [
+        "CANARY_SOURCE_PATH_UNICODE_CONTROL"
+      ],
+      "sourceTupleComplete": true,
+      "digestValid": true,
+      "digestBindingMismatch": false,
+      "staleDigest": false,
+      "sourceLaneMatches": true,
+      "sourceContained": true,
+      "outputContained": true,
+      "capabilityTrueCount": 0,
+      "forbiddenEffectsDetected": []
+    },
+    {
+      "caseId": "reject_source_lane_alias_confusion",
+      "coverageLabel": "source_lane_alias_confusion",
+      "accepted": false,
+      "reasonCodes": [
+        "CANARY_SOURCE_LANE_ALIAS_FORBIDDEN",
+        "CANARY_SOURCE_LANE_MISMATCH"
+      ],
+      "sourceTupleComplete": true,
+      "digestValid": true,
+      "digestBindingMismatch": false,
+      "staleDigest": false,
+      "sourceLaneMatches": false,
+      "sourceContained": true,
+      "outputContained": true,
+      "capabilityTrueCount": 0,
+      "forbiddenEffectsDetected": [
+        "CANARY_SOURCE_LANE_ALIAS_FORBIDDEN"
+      ]
+    },
+    {
+      "caseId": "reject_duplicate_source_artifact_id_a",
+      "coverageLabel": "duplicate_source_artifact_id",
+      "accepted": false,
+      "reasonCodes": [
+        "CANARY_SOURCE_ARTIFACT_ID_DUPLICATE"
+      ],
+      "sourceTupleComplete": true,
+      "digestValid": true,
+      "digestBindingMismatch": false,
+      "staleDigest": false,
+      "sourceLaneMatches": true,
+      "sourceContained": true,
+      "outputContained": true,
+      "capabilityTrueCount": 0,
+      "forbiddenEffectsDetected": []
+    },
+    {
+      "caseId": "reject_duplicate_source_artifact_id_b",
+      "coverageLabel": "duplicate_source_artifact_id_pair_control",
+      "accepted": false,
+      "reasonCodes": [
+        "CANARY_SOURCE_ARTIFACT_ID_DUPLICATE"
+      ],
+      "sourceTupleComplete": true,
+      "digestValid": true,
+      "digestBindingMismatch": false,
+      "staleDigest": false,
+      "sourceLaneMatches": true,
+      "sourceContained": true,
+      "outputContained": true,
+      "capabilityTrueCount": 0,
+      "forbiddenEffectsDetected": []
+    },
+    {
+      "caseId": "reject_correct_digest_wrong_source_lane",
+      "coverageLabel": "correct_digest_wrong_source_lane",
+      "accepted": false,
+      "reasonCodes": [
+        "CANARY_SOURCE_LANE_MISMATCH"
+      ],
+      "sourceTupleComplete": true,
+      "digestValid": true,
+      "digestBindingMismatch": false,
+      "staleDigest": false,
+      "sourceLaneMatches": false,
+      "sourceContained": true,
+      "outputContained": true,
+      "capabilityTrueCount": 0,
+      "forbiddenEffectsDetected": []
+    },
+    {
+      "caseId": "reject_output_path_indirect_symlink_pressure",
+      "coverageLabel": "indirect_output_symlink_pressure",
+      "accepted": false,
+      "reasonCodes": [
+        "CANARY_OUTPUT_SYMLINK_FORBIDDEN"
+      ],
+      "sourceTupleComplete": true,
+      "digestValid": true,
+      "digestBindingMismatch": false,
+      "staleDigest": false,
+      "sourceLaneMatches": true,
+      "sourceContained": true,
+      "outputContained": true,
+      "capabilityTrueCount": 0,
+      "forbiddenEffectsDetected": [
+        "CANARY_OUTPUT_SYMLINK_FORBIDDEN"
+      ]
+    },
+    {
+      "caseId": "reject_output_parent_not_allowed",
+      "coverageLabel": "output_parent_not_allowed",
+      "accepted": false,
+      "reasonCodes": [
+        "CANARY_OUTPUT_CONTAINMENT_REQUIRED"
+      ],
+      "sourceTupleComplete": true,
+      "digestValid": true,
+      "digestBindingMismatch": false,
+      "staleDigest": false,
+      "sourceLaneMatches": true,
+      "sourceContained": true,
+      "outputContained": false,
+      "capabilityTrueCount": 0,
+      "forbiddenEffectsDetected": []
+    }
+  ],
+  "coveredTargetCoverage": [
+    "correct_digest_wrong_source_lane",
+    "digest_mismatch_distinct_from_stale_digest",
+    "duplicate_source_artifact_id",
+    "future_source_mtime",
+    "indirect_output_symlink_pressure",
+    "invalid_source_mtime_format",
+    "output_parent_not_allowed",
+    "source_lane_alias_confusion",
+    "source_path_symlink_pressure",
+    "source_path_traversal",
+    "source_path_unicode_bidi_confusable_pressure"
+  ],
+  "boundary": [
+    "live_traffic_read",
+    "raw_input_persistence",
+    "runtime_integration",
+    "daemon",
+    "watcher",
+    "adapter_integration",
+    "tool_execution",
+    "memory_write",
+    "config_write",
+    "external_publication",
+    "approval_path",
+    "blocking",
+    "allowing",
+    "authorization",
+    "deletion",
+    "retention_scheduler",
+    "enforcement",
+    "output_path_escape",
+    "source_path_escape",
+    "source_symlink_follow",
+    "output_symlink_follow",
+    "automatic_agent_consumption"
+  ]
+}
