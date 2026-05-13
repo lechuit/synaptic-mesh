@@ -228,3 +228,20 @@ Expected result: 12 expected rejects, zero unexpected accepts, and no machine-po
 Boundary remains local deterministic report-misuse testing only. The catalog is not runtime protection, not authority, not agent-consumed policy, and not enforcement.
 
 Executable gate: `test:passive-live-shadow-canary-advisory-report-failure-catalog`.
+
+## v0.3.3 — advisory report reproducibility/drift gate
+
+Add a deterministic local reproducibility gate for the committed human-readable advisory report.
+
+Target checks:
+
+- two local normalizer runs over the same committed report evidence;
+- zero normalized-output mismatches;
+- committed markdown byte count and report text hash bound to JSON evidence;
+- negative controls for report text drift, byte-count drift, summary drift, authority-boundary drift, source-evidence order drift, machine-policy drift, and report-path drift.
+
+Expected result: 2 runs, zero normalized-output mismatches, 6 expected rejects, zero unexpected accepts, and no machine-policy, agent-consumed, authoritative, block, or allow flags.
+
+Boundary remains local deterministic evidence checking only. The reproducibility gate is not runtime protection, not authority, not agent-consumed policy, and not enforcement.
+
+Executable gate: `test:passive-live-shadow-canary-advisory-report-reproducibility`.
