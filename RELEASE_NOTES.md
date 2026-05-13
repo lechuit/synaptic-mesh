@@ -1,56 +1,69 @@
-# Release Notes — Synaptic Mesh v0.3.5
+# Release Notes — Synaptic Mesh v0.4.5
 
-Status: advisory public review package. Manual, local, opt-in, record-only, no effects. Not runtime-ready; not production/enforcement-ready.
+Status: read-only adapter boundary public review package. Manual, local, explicit/redacted input only, record-only, no effects. Not runtime-ready; not production/enforcement-ready.
 
 ## Why this release
 
-After v0.3.4 added the reviewer runbook, v0.3.5 adds a compact public review package that indexes advisory report hardening evidence from v0.3.0-alpha through v0.3.5 without turning the package into policy, approval, authorization, enforcement, or automatic agent-consumed instruction.
+After the v0.3.x advisory public review package, v0.4.5 closes a design-first phase for a read-only adapter boundary. The goal is deliberately narrow: demonstrate that an adapter-shaped boundary can produce human-reviewable evidence without becoming a source of action.
 
-## Highlights since v0.3.4
+Guide phrase:
 
-- Added `docs/advisory-public-review-package.md`.
-- Added `implementation/synaptic-mesh-shadow-v0/tests/passive-live-shadow-canary-advisory-public-review-package.mjs`.
-- Added public-review package fixture/evidence:
-  - `implementation/synaptic-mesh-shadow-v0/fixtures/passive-live-shadow-canary-advisory-public-review-package.json`
-  - `implementation/synaptic-mesh-shadow-v0/evidence/passive-live-shadow-canary-advisory-public-review-package.out.json`
-- Wired the new gate into local `check`, `review:local`, and `release:check` validation.
-- Pinned evidence/docs coverage for v0.3.0-alpha through v0.3.4 advisory hardening artifacts.
+> Antes de conectar Synaptic Mesh a un framework, demostrar que un adapter no puede convertirse en fuente de acción.
 
-## Expected v0.3.5 evidence
+## Highlights since v0.3.5
+
+- Added v0.4.0-alpha read-only adapter boundary contracts.
+- Added v0.4.1 misuse/failure catalog with `unexpectedAccepts: 0`.
+- Added v0.4.2 reproducibility/drift gate for stable adapter-shaped evidence.
+- Added v0.4.3 reviewer runbook for human boundary review.
+- Added v0.4.4 simulated read-only adapter evidence, still fake/local/redacted only.
+- Added v0.4.5 public review package and status snapshot.
+- Added `test:read-only-adapter-public-review-package` to validate the v0.4.x package and forbidden-effect boundary.
+- Wired the new gate into local `check` and `release:check` validation.
+
+## Expected v0.4.5 evidence
 
 ```json
 {
-  "advisoryPublicReviewPackage": "pass",
-  "releaseLayer": "v0.3.5",
-  "requiredEvidence": 6,
-  "missingEvidence": 0,
-  "requiredDocs": 7,
-  "missingDocs": 0,
-  "requiredPhrases": 10,
-  "missingRequiredPhrases": 0,
-  "forbiddenPhraseFindings": 0,
+  "readOnlyAdapterBoundaryDesignFirstPackage": "pass",
+  "v040AlphaBoundarySpec": "pass",
+  "v041MisuseFailureCatalog": "pass",
+  "v042ReproducibilityDriftGate": "pass",
+  "v043ReviewerRunbook": "pass",
+  "v044SimulatedReadOnlyAdapter": "pass",
+  "realAdapterAuthorized": false,
+  "frameworkIntegrationAuthorized": false,
+  "liveTrafficAuthorized": false,
+  "toolExecution": false,
+  "memoryWrite": false,
+  "configWrite": false,
+  "externalPublication": false,
+  "approvalEmission": false,
   "machineReadablePolicyDecision": false,
-  "consumedByAgent": false,
+  "agentConsumed": false,
   "mayBlock": false,
-  "mayAllow": false
+  "mayAllow": false,
+  "enforcement": false
 }
 ```
 
 ## Conservative release statement
 
-`v0.3.5` proves only that local human-readable public review package checks pass against committed docs/evidence. It does not add live traffic reads, raw input persistence, runtime integration, live observer daemon, watcher, adapter integration, tool execution, memory/config writes, external publication, publication automation, agent-instruction writes, automatic agent consumption, machine-readable policy decisions, approval paths, blocking, allowing, authorization, deletion, retention scheduler, or enforcement.
+`v0.4.5` proves only that local human-readable read-only adapter boundary checks pass against committed docs/evidence. It does not add a real adapter, MCP, LangGraph, GitHub bot, watcher, daemon, live traffic reads, raw input persistence, runtime integration, tool execution, memory/config writes, external publication, publication automation, agent-instruction writes, automatic agent consumption, machine-readable policy decisions, approval paths, blocking, allowing, authorization, deletion, retention scheduler, or enforcement.
 
 ## Validation snapshot
 
 Expected validation command:
 
 ```bash
-npm --prefix implementation/synaptic-mesh-shadow-v0 run release:check -- --target v0.3.5
+npm --prefix implementation/synaptic-mesh-shadow-v0 run release:check -- --target v0.4.5
 ```
 
 ## Operational non-release status
 
 - Not runtime/tooling integrated.
 - Not live-monitoring integrated.
+- Not a real adapter.
 - Not production/enforcement/L2+ ready.
-- The advisory report, runbook, and public review package remain review evidence, not action sources. Advisory no es authority.
+- The adapter-boundary package remains review evidence, not an action source. Advisory no es authority.
+- Do not start `v0.5.0-alpha` or any real adapter without explicit human approval.

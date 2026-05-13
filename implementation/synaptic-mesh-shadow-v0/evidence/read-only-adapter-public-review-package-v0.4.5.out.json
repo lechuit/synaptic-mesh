@@ -1,0 +1,43 @@
+{
+  "artifact": "T-synaptic-mesh-read-only-adapter-public-review-package-v0.4.5",
+  "timestamp": "2026-05-13T16:00:00.000Z",
+  "summary": {
+    "verdict": "pass",
+    "releaseLayer": "v0.4.5",
+    "requiredDocs": 6,
+    "requiredEvidence": 6,
+    "missingDocs": 0,
+    "missingEvidence": 0,
+    "readOnlyAdapterBoundaryDesignFirstPackage": "pass",
+    "realAdapterAuthorized": false,
+    "frameworkIntegrationAuthorized": false,
+    "liveTrafficAuthorized": false,
+    "toolExecution": false,
+    "memoryWrite": false,
+    "configWrite": false,
+    "externalPublication": false,
+    "approvalEmission": false,
+    "machineReadablePolicyDecision": false,
+    "agentConsumed": false,
+    "mayBlock": false,
+    "mayAllow": false,
+    "enforcement": false
+  },
+  "boundary": [
+    "manual_local_public_review_package_only",
+    "explicit_redacted_local_input_only",
+    "record_only_evidence",
+    "no_real_adapter",
+    "no_framework_integration",
+    "no_live_traffic",
+    "no_tools",
+    "no_memory_write",
+    "no_config_write",
+    "no_publication",
+    "no_approval",
+    "no_blocking",
+    "no_allowing",
+    "no_authorization",
+    "no_enforcement"
+  ]
+}
