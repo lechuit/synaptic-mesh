@@ -7,10 +7,12 @@
     "schemaOnly": true,
     "implementationAuthorized": false,
     "inputValid": 1,
-    "inputInvalidRejected": 8,
+    "inputInvalidRejected": 13,
     "resultValid": 1,
     "resultInvalidRejected": 12,
     "sourceAlreadyRedacted": true,
+    "redactionReviewRecordPresent": true,
+    "rawContentPersisted": false,
     "rawInputAllowed": false,
     "networkAllowed": false,
     "directoryInputAllowed": false,
@@ -84,6 +86,43 @@
     },
     {
       "id": "traversal",
+      "accepted": false,
+      "errors": [
+        "sourceFilePath pattern mismatch"
+      ]
+    },
+    {
+      "id": "missing-redaction-review-record",
+      "accepted": false,
+      "errors": [
+        "missing required redactionReviewRecord",
+        "redactionReviewRecord must be object"
+      ]
+    },
+    {
+      "id": "raw-content-persisted",
+      "accepted": false,
+      "errors": [
+        "redactionReviewRecord.rawContentPersisted must equal false",
+        "rawContentPersisted must equal false"
+      ]
+    },
+    {
+      "id": "redaction-not-reviewed",
+      "accepted": false,
+      "errors": [
+        "redactionReviewRecord.reviewed must equal true"
+      ]
+    },
+    {
+      "id": "ssh-url",
+      "accepted": false,
+      "errors": [
+        "sourceFilePath pattern mismatch"
+      ]
+    },
+    {
+      "id": "git-url",
       "accepted": false,
       "errors": [
         "sourceFilePath pattern mismatch"

@@ -22,8 +22,10 @@ function clone(value) {
   return JSON.parse(JSON.stringify(value));
 }
 
-function withPatch(base, patch) {
-  return { ...clone(base), ...patch };
+function withPatch(base, patch = {}, remove = []) {
+  const candidate = { ...clone(base), ...patch };
+  for (const key of remove) delete candidate[key];
+  return candidate;
 }
 
 function sha256(buffer) {
@@ -44,6 +46,20 @@ function validateObjectBySchema(schema, candidate) {
     const value = candidate?.[key];
     if (Object.hasOwn(rule, 'const') && value !== rule.const) errors.push(`${key} must equal ${JSON.stringify(rule.const)}`);
     if (rule.type === 'string' && typeof value !== 'string') errors.push(`${key} must be string`);
+    if (rule.type === 'object') {
+      if (!value || typeof value !== 'object' || Array.isArray(value)) {
+        errors.push(`${key} must be object`);
+      } else {
+        const childKeys = new Set(Object.keys(value));
+        for (const required of rule.required ?? []) if (!childKeys.has(required)) errors.push(`${key}.${required} missing`);
+        if (rule.additionalProperties === false) {
+          for (const childKey of childKeys) if (!rule.properties?.[childKey]) errors.push(`${key}.${childKey} additional property`);
+        }
+        for (const [childKey, childRule] of Object.entries(rule.properties ?? {})) {
+          if (Object.hasOwn(childRule, 'const') && value[childKey] !== childRule.const) errors.push(`${key}.${childKey} must equal ${JSON.stringify(childRule.const)}`);
+        }
+      }
+    }
     if (rule.minLength && typeof value === 'string' && value.length < rule.minLength) errors.push(`${key} too short`);
     if (rule.pattern && typeof value === 'string' && !(new RegExp(rule.pattern).test(value))) errors.push(`${key} pattern mismatch`);
   }
@@ -70,7 +86,7 @@ assert.equal(validInput.sourceArtifactDigest, `sha256:${sha256(sourceBytes)}`, '
 assert.equal(validResult.sourceFilePath, validInput.sourceFilePath, 'result sourceFilePath must match input fixture path');
 
 const invalidInputResults = inputFixtures.invalid.map((entry) => {
-  const candidate = withPatch(validInput, entry.patch);
+  const candidate = withPatch(validInput, entry.patch, entry.remove);
   const result = validateInput(candidate);
   return { id: entry.id, accepted: result.ok, errors: result.errors };
 });
@@ -84,7 +100,10 @@ assert.deepEqual(invalidInputResults.filter((entry) => entry.accepted), [], 'all
 assert.deepEqual(invalidResultResults.filter((entry) => entry.accepted), [], 'all invalid result fixtures must reject');
 
 for (const field of ['sourceAlreadyRedacted']) assert.equal(validInput[field], true, `${field} must be true`);
-for (const field of ['rawInputAllowed', 'networkAllowed', 'directoryInputAllowed', 'globAllowed', 'watcherAllowed', 'daemonAllowed']) {
+assert.equal(validInput.redactionReviewRecord.reviewed, true, 'redactionReviewRecord.reviewed must be true');
+assert.equal(validInput.redactionReviewRecord.rawContentPersisted, false, 'redactionReviewRecord.rawContentPersisted must be false');
+assert.equal(validInput.redactionReviewRecord.sourceAlreadyRedacted, true, 'redactionReviewRecord.sourceAlreadyRedacted must be true');
+for (const field of ['rawContentPersisted', 'rawInputAllowed', 'networkAllowed', 'directoryInputAllowed', 'globAllowed', 'watcherAllowed', 'daemonAllowed']) {
   assert.equal(validInput[field], false, `${field} must be false`);
 }
 assert.equal(validResult.recordOnly, true, 'recordOnly must be true');
@@ -105,6 +124,8 @@ const output = {
     resultValid: resultFixtures.valid.length,
     resultInvalidRejected: invalidResultResults.length,
     sourceAlreadyRedacted: validInput.sourceAlreadyRedacted,
+    redactionReviewRecordPresent: Boolean(validInput.redactionReviewRecord),
+    rawContentPersisted: validInput.rawContentPersisted,
     rawInputAllowed: validInput.rawInputAllowed,
     networkAllowed: validInput.networkAllowed,
     directoryInputAllowed: validInput.directoryInputAllowed,
