@@ -1,0 +1,10 @@
+{
+  "fixtureId": "redacted-example-001",
+  "redactionStatus": "already_redacted",
+  "records": [
+    {
+      "id": "r1",
+      "text": "[REDACTED_USER] asks whether a local-file adapter can emit evidence without action authority."
+    }
+  ]
+}

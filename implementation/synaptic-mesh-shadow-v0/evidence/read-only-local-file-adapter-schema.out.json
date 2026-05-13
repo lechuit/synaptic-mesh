@@ -1,0 +1,202 @@
+{
+  "artifact": "T-synaptic-mesh-read-only-local-file-adapter-schema-v0.5.0-alpha-pr1",
+  "timestamp": "2026-05-13T22:55:00.000Z",
+  "summary": {
+    "readOnlyLocalFileAdapterSchema": "pass",
+    "releaseLayer": "v0.5.0-alpha-pr1",
+    "schemaOnly": true,
+    "implementationAuthorized": false,
+    "inputValid": 1,
+    "inputInvalidRejected": 8,
+    "resultValid": 1,
+    "resultInvalidRejected": 12,
+    "sourceAlreadyRedacted": true,
+    "rawInputAllowed": false,
+    "networkAllowed": false,
+    "directoryInputAllowed": false,
+    "globAllowed": false,
+    "watcherAllowed": false,
+    "daemonAllowed": false,
+    "recordOnly": true,
+    "toolExecution": false,
+    "memoryWrite": false,
+    "configWrite": false,
+    "externalPublication": false,
+    "approvalEmission": false,
+    "machineReadablePolicyDecision": false,
+    "agentConsumed": false,
+    "mayBlock": false,
+    "mayAllow": false,
+    "authorization": false,
+    "enforcement": false
+  },
+  "invalidInputResults": [
+    {
+      "id": "raw-input",
+      "accepted": false,
+      "errors": [
+        "sourceAlreadyRedacted must equal true"
+      ]
+    },
+    {
+      "id": "network",
+      "accepted": false,
+      "errors": [
+        "networkAllowed must equal false"
+      ]
+    },
+    {
+      "id": "directory",
+      "accepted": false,
+      "errors": [
+        "sourceFilePath pattern mismatch",
+        "directoryInputAllowed must equal false"
+      ]
+    },
+    {
+      "id": "glob",
+      "accepted": false,
+      "errors": [
+        "sourceFilePath pattern mismatch",
+        "globAllowed must equal false"
+      ]
+    },
+    {
+      "id": "watcher",
+      "accepted": false,
+      "errors": [
+        "watcherAllowed must equal false"
+      ]
+    },
+    {
+      "id": "daemon",
+      "accepted": false,
+      "errors": [
+        "daemonAllowed must equal false"
+      ]
+    },
+    {
+      "id": "url",
+      "accepted": false,
+      "errors": [
+        "sourceFilePath pattern mismatch"
+      ]
+    },
+    {
+      "id": "traversal",
+      "accepted": false,
+      "errors": [
+        "sourceFilePath pattern mismatch"
+      ]
+    }
+  ],
+  "invalidResultResults": [
+    {
+      "id": "not-record-only",
+      "accepted": false,
+      "errors": [
+        "recordOnly must equal true"
+      ]
+    },
+    {
+      "id": "tool",
+      "accepted": false,
+      "errors": [
+        "toolExecution must equal false"
+      ]
+    },
+    {
+      "id": "memory",
+      "accepted": false,
+      "errors": [
+        "memoryWrite must equal false"
+      ]
+    },
+    {
+      "id": "config",
+      "accepted": false,
+      "errors": [
+        "configWrite must equal false"
+      ]
+    },
+    {
+      "id": "publication",
+      "accepted": false,
+      "errors": [
+        "externalPublication must equal false"
+      ]
+    },
+    {
+      "id": "approval",
+      "accepted": false,
+      "errors": [
+        "approvalEmission must equal false"
+      ]
+    },
+    {
+      "id": "machine-policy",
+      "accepted": false,
+      "errors": [
+        "machineReadablePolicyDecision must equal false"
+      ]
+    },
+    {
+      "id": "agent-consumed",
+      "accepted": false,
+      "errors": [
+        "agentConsumed must equal false"
+      ]
+    },
+    {
+      "id": "block",
+      "accepted": false,
+      "errors": [
+        "mayBlock must equal false"
+      ]
+    },
+    {
+      "id": "allow",
+      "accepted": false,
+      "errors": [
+        "mayAllow must equal false"
+      ]
+    },
+    {
+      "id": "authorization",
+      "accepted": false,
+      "errors": [
+        "authorization must equal false"
+      ]
+    },
+    {
+      "id": "enforcement",
+      "accepted": false,
+      "errors": [
+        "enforcement must equal false"
+      ]
+    }
+  ],
+  "boundary": [
+    "schema_only",
+    "no_adapter_logic",
+    "one_explicit_already_redacted_local_file",
+    "evidence_record_only",
+    "no_raw_input",
+    "no_network",
+    "no_directory",
+    "no_glob",
+    "no_watcher",
+    "no_daemon",
+    "no_tools",
+    "no_memory_write",
+    "no_config_write",
+    "no_external_publication",
+    "no_approval",
+    "no_machine_policy",
+    "no_agent_consumption",
+    "no_blocking",
+    "no_allowing",
+    "no_authorization",
+    "no_enforcement"
+  ]
+}

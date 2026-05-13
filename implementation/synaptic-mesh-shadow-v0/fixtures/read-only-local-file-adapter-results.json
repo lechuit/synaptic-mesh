@@ -1,0 +1,41 @@
+{
+  "valid": [
+    {
+      "schemaVersion": "read-only-local-file-adapter-result-v0",
+      "adapterRunId": "adapter_run_001",
+      "recordOnly": true,
+      "sourceFileRead": true,
+      "sourceFilePath": "implementation/synaptic-mesh-shadow-v0/fixtures/redacted/example.json",
+      "sourceArtifactDigestVerified": true,
+      "parserEvidenceProduced": true,
+      "classifierDecisionProduced": true,
+      "decisionTraceProduced": true,
+      "advisoryReportProduced": true,
+      "toolExecution": false,
+      "memoryWrite": false,
+      "configWrite": false,
+      "externalPublication": false,
+      "approvalEmission": false,
+      "machineReadablePolicyDecision": false,
+      "agentConsumed": false,
+      "mayBlock": false,
+      "mayAllow": false,
+      "authorization": false,
+      "enforcement": false
+    }
+  ],
+  "invalid": [
+    { "id": "not-record-only", "patch": { "recordOnly": false } },
+    { "id": "tool", "patch": { "toolExecution": true } },
+    { "id": "memory", "patch": { "memoryWrite": true } },
+    { "id": "config", "patch": { "configWrite": true } },
+    { "id": "publication", "patch": { "externalPublication": true } },
+    { "id": "approval", "patch": { "approvalEmission": true } },
+    { "id": "machine-policy", "patch": { "machineReadablePolicyDecision": true } },
+    { "id": "agent-consumed", "patch": { "agentConsumed": true } },
+    { "id": "block", "patch": { "mayBlock": true } },
+    { "id": "allow", "patch": { "mayAllow": true } },
+    { "id": "authorization", "patch": { "authorization": true } },
+    { "id": "enforcement", "patch": { "enforcement": true } }
+  ]
+}
