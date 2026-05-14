@@ -1,63 +1,45 @@
-# Release Notes — Synaptic Mesh v0.5.0-alpha
+# Release Notes — Synaptic Mesh v0.5.1
 
-Status: first read-only local-file adapter alpha. Manual, local, one explicit already-redacted input file only, record-only evidence, no effects. Not runtime-ready; not production/enforcement-ready.
+Status: adapter reproducibility hardening for the read-only local-file adapter. Manual, local, one explicit already-redacted input file only, record-only evidence, no effects. Not runtime-ready; not production/enforcement-ready.
 
 ## Why this release
 
-After v0.4.8 completed the pre-implementation hazard catalog, v0.5.0-alpha adds the first minimal adapter alpha and the gates needed to keep it boring.
+This release makes the first real adapter boring in a more testable way: the same explicit already-redacted local file must produce the same normalized evidence, DecisionTrace hash, advisory report hash, and scorecard-style summary across repeated local runs.
 
-The adapter does not decide authority. It only orchestrates the existing local evidence pipeline for one explicit already-redacted local file.
+## Highlights
 
-## Highlights since v0.4.8
+- Added `test:read-only-local-file-adapter-reproducibility`.
+- Added committed reproducibility evidence for two adapter runs over the same explicit already-redacted source fixture.
+- Normalized hashes exclude volatile `generatedAt`, `durationMs`, `runId`, and temporal `adapterRunId`.
+- Normalized hashes include input digest, source artifact digest, source artifact content digest, selected route, reason codes, classifier decision digest, DecisionTrace hash, advisory report normalized content, record-only flag, capability flags, and boundary verdicts.
+- Wired the reproducibility gate into package scripts and release checks.
+- Added `docs/status-v0.5.1.md`.
 
-- Added read-only local-file adapter input/result schema gates.
-- Added the minimal read-only local-file adapter skeleton.
-- Added negative controls for the 17 v0.4.8 hazard cases.
-- Added a one-case positive adapter canary.
-- Added the read-only local-file adapter canary runbook.
-- Wired schema, adapter, negative-control, canary, and runbook gates into local validation and release checks.
-- Added `docs/status-v0.5.0-alpha.md`.
-
-## Expected v0.5.0-alpha evidence
+## Expected v0.5.1 evidence
 
 ```json
 {
-  "readOnlyLocalFileAdapterCanary": "pass",
+  "readOnlyLocalFileAdapterReproducibility": "pass",
+  "runs": 2,
   "positiveCases": 1,
-  "sourceFilesRead": 1,
-  "recordOnly": true,
-  "parserEvidenceProduced": true,
-  "classifierDecisionProduced": true,
-  "decisionTraceProduced": true,
-  "advisoryReportProduced": true,
+  "normalizedOutputMismatches": 0,
+  "decisionTraceHashMismatches": 0,
+  "advisoryReportHashMismatches": 0,
   "forbiddenEffects": 0,
   "capabilityTrueCount": 0
 }
 ```
 
-Negative controls remain green:
-
-```json
-{
-  "readOnlyLocalFileAdapterNegativeControls": "pass",
-  "negativeCases": 17,
-  "unexpectedAccepts": 0,
-  "forbiddenEffects": 0,
-  "capabilityTrueCount": 0,
-  "sourceFilesRead": 0
-}
-```
-
 ## Conservative release statement
 
-`v0.5.0-alpha` proves only that the committed local adapter schema, skeleton, negative controls, positive canary, runbook, and release metadata checks pass. It does not add runtime authorization, enforcement, MCP, A2A, LangGraph, GitHub bot, watcher, daemon, directory scan, glob, directory traversal, symlink escape, URL input, network calls, live traffic reads, raw input persistence, runtime integration, tool execution, memory/config writes, external publication, publication automation, agent-instruction writes, automatic agent consumption, machine-readable policy decisions, approval paths, blocking, allowing, authorization, deletion, retention scheduling, or enforcement.
+`v0.5.1` proves only that the committed local adapter reproducibility gate passes for one explicit already-redacted local file. It does not add runtime authorization, enforcement, MCP, A2A, LangGraph, GitHub bot, watcher, daemon, directory scan, glob, directory traversal, symlink escape, URL input, network calls, live traffic reads, raw input persistence, runtime integration, tool execution, memory/config writes, external publication, publication automation, agent-instruction writes, automatic agent consumption, approval paths, blocking, allowing, authorization, deletion, retention scheduling, or enforcement.
 
 ## Validation snapshot
 
 Expected validation command:
 
 ```bash
-npm --prefix implementation/synaptic-mesh-shadow-v0 run release:check -- --target v0.5.0-alpha
+npm --prefix implementation/synaptic-mesh-shadow-v0 run release:check -- --target v0.5.1
 ```
 
 ## Operational non-release status
@@ -66,5 +48,5 @@ npm --prefix implementation/synaptic-mesh-shadow-v0 run release:check -- --targe
 - Not live-monitoring integrated.
 - Not a general adapter.
 - Not production/enforcement/L2+ ready.
-- The adapter canary is evidence of local read-only boundary preservation, not runtime authorization.
+- The reproducibility gate is evidence of deterministic local record-only output, not runtime authorization.
 - Advisory no es authority.

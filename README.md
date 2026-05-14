@@ -1,12 +1,12 @@
-# Synaptic Mesh v0.5.0-alpha
+# Synaptic Mesh v0.5.1
 
-Status: first read-only local-file adapter alpha public review release `v0.5.0-alpha`; **manual, local, one explicit already-redacted input file only, record-only evidence, no effects**; **not runtime-ready**; **not production/enforcement-ready**.
+Status: adapter reproducibility public review release `v0.5.1`; **manual, local, one explicit already-redacted input file only, record-only evidence, deterministic normalized output, no effects**; **not runtime-ready**; **not production/enforcement-ready**.
 
 ## What this is
 
 Synaptic Mesh / Multi-Agent Memory Authority Protocol is a protocol proposal for preserving authority, source status, and boundary receipts through multi-agent memory transforms: retrieval, summary, compression, handoff, and review.
 
-Current v0.5.0-alpha status is narrower than the long-term protocol goal: this repository ships the first minimal **read-only local-file adapter alpha** plus its schema, negative controls, positive canary, and reviewer runbook. The adapter path is intentionally boring: one explicit already-redacted local file becomes parser evidence, then passes through the existing classifier stage into a DecisionTrace, human-readable advisory, and record-only local evidence.
+Current v0.5.1 status is narrower than the long-term protocol goal: this repository ships a minimal **read-only local-file adapter** plus schema, negative controls, containment guards, positive canary, reviewer runbook, and an adapter reproducibility gate. The adapter path is intentionally boring: one explicit already-redacted local file becomes parser evidence, passes through the existing classifier stage, and emits DecisionTrace, human-readable advisory, and record-only local evidence.
 
 ## Quick local review
 
@@ -24,12 +24,13 @@ npm --prefix implementation/synaptic-mesh-shadow-v0 run test:read-only-local-fil
 npm --prefix implementation/synaptic-mesh-shadow-v0 run test:read-only-local-file-adapter-negative-controls
 npm --prefix implementation/synaptic-mesh-shadow-v0 run test:read-only-local-file-adapter-canary
 npm --prefix implementation/synaptic-mesh-shadow-v0 run test:read-only-local-file-adapter-canary-runbook
+npm --prefix implementation/synaptic-mesh-shadow-v0 run test:read-only-local-file-adapter-reproducibility
 ```
 
 For exact release-candidate verification:
 
 ```bash
-npm --prefix implementation/synaptic-mesh-shadow-v0 run release:check -- --target v0.5.0-alpha
+npm --prefix implementation/synaptic-mesh-shadow-v0 run release:check -- --target v0.5.1
 ```
 
 For an already-published release, check out the release tag before re-running the exact target check.
@@ -49,9 +50,9 @@ For an already-published release, check out the release tag before re-running th
 
 ## Where to read next
 
-- [Full v0.5.0-alpha status snapshot](docs/status-v0.5.0-alpha.md) — complete release snapshot, included adapter gates, expected review results, and boundaries.
+- [Full v0.5.1 status snapshot](docs/status-v0.5.1.md) — reproducibility gate, expected evidence, and boundaries.
 - [Read-only local-file adapter canary runbook](docs/read-only-local-file-adapter-canary-runbook.md) — human-facing canary review guidance.
-- [Adapter implementation hazard catalog](docs/adapter-implementation-hazard-catalog-v0.4.8.md) — pre-implementation expected failure catalog that PR #3 negative controls exercise.
+- [Adapter implementation hazard catalog](docs/adapter-implementation-hazard-catalog-v0.4.8.md) — pre-implementation expected failure catalog that negative controls exercise.
 - [First real adapter design note](docs/first-real-adapter-design-note-v0.4.7.md) — design-only origin of the adapter shape.
 - [Read-only adapter reviewer runbook](docs/read-only-adapter-reviewer-runbook-v0.4.3.md) — earlier human-facing boundary review checklist.
 - [Release ladder](docs/release-ladder.md) — roadmap from passive canary work toward advisory-only reporting, with explicit non-authority boundaries.
