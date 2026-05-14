@@ -2,12 +2,10 @@
 import { execFileSync } from 'node:child_process';
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
-import {
-  assertReadOnlyLocalFileAdapterManifestMetadata,
-  assertReadOnlyLocalFileAdapterRelease,
-  readOnlyLocalFileAdapterGateScripts,
-  readOnlyLocalFileAdapterRequiredManifestPaths,
-} from './release-checks/read-only-local-file-adapter.mjs';
+import { releaseCheckSuites } from './release-checks/index.mjs';
+
+const releaseCheckSuiteGateScripts = releaseCheckSuites.flatMap((suite) => suite.gateScripts ?? []);
+const releaseCheckSuiteRequiredManifestPaths = releaseCheckSuites.flatMap((suite) => suite.requiredManifestPaths ?? []);
 
 const releaseGateScripts = [
   'verify:manifest',
@@ -47,10 +45,7 @@ const releaseGateScripts = [
   'test:passive-live-shadow-canary-advisory-report-reproducibility',
   'test:passive-live-shadow-canary-advisory-reviewer-runbook',
   'test:passive-live-shadow-canary-advisory-public-review-package',
-  'test:read-only-adapter-public-review-package',
-  'test:read-only-adapter-human-review-go-no-go',
-  'test:first-real-adapter-design-note',
-  ...readOnlyLocalFileAdapterGateScripts,
+  ...releaseCheckSuiteGateScripts,
   'test:live-shadow-synthetic-replay',
   'test:live-shadow-drift-scorecard',
   'test:manual-observation-bundle-schema',
@@ -214,52 +209,8 @@ assert(
 assert(packageJson.private === true, 'shadow package must remain private for release checks');
 assert(packageJson.version === '0.0.0-local', 'shadow package version must remain 0.0.0-local unless publication scope changes');
 assert(packageJson.scripts?.['release:check'] === 'node ../../tools/release-check.mjs', 'package.json must wire npm run release:check to ../../tools/release-check.mjs');
-assertReadOnlyLocalFileAdapterManifestMetadata({ manifest, manifestReleaseTag, assertIncludes });
-
-if (manifestReleaseTag === 'v0.4.7') {
-  assertIncludes(manifest.reproducibility, 'first_real_adapter_design_note', 'MANIFEST.json reproducibility');
-  assertIncludes(manifest.reproducibility, 'read_only_local_file_adapter', 'MANIFEST.json reproducibility');
-  assertIncludes(manifest.reproducibility, 'one_explicit_already_redacted_local_file', 'MANIFEST.json reproducibility');
-  assertIncludes(manifest.reproducibility, 'go_to_hazard_catalog_true', 'MANIFEST.json reproducibility');
-  assertIncludes(manifest.reproducibility, 'go_to_v0_5_alpha_implementation_false', 'MANIFEST.json reproducibility');
-  assertIncludes(manifest.runtimeBoundary, 'no_real_adapter_implementation', 'MANIFEST.json runtimeBoundary');
-  assertIncludes(manifest.runtimeBoundary, 'no_mcp', 'MANIFEST.json runtimeBoundary');
-  assertIncludes(manifest.runtimeBoundary, 'no_langgraph', 'MANIFEST.json runtimeBoundary');
-  assertIncludes(manifest.runtimeBoundary, 'no_github_bot', 'MANIFEST.json runtimeBoundary');
-  assertIncludes(manifest.runtimeBoundary, 'no_watcher', 'MANIFEST.json runtimeBoundary');
-  assertIncludes(manifest.runtimeBoundary, 'no_daemon', 'MANIFEST.json runtimeBoundary');
-  assertIncludes(manifest.runtimeBoundary, 'no_directory_scan', 'MANIFEST.json runtimeBoundary');
-  assertIncludes(manifest.runtimeBoundary, 'no_glob', 'MANIFEST.json runtimeBoundary');
-  assertIncludes(manifest.runtimeBoundary, 'no_directory_traversal', 'MANIFEST.json runtimeBoundary');
-  assertIncludes(manifest.runtimeBoundary, 'no_symlink_escape', 'MANIFEST.json runtimeBoundary');
-  assertIncludes(manifest.runtimeBoundary, 'no_url_input', 'MANIFEST.json runtimeBoundary');
-  assertIncludes(manifest.runtimeBoundary, 'no_network_call', 'MANIFEST.json runtimeBoundary');
-}
-
-if (manifestReleaseTag === 'v0.4.6') {
-  assertIncludes(manifest.reproducibility, 'human_review_findings_go_no_go_record', 'MANIFEST.json reproducibility');
-  assertIncludes(manifest.reproducibility, 'v0.4.6', 'MANIFEST.json reproducibility');
-  assertIncludes(manifest.reproducibility, 'go_to_real_adapter_design_true', 'MANIFEST.json reproducibility');
-  assertIncludes(manifest.reproducibility, 'go_to_real_adapter_implementation_false', 'MANIFEST.json reproducibility');
-  assertIncludes(manifest.runtimeBoundary, 'design_only_allowed', 'MANIFEST.json runtimeBoundary');
-  assertIncludes(manifest.runtimeBoundary, 'no_v0_5_alpha_implementation', 'MANIFEST.json runtimeBoundary');
-  assertIncludes(manifest.runtimeBoundary, 'no_real_adapter', 'MANIFEST.json runtimeBoundary');
-  assertIncludes(manifest.runtimeBoundary, 'no_framework_integration', 'MANIFEST.json runtimeBoundary');
-  assertIncludes(manifest.runtimeBoundary, 'no_live_traffic', 'MANIFEST.json runtimeBoundary');
-  assertIncludes(manifest.runtimeBoundary, 'no_tool_execution', 'MANIFEST.json runtimeBoundary');
-  assertIncludes(manifest.runtimeBoundary, 'no_memory_write', 'MANIFEST.json runtimeBoundary');
-  assertIncludes(manifest.runtimeBoundary, 'no_config_write', 'MANIFEST.json runtimeBoundary');
-}
-
-if (manifestReleaseTag === 'v0.4.5') {
-  assertIncludes(manifest.reproducibility, 'read_only_adapter_boundary_public_review_package', 'MANIFEST.json reproducibility');
-  assertIncludes(manifest.reproducibility, 'v0.4.5', 'MANIFEST.json reproducibility');
-  assertIncludes(manifest.runtimeBoundary, 'no_real_adapter', 'MANIFEST.json runtimeBoundary');
-  assertIncludes(manifest.runtimeBoundary, 'no_framework_integration', 'MANIFEST.json runtimeBoundary');
-  assertIncludes(manifest.runtimeBoundary, 'no_live_traffic', 'MANIFEST.json runtimeBoundary');
-  assertIncludes(manifest.runtimeBoundary, 'no_tool_execution', 'MANIFEST.json runtimeBoundary');
-  assertIncludes(manifest.runtimeBoundary, 'no_memory_write', 'MANIFEST.json runtimeBoundary');
-  assertIncludes(manifest.runtimeBoundary, 'no_config_write', 'MANIFEST.json runtimeBoundary');
+for (const suite of releaseCheckSuites) {
+  suite.assertManifestMetadata?.({ manifest, manifestReleaseTag, assertIncludes, assertNotIncludes });
 }
 
 if (manifestReleaseTag === 'v0.3.5') {
@@ -285,6 +236,7 @@ for (const staleVersion of staleVersions) {
 }
 
 for (const requiredManifestPath of [
+  'tools/release-checks/index.mjs',
   'docs/status-v0.3.5.md',
   'docs/advisory-public-review-package.md',
   'docs/status-v0.3.4.md',
@@ -319,30 +271,7 @@ for (const requiredManifestPath of [
   'implementation/synaptic-mesh-shadow-v0/tests/passive-live-shadow-canary-advisory-public-review-package.mjs',
   'implementation/synaptic-mesh-shadow-v0/fixtures/passive-live-shadow-canary-advisory-public-review-package.json',
   'implementation/synaptic-mesh-shadow-v0/evidence/passive-live-shadow-canary-advisory-public-review-package.out.json',
-  'docs/status-v0.4.5.md',
-  'docs/read-only-adapter-boundary-contracts-v0.4.0-alpha.md',
-  'docs/read-only-adapter-misuse-failure-catalog-v0.4.1.md',
-  'docs/read-only-adapter-reproducibility-drift-gate-v0.4.2.md',
-  'docs/read-only-adapter-reviewer-runbook-v0.4.3.md',
-  'docs/read-only-adapter-public-review-package-v0.4.5.md',
-  'implementation/synaptic-mesh-shadow-v0/tests/read-only-adapter-public-review-package.mjs',
-  'implementation/synaptic-mesh-shadow-v0/evidence/read-only-adapter-contracts.out.json',
-  'implementation/synaptic-mesh-shadow-v0/evidence/read-only-adapter-misuse-failure-catalog-v0.4.1.out.json',
-  'implementation/synaptic-mesh-shadow-v0/evidence/read-only-adapter-reproducibility-drift-gate-v0.4.2.out.json',
-  'implementation/synaptic-mesh-shadow-v0/evidence/read-only-adapter-simulated-v0.4.4.out.json',
-  'implementation/synaptic-mesh-shadow-v0/evidence/read-only-adapter-public-review-package-v0.4.5.out.json',
-  'implementation/synaptic-mesh-shadow-v0/fixtures/read-only-adapter-public-review-package-v0.4.5.json',
-  'docs/status-v0.4.6.md',
-  'docs/read-only-adapter-human-review-findings-go-no-go-v0.4.6.md',
-  'implementation/synaptic-mesh-shadow-v0/tests/read-only-adapter-human-review-go-no-go.mjs',
-  'implementation/synaptic-mesh-shadow-v0/fixtures/read-only-adapter-human-review-go-no-go-v0.4.6.json',
-  'implementation/synaptic-mesh-shadow-v0/evidence/read-only-adapter-human-review-go-no-go-v0.4.6.out.json',
-  'docs/status-v0.4.7.md',
-  'docs/first-real-adapter-design-note-v0.4.7.md',
-  'implementation/synaptic-mesh-shadow-v0/tests/first-real-adapter-design-note.mjs',
-  'implementation/synaptic-mesh-shadow-v0/fixtures/first-real-adapter-design-note-v0.4.7.json',
-  'implementation/synaptic-mesh-shadow-v0/evidence/first-real-adapter-design-note-v0.4.7.out.json',
-  ...readOnlyLocalFileAdapterRequiredManifestPaths,
+  ...releaseCheckSuiteRequiredManifestPaths,
 ]) {
   assert(manifestFilePaths.has(requiredManifestPath), `MANIFEST.files.json must include ${requiredManifestPath}`);
 }
@@ -1496,66 +1425,8 @@ assertOptionalCountMatches(
   'receiver adapter contracts',
 );
 
-assertReadOnlyLocalFileAdapterRelease({ repoRoot, packageRoot, manifestReleaseTag, readJson, assert, assertIncludes });
-
-const firstRealAdapterDesignNote = readJson(path.join(packageRoot, 'evidence/first-real-adapter-design-note-v0.4.7.out.json'));
-if (manifestReleaseTag === 'v0.4.7') {
-  assert(firstRealAdapterDesignNote?.summary?.firstRealAdapterDesignNote === 'pass', 'first real adapter design note verdict must be pass');
-  assert(firstRealAdapterDesignNote?.summary?.candidateAdapter === 'read_only_local_file_adapter', 'candidate adapter must be read-only local-file adapter');
-  assert(firstRealAdapterDesignNote?.summary?.designOnly === true, 'first real adapter design note must remain design-only');
-  assert(firstRealAdapterDesignNote?.summary?.implementationAuthorized === false, 'first real adapter design note must not authorize implementation');
-  assert(firstRealAdapterDesignNote?.summary?.goToHazardCatalog === true, 'first real adapter design note must route next to hazard catalog');
-  assert(firstRealAdapterDesignNote?.summary?.goToV050AlphaImplementation === false, 'first real adapter design note must not route to v0.5.0 implementation');
-  assert(firstRealAdapterDesignNote?.summary?.inputLimit === 'one_explicit_already_redacted_local_file', 'input limit must be one explicit already-redacted local file');
-  assert(firstRealAdapterDesignNote?.summary?.outputLimit === 'evidence_record_only', 'output limit must be evidence record-only');
-  for (const forbidden of ['globAllowed','directoryInputAllowed','directoryTraversalAllowed','symlinkEscapeAllowed','urlInputAllowed','networkAllowed','watcherAllowed','daemonAllowed','frameworkSdkAllowed','mcpAllowed','langGraphAllowed','githubBotAllowed','toolExecution','memoryWrite','configWrite','externalPublication','agentInstruction','approvalEmission','mayBlock','mayAllow','authorization','enforcement']) {
-    assert(firstRealAdapterDesignNote?.summary?.[forbidden] === false, `first real adapter design note must keep ${forbidden} false`);
-  }
-}
-
-const humanReviewGoNoGo = readJson(path.join(packageRoot, 'evidence/read-only-adapter-human-review-go-no-go-v0.4.6.out.json'));
-if (manifestReleaseTag === 'v0.4.6') {
-  assert(humanReviewGoNoGo?.summary?.adapterBoundaryHumanReview === 'pass', 'adapter boundary human review verdict must be pass');
-  assert(humanReviewGoNoGo?.summary?.humanReviewFindingsGoNoGo === 'pass', 'human review go/no-go verdict must be pass');
-  assert(humanReviewGoNoGo?.summary?.reviewedRelease === 'v0.4.5', 'human review go/no-go must review v0.4.5');
-  assert(humanReviewGoNoGo?.summary?.goForPublicReviewOnly === true, 'human review go/no-go must permit public review-only status');
-  assert(humanReviewGoNoGo?.summary?.goToRealAdapterDesign === true, 'human review go/no-go may permit real adapter design');
-  assert(humanReviewGoNoGo?.summary?.goToRealAdapterImplementation === false, 'human review go/no-go must not permit real adapter implementation');
-  assert(humanReviewGoNoGo?.summary?.requiresMaintainerDecisionForImplementation === true, 'human review go/no-go must require maintainer decision for implementation');
-  assert(humanReviewGoNoGo?.summary?.openBlockingRisks === 0, 'human review go/no-go must have zero open blocking risks');
-  assert(humanReviewGoNoGo?.summary?.realAdapterAuthorized === false, 'human review go/no-go must not authorize a real adapter');
-  assert(humanReviewGoNoGo?.summary?.frameworkIntegrationAuthorized === false, 'human review go/no-go must not authorize framework integration');
-  assert(humanReviewGoNoGo?.summary?.liveTrafficAuthorized === false, 'human review go/no-go must not authorize live traffic');
-  assert(humanReviewGoNoGo?.summary?.toolExecution === false, 'human review go/no-go must not execute tools');
-  assert(humanReviewGoNoGo?.summary?.memoryWrite === false, 'human review go/no-go must not write memory');
-  assert(humanReviewGoNoGo?.summary?.configWrite === false, 'human review go/no-go must not write config');
-  assert(humanReviewGoNoGo?.summary?.externalPublicationByAdapter === false, 'human review go/no-go must not publish externally by adapter');
-  assert(humanReviewGoNoGo?.summary?.approvalEmission === false, 'human review go/no-go must not emit approvals');
-  assert(humanReviewGoNoGo?.summary?.machineReadablePolicyDecision === false, 'human review go/no-go must not emit machine-readable policy decisions');
-  assert(humanReviewGoNoGo?.summary?.agentConsumed === false, 'human review go/no-go must not be agent-consumed');
-  assert(humanReviewGoNoGo?.summary?.mayBlock === false, 'human review go/no-go must not block');
-  assert(humanReviewGoNoGo?.summary?.mayAllow === false, 'human review go/no-go must not allow');
-  assert(humanReviewGoNoGo?.summary?.authorization === false, 'human review go/no-go must not authorize');
-  assert(humanReviewGoNoGo?.summary?.enforcement === false, 'human review go/no-go must not enforce');
-  assert(humanReviewGoNoGo?.summary?.independentLocalReviews === 2, 'human review go/no-go must record two independent local reviews');
-}
-
-const readOnlyAdapterPublicReview = readJson(path.join(packageRoot, 'evidence/read-only-adapter-public-review-package-v0.4.5.out.json'));
-if (manifestReleaseTag === 'v0.4.5') {
-  assert(readOnlyAdapterPublicReview?.summary?.verdict === 'pass', 'read-only adapter public review verdict must be pass');
-  assert(readOnlyAdapterPublicReview?.summary?.realAdapterAuthorized === false, 'read-only adapter package must not authorize a real adapter');
-  assert(readOnlyAdapterPublicReview?.summary?.frameworkIntegrationAuthorized === false, 'read-only adapter package must not authorize framework integration');
-  assert(readOnlyAdapterPublicReview?.summary?.liveTrafficAuthorized === false, 'read-only adapter package must not authorize live traffic');
-  assert(readOnlyAdapterPublicReview?.summary?.toolExecution === false, 'read-only adapter package must not execute tools');
-  assert(readOnlyAdapterPublicReview?.summary?.memoryWrite === false, 'read-only adapter package must not write memory');
-  assert(readOnlyAdapterPublicReview?.summary?.configWrite === false, 'read-only adapter package must not write config');
-  assert(readOnlyAdapterPublicReview?.summary?.externalPublication === false, 'read-only adapter package must not publish externally');
-  assert(readOnlyAdapterPublicReview?.summary?.approvalEmission === false, 'read-only adapter package must not emit approvals');
-  assert(readOnlyAdapterPublicReview?.summary?.machineReadablePolicyDecision === false, 'read-only adapter package must not emit machine-readable policy decisions');
-  assert(readOnlyAdapterPublicReview?.summary?.agentConsumed === false, 'read-only adapter package must not be agent-consumed');
-  assert(readOnlyAdapterPublicReview?.summary?.mayBlock === false, 'read-only adapter package must not block');
-  assert(readOnlyAdapterPublicReview?.summary?.mayAllow === false, 'read-only adapter package must not allow');
-  assert(readOnlyAdapterPublicReview?.summary?.enforcement === false, 'read-only adapter package must not enforce');
+for (const suite of releaseCheckSuites) {
+  suite.assertRelease?.({ repoRoot, packageRoot, manifestReleaseTag, readJson, assert, assertIncludes, assertNotIncludes });
 }
 
 console.log(JSON.stringify({
