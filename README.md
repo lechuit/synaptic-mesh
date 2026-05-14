@@ -1,13 +1,13 @@
-# Synaptic Mesh v0.7.0-alpha
+# Synaptic Mesh v0.7.1
 
-Status: framework adapter boundary spec public review release `v0.7.0-alpha`; framework-shaped local fixture contract only; already-redacted local inputs only; record-only evidence; **not runtime-ready**; **not production/enforcement-ready**.
+Status: framework adapter hazard catalog public review release `v0.7.1`; framework-shaped local fixture hazards only; rejected hazards do not run simulated pipeline; record-only evidence; **not runtime-ready**; **not production/enforcement-ready**.
 
-Current v0.7.0-alpha status is narrower than the long-term protocol goal: this repository now defines how a fake/framework-shaped input can be reduced to a local, already-redacted, no-effects artifact. It does not implement any real framework adapter or runtime integration.
+Current v0.7.1 status is narrower than the long-term protocol goal: this repository now defines the hazards that must fail before a framework-shaped fixture can become a simulated adapter input. It does not implement any real framework adapter or runtime integration.
 
 ## Validate
 
 ```bash
-npm --prefix implementation/synaptic-mesh-shadow-v0 run release:check -- --target v0.7.0-alpha
+npm --prefix implementation/synaptic-mesh-shadow-v0 run release:check -- --target v0.7.1
 ```
 
 ## v0.7.x roadmap
@@ -25,6 +25,6 @@ This package is for protocol, citation, fixture, adapter-boundary design, schema
 
 ## Docs
 
-- [v0.7.0-alpha status](docs/status-v0.7.0-alpha.md)
+- [v0.7.1 status](docs/status-v0.7.1.md)
+- [Framework-shaped adapter hazard catalog](docs/framework-shaped-adapter-hazard-catalog.md)
 - [Framework-shaped adapter boundary](docs/framework-shaped-adapter-boundary.md)
-- [Repository structure guide](docs/repo-structure.md)

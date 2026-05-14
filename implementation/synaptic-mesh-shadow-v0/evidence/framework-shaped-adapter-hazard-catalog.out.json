@@ -1,0 +1,455 @@
+{
+  "artifact": "T-synaptic-mesh-framework-shaped-adapter-hazard-catalog-v0.7.1",
+  "timestamp": "2026-05-14T14:45:00.000Z",
+  "summary": {
+    "frameworkAdapterHazardCatalog": "pass",
+    "releaseLayer": "v0.7.1",
+    "hazardCases": 25,
+    "rejectedOrDowngraded": 25,
+    "unexpectedAccepts": 0,
+    "pipelineRunsForRejectedCases": 0,
+    "sourceReadsForRejectedCases": 0,
+    "successOutputsForRejectedCases": 0,
+    "reasonCodeMisses": 0,
+    "realFrameworkIntegration": false,
+    "sdkImported": false,
+    "networkAllowed": false,
+    "toolExecution": false,
+    "resourceFetch": false,
+    "memoryWrite": false,
+    "configWrite": false,
+    "externalPublication": false,
+    "approvalEmission": false,
+    "mayBlock": false,
+    "mayAllow": false,
+    "authorization": false,
+    "enforcement": false,
+    "agentConsumed": false,
+    "machineReadablePolicyDecision": false
+  },
+  "results": [
+    {
+      "caseId": "hazard-001-mcp-server-enabled",
+      "hazard": "MCP server enabled",
+      "expectedDisposition": "reject",
+      "actualDisposition": "reject",
+      "matchedDisposition": true,
+      "expectedReasonCode": "MCP_SERVER_ENABLED",
+      "matchedReasonCode": true,
+      "reasonCodes": [
+        "MCP_SERVER_ENABLED"
+      ],
+      "pipelineRun": false,
+      "sourceRead": false,
+      "successOutputWritten": false,
+      "recordOnly": true
+    },
+    {
+      "caseId": "hazard-002-mcp-client-enabled",
+      "hazard": "MCP client enabled",
+      "expectedDisposition": "reject",
+      "actualDisposition": "reject",
+      "matchedDisposition": true,
+      "expectedReasonCode": "MCP_CLIENT_ENABLED",
+      "matchedReasonCode": true,
+      "reasonCodes": [
+        "MCP_CLIENT_ENABLED"
+      ],
+      "pipelineRun": false,
+      "sourceRead": false,
+      "successOutputWritten": false,
+      "recordOnly": true
+    },
+    {
+      "caseId": "hazard-003-langgraph-sdk-import-claimed",
+      "hazard": "LangGraph SDK import claimed",
+      "expectedDisposition": "reject",
+      "actualDisposition": "reject",
+      "matchedDisposition": true,
+      "expectedReasonCode": "SDK_IMPORTED",
+      "matchedReasonCode": true,
+      "reasonCodes": [
+        "SDK_IMPORTED"
+      ],
+      "pipelineRun": false,
+      "sourceRead": false,
+      "successOutputWritten": false,
+      "recordOnly": true
+    },
+    {
+      "caseId": "hazard-004-a2a-runtime-enabled",
+      "hazard": "A2A runtime enabled",
+      "expectedDisposition": "reject",
+      "actualDisposition": "reject",
+      "matchedDisposition": true,
+      "expectedReasonCode": "A2A_RUNTIME_ENABLED",
+      "matchedReasonCode": true,
+      "reasonCodes": [
+        "A2A_RUNTIME_ENABLED"
+      ],
+      "pipelineRun": false,
+      "sourceRead": false,
+      "successOutputWritten": false,
+      "recordOnly": true
+    },
+    {
+      "caseId": "hazard-005-github-bot-webhook-enabled",
+      "hazard": "GitHub bot/webhook enabled",
+      "expectedDisposition": "reject",
+      "actualDisposition": "reject",
+      "matchedDisposition": true,
+      "expectedReasonCode": "GITHUB_BOT_OR_WEBHOOK_ENABLED",
+      "matchedReasonCode": true,
+      "reasonCodes": [
+        "GITHUB_BOT_OR_WEBHOOK_ENABLED"
+      ],
+      "pipelineRun": false,
+      "sourceRead": false,
+      "successOutputWritten": false,
+      "recordOnly": true
+    },
+    {
+      "caseId": "hazard-006-network-fetch-enabled",
+      "hazard": "network fetch enabled",
+      "expectedDisposition": "reject",
+      "actualDisposition": "reject",
+      "matchedDisposition": true,
+      "expectedReasonCode": "NETWORK_ENABLED",
+      "matchedReasonCode": true,
+      "reasonCodes": [
+        "NETWORK_ENABLED"
+      ],
+      "pipelineRun": false,
+      "sourceRead": false,
+      "successOutputWritten": false,
+      "recordOnly": true
+    },
+    {
+      "caseId": "hazard-007-resource-fetch-enabled",
+      "hazard": "resource fetch enabled",
+      "expectedDisposition": "reject",
+      "actualDisposition": "reject",
+      "matchedDisposition": true,
+      "expectedReasonCode": "RESOURCE_FETCH_ENABLED",
+      "matchedReasonCode": true,
+      "reasonCodes": [
+        "RESOURCE_FETCH_ENABLED"
+      ],
+      "pipelineRun": false,
+      "sourceRead": false,
+      "successOutputWritten": false,
+      "recordOnly": true
+    },
+    {
+      "caseId": "hazard-008-tool-call-attempted",
+      "hazard": "tool call attempted",
+      "expectedDisposition": "reject",
+      "actualDisposition": "reject",
+      "matchedDisposition": true,
+      "expectedReasonCode": "TOOL_CALL_ATTEMPTED",
+      "matchedReasonCode": true,
+      "reasonCodes": [
+        "TOOL_CALL_ATTEMPTED"
+      ],
+      "pipelineRun": false,
+      "sourceRead": false,
+      "successOutputWritten": false,
+      "recordOnly": true
+    },
+    {
+      "caseId": "hazard-009-tool-result-persisted",
+      "hazard": "tool result persisted",
+      "expectedDisposition": "reject",
+      "actualDisposition": "reject",
+      "matchedDisposition": true,
+      "expectedReasonCode": "TOOL_RESULT_PERSISTED",
+      "matchedReasonCode": true,
+      "reasonCodes": [
+        "TOOL_RESULT_PERSISTED"
+      ],
+      "pipelineRun": false,
+      "sourceRead": false,
+      "successOutputWritten": false,
+      "recordOnly": true
+    },
+    {
+      "caseId": "hazard-010-memory-write-attempted",
+      "hazard": "memory write attempted",
+      "expectedDisposition": "reject",
+      "actualDisposition": "reject",
+      "matchedDisposition": true,
+      "expectedReasonCode": "MEMORY_WRITE_ATTEMPTED",
+      "matchedReasonCode": true,
+      "reasonCodes": [
+        "MEMORY_WRITE_ATTEMPTED"
+      ],
+      "pipelineRun": false,
+      "sourceRead": false,
+      "successOutputWritten": false,
+      "recordOnly": true
+    },
+    {
+      "caseId": "hazard-011-config-write-attempted",
+      "hazard": "config write attempted",
+      "expectedDisposition": "reject",
+      "actualDisposition": "reject",
+      "matchedDisposition": true,
+      "expectedReasonCode": "CONFIG_WRITE_ATTEMPTED",
+      "matchedReasonCode": true,
+      "reasonCodes": [
+        "CONFIG_WRITE_ATTEMPTED"
+      ],
+      "pipelineRun": false,
+      "sourceRead": false,
+      "successOutputWritten": false,
+      "recordOnly": true
+    },
+    {
+      "caseId": "hazard-012-external-publication-attempted",
+      "hazard": "external publication attempted",
+      "expectedDisposition": "reject",
+      "actualDisposition": "reject",
+      "matchedDisposition": true,
+      "expectedReasonCode": "EXTERNAL_PUBLICATION_ATTEMPTED",
+      "matchedReasonCode": true,
+      "reasonCodes": [
+        "EXTERNAL_PUBLICATION_ATTEMPTED"
+      ],
+      "pipelineRun": false,
+      "sourceRead": false,
+      "successOutputWritten": false,
+      "recordOnly": true
+    },
+    {
+      "caseId": "hazard-013-approval-emitted",
+      "hazard": "approval emitted",
+      "expectedDisposition": "reject",
+      "actualDisposition": "reject",
+      "matchedDisposition": true,
+      "expectedReasonCode": "APPROVAL_EMITTED",
+      "matchedReasonCode": true,
+      "reasonCodes": [
+        "APPROVAL_EMITTED"
+      ],
+      "pipelineRun": false,
+      "sourceRead": false,
+      "successOutputWritten": false,
+      "recordOnly": true
+    },
+    {
+      "caseId": "hazard-014-block-emitted",
+      "hazard": "block emitted",
+      "expectedDisposition": "reject",
+      "actualDisposition": "reject",
+      "matchedDisposition": true,
+      "expectedReasonCode": "BLOCK_EMITTED",
+      "matchedReasonCode": true,
+      "reasonCodes": [
+        "BLOCK_EMITTED"
+      ],
+      "pipelineRun": false,
+      "sourceRead": false,
+      "successOutputWritten": false,
+      "recordOnly": true
+    },
+    {
+      "caseId": "hazard-015-allow-emitted",
+      "hazard": "allow emitted",
+      "expectedDisposition": "reject",
+      "actualDisposition": "reject",
+      "matchedDisposition": true,
+      "expectedReasonCode": "ALLOW_EMITTED",
+      "matchedReasonCode": true,
+      "reasonCodes": [
+        "ALLOW_EMITTED"
+      ],
+      "pipelineRun": false,
+      "sourceRead": false,
+      "successOutputWritten": false,
+      "recordOnly": true
+    },
+    {
+      "caseId": "hazard-016-authorization-emitted",
+      "hazard": "authorization emitted",
+      "expectedDisposition": "reject",
+      "actualDisposition": "reject",
+      "matchedDisposition": true,
+      "expectedReasonCode": "AUTHORIZATION_EMITTED",
+      "matchedReasonCode": true,
+      "reasonCodes": [
+        "AUTHORIZATION_EMITTED"
+      ],
+      "pipelineRun": false,
+      "sourceRead": false,
+      "successOutputWritten": false,
+      "recordOnly": true
+    },
+    {
+      "caseId": "hazard-017-enforcement-emitted",
+      "hazard": "enforcement emitted",
+      "expectedDisposition": "reject",
+      "actualDisposition": "reject",
+      "matchedDisposition": true,
+      "expectedReasonCode": "ENFORCEMENT_EMITTED",
+      "matchedReasonCode": true,
+      "reasonCodes": [
+        "ENFORCEMENT_EMITTED"
+      ],
+      "pipelineRun": false,
+      "sourceRead": false,
+      "successOutputWritten": false,
+      "recordOnly": true
+    },
+    {
+      "caseId": "hazard-018-machine-readable-policy-emitted",
+      "hazard": "machine-readable policy emitted",
+      "expectedDisposition": "reject",
+      "actualDisposition": "reject",
+      "matchedDisposition": true,
+      "expectedReasonCode": "MACHINE_POLICY_EMITTED",
+      "matchedReasonCode": true,
+      "reasonCodes": [
+        "MACHINE_POLICY_EMITTED"
+      ],
+      "pipelineRun": false,
+      "sourceRead": false,
+      "successOutputWritten": false,
+      "recordOnly": true
+    },
+    {
+      "caseId": "hazard-019-agent-consumed-instruction-emitted",
+      "hazard": "agent-consumed instruction emitted",
+      "expectedDisposition": "reject",
+      "actualDisposition": "reject",
+      "matchedDisposition": true,
+      "expectedReasonCode": "AGENT_CONSUMED_INSTRUCTION_EMITTED",
+      "matchedReasonCode": true,
+      "reasonCodes": [
+        "AGENT_CONSUMED_INSTRUCTION_EMITTED"
+      ],
+      "pipelineRun": false,
+      "sourceRead": false,
+      "successOutputWritten": false,
+      "recordOnly": true
+    },
+    {
+      "caseId": "hazard-020-advisory-report-consumed-by-agent",
+      "hazard": "advisory report consumed by agent",
+      "expectedDisposition": "reject",
+      "actualDisposition": "reject",
+      "matchedDisposition": true,
+      "expectedReasonCode": "ADVISORY_CONSUMED_BY_AGENT",
+      "matchedReasonCode": true,
+      "reasonCodes": [
+        "ADVISORY_CONSUMED_BY_AGENT"
+      ],
+      "pipelineRun": false,
+      "sourceRead": false,
+      "successOutputWritten": false,
+      "recordOnly": true
+    },
+    {
+      "caseId": "hazard-021-live-traffic-claimed",
+      "hazard": "live traffic claimed",
+      "expectedDisposition": "reject",
+      "actualDisposition": "reject",
+      "matchedDisposition": true,
+      "expectedReasonCode": "LIVE_TRAFFIC_CLAIMED",
+      "matchedReasonCode": true,
+      "reasonCodes": [
+        "LIVE_TRAFFIC_CLAIMED"
+      ],
+      "pipelineRun": false,
+      "sourceRead": false,
+      "successOutputWritten": false,
+      "recordOnly": true
+    },
+    {
+      "caseId": "hazard-022-watcher-daemon-enabled",
+      "hazard": "watcher/daemon enabled",
+      "expectedDisposition": "reject",
+      "actualDisposition": "reject",
+      "matchedDisposition": true,
+      "expectedReasonCode": "WATCHER_OR_DAEMON_ENABLED",
+      "matchedReasonCode": true,
+      "reasonCodes": [
+        "WATCHER_OR_DAEMON_ENABLED"
+      ],
+      "pipelineRun": false,
+      "sourceRead": false,
+      "successOutputWritten": false,
+      "recordOnly": true
+    },
+    {
+      "caseId": "hazard-023-directory-discovery-enabled",
+      "hazard": "directory discovery enabled",
+      "expectedDisposition": "reject",
+      "actualDisposition": "reject",
+      "matchedDisposition": true,
+      "expectedReasonCode": "DIRECTORY_DISCOVERY_ENABLED",
+      "matchedReasonCode": true,
+      "reasonCodes": [
+        "DIRECTORY_DISCOVERY_ENABLED"
+      ],
+      "pipelineRun": false,
+      "sourceRead": false,
+      "successOutputWritten": false,
+      "recordOnly": true
+    },
+    {
+      "caseId": "hazard-024-glob-input-enabled",
+      "hazard": "glob input enabled",
+      "expectedDisposition": "reject",
+      "actualDisposition": "reject",
+      "matchedDisposition": true,
+      "expectedReasonCode": "GLOB_INPUT_ENABLED",
+      "matchedReasonCode": true,
+      "reasonCodes": [
+        "GLOB_INPUT_ENABLED"
+      ],
+      "pipelineRun": false,
+      "sourceRead": false,
+      "successOutputWritten": false,
+      "recordOnly": true
+    },
+    {
+      "caseId": "hazard-025-raw-input-accepted",
+      "hazard": "raw input accepted",
+      "expectedDisposition": "reject",
+      "actualDisposition": "reject",
+      "matchedDisposition": true,
+      "expectedReasonCode": "RAW_INPUT_ACCEPTED",
+      "matchedReasonCode": true,
+      "reasonCodes": [
+        "RAW_INPUT_ACCEPTED"
+      ],
+      "pipelineRun": false,
+      "sourceRead": false,
+      "successOutputWritten": false,
+      "recordOnly": true
+    }
+  ],
+  "boundary": [
+    "hazard_catalog_only",
+    "reject_or_downgrade_before_pipeline",
+    "pipeline_runs_for_rejected_cases_0",
+    "source_reads_for_rejected_cases_0",
+    "success_outputs_for_rejected_cases_0",
+    "record_only_evidence",
+    "no_real_framework_integration",
+    "no_sdk",
+    "no_network",
+    "no_resource_fetch",
+    "no_tools",
+    "no_memory_write",
+    "no_config_write",
+    "no_publication",
+    "no_approval",
+    "no_blocking",
+    "no_allowing",
+    "no_authorization",
+    "no_enforcement",
+    "no_agent_consumption",
+    "no_machine_policy"
+  ]
+}
