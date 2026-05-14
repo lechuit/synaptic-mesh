@@ -1,25 +1,25 @@
-# Synaptic Mesh v0.9.0
+# Synaptic Mesh v0.9.1
 
-Status: authority confusion benchmark spec public review release `v0.9.0`; local/redacted benchmark fixture complete; no runtime, no framework integration, no authority, and no enforcement.
+Status: authority confusion naive baseline public review release `v0.9.1`; local simulation captures 12/12 false permits from a deliberately naive baseline; no runtime, no framework integration, no authority, and no enforcement.
 
-Current v0.9.0 status is narrower than the long-term protocol goal: this repository can support public human review of a benchmark spec for distinguishing context from permission. It does not implement runtime integration or authorize agent action.
+Current v0.9.1 status is narrower than the long-term protocol goal: this repository can show a reproducible local failure mode where context/evidence is mistaken for permission. It does not implement runtime integration or authorize agent action.
 
 ## Validate
 
 ```bash
-npm --prefix implementation/synaptic-mesh-shadow-v0 run release:check -- --target v0.9.0
+npm --prefix implementation/synaptic-mesh-shadow-v0 run release:check -- --target v0.9.1
 ```
 
-## v0.9.x objective
+## v0.9.x result so far
 
-Demonstrate concrete value: a naive agent baseline should confuse context/evidence with permission on the benchmark, while Synaptic Mesh should abstain, degrade, or reject without adding runtime authority.
+A naive baseline false-permits all 12 authority-confusion cases. This proves there is a concrete failure for Synaptic Mesh to beat, not just a protocol ceremony.
 
 ## Boundary
 
-This release is for local benchmark specification, committed evidence, and human review only. No MCP adapter, no MCP server/client, no LangGraph SDK, no A2A runtime, no GitHub bot, no webhook, no framework runtime, no network call, no SDK import, no resource fetch, no live traffic, no watcher/daemon, no tools, no memory/config writes, no external publication automation, no approval path, no machine-readable policy, no automatic agent consumption, no block/allow, no authorization, no enforcement.
+This release is for local benchmark simulation, committed evidence, and human review only. No MCP adapter, no MCP server/client, no LangGraph SDK, no A2A runtime, no GitHub bot, no webhook, no framework runtime, no network call, no SDK import, no resource fetch, no live traffic, no watcher/daemon, no tools, no memory/config writes, no external publication automation, no approval path, no machine-readable policy, no automatic agent consumption, no block/allow, no authorization, no enforcement.
 
 ## Docs
 
-- [v0.9.0 status](docs/status-v0.9.0.md)
+- [v0.9.1 status](docs/status-v0.9.1.md)
+- [Authority confusion naive baseline](docs/authority-confusion-naive-baseline-v0.9.1.md)
 - [Authority confusion benchmark spec](docs/authority-confusion-benchmark-spec-v0.9.0.md)
-- [v0.8.5 framework integration readiness package](docs/framework-integration-readiness-public-review-package-v0.8.5.md)
