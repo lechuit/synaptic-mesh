@@ -219,6 +219,7 @@ const output = {
     'reasonCodes',
     'classifierDecisionDigest',
     'decisionTraceHash',
+    'advisoryReportHash',
     'advisoryReportNormalizedContent',
     'recordOnly',
     'capabilityFlags',
