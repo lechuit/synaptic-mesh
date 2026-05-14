@@ -5,7 +5,7 @@ Synaptic Mesh keeps protocol, implementation, research, and evidence separate so
 ## Current top-level layout
 
 - `specs/` — protocol contracts and stable schema-facing documentation.
-- `schemas/` — formal JSON schemas for local shadow evidence records; currently includes RouteDecision and ParserEvidence shape validation.
+- `schemas/` — formal JSON schemas for local shadow evidence records and manifest contracts; currently includes RouteDecision, ParserEvidence shape validation, and the read-only local-file batch manifest schema.
 - `implementation/synaptic-mesh-shadow-v0/` — local shadow implementation, fixtures, tests, and generated evidence for the current adapter contract package.
 - `research-package/` — public research notes, review worksheets, blocker ledgers, and citation support.
 - `runs/` — experiment-specific artifacts kept immutable enough for reproduction.
@@ -41,6 +41,7 @@ Synaptic Mesh keeps protocol, implementation, research, and evidence separate so
 4. Add adapter/framework mappings as narrow ports that translate framework packet shapes into the stable receiver-policy input shape; test runners may also use narrow adapters when that prevents orchestration IO from leaking into policy/core modules.
 5. Avoid large file moves in behavior PRs. If a migration is needed, do it in a dedicated layout PR with manifest/evidence regeneration.
 6. Keep release metadata and file inventory separate: `MANIFEST.json` is the small human-readable metadata file, while `MANIFEST.files.json` is the generated tracked-file byte/hash inventory. Run `npm run manifest:update` after tracked file changes; `npm run verify:manifest`, `npm run check`, and `npm run review:local` should fail when tracked file bytes or hashes drift.
+7. Batch manifests are manifest-only contracts until an explicit adapter phase says otherwise: no batch execution yet, no discovery, no glob, no watcher/daemon, no network/live traffic, and no runtime authority.
 
 ## Suggested next package boundary
 

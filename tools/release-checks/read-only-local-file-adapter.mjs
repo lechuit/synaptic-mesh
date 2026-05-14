@@ -15,6 +15,7 @@ export const readOnlyLocalFileAdapterGateScripts = Object.freeze([
   'test:read-only-local-file-adapter-failure-catalog',
   'test:read-only-local-file-adapter-reviewer-runbook',
   'test:read-only-local-file-adapter-public-review-package',
+  'test:read-only-local-file-batch-manifest-schema',
 ]);
 
 export const readOnlyLocalFileAdapterRequiredManifestPaths = Object.freeze([
@@ -49,14 +50,17 @@ export const readOnlyLocalFileAdapterRequiredManifestPaths = Object.freeze([
   'docs/status-v0.5.2.md',
   'docs/status-v0.5.3.md',
   'docs/status-v0.5.4.md',
+  'docs/status-v0.6.0-alpha.md',
   'docs/read-only-local-file-adapter-canary-runbook.md',
   'docs/read-only-local-file-adapter-reviewer-runbook.md',
   'docs/read-only-local-file-adapter-public-review-package.md',
+  'docs/read-only-local-file-batch-manifest.md',
   'implementation/synaptic-mesh-shadow-v0/tests/adapter-implementation-hazard-catalog.mjs',
   'implementation/synaptic-mesh-shadow-v0/fixtures/adapter-implementation-hazard-catalog-v0.4.8.json',
   'implementation/synaptic-mesh-shadow-v0/evidence/adapter-implementation-hazard-catalog-v0.4.8.out.json',
   'schemas/read-only-local-file-adapter-input.schema.json',
   'schemas/read-only-local-file-adapter-result.schema.json',
+  'schemas/read-only-local-file-batch-manifest.schema.json',
   'implementation/synaptic-mesh-shadow-v0/tests/read-only-local-file-adapter-schema.mjs',
   'implementation/synaptic-mesh-shadow-v0/tests/read-only-local-file-adapter.mjs',
   'implementation/synaptic-mesh-shadow-v0/tests/read-only-local-file-adapter-negative-controls.mjs',
@@ -66,10 +70,12 @@ export const readOnlyLocalFileAdapterRequiredManifestPaths = Object.freeze([
   'implementation/synaptic-mesh-shadow-v0/tests/read-only-local-file-adapter-failure-catalog.mjs',
   'implementation/synaptic-mesh-shadow-v0/tests/read-only-local-file-adapter-reviewer-runbook.mjs',
   'implementation/synaptic-mesh-shadow-v0/tests/read-only-local-file-adapter-public-review-package.mjs',
+  'implementation/synaptic-mesh-shadow-v0/tests/read-only-local-file-batch-manifest-schema.mjs',
   'implementation/synaptic-mesh-shadow-v0/src/adapters/read-only-local-file-adapter.mjs',
   'implementation/synaptic-mesh-shadow-v0/fixtures/read-only-local-file-adapter-inputs.json',
   'implementation/synaptic-mesh-shadow-v0/fixtures/read-only-local-file-adapter-results.json',
   'implementation/synaptic-mesh-shadow-v0/fixtures/read-only-local-file-adapter-canary-runbook.json',
+  'implementation/synaptic-mesh-shadow-v0/fixtures/read-only-local-file-batch-manifests.json',
   'implementation/synaptic-mesh-shadow-v0/evidence/read-only-local-file-adapter-schema.out.json',
   'implementation/synaptic-mesh-shadow-v0/evidence/read-only-local-file-adapter/read-only-local-file-adapter.out.json',
   'implementation/synaptic-mesh-shadow-v0/evidence/read-only-local-file-adapter/read-only-local-file-adapter-canary.out.json',
@@ -79,6 +85,44 @@ export const readOnlyLocalFileAdapterRequiredManifestPaths = Object.freeze([
   'implementation/synaptic-mesh-shadow-v0/evidence/read-only-local-file-adapter-failure-catalog.out.json',
   'implementation/synaptic-mesh-shadow-v0/evidence/read-only-local-file-adapter-reviewer-runbook.out.json',
   'implementation/synaptic-mesh-shadow-v0/evidence/read-only-local-file-adapter-public-review-package.out.json',
+  'implementation/synaptic-mesh-shadow-v0/evidence/read-only-local-file-batch-manifest-schema.out.json',
+]);
+
+const V060_ALPHA_REPRODUCIBILITY_TOKENS = Object.freeze([
+  'batch_manifest_schema_v0_6_0_alpha',
+  'manifest_only_true',
+  'schema_only_true',
+  'batch_adapter_implemented_false',
+  'batch_behavior_authorized_false',
+  'manual_explicit_redacted_file_list',
+  'explicit_input_list_only_true',
+  'positive_cases_2',
+  'negative_cases_8',
+  'unexpected_accepts_0',
+  'unexpected_rejects_0',
+  'source_files_read_for_schema_cases_0',
+  'max_input_count_5',
+]);
+
+const V060_ALPHA_RUNTIME_BOUNDARY_TOKENS = Object.freeze([
+  'read_only_local_file_batch_manifest_schema_alpha',
+  'manifest_only',
+  'schema_only',
+  'no_batch_execution_yet',
+  'no_batch_adapter_logic',
+  'manual_explicit_redacted_file_list_only',
+  'explicit_input_list_only',
+  'max_input_count_5',
+  'no_directory_discovery',
+  'no_glob',
+  'no_watcher',
+  'no_daemon',
+  'no_network_call',
+  'no_live_traffic',
+  'no_runtime_authorization',
+  'no_tool_execution',
+  'no_memory_write',
+  'no_config_write',
 ]);
 
 const V054_REPRODUCIBILITY_TOKENS = Object.freeze([
@@ -459,6 +503,11 @@ function assertAllIncluded(text, phrases, label, assertIncludes) {
 }
 
 export function assertReadOnlyLocalFileAdapterManifestMetadata({ manifest, manifestReleaseTag, assertIncludes }) {
+  if (manifestReleaseTag === 'v0.6.0-alpha') {
+    assertAllIncluded(manifest.reproducibility, V060_ALPHA_REPRODUCIBILITY_TOKENS, 'MANIFEST.json reproducibility', assertIncludes);
+    assertAllIncluded(manifest.runtimeBoundary, V060_ALPHA_RUNTIME_BOUNDARY_TOKENS, 'MANIFEST.json runtimeBoundary', assertIncludes);
+  }
+
   if (manifestReleaseTag === 'v0.5.4') {
     assertAllIncluded(manifest.reproducibility, V054_REPRODUCIBILITY_TOKENS, 'MANIFEST.json reproducibility', assertIncludes);
     assertAllIncluded(manifest.runtimeBoundary, V054_RUNTIME_BOUNDARY_TOKENS, 'MANIFEST.json runtimeBoundary', assertIncludes);
@@ -519,9 +568,11 @@ export function assertReadOnlyLocalFileAdapterRelease({ repoRoot, packageRoot, m
   const readOnlyLocalFileAdapterFailureCatalog = readJson(path.join(packageRoot, 'evidence/read-only-local-file-adapter-failure-catalog.out.json'));
   const readOnlyLocalFileAdapterReviewerRunbook = readJson(path.join(packageRoot, 'evidence/read-only-local-file-adapter-reviewer-runbook.out.json'));
   const readOnlyLocalFileAdapterPublicReviewPackage = readJson(path.join(packageRoot, 'evidence/read-only-local-file-adapter-public-review-package.out.json'));
+  const readOnlyLocalFileBatchManifestSchema = readJson(path.join(packageRoot, 'evidence/read-only-local-file-batch-manifest-schema.out.json'));
   const readOnlyLocalFileAdapterCanaryRunbookText = readFileSync(path.join(repoRoot, 'docs/read-only-local-file-adapter-canary-runbook.md'), 'utf8');
   const readOnlyLocalFileAdapterReviewerRunbookText = readFileSync(path.join(repoRoot, 'docs/read-only-local-file-adapter-reviewer-runbook.md'), 'utf8');
   const readOnlyLocalFileAdapterPublicReviewPackageText = readFileSync(path.join(repoRoot, 'docs/read-only-local-file-adapter-public-review-package.md'), 'utf8');
+  const readOnlyLocalFileBatchManifestText = readFileSync(path.join(repoRoot, 'docs/read-only-local-file-batch-manifest.md'), 'utf8');
 
   assertSummary(readOnlyLocalFileAdapterSchema?.summary, {
     readOnlyLocalFileAdapterSchema: 'pass',
@@ -714,6 +765,39 @@ export function assertReadOnlyLocalFileAdapterRelease({ repoRoot, packageRoot, m
     'test:read-only-local-file-adapter-public-review-package',
   ], 'read-only local-file adapter public review package', assertIncludes);
 
+  assertSummary(readOnlyLocalFileBatchManifestSchema?.summary, {
+    readOnlyLocalFileBatchManifestSchema: 'pass',
+    releaseLayer: 'v0.6.0-alpha',
+    manifestOnly: true,
+    schemaOnly: true,
+    batchAdapterImplemented: false,
+    batchBehaviorAuthorized: false,
+    positiveCases: 2,
+    negativeCases: 8,
+    unexpectedAccepts: 0,
+    unexpectedRejects: 0,
+    sourceFilesReadForSchemaCases: 0,
+    maxInputCount: 5,
+    directoryDiscovery: false,
+    globAllowed: false,
+    watcherAllowed: false,
+    daemonAllowed: false,
+    networkAllowed: false,
+    liveTrafficAllowed: false,
+    recordOnly: true,
+    adapterRuntimeChanged: false,
+    authorization: false,
+    enforcement: false,
+  }, 'read-only local-file batch manifest schema', assert);
+  assertFalseFields(readOnlyLocalFileBatchManifestSchema?.summary, COMMON_FORBIDDEN_RESULT_FLAGS, 'read-only local-file batch manifest schema', assert);
+  assertAllIncluded(readOnlyLocalFileBatchManifestText, [
+    'A passing batch manifest schema gate is evidence that the batch contract is narrow and explicit, not authorization to process multiple files.',
+    'manifest only, no batch execution yet',
+    'manual_explicit_redacted_file_list',
+    'test:read-only-local-file-batch-manifest-schema',
+    'The next phase, if any, must be explicitly authorized separately.',
+  ], 'read-only local-file batch manifest doc', assertIncludes);
+
   assert(readOnlyLocalFileAdapterCanaryRunbook?.summary?.dependsOnLabels?.includes('PR #3 negative controls'), 'read-only local-file adapter canary runbook evidence must include PR #3 negative controls label');
   assert(readOnlyLocalFileAdapterCanaryRunbook?.summary?.dependsOnLabels?.includes('PR #4 positive canary'), 'read-only local-file adapter canary runbook evidence must include PR #4 positive canary label');
   assert(readOnlyLocalFileAdapterCanaryRunbook?.summary?.dependsOnSlugs?.includes('v0.5.0-alpha-pr3-read-only-local-file-adapter-negative-controls'), 'read-only local-file adapter canary runbook evidence must include PR #3 dependency slug');
@@ -781,6 +865,21 @@ export function assertReadOnlyLocalFileAdapterRelease({ repoRoot, packageRoot, m
   if (manifestReleaseTag === 'v0.5.0-alpha') {
     const statusV050Alpha = readFileSync(path.join(repoRoot, 'docs/status-v0.5.0-alpha.md'), 'utf8');
     assertAllIncluded(statusV050Alpha, STATUS_V050_ALPHA_REQUIRED_TEXT, 'docs/status-v0.5.0-alpha.md', assertIncludes);
+  }
+
+  if (manifestReleaseTag === 'v0.6.0-alpha') {
+    const statusV060Alpha = readFileSync(path.join(repoRoot, 'docs/status-v0.6.0-alpha.md'), 'utf8');
+    assertAllIncluded(statusV060Alpha, [
+      'explicit batch manifest schema alpha',
+      'manifest only, no batch execution yet',
+      'test:read-only-local-file-batch-manifest-schema',
+      'readOnlyLocalFileBatchManifestSchema',
+      'sourceFilesReadForSchemaCases',
+      'maxInputCount',
+      'batchAdapterImplemented',
+      'batchBehaviorAuthorized',
+      'A passing batch manifest schema gate is evidence that the batch contract is narrow and explicit, not authorization to process multiple files.',
+    ], 'docs/status-v0.6.0-alpha.md', assertIncludes);
   }
 
   if (manifestReleaseTag === 'v0.5.4') {
