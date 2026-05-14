@@ -195,6 +195,17 @@ const FORBIDDEN_CONVENIENCE_CLI_FLAGS = Object.freeze([
   '--allow',
 ]);
 
+const OUTPUT_CONTAINMENT_ROWS = Object.freeze([
+  { id: 'O01', hazard: 'caller_selected_relative_parent_escape_evidence_path', reason: 'read-only local-file adapter evidence path is fixed' },
+  { id: 'O02', hazard: 'caller_selected_relative_parent_escape_output_path', reason: 'read-only local-file adapter evidence path is fixed' },
+  { id: 'O03', hazard: 'caller_selected_absolute_path_outside_evidence', reason: 'read-only local-file adapter evidence path is fixed' },
+  { id: 'O04', hazard: 'caller_selected_output_in_fixtures_source', reason: 'read-only local-file adapter evidence path is fixed' },
+  { id: 'O05', hazard: 'caller_selected_existing_file_overwrite', reason: 'read-only local-file adapter evidence path is fixed' },
+  { id: 'O06', hazard: 'fixed_evidence_target_symlink_output', reason: 'evidence output path must not be symlink' },
+  { id: 'O07', hazard: 'fixed_evidence_parent_symlink_escape', reason: 'adapter evidence directory must not be symlink' },
+  { id: 'O08', hazard: 'evidence_root_symlink_escape', reason: 'evidence root must not be symlink' },
+]);
+
 const RUNBOOK_FORBIDDEN_FLAGS = Object.freeze([
   'machineReadablePolicyDecision',
   'consumedByAgent',
@@ -403,9 +414,34 @@ export function assertReadOnlyLocalFileAdapterRelease({ repoRoot, packageRoot, m
     forbiddenConvenienceCliFlagAccepts: 0,
     forbiddenConvenienceCliFlagSourceFilesRead: 0,
     forbiddenConvenienceCliFlagSurfaceFindings: 0,
+    outputContainmentCases: 8,
+    outputContainmentUnexpectedAccepts: 0,
+    outputContainmentForbiddenPathCreations: 0,
+    outputContainmentProtectedFileMutations: 0,
     networkPrimitiveFindings: 0,
     rawClassifierLeakFindings: 0,
   }, 'read-only local-file adapter negative controls', assert);
+  assert(
+    readOnlyLocalFileAdapterNegativeControls?.outputContainmentRows?.length === 8,
+    'read-only local-file adapter output containment rows must cover exactly 8 cases',
+  );
+  const outputContainmentRows = readOnlyLocalFileAdapterNegativeControls?.outputContainmentRows ?? [];
+  assert(
+    new Set(outputContainmentRows.map((row) => row.id)).size === OUTPUT_CONTAINMENT_ROWS.length,
+    'read-only local-file adapter output containment rows must not contain duplicate IDs',
+  );
+  for (const expected of OUTPUT_CONTAINMENT_ROWS) {
+    const row = outputContainmentRows.find((candidate) => candidate.id === expected.id);
+    assert(row, `read-only local-file adapter output containment must include ${expected.id}`);
+    assert(row.hazard === expected.hazard, `read-only local-file adapter output containment ${expected.id} must keep hazard ${expected.hazard}`);
+    assert(row.reasons?.includes(expected.reason), `read-only local-file adapter output containment ${expected.id} must include reason ${expected.reason}`);
+  }
+  for (const row of outputContainmentRows) {
+    assert(row.accepted === false, `read-only local-file adapter output containment ${row.id} must reject`);
+    assert(row.forbiddenPathCreated === false, `read-only local-file adapter output containment ${row.id} must not create forbidden paths`);
+    assert(row.protectedFileMutated === false, `read-only local-file adapter output containment ${row.id} must not mutate protected files`);
+    assert(row.forbiddenEffects === 0, `read-only local-file adapter output containment ${row.id} must have zero forbidden effects`);
+  }
   assert(
     readOnlyLocalFileAdapterNegativeControls?.summary?.forbiddenConvenienceCliFlags?.length === FORBIDDEN_CONVENIENCE_CLI_FLAGS.length,
     'read-only local-file adapter forbidden convenience CLI flags must match the exact required set length',

@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
-import { mkdtemp, readFile, rm, symlink } from 'node:fs/promises';
-import { dirname, relative, resolve } from 'node:path';
+import { lstat, mkdir, mkdtemp, readFile, rm, symlink, writeFile } from 'node:fs/promises';
+import { basename, dirname, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { runReadOnlyLocalFileAdapter, writeReadOnlyLocalFileAdapterEvidence } from '../src/adapters/read-only-local-file-adapter.mjs';
 
@@ -12,6 +12,7 @@ const evidencePath = resolve(packageRoot, 'evidence/read-only-local-file-adapter
 const adapterSourcePath = resolve(packageRoot, 'src/adapters/read-only-local-file-adapter.mjs');
 const inputSchemaPath = resolve(repoRoot, 'schemas/read-only-local-file-adapter-input.schema.json');
 const resultSchemaPath = resolve(repoRoot, 'schemas/read-only-local-file-adapter-result.schema.json');
+const adapterEvidenceFilename = 'read-only-local-file-adapter.out.json';
 
 const forbiddenConvenienceCliFlags = Object.freeze([
   '--directory',
@@ -123,6 +124,60 @@ async function runRejectCase({ id, hazard, patch = {}, remove = [] }, validInput
   };
 }
 
+async function pathExists(filePath) {
+  return Boolean(await lstat(filePath).catch(() => null));
+}
+
+function adapterEvidenceRoot(root) {
+  return resolve(root, 'implementation/synaptic-mesh-shadow-v0/evidence');
+}
+
+function adapterEvidenceDirectory(root) {
+  return resolve(adapterEvidenceRoot(root), 'read-only-local-file-adapter');
+}
+
+function adapterEvidenceTarget(root) {
+  return resolve(adapterEvidenceDirectory(root), adapterEvidenceFilename);
+}
+
+async function runOutputContainmentCase(testCase) {
+  await testCase.setup?.();
+  const protectedBefore = [];
+  for (const filePath of testCase.protectedPaths ?? []) {
+    protectedBefore.push([filePath, await readFile(filePath, 'utf8')]);
+  }
+
+  let accepted = false;
+  let reason = '';
+  try {
+    await writeReadOnlyLocalFileAdapterEvidence({ attempted: testCase.hazard }, testCase.options());
+    accepted = true;
+  } catch (error) {
+    reason = error.message;
+  }
+
+  const forbiddenPathCreations = [];
+  for (const filePath of testCase.mustNotExist ?? []) {
+    if (await pathExists(filePath)) forbiddenPathCreations.push(testCase.id);
+  }
+
+  const protectedFileMutations = [];
+  for (const [filePath, before] of protectedBefore) {
+    const after = await readFile(filePath, 'utf8');
+    if (after !== before) protectedFileMutations.push(testCase.id);
+  }
+
+  return {
+    id: testCase.id,
+    hazard: testCase.hazard,
+    accepted,
+    forbiddenPathCreated: forbiddenPathCreations.length > 0,
+    protectedFileMutated: protectedFileMutations.length > 0,
+    forbiddenEffects: accepted || forbiddenPathCreations.length > 0 || protectedFileMutations.length > 0 ? 1 : 0,
+    reasons: reason ? [reason] : [],
+  };
+}
+
 const inputs = JSON.parse(await readFile(inputsPath, 'utf8'));
 const validInput = inputs.valid[0];
 const adapterSource = await readFile(adapterSourcePath, 'utf8');
@@ -186,6 +241,94 @@ try {
     { id: 'F14', flag: '--allow', hazard: 'allow_convenience_flag', patch: { allow: true, mayAllow: true } },
   ];
 
+  const outsideAbsolutePath = resolve(workDir, 'outside-absolute-output.json');
+  const relativeParentEscapePath = `../output-containment-${basename(workDir)}.json`;
+  const relativeParentEscapeTargets = [
+    resolve(repoRoot, relativeParentEscapePath),
+    resolve(packageRoot, relativeParentEscapePath),
+    resolve(adapterEvidenceRoot(repoRoot), relativeParentEscapePath),
+    resolve(adapterEvidenceDirectory(repoRoot), relativeParentEscapePath),
+  ];
+  const existingSentinelPath = resolve(workDir, 'existing-sentinel.json');
+  const sourceFixturePath = resolve(repoRoot, validInput.sourceFilePath);
+  const targetSymlinkRoot = resolve(workDir, 'target-symlink-root');
+  const targetSymlinkOutside = resolve(workDir, 'target-symlink-outside.json');
+  const parentSymlinkRoot = resolve(workDir, 'parent-symlink-root');
+  const parentSymlinkOutside = resolve(workDir, 'parent-symlink-outside');
+  const parentSymlinkEscapeTarget = resolve(parentSymlinkOutside, adapterEvidenceFilename);
+  const evidenceRootSymlinkRoot = resolve(workDir, 'evidence-root-symlink-root');
+  const evidenceRootSymlinkOutside = resolve(workDir, 'evidence-root-symlink-outside');
+  const evidenceRootSymlinkEscapeDirectory = resolve(evidenceRootSymlinkOutside, 'read-only-local-file-adapter');
+  const evidenceRootSymlinkEscapeTarget = resolve(evidenceRootSymlinkEscapeDirectory, adapterEvidenceFilename);
+
+  const outputContainmentCases = [
+    {
+      id: 'O01',
+      hazard: 'caller_selected_relative_parent_escape_evidence_path',
+      options: () => ({ repoRoot, evidencePath: relativeParentEscapePath }),
+      mustNotExist: relativeParentEscapeTargets,
+    },
+    {
+      id: 'O02',
+      hazard: 'caller_selected_relative_parent_escape_output_path',
+      options: () => ({ repoRoot, outputPath: relativeParentEscapePath }),
+      mustNotExist: relativeParentEscapeTargets,
+    },
+    {
+      id: 'O03',
+      hazard: 'caller_selected_absolute_path_outside_evidence',
+      options: () => ({ repoRoot, outputPath: outsideAbsolutePath }),
+      mustNotExist: [outsideAbsolutePath],
+    },
+    {
+      id: 'O04',
+      hazard: 'caller_selected_output_in_fixtures_source',
+      options: () => ({ repoRoot, outputPath: sourceFixturePath }),
+      protectedPaths: [sourceFixturePath],
+    },
+    {
+      id: 'O05',
+      hazard: 'caller_selected_existing_file_overwrite',
+      setup: async () => writeFile(existingSentinelPath, 'sentinel: do not overwrite\n'),
+      options: () => ({ repoRoot, evidencePath: existingSentinelPath }),
+      protectedPaths: [existingSentinelPath],
+    },
+    {
+      id: 'O06',
+      hazard: 'fixed_evidence_target_symlink_output',
+      setup: async () => {
+        await mkdir(adapterEvidenceDirectory(targetSymlinkRoot), { recursive: true });
+        await writeFile(targetSymlinkOutside, 'outside symlink target\n');
+        await symlink(targetSymlinkOutside, adapterEvidenceTarget(targetSymlinkRoot));
+      },
+      options: () => ({ repoRoot: targetSymlinkRoot }),
+      protectedPaths: [targetSymlinkOutside],
+    },
+    {
+      id: 'O07',
+      hazard: 'fixed_evidence_parent_symlink_escape',
+      setup: async () => {
+        await mkdir(adapterEvidenceRoot(parentSymlinkRoot), { recursive: true });
+        await mkdir(parentSymlinkOutside, { recursive: true });
+        await writeFile(parentSymlinkEscapeTarget, 'parent symlink escape sentinel: do not overwrite\n');
+        await symlink(parentSymlinkOutside, adapterEvidenceDirectory(parentSymlinkRoot));
+      },
+      options: () => ({ repoRoot: parentSymlinkRoot }),
+      protectedPaths: [parentSymlinkEscapeTarget],
+    },
+    {
+      id: 'O08',
+      hazard: 'evidence_root_symlink_escape',
+      setup: async () => {
+        await mkdir(resolve(evidenceRootSymlinkRoot, 'implementation/synaptic-mesh-shadow-v0'), { recursive: true });
+        await mkdir(evidenceRootSymlinkOutside, { recursive: true });
+        await symlink(evidenceRootSymlinkOutside, adapterEvidenceRoot(evidenceRootSymlinkRoot));
+      },
+      options: () => ({ repoRoot: evidenceRootSymlinkRoot }),
+      mustNotExist: [evidenceRootSymlinkEscapeDirectory, evidenceRootSymlinkEscapeTarget],
+    },
+  ];
+
   const rows = [];
   for (const testCase of cases) rows.push(await runRejectCase(testCase, validInput));
 
@@ -197,22 +340,17 @@ try {
     });
   }
 
-  let outputEscapeAccepted = false;
-  let outputEscapeReason = '';
-  try {
-    await writeReadOnlyLocalFileAdapterEvidence({ attempted: 'outside evidence' }, { repoRoot, evidencePath: '../outside.json' });
-    outputEscapeAccepted = true;
-  } catch (error) {
-    outputEscapeReason = error.message;
-  }
+  const outputContainmentRows = [];
+  for (const testCase of outputContainmentCases) outputContainmentRows.push(await runOutputContainmentCase(testCase));
+  const outputOutsideEvidenceRow = outputContainmentRows.find((row) => row.id === 'O01');
   rows.splice(6, 0, {
     id: 'H07',
     hazard: 'output_outside_evidence',
-    accepted: outputEscapeAccepted,
+    accepted: outputOutsideEvidenceRow.accepted,
     sourceFileRead: false,
     capabilityTrueCount: 0,
-    forbiddenEffects: outputEscapeAccepted ? 1 : 0,
-    reasons: outputEscapeReason ? [outputEscapeReason] : [],
+    forbiddenEffects: outputOutsideEvidenceRow.forbiddenEffects,
+    reasons: outputOutsideEvidenceRow.reasons,
   });
 
   assert.equal(rows.length, 17, 'negative controls must cover exactly 17 hazard cases');
@@ -223,8 +361,12 @@ try {
   const forbiddenConvenienceCliFlagAccepts = forbiddenConvenienceFlagRows.filter((row) => row.accepted).length;
   const forbiddenConvenienceCliFlagSourceFilesRead = forbiddenConvenienceFlagRows.filter((row) => row.sourceFileRead).length;
   const forbiddenConvenienceCliFlagSurfaceFindings = forbiddenConvenienceFlagSurfaceFindings.length;
+  const outputContainmentUnexpectedAccepts = outputContainmentRows.filter((row) => row.accepted).length;
+  const outputContainmentForbiddenPathCreations = outputContainmentRows.filter((row) => row.forbiddenPathCreated).length;
+  const outputContainmentProtectedFileMutations = outputContainmentRows.filter((row) => row.protectedFileMutated).length;
   const forbiddenEffects = rows.reduce((sum, row) => sum + row.forbiddenEffects, 0)
     + forbiddenConvenienceFlagRows.reduce((sum, row) => sum + row.forbiddenEffects, 0)
+    + outputContainmentRows.reduce((sum, row) => sum + row.forbiddenEffects, 0)
     + staticFindings.length
     + forbiddenConvenienceCliFlagSurfaceFindings
     + rawClassifierLeakFindings.length;
@@ -235,6 +377,10 @@ try {
   assert.equal(forbiddenConvenienceCliFlagAccepts, 0, 'forbidden convenience CLI flag cases must have zero unexpected accepts');
   assert.equal(forbiddenConvenienceCliFlagSourceFilesRead, 0, 'forbidden convenience CLI flag cases must reject before reading source files');
   assert.equal(forbiddenConvenienceCliFlagSurfaceFindings, 0, 'adapter source and schemas must not expose forbidden convenience CLI flags');
+  assert.equal(outputContainmentRows.length, 8, 'output containment negative controls must cover fixed and caller-selected escape cases');
+  assert.equal(outputContainmentUnexpectedAccepts, 0, 'output containment negative controls must have zero unexpected accepts');
+  assert.equal(outputContainmentForbiddenPathCreations, 0, 'output containment negative controls must not create forbidden paths');
+  assert.equal(outputContainmentProtectedFileMutations, 0, 'output containment negative controls must not mutate protected files');
   assert.equal(staticFindings.length, 0, 'adapter source must not contain network/discovery/tool execution primitives');
   assert.equal(rawClassifierLeakFindings.length, 0, 'negative controls must not expose raw classifier route fields');
   assert.equal(forbiddenEffects, 0, 'negative controls must have zero forbidden effects');
@@ -255,11 +401,16 @@ try {
       forbiddenConvenienceCliFlagAccepts,
       forbiddenConvenienceCliFlagSourceFilesRead,
       forbiddenConvenienceCliFlagSurfaceFindings,
+      outputContainmentCases: outputContainmentRows.length,
+      outputContainmentUnexpectedAccepts,
+      outputContainmentForbiddenPathCreations,
+      outputContainmentProtectedFileMutations,
       networkPrimitiveFindings: staticFindings.length,
       rawClassifierLeakFindings: rawClassifierLeakFindings.length,
     },
     rows,
     forbiddenConvenienceFlagRows,
+    outputContainmentRows,
     forbiddenConvenienceFlagSurfaceFindings,
     staticFindings,
     rawClassifierLeakFindings,
@@ -269,6 +420,10 @@ try {
       'reject_url_or_network_input',
       'reject_directory_glob_traversal_symlink_escape',
       'reject_output_escape',
+      'reject_evidence_output_containment_escape',
+      'reject_symlink_output',
+      'reject_unapproved_overwrite',
+      'reject_output_to_fixtures_source',
       'reject_forbidden_convenience_cli_flags',
       'reject_tools_memory_config_publication',
       'reject_approval_block_allow_authorization_enforcement',

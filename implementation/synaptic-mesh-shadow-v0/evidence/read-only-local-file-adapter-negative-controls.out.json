@@ -28,6 +28,10 @@
     "forbiddenConvenienceCliFlagAccepts": 0,
     "forbiddenConvenienceCliFlagSourceFilesRead": 0,
     "forbiddenConvenienceCliFlagSurfaceFindings": 0,
+    "outputContainmentCases": 8,
+    "outputContainmentUnexpectedAccepts": 0,
+    "outputContainmentForbiddenPathCreations": 0,
+    "outputContainmentProtectedFileMutations": 0,
     "networkPrimitiveFindings": 0,
     "rawClassifierLeakFindings": 0
   },
@@ -412,6 +416,96 @@
       "flag": "--allow"
     }
   ],
+  "outputContainmentRows": [
+    {
+      "id": "O01",
+      "hazard": "caller_selected_relative_parent_escape_evidence_path",
+      "accepted": false,
+      "forbiddenPathCreated": false,
+      "protectedFileMutated": false,
+      "forbiddenEffects": 0,
+      "reasons": [
+        "read-only local-file adapter evidence path is fixed"
+      ]
+    },
+    {
+      "id": "O02",
+      "hazard": "caller_selected_relative_parent_escape_output_path",
+      "accepted": false,
+      "forbiddenPathCreated": false,
+      "protectedFileMutated": false,
+      "forbiddenEffects": 0,
+      "reasons": [
+        "read-only local-file adapter evidence path is fixed"
+      ]
+    },
+    {
+      "id": "O03",
+      "hazard": "caller_selected_absolute_path_outside_evidence",
+      "accepted": false,
+      "forbiddenPathCreated": false,
+      "protectedFileMutated": false,
+      "forbiddenEffects": 0,
+      "reasons": [
+        "read-only local-file adapter evidence path is fixed"
+      ]
+    },
+    {
+      "id": "O04",
+      "hazard": "caller_selected_output_in_fixtures_source",
+      "accepted": false,
+      "forbiddenPathCreated": false,
+      "protectedFileMutated": false,
+      "forbiddenEffects": 0,
+      "reasons": [
+        "read-only local-file adapter evidence path is fixed"
+      ]
+    },
+    {
+      "id": "O05",
+      "hazard": "caller_selected_existing_file_overwrite",
+      "accepted": false,
+      "forbiddenPathCreated": false,
+      "protectedFileMutated": false,
+      "forbiddenEffects": 0,
+      "reasons": [
+        "read-only local-file adapter evidence path is fixed"
+      ]
+    },
+    {
+      "id": "O06",
+      "hazard": "fixed_evidence_target_symlink_output",
+      "accepted": false,
+      "forbiddenPathCreated": false,
+      "protectedFileMutated": false,
+      "forbiddenEffects": 0,
+      "reasons": [
+        "evidence output path must not be symlink"
+      ]
+    },
+    {
+      "id": "O07",
+      "hazard": "fixed_evidence_parent_symlink_escape",
+      "accepted": false,
+      "forbiddenPathCreated": false,
+      "protectedFileMutated": false,
+      "forbiddenEffects": 0,
+      "reasons": [
+        "adapter evidence directory must not be symlink"
+      ]
+    },
+    {
+      "id": "O08",
+      "hazard": "evidence_root_symlink_escape",
+      "accepted": false,
+      "forbiddenPathCreated": false,
+      "protectedFileMutated": false,
+      "forbiddenEffects": 0,
+      "reasons": [
+        "evidence root must not be symlink"
+      ]
+    }
+  ],
   "forbiddenConvenienceFlagSurfaceFindings": [],
   "staticFindings": [],
   "rawClassifierLeakFindings": [],
@@ -421,6 +515,10 @@
     "reject_url_or_network_input",
     "reject_directory_glob_traversal_symlink_escape",
     "reject_output_escape",
+    "reject_evidence_output_containment_escape",
+    "reject_symlink_output",
+    "reject_unapproved_overwrite",
+    "reject_output_to_fixtures_source",
     "reject_forbidden_convenience_cli_flags",
     "reject_tools_memory_config_publication",
     "reject_approval_block_allow_authorization_enforcement",
