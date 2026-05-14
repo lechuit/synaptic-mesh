@@ -69,8 +69,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 1754,
-      "sha256": "13d9a1663c853b3ce2f25e388797eb3188dbf249980a22e7cde5760e039d4aff"
+      "bytes": 1851,
+      "sha256": "aef658047bb33d5e91ddb177b54740bc054de80e8e5451bb75d77498c365330e"
     },
     {
       "path": "RELEASE_CANDIDATE.md",
@@ -79,8 +79,8 @@
     },
     {
       "path": "RELEASE_NOTES.md",
-      "bytes": 1064,
-      "sha256": "75848a93633daca6855847de2a913314b9e0aff11b9315f34c4de00543ac5d6d"
+      "bytes": 1359,
+      "sha256": "ffe2627649965a827f1f0c3cb8abc3c27bb6177a80041e3b6b384d554d22c699"
     },
     {
       "path": "design-notes/adapter-boundary-langgraph-mcp-v0.md",
@@ -403,6 +403,11 @@
       "sha256": "9fdadee94e53e2954eb62cc1d57f61768cd95895a2a9ab6e967aa4494556a3db"
     },
     {
+      "path": "docs/simulated-framework-shaped-adapter-reproducibility.md",
+      "bytes": 1515,
+      "sha256": "e20b0b324b8eb6d794eb45b6e28d44176cac522aa99a8a80a97290497126eb24"
+    },
+    {
       "path": "docs/simulated-framework-shaped-adapter.md",
       "bytes": 1135,
       "sha256": "871d380bc8ca6d71c945fd534fde3c9baed29bcb25e65c346dc4499d079420d8"
@@ -546,6 +551,11 @@
       "path": "docs/status-v0.7.2.md",
       "bytes": 846,
       "sha256": "fefaa7d818fb79bbacf23d5085d8c2c3d0817a9f26e485ceb882c99903caae5e"
+    },
+    {
+      "path": "docs/status-v0.7.3.md",
+      "bytes": 1149,
+      "sha256": "64d6e136b5c6cfcd605728f1880182be8653648e1036f323881a6934a2450d3d"
     },
     {
       "path": "docs/threat-model-v0.md",
@@ -1183,6 +1193,11 @@
       "sha256": "51c53f3869c27575366f817e15ca3ae2888948a60072fb8dfcc74ff571d10ec3"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/simulated-framework-shaped-adapter-reproducibility.out.json",
+      "bytes": 4086,
+      "sha256": "8b49da8293be42976d4db212a5b88b4df0e26447a16fb24cc99b634d954c52c8"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/simulated-framework-shaped-adapter.out.json",
       "bytes": 14507,
       "sha256": "9c59ccaf1cd91d2d2e86cf99d578115f8d3dbe1c2ea407fdfe55611a5af9527d"
@@ -1613,6 +1628,11 @@
       "sha256": "d767f0e21802dd5d5054abd474d9404541c56d12c0a2d133da64c47d01701971"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/fixtures/simulated-framework-shaped-adapter-reproducibility.json",
+      "bytes": 2368,
+      "sha256": "2fcd20a7c4f6e3f4b7ddab36b5a44ec29f554f92033dce48d91a05874e35fa4f"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/fixtures/simulated-framework-shaped-adapter.json",
       "bytes": 2662,
       "sha256": "3d6007d4fce65cb74cd44a3a2d37c5dcb877dc9efb7c0a3c8c774fb90a6bf5d8"
@@ -1624,8 +1644,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/package.json",
-      "bytes": 19134,
-      "sha256": "145e0b8d14985c1c92ca756da1964edc59c29685090edc4b20941b8c47bbad5b"
+      "bytes": 19410,
+      "sha256": "2a40b58c45d526251c6ff47bd1161b8b16691f0a0fd195a9559388826c65fe65"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/action-context-packet.mjs",
@@ -2193,6 +2213,11 @@
       "sha256": "b59140340a0d91fcffd297741db05fcf4da1105467c270ac9602ad6a9f08275f"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/simulated-framework-shaped-adapter-reproducibility.mjs",
+      "bytes": 16316,
+      "sha256": "a9f56f6194c62c2c1328e12c63275a4393848863bc8f642b740d9bdeea41a287"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/simulated-framework-shaped-adapter.mjs",
       "bytes": 4964,
       "sha256": "244970dfd78d242d1ff4706b25e6fb1dde1ce9715b59d007e63cc97c8019f488"
@@ -2709,8 +2734,8 @@
     },
     {
       "path": "tools/release-checks/framework-shaped-adapter.mjs",
-      "bytes": 12564,
-      "sha256": "8991e9d6de5f73d4304c12d90ad7eb3c5fb074e45bfbba3f3b7ceddefc232f29"
+      "bytes": 16961,
+      "sha256": "aa8f971adf7d3d1f4e0a976ca834cc811fd92dc48effc3ee6a4389ef5a75cdf9"
     },
     {
       "path": "tools/release-checks/index.mjs",
