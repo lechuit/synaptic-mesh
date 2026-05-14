@@ -33,6 +33,13 @@ Synaptic Mesh keeps protocol, implementation, research, and evidence separate so
 - [Manual dry-run pilot cases](manual-dry-run-pilot-cases.md) documents the expanded 12-case real-redacted pilot pack and its record-only thresholds.
 - [Passive live-shadow canary runbook](passive-live-shadow-canary-runbook.md) documents the human operator process for already-redacted, opt-in canary packets while preserving passive/record-only/no-effects boundaries.
 - [Framework-shaped adapter boundary](framework-shaped-adapter-boundary.md) documents fake local framework-like input shapes without adding MCP, LangGraph, A2A, GitHub bot, SDK, network, runtime, or enforcement integration.
+- [Framework integration go/no-go](framework-integration-go-no-go-v0.8.0-alpha.md) records that design may proceed while real framework adapter implementation remains blocked.
+- [Framework adapter candidate comparison](framework-adapter-candidate-comparison.md) compares MCP-like, LangGraph-like, A2A-like, and GitHub-bot-like candidates without authorizing implementation.
+- [First real framework adapter design v0.8.1](../design-notes/first-real-framework-adapter-design-v0.8.1.md) selects the MCP read-only candidate as design-only.
+- [Framework adapter implementation hazard catalog v0.8.2](framework-adapter-implementation-hazard-catalog-v0.8.2.md) records 25 implementation hazards with zero success evidence for hazard cases.
+- [Framework adapter dry-run contract v0.8.3](framework-adapter-dry-run-contract-v0.8.3.md) defines framework-like local/redacted packet to local validation to record-only evidence.
+- [Framework adapter reviewer runbook v0.8.4](framework-adapter-reviewer-runbook-v0.8.4.md) gives human reviewers the dry-run review process and the core phrase that dry-run evidence is not authorization.
+- [Framework integration readiness public review package v0.8.5](framework-integration-readiness-public-review-package-v0.8.5.md) closes v0.8.x while preserving no real framework integration and no authorization.
 
 ## Scaling rules
 
@@ -44,6 +51,7 @@ Synaptic Mesh keeps protocol, implementation, research, and evidence separate so
 6. Keep release metadata and file inventory separate: `MANIFEST.json` is the small human-readable metadata file, while `MANIFEST.files.json` is the generated tracked-file byte/hash inventory. Run `npm run manifest:update` after tracked file changes; `npm run verify:manifest`, `npm run check`, and `npm run review:local` should fail when tracked file bytes or hashes drift.
 7. Batch manifests are manifest-only contracts until an explicit adapter phase says otherwise: no batch execution yet, no discovery, no glob, no watcher/daemon, no network/live traffic, and no runtime authority.
 8. Framework-shaped adapter boundaries stay fake/local/already-redacted/record-only until a later release explicitly scopes a real adapter; naming a framework shape must not imply SDK import, network use, live observer behavior, agent consumption, authorization, or enforcement.
+9. Framework integration readiness records are still design/dry-run artifacts until a separate explicit authorization permits implementation; go/no-go evidence is not framework authorization.
 
 ## Suggested next package boundary
 

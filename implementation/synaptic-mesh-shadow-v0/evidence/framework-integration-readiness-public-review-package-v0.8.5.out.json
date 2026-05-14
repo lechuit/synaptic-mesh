@@ -1,0 +1,76 @@
+{
+  "artifact": "T-synaptic-mesh-framework-integration-readiness-public-review-package-v0.8.5",
+  "timestamp": "2026-05-14T18:56:00.000Z",
+  "summary": {
+    "frameworkIntegrationReadinessPublicReviewPackage": "pass",
+    "releaseLayer": "v0.8.5",
+    "priorEvidenceArtifacts": 5,
+    "priorEvidencePasses": 5,
+    "missingEvidence": 0,
+    "missingDocsPhrases": 0,
+    "packageReadyForPublicReview": true,
+    "goToDesign": true,
+    "goToImplementation": false,
+    "selectedCandidate": "mcp_read_only_candidate",
+    "hazardCount": 25,
+    "successEvidenceWrittenForHazards": 0,
+    "dryRunNegativeCases": 16,
+    "dryRunUnexpectedAccepts": 0,
+    "centralPhrasePresent": true,
+    "realFrameworkAdapterImplemented": false,
+    "frameworkIntegrationAuthorized": false,
+    "sdkImported": false,
+    "networkAllowed": false,
+    "resourceFetch": false,
+    "toolExecution": false,
+    "runtimeAuthorized": false,
+    "liveTraffic": false,
+    "watcherDaemon": false,
+    "memoryWrite": false,
+    "configWrite": false,
+    "externalPublication": false,
+    "agentConsumed": false,
+    "machineReadablePolicyDecision": false,
+    "approvalEmission": false,
+    "mayBlock": false,
+    "mayAllow": false,
+    "authorization": false,
+    "enforcement": false
+  },
+  "prior": [
+    {
+      "layer": "v0.8.0-alpha",
+      "pass": true
+    },
+    {
+      "layer": "v0.8.1",
+      "pass": true
+    },
+    {
+      "layer": "v0.8.2",
+      "pass": true
+    },
+    {
+      "layer": "v0.8.3",
+      "pass": true
+    },
+    {
+      "layer": "v0.8.4",
+      "pass": true
+    }
+  ],
+  "boundary": [
+    "public_review_package_only",
+    "no_real_framework_adapter",
+    "framework_integration_authorized_false",
+    "go_to_design_true_go_to_implementation_false",
+    "no_sdk_import",
+    "no_network",
+    "no_resource_fetch",
+    "no_tool_execution",
+    "no_runtime",
+    "no_agent_consumption",
+    "no_machine_policy",
+    "no_approval_block_allow_authorization_or_enforcement"
+  ]
+}
