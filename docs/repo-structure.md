@@ -39,6 +39,7 @@ Synaptic Mesh keeps protocol, implementation, research, and evidence separate so
 - [Framework adapter implementation hazard catalog v0.8.2](framework-adapter-implementation-hazard-catalog-v0.8.2.md) records 25 implementation hazards with zero success evidence for hazard cases.
 - [Framework adapter dry-run contract v0.8.3](framework-adapter-dry-run-contract-v0.8.3.md) defines framework-like local/redacted packet to local validation to record-only evidence.
 - [Framework adapter reviewer runbook v0.8.4](framework-adapter-reviewer-runbook-v0.8.4.md) gives human reviewers the dry-run review process and the core phrase that dry-run evidence is not authorization.
+- [Framework integration readiness public review package v0.8.5](framework-integration-readiness-public-review-package-v0.8.5.md) closes v0.8.x while preserving no real framework integration and no authorization.
 
 ## Scaling rules
 

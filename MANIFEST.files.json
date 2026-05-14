@@ -69,8 +69,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 2013,
-      "sha256": "da8f5533cdb17e68e378db99accd2fa59fa8186b347bbacfc5b2b506c0bbc220"
+      "bytes": 2083,
+      "sha256": "21a57bc75efbef25fd42792edfc59b0f7dadca53cb877a55d909b1107aa02226"
     },
     {
       "path": "RELEASE_CANDIDATE.md",
@@ -79,8 +79,8 @@
     },
     {
       "path": "RELEASE_NOTES.md",
-      "bytes": 1116,
-      "sha256": "b470b162adad1ea49051f9e347058c06ed99bb1af90167ee566b2bc008a8a5cc"
+      "bytes": 1237,
+      "sha256": "c26247078280eb1574a3d7b80be2ae2507a3a6be9cd65d5c585f9eb20203db5c"
     },
     {
       "path": "design-notes/adapter-boundary-langgraph-mcp-v0.md",
@@ -211,6 +211,11 @@
       "path": "docs/framework-integration-go-no-go-v0.8.0-alpha.md",
       "bytes": 1707,
       "sha256": "7714a8dc070bc58058b90e383387446c429518eaf90013a2e5a03801c1de013f"
+    },
+    {
+      "path": "docs/framework-integration-readiness-public-review-package-v0.8.5.md",
+      "bytes": 2387,
+      "sha256": "9d2376c52d9e37651d6f02a5c540b432b228723196b347b2d9c5f686fa7768a4"
     },
     {
       "path": "docs/framework-shaped-adapter-boundary.md",
@@ -429,8 +434,8 @@
     },
     {
       "path": "docs/repo-structure.md",
-      "bytes": 7904,
-      "sha256": "daf493fde105156280f86273fef7d9d6f16a2278f6e20413061342363090efa1"
+      "bytes": 8117,
+      "sha256": "5c47b6ed053f4b9636e516312dfd0a8bcd7ab1b957b037b41b7dd4e828131163"
     },
     {
       "path": "docs/retention-negative-controls.md",
@@ -633,6 +638,11 @@
       "sha256": "b019c829502764d7c91e7ddef565f1ff8183c5f8240dfeb217fbd53bb96b3bba"
     },
     {
+      "path": "docs/status-v0.8.5.md",
+      "bytes": 1205,
+      "sha256": "26f455b33d26dbaa9a91e57f375edda6c666aa062e8dcca84f45ffc49aac3897"
+    },
+    {
       "path": "docs/threat-model-v0.md",
       "bytes": 6211,
       "sha256": "b00847bd4db3b2878165eda2866257420e7da8bbbdecaaad8e6aaefce2256d38"
@@ -786,6 +796,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/framework-integration-go-no-go.out.json",
       "bytes": 4597,
       "sha256": "2542bf367f7ccefa96e53ffaf3e1edc04218b8758a1bd45e5f439ab1d98e5e55"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/framework-integration-readiness-public-review-package-v0.8.5.out.json",
+      "bytes": 1976,
+      "sha256": "c0a76de859cd99b870196de54034d958ff004e9dce9e6a3f7ce9767efaa6e703"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/framework-shaped-adapter-boundary-schema.out.json",
@@ -1764,8 +1779,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/package.json",
-      "bytes": 21185,
-      "sha256": "b2148cf8afd35b8566395c46eadcb7102586f4f435a96274aeb19acc89a8e223"
+      "bytes": 21497,
+      "sha256": "6e51973cd1f2c5b1d7734fadbee19789c3d3bd99962d04cb0a84ff233000a698"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/action-context-packet.mjs",
@@ -1956,6 +1971,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/tests/framework-integration-go-no-go.mjs",
       "bytes": 5195,
       "sha256": "c3f660b7c53b8760855280442e942e0bc88939d2aafa41f58c8e4429b6852d28"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/framework-integration-readiness-public-review-package-v0.8.5.mjs",
+      "bytes": 5657,
+      "sha256": "246c24a65049011a91598740d00b88f31c4e06388e0d22b94ddfb20914a64c35"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/framework-shaped-adapter-boundary-schema.mjs",
@@ -2899,8 +2919,8 @@
     },
     {
       "path": "tools/release-checks/framework-integration-readiness.mjs",
-      "bytes": 17690,
-      "sha256": "3f09f149d1310a568c489f3c823bbc7fc5202703a6b1672fe9940f64d46e8fbd"
+      "bytes": 21340,
+      "sha256": "a513a22c65657953fc32da40aee70c86e824acb963d9631e9abd1ddb809d05ad"
     },
     {
       "path": "tools/release-checks/framework-shaped-adapter.mjs",
