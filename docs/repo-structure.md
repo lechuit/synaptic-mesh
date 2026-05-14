@@ -38,6 +38,7 @@ Synaptic Mesh keeps protocol, implementation, research, and evidence separate so
 - [First real framework adapter design v0.8.1](../design-notes/first-real-framework-adapter-design-v0.8.1.md) selects the MCP read-only candidate as design-only.
 - [Framework adapter implementation hazard catalog v0.8.2](framework-adapter-implementation-hazard-catalog-v0.8.2.md) records 25 implementation hazards with zero success evidence for hazard cases.
 - [Framework adapter dry-run contract v0.8.3](framework-adapter-dry-run-contract-v0.8.3.md) defines framework-like local/redacted packet to local validation to record-only evidence.
+- [Framework adapter reviewer runbook v0.8.4](framework-adapter-reviewer-runbook-v0.8.4.md) gives human reviewers the dry-run review process and the core phrase that dry-run evidence is not authorization.
 
 ## Scaling rules
 

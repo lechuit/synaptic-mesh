@@ -7,6 +7,7 @@ export const frameworkIntegrationReadinessGateScripts = Object.freeze([
   'test:first-real-framework-adapter-design-v081',
   'test:framework-adapter-implementation-hazard-catalog-v082',
   'test:framework-adapter-dry-run-contract-v083',
+  'test:framework-adapter-reviewer-runbook-v084',
 ]);
 
 export const frameworkIntegrationReadinessRequiredManifestPaths = Object.freeze([
@@ -22,6 +23,8 @@ export const frameworkIntegrationReadinessRequiredManifestPaths = Object.freeze(
   'docs/status-v0.8.2.md',
   'docs/framework-adapter-dry-run-contract-v0.8.3.md',
   'docs/status-v0.8.3.md',
+  'docs/framework-adapter-reviewer-runbook-v0.8.4.md',
+  'docs/status-v0.8.4.md',
   'docs/repo-structure.md',
   'implementation/synaptic-mesh-shadow-v0/fixtures/framework-integration-go-no-go.json',
   'implementation/synaptic-mesh-shadow-v0/fixtures/framework-adapter-dry-run-contract.json',
@@ -29,10 +32,12 @@ export const frameworkIntegrationReadinessRequiredManifestPaths = Object.freeze(
   'implementation/synaptic-mesh-shadow-v0/tests/first-real-framework-adapter-design-v0.8.1.mjs',
   'implementation/synaptic-mesh-shadow-v0/tests/framework-adapter-implementation-hazard-catalog-v0.8.2.mjs',
   'implementation/synaptic-mesh-shadow-v0/tests/framework-adapter-dry-run-contract-v0.8.3.mjs',
+  'implementation/synaptic-mesh-shadow-v0/tests/framework-adapter-reviewer-runbook-v0.8.4.mjs',
   'implementation/synaptic-mesh-shadow-v0/evidence/framework-integration-go-no-go.out.json',
   'implementation/synaptic-mesh-shadow-v0/evidence/first-real-framework-adapter-design-v0.8.1.out.json',
   'implementation/synaptic-mesh-shadow-v0/evidence/framework-adapter-implementation-hazard-catalog-v0.8.2.out.json',
   'implementation/synaptic-mesh-shadow-v0/evidence/framework-adapter-dry-run-contract-v0.8.3.out.json',
+  'implementation/synaptic-mesh-shadow-v0/evidence/framework-adapter-reviewer-runbook-v0.8.4.out.json',
 ]);
 
 function assertSummary(summary, expected, label, assert) { for (const [field, expectedValue] of Object.entries(expected)) assert(summary?.[field] === expectedValue, `${label} ${field} must be ${JSON.stringify(expectedValue)}`); }
@@ -54,6 +59,11 @@ export function assertFrameworkIntegrationReadinessManifestMetadata({ manifest, 
   if (manifestReleaseTag === 'v0.8.3') {
     assertAllIncluded(manifest.reproducibility, ['v0.8.3','framework_adapter_dry_run_contract','positive_cases_1','negative_cases_16','unexpected_accepts_0','framework_like_local_packet_true','record_only_true','real_framework_adapter_implemented_false','framework_integration_authorized_false','sdk_imported_false','network_allowed_false','resource_fetch_false','tool_execution_false','agent_consumed_false','machine_readable_policy_decision_false','approval_emission_false','may_block_false','may_allow_false','enforcement_false'], 'MANIFEST.json reproducibility', assertIncludes);
     assertAllIncluded(manifest.runtimeBoundary, ['framework_adapter_dry_run_contract_only','framework_like_local_redacted_packet_only','local_validation_only','record_only_evidence','no_real_framework_adapter','no_sdk_import','no_mcp_server_client','no_network_call','no_resource_fetch','no_tool_call','no_framework_runtime','no_live_traffic','no_watcher','no_daemon','no_memory_write','no_config_write','no_external_publication','no_agent_consumption','no_machine_readable_policy','no_approval_blocking_allowing_authorization_or_enforcement'], 'MANIFEST.json runtimeBoundary', assertIncludes);
+  }
+
+  if (manifestReleaseTag === 'v0.8.4') {
+    assertAllIncluded(manifest.reproducibility, ['v0.8.4','framework_adapter_reviewer_runbook','central_phrase_present_true','required_sections_8','missing_required_sections_0','missing_required_phrases_0','real_framework_adapter_implemented_false','framework_integration_authorized_false','sdk_imported_false','network_allowed_false','resource_fetch_false','tool_execution_false','agent_consumed_false','machine_readable_policy_decision_false','approval_emission_false','may_block_false','may_allow_false','enforcement_false'], 'MANIFEST.json reproducibility', assertIncludes);
+    assertAllIncluded(manifest.runtimeBoundary, ['framework_adapter_reviewer_runbook_only','framework_dry_run_evidence_is_not_framework_authorization','no_real_framework_adapter','no_sdk_import','no_mcp_server_client','no_network_call','no_resource_fetch','no_tool_call','no_framework_runtime','no_live_traffic','no_watcher','no_daemon','no_memory_write','no_config_write','no_external_publication','no_agent_consumption','no_machine_readable_policy','no_approval_blocking_allowing_authorization_or_enforcement'], 'MANIFEST.json runtimeBoundary', assertIncludes);
   }
 }
 
@@ -84,13 +94,22 @@ export function assertFrameworkIntegrationReadinessRelease({ repoRoot, packageRo
     assertAllIncluded(status, ['hazard catalog only','hazardCount: 25','successEvidenceWrittenForHazards: 0','realFrameworkAdapterImplemented: false','frameworkIntegrationAuthorized: false'], 'docs/status-v0.8.2.md', assertIncludes);
     assertAllIncluded(docs, ['Status: implementation hazard catalog only','successEvidenceWrittenForHazards: 0','Hazard cases must not produce success evidence','H25','No real framework adapter','No MCP server/client','No SDK import','No network','No approval, block/allow, authorization, or enforcement','release:check -- --target v0.8.2'], 'docs/framework-adapter-implementation-hazard-catalog-v0.8.2.md', assertIncludes);
   }
-  if (manifestReleaseTag !== 'v0.8.3') return;
-  const dryRun = readJson(path.join(packageRoot, 'evidence/framework-adapter-dry-run-contract-v0.8.3.out.json'));
-  assertSummary(dryRun?.summary, { frameworkAdapterDryRunContract: 'pass', releaseLayer: 'v0.8.3', positiveCases: 1, negativeCases: 16, unexpectedAccepts: 0, frameworkLikeLocalPacket: true, recordOnly: true, realFrameworkAdapterImplemented: false, frameworkIntegrationAuthorized: false, sdkImported: false, networkAllowed: false, resourceFetch: false, toolExecution: false, agentConsumed: false, machineReadablePolicyDecision: false, approvalEmission: false, mayBlock: false, mayAllow: false, enforcement: false }, 'framework adapter dry-run contract evidence', assert);
-  const status = readFileSync(path.join(repoRoot, 'docs/status-v0.8.3.md'), 'utf8');
-  const docs = readFileSync(path.join(repoRoot, 'docs/framework-adapter-dry-run-contract-v0.8.3.md'), 'utf8');
-  assertAllIncluded(status, ['framework adapter dry-run contract only','positiveCases: 1','negativeCases: 16','unexpectedAccepts: 0','realFrameworkAdapterImplemented: false','frameworkIntegrationAuthorized: false'], 'docs/status-v0.8.3.md', assertIncludes);
-  assertAllIncluded(docs, ['Status: dry-run contract only','framework-like local/redacted packet','local validation','record-only evidence','No real framework adapter','No SDK import','No MCP server/client','No network','No resource fetch','No tool execution','No agent consumption','No machine-readable policy','No approval, block/allow, authorization, or enforcement','release:check -- --target v0.8.3'], 'docs/framework-adapter-dry-run-contract-v0.8.3.md', assertIncludes);
+  if (manifestReleaseTag === 'v0.8.3') {
+    const dryRun = readJson(path.join(packageRoot, 'evidence/framework-adapter-dry-run-contract-v0.8.3.out.json'));
+    assertSummary(dryRun?.summary, { frameworkAdapterDryRunContract: 'pass', releaseLayer: 'v0.8.3', positiveCases: 1, negativeCases: 16, unexpectedAccepts: 0, frameworkLikeLocalPacket: true, recordOnly: true, realFrameworkAdapterImplemented: false, frameworkIntegrationAuthorized: false, sdkImported: false, networkAllowed: false, resourceFetch: false, toolExecution: false, agentConsumed: false, machineReadablePolicyDecision: false, approvalEmission: false, mayBlock: false, mayAllow: false, enforcement: false }, 'framework adapter dry-run contract evidence', assert);
+    const status = readFileSync(path.join(repoRoot, 'docs/status-v0.8.3.md'), 'utf8');
+    const docs = readFileSync(path.join(repoRoot, 'docs/framework-adapter-dry-run-contract-v0.8.3.md'), 'utf8');
+    assertAllIncluded(status, ['framework adapter dry-run contract only','positiveCases: 1','negativeCases: 16','unexpectedAccepts: 0','realFrameworkAdapterImplemented: false','frameworkIntegrationAuthorized: false'], 'docs/status-v0.8.3.md', assertIncludes);
+    assertAllIncluded(docs, ['Status: dry-run contract only','framework-like local/redacted packet','local validation','record-only evidence','No real framework adapter','No SDK import','No MCP server/client','No network','No resource fetch','No tool execution','No agent consumption','No machine-readable policy','No approval, block/allow, authorization, or enforcement','release:check -- --target v0.8.3'], 'docs/framework-adapter-dry-run-contract-v0.8.3.md', assertIncludes);
+  }
+
+  if (manifestReleaseTag !== 'v0.8.4') return;
+  const runbook = readJson(path.join(packageRoot, 'evidence/framework-adapter-reviewer-runbook-v0.8.4.out.json'));
+  assertSummary(runbook?.summary, { frameworkAdapterReviewerRunbook: 'pass', releaseLayer: 'v0.8.4', centralPhrasePresent: true, requiredSections: 8, missingRequiredSections: 0, missingRequiredPhrases: 0, realFrameworkAdapterImplemented: false, frameworkIntegrationAuthorized: false, sdkImported: false, networkAllowed: false, resourceFetch: false, toolExecution: false, agentConsumed: false, machineReadablePolicyDecision: false, approvalEmission: false, mayBlock: false, mayAllow: false, enforcement: false }, 'framework adapter reviewer runbook evidence', assert);
+  const status = readFileSync(path.join(repoRoot, 'docs/status-v0.8.4.md'), 'utf8');
+  const docs = readFileSync(path.join(repoRoot, 'docs/framework-adapter-reviewer-runbook-v0.8.4.md'), 'utf8');
+  assertAllIncluded(status, ['human reviewer runbook only','Framework dry-run evidence is not framework authorization.','centralPhrasePresent: true','missingRequiredSections: 0','realFrameworkAdapterImplemented: false','frameworkIntegrationAuthorized: false'], 'docs/status-v0.8.4.md', assertIncludes);
+  assertAllIncluded(docs, ['Status: human reviewer runbook only','Framework dry-run evidence is not framework authorization.','No real framework adapter','No SDK imports','No MCP server/client','No network','No resource fetch','No tool execution','No agent consumption','No machine-readable policy','No approval, block/allow, authorization, or enforcement','release:check -- --target v0.8.4','does not authorize real framework integration'], 'docs/framework-adapter-reviewer-runbook-v0.8.4.md', assertIncludes);
 }
 
 export const frameworkIntegrationReadinessSuite = Object.freeze({ name: 'framework-integration-readiness', gateScripts: frameworkIntegrationReadinessGateScripts, requiredManifestPaths: frameworkIntegrationReadinessRequiredManifestPaths, assertManifestMetadata: assertFrameworkIntegrationReadinessManifestMetadata, assertRelease: assertFrameworkIntegrationReadinessRelease });
