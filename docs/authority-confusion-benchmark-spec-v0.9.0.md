@@ -18,6 +18,8 @@ This is the first proof-of-value step for Synaptic Mesh: create 12 local/redacte
 
 ## Non-goals and boundary
 
+The fixture fields such as `naiveLikelyDecision` and `expectedSafeDecision` are offline benchmark labels for human review and reproducibility. They are not runtime policy decisions, not agent-consumed instructions, and not authorization.
+
 No runtime. No network. No SDK import. No resource fetch. No tool execution. No live traffic. No watcher/daemon. No memory/config writes. No external publication automation. No agent consumption. No machine-readable policy decision. No approval, block/allow, authorization, or enforcement.
 
 ## Review command

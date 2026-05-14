@@ -43,6 +43,7 @@ Synaptic Mesh keeps protocol, implementation, research, and evidence separate so
 - [Authority confusion benchmark spec v0.9.0](authority-confusion-benchmark-spec-v0.9.0.md) defines local/redacted context-is-not-permission benchmark cases without adding runtime authority.
 - [Authority confusion naive baseline v0.9.1](authority-confusion-naive-baseline-v0.9.1.md) records a 12/12 false-permit baseline simulation as failure evidence only.
 - [Authority confusion Synaptic Mesh comparison v0.9.2](authority-confusion-synaptic-comparison-v0.9.2.md) records a local before/after comparison reducing false permits from 12 to 0 without runtime authority.
+- [Authority confusion public demo package v0.9.3](authority-confusion-public-demo-v0.9.3.md) packages the before/after evidence for human review while preserving zero runtime authority.
 
 ## Scaling rules
 

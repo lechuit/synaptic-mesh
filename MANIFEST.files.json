@@ -69,8 +69,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 1706,
-      "sha256": "9888b8ea09cd1ed1347c6a2bb83a392d558cad2bf2b1eda4e68746b335a4d9a9"
+      "bytes": 1839,
+      "sha256": "71922f2d95f878d76e681f7b7a86773e294a00d3752f4e3254aad6b8a4be5345"
     },
     {
       "path": "RELEASE_CANDIDATE.md",
@@ -79,8 +79,8 @@
     },
     {
       "path": "RELEASE_NOTES.md",
-      "bytes": 1101,
-      "sha256": "3fc63a167afd4a35f19d84a848251f1219e1dfbd77e78ff768031731aa592479"
+      "bytes": 1129,
+      "sha256": "b024346f9b5812fb6f4e3f023a1e0ac94cc85f1d0d415b74f9f41720897571e7"
     },
     {
       "path": "design-notes/adapter-boundary-langgraph-mcp-v0.md",
@@ -144,13 +144,18 @@
     },
     {
       "path": "docs/authority-confusion-benchmark-spec-v0.9.0.md",
-      "bytes": 1722,
-      "sha256": "0355fdd689a6283f8ae790ef82be4e9af6268e41cdc9c525f268c216124f14e5"
+      "bytes": 1961,
+      "sha256": "29b80e968d7eae2e77711cf9bb84f6cd292d85c5e9d2675900f091bc68c660ab"
     },
     {
       "path": "docs/authority-confusion-naive-baseline-v0.9.1.md",
       "bytes": 1331,
       "sha256": "9a03ac7de5aa0ddc1c90d1c3fcf76fe27ebd6fd0d26f94709e47b8277b22f2c6"
+    },
+    {
+      "path": "docs/authority-confusion-public-demo-v0.9.3.md",
+      "bytes": 1804,
+      "sha256": "f2a2881bd18b08d404705d08f46fa477ce78af8992e6c9a2f11e4cbb2cbea958"
     },
     {
       "path": "docs/authority-confusion-synaptic-comparison-v0.9.2.md",
@@ -449,8 +454,8 @@
     },
     {
       "path": "docs/repo-structure.md",
-      "bytes": 8685,
-      "sha256": "1a04e9f2c2a244c5124902c89752edb813287161b9a80dbd7399875acfe8ab41"
+      "bytes": 8872,
+      "sha256": "7620492741ce50f9ca7f8af5dcb2f65ff1d1d9eec98b812afed4e1320b0db665"
     },
     {
       "path": "docs/retention-negative-controls.md",
@@ -673,6 +678,11 @@
       "sha256": "cc39a2b0bbaa8ea64e0200549e8e0d37bd5b6c45d7ea61e58723e0876094d3c9"
     },
     {
+      "path": "docs/status-v0.9.3.md",
+      "bytes": 1183,
+      "sha256": "6244035c4ce3bef4c9605dc7ae2ce81234d659760883dce8ea182b4a439b06db"
+    },
+    {
       "path": "docs/threat-model-v0.md",
       "bytes": 6211,
       "sha256": "b00847bd4db3b2878165eda2866257420e7da8bbbdecaaad8e6aaefce2256d38"
@@ -756,6 +766,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/authority-confusion-naive-baseline-v0.9.1.out.json",
       "bytes": 6410,
       "sha256": "0aa55968490ff197b874dbadd533de86bb04bae5f586c2b07f80ea3ad61f7d30"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/authority-confusion-public-demo-v0.9.3.out.json",
+      "bytes": 5151,
+      "sha256": "3e61ecf9517bc005ef52dc67a81f7eb925667a9cff3944f538b0b45e763ffa10"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/authority-confusion-synaptic-comparison-v0.9.2.out.json",
@@ -1829,8 +1844,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/package.json",
-      "bytes": 22302,
-      "sha256": "c40a3b480321048e01f904d43cbdcfde0670363ebb984294757eace48fb33853"
+      "bytes": 22526,
+      "sha256": "4a27d9484a09e715f1d4f48069fc66e24fc697a6564714b43ef8e48db9588102"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/action-context-packet.mjs",
@@ -1951,6 +1966,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/tests/authority-confusion-naive-baseline-v0.9.1.mjs",
       "bytes": 5231,
       "sha256": "2e37f55234d0bf632694d702350dfaa3ae0c54a31cff55ec4e610f164f826b91"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/authority-confusion-public-demo-v0.9.3.mjs",
+      "bytes": 5487,
+      "sha256": "8532f27443d5316457e7653a5e1bc42f821327e54373cbf4b9eda6322beb8f4d"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/authority-confusion-synaptic-comparison-v0.9.2.mjs",
@@ -2989,8 +3009,8 @@
     },
     {
       "path": "tools/release-checks/authority-confusion-benchmark.mjs",
-      "bytes": 10510,
-      "sha256": "1f2ca82871c3a771cc9881927b47fc053f375e5d196c0f77ad7b299ec5392adf"
+      "bytes": 13650,
+      "sha256": "8d8d698dd9163ee8fff7f5f34dc33c2ca9792e4c4dca69cd7092fea3f77a6cbd"
     },
     {
       "path": "tools/release-checks/framework-integration-readiness.mjs",
