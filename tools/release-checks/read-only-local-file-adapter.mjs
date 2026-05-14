@@ -14,6 +14,7 @@ export const readOnlyLocalFileAdapterGateScripts = Object.freeze([
   'test:read-only-local-file-adapter-reproducibility',
   'test:read-only-local-file-adapter-failure-catalog',
   'test:read-only-local-file-adapter-reviewer-runbook',
+  'test:read-only-local-file-adapter-public-review-package',
 ]);
 
 export const readOnlyLocalFileAdapterRequiredManifestPaths = Object.freeze([
@@ -47,8 +48,10 @@ export const readOnlyLocalFileAdapterRequiredManifestPaths = Object.freeze([
   'docs/status-v0.5.1.md',
   'docs/status-v0.5.2.md',
   'docs/status-v0.5.3.md',
+  'docs/status-v0.5.4.md',
   'docs/read-only-local-file-adapter-canary-runbook.md',
   'docs/read-only-local-file-adapter-reviewer-runbook.md',
+  'docs/read-only-local-file-adapter-public-review-package.md',
   'implementation/synaptic-mesh-shadow-v0/tests/adapter-implementation-hazard-catalog.mjs',
   'implementation/synaptic-mesh-shadow-v0/fixtures/adapter-implementation-hazard-catalog-v0.4.8.json',
   'implementation/synaptic-mesh-shadow-v0/evidence/adapter-implementation-hazard-catalog-v0.4.8.out.json',
@@ -62,6 +65,7 @@ export const readOnlyLocalFileAdapterRequiredManifestPaths = Object.freeze([
   'implementation/synaptic-mesh-shadow-v0/tests/read-only-local-file-adapter-reproducibility.mjs',
   'implementation/synaptic-mesh-shadow-v0/tests/read-only-local-file-adapter-failure-catalog.mjs',
   'implementation/synaptic-mesh-shadow-v0/tests/read-only-local-file-adapter-reviewer-runbook.mjs',
+  'implementation/synaptic-mesh-shadow-v0/tests/read-only-local-file-adapter-public-review-package.mjs',
   'implementation/synaptic-mesh-shadow-v0/src/adapters/read-only-local-file-adapter.mjs',
   'implementation/synaptic-mesh-shadow-v0/fixtures/read-only-local-file-adapter-inputs.json',
   'implementation/synaptic-mesh-shadow-v0/fixtures/read-only-local-file-adapter-results.json',
@@ -74,6 +78,37 @@ export const readOnlyLocalFileAdapterRequiredManifestPaths = Object.freeze([
   'implementation/synaptic-mesh-shadow-v0/evidence/read-only-local-file-adapter-reproducibility.out.json',
   'implementation/synaptic-mesh-shadow-v0/evidence/read-only-local-file-adapter-failure-catalog.out.json',
   'implementation/synaptic-mesh-shadow-v0/evidence/read-only-local-file-adapter-reviewer-runbook.out.json',
+  'implementation/synaptic-mesh-shadow-v0/evidence/read-only-local-file-adapter-public-review-package.out.json',
+]);
+
+const V054_REPRODUCIBILITY_TOKENS = Object.freeze([
+  'adapter_public_review_package_v0_5_4',
+  'adapter_implemented_true',
+  'framework_integration_authorized_false',
+  'runtime_authorized_false',
+  'tool_execution_false',
+  'memory_write_false',
+  'config_write_false',
+  'external_publication_false',
+  'agent_consumed_false',
+  'machine_readable_policy_decision_false',
+  'may_block_false',
+  'may_allow_false',
+  'enforcement_false',
+]);
+
+const V054_RUNTIME_BOUNDARY_TOKENS = Object.freeze([
+  'read_only_local_file_adapter_public_review_package_only',
+  'phase_close_only',
+  'explicit_already_redacted_file_only',
+  'record_only_evidence_only',
+  'no_runtime_authorization',
+  'no_framework_integration_authorization',
+  'no_enforcement',
+  'no_network_call',
+  'no_tool_execution',
+  'no_memory_write',
+  'no_config_write',
 ]);
 
 const V053_REPRODUCIBILITY_TOKENS = Object.freeze([
@@ -424,6 +459,11 @@ function assertAllIncluded(text, phrases, label, assertIncludes) {
 }
 
 export function assertReadOnlyLocalFileAdapterManifestMetadata({ manifest, manifestReleaseTag, assertIncludes }) {
+  if (manifestReleaseTag === 'v0.5.4') {
+    assertAllIncluded(manifest.reproducibility, V054_REPRODUCIBILITY_TOKENS, 'MANIFEST.json reproducibility', assertIncludes);
+    assertAllIncluded(manifest.runtimeBoundary, V054_RUNTIME_BOUNDARY_TOKENS, 'MANIFEST.json runtimeBoundary', assertIncludes);
+  }
+
   if (manifestReleaseTag === 'v0.5.3') {
     assertAllIncluded(manifest.reproducibility, V053_REPRODUCIBILITY_TOKENS, 'MANIFEST.json reproducibility', assertIncludes);
     assertAllIncluded(manifest.runtimeBoundary, V053_RUNTIME_BOUNDARY_TOKENS, 'MANIFEST.json runtimeBoundary', assertIncludes);
@@ -478,8 +518,10 @@ export function assertReadOnlyLocalFileAdapterRelease({ repoRoot, packageRoot, m
   const readOnlyLocalFileAdapterReproducibility = readJson(path.join(packageRoot, 'evidence/read-only-local-file-adapter-reproducibility.out.json'));
   const readOnlyLocalFileAdapterFailureCatalog = readJson(path.join(packageRoot, 'evidence/read-only-local-file-adapter-failure-catalog.out.json'));
   const readOnlyLocalFileAdapterReviewerRunbook = readJson(path.join(packageRoot, 'evidence/read-only-local-file-adapter-reviewer-runbook.out.json'));
+  const readOnlyLocalFileAdapterPublicReviewPackage = readJson(path.join(packageRoot, 'evidence/read-only-local-file-adapter-public-review-package.out.json'));
   const readOnlyLocalFileAdapterCanaryRunbookText = readFileSync(path.join(repoRoot, 'docs/read-only-local-file-adapter-canary-runbook.md'), 'utf8');
   const readOnlyLocalFileAdapterReviewerRunbookText = readFileSync(path.join(repoRoot, 'docs/read-only-local-file-adapter-reviewer-runbook.md'), 'utf8');
+  const readOnlyLocalFileAdapterPublicReviewPackageText = readFileSync(path.join(repoRoot, 'docs/read-only-local-file-adapter-public-review-package.md'), 'utf8');
 
   assertSummary(readOnlyLocalFileAdapterSchema?.summary, {
     readOnlyLocalFileAdapterSchema: 'pass',
@@ -650,6 +692,28 @@ export function assertReadOnlyLocalFileAdapterRelease({ repoRoot, packageRoot, m
     'test:read-only-local-file-adapter-reviewer-runbook',
   ], 'read-only local-file adapter reviewer runbook', assertIncludes);
 
+  assertSummary(readOnlyLocalFileAdapterPublicReviewPackage?.summary, {
+    readOnlyLocalFileAdapterPublicReviewPackage: 'pass',
+    adapterImplemented: true,
+    frameworkIntegrationAuthorized: false,
+    runtimeAuthorized: false,
+    toolExecution: false,
+    memoryWrite: false,
+    configWrite: false,
+    externalPublication: false,
+    agentConsumed: false,
+    machineReadablePolicyDecision: false,
+    mayBlock: false,
+    mayAllow: false,
+    enforcement: false,
+  }, 'read-only local-file adapter public review package', assert);
+  assertAllIncluded(readOnlyLocalFileAdapterPublicReviewPackageText, [
+    'This package closes the read-only local-file adapter review phase',
+    'A passing public review package is evidence that this local adapter review phase stayed within boundary.',
+    'The next phase, if any, must be explicitly authorized separately and must not inherit permission from this package.',
+    'test:read-only-local-file-adapter-public-review-package',
+  ], 'read-only local-file adapter public review package', assertIncludes);
+
   assert(readOnlyLocalFileAdapterCanaryRunbook?.summary?.dependsOnLabels?.includes('PR #3 negative controls'), 'read-only local-file adapter canary runbook evidence must include PR #3 negative controls label');
   assert(readOnlyLocalFileAdapterCanaryRunbook?.summary?.dependsOnLabels?.includes('PR #4 positive canary'), 'read-only local-file adapter canary runbook evidence must include PR #4 positive canary label');
   assert(readOnlyLocalFileAdapterCanaryRunbook?.summary?.dependsOnSlugs?.includes('v0.5.0-alpha-pr3-read-only-local-file-adapter-negative-controls'), 'read-only local-file adapter canary runbook evidence must include PR #3 dependency slug');
@@ -717,6 +781,18 @@ export function assertReadOnlyLocalFileAdapterRelease({ repoRoot, packageRoot, m
   if (manifestReleaseTag === 'v0.5.0-alpha') {
     const statusV050Alpha = readFileSync(path.join(repoRoot, 'docs/status-v0.5.0-alpha.md'), 'utf8');
     assertAllIncluded(statusV050Alpha, STATUS_V050_ALPHA_REQUIRED_TEXT, 'docs/status-v0.5.0-alpha.md', assertIncludes);
+  }
+
+  if (manifestReleaseTag === 'v0.5.4') {
+    const statusV054 = readFileSync(path.join(repoRoot, 'docs/status-v0.5.4.md'), 'utf8');
+    assertAllIncluded(statusV054, [
+      'public review package',
+      'test:read-only-local-file-adapter-public-review-package',
+      'readOnlyLocalFileAdapterPublicReviewPackage',
+      'adapterImplemented',
+      'frameworkIntegrationAuthorized',
+      'runtimeAuthorized',
+    ], 'docs/status-v0.5.4.md', assertIncludes);
   }
 
   if (manifestReleaseTag === 'v0.5.3') {

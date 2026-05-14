@@ -69,8 +69,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 4919,
-      "sha256": "1241fae81091912fbd91010809f3ffdf33efdf6760f5ae8bca3b75a3f23cdcd8"
+      "bytes": 5225,
+      "sha256": "45b7145e836eb9ccaf002a82e23ed04d70e276ff3591a74b094bced36e505510"
     },
     {
       "path": "RELEASE_CANDIDATE.md",
@@ -79,8 +79,8 @@
     },
     {
       "path": "RELEASE_NOTES.md",
-      "bytes": 2333,
-      "sha256": "34f40f57c12a548b5d306c1601ee1e1f7413d914ee55b7e5ae00f3d556fd6183"
+      "bytes": 2430,
+      "sha256": "9eacb90f23039ed6cacb63d0a5957debcf4f7dca30a6e10124d78dfd4b0d2b51"
     },
     {
       "path": "design-notes/adapter-boundary-langgraph-mcp-v0.md",
@@ -303,6 +303,11 @@
       "sha256": "3b1221f6d9b1e31e5fc39ff39a5e5642b1de24db9288417ad564961e56ca91ee"
     },
     {
+      "path": "docs/read-only-local-file-adapter-public-review-package.md",
+      "bytes": 4596,
+      "sha256": "49e7411f391e204d20d5d494ed17208f502beca13f17047e2e91032af15534eb"
+    },
+    {
       "path": "docs/read-only-local-file-adapter-reviewer-runbook.md",
       "bytes": 6210,
       "sha256": "4c327e4af492fea4e0b31a2f8df207f1ef1550969322a5f82c17cfdf58af92e5"
@@ -349,8 +354,8 @@
     },
     {
       "path": "docs/release-checklist.md",
-      "bytes": 11600,
-      "sha256": "9fd0f35d88d6176ea8eece4ab4d2795e31f01fe64c0ca5093545b930632d6b03"
+      "bytes": 11782,
+      "sha256": "ee8c14ef2a057846a8d826ac9527b7d534e7ba45b7ef72c171d987558cca2cb9"
     },
     {
       "path": "docs/release-ladder-v0.2-alpha.md",
@@ -466,6 +471,11 @@
       "path": "docs/status-v0.5.3.md",
       "bytes": 1672,
       "sha256": "97d32c3014678568545b7e47fbbb06f302ea86fef7873e39f0b925a1c75f3e3d"
+    },
+    {
+      "path": "docs/status-v0.5.4.md",
+      "bytes": 2085,
+      "sha256": "acf4a5d9d3f45b46613a0215863df3f5b234f88a0a2f11f13cd7c2a0cc6c6185"
     },
     {
       "path": "docs/threat-model-v0.md",
@@ -936,6 +946,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/read-only-local-file-adapter-negative-controls.out.json",
       "bytes": 14273,
       "sha256": "8c5cc852fb01d8ae99a39080fbdb1fcc511005a903f6dcff20b558a4b141d99b"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/read-only-local-file-adapter-public-review-package.out.json",
+      "bytes": 1377,
+      "sha256": "ffae0cd80a8b03e7b398c5cefbc17f0b1af2b9e9d659bb7864f0236cbeac3b1d"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/read-only-local-file-adapter-reproducibility.out.json",
@@ -1449,8 +1464,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/package.json",
-      "bytes": 16569,
-      "sha256": "459f043d0e7f12bfebe713af13a8cbd6ed91396d19384c66f0129e549dc09f04"
+      "bytes": 16778,
+      "sha256": "3eddefe7a67fbf920754e1ed02f9a1fde9ad059c6fafa26a265fbca94642f2dd"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/action-context-packet.mjs",
@@ -1821,6 +1836,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/tests/read-only-local-file-adapter-negative-controls.mjs",
       "bytes": 20821,
       "sha256": "b135ac1183b5b80c71c3a571ed1b5aa60b01bb8f83a9d7640afb1f2edf203e12"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/read-only-local-file-adapter-public-review-package.mjs",
+      "bytes": 8241,
+      "sha256": "6f3cdedcab596370fba81a0e99c140211d5bfb053930a2df2a0a36e0542c967a"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/read-only-local-file-adapter-reproducibility.mjs",
@@ -2479,8 +2499,8 @@
     },
     {
       "path": "tools/release-checks/read-only-local-file-adapter.mjs",
-      "bytes": 36236,
-      "sha256": "ed9c4aa6df8ac93e2c1db0e424e8d086b41ac38271ae24f08c0cd44a9d69d8e8"
+      "bytes": 39592,
+      "sha256": "bfd866d1161fd10337e18c332fab5514154dbe740da6f810fc4a1dbccc351256"
     },
     {
       "path": "tools/update-manifest.mjs",
