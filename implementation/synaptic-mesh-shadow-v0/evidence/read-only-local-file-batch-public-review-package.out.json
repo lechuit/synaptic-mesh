@@ -1,0 +1,43 @@
+{
+  "artifact": "T-synaptic-mesh-read-only-local-file-batch-public-review-package-v0.6.5",
+  "timestamp": "2026-05-14T14:30:00.000Z",
+  "summary": {
+    "readOnlyLocalFileBatchPublicReviewPackage": "pass",
+    "releaseLayer": "v0.6.5",
+    "closesV06x": true,
+    "evidenceItems": 4,
+    "docsPresent": 2,
+    "batchAdapterImplemented": true,
+    "frameworkIntegrationAuthorized": false,
+    "runtimeAuthorized": false,
+    "recordOnly": true,
+    "toolExecution": false,
+    "memoryWrite": false,
+    "configWrite": false,
+    "externalPublication": false,
+    "agentConsumed": false,
+    "machineReadablePolicyDecision": false,
+    "mayBlock": false,
+    "mayAllow": false,
+    "authorization": false,
+    "enforcement": false
+  },
+  "evidence": [
+    "implementation/synaptic-mesh-shadow-v0/evidence/read-only-local-file-batch-negative-controls.out.json",
+    "implementation/synaptic-mesh-shadow-v0/evidence/read-only-local-file-batch-canary.out.json",
+    "implementation/synaptic-mesh-shadow-v0/evidence/read-only-local-file-batch-reproducibility.out.json",
+    "implementation/synaptic-mesh-shadow-v0/evidence/read-only-local-file-batch-failure-isolation.out.json"
+  ],
+  "docs": [
+    "docs/status-v0.6.5.md",
+    "docs/read-only-local-file-batch-public-review-package.md"
+  ],
+  "boundary": [
+    "public_review_package_only",
+    "closes_v0_6_x_batch_readiness",
+    "manual_local_read_only",
+    "record_only",
+    "not_runtime_authorization",
+    "no_enforcement"
+  ]
+}

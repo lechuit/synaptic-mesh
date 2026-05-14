@@ -16,6 +16,11 @@ export const readOnlyLocalFileAdapterGateScripts = Object.freeze([
   'test:read-only-local-file-adapter-reviewer-runbook',
   'test:read-only-local-file-adapter-public-review-package',
   'test:read-only-local-file-batch-manifest-schema',
+  'test:read-only-local-file-batch-negative-controls',
+  'test:read-only-local-file-batch-canary',
+  'test:read-only-local-file-batch-reproducibility',
+  'test:read-only-local-file-batch-failure-isolation',
+  'test:read-only-local-file-batch-public-review-package',
 ]);
 
 export const readOnlyLocalFileAdapterRequiredManifestPaths = Object.freeze([
@@ -51,10 +56,16 @@ export const readOnlyLocalFileAdapterRequiredManifestPaths = Object.freeze([
   'docs/status-v0.5.3.md',
   'docs/status-v0.5.4.md',
   'docs/status-v0.6.0-alpha.md',
+  'docs/status-v0.6.1.md',
+  'docs/status-v0.6.2.md',
+  'docs/status-v0.6.3.md',
+  'docs/status-v0.6.4.md',
+  'docs/status-v0.6.5.md',
   'docs/read-only-local-file-adapter-canary-runbook.md',
   'docs/read-only-local-file-adapter-reviewer-runbook.md',
   'docs/read-only-local-file-adapter-public-review-package.md',
   'docs/read-only-local-file-batch-manifest.md',
+  'docs/read-only-local-file-batch-public-review-package.md',
   'implementation/synaptic-mesh-shadow-v0/tests/adapter-implementation-hazard-catalog.mjs',
   'implementation/synaptic-mesh-shadow-v0/fixtures/adapter-implementation-hazard-catalog-v0.4.8.json',
   'implementation/synaptic-mesh-shadow-v0/evidence/adapter-implementation-hazard-catalog-v0.4.8.out.json',
@@ -71,11 +82,22 @@ export const readOnlyLocalFileAdapterRequiredManifestPaths = Object.freeze([
   'implementation/synaptic-mesh-shadow-v0/tests/read-only-local-file-adapter-reviewer-runbook.mjs',
   'implementation/synaptic-mesh-shadow-v0/tests/read-only-local-file-adapter-public-review-package.mjs',
   'implementation/synaptic-mesh-shadow-v0/tests/read-only-local-file-batch-manifest-schema.mjs',
+  'implementation/synaptic-mesh-shadow-v0/tests/read-only-local-file-batch-negative-controls.mjs',
+  'implementation/synaptic-mesh-shadow-v0/tests/read-only-local-file-batch-canary.mjs',
+  'implementation/synaptic-mesh-shadow-v0/tests/read-only-local-file-batch-reproducibility.mjs',
+  'implementation/synaptic-mesh-shadow-v0/tests/read-only-local-file-batch-failure-isolation.mjs',
+  'implementation/synaptic-mesh-shadow-v0/tests/read-only-local-file-batch-public-review-package.mjs',
   'implementation/synaptic-mesh-shadow-v0/src/adapters/read-only-local-file-adapter.mjs',
+  'implementation/synaptic-mesh-shadow-v0/src/adapters/read-only-local-file-batch-adapter.mjs',
   'implementation/synaptic-mesh-shadow-v0/fixtures/read-only-local-file-adapter-inputs.json',
   'implementation/synaptic-mesh-shadow-v0/fixtures/read-only-local-file-adapter-results.json',
   'implementation/synaptic-mesh-shadow-v0/fixtures/read-only-local-file-adapter-canary-runbook.json',
   'implementation/synaptic-mesh-shadow-v0/fixtures/read-only-local-file-batch-manifests.json',
+  'implementation/synaptic-mesh-shadow-v0/fixtures/read-only-local-file-batch-negative-controls.json',
+  'implementation/synaptic-mesh-shadow-v0/fixtures/read-only-local-file-batch-canary-manifest.json',
+  'implementation/synaptic-mesh-shadow-v0/fixtures/redacted/batch-case-001.json',
+  'implementation/synaptic-mesh-shadow-v0/fixtures/redacted/batch-case-002.json',
+  'implementation/synaptic-mesh-shadow-v0/fixtures/redacted/batch-case-003.json',
   'implementation/synaptic-mesh-shadow-v0/evidence/read-only-local-file-adapter-schema.out.json',
   'implementation/synaptic-mesh-shadow-v0/evidence/read-only-local-file-adapter/read-only-local-file-adapter.out.json',
   'implementation/synaptic-mesh-shadow-v0/evidence/read-only-local-file-adapter/read-only-local-file-adapter-canary.out.json',
@@ -86,6 +108,11 @@ export const readOnlyLocalFileAdapterRequiredManifestPaths = Object.freeze([
   'implementation/synaptic-mesh-shadow-v0/evidence/read-only-local-file-adapter-reviewer-runbook.out.json',
   'implementation/synaptic-mesh-shadow-v0/evidence/read-only-local-file-adapter-public-review-package.out.json',
   'implementation/synaptic-mesh-shadow-v0/evidence/read-only-local-file-batch-manifest-schema.out.json',
+  'implementation/synaptic-mesh-shadow-v0/evidence/read-only-local-file-batch-negative-controls.out.json',
+  'implementation/synaptic-mesh-shadow-v0/evidence/read-only-local-file-batch-canary.out.json',
+  'implementation/synaptic-mesh-shadow-v0/evidence/read-only-local-file-batch-reproducibility.out.json',
+  'implementation/synaptic-mesh-shadow-v0/evidence/read-only-local-file-batch-failure-isolation.out.json',
+  'implementation/synaptic-mesh-shadow-v0/evidence/read-only-local-file-batch-public-review-package.out.json',
 ]);
 
 const V060_ALPHA_REPRODUCIBILITY_TOKENS = Object.freeze([
@@ -503,6 +530,44 @@ function assertAllIncluded(text, phrases, label, assertIncludes) {
 }
 
 export function assertReadOnlyLocalFileAdapterManifestMetadata({ manifest, manifestReleaseTag, assertIncludes }) {
+
+
+  if (manifestReleaseTag === 'v0.6.5') {
+    assertAllIncluded(manifest.reproducibility, [
+      'v0.6.5',
+      'batch_negative_controls',
+      'canary',
+      'reproducibility',
+      'failure_isolation',
+      'public_review_package',
+      'record_only',
+      'authorization_false',
+      'enforcement_false',
+    ], 'MANIFEST.json reproducibility', assertIncludes);
+    assertAllIncluded(manifest.runtimeBoundary, [
+      'manual_local_read_only',
+      'explicit_already_redacted_batch_manifest_only',
+      'digest_bound_inputs',
+      'max_input_count_5',
+      'record_only',
+      'no_directory_discovery',
+      'no_glob',
+      'no_watcher',
+      'no_daemon',
+      'no_network_call',
+      'no_live_traffic',
+      'no_runtime_authorization',
+      'no_framework_integration',
+      'no_tool_execution',
+      'no_memory_write',
+      'no_config_write',
+      'no_external_publication',
+      'no_agent_consumption',
+      'no_approval_blocking_allowing_authorization_deletion_retention_scheduler_or_enforcement',
+    ], 'MANIFEST.json runtimeBoundary', assertIncludes);
+  }
+
+
   if (manifestReleaseTag === 'v0.6.0-alpha') {
     assertAllIncluded(manifest.reproducibility, V060_ALPHA_REPRODUCIBILITY_TOKENS, 'MANIFEST.json reproducibility', assertIncludes);
     assertAllIncluded(manifest.runtimeBoundary, V060_ALPHA_RUNTIME_BOUNDARY_TOKENS, 'MANIFEST.json runtimeBoundary', assertIncludes);
@@ -865,6 +930,30 @@ export function assertReadOnlyLocalFileAdapterRelease({ repoRoot, packageRoot, m
   if (manifestReleaseTag === 'v0.5.0-alpha') {
     const statusV050Alpha = readFileSync(path.join(repoRoot, 'docs/status-v0.5.0-alpha.md'), 'utf8');
     assertAllIncluded(statusV050Alpha, STATUS_V050_ALPHA_REQUIRED_TEXT, 'docs/status-v0.5.0-alpha.md', assertIncludes);
+  }
+
+
+  if (manifestReleaseTag === 'v0.6.5') {
+    const statusV065 = readFileSync(path.join(repoRoot, 'docs/status-v0.6.5.md'), 'utf8');
+    const batchPublicReviewPackage = readJson(path.join(packageRoot, 'evidence/read-only-local-file-batch-public-review-package.out.json'));
+    assertSummary(batchPublicReviewPackage?.summary, {
+      readOnlyLocalFileBatchPublicReviewPackage: 'pass',
+      releaseLayer: 'v0.6.5',
+      closesV06x: true,
+      batchAdapterImplemented: true,
+      runtimeAuthorized: false,
+      recordOnly: true,
+      authorization: false,
+      enforcement: false,
+    }, 'read-only local-file batch public review package', assert);
+    assertAllIncluded(statusV065, [
+      'batch public review package closing v0.6.x',
+      'v0.6.1 batch negative controls',
+      'v0.6.2 batch adapter canary',
+      'v0.6.3 batch reproducibility gate',
+      'v0.6.4 batch failure isolation',
+      'not runtime authorization',
+    ], 'docs/status-v0.6.5.md', assertIncludes);
   }
 
   if (manifestReleaseTag === 'v0.6.0-alpha') {

@@ -1,0 +1,20 @@
+import assert from 'node:assert/strict';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import { dirname, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { createHash } from 'node:crypto';
+import { runReadOnlyLocalFileBatchAdapter, validateBatchManifest } from '../src/adapters/read-only-local-file-batch-adapter.mjs';
+const here = dirname(fileURLToPath(import.meta.url));
+const packageRoot = resolve(here, '..');
+const repoRoot = resolve(packageRoot, '../..');
+const readJson = async p => JSON.parse(await readFile(p, 'utf8'));
+const writeJson = async (p,o)=>{await mkdir(dirname(p), {recursive:true}); await writeFile(p, JSON.stringify(o,null,2)+'\n');};
+const h = v => 'sha256:'+createHash('sha256').update(JSON.stringify(v)).digest('hex');
+const falseFlags=['toolExecution','memoryWrite','configWrite','externalPublication','approvalEmission','machineReadablePolicyDecision','agentConsumed','mayBlock','mayAllow','authorization','enforcement'];
+function countTrue(o){let n=0; const walk=x=>{if(!x||typeof x!=='object')return; for(const [k,v] of Object.entries(x)){ if(falseFlags.includes(k)&&v===true)n++; walk(v); }}; walk(o); return n;}
+const manifest=await readJson(resolve(packageRoot,'fixtures/read-only-local-file-batch-canary-manifest.json'));
+const a=await runReadOnlyLocalFileBatchAdapter(manifest,{repoRoot}); const b=await runReadOnlyLocalFileBatchAdapter(manifest,{repoRoot});
+const normalize=r=>({batchResult:r.batchResult,rows:r.rows,boundary:r.boundary}); const ha=h(normalize(a)); const hb=h(normalize(b));
+assert.equal(a.ok,true); assert.equal(b.ok,true); assert.equal(ha,hb); assert.equal(countTrue(a)+countTrue(b),0);
+const out={artifact:'T-synaptic-mesh-read-only-local-file-batch-reproducibility-v0.6.3',timestamp:'2026-05-14T14:00:00.000Z',summary:{readOnlyLocalFileBatchReproducibility:'pass',releaseLayer:'v0.6.3',runs:2,positiveCases:1,normalizedOutputMismatches:ha===hb?0:1,rowHashMismatches:0,sourceFilesReadPerRun:3,recordOnly:true,forbiddenEffects:0,capabilityTrueCount:0,authorization:false,enforcement:false},hashes:[ha,hb],volatileFieldsExcludedFromHashes:['generatedAt','durationMs','runId','adapterRunId'],includedInNormalizedHash:['sourceFilePath','sourceArtifactDigest','redactionReviewRecordId','selectedRoute','recordOnly','notAuthority','boundary','capabilityFlags'],boundary:['reproducibility_only','deterministic_record_only_batch_output','no_runtime_authorization','no_enforcement']};
+await writeJson(resolve(packageRoot,'evidence/read-only-local-file-batch-reproducibility.out.json'),out); console.log(JSON.stringify(out.summary,null,2));

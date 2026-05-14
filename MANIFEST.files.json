@@ -69,8 +69,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 5970,
-      "sha256": "5e12ea5721a400cdbbd56144ab578c4c2f090d4135dd510ebe36e53fdb0e858b"
+      "bytes": 1515,
+      "sha256": "2e80584ce587b8aa6b351de90b4d053629fa4743204e960759c721e6cac9083d"
     },
     {
       "path": "RELEASE_CANDIDATE.md",
@@ -79,8 +79,8 @@
     },
     {
       "path": "RELEASE_NOTES.md",
-      "bytes": 3144,
-      "sha256": "028a62fccc22bfe6b11db3de93b660393aeb84dc31fdef669f312ed586491425"
+      "bytes": 1299,
+      "sha256": "f8eb2706065b22454e43648aa3e033202bde26919cdf264fc64ee80152a67228"
     },
     {
       "path": "design-notes/adapter-boundary-langgraph-mcp-v0.md",
@@ -318,6 +318,11 @@
       "sha256": "3e38c86163fb8aa363dbfd75a8a02b02ea021d762c7d296dab6e220bfe1e6f99"
     },
     {
+      "path": "docs/read-only-local-file-batch-public-review-package.md",
+      "bytes": 939,
+      "sha256": "72727da6a833460fcc0bdb495597e453b3a0a785f15bca08c1210bb35330df38"
+    },
+    {
       "path": "docs/real-flow-replay.md",
       "bytes": 2626,
       "sha256": "0cce7504c180f2e96abec00a8d9e4b9dbb31048cb49f2f1c0c41e2c42f997a54"
@@ -486,6 +491,31 @@
       "path": "docs/status-v0.6.0-alpha.md",
       "bytes": 2757,
       "sha256": "4d6cc8cecf7e1584d4ba60ee1854cf96f36177009fe3eb7fb414c06dbdfd672f"
+    },
+    {
+      "path": "docs/status-v0.6.1.md",
+      "bytes": 294,
+      "sha256": "d5a1771434514c7fe0abfca8d7f70b35b786b299e2fd5d4e33e56fae01808c40"
+    },
+    {
+      "path": "docs/status-v0.6.2.md",
+      "bytes": 282,
+      "sha256": "af3d8d1eb3c7140165b3c88549762da7654c8860debff7569357866d82d8963c"
+    },
+    {
+      "path": "docs/status-v0.6.3.md",
+      "bytes": 300,
+      "sha256": "011684d4453805b7c2f3212b9188b0f17770ecd70ceb93cbfa546cefa5be45c4"
+    },
+    {
+      "path": "docs/status-v0.6.4.md",
+      "bytes": 305,
+      "sha256": "904dfd916abc1ce3ccfbe02002009842e703c2a1950c9924bd1df4c31d38814d"
+    },
+    {
+      "path": "docs/status-v0.6.5.md",
+      "bytes": 693,
+      "sha256": "60c508a5a81356ea32f43a3d47331f8b9f729200b59d9b0380a53985e9a89ad1"
     },
     {
       "path": "docs/threat-model-v0.md",
@@ -988,9 +1018,34 @@
       "sha256": "b9cdf8380eacd5ea7e6225536be745408e789b98aebce840a35934239b1f7e68"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/read-only-local-file-batch-canary.out.json",
+      "bytes": 3222,
+      "sha256": "25cc30da3bc4f35d4511a8fecf1a8be090281aa8d1149a7e3ae1a2f58149e4c9"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/read-only-local-file-batch-failure-isolation.out.json",
+      "bytes": 1325,
+      "sha256": "4c894474ec1003ca18d3b1c0cac2ca081a489349c664cb612282bb36adf6aab5"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/read-only-local-file-batch-manifest-schema.out.json",
       "bytes": 4057,
       "sha256": "718b3138355c214aeea6cec85bcf1f30a0c498e18b0229b33b20221dd2ce0fcf"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/read-only-local-file-batch-negative-controls.out.json",
+      "bytes": 5189,
+      "sha256": "f58362f13fa92d1c945964563fb432b5ae9d6de55624aba346c8695cfe88f688"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/read-only-local-file-batch-public-review-package.out.json",
+      "bytes": 1482,
+      "sha256": "92e335e1c7f3c72f8796a957bbb7fda8feefd97d43d6cdb840edd0db3e68433c"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/read-only-local-file-batch-reproducibility.out.json",
+      "bytes": 1155,
+      "sha256": "8e0cbe854e0e2c579b7425e25d22bd525c8b207bf426148580666509d2ba3581"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/real-flow-classifier-scorecard.out.json",
@@ -1408,9 +1463,19 @@
       "sha256": "4803133032b2b17a4ee89b86cb1ca528e7dcc3c46980b88ed4f8cb01a0bf0767"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/fixtures/read-only-local-file-batch-canary-manifest.json",
+      "bytes": 1302,
+      "sha256": "a1c09bc81731e8aae1b42abc4f42fabb8193ec23498c529d2b2d9a044c2c9e66"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/fixtures/read-only-local-file-batch-manifests.json",
       "bytes": 3479,
       "sha256": "4e7d6d9d31ada157b0d5b95bbb94c6a62d5028d6a67e4ec22b6d924d6a246551"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/fixtures/read-only-local-file-batch-negative-controls.json",
+      "bytes": 25228,
+      "sha256": "cfcfc6537db8f4173595311dbe352b18d51d3c83c84968d8a7c33851ece58349"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/fixtures/real-flow-replay.json",
@@ -1436,6 +1501,21 @@
       "path": "implementation/synaptic-mesh-shadow-v0/fixtures/receipts.json",
       "bytes": 6528,
       "sha256": "2c20850dbcfb5e5fc6c578d23309d9541c2826072fd1faf617366fea624d57f6"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/fixtures/redacted/batch-case-001.json",
+      "bytes": 217,
+      "sha256": "9c145c9508462da2a709fd897959f76f988ca98e26f85e99517c5a186985932b"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/fixtures/redacted/batch-case-002.json",
+      "bytes": 212,
+      "sha256": "c2769964d9f5d622d80d1199e1dab9868ccda3bd29137fc649f436b8e3dd35f4"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/fixtures/redacted/batch-case-003.json",
+      "bytes": 235,
+      "sha256": "cf157440a472b7cd066148db3f87a91d19e69d959ac142cd581543fab4824b9c"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/fixtures/redacted/example.json",
@@ -1484,8 +1564,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/package.json",
-      "bytes": 17022,
-      "sha256": "5b08b8507c3328a31a6570bb272545fed85463092367dc5082948cfe5590c480"
+      "bytes": 18314,
+      "sha256": "ea0f4ce8851c540da9a3e4fb5017d97988956155b9338abd42d3c4f59a894799"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/action-context-packet.mjs",
@@ -1501,6 +1581,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/src/adapters/read-only-local-file-adapter.mjs",
       "bytes": 14368,
       "sha256": "ab148da85748749648e7ec52e632666d381830410ce13eed3b805806e51b064b"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/src/adapters/read-only-local-file-batch-adapter.mjs",
+      "bytes": 6476,
+      "sha256": "c74733ae896725c0577cdb4e7817038f24082c7a242c337c3dba3183601de4f1"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/adapters/review-local-io.mjs",
@@ -1883,9 +1968,34 @@
       "sha256": "b12a5cde536ae83d3b213af929b77a097b8e3eb40f89cf0ce8ca1631731e1680"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/read-only-local-file-batch-canary.mjs",
+      "bytes": 2482,
+      "sha256": "7a8d6cc741ba376f9268a6da48ff1cc91a4e00e8639e54ab27518b64d1da6465"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/read-only-local-file-batch-failure-isolation.mjs",
+      "bytes": 2974,
+      "sha256": "424ac75cfe59d1584d55e1738e626ff6d6234c8762bdb2ac4aaf061e1ec8a46f"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/read-only-local-file-batch-manifest-schema.mjs",
       "bytes": 9533,
       "sha256": "9926088d7b8e6ea43837a7b2ca5dc8d1764c915df04ec415a3a7960e8e881bea"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/read-only-local-file-batch-negative-controls.mjs",
+      "bytes": 2675,
+      "sha256": "963c8cb62c15f2358297e3d25a60c0f6b44fa0fd0d6fc289fad01d7aa5646729"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/read-only-local-file-batch-public-review-package.mjs",
+      "bytes": 2919,
+      "sha256": "59ac59fcd1ba56ae8978a0a031eea57b7840fc9690921fdf9ef350d3ea16d9af"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/read-only-local-file-batch-reproducibility.mjs",
+      "bytes": 2631,
+      "sha256": "24403634c6001884752c2ee1747e6b069813210bb9edbed1a9f6c14899fe36f1"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/real-flow-classifier-scorecard.mjs",
@@ -2509,8 +2619,8 @@
     },
     {
       "path": "tools/release-check.mjs",
-      "bytes": 78767,
-      "sha256": "42c341e570e35216b068844748d1ae1b4652ecc01c70ca4c6b9b46c68ef8cba2"
+      "bytes": 78719,
+      "sha256": "17be2c4fc437e601550a7cd5ba19707ec2ccf456ee810e84ba7936724684b16e"
     },
     {
       "path": "tools/release-checks/index.mjs",
@@ -2529,8 +2639,8 @@
     },
     {
       "path": "tools/release-checks/read-only-local-file-adapter.mjs",
-      "bytes": 43781,
-      "sha256": "a568e3daada0da371761a48dc55a2649f68ced5c256cf0580cc88c77c68301d7"
+      "bytes": 47889,
+      "sha256": "c8e8e6bc353fe6bacb2191f4a4e7e0d70f9881bf8559850a1a771e3130a18709"
     },
     {
       "path": "tools/update-manifest.mjs",
