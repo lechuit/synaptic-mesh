@@ -1,30 +1,30 @@
-# Synaptic Mesh v0.6.5
+# Synaptic Mesh v0.7.0-alpha
 
-Status: batch public review release `v0.6.5`; manual, local, read-only, explicit already-redacted batch manifests only, digest-bound inputs, max five inputs, record-only evidence; **not runtime-ready**; **not production/enforcement-ready**.
+Status: framework adapter boundary spec public review release `v0.7.0-alpha`; framework-shaped local fixture contract only; already-redacted local inputs only; record-only evidence; **not runtime-ready**; **not production/enforcement-ready**.
 
-Current v0.6.5 status is narrower than the long-term protocol goal: this repository now closes the v0.6.x batch-readiness phase with negative controls, a manual batch canary, reproducibility, failure isolation, and a public review package. It does not authorize runtime integration or automatic agent consumption.
+Current v0.7.0-alpha status is narrower than the long-term protocol goal: this repository now defines how a fake/framework-shaped input can be reduced to a local, already-redacted, no-effects artifact. It does not implement any real framework adapter or runtime integration.
 
 ## Validate
 
 ```bash
-npm --prefix implementation/synaptic-mesh-shadow-v0 run release:check -- --target v0.6.5
+npm --prefix implementation/synaptic-mesh-shadow-v0 run release:check -- --target v0.7.0-alpha
 ```
 
-## v0.6.x roadmap
+## v0.7.x roadmap
 
-- `v0.6.0-alpha` — batch manifest schema.
-- `v0.6.1` — batch negative controls.
-- `v0.6.2` — batch adapter canary.
-- `v0.6.3` — batch reproducibility gate.
-- `v0.6.4` — batch failure isolation.
-- `v0.6.5` — batch public review package.
+- `v0.7.0-alpha` — framework adapter boundary spec.
+- `v0.7.1` — framework adapter hazard catalog.
+- `v0.7.2` — simulated framework-shaped adapter.
+- `v0.7.3` — framework adapter reproducibility/drift gate.
+- `v0.7.4` — framework adapter reviewer runbook.
+- `v0.7.5` — framework adapter public review package.
 
 ## Boundary
 
-This package is for protocol, citation, fixture, adapter-boundary design, batch-manifest schema, local batch evidence, and reference-implementation review only. No runtime integration, no tools, no memory/config writes, no external publication automation, no approval path, no block/allow, no authorization, no enforcement.
+This package is for protocol, citation, fixture, adapter-boundary design, schema, local evidence, and reference-implementation review only. No MCP adapter, no LangGraph adapter, no A2A adapter, no GitHub bot, no webhook, no network call, no SDK import, no resource fetch, no live traffic, no watcher/daemon, no tools, no memory/config writes, no external publication automation, no approval path, no machine-readable policy, no automatic agent consumption, no block/allow, no authorization, no enforcement.
 
 ## Docs
 
-- [v0.6.5 status](docs/status-v0.6.5.md)
-- [Batch public review package](docs/read-only-local-file-batch-public-review-package.md)
-- [Batch manifest contract](docs/read-only-local-file-batch-manifest.md)
+- [v0.7.0-alpha status](docs/status-v0.7.0-alpha.md)
+- [Framework-shaped adapter boundary](docs/framework-shaped-adapter-boundary.md)
+- [Repository structure guide](docs/repo-structure.md)
