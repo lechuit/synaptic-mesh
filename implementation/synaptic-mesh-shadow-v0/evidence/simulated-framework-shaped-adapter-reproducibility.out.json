@@ -1,0 +1,143 @@
+{
+  "summary": {
+    "artifact": "T-synaptic-mesh-simulated-framework-shaped-adapter-reproducibility-v0.7.3",
+    "timestamp": "2026-05-14T15:45:00.000Z",
+    "simulatedFrameworkAdapterReproducibility": "pass",
+    "releaseLayer": "v0.7.3",
+    "dependsOn": "v0.7.2-simulated-framework-shaped-adapter",
+    "mode": "manual_local_framework_shaped_adapter_reproducibility_drift_record_only",
+    "runs": 2,
+    "normalizedOutputMismatches": 0,
+    "baselineMismatches": 0,
+    "baselineEvidenceHash": "sha256:a6961ad5fdff192c5f41fccca5e0c4b7338def714af1c2f5b89391dbc13e38a1",
+    "normalizedOutputHash": "sha256:a6961ad5fdff192c5f41fccca5e0c4b7338def714af1c2f5b89391dbc13e38a1",
+    "negativeControls": 8,
+    "expectedRejects": 8,
+    "unexpectedAccepts": 0,
+    "expectedReasonCodeMisses": 0,
+    "positiveCases": 2,
+    "frameworkKinds": [
+      "mcp_like",
+      "langgraph_like"
+    ],
+    "classifierCompactAllowedTrue": 0,
+    "parserEvidenceProduced": 2,
+    "classifierDecisionsProduced": 2,
+    "decisionTracesProduced": 2,
+    "advisoryReportsProduced": 2,
+    "recordOnly": true,
+    "realFrameworkIntegration": false,
+    "sdkImported": false,
+    "networkUsed": false,
+    "liveTrafficAllowed": false,
+    "toolExecution": false,
+    "resourceFetch": false,
+    "memoryWrite": false,
+    "configWrite": false,
+    "externalPublication": false,
+    "approvalEmission": false,
+    "machineReadablePolicyDecision": false,
+    "agentConsumed": false,
+    "mayBlock": false,
+    "mayAllow": false,
+    "authorization": false,
+    "enforcement": false
+  },
+  "runs": [
+    {
+      "runId": "run-1",
+      "normalizedOutputHash": "sha256:a6961ad5fdff192c5f41fccca5e0c4b7338def714af1c2f5b89391dbc13e38a1",
+      "baselineMatch": true
+    },
+    {
+      "runId": "run-2",
+      "normalizedOutputHash": "sha256:a6961ad5fdff192c5f41fccca5e0c4b7338def714af1c2f5b89391dbc13e38a1",
+      "baselineMatch": true
+    }
+  ],
+  "negativeResults": [
+    {
+      "controlId": "summary-positive-case-count-drift",
+      "accepted": false,
+      "reasonCodes": [
+        "SIMULATED_ADAPTER_SUMMARY_DRIFT"
+      ]
+    },
+    {
+      "controlId": "framework-kind-order-drift",
+      "accepted": false,
+      "reasonCodes": [
+        "SIMULATED_ADAPTER_FRAMEWORK_KIND_DRIFT",
+        "SIMULATED_ADAPTER_SUMMARY_DRIFT"
+      ]
+    },
+    {
+      "controlId": "classifier-compact-allowed-regression",
+      "accepted": false,
+      "reasonCodes": [
+        "SIMULATED_ADAPTER_CLASSIFIER_COMPACT_DRIFT",
+        "SIMULATED_ADAPTER_SUMMARY_DRIFT"
+      ]
+    },
+    {
+      "controlId": "machine-policy-flag-regression",
+      "accepted": false,
+      "reasonCodes": [
+        "SIMULATED_ADAPTER_MACHINE_POLICY_DRIFT",
+        "SIMULATED_ADAPTER_SUMMARY_DRIFT"
+      ]
+    },
+    {
+      "controlId": "agent-consumption-flag-regression",
+      "accepted": false,
+      "reasonCodes": [
+        "SIMULATED_ADAPTER_AGENT_CONSUMPTION_DRIFT",
+        "SIMULATED_ADAPTER_SUMMARY_DRIFT"
+      ]
+    },
+    {
+      "controlId": "authorization-enforcement-regression",
+      "accepted": false,
+      "reasonCodes": [
+        "SIMULATED_ADAPTER_CAPABILITY_DRIFT",
+        "SIMULATED_ADAPTER_SUMMARY_DRIFT"
+      ]
+    },
+    {
+      "controlId": "decision-trace-boundary-verdict-drift",
+      "accepted": false,
+      "reasonCodes": [
+        "SIMULATED_ADAPTER_CLASSIFIER_COMPACT_DRIFT",
+        "SIMULATED_ADAPTER_DECISION_TRACE_DRIFT"
+      ]
+    },
+    {
+      "controlId": "boundary-token-loss",
+      "accepted": false,
+      "reasonCodes": [
+        "SIMULATED_ADAPTER_BOUNDARY_DRIFT"
+      ]
+    }
+  ],
+  "boundary": [
+    "manual_local_reproducibility_only",
+    "fake_local_redacted_fixture_only",
+    "committed_record_only_evidence_only",
+    "not_real_framework_integration",
+    "not_machine_policy",
+    "not_agent_consumed",
+    "no_sdk",
+    "no_network",
+    "no_live_traffic",
+    "no_resource_fetch",
+    "no_tools",
+    "no_memory_write",
+    "no_config_write",
+    "no_publication",
+    "no_approval",
+    "no_blocking",
+    "no_allowing",
+    "no_authorization",
+    "no_enforcement"
+  ]
+}

@@ -5,6 +5,7 @@ export const frameworkShapedAdapterGateScripts = Object.freeze([
   'test:framework-shaped-adapter-boundary-schema',
   'test:framework-shaped-adapter-hazard-catalog',
   'test:simulated-framework-shaped-adapter',
+  'test:simulated-framework-shaped-adapter-reproducibility',
 ]);
 
 export const frameworkShapedAdapterRequiredManifestPaths = Object.freeze([
@@ -16,16 +17,21 @@ export const frameworkShapedAdapterRequiredManifestPaths = Object.freeze([
   'docs/framework-shaped-adapter-hazard-catalog.md',
   'docs/status-v0.7.2.md',
   'docs/simulated-framework-shaped-adapter.md',
+  'docs/status-v0.7.3.md',
+  'docs/simulated-framework-shaped-adapter-reproducibility.md',
   'docs/repo-structure.md',
   'implementation/synaptic-mesh-shadow-v0/fixtures/framework-shaped-adapter-boundaries.json',
   'implementation/synaptic-mesh-shadow-v0/fixtures/framework-shaped-adapter-hazard-catalog.json',
   'implementation/synaptic-mesh-shadow-v0/fixtures/simulated-framework-shaped-adapter.json',
+  'implementation/synaptic-mesh-shadow-v0/fixtures/simulated-framework-shaped-adapter-reproducibility.json',
   'implementation/synaptic-mesh-shadow-v0/tests/framework-shaped-adapter-boundary-schema.mjs',
   'implementation/synaptic-mesh-shadow-v0/tests/framework-shaped-adapter-hazard-catalog.mjs',
   'implementation/synaptic-mesh-shadow-v0/tests/simulated-framework-shaped-adapter.mjs',
+  'implementation/synaptic-mesh-shadow-v0/tests/simulated-framework-shaped-adapter-reproducibility.mjs',
   'implementation/synaptic-mesh-shadow-v0/evidence/framework-shaped-adapter-boundary-schema.out.json',
   'implementation/synaptic-mesh-shadow-v0/evidence/framework-shaped-adapter-hazard-catalog.out.json',
   'implementation/synaptic-mesh-shadow-v0/evidence/simulated-framework-shaped-adapter.out.json',
+  'implementation/synaptic-mesh-shadow-v0/evidence/simulated-framework-shaped-adapter-reproducibility.out.json',
 ]);
 
 function assertSummary(summary, expected, label, assert) {
@@ -153,9 +159,108 @@ export function assertFrameworkShapedAdapterManifestMetadata({ manifest, manifes
       'no_approval_blocking_allowing_authorization_deletion_retention_scheduler_or_enforcement',
     ], 'MANIFEST.json runtimeBoundary', assertIncludes);
   }
+
+
+  if (manifestReleaseTag === 'v0.7.3') {
+    assertAllIncluded(manifest.reproducibility, [
+      'v0.7.3',
+      'simulated_framework_adapter_reproducibility',
+      'runs_2',
+      'normalized_output_mismatches_0',
+      'baseline_mismatches_0',
+      'negative_controls_8',
+      'unexpected_accepts_0',
+      'expected_reason_code_misses_0',
+      'classifier_compactAllowed_true_0',
+      'record_only',
+      'machine_readable_policy_decision_false',
+      'agent_consumed_false',
+      'authorization_false',
+      'enforcement_false',
+    ], 'MANIFEST.json reproducibility', assertIncludes);
+    assertAllIncluded(manifest.runtimeBoundary, [
+      'simulated_framework_adapter_reproducibility_only',
+      'fake_local_redacted_fixture_only',
+      'committed_record_only_evidence_only',
+      'no_real_framework_integration',
+      'no_sdk_import',
+      'no_network_call',
+      'no_live_traffic',
+      'no_resource_fetch',
+      'no_tool_call',
+      'no_memory_write',
+      'no_config_write',
+      'no_external_publication',
+      'no_agent_consumption',
+      'no_machine_readable_policy',
+      'no_approval_blocking_allowing_authorization_deletion_retention_scheduler_or_enforcement',
+    ], 'MANIFEST.json runtimeBoundary', assertIncludes);
+  }
 }
 
 export function assertFrameworkShapedAdapterRelease({ repoRoot, packageRoot, manifestReleaseTag, readJson, assert, assertIncludes }) {
+
+  if (manifestReleaseTag === 'v0.7.3') {
+    const reproducibility = readJson(path.join(packageRoot, 'evidence/simulated-framework-shaped-adapter-reproducibility.out.json'));
+    assertSummary(reproducibility?.summary, {
+      simulatedFrameworkAdapterReproducibility: 'pass',
+      releaseLayer: 'v0.7.3',
+      dependsOn: 'v0.7.2-simulated-framework-shaped-adapter',
+      runs: 2,
+      normalizedOutputMismatches: 0,
+      baselineMismatches: 0,
+      negativeControls: 8,
+      expectedRejects: 8,
+      unexpectedAccepts: 0,
+      expectedReasonCodeMisses: 0,
+      positiveCases: 2,
+      classifierCompactAllowedTrue: 0,
+      parserEvidenceProduced: 2,
+      classifierDecisionsProduced: 2,
+      decisionTracesProduced: 2,
+      advisoryReportsProduced: 2,
+      recordOnly: true,
+      realFrameworkIntegration: false,
+      sdkImported: false,
+      networkUsed: false,
+      toolExecution: false,
+      resourceFetch: false,
+      memoryWrite: false,
+      configWrite: false,
+      externalPublication: false,
+      approvalEmission: false,
+      machineReadablePolicyDecision: false,
+      agentConsumed: false,
+      mayBlock: false,
+      mayAllow: false,
+      authorization: false,
+      enforcement: false,
+    }, 'simulated framework-shaped adapter reproducibility evidence', assert);
+    assert(JSON.stringify(reproducibility?.summary?.frameworkKinds) === JSON.stringify(['mcp_like', 'langgraph_like']), 'simulated framework-shaped adapter reproducibility must preserve mcp_like and langgraph_like');
+    const statusV073 = readFileSync(path.join(repoRoot, 'docs/status-v0.7.3.md'), 'utf8');
+    const docs = readFileSync(path.join(repoRoot, 'docs/simulated-framework-shaped-adapter-reproducibility.md'), 'utf8');
+    assertAllIncluded(statusV073, [
+      'simulated framework-shaped adapter reproducibility/drift',
+      'normalizedOutputMismatches: 0',
+      'baselineMismatches: 0',
+      'rejects eight drift controls',
+      'unexpectedAccepts: 0',
+      'expectedReasonCodeMisses: 0',
+      'classifier compactAllowed true count: 0',
+      'No real framework integration',
+    ], 'docs/status-v0.7.3.md', assertIncludes);
+    assertAllIncluded(docs, [
+      'reruns the fake/local/already-redacted fixtures twice',
+      'normalize parserEvidence / classifierDecision / DecisionTrace / advisory report fields',
+      'reject drift controls',
+      'classifier `compactAllowed`',
+      'machine-policy flags',
+      'agent consumption',
+      'authorization/enforcement capability flags',
+      'It does not authorize a real adapter',
+    ], 'docs/simulated-framework-shaped-adapter-reproducibility.md', assertIncludes);
+  }
+
 
   if (manifestReleaseTag === 'v0.7.2') {
     const simulated = readJson(path.join(packageRoot, 'evidence/simulated-framework-shaped-adapter.out.json'));
