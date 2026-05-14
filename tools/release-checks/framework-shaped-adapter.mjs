@@ -4,6 +4,7 @@ import path from 'node:path';
 export const frameworkShapedAdapterGateScripts = Object.freeze([
   'test:framework-shaped-adapter-boundary-schema',
   'test:framework-shaped-adapter-hazard-catalog',
+  'test:simulated-framework-shaped-adapter',
 ]);
 
 export const frameworkShapedAdapterRequiredManifestPaths = Object.freeze([
@@ -13,13 +14,18 @@ export const frameworkShapedAdapterRequiredManifestPaths = Object.freeze([
   'docs/status-v0.7.0-alpha.md',
   'docs/status-v0.7.1.md',
   'docs/framework-shaped-adapter-hazard-catalog.md',
+  'docs/status-v0.7.2.md',
+  'docs/simulated-framework-shaped-adapter.md',
   'docs/repo-structure.md',
   'implementation/synaptic-mesh-shadow-v0/fixtures/framework-shaped-adapter-boundaries.json',
   'implementation/synaptic-mesh-shadow-v0/fixtures/framework-shaped-adapter-hazard-catalog.json',
+  'implementation/synaptic-mesh-shadow-v0/fixtures/simulated-framework-shaped-adapter.json',
   'implementation/synaptic-mesh-shadow-v0/tests/framework-shaped-adapter-boundary-schema.mjs',
   'implementation/synaptic-mesh-shadow-v0/tests/framework-shaped-adapter-hazard-catalog.mjs',
+  'implementation/synaptic-mesh-shadow-v0/tests/simulated-framework-shaped-adapter.mjs',
   'implementation/synaptic-mesh-shadow-v0/evidence/framework-shaped-adapter-boundary-schema.out.json',
   'implementation/synaptic-mesh-shadow-v0/evidence/framework-shaped-adapter-hazard-catalog.out.json',
+  'implementation/synaptic-mesh-shadow-v0/evidence/simulated-framework-shaped-adapter.out.json',
 ]);
 
 function assertSummary(summary, expected, label, assert) {
@@ -74,6 +80,7 @@ export function assertFrameworkShapedAdapterManifestMetadata({ manifest, manifes
       'no_external_publication',
       'no_agent_consumption',
       'no_machine_readable_policy',
+      'classifier_compactAllowed_false',
       'no_approval_blocking_allowing_authorization_deletion_retention_scheduler_or_enforcement',
     ], 'MANIFEST.json runtimeBoundary', assertIncludes);
   }
@@ -108,9 +115,101 @@ export function assertFrameworkShapedAdapterManifestMetadata({ manifest, manifes
       'no_approval_blocking_allowing_authorization_deletion_retention_scheduler_or_enforcement',
     ], 'MANIFEST.json runtimeBoundary', assertIncludes);
   }
+
+
+  if (manifestReleaseTag === 'v0.7.2') {
+    assertAllIncluded(manifest.reproducibility, [
+      'v0.7.2',
+      'simulated_framework_shaped_adapter',
+      'positive_cases_2',
+      'parser_evidence_produced_2',
+      'classifier_decisions_produced_2',
+      'decision_traces_produced_2',
+      'advisory_reports_produced_2',
+      'record_only',
+      'network_used_false',
+      'tool_execution_false',
+      'agent_consumed_false',
+      'classifier_compactAllowed_true_0',
+      'machine_readable_policy_decision_false',
+      'authorization_false',
+      'enforcement_false',
+    ], 'MANIFEST.json reproducibility', assertIncludes);
+    assertAllIncluded(manifest.runtimeBoundary, [
+      'simulated_framework_shaped_adapter_only',
+      'fake_local_redacted_fixture_only',
+      'record_only_evidence_only',
+      'no_real_framework_integration',
+      'no_sdk_import',
+      'no_network_call',
+      'no_live_traffic',
+      'no_resource_fetch',
+      'no_tool_call',
+      'no_memory_write',
+      'no_config_write',
+      'no_external_publication',
+      'no_agent_consumption',
+      'no_machine_readable_policy',
+      'no_approval_blocking_allowing_authorization_deletion_retention_scheduler_or_enforcement',
+    ], 'MANIFEST.json runtimeBoundary', assertIncludes);
+  }
 }
 
 export function assertFrameworkShapedAdapterRelease({ repoRoot, packageRoot, manifestReleaseTag, readJson, assert, assertIncludes }) {
+
+  if (manifestReleaseTag === 'v0.7.2') {
+    const simulated = readJson(path.join(packageRoot, 'evidence/simulated-framework-shaped-adapter.out.json'));
+    assertSummary(simulated?.summary, {
+      simulatedFrameworkShapedAdapter: 'pass',
+      releaseLayer: 'v0.7.2',
+      positiveCases: 2,
+      parserEvidenceProduced: 2,
+      classifierDecisionsProduced: 2,
+      classifierCompactAllowedTrue: 0,
+      decisionTracesProduced: 2,
+      advisoryReportsProduced: 2,
+      recordOnly: true,
+      realFrameworkIntegration: false,
+      sdkImported: false,
+      networkUsed: false,
+      toolExecution: false,
+      resourceFetch: false,
+      memoryWrite: false,
+      configWrite: false,
+      externalPublication: false,
+      approvalEmission: false,
+      machineReadablePolicyDecision: false,
+      agentConsumed: false,
+      mayBlock: false,
+      mayAllow: false,
+      authorization: false,
+      enforcement: false,
+    }, 'simulated framework-shaped adapter evidence', assert);
+    assert(JSON.stringify(simulated?.summary?.frameworkKinds) === JSON.stringify(['mcp_like', 'langgraph_like']), 'simulated framework-shaped adapter must cover mcp_like and langgraph_like');
+    const statusV072 = readFileSync(path.join(repoRoot, 'docs/status-v0.7.2.md'), 'utf8');
+    const docs = readFileSync(path.join(repoRoot, 'docs/simulated-framework-shaped-adapter.md'), 'utf8');
+    assertAllIncluded(statusV072, [
+      'simulated framework-shaped adapter',
+      'fake/local/already-redacted',
+      'two parserEvidence records',
+      'two classifier decisions',
+      'two DecisionTraces',
+      'two advisory reports',
+      'No real framework integration',
+      'compactAllowed true count: 0',
+    ], 'docs/status-v0.7.2.md', assertIncludes);
+    assertAllIncluded(docs, [
+      'fake framework-shaped local fixture',
+      'parserEvidence',
+      'classifierDecision',
+      'DecisionTrace',
+      'advisory report',
+      'record-only evidence',
+      'This is still not real framework integration',
+      'compactAllowed=false',
+    ], 'docs/simulated-framework-shaped-adapter.md', assertIncludes);
+  }
+
 
   if (manifestReleaseTag === 'v0.7.1') {
     const hazard = readJson(path.join(packageRoot, 'evidence/framework-shaped-adapter-hazard-catalog.out.json'));
