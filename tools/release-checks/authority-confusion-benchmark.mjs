@@ -7,6 +7,7 @@ export const authorityConfusionBenchmarkGateScripts = Object.freeze([
   'test:authority-confusion-synaptic-comparison-v092',
   'test:authority-confusion-public-demo-v093',
   'test:authority-confusion-adversarial-hardening-v094',
+  'test:authority-confusion-phase-close-v095',
 ]);
 
 export const authorityConfusionBenchmarkRequiredManifestPaths = Object.freeze([
@@ -17,11 +18,13 @@ export const authorityConfusionBenchmarkRequiredManifestPaths = Object.freeze([
   'docs/authority-confusion-synaptic-comparison-v0.9.2.md',
   'docs/authority-confusion-public-demo-v0.9.3.md',
   'docs/authority-confusion-adversarial-hardening-v0.9.4.md',
+  'docs/authority-confusion-phase-close-v0.9.5.md',
   'docs/status-v0.9.0.md',
   'docs/status-v0.9.1.md',
   'docs/status-v0.9.2.md',
   'docs/status-v0.9.3.md',
   'docs/status-v0.9.4.md',
+  'docs/status-v0.9.5.md',
   'docs/repo-structure.md',
   'implementation/synaptic-mesh-shadow-v0/fixtures/authority-confusion-benchmark-v0.9.0.json',
   'implementation/synaptic-mesh-shadow-v0/fixtures/authority-confusion-adversarial-variants-v0.9.4.json',
@@ -30,11 +33,13 @@ export const authorityConfusionBenchmarkRequiredManifestPaths = Object.freeze([
   'implementation/synaptic-mesh-shadow-v0/tests/authority-confusion-synaptic-comparison-v0.9.2.mjs',
   'implementation/synaptic-mesh-shadow-v0/tests/authority-confusion-public-demo-v0.9.3.mjs',
   'implementation/synaptic-mesh-shadow-v0/tests/authority-confusion-adversarial-hardening-v0.9.4.mjs',
+  'implementation/synaptic-mesh-shadow-v0/tests/authority-confusion-phase-close-v0.9.5.mjs',
   'implementation/synaptic-mesh-shadow-v0/evidence/authority-confusion-benchmark-spec-v0.9.0.out.json',
   'implementation/synaptic-mesh-shadow-v0/evidence/authority-confusion-naive-baseline-v0.9.1.out.json',
   'implementation/synaptic-mesh-shadow-v0/evidence/authority-confusion-synaptic-comparison-v0.9.2.out.json',
   'implementation/synaptic-mesh-shadow-v0/evidence/authority-confusion-public-demo-v0.9.3.out.json',
   'implementation/synaptic-mesh-shadow-v0/evidence/authority-confusion-adversarial-hardening-v0.9.4.out.json',
+  'implementation/synaptic-mesh-shadow-v0/evidence/authority-confusion-phase-close-v0.9.5.out.json',
 ]);
 
 function assertSummary(summary, expected, label, assert) {
@@ -62,6 +67,10 @@ export function assertAuthorityConfusionBenchmarkManifestMetadata({ manifest, ma
   if (manifestReleaseTag === 'v0.9.4') {
     assertAllIncluded(manifest.reproducibility, ['v0.9.4','authority_confusion_adversarial_hardening','adversarial_variants_48','base_case_coverage_12','variant_kinds_4','category_coverage_12','baseline_false_permits_48','synaptic_mesh_false_permits_0','prevented_false_permits_48','false_permit_reduction_percent_100','offline_labels_only_48','capability_true_count_0','hardening_ready_true'], 'MANIFEST.json reproducibility', assertIncludes);
     assertAllIncluded(manifest.runtimeBoundary, ['authority_confusion_adversarial_hardening_only','offline_evaluation_labels_only','local_redacted_fixture_only','context_is_not_permission','no_runtime','no_network_call','no_sdk_import','no_resource_fetch','no_tool_call','no_live_traffic','no_watcher','no_daemon','no_memory_write','no_config_write','no_external_publication','no_agent_consumption','no_machine_readable_policy','no_approval_blocking_allowing_authorization_or_enforcement'], 'MANIFEST.json runtimeBoundary', assertIncludes);
+  }
+  if (manifestReleaseTag === 'v0.9.5') {
+    assertAllIncluded(manifest.reproducibility, ['v0.9.5','authority_confusion_phase_close','evidence_artifacts_5','evidence_passes_5','missing_evidence_0','total_evaluation_cases_60','total_baseline_false_permits_60','total_synaptic_mesh_false_permits_0','total_prevented_false_permits_60','false_permit_reduction_percent_100','proof_of_value_achieved_true','phase_close_ready_true','framework_integration_authorized_false','next_runtime_step_authorized_false'], 'MANIFEST.json reproducibility', assertIncludes);
+    assertAllIncluded(manifest.runtimeBoundary, ['authority_confusion_phase_close_public_review_only','proof_of_value_not_runtime_authorization','local_redacted_evidence_only','context_is_not_permission','no_runtime','no_network_call','no_sdk_import','no_resource_fetch','no_tool_call','no_live_traffic','no_watcher','no_daemon','no_memory_write','no_config_write','no_external_publication','no_agent_consumption','no_machine_readable_policy','no_approval_blocking_allowing_authorization_or_enforcement'], 'MANIFEST.json runtimeBoundary', assertIncludes);
   }
 }
 
@@ -105,6 +114,14 @@ export function assertAuthorityConfusionBenchmarkRelease({ repoRoot, packageRoot
     const docs = readFileSync(path.join(repoRoot, 'docs/authority-confusion-adversarial-hardening-v0.9.4.md'), 'utf8');
     assertAllIncluded(status, ['adversarial hardening only','adversarialVariants: 48','baselineFalsePermits: 48','synapticMeshFalsePermits: 0','preventedFalsePermits: 48','offlineLabelsOnly: 48','capabilityTrueCount: 0'], 'docs/status-v0.9.4.md', assertIncludes);
     assertAllIncluded(docs, ['Adversarial Hardening','adversarial variants: 48','baseline false permits: 48','Synaptic Mesh false permits: 0','prevented false permits: 48','offline evaluation labels only','No runtime','No network','No SDK import','No tool execution','No memory/config writes','No approval, block/allow, authorization, or enforcement','release:check -- --target v0.9.4'], 'docs/authority-confusion-adversarial-hardening-v0.9.4.md', assertIncludes);
+  }
+  if (manifestReleaseTag === 'v0.9.5') {
+    const evidence = readJson(path.join(packageRoot, 'evidence/authority-confusion-phase-close-v0.9.5.out.json'));
+    assertSummary(evidence?.summary, { authorityConfusionPhaseClose: 'pass', releaseLayer: 'v0.9.5', evidenceArtifacts: 5, evidencePasses: 5, missingEvidence: 0, totalEvaluationCases: 60, totalBaselineFalsePermits: 60, totalSynapticMeshFalsePermits: 0, totalPreventedFalsePermits: 60, falsePermitReductionPercent: 100, proofOfValueAchieved: true, phaseCloseReady: true, frameworkIntegrationAuthorized: false, realFrameworkAdapterImplemented: false, nextRuntimeStepAuthorized: false, runtimeImplemented: false, networkAllowed: false, sdkImported: false, resourceFetch: false, toolExecution: false, agentConsumed: false, machineReadablePolicyDecision: false, approvalEmission: false, mayBlock: false, mayAllow: false, authorization: false, enforcement: false }, 'authority confusion phase close evidence', assert);
+    const status = readFileSync(path.join(repoRoot, 'docs/status-v0.9.5.md'), 'utf8');
+    const docs = readFileSync(path.join(repoRoot, 'docs/authority-confusion-phase-close-v0.9.5.md'), 'utf8');
+    assertAllIncluded(status, ['public review phase close','totalEvaluationCases: 60','totalBaselineFalsePermits: 60','totalSynapticMeshFalsePermits: 0','totalPreventedFalsePermits: 60','proofOfValueAchieved: true','frameworkIntegrationAuthorized: false','nextRuntimeStepAuthorized: false'], 'docs/status-v0.9.5.md', assertIncludes);
+    assertAllIncluded(docs, ['Authority Confusion Phase Close','proof-of-value achieved','total evaluated cases: 60','baseline false permits: 60','Synaptic Mesh false permits: 0','prevented false permits: 60','false permit reduction: 100%','framework integration remains unauthorized','No runtime','No network','No SDK import','No tool execution','No memory/config writes','No approval, block/allow, authorization, or enforcement','release:check -- --target v0.9.5'], 'docs/authority-confusion-phase-close-v0.9.5.md', assertIncludes);
   }
 }
 
