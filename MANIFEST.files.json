@@ -69,8 +69,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 1851,
-      "sha256": "aef658047bb33d5e91ddb177b54740bc054de80e8e5451bb75d77498c365330e"
+      "bytes": 1822,
+      "sha256": "1fd30d68ddbefcc5514593c173dcce3075390b1ceed27dc4b958c64e5f59524a"
     },
     {
       "path": "RELEASE_CANDIDATE.md",
@@ -79,8 +79,8 @@
     },
     {
       "path": "RELEASE_NOTES.md",
-      "bytes": 1359,
-      "sha256": "ffe2627649965a827f1f0c3cb8abc3c27bb6177a80041e3b6b384d554d22c699"
+      "bytes": 1315,
+      "sha256": "df255f5368632d9e9510bc91d532abc1ca929cfa2e5e78b8dd1daccd4ba17e4e"
     },
     {
       "path": "design-notes/adapter-boundary-langgraph-mcp-v0.md",
@@ -191,6 +191,11 @@
       "path": "docs/framework-shaped-adapter-hazard-catalog.md",
       "bytes": 1194,
       "sha256": "ea93c1251d7e40fdd3feba3f724c6d0a6e744f40b5799fb5d065cba3bbc5007a"
+    },
+    {
+      "path": "docs/framework-shaped-adapter-reviewer-runbook.md",
+      "bytes": 5738,
+      "sha256": "3573f5e53bca44471f6db5dea3e9a20971c57bc2254969a7d89f733555e44a38"
     },
     {
       "path": "docs/live-shadow-drift-scorecard.md",
@@ -558,6 +563,11 @@
       "sha256": "64d6e136b5c6cfcd605728f1880182be8653648e1036f323881a6934a2450d3d"
     },
     {
+      "path": "docs/status-v0.7.4.md",
+      "bytes": 1194,
+      "sha256": "92a52b45d5c4a03a307142ef35024a227297b37cb7d7feb7ecbf47342a98930e"
+    },
+    {
       "path": "docs/threat-model-v0.md",
       "bytes": 6211,
       "sha256": "b00847bd4db3b2878165eda2866257420e7da8bbbdecaaad8e6aaefce2256d38"
@@ -696,6 +706,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/framework-shaped-adapter-hazard-catalog.out.json",
       "bytes": 13600,
       "sha256": "33153c2e1f777e138a4c3d6f471542f07ce6e596dd50a2dd25805ae7712df0f2"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/framework-shaped-adapter-reviewer-runbook.out.json",
+      "bytes": 2290,
+      "sha256": "5a556b44774da8b1eecd18d40ecf39d0a72b8ec3e92fb925e438d1e68c5ffdb0"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-input-source-boundary-contracts.out.json",
@@ -1644,8 +1659,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/package.json",
-      "bytes": 19410,
-      "sha256": "2a40b58c45d526251c6ff47bd1161b8b16691f0a0fd195a9559388826c65fe65"
+      "bytes": 19650,
+      "sha256": "a7b0526fc74a53ba6efe77e7b78fdd60df406ccd02a46669b6819ef9c56d0cfc"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/action-context-packet.mjs",
@@ -1821,6 +1836,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/tests/framework-shaped-adapter-hazard-catalog.mjs",
       "bytes": 7111,
       "sha256": "690c266235009c05614695721c93acb2305afac8d0f570894eb0a693622ea1c9"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/framework-shaped-adapter-reviewer-runbook.mjs",
+      "bytes": 9218,
+      "sha256": "b2fb7a8dde0df903cb8e8a0693594a704a97e90eeae90917d3c78674cf84b8f6"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/handoff-summary-compression-loss.mjs",
@@ -2734,8 +2754,8 @@
     },
     {
       "path": "tools/release-checks/framework-shaped-adapter.mjs",
-      "bytes": 16961,
-      "sha256": "aa8f971adf7d3d1f4e0a976ca834cc811fd92dc48effc3ee6a4389ef5a75cdf9"
+      "bytes": 21311,
+      "sha256": "6453df100808174032bce9f1d381f316f03efd522e2b12279923dc8711bfc18f"
     },
     {
       "path": "tools/release-checks/index.mjs",

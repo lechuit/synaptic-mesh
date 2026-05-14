@@ -1,13 +1,13 @@
-# Synaptic Mesh v0.7.3
+# Synaptic Mesh v0.7.4
 
-Status: simulated framework-shaped adapter reproducibility/drift public review release `v0.7.3`; fake/local/already-redacted framework-shaped fixtures only; committed record-only evidence only; **not runtime-ready**; **not production/enforcement-ready**.
+Status: framework-shaped adapter reviewer runbook public review release `v0.7.4`; human-readable guidance only; fake/local/already-redacted framework-shaped fixtures only; committed record-only evidence only; **not runtime-ready**; **not production/enforcement-ready**.
 
-Current v0.7.3 status is narrower than the long-term protocol goal: this repository can rerun the v0.7.2 simulated framework-shaped adapter fixtures locally, normalize record-only review evidence, and reject drift controls. It does not implement any real framework adapter or runtime integration.
+Current v0.7.4 status is narrower than the long-term protocol goal: this repository can guide a human review of the framework-shaped adapter boundary evidence chain. It does not implement any real framework adapter or runtime integration.
 
 ## Validate
 
 ```bash
-npm --prefix implementation/synaptic-mesh-shadow-v0 run release:check -- --target v0.7.3
+npm --prefix implementation/synaptic-mesh-shadow-v0 run release:check -- --target v0.7.4
 ```
 
 ## v0.7.x roadmap
@@ -25,7 +25,7 @@ This package is for protocol, citation, fixture, adapter-boundary design, schema
 
 ## Docs
 
+- [v0.7.4 status](docs/status-v0.7.4.md)
+- [Framework-shaped adapter reviewer runbook](docs/framework-shaped-adapter-reviewer-runbook.md)
 - [v0.7.3 status](docs/status-v0.7.3.md)
 - [Simulated framework-shaped adapter reproducibility/drift](docs/simulated-framework-shaped-adapter-reproducibility.md)
-- [v0.7.2 status](docs/status-v0.7.2.md)
-- [Simulated framework-shaped adapter](docs/simulated-framework-shaped-adapter.md)
