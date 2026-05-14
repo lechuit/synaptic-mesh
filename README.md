@@ -1,12 +1,12 @@
-# Synaptic Mesh v0.4.8
+# Synaptic Mesh v0.5.0-alpha
 
-Status: adapter implementation hazard catalog public review release `v0.4.8`; **manual, local, explicit/redacted input only, record-only, no effects**; **not runtime-ready**; **not production/enforcement-ready**.
+Status: first read-only local-file adapter alpha public review release `v0.5.0-alpha`; **manual, local, one explicit already-redacted input file only, record-only evidence, no effects**; **not runtime-ready**; **not production/enforcement-ready**.
 
 ## What this is
 
 Synaptic Mesh / Multi-Agent Memory Authority Protocol is a protocol proposal for preserving authority, source status, and boundary receipts through multi-agent memory transforms: retrieval, summary, compression, handoff, and review.
 
-Current v0.4.8 status is narrower than the long-term protocol goal: this repository ships a **pre-implementation adapter hazard catalog** only. It catalogs expected failures before the first real read-only local-file adapter canary while keeping implementation, framework integration, and runtime behavior unauthorized without a separate explicit maintainer decision.
+Current v0.5.0-alpha status is narrower than the long-term protocol goal: this repository ships the first minimal **read-only local-file adapter alpha** plus its schema, negative controls, positive canary, and reviewer runbook. The adapter path is intentionally boring: one explicit already-redacted local file becomes parser evidence, then passes through the existing classifier stage into a DecisionTrace, human-readable advisory, and record-only local evidence.
 
 ## Quick local review
 
@@ -16,29 +16,32 @@ From the repository root:
 npm --prefix implementation/synaptic-mesh-shadow-v0 run review:local
 ```
 
-For adapter-shaped contract coverage:
+For adapter-shaped coverage:
 
 ```bash
-npm --prefix implementation/synaptic-mesh-shadow-v0 run test:receiver-adapters
-npm --prefix implementation/synaptic-mesh-shadow-v0 run test:adapter-implementation-hazard-catalog
+npm --prefix implementation/synaptic-mesh-shadow-v0 run test:read-only-local-file-adapter-schema
+npm --prefix implementation/synaptic-mesh-shadow-v0 run test:read-only-local-file-adapter
+npm --prefix implementation/synaptic-mesh-shadow-v0 run test:read-only-local-file-adapter-negative-controls
+npm --prefix implementation/synaptic-mesh-shadow-v0 run test:read-only-local-file-adapter-canary
+npm --prefix implementation/synaptic-mesh-shadow-v0 run test:read-only-local-file-adapter-canary-runbook
 ```
 
-For exact published-release verification, check out the release tag first:
+For exact release-candidate verification:
 
 ```bash
-git checkout v0.4.8
-npm --prefix implementation/synaptic-mesh-shadow-v0 run release:check -- --target v0.4.8
+npm --prefix implementation/synaptic-mesh-shadow-v0 run release:check -- --target v0.5.0-alpha
 ```
 
-For unreleased PRs, use the [release checklist](docs/release-checklist.md) with the next intended target.
+For an already-published release, check out the release tag before re-running the exact target check.
 
 ## What this is not
 
 - not production software;
 - not runtime/tooling integration;
-- not a real adapter;
-- not MCP, LangGraph, GitHub bot, watcher, daemon, webhook, or framework integration;
+- not a general-purpose adapter;
+- not MCP, A2A, LangGraph, GitHub bot, watcher, daemon, webhook, or framework integration;
 - not live monitoring;
+- not raw input processing or raw input persistence;
 - not an autonomous/live/runtime canary;
 - not an agent-consumed advisory authority;
 - not approval, blocking, allowing, authorization, or enforcement;
@@ -46,9 +49,11 @@ For unreleased PRs, use the [release checklist](docs/release-checklist.md) with 
 
 ## Where to read next
 
-- [Full v0.4.8 status snapshot](docs/status-v0.4.8.md) — complete release snapshot, included gates, expected review results, and boundaries.
-- [Adapter implementation hazard catalog](docs/adapter-implementation-hazard-catalog-v0.4.8.md) — pre-implementation expected failure catalog for the local-file adapter candidate.
-- [Read-only adapter reviewer runbook](docs/read-only-adapter-reviewer-runbook-v0.4.3.md) — human-facing boundary review checklist.
+- [Full v0.5.0-alpha status snapshot](docs/status-v0.5.0-alpha.md) — complete release snapshot, included adapter gates, expected review results, and boundaries.
+- [Read-only local-file adapter canary runbook](docs/read-only-local-file-adapter-canary-runbook.md) — human-facing canary review guidance.
+- [Adapter implementation hazard catalog](docs/adapter-implementation-hazard-catalog-v0.4.8.md) — pre-implementation expected failure catalog that PR #3 negative controls exercise.
+- [First real adapter design note](docs/first-real-adapter-design-note-v0.4.7.md) — design-only origin of the adapter shape.
+- [Read-only adapter reviewer runbook](docs/read-only-adapter-reviewer-runbook-v0.4.3.md) — earlier human-facing boundary review checklist.
 - [Release ladder](docs/release-ladder.md) — roadmap from passive canary work toward advisory-only reporting, with explicit non-authority boundaries.
 - [Coverage matrix](docs/coverage-matrix.md) — covered, partial, pending, and out-of-scope claims.
 - [Release checklist](docs/release-checklist.md) — release-local validation and conservative claim checks.
@@ -63,6 +68,6 @@ Included repository areas:
 
 ## Runtime boundary
 
-Runtime/tooling integration, live observation, config changes, permanent memory promotion, automatic agent consumption, autonomous/live/runtime canary, real adapter implementation, MCP/LangGraph/GitHub-bot/framework integration, approval paths, blocking, allowing, authorization, enforcement, production, or L2+ operational use require a separate explicit maintainer approval track.
+Runtime/tooling integration, live observation, config changes, permanent memory promotion, automatic agent consumption, autonomous/live/runtime canary, generalized adapter behavior, MCP/A2A/LangGraph/GitHub-bot/framework integration, approval paths, blocking, allowing, authorization, enforcement, production, or L2+ operational use require a separate explicit maintainer approval track.
 
 This package is for protocol, citation, fixture, adapter-boundary design, and reference-implementation review only.

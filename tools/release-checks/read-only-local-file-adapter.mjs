@@ -1,0 +1,293 @@
+import { readFileSync } from 'node:fs';
+import path from 'node:path';
+
+export const readOnlyLocalFileAdapterGateScripts = Object.freeze([
+  'test:adapter-implementation-hazard-catalog',
+  'test:read-only-local-file-adapter-schema',
+  'test:read-only-local-file-adapter',
+  'test:read-only-local-file-adapter-negative-controls',
+  'test:read-only-local-file-adapter-canary',
+  'test:read-only-local-file-adapter-canary-runbook',
+]);
+
+export const readOnlyLocalFileAdapterRequiredManifestPaths = Object.freeze([
+  'tools/release-checks/read-only-local-file-adapter.mjs',
+  'docs/status-v0.4.8.md',
+  'docs/adapter-implementation-hazard-catalog-v0.4.8.md',
+  'docs/status-v0.5.0-alpha.md',
+  'docs/read-only-local-file-adapter-canary-runbook.md',
+  'implementation/synaptic-mesh-shadow-v0/tests/adapter-implementation-hazard-catalog.mjs',
+  'implementation/synaptic-mesh-shadow-v0/fixtures/adapter-implementation-hazard-catalog-v0.4.8.json',
+  'implementation/synaptic-mesh-shadow-v0/evidence/adapter-implementation-hazard-catalog-v0.4.8.out.json',
+  'schemas/read-only-local-file-adapter-input.schema.json',
+  'schemas/read-only-local-file-adapter-result.schema.json',
+  'implementation/synaptic-mesh-shadow-v0/tests/read-only-local-file-adapter-schema.mjs',
+  'implementation/synaptic-mesh-shadow-v0/tests/read-only-local-file-adapter.mjs',
+  'implementation/synaptic-mesh-shadow-v0/tests/read-only-local-file-adapter-negative-controls.mjs',
+  'implementation/synaptic-mesh-shadow-v0/tests/read-only-local-file-adapter-canary.mjs',
+  'implementation/synaptic-mesh-shadow-v0/tests/read-only-local-file-adapter-canary-runbook.mjs',
+  'implementation/synaptic-mesh-shadow-v0/src/adapters/read-only-local-file-adapter.mjs',
+  'implementation/synaptic-mesh-shadow-v0/fixtures/read-only-local-file-adapter-inputs.json',
+  'implementation/synaptic-mesh-shadow-v0/fixtures/read-only-local-file-adapter-results.json',
+  'implementation/synaptic-mesh-shadow-v0/fixtures/read-only-local-file-adapter-canary-runbook.json',
+  'implementation/synaptic-mesh-shadow-v0/evidence/read-only-local-file-adapter-schema.out.json',
+  'implementation/synaptic-mesh-shadow-v0/evidence/read-only-local-file-adapter/read-only-local-file-adapter.out.json',
+  'implementation/synaptic-mesh-shadow-v0/evidence/read-only-local-file-adapter/read-only-local-file-adapter-canary.out.json',
+  'implementation/synaptic-mesh-shadow-v0/evidence/read-only-local-file-adapter-canary-runbook.out.json',
+  'implementation/synaptic-mesh-shadow-v0/evidence/read-only-local-file-adapter-negative-controls.out.json',
+]);
+
+const V050_ALPHA_REPRODUCIBILITY_TOKENS = Object.freeze([
+  'adapter_schema_pr1',
+  'adapter_skeleton_pr2',
+  'negative_controls_pr3',
+  'positive_canary_pr4',
+  'canary_runbook_pr5',
+  'release_metadata_pr6',
+  'one_explicit_already_redacted_local_file',
+  'source_files_read_1',
+  'negative_cases_17',
+  'unexpected_accepts_0',
+  'forbidden_effects_0',
+  'capability_true_count_0',
+]);
+
+const V050_ALPHA_RUNTIME_BOUNDARY_TOKENS = Object.freeze([
+  'read_only_local_file_adapter_alpha',
+  'explicit_already_redacted_file_only',
+  'record_only_evidence_only',
+  'no_runtime_authorization',
+  'no_enforcement',
+  'no_url_input',
+  'no_network_call',
+  'no_tool_execution',
+  'no_memory_write',
+  'no_config_write',
+]);
+
+const V048_REPRODUCIBILITY_TOKENS = Object.freeze([
+  'adapter_implementation_hazard_catalog',
+  'reject_raw_input',
+  'url_input',
+  'directory_input',
+  'symlink_escape',
+  'machine_policy_leak',
+  'unexpected_accepts_0',
+  'go_to_v0_5_alpha_canary_if_still_green',
+]);
+
+const V048_RUNTIME_BOUNDARY_TOKENS = Object.freeze([
+  'pre_implementation',
+  'no_real_adapter_implementation',
+  'no_url_input',
+  'no_network_call',
+]);
+
+const COMMON_FORBIDDEN_RESULT_FLAGS = Object.freeze([
+  'toolExecution',
+  'memoryWrite',
+  'configWrite',
+  'externalPublication',
+  'approvalEmission',
+  'machineReadablePolicyDecision',
+  'agentConsumed',
+  'mayBlock',
+  'mayAllow',
+  'authorization',
+  'enforcement',
+]);
+
+const RUNBOOK_FORBIDDEN_FLAGS = Object.freeze([
+  'machineReadablePolicyDecision',
+  'consumedByAgent',
+  'authoritative',
+  'mayApprove',
+  'mayBlock',
+  'mayAllow',
+  'mayAuthorize',
+  'mayEnforce',
+  'runtimeIntegrated',
+  'toolExecutionImplemented',
+  'memoryWriteImplemented',
+  'configWriteImplemented',
+  'externalPublicationImplemented',
+  'approvalPathImplemented',
+  'blockingImplemented',
+  'allowingImplemented',
+  'authorizationImplemented',
+  'enforcementImplemented',
+  'automaticAgentConsumptionImplemented',
+]);
+
+const HAZARD_CATALOG_FORBIDDEN_FLAGS = Object.freeze([
+  'rawInputAllowed',
+  'urlInputAllowed',
+  'directoryInputAllowed',
+  'globAllowed',
+  'directoryTraversalAllowed',
+  'symlinkEscapeAllowed',
+  'outputOutsideEvidenceAllowed',
+  'agentConsumed',
+  'machineReadablePolicyDecision',
+  'toolExecution',
+  'memoryWrite',
+  'configWrite',
+  'externalPublication',
+  'approvalEmission',
+  'mayBlock',
+  'mayAllow',
+  'authorization',
+  'enforcement',
+]);
+
+const RUNBOOK_REQUIRED_TEXT = Object.freeze([
+  'PR #3 negative controls',
+  'PR #4 positive canary',
+  'v0.5.0-alpha-pr3-read-only-local-file-adapter-negative-controls',
+  'v0.5.0-alpha-pr4-read-only-local-file-adapter-canary',
+  'This final release command is intentionally not an applicable PR #5 gate while `MANIFEST.json` still targets `v0.4.8`',
+  'A passing adapter canary is evidence of local read-only boundary preservation, not runtime authorization.',
+  'Un canary pass del adapter prueba preservación local de frontera read-only; no autoriza runtime.',
+]);
+
+const STATUS_V050_ALPHA_REQUIRED_TEXT = Object.freeze([
+  'first read-only local-file adapter alpha',
+  'test:read-only-local-file-adapter-negative-controls',
+  'test:read-only-local-file-adapter-canary',
+  'A passing adapter canary is evidence of local read-only boundary preservation, not runtime authorization.',
+  'Un canary pass del adapter prueba preservación local de frontera read-only; no autoriza runtime.',
+]);
+
+function assertSummary(summary, expected, label, assert) {
+  for (const [field, expectedValue] of Object.entries(expected)) {
+    assert(summary?.[field] === expectedValue, `${label} ${field} must be ${JSON.stringify(expectedValue)}`);
+  }
+}
+
+function assertFalseFields(summary, fields, label, assert) {
+  for (const field of fields) {
+    assert(summary?.[field] === false, `${label} must keep ${field} false`);
+  }
+}
+
+function assertAllIncluded(text, phrases, label, assertIncludes) {
+  for (const phrase of phrases) assertIncludes(text, phrase, label);
+}
+
+export function assertReadOnlyLocalFileAdapterManifestMetadata({ manifest, manifestReleaseTag, assertIncludes }) {
+  if (manifestReleaseTag === 'v0.5.0-alpha') {
+    assertAllIncluded(manifest.reproducibility, V050_ALPHA_REPRODUCIBILITY_TOKENS, 'MANIFEST.json reproducibility', assertIncludes);
+    assertAllIncluded(manifest.runtimeBoundary, V050_ALPHA_RUNTIME_BOUNDARY_TOKENS, 'MANIFEST.json runtimeBoundary', assertIncludes);
+  }
+
+  if (manifestReleaseTag === 'v0.4.8') {
+    assertAllIncluded(manifest.reproducibility, V048_REPRODUCIBILITY_TOKENS, 'MANIFEST.json reproducibility', assertIncludes);
+    assertAllIncluded(manifest.runtimeBoundary, V048_RUNTIME_BOUNDARY_TOKENS, 'MANIFEST.json runtimeBoundary', assertIncludes);
+  }
+}
+
+export function assertReadOnlyLocalFileAdapterRelease({ repoRoot, packageRoot, manifestReleaseTag, readJson, assert, assertIncludes }) {
+  const adapterImplementationHazardCatalog = readJson(path.join(packageRoot, 'evidence/adapter-implementation-hazard-catalog-v0.4.8.out.json'));
+  const readOnlyLocalFileAdapterSchema = readJson(path.join(packageRoot, 'evidence/read-only-local-file-adapter-schema.out.json'));
+  const readOnlyLocalFileAdapter = readJson(path.join(packageRoot, 'evidence/read-only-local-file-adapter/read-only-local-file-adapter.out.json'));
+  const readOnlyLocalFileAdapterNegativeControls = readJson(path.join(packageRoot, 'evidence/read-only-local-file-adapter-negative-controls.out.json'));
+  const readOnlyLocalFileAdapterCanary = readJson(path.join(packageRoot, 'evidence/read-only-local-file-adapter/read-only-local-file-adapter-canary.out.json'));
+  const readOnlyLocalFileAdapterCanaryRunbook = readJson(path.join(packageRoot, 'evidence/read-only-local-file-adapter-canary-runbook.out.json'));
+  const readOnlyLocalFileAdapterCanaryRunbookText = readFileSync(path.join(repoRoot, 'docs/read-only-local-file-adapter-canary-runbook.md'), 'utf8');
+
+  assertSummary(readOnlyLocalFileAdapterSchema?.summary, {
+    readOnlyLocalFileAdapterSchema: 'pass',
+    schemaOnly: true,
+    sourceAlreadyRedacted: true,
+    redactionReviewRecordPresent: true,
+    rawContentPersisted: false,
+    recordOnly: true,
+  }, 'read-only local-file adapter schema', assert);
+
+  assertSummary(readOnlyLocalFileAdapter?.summary, {
+    readOnlyLocalFileAdapter: 'pass',
+    adapterSkeleton: true,
+    adapterDecidesAuthority: false,
+    callsExistingPipeline: true,
+    sourceFileRead: true,
+    sourceArtifactDigestVerified: true,
+    parserEvidenceProduced: true,
+    classifierDecisionProduced: true,
+    decisionTraceProduced: true,
+    advisoryReportProduced: true,
+    recordOnly: true,
+  }, 'read-only local-file adapter skeleton', assert);
+
+  assertSummary(readOnlyLocalFileAdapterNegativeControls?.summary, {
+    readOnlyLocalFileAdapterNegativeControls: 'pass',
+    negativeCases: 17,
+    unexpectedAccepts: 0,
+    forbiddenEffects: 0,
+    capabilityTrueCount: 0,
+    sourceFilesRead: 0,
+    networkPrimitiveFindings: 0,
+    rawClassifierLeakFindings: 0,
+  }, 'read-only local-file adapter negative controls', assert);
+
+  assertSummary(readOnlyLocalFileAdapterCanary?.summary, {
+    readOnlyLocalFileAdapterCanary: 'pass',
+    positiveCases: 1,
+    sourceFilesRead: 1,
+    recordOnly: true,
+    parserEvidenceProduced: true,
+    classifierDecisionProduced: true,
+    decisionTraceProduced: true,
+    advisoryReportProduced: true,
+    forbiddenEffects: 0,
+    capabilityTrueCount: 0,
+    rawClassifierDecisionPersisted: false,
+    rawClassifierLeakFindings: 0,
+  }, 'read-only local-file adapter canary', assert);
+
+  assertSummary(readOnlyLocalFileAdapterCanaryRunbook?.summary, {
+    readOnlyLocalFileAdapterCanaryRunbook: 'pass',
+    missingRequiredPhrases: 0,
+    missingRequiredSections: 0,
+    forbiddenPhraseFindings: 0,
+    missingCommands: 0,
+    positiveCanaryPass: true,
+    negativeControlsPass: true,
+    dependsOnNegativeControls: true,
+    dependsOnPositiveCanary: true,
+    releaseCheckDeferredToPr6: true,
+    recordOnly: true,
+  }, 'read-only local-file adapter canary runbook', assert);
+
+  assert(readOnlyLocalFileAdapterCanaryRunbook?.summary?.dependsOnLabels?.includes('PR #3 negative controls'), 'read-only local-file adapter canary runbook evidence must include PR #3 negative controls label');
+  assert(readOnlyLocalFileAdapterCanaryRunbook?.summary?.dependsOnLabels?.includes('PR #4 positive canary'), 'read-only local-file adapter canary runbook evidence must include PR #4 positive canary label');
+  assert(readOnlyLocalFileAdapterCanaryRunbook?.summary?.dependsOnSlugs?.includes('v0.5.0-alpha-pr3-read-only-local-file-adapter-negative-controls'), 'read-only local-file adapter canary runbook evidence must include PR #3 dependency slug');
+  assert(readOnlyLocalFileAdapterCanaryRunbook?.summary?.dependsOnSlugs?.includes('v0.5.0-alpha-pr4-read-only-local-file-adapter-canary'), 'read-only local-file adapter canary runbook evidence must include PR #4 dependency slug');
+
+  assertAllIncluded(readOnlyLocalFileAdapterCanaryRunbookText, RUNBOOK_REQUIRED_TEXT, 'read-only local-file adapter canary runbook', assertIncludes);
+
+  assert(readOnlyLocalFileAdapter?.decisionTrace?.rawClassifierDecisionPersisted === false, 'read-only local-file adapter must not persist raw classifier decision');
+  assert(readOnlyLocalFileAdapter?.classifierDecision === undefined, 'read-only local-file adapter evidence must not persist classifierDecision');
+  assert(readOnlyLocalFileAdapterCanary?.classifierDecision === undefined, 'read-only local-file adapter canary evidence must not persist classifierDecision');
+
+  assertFalseFields(readOnlyLocalFileAdapterSchema?.summary, COMMON_FORBIDDEN_RESULT_FLAGS, 'read-only local-file adapter schema', assert);
+  assertFalseFields(readOnlyLocalFileAdapter?.summary, COMMON_FORBIDDEN_RESULT_FLAGS, 'read-only local-file adapter', assert);
+  assertFalseFields(readOnlyLocalFileAdapterCanary?.summary, COMMON_FORBIDDEN_RESULT_FLAGS, 'read-only local-file adapter canary', assert);
+  assertFalseFields(readOnlyLocalFileAdapterCanaryRunbook?.summary, RUNBOOK_FORBIDDEN_FLAGS, 'read-only local-file adapter canary runbook', assert);
+
+  if (manifestReleaseTag === 'v0.4.8') {
+    assertSummary(adapterImplementationHazardCatalog?.summary, {
+      adapterImplementationHazardCatalog: 'pass',
+      implementationAuthorized: false,
+      goToV050AlphaCanaryIfStillGreen: true,
+      hazardCases: 17,
+      rejectedOrDowngraded: 17,
+      unexpectedAccepts: 0,
+    }, 'adapter implementation hazard catalog', assert);
+    assertFalseFields(adapterImplementationHazardCatalog?.summary, HAZARD_CATALOG_FORBIDDEN_FLAGS, 'adapter implementation hazard catalog', assert);
+  }
+
+  if (manifestReleaseTag === 'v0.5.0-alpha') {
+    const statusV050Alpha = readFileSync(path.join(repoRoot, 'docs/status-v0.5.0-alpha.md'), 'utf8');
+    assertAllIncluded(statusV050Alpha, STATUS_V050_ALPHA_REQUIRED_TEXT, 'docs/status-v0.5.0-alpha.md', assertIncludes);
+  }
+}

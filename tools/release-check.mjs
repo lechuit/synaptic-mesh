@@ -2,6 +2,12 @@
 import { execFileSync } from 'node:child_process';
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
+import {
+  assertReadOnlyLocalFileAdapterManifestMetadata,
+  assertReadOnlyLocalFileAdapterRelease,
+  readOnlyLocalFileAdapterGateScripts,
+  readOnlyLocalFileAdapterRequiredManifestPaths,
+} from './release-checks/read-only-local-file-adapter.mjs';
 
 const releaseGateScripts = [
   'verify:manifest',
@@ -44,12 +50,7 @@ const releaseGateScripts = [
   'test:read-only-adapter-public-review-package',
   'test:read-only-adapter-human-review-go-no-go',
   'test:first-real-adapter-design-note',
-  'test:adapter-implementation-hazard-catalog',
-  'test:read-only-local-file-adapter-schema',
-  'test:read-only-local-file-adapter',
-  'test:read-only-local-file-adapter-negative-controls',
-  'test:read-only-local-file-adapter-canary',
-  'test:read-only-local-file-adapter-canary-runbook',
+  ...readOnlyLocalFileAdapterGateScripts,
   'test:live-shadow-synthetic-replay',
   'test:live-shadow-drift-scorecard',
   'test:manual-observation-bundle-schema',
@@ -213,20 +214,7 @@ assert(
 assert(packageJson.private === true, 'shadow package must remain private for release checks');
 assert(packageJson.version === '0.0.0-local', 'shadow package version must remain 0.0.0-local unless publication scope changes');
 assert(packageJson.scripts?.['release:check'] === 'node ../../tools/release-check.mjs', 'package.json must wire npm run release:check to ../../tools/release-check.mjs');
-if (manifestReleaseTag === 'v0.4.8') {
-  assertIncludes(manifest.reproducibility, 'adapter_implementation_hazard_catalog', 'MANIFEST.json reproducibility');
-  assertIncludes(manifest.reproducibility, 'reject_raw_input', 'MANIFEST.json reproducibility');
-  assertIncludes(manifest.reproducibility, 'url_input', 'MANIFEST.json reproducibility');
-  assertIncludes(manifest.reproducibility, 'directory_input', 'MANIFEST.json reproducibility');
-  assertIncludes(manifest.reproducibility, 'symlink_escape', 'MANIFEST.json reproducibility');
-  assertIncludes(manifest.reproducibility, 'machine_policy_leak', 'MANIFEST.json reproducibility');
-  assertIncludes(manifest.reproducibility, 'unexpected_accepts_0', 'MANIFEST.json reproducibility');
-  assertIncludes(manifest.reproducibility, 'go_to_v0_5_alpha_canary_if_still_green', 'MANIFEST.json reproducibility');
-  assertIncludes(manifest.runtimeBoundary, 'pre_implementation', 'MANIFEST.json runtimeBoundary');
-  assertIncludes(manifest.runtimeBoundary, 'no_real_adapter_implementation', 'MANIFEST.json runtimeBoundary');
-  assertIncludes(manifest.runtimeBoundary, 'no_url_input', 'MANIFEST.json runtimeBoundary');
-  assertIncludes(manifest.runtimeBoundary, 'no_network_call', 'MANIFEST.json runtimeBoundary');
-}
+assertReadOnlyLocalFileAdapterManifestMetadata({ manifest, manifestReleaseTag, assertIncludes });
 
 if (manifestReleaseTag === 'v0.4.7') {
   assertIncludes(manifest.reproducibility, 'first_real_adapter_design_note', 'MANIFEST.json reproducibility');
@@ -354,28 +342,7 @@ for (const requiredManifestPath of [
   'implementation/synaptic-mesh-shadow-v0/tests/first-real-adapter-design-note.mjs',
   'implementation/synaptic-mesh-shadow-v0/fixtures/first-real-adapter-design-note-v0.4.7.json',
   'implementation/synaptic-mesh-shadow-v0/evidence/first-real-adapter-design-note-v0.4.7.out.json',
-  'docs/status-v0.4.8.md',
-  'docs/adapter-implementation-hazard-catalog-v0.4.8.md',
-  'docs/read-only-local-file-adapter-canary-runbook.md',
-  'implementation/synaptic-mesh-shadow-v0/tests/adapter-implementation-hazard-catalog.mjs',
-  'implementation/synaptic-mesh-shadow-v0/fixtures/adapter-implementation-hazard-catalog-v0.4.8.json',
-  'implementation/synaptic-mesh-shadow-v0/evidence/adapter-implementation-hazard-catalog-v0.4.8.out.json',
-  'schemas/read-only-local-file-adapter-input.schema.json',
-  'schemas/read-only-local-file-adapter-result.schema.json',
-  'implementation/synaptic-mesh-shadow-v0/tests/read-only-local-file-adapter-schema.mjs',
-  'implementation/synaptic-mesh-shadow-v0/tests/read-only-local-file-adapter.mjs',
-  'implementation/synaptic-mesh-shadow-v0/tests/read-only-local-file-adapter-negative-controls.mjs',
-  'implementation/synaptic-mesh-shadow-v0/tests/read-only-local-file-adapter-canary.mjs',
-  'implementation/synaptic-mesh-shadow-v0/tests/read-only-local-file-adapter-canary-runbook.mjs',
-  'implementation/synaptic-mesh-shadow-v0/src/adapters/read-only-local-file-adapter.mjs',
-  'implementation/synaptic-mesh-shadow-v0/fixtures/read-only-local-file-adapter-inputs.json',
-  'implementation/synaptic-mesh-shadow-v0/fixtures/read-only-local-file-adapter-results.json',
-  'implementation/synaptic-mesh-shadow-v0/fixtures/read-only-local-file-adapter-canary-runbook.json',
-  'implementation/synaptic-mesh-shadow-v0/evidence/read-only-local-file-adapter-schema.out.json',
-  'implementation/synaptic-mesh-shadow-v0/evidence/read-only-local-file-adapter/read-only-local-file-adapter.out.json',
-  'implementation/synaptic-mesh-shadow-v0/evidence/read-only-local-file-adapter/read-only-local-file-adapter-canary.out.json',
-  'implementation/synaptic-mesh-shadow-v0/evidence/read-only-local-file-adapter-canary-runbook.out.json',
-  'implementation/synaptic-mesh-shadow-v0/evidence/read-only-local-file-adapter-negative-controls.out.json',
+  ...readOnlyLocalFileAdapterRequiredManifestPaths,
 ]) {
   assert(manifestFilePaths.has(requiredManifestPath), `MANIFEST.files.json must include ${requiredManifestPath}`);
 }
@@ -1529,94 +1496,7 @@ assertOptionalCountMatches(
   'receiver adapter contracts',
 );
 
-const adapterImplementationHazardCatalog = readJson(path.join(packageRoot, 'evidence/adapter-implementation-hazard-catalog-v0.4.8.out.json'));
-const readOnlyLocalFileAdapterSchema = readJson(path.join(packageRoot, 'evidence/read-only-local-file-adapter-schema.out.json'));
-const readOnlyLocalFileAdapter = readJson(path.join(packageRoot, 'evidence/read-only-local-file-adapter/read-only-local-file-adapter.out.json'));
-const readOnlyLocalFileAdapterNegativeControls = readJson(path.join(packageRoot, 'evidence/read-only-local-file-adapter-negative-controls.out.json'));
-const readOnlyLocalFileAdapterCanary = readJson(path.join(packageRoot, 'evidence/read-only-local-file-adapter/read-only-local-file-adapter-canary.out.json'));
-const readOnlyLocalFileAdapterCanaryRunbook = readJson(path.join(packageRoot, 'evidence/read-only-local-file-adapter-canary-runbook.out.json'));
-const readOnlyLocalFileAdapterCanaryRunbookText = readFileSync(path.join(repoRoot, 'docs/read-only-local-file-adapter-canary-runbook.md'), 'utf8');
-assert(readOnlyLocalFileAdapterSchema?.summary?.readOnlyLocalFileAdapterSchema === 'pass', 'read-only local-file adapter schema verdict must be pass');
-assert(readOnlyLocalFileAdapterSchema?.summary?.schemaOnly === true, 'read-only local-file adapter schema evidence must remain schema-only');
-assert(readOnlyLocalFileAdapterSchema?.summary?.sourceAlreadyRedacted === true, 'read-only local-file adapter schema must require redacted input');
-assert(readOnlyLocalFileAdapterSchema?.summary?.redactionReviewRecordPresent === true, 'read-only local-file adapter schema must require redaction review record');
-assert(readOnlyLocalFileAdapterSchema?.summary?.rawContentPersisted === false, 'read-only local-file adapter schema must forbid raw content persistence');
-assert(readOnlyLocalFileAdapterSchema?.summary?.recordOnly === true, 'read-only local-file adapter schema result must be record-only');
-assert(readOnlyLocalFileAdapter?.summary?.readOnlyLocalFileAdapter === 'pass', 'read-only local-file adapter skeleton verdict must be pass');
-assert(readOnlyLocalFileAdapter?.summary?.adapterSkeleton === true, 'read-only local-file adapter evidence must be skeleton only');
-assert(readOnlyLocalFileAdapter?.summary?.adapterDecidesAuthority === false, 'read-only local-file adapter must not decide authority');
-assert(readOnlyLocalFileAdapter?.summary?.callsExistingPipeline === true, 'read-only local-file adapter must call the existing pipeline');
-assert(readOnlyLocalFileAdapter?.summary?.sourceFileRead === true, 'read-only local-file adapter must read the explicit source file in its positive skeleton test');
-assert(readOnlyLocalFileAdapter?.summary?.sourceArtifactDigestVerified === true, 'read-only local-file adapter must verify source digest');
-assert(readOnlyLocalFileAdapter?.summary?.parserEvidenceProduced === true, 'read-only local-file adapter must produce parser evidence');
-assert(readOnlyLocalFileAdapter?.summary?.classifierDecisionProduced === true, 'read-only local-file adapter must call classifier decision stage');
-assert(readOnlyLocalFileAdapter?.summary?.decisionTraceProduced === true, 'read-only local-file adapter must produce decision trace');
-assert(readOnlyLocalFileAdapter?.summary?.advisoryReportProduced === true, 'read-only local-file adapter must produce advisory report');
-assert(readOnlyLocalFileAdapter?.summary?.recordOnly === true, 'read-only local-file adapter must be record-only');
-assert(readOnlyLocalFileAdapterNegativeControls?.summary?.readOnlyLocalFileAdapterNegativeControls === 'pass', 'read-only local-file adapter negative controls verdict must be pass');
-assert(readOnlyLocalFileAdapterNegativeControls?.summary?.negativeCases === 17, 'read-only local-file adapter negative controls must cover 17 cases');
-assert(readOnlyLocalFileAdapterNegativeControls?.summary?.unexpectedAccepts === 0, 'read-only local-file adapter negative controls must have zero unexpected accepts');
-assert(readOnlyLocalFileAdapterNegativeControls?.summary?.forbiddenEffects === 0, 'read-only local-file adapter negative controls must have zero forbidden effects');
-assert(readOnlyLocalFileAdapterNegativeControls?.summary?.capabilityTrueCount === 0, 'read-only local-file adapter negative controls must have zero true capability flags');
-assert(readOnlyLocalFileAdapterNegativeControls?.summary?.sourceFilesRead === 0, 'read-only local-file adapter negative controls must reject before source file reads');
-assert(readOnlyLocalFileAdapterNegativeControls?.summary?.networkPrimitiveFindings === 0, 'read-only local-file adapter negative controls must have zero network primitive findings');
-assert(readOnlyLocalFileAdapterNegativeControls?.summary?.rawClassifierLeakFindings === 0, 'read-only local-file adapter negative controls must have zero raw classifier leak findings');
-assert(readOnlyLocalFileAdapterCanary?.summary?.readOnlyLocalFileAdapterCanary === 'pass', 'read-only local-file adapter canary verdict must be pass');
-assert(readOnlyLocalFileAdapterCanary?.summary?.positiveCases === 1, 'read-only local-file adapter canary must cover one positive case');
-assert(readOnlyLocalFileAdapterCanary?.summary?.sourceFilesRead === 1, 'read-only local-file adapter canary must read exactly one explicit source file');
-assert(readOnlyLocalFileAdapterCanary?.summary?.recordOnly === true, 'read-only local-file adapter canary must be record-only');
-assert(readOnlyLocalFileAdapterCanary?.summary?.parserEvidenceProduced === true, 'read-only local-file adapter canary must produce parser evidence');
-assert(readOnlyLocalFileAdapterCanary?.summary?.classifierDecisionProduced === true, 'read-only local-file adapter canary must call classifier decision stage');
-assert(readOnlyLocalFileAdapterCanary?.summary?.decisionTraceProduced === true, 'read-only local-file adapter canary must produce decision trace');
-assert(readOnlyLocalFileAdapterCanary?.summary?.advisoryReportProduced === true, 'read-only local-file adapter canary must produce advisory report');
-assert(readOnlyLocalFileAdapterCanary?.summary?.forbiddenEffects === 0, 'read-only local-file adapter canary must have zero forbidden effects');
-assert(readOnlyLocalFileAdapterCanary?.summary?.capabilityTrueCount === 0, 'read-only local-file adapter canary must have zero true capability flags');
-assert(readOnlyLocalFileAdapterCanary?.summary?.rawClassifierDecisionPersisted === false, 'read-only local-file adapter canary must not persist raw classifier decision');
-assert(readOnlyLocalFileAdapterCanary?.summary?.rawClassifierLeakFindings === 0, 'read-only local-file adapter canary must have zero raw classifier leak findings');
-assert(readOnlyLocalFileAdapterCanaryRunbook?.summary?.readOnlyLocalFileAdapterCanaryRunbook === 'pass', 'read-only local-file adapter canary runbook verdict must be pass');
-assert(readOnlyLocalFileAdapterCanaryRunbook?.summary?.missingRequiredPhrases === 0, 'read-only local-file adapter canary runbook must have zero missing required phrases');
-assert(readOnlyLocalFileAdapterCanaryRunbook?.summary?.missingRequiredSections === 0, 'read-only local-file adapter canary runbook must have zero missing sections');
-assert(readOnlyLocalFileAdapterCanaryRunbook?.summary?.forbiddenPhraseFindings === 0, 'read-only local-file adapter canary runbook must have zero forbidden phrase findings');
-assert(readOnlyLocalFileAdapterCanaryRunbook?.summary?.missingCommands === 0, 'read-only local-file adapter canary runbook must have zero missing commands');
-assert(readOnlyLocalFileAdapterCanaryRunbook?.summary?.positiveCanaryPass === true, 'read-only local-file adapter canary runbook must depend on passing positive canary');
-assert(readOnlyLocalFileAdapterCanaryRunbook?.summary?.negativeControlsPass === true, 'read-only local-file adapter canary runbook must depend on passing negative controls');
-assert(readOnlyLocalFileAdapterCanaryRunbook?.summary?.dependsOnNegativeControls === true, 'read-only local-file adapter canary runbook must explicitly reference PR #3 negative controls');
-assert(readOnlyLocalFileAdapterCanaryRunbook?.summary?.dependsOnPositiveCanary === true, 'read-only local-file adapter canary runbook must explicitly reference PR #4 positive canary');
-assert(readOnlyLocalFileAdapterCanaryRunbook?.summary?.dependsOnLabels?.includes('PR #3 negative controls'), 'read-only local-file adapter canary runbook evidence must include PR #3 negative controls label');
-assert(readOnlyLocalFileAdapterCanaryRunbook?.summary?.dependsOnLabels?.includes('PR #4 positive canary'), 'read-only local-file adapter canary runbook evidence must include PR #4 positive canary label');
-assert(readOnlyLocalFileAdapterCanaryRunbook?.summary?.dependsOnSlugs?.includes('v0.5.0-alpha-pr3-read-only-local-file-adapter-negative-controls'), 'read-only local-file adapter canary runbook evidence must include PR #3 dependency slug');
-assert(readOnlyLocalFileAdapterCanaryRunbook?.summary?.dependsOnSlugs?.includes('v0.5.0-alpha-pr4-read-only-local-file-adapter-canary'), 'read-only local-file adapter canary runbook evidence must include PR #4 dependency slug');
-assert(readOnlyLocalFileAdapterCanaryRunbook?.summary?.releaseCheckDeferredToPr6 === true, 'read-only local-file adapter canary runbook must defer v0.5.0-alpha release:check to PR #6 metadata');
-assert(readOnlyLocalFileAdapterCanaryRunbook?.summary?.recordOnly === true, 'read-only local-file adapter canary runbook must be record-only');
-assertIncludes(readOnlyLocalFileAdapterCanaryRunbookText, 'PR #3 negative controls', 'read-only local-file adapter canary runbook');
-assertIncludes(readOnlyLocalFileAdapterCanaryRunbookText, 'PR #4 positive canary', 'read-only local-file adapter canary runbook');
-assertIncludes(readOnlyLocalFileAdapterCanaryRunbookText, 'v0.5.0-alpha-pr3-read-only-local-file-adapter-negative-controls', 'read-only local-file adapter canary runbook');
-assertIncludes(readOnlyLocalFileAdapterCanaryRunbookText, 'v0.5.0-alpha-pr4-read-only-local-file-adapter-canary', 'read-only local-file adapter canary runbook');
-assertIncludes(readOnlyLocalFileAdapterCanaryRunbookText, 'This final release command is intentionally not an applicable PR #5 gate while `MANIFEST.json` still targets `v0.4.8`', 'read-only local-file adapter canary runbook');
-assertIncludes(readOnlyLocalFileAdapterCanaryRunbookText, 'A passing adapter canary is evidence of local read-only boundary preservation, not runtime authorization.', 'read-only local-file adapter canary runbook');
-assertIncludes(readOnlyLocalFileAdapterCanaryRunbookText, 'Un canary pass del adapter prueba preservación local de frontera read-only; no autoriza runtime.', 'read-only local-file adapter canary runbook');
-assert(readOnlyLocalFileAdapter?.decisionTrace?.rawClassifierDecisionPersisted === false, 'read-only local-file adapter must not persist raw classifier decision');
-assert(readOnlyLocalFileAdapter?.classifierDecision === undefined, 'read-only local-file adapter evidence must not persist classifierDecision');
-for (const forbidden of ['toolExecution','memoryWrite','configWrite','externalPublication','approvalEmission','machineReadablePolicyDecision','agentConsumed','mayBlock','mayAllow','authorization','enforcement']) {
-  assert(readOnlyLocalFileAdapterSchema?.summary?.[forbidden] === false, `read-only local-file adapter schema must keep ${forbidden} false`);
-  assert(readOnlyLocalFileAdapter?.summary?.[forbidden] === false, `read-only local-file adapter must keep ${forbidden} false`);
-  assert(readOnlyLocalFileAdapterCanary?.summary?.[forbidden] === false, `read-only local-file adapter canary must keep ${forbidden} false`);
-}
-for (const forbidden of ['machineReadablePolicyDecision','consumedByAgent','authoritative','mayApprove','mayBlock','mayAllow','mayAuthorize','mayEnforce','runtimeIntegrated','toolExecutionImplemented','memoryWriteImplemented','configWriteImplemented','externalPublicationImplemented','approvalPathImplemented','blockingImplemented','allowingImplemented','authorizationImplemented','enforcementImplemented','automaticAgentConsumptionImplemented']) {
-  assert(readOnlyLocalFileAdapterCanaryRunbook?.summary?.[forbidden] === false, `read-only local-file adapter canary runbook must keep ${forbidden} false`);
-}
-assert(readOnlyLocalFileAdapterCanary?.classifierDecision === undefined, 'read-only local-file adapter canary evidence must not persist classifierDecision');
-if (manifestReleaseTag === 'v0.4.8') {
-  assert(adapterImplementationHazardCatalog?.summary?.adapterImplementationHazardCatalog === 'pass', 'adapter implementation hazard catalog verdict must be pass');
-  assert(adapterImplementationHazardCatalog?.summary?.implementationAuthorized === false, 'adapter implementation hazard catalog must not authorize implementation');
-  assert(adapterImplementationHazardCatalog?.summary?.goToV050AlphaCanaryIfStillGreen === true, 'adapter implementation hazard catalog may route to v0.5.0-alpha canary if still green');
-  assert(adapterImplementationHazardCatalog?.summary?.hazardCases === 17, 'adapter implementation hazard catalog must cover 17 hazards');
-  assert(adapterImplementationHazardCatalog?.summary?.rejectedOrDowngraded === 17, 'adapter implementation hazard catalog must reject/downgrade 17 hazards');
-  assert(adapterImplementationHazardCatalog?.summary?.unexpectedAccepts === 0, 'adapter implementation hazard catalog must have zero unexpected accepts');
-  for (const forbidden of ['rawInputAllowed','urlInputAllowed','directoryInputAllowed','globAllowed','directoryTraversalAllowed','symlinkEscapeAllowed','outputOutsideEvidenceAllowed','agentConsumed','machineReadablePolicyDecision','toolExecution','memoryWrite','configWrite','externalPublication','approvalEmission','mayBlock','mayAllow','authorization','enforcement']) {
-    assert(adapterImplementationHazardCatalog?.summary?.[forbidden] === false, `adapter implementation hazard catalog must keep ${forbidden} false`);
-  }
-}
+assertReadOnlyLocalFileAdapterRelease({ repoRoot, packageRoot, manifestReleaseTag, readJson, assert, assertIncludes });
 
 const firstRealAdapterDesignNote = readJson(path.join(packageRoot, 'evidence/first-real-adapter-design-note-v0.4.7.out.json'));
 if (manifestReleaseTag === 'v0.4.7') {
