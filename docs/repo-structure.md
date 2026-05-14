@@ -44,6 +44,8 @@ Synaptic Mesh keeps protocol, implementation, research, and evidence separate so
 - [Authority confusion naive baseline v0.9.1](authority-confusion-naive-baseline-v0.9.1.md) records a 12/12 false-permit baseline simulation as failure evidence only.
 - [Authority confusion Synaptic Mesh comparison v0.9.2](authority-confusion-synaptic-comparison-v0.9.2.md) records a local before/after comparison reducing false permits from 12 to 0 without runtime authority.
 - [Authority confusion public demo package v0.9.3](authority-confusion-public-demo-v0.9.3.md) packages the before/after evidence for human review while preserving zero runtime authority.
+- [Authority confusion adversarial hardening v0.9.4](authority-confusion-adversarial-hardening-v0.9.4.md) expands the proof with 48 local/redacted phrasing variants while preserving zero runtime authority.
+- [Authority confusion phase close v0.9.5](authority-confusion-phase-close-v0.9.5.md) closes the proof-of-value phase with 60/60 prevented false permits and no runtime authorization.
 
 ## Scaling rules
 
