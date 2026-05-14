@@ -1,0 +1,64 @@
+{
+  "schemaVersion": "simulated-framework-shaped-adapter-fixtures-v0",
+  "description": "Fake/local/already-redacted framework-shaped adapter inputs for v0.7.2. These are not real framework packets and do not use SDKs, network, tools, or live traffic.",
+  "positiveCases": [
+    {
+      "caseId": "simulated-mcp-like-framework-shaped-local-fixture",
+      "input": {
+        "schemaVersion": "simulated-framework-shaped-adapter-input-v0",
+        "adapterShape": "framework_shaped_local_fixture",
+        "frameworkKind": "mcp_like",
+        "realFrameworkIntegration": false,
+        "sdkImported": false,
+        "sourceAlreadyRedacted": true,
+        "sourceArtifactDigest": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "redactionReviewRecordId": "rrr_framework_fixture_001",
+        "networkAllowed": false,
+        "liveTrafficAllowed": false,
+        "toolExecutionAllowed": false,
+        "resourceFetchAllowed": false,
+        "memoryWriteAllowed": false,
+        "configWriteAllowed": false,
+        "externalPublicationAllowed": false,
+        "agentConsumedAllowed": false,
+        "machineReadablePolicyAllowed": false,
+        "approvalAllowed": false,
+        "blockingAllowed": false,
+        "allowingAllowed": false,
+        "authorizationAllowed": false,
+        "enforcementAllowed": false,
+        "inputMode": "local_redacted_fixture_only",
+        "outputMode": "record_only_evidence"
+      }
+    },
+    {
+      "caseId": "simulated-langgraph-like-framework-shaped-local-fixture",
+      "input": {
+        "schemaVersion": "simulated-framework-shaped-adapter-input-v0",
+        "adapterShape": "framework_shaped_local_fixture",
+        "frameworkKind": "langgraph_like",
+        "realFrameworkIntegration": false,
+        "sdkImported": false,
+        "sourceAlreadyRedacted": true,
+        "sourceArtifactDigest": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+        "redactionReviewRecordId": "rrr_framework_fixture_002",
+        "networkAllowed": false,
+        "liveTrafficAllowed": false,
+        "toolExecutionAllowed": false,
+        "resourceFetchAllowed": false,
+        "memoryWriteAllowed": false,
+        "configWriteAllowed": false,
+        "externalPublicationAllowed": false,
+        "agentConsumedAllowed": false,
+        "machineReadablePolicyAllowed": false,
+        "approvalAllowed": false,
+        "blockingAllowed": false,
+        "allowingAllowed": false,
+        "authorizationAllowed": false,
+        "enforcementAllowed": false,
+        "inputMode": "local_redacted_fixture_only",
+        "outputMode": "record_only_evidence"
+      }
+    }
+  ]
+}

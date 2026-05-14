@@ -69,8 +69,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 1745,
-      "sha256": "c5dcc3214a40047467a35ee0c0ef6de8fb37ccdd8111d866da49139c3ca98087"
+      "bytes": 1754,
+      "sha256": "13d9a1663c853b3ce2f25e388797eb3188dbf249980a22e7cde5760e039d4aff"
     },
     {
       "path": "RELEASE_CANDIDATE.md",
@@ -79,8 +79,8 @@
     },
     {
       "path": "RELEASE_NOTES.md",
-      "bytes": 1082,
-      "sha256": "90d067d6315c7c471a7520654a0517144a7185e348dfd439388183460574a95d"
+      "bytes": 1064,
+      "sha256": "75848a93633daca6855847de2a913314b9e0aff11b9315f34c4de00543ac5d6d"
     },
     {
       "path": "design-notes/adapter-boundary-langgraph-mcp-v0.md",
@@ -403,6 +403,11 @@
       "sha256": "9fdadee94e53e2954eb62cc1d57f61768cd95895a2a9ab6e967aa4494556a3db"
     },
     {
+      "path": "docs/simulated-framework-shaped-adapter.md",
+      "bytes": 1135,
+      "sha256": "871d380bc8ca6d71c945fd534fde3c9baed29bcb25e65c346dc4499d079420d8"
+    },
+    {
       "path": "docs/status-v0.2.3.md",
       "bytes": 13842,
       "sha256": "49afeeda1dbd7038180c7a4b3f21a0d3167f26101c60858b64aca956a90fc192"
@@ -536,6 +541,11 @@
       "path": "docs/status-v0.7.1.md",
       "bytes": 750,
       "sha256": "a18dc13af2211cb1e39a77f21b49de739bcc19b0ce257b9fe3ac6b0ba0ecc0e6"
+    },
+    {
+      "path": "docs/status-v0.7.2.md",
+      "bytes": 846,
+      "sha256": "fefaa7d818fb79bbacf23d5085d8c2c3d0817a9f26e485ceb882c99903caae5e"
     },
     {
       "path": "docs/threat-model-v0.md",
@@ -1173,6 +1183,11 @@
       "sha256": "51c53f3869c27575366f817e15ca3ae2888948a60072fb8dfcc74ff571d10ec3"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/simulated-framework-shaped-adapter.out.json",
+      "bytes": 14507,
+      "sha256": "9c59ccaf1cd91d2d2e86cf99d578115f8d3dbe1c2ea407fdfe55611a5af9527d"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/synthetic-handoff-examples.out.json",
       "bytes": 2286,
       "sha256": "4e057865124f00551d38072ef01e86e7ad41e478ab394af18440be150ea63d12"
@@ -1598,14 +1613,19 @@
       "sha256": "d767f0e21802dd5d5054abd474d9404541c56d12c0a2d133da64c47d01701971"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/fixtures/simulated-framework-shaped-adapter.json",
+      "bytes": 2662,
+      "sha256": "3d6007d4fce65cb74cd44a3a2d37c5dcb877dc9efb7c0a3c8c774fb90a6bf5d8"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/fixtures/threat-model-routes.json",
       "bytes": 17801,
       "sha256": "eb4a75fa2088d10cf9d2d9fd58cd72d31d1d566b30d67fb1c44db598379b52fe"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/package.json",
-      "bytes": 18854,
-      "sha256": "d3e10af5510d407c7fde68b9d982e0bff1006d39356171075c021687f8a6c736"
+      "bytes": 19134,
+      "sha256": "145e0b8d14985c1c92ca756da1964edc59c29685090edc4b20941b8c47bbad5b"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/action-context-packet.mjs",
@@ -1631,6 +1651,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/src/adapters/review-local-io.mjs",
       "bytes": 1027,
       "sha256": "6ab8250250341032e1a282c06b7dca0934e80cf5e71d970ca9000b13ee67b6f7"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/src/adapters/simulated-framework-shaped-adapter.mjs",
+      "bytes": 10595,
+      "sha256": "99f093d2fb7fb1840ee6944068b5db43037f527b8a703c1ef603eb3610051a8e"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/decision-engine.mjs",
@@ -2168,6 +2193,11 @@
       "sha256": "b59140340a0d91fcffd297741db05fcf4da1105467c270ac9602ad6a9f08275f"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/simulated-framework-shaped-adapter.mjs",
+      "bytes": 4964,
+      "sha256": "244970dfd78d242d1ff4706b25e6fb1dde1ce9715b59d007e63cc97c8019f488"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/smoke.mjs",
       "bytes": 2186,
       "sha256": "d80d375ccfe4801641e6f753311104abd04574945acca361067fc1d317f9212f"
@@ -2679,8 +2709,8 @@
     },
     {
       "path": "tools/release-checks/framework-shaped-adapter.mjs",
-      "bytes": 8720,
-      "sha256": "506ca19b7f5310e702d3931f8695fe74bd55f6625031c226e5d27552a3c8bd62"
+      "bytes": 12564,
+      "sha256": "8991e9d6de5f73d4304c12d90ad7eb3c5fb074e45bfbba3f3b7ceddefc232f29"
     },
     {
       "path": "tools/release-checks/index.mjs",
