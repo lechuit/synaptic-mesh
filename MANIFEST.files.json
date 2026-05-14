@@ -69,8 +69,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 1515,
-      "sha256": "2e80584ce587b8aa6b351de90b4d053629fa4743204e960759c721e6cac9083d"
+      "bytes": 1732,
+      "sha256": "84def49c1ca2dad37f8e3a63076f7e0ccbd96df16313c972c862d2146bc14efc"
     },
     {
       "path": "RELEASE_CANDIDATE.md",
@@ -79,8 +79,8 @@
     },
     {
       "path": "RELEASE_NOTES.md",
-      "bytes": 1299,
-      "sha256": "f8eb2706065b22454e43648aa3e033202bde26919cdf264fc64ee80152a67228"
+      "bytes": 1253,
+      "sha256": "bffc7e551f7d1e980bd128857c7e8e7cc2dda9eea001f7103c464bf159abdaf9"
     },
     {
       "path": "design-notes/adapter-boundary-langgraph-mcp-v0.md",
@@ -181,6 +181,11 @@
       "path": "docs/first-real-adapter-design-note-v0.4.7.md",
       "bytes": 4822,
       "sha256": "81933120ebc2db325c5b43e39b663a1ad718c04a2d2e497d491e9709401a7b2a"
+    },
+    {
+      "path": "docs/framework-shaped-adapter-boundary.md",
+      "bytes": 1460,
+      "sha256": "39e0539cf0e73efa813e03fce36030c57b622b218a83e44da03694b3daf9a9b1"
     },
     {
       "path": "docs/live-shadow-drift-scorecard.md",
@@ -379,8 +384,8 @@
     },
     {
       "path": "docs/repo-structure.md",
-      "bytes": 6043,
-      "sha256": "43938b5e8927f8df6370d00cd2e5b664b6ea8c51edb85db45c9ee0f47af71ed4"
+      "bytes": 6592,
+      "sha256": "2d39f2abfb4f543787ddda566ee451718ae50cd9a97653a124046786e8de6660"
     },
     {
       "path": "docs/retention-negative-controls.md",
@@ -518,6 +523,11 @@
       "sha256": "60c508a5a81356ea32f43a3d47331f8b9f729200b59d9b0380a53985e9a89ad1"
     },
     {
+      "path": "docs/status-v0.7.0-alpha.md",
+      "bytes": 783,
+      "sha256": "8e24eb427bd58e82a373194bbb4c84ee88d3d5d860e3d29b84034b63204ea25d"
+    },
+    {
       "path": "docs/threat-model-v0.md",
       "bytes": 6211,
       "sha256": "b00847bd4db3b2878165eda2866257420e7da8bbbdecaaad8e6aaefce2256d38"
@@ -646,6 +656,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/fixture-parity.out.json",
       "bytes": 23827,
       "sha256": "cd181e2f36e6e09f0b8f57a6b4714796ce46f30625c2e70db606d4761694276c"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/framework-shaped-adapter-boundary-schema.out.json",
+      "bytes": 4652,
+      "sha256": "2c93ca41aeae8b0981d839e56fca81354967dea582b52150cf82cfba225fdadf"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-input-source-boundary-contracts.out.json",
@@ -1193,6 +1208,11 @@
       "sha256": "4f965b7fdddba0a10ba8680c66a28b4d6c208cd1779237707bd7e63a74118517"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/fixtures/framework-shaped-adapter-boundaries.json",
+      "bytes": 3644,
+      "sha256": "b522a3a76302ba8e531485adc1ad8d37b9f7d86c92f06154cc284e29bb518707"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/fixtures/generated-adversarial-routes.json",
       "bytes": 33019,
       "sha256": "554e588f256dc0fbe040d3df91690f8c1ba5337467576446079392529311f20f"
@@ -1564,8 +1584,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/package.json",
-      "bytes": 18314,
-      "sha256": "ea0f4ce8851c540da9a3e4fb5017d97988956155b9338abd42d3c4f59a894799"
+      "bytes": 18622,
+      "sha256": "9f39b7efc0d7864efbc2dc102cbe0b3c0a27fa7464839e195b71f191be805911"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/action-context-packet.mjs",
@@ -1726,6 +1746,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/tests/fixture-parity.mjs",
       "bytes": 2995,
       "sha256": "418ccb6a6be9da1a9809ea049e92594a09d044892bbd6c30a1420611e147f5a4"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/framework-shaped-adapter-boundary-schema.mjs",
+      "bytes": 8319,
+      "sha256": "4d42b2bfb7dc5b044a36b74adf403b64b1cd730a08174dad7e607b9dda01c76b"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/handoff-summary-compression-loss.mjs",
@@ -2503,6 +2528,11 @@
       "sha256": "3197b7df4d6d17e54cfa5a7fdb69f01c301f6ab83a0c422c841100f6f0da629c"
     },
     {
+      "path": "schemas/framework-shaped-adapter-boundary.schema.json",
+      "bytes": 1888,
+      "sha256": "b0904aa850470d6ef15456207a0e0d705c843676678a1e669fca108a3df4b51f"
+    },
+    {
       "path": "schemas/live-shadow-drift-scorecard.schema.json",
       "bytes": 4935,
       "sha256": "586851f32f0c1554b449ec2378135ff74b0a52177e7aca67077f4c4e3933b494"
@@ -2623,9 +2653,14 @@
       "sha256": "17be2c4fc437e601550a7cd5ba19707ec2ccf456ee810e84ba7936724684b16e"
     },
     {
+      "path": "tools/release-checks/framework-shaped-adapter.mjs",
+      "bytes": 5285,
+      "sha256": "d5d9a92384f5736dc89f567d9f977459d9421d165baff78243172a39e721aa89"
+    },
+    {
       "path": "tools/release-checks/index.mjs",
-      "bytes": 364,
-      "sha256": "e2638a8d525f527c43728e0da5fe29180711ec06af70443459e3aa4b1acfe62d"
+      "bytes": 473,
+      "sha256": "37daee3759a401e84568a4f00afd71882f8a11526562ea01edb94055c94f7f26"
     },
     {
       "path": "tools/release-checks/manual-dry-run.mjs",
