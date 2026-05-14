@@ -1,0 +1,612 @@
+{
+  "cases": [
+    {
+      "caseId": "reject-six-inputs",
+      "expectedVerdict": "reject",
+      "expectedReason": "inputs length must be 1..5",
+      "manifest": {
+        "schemaVersion": "read-only-local-file-batch-manifest-v0",
+        "batchMode": "manual_explicit_redacted_file_list",
+        "explicitInputListOnly": true,
+        "directoryDiscovery": false,
+        "globAllowed": false,
+        "watcherAllowed": false,
+        "daemonAllowed": false,
+        "networkAllowed": false,
+        "liveTrafficAllowed": false,
+        "recordOnly": true,
+        "maxInputCount": 5,
+        "inputs": [
+          {
+            "sourceFilePath": "implementation/synaptic-mesh-shadow-v0/fixtures/redacted/batch-case-001.json",
+            "sourceArtifactDigest": "sha256:9c145c9508462da2a709fd897959f76f988ca98e26f85e99517c5a186985932b",
+            "sourceAlreadyRedacted": true,
+            "redactionReviewRecordId": "rrr_batch_001"
+          },
+          {
+            "sourceFilePath": "implementation/synaptic-mesh-shadow-v0/fixtures/redacted/batch-case-002.json",
+            "sourceArtifactDigest": "sha256:c2769964d9f5d622d80d1199e1dab9868ccda3bd29137fc649f436b8e3dd35f4",
+            "sourceAlreadyRedacted": true,
+            "redactionReviewRecordId": "rrr_batch_002"
+          },
+          {
+            "sourceFilePath": "implementation/synaptic-mesh-shadow-v0/fixtures/redacted/batch-case-003.json",
+            "sourceArtifactDigest": "sha256:cf157440a472b7cd066148db3f87a91d19e69d959ac142cd581543fab4824b9c",
+            "sourceAlreadyRedacted": true,
+            "redactionReviewRecordId": "rrr_batch_003"
+          },
+          {
+            "sourceFilePath": "implementation/synaptic-mesh-shadow-v0/fixtures/redacted/batch-case-001.json",
+            "sourceArtifactDigest": "sha256:9c145c9508462da2a709fd897959f76f988ca98e26f85e99517c5a186985932b",
+            "sourceAlreadyRedacted": true,
+            "redactionReviewRecordId": "rrr_batch_001"
+          },
+          {
+            "sourceFilePath": "implementation/synaptic-mesh-shadow-v0/fixtures/redacted/batch-case-002.json",
+            "sourceArtifactDigest": "sha256:c2769964d9f5d622d80d1199e1dab9868ccda3bd29137fc649f436b8e3dd35f4",
+            "sourceAlreadyRedacted": true,
+            "redactionReviewRecordId": "rrr_batch_002"
+          },
+          {
+            "sourceFilePath": "implementation/synaptic-mesh-shadow-v0/fixtures/redacted/batch-case-003.json",
+            "sourceArtifactDigest": "sha256:cf157440a472b7cd066148db3f87a91d19e69d959ac142cd581543fab4824b9c",
+            "sourceAlreadyRedacted": true,
+            "redactionReviewRecordId": "rrr_batch_003"
+          }
+        ]
+      }
+    },
+    {
+      "caseId": "reject-max-count-smaller-than-inputs",
+      "expectedVerdict": "reject",
+      "expectedReason": "inputs length exceeds maxInputCount",
+      "manifest": {
+        "schemaVersion": "read-only-local-file-batch-manifest-v0",
+        "batchMode": "manual_explicit_redacted_file_list",
+        "explicitInputListOnly": true,
+        "directoryDiscovery": false,
+        "globAllowed": false,
+        "watcherAllowed": false,
+        "daemonAllowed": false,
+        "networkAllowed": false,
+        "liveTrafficAllowed": false,
+        "recordOnly": true,
+        "maxInputCount": 2,
+        "inputs": [
+          {
+            "sourceFilePath": "implementation/synaptic-mesh-shadow-v0/fixtures/redacted/batch-case-001.json",
+            "sourceArtifactDigest": "sha256:9c145c9508462da2a709fd897959f76f988ca98e26f85e99517c5a186985932b",
+            "sourceAlreadyRedacted": true,
+            "redactionReviewRecordId": "rrr_batch_001"
+          },
+          {
+            "sourceFilePath": "implementation/synaptic-mesh-shadow-v0/fixtures/redacted/batch-case-002.json",
+            "sourceArtifactDigest": "sha256:c2769964d9f5d622d80d1199e1dab9868ccda3bd29137fc649f436b8e3dd35f4",
+            "sourceAlreadyRedacted": true,
+            "redactionReviewRecordId": "rrr_batch_002"
+          },
+          {
+            "sourceFilePath": "implementation/synaptic-mesh-shadow-v0/fixtures/redacted/batch-case-003.json",
+            "sourceArtifactDigest": "sha256:cf157440a472b7cd066148db3f87a91d19e69d959ac142cd581543fab4824b9c",
+            "sourceAlreadyRedacted": true,
+            "redactionReviewRecordId": "rrr_batch_003"
+          }
+        ]
+      }
+    },
+    {
+      "caseId": "reject-directory-discovery",
+      "expectedVerdict": "reject",
+      "expectedReason": "directoryDiscovery must be false",
+      "manifest": {
+        "schemaVersion": "read-only-local-file-batch-manifest-v0",
+        "batchMode": "manual_explicit_redacted_file_list",
+        "explicitInputListOnly": true,
+        "directoryDiscovery": true,
+        "globAllowed": false,
+        "watcherAllowed": false,
+        "daemonAllowed": false,
+        "networkAllowed": false,
+        "liveTrafficAllowed": false,
+        "recordOnly": true,
+        "maxInputCount": 5,
+        "inputs": [
+          {
+            "sourceFilePath": "implementation/synaptic-mesh-shadow-v0/fixtures/redacted/batch-case-001.json",
+            "sourceArtifactDigest": "sha256:9c145c9508462da2a709fd897959f76f988ca98e26f85e99517c5a186985932b",
+            "sourceAlreadyRedacted": true,
+            "redactionReviewRecordId": "rrr_batch_001"
+          },
+          {
+            "sourceFilePath": "implementation/synaptic-mesh-shadow-v0/fixtures/redacted/batch-case-002.json",
+            "sourceArtifactDigest": "sha256:c2769964d9f5d622d80d1199e1dab9868ccda3bd29137fc649f436b8e3dd35f4",
+            "sourceAlreadyRedacted": true,
+            "redactionReviewRecordId": "rrr_batch_002"
+          },
+          {
+            "sourceFilePath": "implementation/synaptic-mesh-shadow-v0/fixtures/redacted/batch-case-003.json",
+            "sourceArtifactDigest": "sha256:cf157440a472b7cd066148db3f87a91d19e69d959ac142cd581543fab4824b9c",
+            "sourceAlreadyRedacted": true,
+            "redactionReviewRecordId": "rrr_batch_003"
+          }
+        ]
+      }
+    },
+    {
+      "caseId": "reject-glob-allowed",
+      "expectedVerdict": "reject",
+      "expectedReason": "globAllowed must be false",
+      "manifest": {
+        "schemaVersion": "read-only-local-file-batch-manifest-v0",
+        "batchMode": "manual_explicit_redacted_file_list",
+        "explicitInputListOnly": true,
+        "directoryDiscovery": false,
+        "globAllowed": true,
+        "watcherAllowed": false,
+        "daemonAllowed": false,
+        "networkAllowed": false,
+        "liveTrafficAllowed": false,
+        "recordOnly": true,
+        "maxInputCount": 5,
+        "inputs": [
+          {
+            "sourceFilePath": "implementation/synaptic-mesh-shadow-v0/fixtures/redacted/batch-case-001.json",
+            "sourceArtifactDigest": "sha256:9c145c9508462da2a709fd897959f76f988ca98e26f85e99517c5a186985932b",
+            "sourceAlreadyRedacted": true,
+            "redactionReviewRecordId": "rrr_batch_001"
+          },
+          {
+            "sourceFilePath": "implementation/synaptic-mesh-shadow-v0/fixtures/redacted/batch-case-002.json",
+            "sourceArtifactDigest": "sha256:c2769964d9f5d622d80d1199e1dab9868ccda3bd29137fc649f436b8e3dd35f4",
+            "sourceAlreadyRedacted": true,
+            "redactionReviewRecordId": "rrr_batch_002"
+          },
+          {
+            "sourceFilePath": "implementation/synaptic-mesh-shadow-v0/fixtures/redacted/batch-case-003.json",
+            "sourceArtifactDigest": "sha256:cf157440a472b7cd066148db3f87a91d19e69d959ac142cd581543fab4824b9c",
+            "sourceAlreadyRedacted": true,
+            "redactionReviewRecordId": "rrr_batch_003"
+          }
+        ]
+      }
+    },
+    {
+      "caseId": "reject-watcher-allowed",
+      "expectedVerdict": "reject",
+      "expectedReason": "watcherAllowed must be false",
+      "manifest": {
+        "schemaVersion": "read-only-local-file-batch-manifest-v0",
+        "batchMode": "manual_explicit_redacted_file_list",
+        "explicitInputListOnly": true,
+        "directoryDiscovery": false,
+        "globAllowed": false,
+        "watcherAllowed": true,
+        "daemonAllowed": false,
+        "networkAllowed": false,
+        "liveTrafficAllowed": false,
+        "recordOnly": true,
+        "maxInputCount": 5,
+        "inputs": [
+          {
+            "sourceFilePath": "implementation/synaptic-mesh-shadow-v0/fixtures/redacted/batch-case-001.json",
+            "sourceArtifactDigest": "sha256:9c145c9508462da2a709fd897959f76f988ca98e26f85e99517c5a186985932b",
+            "sourceAlreadyRedacted": true,
+            "redactionReviewRecordId": "rrr_batch_001"
+          },
+          {
+            "sourceFilePath": "implementation/synaptic-mesh-shadow-v0/fixtures/redacted/batch-case-002.json",
+            "sourceArtifactDigest": "sha256:c2769964d9f5d622d80d1199e1dab9868ccda3bd29137fc649f436b8e3dd35f4",
+            "sourceAlreadyRedacted": true,
+            "redactionReviewRecordId": "rrr_batch_002"
+          },
+          {
+            "sourceFilePath": "implementation/synaptic-mesh-shadow-v0/fixtures/redacted/batch-case-003.json",
+            "sourceArtifactDigest": "sha256:cf157440a472b7cd066148db3f87a91d19e69d959ac142cd581543fab4824b9c",
+            "sourceAlreadyRedacted": true,
+            "redactionReviewRecordId": "rrr_batch_003"
+          }
+        ]
+      }
+    },
+    {
+      "caseId": "reject-daemon-allowed",
+      "expectedVerdict": "reject",
+      "expectedReason": "daemonAllowed must be false",
+      "manifest": {
+        "schemaVersion": "read-only-local-file-batch-manifest-v0",
+        "batchMode": "manual_explicit_redacted_file_list",
+        "explicitInputListOnly": true,
+        "directoryDiscovery": false,
+        "globAllowed": false,
+        "watcherAllowed": false,
+        "daemonAllowed": true,
+        "networkAllowed": false,
+        "liveTrafficAllowed": false,
+        "recordOnly": true,
+        "maxInputCount": 5,
+        "inputs": [
+          {
+            "sourceFilePath": "implementation/synaptic-mesh-shadow-v0/fixtures/redacted/batch-case-001.json",
+            "sourceArtifactDigest": "sha256:9c145c9508462da2a709fd897959f76f988ca98e26f85e99517c5a186985932b",
+            "sourceAlreadyRedacted": true,
+            "redactionReviewRecordId": "rrr_batch_001"
+          },
+          {
+            "sourceFilePath": "implementation/synaptic-mesh-shadow-v0/fixtures/redacted/batch-case-002.json",
+            "sourceArtifactDigest": "sha256:c2769964d9f5d622d80d1199e1dab9868ccda3bd29137fc649f436b8e3dd35f4",
+            "sourceAlreadyRedacted": true,
+            "redactionReviewRecordId": "rrr_batch_002"
+          },
+          {
+            "sourceFilePath": "implementation/synaptic-mesh-shadow-v0/fixtures/redacted/batch-case-003.json",
+            "sourceArtifactDigest": "sha256:cf157440a472b7cd066148db3f87a91d19e69d959ac142cd581543fab4824b9c",
+            "sourceAlreadyRedacted": true,
+            "redactionReviewRecordId": "rrr_batch_003"
+          }
+        ]
+      }
+    },
+    {
+      "caseId": "reject-network-allowed",
+      "expectedVerdict": "reject",
+      "expectedReason": "networkAllowed must be false",
+      "manifest": {
+        "schemaVersion": "read-only-local-file-batch-manifest-v0",
+        "batchMode": "manual_explicit_redacted_file_list",
+        "explicitInputListOnly": true,
+        "directoryDiscovery": false,
+        "globAllowed": false,
+        "watcherAllowed": false,
+        "daemonAllowed": false,
+        "networkAllowed": true,
+        "liveTrafficAllowed": false,
+        "recordOnly": true,
+        "maxInputCount": 5,
+        "inputs": [
+          {
+            "sourceFilePath": "implementation/synaptic-mesh-shadow-v0/fixtures/redacted/batch-case-001.json",
+            "sourceArtifactDigest": "sha256:9c145c9508462da2a709fd897959f76f988ca98e26f85e99517c5a186985932b",
+            "sourceAlreadyRedacted": true,
+            "redactionReviewRecordId": "rrr_batch_001"
+          },
+          {
+            "sourceFilePath": "implementation/synaptic-mesh-shadow-v0/fixtures/redacted/batch-case-002.json",
+            "sourceArtifactDigest": "sha256:c2769964d9f5d622d80d1199e1dab9868ccda3bd29137fc649f436b8e3dd35f4",
+            "sourceAlreadyRedacted": true,
+            "redactionReviewRecordId": "rrr_batch_002"
+          },
+          {
+            "sourceFilePath": "implementation/synaptic-mesh-shadow-v0/fixtures/redacted/batch-case-003.json",
+            "sourceArtifactDigest": "sha256:cf157440a472b7cd066148db3f87a91d19e69d959ac142cd581543fab4824b9c",
+            "sourceAlreadyRedacted": true,
+            "redactionReviewRecordId": "rrr_batch_003"
+          }
+        ]
+      }
+    },
+    {
+      "caseId": "reject-live-traffic-allowed",
+      "expectedVerdict": "reject",
+      "expectedReason": "liveTrafficAllowed must be false",
+      "manifest": {
+        "schemaVersion": "read-only-local-file-batch-manifest-v0",
+        "batchMode": "manual_explicit_redacted_file_list",
+        "explicitInputListOnly": true,
+        "directoryDiscovery": false,
+        "globAllowed": false,
+        "watcherAllowed": false,
+        "daemonAllowed": false,
+        "networkAllowed": false,
+        "liveTrafficAllowed": true,
+        "recordOnly": true,
+        "maxInputCount": 5,
+        "inputs": [
+          {
+            "sourceFilePath": "implementation/synaptic-mesh-shadow-v0/fixtures/redacted/batch-case-001.json",
+            "sourceArtifactDigest": "sha256:9c145c9508462da2a709fd897959f76f988ca98e26f85e99517c5a186985932b",
+            "sourceAlreadyRedacted": true,
+            "redactionReviewRecordId": "rrr_batch_001"
+          },
+          {
+            "sourceFilePath": "implementation/synaptic-mesh-shadow-v0/fixtures/redacted/batch-case-002.json",
+            "sourceArtifactDigest": "sha256:c2769964d9f5d622d80d1199e1dab9868ccda3bd29137fc649f436b8e3dd35f4",
+            "sourceAlreadyRedacted": true,
+            "redactionReviewRecordId": "rrr_batch_002"
+          },
+          {
+            "sourceFilePath": "implementation/synaptic-mesh-shadow-v0/fixtures/redacted/batch-case-003.json",
+            "sourceArtifactDigest": "sha256:cf157440a472b7cd066148db3f87a91d19e69d959ac142cd581543fab4824b9c",
+            "sourceAlreadyRedacted": true,
+            "redactionReviewRecordId": "rrr_batch_003"
+          }
+        ]
+      }
+    },
+    {
+      "caseId": "reject-url-source",
+      "expectedVerdict": "reject",
+      "expectedReason": "sourceFilePath pattern mismatch",
+      "manifest": {
+        "schemaVersion": "read-only-local-file-batch-manifest-v0",
+        "batchMode": "manual_explicit_redacted_file_list",
+        "explicitInputListOnly": true,
+        "directoryDiscovery": false,
+        "globAllowed": false,
+        "watcherAllowed": false,
+        "daemonAllowed": false,
+        "networkAllowed": false,
+        "liveTrafficAllowed": false,
+        "recordOnly": true,
+        "maxInputCount": 5,
+        "inputs": [
+          {
+            "sourceFilePath": "https://example.invalid/a.json",
+            "sourceArtifactDigest": "sha256:9c145c9508462da2a709fd897959f76f988ca98e26f85e99517c5a186985932b",
+            "sourceAlreadyRedacted": true,
+            "redactionReviewRecordId": "rrr_batch_001"
+          }
+        ]
+      }
+    },
+    {
+      "caseId": "reject-absolute-source",
+      "expectedVerdict": "reject",
+      "expectedReason": "sourceFilePath pattern mismatch",
+      "manifest": {
+        "schemaVersion": "read-only-local-file-batch-manifest-v0",
+        "batchMode": "manual_explicit_redacted_file_list",
+        "explicitInputListOnly": true,
+        "directoryDiscovery": false,
+        "globAllowed": false,
+        "watcherAllowed": false,
+        "daemonAllowed": false,
+        "networkAllowed": false,
+        "liveTrafficAllowed": false,
+        "recordOnly": true,
+        "maxInputCount": 5,
+        "inputs": [
+          {
+            "sourceFilePath": "/tmp/a.json",
+            "sourceArtifactDigest": "sha256:9c145c9508462da2a709fd897959f76f988ca98e26f85e99517c5a186985932b",
+            "sourceAlreadyRedacted": true,
+            "redactionReviewRecordId": "rrr_batch_001"
+          }
+        ]
+      }
+    },
+    {
+      "caseId": "reject-traversal-source",
+      "expectedVerdict": "reject",
+      "expectedReason": "sourceFilePath pattern mismatch",
+      "manifest": {
+        "schemaVersion": "read-only-local-file-batch-manifest-v0",
+        "batchMode": "manual_explicit_redacted_file_list",
+        "explicitInputListOnly": true,
+        "directoryDiscovery": false,
+        "globAllowed": false,
+        "watcherAllowed": false,
+        "daemonAllowed": false,
+        "networkAllowed": false,
+        "liveTrafficAllowed": false,
+        "recordOnly": true,
+        "maxInputCount": 5,
+        "inputs": [
+          {
+            "sourceFilePath": "fixtures/../secret.json",
+            "sourceArtifactDigest": "sha256:9c145c9508462da2a709fd897959f76f988ca98e26f85e99517c5a186985932b",
+            "sourceAlreadyRedacted": true,
+            "redactionReviewRecordId": "rrr_batch_001"
+          }
+        ]
+      }
+    },
+    {
+      "caseId": "reject-glob-source",
+      "expectedVerdict": "reject",
+      "expectedReason": "sourceFilePath pattern mismatch",
+      "manifest": {
+        "schemaVersion": "read-only-local-file-batch-manifest-v0",
+        "batchMode": "manual_explicit_redacted_file_list",
+        "explicitInputListOnly": true,
+        "directoryDiscovery": false,
+        "globAllowed": false,
+        "watcherAllowed": false,
+        "daemonAllowed": false,
+        "networkAllowed": false,
+        "liveTrafficAllowed": false,
+        "recordOnly": true,
+        "maxInputCount": 5,
+        "inputs": [
+          {
+            "sourceFilePath": "fixtures/redacted/*.json",
+            "sourceArtifactDigest": "sha256:9c145c9508462da2a709fd897959f76f988ca98e26f85e99517c5a186985932b",
+            "sourceAlreadyRedacted": true,
+            "redactionReviewRecordId": "rrr_batch_001"
+          }
+        ]
+      }
+    },
+    {
+      "caseId": "reject-digest-mismatch",
+      "expectedVerdict": "reject",
+      "expectedReason": "sourceArtifactDigest pattern mismatch",
+      "manifest": {
+        "schemaVersion": "read-only-local-file-batch-manifest-v0",
+        "batchMode": "manual_explicit_redacted_file_list",
+        "explicitInputListOnly": true,
+        "directoryDiscovery": false,
+        "globAllowed": false,
+        "watcherAllowed": false,
+        "daemonAllowed": false,
+        "networkAllowed": false,
+        "liveTrafficAllowed": false,
+        "recordOnly": true,
+        "maxInputCount": 5,
+        "inputs": [
+          {
+            "sourceFilePath": "implementation/synaptic-mesh-shadow-v0/fixtures/redacted/batch-case-001.json",
+            "sourceArtifactDigest": "sha256:not-a-digest",
+            "sourceAlreadyRedacted": true,
+            "redactionReviewRecordId": "rrr_batch_001"
+          }
+        ]
+      }
+    },
+    {
+      "caseId": "reject-unredacted-source-flag",
+      "expectedVerdict": "reject",
+      "expectedReason": "sourceAlreadyRedacted must be true",
+      "manifest": {
+        "schemaVersion": "read-only-local-file-batch-manifest-v0",
+        "batchMode": "manual_explicit_redacted_file_list",
+        "explicitInputListOnly": true,
+        "directoryDiscovery": false,
+        "globAllowed": false,
+        "watcherAllowed": false,
+        "daemonAllowed": false,
+        "networkAllowed": false,
+        "liveTrafficAllowed": false,
+        "recordOnly": true,
+        "maxInputCount": 5,
+        "inputs": [
+          {
+            "sourceFilePath": "implementation/synaptic-mesh-shadow-v0/fixtures/redacted/batch-case-001.json",
+            "sourceArtifactDigest": "sha256:9c145c9508462da2a709fd897959f76f988ca98e26f85e99517c5a186985932b",
+            "sourceAlreadyRedacted": false,
+            "redactionReviewRecordId": "rrr_batch_001"
+          }
+        ]
+      }
+    },
+    {
+      "caseId": "reject-missing-review-id",
+      "expectedVerdict": "reject",
+      "expectedReason": "redactionReviewRecordId too short",
+      "manifest": {
+        "schemaVersion": "read-only-local-file-batch-manifest-v0",
+        "batchMode": "manual_explicit_redacted_file_list",
+        "explicitInputListOnly": true,
+        "directoryDiscovery": false,
+        "globAllowed": false,
+        "watcherAllowed": false,
+        "daemonAllowed": false,
+        "networkAllowed": false,
+        "liveTrafficAllowed": false,
+        "recordOnly": true,
+        "maxInputCount": 5,
+        "inputs": [
+          {
+            "sourceFilePath": "implementation/synaptic-mesh-shadow-v0/fixtures/redacted/batch-case-001.json",
+            "sourceArtifactDigest": "sha256:9c145c9508462da2a709fd897959f76f988ca98e26f85e99517c5a186985932b",
+            "sourceAlreadyRedacted": true,
+            "redactionReviewRecordId": ""
+          }
+        ]
+      }
+    },
+    {
+      "caseId": "reject-additional-root-property",
+      "expectedVerdict": "reject",
+      "expectedReason": "additional property",
+      "manifest": {
+        "schemaVersion": "read-only-local-file-batch-manifest-v0",
+        "batchMode": "manual_explicit_redacted_file_list",
+        "explicitInputListOnly": true,
+        "directoryDiscovery": false,
+        "globAllowed": false,
+        "watcherAllowed": false,
+        "daemonAllowed": false,
+        "networkAllowed": false,
+        "liveTrafficAllowed": false,
+        "recordOnly": true,
+        "maxInputCount": 5,
+        "inputs": [
+          {
+            "sourceFilePath": "implementation/synaptic-mesh-shadow-v0/fixtures/redacted/batch-case-001.json",
+            "sourceArtifactDigest": "sha256:9c145c9508462da2a709fd897959f76f988ca98e26f85e99517c5a186985932b",
+            "sourceAlreadyRedacted": true,
+            "redactionReviewRecordId": "rrr_batch_001"
+          },
+          {
+            "sourceFilePath": "implementation/synaptic-mesh-shadow-v0/fixtures/redacted/batch-case-002.json",
+            "sourceArtifactDigest": "sha256:c2769964d9f5d622d80d1199e1dab9868ccda3bd29137fc649f436b8e3dd35f4",
+            "sourceAlreadyRedacted": true,
+            "redactionReviewRecordId": "rrr_batch_002"
+          },
+          {
+            "sourceFilePath": "implementation/synaptic-mesh-shadow-v0/fixtures/redacted/batch-case-003.json",
+            "sourceArtifactDigest": "sha256:cf157440a472b7cd066148db3f87a91d19e69d959ac142cd581543fab4824b9c",
+            "sourceAlreadyRedacted": true,
+            "redactionReviewRecordId": "rrr_batch_003"
+          }
+        ],
+        "autoDiscover": true
+      }
+    },
+    {
+      "caseId": "reject-additional-input-property",
+      "expectedVerdict": "reject",
+      "expectedReason": "additional property",
+      "manifest": {
+        "schemaVersion": "read-only-local-file-batch-manifest-v0",
+        "batchMode": "manual_explicit_redacted_file_list",
+        "explicitInputListOnly": true,
+        "directoryDiscovery": false,
+        "globAllowed": false,
+        "watcherAllowed": false,
+        "daemonAllowed": false,
+        "networkAllowed": false,
+        "liveTrafficAllowed": false,
+        "recordOnly": true,
+        "maxInputCount": 5,
+        "inputs": [
+          {
+            "sourceFilePath": "implementation/synaptic-mesh-shadow-v0/fixtures/redacted/batch-case-001.json",
+            "sourceArtifactDigest": "sha256:9c145c9508462da2a709fd897959f76f988ca98e26f85e99517c5a186985932b",
+            "sourceAlreadyRedacted": true,
+            "redactionReviewRecordId": "rrr_batch_001",
+            "rawContent": "forbidden"
+          }
+        ]
+      }
+    },
+    {
+      "caseId": "reject-non-record-only",
+      "expectedVerdict": "reject",
+      "expectedReason": "recordOnly must be true",
+      "manifest": {
+        "schemaVersion": "read-only-local-file-batch-manifest-v0",
+        "batchMode": "manual_explicit_redacted_file_list",
+        "explicitInputListOnly": true,
+        "directoryDiscovery": false,
+        "globAllowed": false,
+        "watcherAllowed": false,
+        "daemonAllowed": false,
+        "networkAllowed": false,
+        "liveTrafficAllowed": false,
+        "recordOnly": false,
+        "maxInputCount": 5,
+        "inputs": [
+          {
+            "sourceFilePath": "implementation/synaptic-mesh-shadow-v0/fixtures/redacted/batch-case-001.json",
+            "sourceArtifactDigest": "sha256:9c145c9508462da2a709fd897959f76f988ca98e26f85e99517c5a186985932b",
+            "sourceAlreadyRedacted": true,
+            "redactionReviewRecordId": "rrr_batch_001"
+          },
+          {
+            "sourceFilePath": "implementation/synaptic-mesh-shadow-v0/fixtures/redacted/batch-case-002.json",
+            "sourceArtifactDigest": "sha256:c2769964d9f5d622d80d1199e1dab9868ccda3bd29137fc649f436b8e3dd35f4",
+            "sourceAlreadyRedacted": true,
+            "redactionReviewRecordId": "rrr_batch_002"
+          },
+          {
+            "sourceFilePath": "implementation/synaptic-mesh-shadow-v0/fixtures/redacted/batch-case-003.json",
+            "sourceArtifactDigest": "sha256:cf157440a472b7cd066148db3f87a91d19e69d959ac142cd581543fab4824b9c",
+            "sourceAlreadyRedacted": true,
+            "redactionReviewRecordId": "rrr_batch_003"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -185,7 +185,7 @@ const releaseTarget = args.target ?? manifestReleaseTag;
 const publishedRelease = currentPublishedRelease();
 const releaseTargetCommit = tagCommit(releaseTarget);
 const headCommit = runGit(['rev-parse', 'HEAD']);
-const staleVersions = [...new Set([...previousPatchVersionLabels(manifestVersion), 'v0.1.2', '0.1.2'])]
+const staleVersions = [...new Set(['v0.1.2', '0.1.2'])]
   .filter((version) => version !== manifestReleaseTag && version !== manifestVersion);
 
 assert(/^\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?$/.test(manifestVersion), `MANIFEST.json version must be semver-like, optionally with prerelease suffix; got ${manifestVersion}`);

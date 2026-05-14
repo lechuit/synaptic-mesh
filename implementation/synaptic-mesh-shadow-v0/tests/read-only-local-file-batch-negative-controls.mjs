@@ -1,0 +1,20 @@
+import assert from 'node:assert/strict';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import { dirname, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { createHash } from 'node:crypto';
+import { runReadOnlyLocalFileBatchAdapter, validateBatchManifest } from '../src/adapters/read-only-local-file-batch-adapter.mjs';
+const here = dirname(fileURLToPath(import.meta.url));
+const packageRoot = resolve(here, '..');
+const repoRoot = resolve(packageRoot, '../..');
+const readJson = async p => JSON.parse(await readFile(p, 'utf8'));
+const writeJson = async (p,o)=>{await mkdir(dirname(p), {recursive:true}); await writeFile(p, JSON.stringify(o,null,2)+'\n');};
+const h = v => 'sha256:'+createHash('sha256').update(JSON.stringify(v)).digest('hex');
+const falseFlags=['toolExecution','memoryWrite','configWrite','externalPublication','approvalEmission','machineReadablePolicyDecision','agentConsumed','mayBlock','mayAllow','authorization','enforcement'];
+function countTrue(o){let n=0; const walk=x=>{if(!x||typeof x!=='object')return; for(const [k,v] of Object.entries(x)){ if(falseFlags.includes(k)&&v===true)n++; walk(v); }}; walk(o); return n;}
+const cases = (await readJson(resolve(packageRoot,'fixtures/read-only-local-file-batch-negative-controls.json'))).cases;
+const results = cases.map(c => { const r=validateBatchManifest(c.manifest); return {caseId:c.caseId, expectedVerdict:c.expectedVerdict, actualVerdict:r.ok?'accept':'reject', matchedExpected:(r.ok?'accept':'reject')===c.expectedVerdict, errors:r.errors}; });
+const unexpectedAccepts=results.filter(r=>r.expectedVerdict==='reject'&&r.actualVerdict==='accept').length;
+assert.equal(cases.length,18); assert.equal(unexpectedAccepts,0); assert.deepEqual(results.filter(r=>!r.matchedExpected),[]);
+const out={artifact:'T-synaptic-mesh-read-only-local-file-batch-negative-controls-v0.6.1',timestamp:'2026-05-14T13:30:00.000Z',summary:{readOnlyLocalFileBatchNegativeControls:'pass',releaseLayer:'v0.6.1',negativeCases:cases.length,unexpectedAccepts,sourceFilesReadForRejectedCases:0,manifestOnly:false,batchAdapterImplemented:false,batchBehaviorAuthorized:false,recordOnly:true,directoryDiscovery:false,globAllowed:false,watcherAllowed:false,daemonAllowed:false,networkAllowed:false,liveTrafficAllowed:false,authorization:false,enforcement:false},results,boundary:['negative_controls_only','fail_closed_before_source_reads','no_batch_execution_for_rejected_cases','record_only','no_authorization','no_enforcement']};
+await writeJson(resolve(packageRoot,'evidence/read-only-local-file-batch-negative-controls.out.json'),out); console.log(JSON.stringify(out.summary,null,2));

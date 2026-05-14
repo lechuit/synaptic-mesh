@@ -1,70 +1,21 @@
-# Release Notes — Synaptic Mesh v0.6.0-alpha
+# Release Notes — Synaptic Mesh v0.6.5
 
-Status: explicit batch manifest schema alpha for future read-only local-file batch review. Manual, local, manifest only, no batch execution yet, schema-only, explicit already-redacted input list only, record-only evidence, no batch adapter behavior, no effects. Not runtime-ready; not production/enforcement-ready.
-
-## Why this release
-
-This release starts the v0.6.x effectiveness/batch-readiness track by defining the narrowest possible batch contract before any behavior expands beyond one file.
+Status: batch public review package closing v0.6.x. Manual, local, read-only, explicit already-redacted file batch only, digest-bound, max five inputs, record-only evidence. Not runtime-ready; not production/enforcement-ready.
 
 ## Highlights
 
-- Added `schemas/read-only-local-file-batch-manifest.schema.json`.
-- Added `implementation/synaptic-mesh-shadow-v0/fixtures/read-only-local-file-batch-manifests.json`.
-- Added `test:read-only-local-file-batch-manifest-schema`.
-- Added `docs/read-only-local-file-batch-manifest.md` and `docs/status-v0.6.0-alpha.md`.
-- Required manual explicit already-redacted file lists with digest-bound inputs and redaction review record IDs.
-- Added `maxInputCount` with a hard cap of 5.
-- Kept the schema test source-read-free: `sourceFilesReadForSchemaCases: 0`.
-- Kept `directoryDiscovery`, `globAllowed`, `watcherAllowed`, `daemonAllowed`, `networkAllowed`, and `liveTrafficAllowed` false.
-- Preserved schema-only status: no batch adapter implementation, runtime authorization, authorization, enforcement, or agent consumption.
-
-## Expected v0.6.0-alpha evidence
-
-```json
-{
-  "readOnlyLocalFileBatchManifestSchema": "pass",
-  "releaseLayer": "v0.6.0-alpha",
-  "manifestOnly": true,
-  "schemaOnly": true,
-  "batchAdapterImplemented": false,
-  "batchBehaviorAuthorized": false,
-  "positiveCases": 2,
-  "negativeCases": 8,
-  "unexpectedAccepts": 0,
-  "unexpectedRejects": 0,
-  "sourceFilesReadForSchemaCases": 0,
-  "maxInputCount": 5,
-  "batchMode": "manual_explicit_redacted_file_list",
-  "explicitInputListOnly": true,
-  "directoryDiscovery": false,
-  "globAllowed": false,
-  "watcherAllowed": false,
-  "daemonAllowed": false,
-  "networkAllowed": false,
-  "liveTrafficAllowed": false,
-  "recordOnly": true,
-  "authorization": false,
-  "enforcement": false
-}
-```
+- Added batch negative controls for forbidden discovery, glob, watcher, daemon, network/live traffic, traversal, URL/absolute paths, extra properties, unredacted flags, and over-limit batches.
+- Added a manual read-only local-file batch adapter canary over three explicit already-redacted files.
+- Added deterministic batch reproducibility gate.
+- Added failure-isolation checks for digest mismatch and missing files.
+- Added v0.6.5 public review package and status docs.
 
 ## Conservative release statement
 
-`v0.6.0-alpha` defines a manifest contract only; manifest only, no batch execution yet. It does not add batch adapter behavior, runtime authorization, enforcement, MCP, A2A, LangGraph, GitHub bot, watcher, daemon, directory scan, glob input, network input, live traffic, multiple-file auto-discovery, tool execution, memory/config writes, external publication, publication automation, agent-instruction writes, automatic agent consumption, approval paths, blocking, allowing, authorization, MemoryAtom, MemoryStore, deletion, retention scheduling, or enforcement.
+`v0.6.5` closes the v0.6.x batch-readiness review package. It does not add runtime authorization, framework integration, watcher/daemon behavior, network input, live traffic, tool execution, memory/config writes, external publication, agent-instruction writes, automatic agent consumption, approval paths, blocking, allowing, authorization, retention scheduling, deletion, or enforcement.
 
-## Validation snapshot
-
-Expected validation command:
+## Validation
 
 ```bash
-npm --prefix implementation/synaptic-mesh-shadow-v0 run release:check -- --target v0.6.0-alpha
+npm --prefix implementation/synaptic-mesh-shadow-v0 run release:check -- --target v0.6.5
 ```
-
-## Operational non-release status
-
-- Not runtime/tooling integrated.
-- Not live-monitoring integrated.
-- Not a batch adapter implementation.
-- Not production/enforcement/L2+ ready.
-- The manifest schema does not authorize the next phase.
-- Advisory no es authority.

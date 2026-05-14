@@ -1,0 +1,10 @@
+{
+  "fixtureId": "batch-redacted-002",
+  "redactionStatus": "already_redacted",
+  "records": [
+    {
+      "id": "b2",
+      "text": "[REDACTED_AGENT] reports a local advisory-only handoff boundary."
+    }
+  ]
+}
