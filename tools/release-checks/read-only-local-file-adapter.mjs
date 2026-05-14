@@ -2,6 +2,9 @@ import { readFileSync } from 'node:fs';
 import path from 'node:path';
 
 export const readOnlyLocalFileAdapterGateScripts = Object.freeze([
+  'test:read-only-adapter-public-review-package',
+  'test:read-only-adapter-human-review-go-no-go',
+  'test:first-real-adapter-design-note',
   'test:adapter-implementation-hazard-catalog',
   'test:read-only-local-file-adapter-schema',
   'test:read-only-local-file-adapter',
@@ -12,6 +15,29 @@ export const readOnlyLocalFileAdapterGateScripts = Object.freeze([
 
 export const readOnlyLocalFileAdapterRequiredManifestPaths = Object.freeze([
   'tools/release-checks/read-only-local-file-adapter.mjs',
+  'docs/status-v0.4.5.md',
+  'docs/read-only-adapter-boundary-contracts-v0.4.0-alpha.md',
+  'docs/read-only-adapter-misuse-failure-catalog-v0.4.1.md',
+  'docs/read-only-adapter-reproducibility-drift-gate-v0.4.2.md',
+  'docs/read-only-adapter-reviewer-runbook-v0.4.3.md',
+  'docs/read-only-adapter-public-review-package-v0.4.5.md',
+  'implementation/synaptic-mesh-shadow-v0/tests/read-only-adapter-public-review-package.mjs',
+  'implementation/synaptic-mesh-shadow-v0/evidence/read-only-adapter-contracts.out.json',
+  'implementation/synaptic-mesh-shadow-v0/evidence/read-only-adapter-misuse-failure-catalog-v0.4.1.out.json',
+  'implementation/synaptic-mesh-shadow-v0/evidence/read-only-adapter-reproducibility-drift-gate-v0.4.2.out.json',
+  'implementation/synaptic-mesh-shadow-v0/evidence/read-only-adapter-simulated-v0.4.4.out.json',
+  'implementation/synaptic-mesh-shadow-v0/evidence/read-only-adapter-public-review-package-v0.4.5.out.json',
+  'implementation/synaptic-mesh-shadow-v0/fixtures/read-only-adapter-public-review-package-v0.4.5.json',
+  'docs/status-v0.4.6.md',
+  'docs/read-only-adapter-human-review-findings-go-no-go-v0.4.6.md',
+  'implementation/synaptic-mesh-shadow-v0/tests/read-only-adapter-human-review-go-no-go.mjs',
+  'implementation/synaptic-mesh-shadow-v0/fixtures/read-only-adapter-human-review-go-no-go-v0.4.6.json',
+  'implementation/synaptic-mesh-shadow-v0/evidence/read-only-adapter-human-review-go-no-go-v0.4.6.out.json',
+  'docs/status-v0.4.7.md',
+  'docs/first-real-adapter-design-note-v0.4.7.md',
+  'implementation/synaptic-mesh-shadow-v0/tests/first-real-adapter-design-note.mjs',
+  'implementation/synaptic-mesh-shadow-v0/fixtures/first-real-adapter-design-note-v0.4.7.json',
+  'implementation/synaptic-mesh-shadow-v0/evidence/first-real-adapter-design-note-v0.4.7.out.json',
   'docs/status-v0.4.8.md',
   'docs/adapter-implementation-hazard-catalog-v0.4.8.md',
   'docs/status-v0.5.0-alpha.md',
@@ -83,6 +109,61 @@ const V048_RUNTIME_BOUNDARY_TOKENS = Object.freeze([
   'no_network_call',
 ]);
 
+const V047_REPRODUCIBILITY_TOKENS = Object.freeze([
+  'first_real_adapter_design_note',
+  'read_only_local_file_adapter',
+  'one_explicit_already_redacted_local_file',
+  'go_to_hazard_catalog_true',
+  'go_to_v0_5_alpha_implementation_false',
+]);
+
+const V047_RUNTIME_BOUNDARY_TOKENS = Object.freeze([
+  'no_real_adapter_implementation',
+  'no_mcp',
+  'no_langgraph',
+  'no_github_bot',
+  'no_watcher',
+  'no_daemon',
+  'no_directory_scan',
+  'no_glob',
+  'no_directory_traversal',
+  'no_symlink_escape',
+  'no_url_input',
+  'no_network_call',
+]);
+
+const V046_REPRODUCIBILITY_TOKENS = Object.freeze([
+  'human_review_findings_go_no_go_record',
+  'v0.4.6',
+  'go_to_real_adapter_design_true',
+  'go_to_real_adapter_implementation_false',
+]);
+
+const V046_RUNTIME_BOUNDARY_TOKENS = Object.freeze([
+  'design_only_allowed',
+  'no_v0_5_alpha_implementation',
+  'no_real_adapter',
+  'no_framework_integration',
+  'no_live_traffic',
+  'no_tool_execution',
+  'no_memory_write',
+  'no_config_write',
+]);
+
+const V045_REPRODUCIBILITY_TOKENS = Object.freeze([
+  'read_only_adapter_boundary_public_review_package',
+  'v0.4.5',
+]);
+
+const V045_RUNTIME_BOUNDARY_TOKENS = Object.freeze([
+  'no_real_adapter',
+  'no_framework_integration',
+  'no_live_traffic',
+  'no_tool_execution',
+  'no_memory_write',
+  'no_config_write',
+]);
+
 const COMMON_FORBIDDEN_RESULT_FLAGS = Object.freeze([
   'toolExecution',
   'memoryWrite',
@@ -140,6 +221,64 @@ const HAZARD_CATALOG_FORBIDDEN_FLAGS = Object.freeze([
   'enforcement',
 ]);
 
+const FIRST_REAL_ADAPTER_DESIGN_NOTE_FORBIDDEN_FLAGS = Object.freeze([
+  'globAllowed',
+  'directoryInputAllowed',
+  'directoryTraversalAllowed',
+  'symlinkEscapeAllowed',
+  'urlInputAllowed',
+  'networkAllowed',
+  'watcherAllowed',
+  'daemonAllowed',
+  'frameworkSdkAllowed',
+  'mcpAllowed',
+  'langGraphAllowed',
+  'githubBotAllowed',
+  'toolExecution',
+  'memoryWrite',
+  'configWrite',
+  'externalPublication',
+  'agentInstruction',
+  'approvalEmission',
+  'mayBlock',
+  'mayAllow',
+  'authorization',
+  'enforcement',
+]);
+
+const HUMAN_REVIEW_GO_NO_GO_FORBIDDEN_FLAGS = Object.freeze([
+  'realAdapterAuthorized',
+  'frameworkIntegrationAuthorized',
+  'liveTrafficAuthorized',
+  'toolExecution',
+  'memoryWrite',
+  'configWrite',
+  'externalPublicationByAdapter',
+  'approvalEmission',
+  'machineReadablePolicyDecision',
+  'agentConsumed',
+  'mayBlock',
+  'mayAllow',
+  'authorization',
+  'enforcement',
+]);
+
+const READ_ONLY_ADAPTER_PUBLIC_REVIEW_FORBIDDEN_FLAGS = Object.freeze([
+  'realAdapterAuthorized',
+  'frameworkIntegrationAuthorized',
+  'liveTrafficAuthorized',
+  'toolExecution',
+  'memoryWrite',
+  'configWrite',
+  'externalPublication',
+  'approvalEmission',
+  'machineReadablePolicyDecision',
+  'agentConsumed',
+  'mayBlock',
+  'mayAllow',
+  'enforcement',
+]);
+
 const RUNBOOK_REQUIRED_TEXT = Object.freeze([
   'PR #3 negative controls',
   'PR #4 positive canary',
@@ -184,9 +323,27 @@ export function assertReadOnlyLocalFileAdapterManifestMetadata({ manifest, manif
     assertAllIncluded(manifest.reproducibility, V048_REPRODUCIBILITY_TOKENS, 'MANIFEST.json reproducibility', assertIncludes);
     assertAllIncluded(manifest.runtimeBoundary, V048_RUNTIME_BOUNDARY_TOKENS, 'MANIFEST.json runtimeBoundary', assertIncludes);
   }
+
+  if (manifestReleaseTag === 'v0.4.7') {
+    assertAllIncluded(manifest.reproducibility, V047_REPRODUCIBILITY_TOKENS, 'MANIFEST.json reproducibility', assertIncludes);
+    assertAllIncluded(manifest.runtimeBoundary, V047_RUNTIME_BOUNDARY_TOKENS, 'MANIFEST.json runtimeBoundary', assertIncludes);
+  }
+
+  if (manifestReleaseTag === 'v0.4.6') {
+    assertAllIncluded(manifest.reproducibility, V046_REPRODUCIBILITY_TOKENS, 'MANIFEST.json reproducibility', assertIncludes);
+    assertAllIncluded(manifest.runtimeBoundary, V046_RUNTIME_BOUNDARY_TOKENS, 'MANIFEST.json runtimeBoundary', assertIncludes);
+  }
+
+  if (manifestReleaseTag === 'v0.4.5') {
+    assertAllIncluded(manifest.reproducibility, V045_REPRODUCIBILITY_TOKENS, 'MANIFEST.json reproducibility', assertIncludes);
+    assertAllIncluded(manifest.runtimeBoundary, V045_RUNTIME_BOUNDARY_TOKENS, 'MANIFEST.json runtimeBoundary', assertIncludes);
+  }
 }
 
 export function assertReadOnlyLocalFileAdapterRelease({ repoRoot, packageRoot, manifestReleaseTag, readJson, assert, assertIncludes }) {
+  const readOnlyAdapterPublicReview = readJson(path.join(packageRoot, 'evidence/read-only-adapter-public-review-package-v0.4.5.out.json'));
+  const humanReviewGoNoGo = readJson(path.join(packageRoot, 'evidence/read-only-adapter-human-review-go-no-go-v0.4.6.out.json'));
+  const firstRealAdapterDesignNote = readJson(path.join(packageRoot, 'evidence/first-real-adapter-design-note-v0.4.7.out.json'));
   const adapterImplementationHazardCatalog = readJson(path.join(packageRoot, 'evidence/adapter-implementation-hazard-catalog-v0.4.8.out.json'));
   const readOnlyLocalFileAdapterSchema = readJson(path.join(packageRoot, 'evidence/read-only-local-file-adapter-schema.out.json'));
   const readOnlyLocalFileAdapter = readJson(path.join(packageRoot, 'evidence/read-only-local-file-adapter/read-only-local-file-adapter.out.json'));
@@ -274,6 +431,42 @@ export function assertReadOnlyLocalFileAdapterRelease({ repoRoot, packageRoot, m
   assertFalseFields(readOnlyLocalFileAdapterCanary?.summary, COMMON_FORBIDDEN_RESULT_FLAGS, 'read-only local-file adapter canary', assert);
   assertFalseFields(readOnlyLocalFileAdapterCanaryRunbook?.summary, RUNBOOK_FORBIDDEN_FLAGS, 'read-only local-file adapter canary runbook', assert);
 
+  if (manifestReleaseTag === 'v0.4.7') {
+    assertSummary(firstRealAdapterDesignNote?.summary, {
+      firstRealAdapterDesignNote: 'pass',
+      candidateAdapter: 'read_only_local_file_adapter',
+      designOnly: true,
+      implementationAuthorized: false,
+      goToHazardCatalog: true,
+      goToV050AlphaImplementation: false,
+      inputLimit: 'one_explicit_already_redacted_local_file',
+      outputLimit: 'evidence_record_only',
+    }, 'first real adapter design note', assert);
+    assertFalseFields(firstRealAdapterDesignNote?.summary, FIRST_REAL_ADAPTER_DESIGN_NOTE_FORBIDDEN_FLAGS, 'first real adapter design note', assert);
+  }
+
+  if (manifestReleaseTag === 'v0.4.6') {
+    assertSummary(humanReviewGoNoGo?.summary, {
+      adapterBoundaryHumanReview: 'pass',
+      humanReviewFindingsGoNoGo: 'pass',
+      reviewedRelease: 'v0.4.5',
+      goForPublicReviewOnly: true,
+      goToRealAdapterDesign: true,
+      goToRealAdapterImplementation: false,
+      requiresMaintainerDecisionForImplementation: true,
+      openBlockingRisks: 0,
+      independentLocalReviews: 2,
+    }, 'human review go/no-go', assert);
+    assertFalseFields(humanReviewGoNoGo?.summary, HUMAN_REVIEW_GO_NO_GO_FORBIDDEN_FLAGS, 'human review go/no-go', assert);
+  }
+
+  if (manifestReleaseTag === 'v0.4.5') {
+    assertSummary(readOnlyAdapterPublicReview?.summary, {
+      verdict: 'pass',
+    }, 'read-only adapter public review', assert);
+    assertFalseFields(readOnlyAdapterPublicReview?.summary, READ_ONLY_ADAPTER_PUBLIC_REVIEW_FORBIDDEN_FLAGS, 'read-only adapter public review', assert);
+  }
+
   if (manifestReleaseTag === 'v0.4.8') {
     assertSummary(adapterImplementationHazardCatalog?.summary, {
       adapterImplementationHazardCatalog: 'pass',
@@ -291,3 +484,11 @@ export function assertReadOnlyLocalFileAdapterRelease({ repoRoot, packageRoot, m
     assertAllIncluded(statusV050Alpha, STATUS_V050_ALPHA_REQUIRED_TEXT, 'docs/status-v0.5.0-alpha.md', assertIncludes);
   }
 }
+
+export const readOnlyLocalFileAdapterSuite = Object.freeze({
+  name: 'read-only-local-file-adapter',
+  gateScripts: readOnlyLocalFileAdapterGateScripts,
+  requiredManifestPaths: readOnlyLocalFileAdapterRequiredManifestPaths,
+  assertManifestMetadata: assertReadOnlyLocalFileAdapterManifestMetadata,
+  assertRelease: assertReadOnlyLocalFileAdapterRelease,
+});

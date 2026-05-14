@@ -1414,8 +1414,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/package.json",
-      "bytes": 15804,
-      "sha256": "b00ba451d4b488f4e2d97b55b1ae15336a00bf3f6fa76053b62e30d44de6db23"
+      "bytes": 15857,
+      "sha256": "0ac4262dce5d82f066b254e554cf9e57eae352ca67a17b94b56b8ced2d984cd6"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/action-context-packet.mjs",
@@ -2409,13 +2409,18 @@
     },
     {
       "path": "tools/release-check.mjs",
-      "bytes": 183562,
-      "sha256": "fafbb6261072d42dfde2bebc9b17894b875b89306c170a7125af3ce8b3254131"
+      "bytes": 170942,
+      "sha256": "ab78e978aef733cce90655e03fc011d17fbb5288d9ce5685172c889ee9575ada"
+    },
+    {
+      "path": "tools/release-checks/index.mjs",
+      "bytes": 172,
+      "sha256": "5ddcc900caa4fb3cbaeaa2d340aea0b49922441309e8c63d5f0e9f5b05916575"
     },
     {
       "path": "tools/release-checks/read-only-local-file-adapter.mjs",
-      "bytes": 13476,
-      "sha256": "b6cf55819296a5068a43e8c956c3ac541fe184a68943cad725ceba404f952a79"
+      "bytes": 21263,
+      "sha256": "5005cd9a71573fe692b3cc404eb0e14d0fae3910f4add938c5a1299fefb7443f"
     },
     {
       "path": "tools/update-manifest.mjs",
