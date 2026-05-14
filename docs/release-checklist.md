@@ -17,7 +17,7 @@ Run release gates from the package directory:
 
 ```bash
 cd implementation/synaptic-mesh-shadow-v0
-npm run release:check -- --target v0.1.17
+npm run release:check -- --target v0.5.0-alpha
 ```
 
 `release:check` verifies the manifest/docs package version, reports the explicit `releaseTarget`, reports the local Git `currentPublishedRelease` when available, blocks release-candidate validation against an already-existing tag unless the current checkout is exactly that tagged commit, and runs the release-critical local gates. If `--target` is omitted, it defaults to the manifest version and prints a warning so release PRs do not silently inherit a stale target.
@@ -48,6 +48,12 @@ It runs:
 - `npm run test:live-shadow-observation-schema`
 - `npm run test:live-shadow-observation-result-schema`
 - `npm run test:live-shadow-forbidden-effects`
+- `npm run test:adapter-implementation-hazard-catalog`
+- `npm run test:read-only-local-file-adapter-schema`
+- `npm run test:read-only-local-file-adapter`
+- `npm run test:read-only-local-file-adapter-negative-controls`
+- `npm run test:read-only-local-file-adapter-canary`
+- `npm run test:read-only-local-file-adapter-canary-runbook`
 - `npm run test:live-shadow-synthetic-replay`
 - `npm run test:live-shadow-drift-scorecard`
 - `npm run test:manual-observation-bundle-schema`
