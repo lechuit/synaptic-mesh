@@ -8,6 +8,26 @@
     "forbiddenEffects": 0,
     "capabilityTrueCount": 0,
     "sourceFilesRead": 0,
+    "forbiddenConvenienceCliFlags": [
+      "--directory",
+      "--glob",
+      "--watch",
+      "--daemon",
+      "--url",
+      "--repo",
+      "--network",
+      "--tool",
+      "--memory",
+      "--config",
+      "--publish",
+      "--approve",
+      "--block",
+      "--allow"
+    ],
+    "forbiddenConvenienceCliFlagCases": 14,
+    "forbiddenConvenienceCliFlagAccepts": 0,
+    "forbiddenConvenienceCliFlagSourceFilesRead": 0,
+    "forbiddenConvenienceCliFlagSurfaceFindings": 0,
     "networkPrimitiveFindings": 0,
     "rawClassifierLeakFindings": 0
   },
@@ -209,6 +229,190 @@
       ]
     }
   ],
+  "forbiddenConvenienceFlagRows": [
+    {
+      "id": "F01",
+      "hazard": "directory_convenience_flag",
+      "accepted": false,
+      "sourceFileRead": false,
+      "capabilityTrueCount": 0,
+      "forbiddenEffects": 0,
+      "reasons": [
+        "additional input property directory is forbidden",
+        "directoryInputAllowed must be false"
+      ],
+      "flag": "--directory"
+    },
+    {
+      "id": "F02",
+      "hazard": "glob_convenience_flag",
+      "accepted": false,
+      "sourceFileRead": false,
+      "capabilityTrueCount": 0,
+      "forbiddenEffects": 0,
+      "reasons": [
+        "additional input property glob is forbidden",
+        "globAllowed must be false"
+      ],
+      "flag": "--glob"
+    },
+    {
+      "id": "F03",
+      "hazard": "watch_convenience_flag",
+      "accepted": false,
+      "sourceFileRead": false,
+      "capabilityTrueCount": 0,
+      "forbiddenEffects": 0,
+      "reasons": [
+        "additional input property watch is forbidden",
+        "watcherAllowed must be false"
+      ],
+      "flag": "--watch"
+    },
+    {
+      "id": "F04",
+      "hazard": "daemon_convenience_flag",
+      "accepted": false,
+      "sourceFileRead": false,
+      "capabilityTrueCount": 0,
+      "forbiddenEffects": 0,
+      "reasons": [
+        "additional input property daemon is forbidden",
+        "daemonAllowed must be false"
+      ],
+      "flag": "--daemon"
+    },
+    {
+      "id": "F05",
+      "hazard": "url_convenience_flag",
+      "accepted": false,
+      "sourceFileRead": false,
+      "capabilityTrueCount": 0,
+      "forbiddenEffects": 0,
+      "reasons": [
+        "additional input property url is forbidden",
+        "sourceFilePath must not be URL/network input"
+      ],
+      "flag": "--url"
+    },
+    {
+      "id": "F06",
+      "hazard": "repo_convenience_flag",
+      "accepted": false,
+      "sourceFileRead": false,
+      "capabilityTrueCount": 0,
+      "forbiddenEffects": 0,
+      "reasons": [
+        "additional input property repo is forbidden"
+      ],
+      "flag": "--repo"
+    },
+    {
+      "id": "F07",
+      "hazard": "network_convenience_flag",
+      "accepted": false,
+      "sourceFileRead": false,
+      "capabilityTrueCount": 0,
+      "forbiddenEffects": 0,
+      "reasons": [
+        "additional input property network is forbidden",
+        "networkAllowed must be false"
+      ],
+      "flag": "--network"
+    },
+    {
+      "id": "F08",
+      "hazard": "tool_convenience_flag",
+      "accepted": false,
+      "sourceFileRead": false,
+      "capabilityTrueCount": 0,
+      "forbiddenEffects": 0,
+      "reasons": [
+        "additional input property tool is forbidden",
+        "additional input property toolExecution is forbidden"
+      ],
+      "flag": "--tool"
+    },
+    {
+      "id": "F09",
+      "hazard": "memory_convenience_flag",
+      "accepted": false,
+      "sourceFileRead": false,
+      "capabilityTrueCount": 0,
+      "forbiddenEffects": 0,
+      "reasons": [
+        "additional input property memory is forbidden",
+        "additional input property memoryWrite is forbidden"
+      ],
+      "flag": "--memory"
+    },
+    {
+      "id": "F10",
+      "hazard": "config_convenience_flag",
+      "accepted": false,
+      "sourceFileRead": false,
+      "capabilityTrueCount": 0,
+      "forbiddenEffects": 0,
+      "reasons": [
+        "additional input property config is forbidden",
+        "additional input property configWrite is forbidden"
+      ],
+      "flag": "--config"
+    },
+    {
+      "id": "F11",
+      "hazard": "publish_convenience_flag",
+      "accepted": false,
+      "sourceFileRead": false,
+      "capabilityTrueCount": 0,
+      "forbiddenEffects": 0,
+      "reasons": [
+        "additional input property publish is forbidden",
+        "additional input property externalPublication is forbidden"
+      ],
+      "flag": "--publish"
+    },
+    {
+      "id": "F12",
+      "hazard": "approve_convenience_flag",
+      "accepted": false,
+      "sourceFileRead": false,
+      "capabilityTrueCount": 0,
+      "forbiddenEffects": 0,
+      "reasons": [
+        "additional input property approve is forbidden",
+        "additional input property approvalEmission is forbidden"
+      ],
+      "flag": "--approve"
+    },
+    {
+      "id": "F13",
+      "hazard": "block_convenience_flag",
+      "accepted": false,
+      "sourceFileRead": false,
+      "capabilityTrueCount": 0,
+      "forbiddenEffects": 0,
+      "reasons": [
+        "additional input property block is forbidden",
+        "additional input property mayBlock is forbidden"
+      ],
+      "flag": "--block"
+    },
+    {
+      "id": "F14",
+      "hazard": "allow_convenience_flag",
+      "accepted": false,
+      "sourceFileRead": false,
+      "capabilityTrueCount": 0,
+      "forbiddenEffects": 0,
+      "reasons": [
+        "additional input property allow is forbidden",
+        "additional input property mayAllow is forbidden"
+      ],
+      "flag": "--allow"
+    }
+  ],
+  "forbiddenConvenienceFlagSurfaceFindings": [],
   "staticFindings": [],
   "rawClassifierLeakFindings": [],
   "boundary": [
@@ -217,6 +421,7 @@
     "reject_url_or_network_input",
     "reject_directory_glob_traversal_symlink_escape",
     "reject_output_escape",
+    "reject_forbidden_convenience_cli_flags",
     "reject_tools_memory_config_publication",
     "reject_approval_block_allow_authorization_enforcement",
     "reject_agent_consumed_and_machine_policy_output",

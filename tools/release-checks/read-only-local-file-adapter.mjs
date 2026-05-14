@@ -178,6 +178,23 @@ const COMMON_FORBIDDEN_RESULT_FLAGS = Object.freeze([
   'enforcement',
 ]);
 
+const FORBIDDEN_CONVENIENCE_CLI_FLAGS = Object.freeze([
+  '--directory',
+  '--glob',
+  '--watch',
+  '--daemon',
+  '--url',
+  '--repo',
+  '--network',
+  '--tool',
+  '--memory',
+  '--config',
+  '--publish',
+  '--approve',
+  '--block',
+  '--allow',
+]);
+
 const RUNBOOK_FORBIDDEN_FLAGS = Object.freeze([
   'machineReadablePolicyDecision',
   'consumedByAgent',
@@ -382,9 +399,23 @@ export function assertReadOnlyLocalFileAdapterRelease({ repoRoot, packageRoot, m
     forbiddenEffects: 0,
     capabilityTrueCount: 0,
     sourceFilesRead: 0,
+    forbiddenConvenienceCliFlagCases: 14,
+    forbiddenConvenienceCliFlagAccepts: 0,
+    forbiddenConvenienceCliFlagSourceFilesRead: 0,
+    forbiddenConvenienceCliFlagSurfaceFindings: 0,
     networkPrimitiveFindings: 0,
     rawClassifierLeakFindings: 0,
   }, 'read-only local-file adapter negative controls', assert);
+  assert(
+    readOnlyLocalFileAdapterNegativeControls?.summary?.forbiddenConvenienceCliFlags?.length === FORBIDDEN_CONVENIENCE_CLI_FLAGS.length,
+    'read-only local-file adapter forbidden convenience CLI flags must match the exact required set length',
+  );
+  assertAllIncluded(
+    readOnlyLocalFileAdapterNegativeControls?.summary?.forbiddenConvenienceCliFlags ?? [],
+    FORBIDDEN_CONVENIENCE_CLI_FLAGS,
+    'read-only local-file adapter forbidden convenience CLI flags',
+    assertIncludes,
+  );
 
   assertSummary(readOnlyLocalFileAdapterCanary?.summary, {
     readOnlyLocalFileAdapterCanary: 'pass',
