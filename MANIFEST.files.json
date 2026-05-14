@@ -69,8 +69,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 1761,
-      "sha256": "490460602417802e7bcd9a866c8daab25a4293f404f880228f7d1ebde41c004b"
+      "bytes": 1868,
+      "sha256": "ec9949fd00f61a86b5eab2a8ee8c9028ffbf3d39a4ac75cca6091a172c997d50"
     },
     {
       "path": "RELEASE_CANDIDATE.md",
@@ -79,13 +79,18 @@
     },
     {
       "path": "RELEASE_NOTES.md",
-      "bytes": 1323,
-      "sha256": "2d98731e078361f176159bb9b7d50e912a69544a441c2e68b60d9d8fa1b6a7de"
+      "bytes": 1221,
+      "sha256": "5f7cf1a2c155e16ed7a5d57176f0e82a6cfe96c56cec16ab73030b4cd86ac393"
     },
     {
       "path": "design-notes/adapter-boundary-langgraph-mcp-v0.md",
       "bytes": 6301,
       "sha256": "36821f5be961e1f8dcbfe8b8c321b804ee3c1336bde0ca2dc6a06fde428d1b0d"
+    },
+    {
+      "path": "design-notes/first-real-framework-adapter-design-v0.8.1.md",
+      "bytes": 2182,
+      "sha256": "dd9373d14a912bf06d448d3819e8d87593318ab2d4ba20df768c6a83e927fd38"
     },
     {
       "path": "design-notes/live-shadow-observer-v0.md",
@@ -181,6 +186,11 @@
       "path": "docs/first-real-adapter-design-note-v0.4.7.md",
       "bytes": 4822,
       "sha256": "81933120ebc2db325c5b43e39b663a1ad718c04a2d2e497d491e9709401a7b2a"
+    },
+    {
+      "path": "docs/framework-adapter-candidate-comparison.md",
+      "bytes": 1348,
+      "sha256": "e5996bca0a9dd6ff72122210b9dca09ff08410b5d6b249b597ceace770814e98"
     },
     {
       "path": "docs/framework-integration-go-no-go-v0.8.0-alpha.md",
@@ -404,8 +414,8 @@
     },
     {
       "path": "docs/repo-structure.md",
-      "bytes": 6960,
-      "sha256": "1dad2b8303ea94dde84c12f202707aec1edefc760fa8a2818243e71e165d7036"
+      "bytes": 7320,
+      "sha256": "baa13fd686049fa7012f7aa35125dbe7dac2d6e728ae2169d14dcd204a721905"
     },
     {
       "path": "docs/retention-negative-controls.md",
@@ -588,6 +598,11 @@
       "sha256": "f9671742a584e8d75a6d077a3501d7ab83c630ade487f2cb196d489a4bd09a7a"
     },
     {
+      "path": "docs/status-v0.8.1.md",
+      "bytes": 1102,
+      "sha256": "28c03868b85c57a000f332d280a066b7565cbae37e60182309fdfde39166e2b7"
+    },
+    {
       "path": "docs/threat-model-v0.md",
       "bytes": 6211,
       "sha256": "b00847bd4db3b2878165eda2866257420e7da8bbbdecaaad8e6aaefce2256d38"
@@ -711,6 +726,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/first-real-adapter-design-note-v0.4.7.out.json",
       "bytes": 1930,
       "sha256": "8d09f023fa2c212bfc961716121a83207d53a76ee5f68353a15512b179f9fedf"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/first-real-framework-adapter-design-v0.8.1.out.json",
+      "bytes": 1356,
+      "sha256": "8b8ed9a55b0046c23f409916cb2e0ed46405ab47bc299e144eea2fde75441fb3"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/fixture-parity.out.json",
@@ -1694,8 +1714,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/package.json",
-      "bytes": 20185,
-      "sha256": "65cf4174dfbb6a2040e06b6f16b4958da59f3f6da2ad18c6f7d52afd4bf2393f"
+      "bytes": 20425,
+      "sha256": "9d614f66643bf463c72b26419fd896a39e3975c1bbeb8c97b4f42543f38c1155"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/action-context-packet.mjs",
@@ -1856,6 +1876,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/tests/first-real-adapter-design-note.mjs",
       "bytes": 4729,
       "sha256": "9a0e14f6f67ec490fd4d146fc02e7ebeb19cd2257328d691bdccc844db169063"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/first-real-framework-adapter-design-v0.8.1.mjs",
+      "bytes": 4314,
+      "sha256": "a7fd1750e1d3e4cf5934f33fae00a2a030647b38232215f42217dc147e2c9506"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/fixture-parity.mjs",
@@ -2804,8 +2829,8 @@
     },
     {
       "path": "tools/release-checks/framework-integration-readiness.mjs",
-      "bytes": 5065,
-      "sha256": "41c770a17bb362283a7556d94e57bef932a573495bb94d26a2664b52808ed523"
+      "bytes": 8002,
+      "sha256": "640f8db40584c907b1a962d6613c7a50ed29d6ff88569b1e5101fe57aef34f25"
     },
     {
       "path": "tools/release-checks/framework-shaped-adapter.mjs",

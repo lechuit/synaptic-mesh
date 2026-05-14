@@ -1,14 +1,14 @@
 
-# Synaptic Mesh v0.8.0-alpha
+# Synaptic Mesh v0.8.1
 
-Status: framework integration go/no-go public review release `v0.8.0-alpha`; design may proceed, implementation remains blocked; committed record-only evidence only; **not runtime-ready**; **not production/enforcement-ready**.
+Status: first real framework adapter design public review release `v0.8.1`; MCP read-only candidate selected for design only; no implementation; committed record-only evidence only; **not runtime-ready**; **not production/enforcement-ready**.
 
-Current v0.8.0-alpha status is narrower than the long-term protocol goal: this repository can record an explicit framework integration go/no-go decision. It does not implement a real framework adapter or authorize framework integration.
+Current v0.8.1 status is narrower than the long-term protocol goal: this repository can document a candidate adapter design and NO-GO criteria. It does not implement a real framework adapter or authorize framework integration.
 
 ## Validate
 
 ```bash
-npm --prefix implementation/synaptic-mesh-shadow-v0 run release:check -- --target v0.8.0-alpha
+npm --prefix implementation/synaptic-mesh-shadow-v0 run release:check -- --target v0.8.1
 ```
 
 ## v0.8.x roadmap
@@ -22,10 +22,11 @@ npm --prefix implementation/synaptic-mesh-shadow-v0 run release:check -- --targe
 
 ## Boundary
 
-This release is for design decision records, schema, fixtures, local validation, committed evidence, and human review only. No MCP adapter, no MCP server/client, no LangGraph SDK, no A2A runtime, no GitHub bot, no webhook, no framework runtime, no network call, no SDK import, no resource fetch, no live traffic, no watcher/daemon, no tools, no memory/config writes, no external publication automation, no approval path, no machine-readable policy, no automatic agent consumption, no block/allow, no authorization, no enforcement.
+This release is for candidate design, comparison, local validation, committed evidence, and human review only. No MCP adapter, no MCP server/client, no LangGraph SDK, no A2A runtime, no GitHub bot, no webhook, no framework runtime, no network call, no SDK import, no resource fetch, no live traffic, no watcher/daemon, no tools, no memory/config writes, no external publication automation, no approval path, no machine-readable policy, no automatic agent consumption, no block/allow, no authorization, no enforcement.
 
 ## Docs
 
-- [v0.8.0-alpha status](docs/status-v0.8.0-alpha.md)
-- [Framework integration go/no-go record](docs/framework-integration-go-no-go-v0.8.0-alpha.md)
-- [Repository structure](docs/repo-structure.md)
+- [v0.8.1 status](docs/status-v0.8.1.md)
+- [First real framework adapter design note](design-notes/first-real-framework-adapter-design-v0.8.1.md)
+- [Framework adapter candidate comparison](docs/framework-adapter-candidate-comparison.md)
+- [v0.8.0-alpha go/no-go record](docs/framework-integration-go-no-go-v0.8.0-alpha.md)

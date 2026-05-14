@@ -34,6 +34,8 @@ Synaptic Mesh keeps protocol, implementation, research, and evidence separate so
 - [Passive live-shadow canary runbook](passive-live-shadow-canary-runbook.md) documents the human operator process for already-redacted, opt-in canary packets while preserving passive/record-only/no-effects boundaries.
 - [Framework-shaped adapter boundary](framework-shaped-adapter-boundary.md) documents fake local framework-like input shapes without adding MCP, LangGraph, A2A, GitHub bot, SDK, network, runtime, or enforcement integration.
 - [Framework integration go/no-go](framework-integration-go-no-go-v0.8.0-alpha.md) records that design may proceed while real framework adapter implementation remains blocked.
+- [Framework adapter candidate comparison](framework-adapter-candidate-comparison.md) compares MCP-like, LangGraph-like, A2A-like, and GitHub-bot-like candidates without authorizing implementation.
+- [First real framework adapter design v0.8.1](../design-notes/first-real-framework-adapter-design-v0.8.1.md) selects the MCP read-only candidate as design-only.
 
 ## Scaling rules
 
