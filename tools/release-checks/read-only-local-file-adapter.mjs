@@ -12,6 +12,7 @@ export const readOnlyLocalFileAdapterGateScripts = Object.freeze([
   'test:read-only-local-file-adapter-canary',
   'test:read-only-local-file-adapter-canary-runbook',
   'test:read-only-local-file-adapter-reproducibility',
+  'test:read-only-local-file-adapter-failure-catalog',
 ]);
 
 export const readOnlyLocalFileAdapterRequiredManifestPaths = Object.freeze([
@@ -43,6 +44,7 @@ export const readOnlyLocalFileAdapterRequiredManifestPaths = Object.freeze([
   'docs/adapter-implementation-hazard-catalog-v0.4.8.md',
   'docs/status-v0.5.0-alpha.md',
   'docs/status-v0.5.1.md',
+  'docs/status-v0.5.2.md',
   'docs/read-only-local-file-adapter-canary-runbook.md',
   'implementation/synaptic-mesh-shadow-v0/tests/adapter-implementation-hazard-catalog.mjs',
   'implementation/synaptic-mesh-shadow-v0/fixtures/adapter-implementation-hazard-catalog-v0.4.8.json',
@@ -55,6 +57,7 @@ export const readOnlyLocalFileAdapterRequiredManifestPaths = Object.freeze([
   'implementation/synaptic-mesh-shadow-v0/tests/read-only-local-file-adapter-canary.mjs',
   'implementation/synaptic-mesh-shadow-v0/tests/read-only-local-file-adapter-canary-runbook.mjs',
   'implementation/synaptic-mesh-shadow-v0/tests/read-only-local-file-adapter-reproducibility.mjs',
+  'implementation/synaptic-mesh-shadow-v0/tests/read-only-local-file-adapter-failure-catalog.mjs',
   'implementation/synaptic-mesh-shadow-v0/src/adapters/read-only-local-file-adapter.mjs',
   'implementation/synaptic-mesh-shadow-v0/fixtures/read-only-local-file-adapter-inputs.json',
   'implementation/synaptic-mesh-shadow-v0/fixtures/read-only-local-file-adapter-results.json',
@@ -65,6 +68,28 @@ export const readOnlyLocalFileAdapterRequiredManifestPaths = Object.freeze([
   'implementation/synaptic-mesh-shadow-v0/evidence/read-only-local-file-adapter-canary-runbook.out.json',
   'implementation/synaptic-mesh-shadow-v0/evidence/read-only-local-file-adapter-negative-controls.out.json',
   'implementation/synaptic-mesh-shadow-v0/evidence/read-only-local-file-adapter-reproducibility.out.json',
+  'implementation/synaptic-mesh-shadow-v0/evidence/read-only-local-file-adapter-failure-catalog.out.json',
+]);
+
+const V052_REPRODUCIBILITY_TOKENS = Object.freeze([
+  'adapter_failure_catalog_v0_5_2',
+  'failure_cases_30',
+  'unexpected_accepts_0',
+  'source_files_read_for_rejected_cases_0',
+  'forbidden_effects_0',
+  'capability_true_count_0',
+]);
+
+const V052_RUNTIME_BOUNDARY_TOKENS = Object.freeze([
+  'read_only_local_file_adapter_failure_catalog_only',
+  'explicit_already_redacted_file_only',
+  'record_only_evidence_only',
+  'no_runtime_authorization',
+  'no_enforcement',
+  'no_network_call',
+  'no_tool_execution',
+  'no_memory_write',
+  'no_config_write',
 ]);
 
 const V051_REPRODUCIBILITY_TOKENS = Object.freeze([
@@ -370,6 +395,11 @@ function assertAllIncluded(text, phrases, label, assertIncludes) {
 }
 
 export function assertReadOnlyLocalFileAdapterManifestMetadata({ manifest, manifestReleaseTag, assertIncludes }) {
+  if (manifestReleaseTag === 'v0.5.2') {
+    assertAllIncluded(manifest.reproducibility, V052_REPRODUCIBILITY_TOKENS, 'MANIFEST.json reproducibility', assertIncludes);
+    assertAllIncluded(manifest.runtimeBoundary, V052_RUNTIME_BOUNDARY_TOKENS, 'MANIFEST.json runtimeBoundary', assertIncludes);
+  }
+
   if (manifestReleaseTag === 'v0.5.1') {
     assertAllIncluded(manifest.reproducibility, V051_REPRODUCIBILITY_TOKENS, 'MANIFEST.json reproducibility', assertIncludes);
     assertAllIncluded(manifest.runtimeBoundary, V051_RUNTIME_BOUNDARY_TOKENS, 'MANIFEST.json runtimeBoundary', assertIncludes);
@@ -412,6 +442,7 @@ export function assertReadOnlyLocalFileAdapterRelease({ repoRoot, packageRoot, m
   const readOnlyLocalFileAdapterCanary = readJson(path.join(packageRoot, 'evidence/read-only-local-file-adapter/read-only-local-file-adapter-canary.out.json'));
   const readOnlyLocalFileAdapterCanaryRunbook = readJson(path.join(packageRoot, 'evidence/read-only-local-file-adapter-canary-runbook.out.json'));
   const readOnlyLocalFileAdapterReproducibility = readJson(path.join(packageRoot, 'evidence/read-only-local-file-adapter-reproducibility.out.json'));
+  const readOnlyLocalFileAdapterFailureCatalog = readJson(path.join(packageRoot, 'evidence/read-only-local-file-adapter-failure-catalog.out.json'));
   const readOnlyLocalFileAdapterCanaryRunbookText = readFileSync(path.join(repoRoot, 'docs/read-only-local-file-adapter-canary-runbook.md'), 'utf8');
 
   assertSummary(readOnlyLocalFileAdapterSchema?.summary, {
@@ -549,6 +580,23 @@ export function assertReadOnlyLocalFileAdapterRelease({ repoRoot, packageRoot, m
   assert(readOnlyLocalFileAdapterReproducibility?.baselineNormalizedOutput?.boundaryVerdicts?.notAuthority === true, 'read-only local-file adapter reproducibility advisory must remain non-authority');
   assert(readOnlyLocalFileAdapterReproducibility?.baselineNormalizedOutput?.capabilityFlags?.toolExecution === false, 'read-only local-file adapter reproducibility must keep toolExecution false');
 
+  assertSummary(readOnlyLocalFileAdapterFailureCatalog?.summary, {
+    readOnlyLocalFileAdapterFailureCatalog: 'pass',
+    failureCases: 30,
+    unexpectedAccepts: 0,
+    sourceFilesReadForRejectedCases: 0,
+    forbiddenEffects: 0,
+    capabilityTrueCount: 0,
+  }, 'read-only local-file adapter failure catalog', assert);
+  assert(readOnlyLocalFileAdapterFailureCatalog?.rows?.length === 30, 'read-only local-file adapter failure catalog must contain exactly 30 rows');
+  assert(new Set((readOnlyLocalFileAdapterFailureCatalog?.rows ?? []).map((row) => row.id)).size === 30, 'read-only local-file adapter failure catalog IDs must be unique');
+  for (const row of readOnlyLocalFileAdapterFailureCatalog?.rows ?? []) {
+    assert(row.accepted === false, `read-only local-file adapter failure catalog ${row.id} must reject`);
+    assert(row.sourceFileRead === false, `read-only local-file adapter failure catalog ${row.id} must not read source files`);
+    assert(row.forbiddenEffects === 0, `read-only local-file adapter failure catalog ${row.id} must have zero forbidden effects`);
+    assert(row.capabilityTrueCount === 0, `read-only local-file adapter failure catalog ${row.id} must have zero capability true count`);
+  }
+
   assert(readOnlyLocalFileAdapterCanaryRunbook?.summary?.dependsOnLabels?.includes('PR #3 negative controls'), 'read-only local-file adapter canary runbook evidence must include PR #3 negative controls label');
   assert(readOnlyLocalFileAdapterCanaryRunbook?.summary?.dependsOnLabels?.includes('PR #4 positive canary'), 'read-only local-file adapter canary runbook evidence must include PR #4 positive canary label');
   assert(readOnlyLocalFileAdapterCanaryRunbook?.summary?.dependsOnSlugs?.includes('v0.5.0-alpha-pr3-read-only-local-file-adapter-negative-controls'), 'read-only local-file adapter canary runbook evidence must include PR #3 dependency slug');
@@ -616,6 +664,17 @@ export function assertReadOnlyLocalFileAdapterRelease({ repoRoot, packageRoot, m
   if (manifestReleaseTag === 'v0.5.0-alpha') {
     const statusV050Alpha = readFileSync(path.join(repoRoot, 'docs/status-v0.5.0-alpha.md'), 'utf8');
     assertAllIncluded(statusV050Alpha, STATUS_V050_ALPHA_REQUIRED_TEXT, 'docs/status-v0.5.0-alpha.md', assertIncludes);
+  }
+
+  if (manifestReleaseTag === 'v0.5.2') {
+    const statusV052 = readFileSync(path.join(repoRoot, 'docs/status-v0.5.2.md'), 'utf8');
+    assertAllIncluded(statusV052, [
+      'failure catalog',
+      'test:read-only-local-file-adapter-failure-catalog',
+      'failureCases',
+      'sourceFilesReadForRejectedCases',
+      'A passing failure catalog is evidence that the listed rejected/prohibited local adapter cases stayed rejected and record-only. It is not runtime authorization.',
+    ], 'docs/status-v0.5.2.md', assertIncludes);
   }
 
   if (manifestReleaseTag === 'v0.5.1') {
