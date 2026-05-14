@@ -487,6 +487,8 @@ export function assertReadOnlyLocalFileAdapterRelease({ repoRoot, packageRoot, m
 
 export const readOnlyLocalFileAdapterSuite = Object.freeze({
   name: 'read-only-local-file-adapter',
+  gatePhase: 'pre-live-shadow-synthetic',
+  assertReleasePhase: 'final',
   gateScripts: readOnlyLocalFileAdapterGateScripts,
   requiredManifestPaths: readOnlyLocalFileAdapterRequiredManifestPaths,
   assertManifestMetadata: assertReadOnlyLocalFileAdapterManifestMetadata,
