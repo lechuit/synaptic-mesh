@@ -3,6 +3,7 @@ import { readOnlyLocalFileAdapterSuite } from './read-only-local-file-adapter.mj
 import { manualDryRunSuite } from './manual-dry-run.mjs';
 import { frameworkShapedAdapterSuite } from './framework-shaped-adapter.mjs';
 import { frameworkIntegrationReadinessSuite } from './framework-integration-readiness.mjs';
+import { authorityConfusionBenchmarkSuite } from './authority-confusion-benchmark.mjs';
 
 export const releaseCheckSuites = Object.freeze([
   passiveLiveShadowCanarySuite,
@@ -10,4 +11,5 @@ export const releaseCheckSuites = Object.freeze([
   manualDryRunSuite,
   frameworkShapedAdapterSuite,
   frameworkIntegrationReadinessSuite,
+  authorityConfusionBenchmarkSuite,
 ]);

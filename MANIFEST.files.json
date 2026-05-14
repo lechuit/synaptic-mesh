@@ -69,8 +69,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 2083,
-      "sha256": "21a57bc75efbef25fd42792edfc59b0f7dadca53cb877a55d909b1107aa02226"
+      "bytes": 1584,
+      "sha256": "d2296d19c1a38f4a6f5eb51e3db128eadbe35a4375a3e8efd3efa6e835e5ff0c"
     },
     {
       "path": "RELEASE_CANDIDATE.md",
@@ -79,8 +79,8 @@
     },
     {
       "path": "RELEASE_NOTES.md",
-      "bytes": 1237,
-      "sha256": "c26247078280eb1574a3d7b80be2ae2507a3a6be9cd65d5c585f9eb20203db5c"
+      "bytes": 1004,
+      "sha256": "c57169e919d94f6af7594e525ac23d85426988453ffb639b5474a2d7ddbcb78d"
     },
     {
       "path": "design-notes/adapter-boundary-langgraph-mcp-v0.md",
@@ -141,6 +141,11 @@
       "path": "docs/advisory-report-reviewer-runbook.md",
       "bytes": 3260,
       "sha256": "43af76f352400303112cddf4b311000fff80c1b8616829888577159ba9f6f479"
+    },
+    {
+      "path": "docs/authority-confusion-benchmark-spec-v0.9.0.md",
+      "bytes": 1722,
+      "sha256": "0355fdd689a6283f8ae790ef82be4e9af6268e41cdc9c525f268c216124f14e5"
     },
     {
       "path": "docs/authority-degradation-routes.md",
@@ -434,8 +439,8 @@
     },
     {
       "path": "docs/repo-structure.md",
-      "bytes": 8117,
-      "sha256": "5c47b6ed053f4b9636e516312dfd0a8bcd7ab1b957b037b41b7dd4e828131163"
+      "bytes": 8308,
+      "sha256": "e5a2a146e5c6434a76f8223d7fab3c08150f1af2e6c943061bd615f772a152fc"
     },
     {
       "path": "docs/retention-negative-controls.md",
@@ -643,6 +648,11 @@
       "sha256": "26f455b33d26dbaa9a91e57f375edda6c666aa062e8dcca84f45ffc49aac3897"
     },
     {
+      "path": "docs/status-v0.9.0.md",
+      "bytes": 1054,
+      "sha256": "4c2466221cbac46825bb46ec0840f514e6c3364459c130bf5bb6bb78f78c6ee8"
+    },
+    {
       "path": "docs/threat-model-v0.md",
       "bytes": 6211,
       "sha256": "b00847bd4db3b2878165eda2866257420e7da8bbbdecaaad8e6aaefce2256d38"
@@ -716,6 +726,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/authority-claim-routes-fixtures.out.json",
       "bytes": 8284,
       "sha256": "240565b468d131bc3c4775ab015845bdf19eb9b6c3eb4fb0043e08d59e8ecae4"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/authority-confusion-benchmark-spec-v0.9.0.out.json",
+      "bytes": 1690,
+      "sha256": "d898d34301fb82b0f4c3da349a6bdd168d18c37ff37ba5d81a4a3806e0cde4c1"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/authority-envelope-pr26.out.json",
@@ -1358,6 +1373,11 @@
       "sha256": "55fd623a71105701e6dba5de966bb5b9870e83f34b877051132f82d2bdeada13"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/fixtures/authority-confusion-benchmark-v0.9.0.json",
+      "bytes": 17239,
+      "sha256": "a2ba519797418690f7e46a175062182f4e555e2a2e8f7418fb8fc3f5c880a1bf"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/fixtures/authority-overhead-benchmark-cases.json",
       "bytes": 16531,
       "sha256": "81c84d844fb368a60f81683bb2378b88fd251ee371087f9091031d6e36d64e59"
@@ -1779,8 +1799,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/package.json",
-      "bytes": 21497,
-      "sha256": "6e51973cd1f2c5b1d7734fadbee19789c3d3bd99962d04cb0a84ff233000a698"
+      "bytes": 21810,
+      "sha256": "492691f99a62b5b5da7f46389054fd4d17734e687fbda58b55d8e9afe19148fb"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/action-context-packet.mjs",
@@ -1891,6 +1911,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/tests/authority-claim-routes-fixtures.mjs",
       "bytes": 7602,
       "sha256": "74ab856f5da4e723d3e09b2dd8a3e5e178ff6d54360ae8e8f810876dd719b9a0"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/authority-confusion-benchmark-spec-v0.9.0.mjs",
+      "bytes": 5060,
+      "sha256": "8d06503f31f9947235e8d8b87a9782c191a8774fa1745e877092986bfba5486b"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/authority-envelope-pr26.mjs",
@@ -2773,6 +2798,11 @@
       "sha256": "a7001f3ff3244fb0cb575647b6f8a747785bc064ed7796f9f3be874cba79f7ae"
     },
     {
+      "path": "schemas/authority-confusion-benchmark-case.schema.json",
+      "bytes": 1663,
+      "sha256": "75720aa8de98f48cafbcf25e43941a816f2c3a641cd06c643a9e3c5f84549a45"
+    },
+    {
       "path": "schemas/decision-counterfactual-checklist.schema.json",
       "bytes": 4314,
       "sha256": "3e887703d425383fc309cbac6ba668e9c5d5adccd6088af3d199553d7dd7863d"
@@ -2918,6 +2948,11 @@
       "sha256": "17be2c4fc437e601550a7cd5ba19707ec2ccf456ee810e84ba7936724684b16e"
     },
     {
+      "path": "tools/release-checks/authority-confusion-benchmark.mjs",
+      "bytes": 4375,
+      "sha256": "25d6ab4ffe68492b35f37ddb9f41610b728ad14c56edde15c55256f4ea397233"
+    },
+    {
       "path": "tools/release-checks/framework-integration-readiness.mjs",
       "bytes": 21340,
       "sha256": "a513a22c65657953fc32da40aee70c86e824acb963d9631e9abd1ddb809d05ad"
@@ -2929,8 +2964,8 @@
     },
     {
       "path": "tools/release-checks/index.mjs",
-      "bytes": 603,
-      "sha256": "a43f3a4d336193109fe14d441abf688d5ed2b7648ee7b8fac9f876f48bf5f616"
+      "bytes": 727,
+      "sha256": "ab0800f6a72ea244f407b565c25a55b538d1eb098772361ce94d6e6e36a1e619"
     },
     {
       "path": "tools/release-checks/manual-dry-run.mjs",
