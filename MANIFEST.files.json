@@ -69,8 +69,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 4827,
-      "sha256": "be955e20f9d3a09c5e49e668e1c7e6c82fc8f17071056c2aac053968c01f5ec5"
+      "bytes": 4919,
+      "sha256": "1241fae81091912fbd91010809f3ffdf33efdf6760f5ae8bca3b75a3f23cdcd8"
     },
     {
       "path": "RELEASE_CANDIDATE.md",
@@ -79,8 +79,8 @@
     },
     {
       "path": "RELEASE_NOTES.md",
-      "bytes": 2657,
-      "sha256": "9bd2ecd60975ea0b8e6081b2c97a1d7974e4abdec6b4f6643e69d083a70599af"
+      "bytes": 2333,
+      "sha256": "34f40f57c12a548b5d306c1601ee1e1f7413d914ee55b7e5ae00f3d556fd6183"
     },
     {
       "path": "design-notes/adapter-boundary-langgraph-mcp-v0.md",
@@ -303,6 +303,11 @@
       "sha256": "3b1221f6d9b1e31e5fc39ff39a5e5642b1de24db9288417ad564961e56ca91ee"
     },
     {
+      "path": "docs/read-only-local-file-adapter-reviewer-runbook.md",
+      "bytes": 6210,
+      "sha256": "4c327e4af492fea4e0b31a2f8df207f1ef1550969322a5f82c17cfdf58af92e5"
+    },
+    {
       "path": "docs/real-flow-replay.md",
       "bytes": 2626,
       "sha256": "0cce7504c180f2e96abec00a8d9e4b9dbb31048cb49f2f1c0c41e2c42f997a54"
@@ -344,8 +349,8 @@
     },
     {
       "path": "docs/release-checklist.md",
-      "bytes": 11429,
-      "sha256": "143e9da74aef095e84fe4002314bab5503e7ebef937b762e0e1653337868ae94"
+      "bytes": 11600,
+      "sha256": "9fd0f35d88d6176ea8eece4ab4d2795e31f01fe64c0ca5093545b930632d6b03"
     },
     {
       "path": "docs/release-ladder-v0.2-alpha.md",
@@ -456,6 +461,11 @@
       "path": "docs/status-v0.5.2.md",
       "bytes": 1886,
       "sha256": "692102c116c2b83ff15ce0811ab67c7a726a44bf2bd08e7db75681e801a2353a"
+    },
+    {
+      "path": "docs/status-v0.5.3.md",
+      "bytes": 1672,
+      "sha256": "97d32c3014678568545b7e47fbbb06f302ea86fef7873e39f0b925a1c75f3e3d"
     },
     {
       "path": "docs/threat-model-v0.md",
@@ -931,6 +941,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/read-only-local-file-adapter-reproducibility.out.json",
       "bytes": 5976,
       "sha256": "5cd406284e31851d60f79e5e9203b0dc807a65c494260dec83736b47ffada132"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/read-only-local-file-adapter-reviewer-runbook.out.json",
+      "bytes": 1977,
+      "sha256": "25503dfa45ad54517e7308b3ec018daa3471591419f5b08ce3823f0cf316fcc5"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/read-only-local-file-adapter-schema.out.json",
@@ -1434,8 +1449,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/package.json",
-      "bytes": 16375,
-      "sha256": "b3df381cb5dd761325ef82e9fd9aec15c0b5b7406f65753e42f5ca7833f75b00"
+      "bytes": 16569,
+      "sha256": "459f043d0e7f12bfebe713af13a8cbd6ed91396d19384c66f0129e549dc09f04"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/action-context-packet.mjs",
@@ -1811,6 +1826,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/tests/read-only-local-file-adapter-reproducibility.mjs",
       "bytes": 11221,
       "sha256": "ec27b25f1b8d1e51e5df059d72a84b80925200bc76b27d01688571a472a1a7a1"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/read-only-local-file-adapter-reviewer-runbook.mjs",
+      "bytes": 8240,
+      "sha256": "64f105187a301ceaaaefacc58afece2fdbeaf64392882131c2be9e51e1dfe641"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/read-only-local-file-adapter-schema.mjs",
@@ -2459,8 +2479,8 @@
     },
     {
       "path": "tools/release-checks/read-only-local-file-adapter.mjs",
-      "bytes": 33171,
-      "sha256": "de7d08ef9b0c1dea0d767c49db3fc0f702dfbfb81d2b406108cbe9587ba5ec76"
+      "bytes": 36236,
+      "sha256": "ed9c4aa6df8ac93e2c1db0e424e8d086b41ac38271ae24f08c0cd44a9d69d8e8"
     },
     {
       "path": "tools/update-manifest.mjs",
