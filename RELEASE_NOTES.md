@@ -11,6 +11,7 @@ This release makes the first real adapter more boring under weird rejected input
 - Added `test:read-only-local-file-adapter-failure-catalog`.
 - Added committed v0.5.2 failure-catalog evidence with exactly 30 rejected cases.
 - Covered Unicode/bidi and confusable path variants, mtime claims, digest mismatch claim, duplicate source-artifact claim, missing/partial redaction review records, oversized-file claim, malformed/wrong-schema claims, symlink source/output cases, output collision, and encoded traversal.
+- Tightened the adapter's pre-read source binding to the single approved already-redacted file and digest, so digest-mismatch claims reject before source read.
 - Preserved the hard invariant: rejected/prohibited cases have `sourceFilesReadForRejectedCases: 0`.
 - Wired the failure catalog into package scripts, release checks, manifest, README, and `docs/status-v0.5.2.md`.
 

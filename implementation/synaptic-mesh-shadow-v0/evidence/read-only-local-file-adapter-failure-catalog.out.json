@@ -86,8 +86,7 @@
       "capabilityTrueCount": 0,
       "forbiddenEffects": 0,
       "reasons": [
-        "source path must be a regular file",
-        "source path must not be a symlink"
+        "sourceFilePath must match the approved explicit already-redacted local file"
       ]
     },
     {
@@ -220,7 +219,7 @@
       "capabilityTrueCount": 0,
       "forbiddenEffects": 0,
       "reasons": [
-        "source file not found"
+        "sourceFilePath must match the approved explicit already-redacted local file"
       ]
     },
     {
@@ -232,7 +231,7 @@
       "capabilityTrueCount": 0,
       "forbiddenEffects": 0,
       "reasons": [
-        "source file not found"
+        "sourceFilePath must match the approved explicit already-redacted local file"
       ]
     },
     {
@@ -268,7 +267,7 @@
       "capabilityTrueCount": 0,
       "forbiddenEffects": 0,
       "reasons": [
-        "additional input property digestMismatchExpected is forbidden"
+        "sourceArtifactDigest must match the approved explicit already-redacted local file digest"
       ]
     },
     {
@@ -354,7 +353,7 @@
       "capabilityTrueCount": 0,
       "forbiddenEffects": 0,
       "reasons": [
-        "source file not found"
+        "sourceFilePath must match the approved explicit already-redacted local file"
       ]
     },
     {

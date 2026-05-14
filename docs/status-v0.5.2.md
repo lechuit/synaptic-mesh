@@ -6,7 +6,7 @@ Status: adapter failure catalog expansion for the read-only local-file adapter. 
 
 `v0.5.2` expands the first real adapter's boring negative surface from the baseline negative controls into a 30-case failure catalog.
 
-The catalog focuses on rejected/prohibited adapter shapes and evidence-output hazards, including Unicode/bidi and confusable paths, mtime claims, digest mismatch claims, duplicate source-artifact claims, missing/partial redaction review records, oversized-file claims, malformed/wrong-schema claims, symlink source/output cases, path collision, and encoded traversal.
+The catalog focuses on rejected/prohibited adapter shapes and evidence-output hazards, including Unicode/bidi and confusable paths, mtime claims, digest mismatch claims, duplicate source-artifact claims, missing/partial redaction review records, oversized-file claims, malformed/wrong-schema claims, symlink source/output cases, path collision, and encoded traversal. Digest-mismatch claims are rejected by pre-read binding to the single approved already-redacted file/digest pair.
 
 ## Expected evidence
 

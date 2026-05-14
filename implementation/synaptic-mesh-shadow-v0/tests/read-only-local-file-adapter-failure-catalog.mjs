@@ -134,7 +134,7 @@ try {
     { id: 'FC18', hazard: 'confusable_filename', patch: { sourceFilePath: 'implementation/synaptic-mesh-shadow-v0/fixtures/redacted/examp\u043Be.json' } },
     { id: 'FC19', hazard: 'future_mtime_claim', patch: { sourceMtime: '2999-01-01T00:00:00.000Z' } },
     { id: 'FC20', hazard: 'invalid_mtime_claim', patch: { sourceMtime: 'not-a-date' } },
-    { id: 'FC21', hazard: 'digest_mismatch_claim', patch: { sourceArtifactDigest: 'sha256:0000000000000000000000000000000000000000000000000000000000000000', digestMismatchExpected: true } },
+    { id: 'FC21', hazard: 'digest_mismatch_claim', patch: { sourceArtifactDigest: 'sha256:0000000000000000000000000000000000000000000000000000000000000000' } },
     { id: 'FC22', hazard: 'duplicate_source_artifact_id', patch: { sourceArtifactId: 'redacted-example', duplicateSourceArtifactId: 'redacted-example' } },
     { id: 'FC23', hazard: 'redaction_review_record_missing', remove: ['redactionReviewRecord'] },
     { id: 'FC24', hazard: 'redaction_review_record_partial', patch: { redactionReviewRecord: { reviewed: true } } },
