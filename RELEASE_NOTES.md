@@ -1,30 +1,28 @@
-# Release Notes — Synaptic Mesh v0.5.1
+# Release Notes — Synaptic Mesh v0.5.2
 
-Status: adapter reproducibility hardening for the read-only local-file adapter. Manual, local, one explicit already-redacted input file only, record-only evidence, no effects. Not runtime-ready; not production/enforcement-ready.
+Status: adapter failure catalog expansion for the read-only local-file adapter. Manual, local, one explicit already-redacted input file only, record-only evidence, no effects. Not runtime-ready; not production/enforcement-ready.
 
 ## Why this release
 
-This release makes the first real adapter boring in a more testable way: the same explicit already-redacted local file must produce the same normalized evidence, DecisionTrace hash, advisory report hash, and scorecard-style summary across repeated local runs.
+This release makes the first real adapter more boring under weird rejected inputs: a 30-case failure catalog confirms rejected/prohibited cases remain rejected, do not read source files, and do not gain capability/effect authority.
 
 ## Highlights
 
-- Added `test:read-only-local-file-adapter-reproducibility`.
-- Added committed reproducibility evidence for two adapter runs over the same explicit already-redacted source fixture.
-- Normalized hashes exclude volatile `generatedAt`, `durationMs`, `runId`, and temporal `adapterRunId`.
-- Normalized hashes include input digest, source artifact digest, source artifact content digest, selected route, reason codes, classifier decision digest, DecisionTrace hash, advisory report normalized content, record-only flag, capability flags, and boundary verdicts.
-- Wired the reproducibility gate into package scripts and release checks.
-- Added `docs/status-v0.5.1.md`.
+- Added `test:read-only-local-file-adapter-failure-catalog`.
+- Added committed v0.5.2 failure-catalog evidence with exactly 30 rejected cases.
+- Covered Unicode/bidi and confusable path variants, mtime claims, digest mismatch claim, duplicate source-artifact claim, missing/partial redaction review records, oversized-file claim, malformed/wrong-schema claims, symlink source/output cases, output collision, and encoded traversal.
+- Tightened the adapter's pre-read source binding to the single approved already-redacted file and digest, so digest-mismatch claims reject before source read.
+- Preserved the hard invariant: rejected/prohibited cases have `sourceFilesReadForRejectedCases: 0`.
+- Wired the failure catalog into package scripts, release checks, manifest, README, and `docs/status-v0.5.2.md`.
 
-## Expected v0.5.1 evidence
+## Expected v0.5.2 evidence
 
 ```json
 {
-  "readOnlyLocalFileAdapterReproducibility": "pass",
-  "runs": 2,
-  "positiveCases": 1,
-  "normalizedOutputMismatches": 0,
-  "decisionTraceHashMismatches": 0,
-  "advisoryReportHashMismatches": 0,
+  "readOnlyLocalFileAdapterFailureCatalog": "pass",
+  "failureCases": 30,
+  "unexpectedAccepts": 0,
+  "sourceFilesReadForRejectedCases": 0,
   "forbiddenEffects": 0,
   "capabilityTrueCount": 0
 }
@@ -32,14 +30,14 @@ This release makes the first real adapter boring in a more testable way: the sam
 
 ## Conservative release statement
 
-`v0.5.1` proves only that the committed local adapter reproducibility gate passes for one explicit already-redacted local file. It does not add runtime authorization, enforcement, MCP, A2A, LangGraph, GitHub bot, watcher, daemon, directory scan, glob, directory traversal, symlink escape, URL input, network calls, live traffic reads, raw input persistence, runtime integration, tool execution, memory/config writes, external publication, publication automation, agent-instruction writes, automatic agent consumption, approval paths, blocking, allowing, authorization, deletion, retention scheduling, or enforcement.
+`v0.5.2` proves only that the committed local adapter failure catalog passes for the listed rejected/prohibited local cases. It does not add runtime authorization, enforcement, MCP, A2A, LangGraph, GitHub bot, watcher, daemon, directory scan, glob input, network input, live traffic, multiple-file auto-discovery, tool execution, memory/config writes, external publication, publication automation, agent-instruction writes, automatic agent consumption, approval paths, blocking, allowing, authorization, MemoryAtom, MemoryStore, deletion, retention scheduling, or enforcement.
 
 ## Validation snapshot
 
 Expected validation command:
 
 ```bash
-npm --prefix implementation/synaptic-mesh-shadow-v0 run release:check -- --target v0.5.1
+npm --prefix implementation/synaptic-mesh-shadow-v0 run release:check -- --target v0.5.2
 ```
 
 ## Operational non-release status
@@ -48,5 +46,5 @@ npm --prefix implementation/synaptic-mesh-shadow-v0 run release:check -- --targe
 - Not live-monitoring integrated.
 - Not a general adapter.
 - Not production/enforcement/L2+ ready.
-- The reproducibility gate is evidence of deterministic local record-only output, not runtime authorization.
+- The failure catalog is evidence of local rejected-case boundary preservation, not runtime authorization.
 - Advisory no es authority.

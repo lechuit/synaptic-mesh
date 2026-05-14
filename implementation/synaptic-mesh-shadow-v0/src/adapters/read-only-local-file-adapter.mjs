@@ -8,6 +8,8 @@ const RESULT_SCHEMA_VERSION = 'read-only-local-file-adapter-result-v0';
 const ADAPTER_MODE = 'manual_local_file_read_only';
 const ADAPTER_EVIDENCE_DIRECTORY = 'implementation/synaptic-mesh-shadow-v0/evidence/read-only-local-file-adapter';
 const ADAPTER_EVIDENCE_FILENAME = 'read-only-local-file-adapter.out.json';
+const APPROVED_SOURCE_FILE_PATH = 'implementation/synaptic-mesh-shadow-v0/fixtures/redacted/example.json';
+const APPROVED_SOURCE_ARTIFACT_DIGEST = 'sha256:fc594bd17819b1005b813cbb195e9d12195766c4b0b05d020a590180f579cb75';
 
 const ALLOWED_INPUT_KEYS = Object.freeze(new Set([
   'schemaVersion',
@@ -59,6 +61,8 @@ export async function runReadOnlyLocalFileAdapter(input = {}, options = {}) {
   const adapterRunId = options.adapterRunId ?? 'adapter_run_001';
   const inputValidation = validateAdapterInput(input);
   if (!inputValidation.ok) return rejectedResult({ adapterRunId, input, reasons: inputValidation.reasons });
+  const sourceBindingValidation = validateApprovedSourceBinding(input);
+  if (!sourceBindingValidation.ok) return rejectedResult({ adapterRunId, input, reasons: sourceBindingValidation.reasons });
 
   const sourcePath = resolve(repoRoot, input.sourceFilePath);
   const containment = await validateSourceContainment(sourcePath, repoRoot);
@@ -130,6 +134,17 @@ export function validateAdapterInput(input = {}) {
   }
   for (const flag of FORBIDDEN_INPUT_TRUE_FLAGS) {
     if (input[flag] !== false) reasons.push(`${flag} must be false`);
+  }
+  return { ok: reasons.length === 0, reasons };
+}
+
+function validateApprovedSourceBinding(input = {}) {
+  const reasons = [];
+  if (input.sourceFilePath !== APPROVED_SOURCE_FILE_PATH) {
+    reasons.push('sourceFilePath must match the approved explicit already-redacted local file');
+  }
+  if (input.sourceArtifactDigest !== APPROVED_SOURCE_ARTIFACT_DIGEST) {
+    reasons.push('sourceArtifactDigest must match the approved explicit already-redacted local file digest');
   }
   return { ok: reasons.length === 0, reasons };
 }

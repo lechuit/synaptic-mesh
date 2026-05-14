@@ -106,8 +106,7 @@
       "capabilityTrueCount": 0,
       "forbiddenEffects": 0,
       "reasons": [
-        "source path must be a regular file",
-        "source path must not be a symlink"
+        "sourceFilePath must match the approved explicit already-redacted local file"
       ]
     },
     {
