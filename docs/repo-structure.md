@@ -40,6 +40,10 @@ Synaptic Mesh keeps protocol, implementation, research, and evidence separate so
 - [Framework adapter dry-run contract v0.8.3](framework-adapter-dry-run-contract-v0.8.3.md) defines framework-like local/redacted packet to local validation to record-only evidence.
 - [Framework adapter reviewer runbook v0.8.4](framework-adapter-reviewer-runbook-v0.8.4.md) gives human reviewers the dry-run review process and the core phrase that dry-run evidence is not authorization.
 - [Framework integration readiness public review package v0.8.5](framework-integration-readiness-public-review-package-v0.8.5.md) closes v0.8.x while preserving no real framework integration and no authorization.
+- [Authority confusion benchmark spec v0.9.0](authority-confusion-benchmark-spec-v0.9.0.md) defines local/redacted context-is-not-permission benchmark cases without adding runtime authority.
+- [Authority confusion naive baseline v0.9.1](authority-confusion-naive-baseline-v0.9.1.md) records a 12/12 false-permit baseline simulation as failure evidence only.
+- [Authority confusion Synaptic Mesh comparison v0.9.2](authority-confusion-synaptic-comparison-v0.9.2.md) records a local before/after comparison reducing false permits from 12 to 0 without runtime authority.
+- [Authority confusion public demo package v0.9.3](authority-confusion-public-demo-v0.9.3.md) packages the before/after evidence for human review while preserving zero runtime authority.
 
 ## Scaling rules
 
