@@ -1414,8 +1414,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/package.json",
-      "bytes": 15857,
-      "sha256": "0ac4262dce5d82f066b254e554cf9e57eae352ca67a17b94b56b8ced2d984cd6"
+      "bytes": 15993,
+      "sha256": "c7ff5dd26b9c604f9183e2c5bbbf52fb58429208bfebc6b95c62e20f36fc513c"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/action-context-packet.mjs",
@@ -2409,18 +2409,28 @@
     },
     {
       "path": "tools/release-check.mjs",
-      "bytes": 170942,
-      "sha256": "ab78e978aef733cce90655e03fc011d17fbb5288d9ce5685172c889ee9575ada"
+      "bytes": 78767,
+      "sha256": "42c341e570e35216b068844748d1ae1b4652ecc01c70ca4c6b9b46c68ef8cba2"
     },
     {
       "path": "tools/release-checks/index.mjs",
-      "bytes": 172,
-      "sha256": "5ddcc900caa4fb3cbaeaa2d340aea0b49922441309e8c63d5f0e9f5b05916575"
+      "bytes": 364,
+      "sha256": "e2638a8d525f527c43728e0da5fe29180711ec06af70443459e3aa4b1acfe62d"
+    },
+    {
+      "path": "tools/release-checks/manual-dry-run.mjs",
+      "bytes": 31703,
+      "sha256": "5f11241990d82180458a764f1f0b3a3bb3069a70f40950090b054008181d99c4"
+    },
+    {
+      "path": "tools/release-checks/passive-live-shadow-canary.mjs",
+      "bytes": 67301,
+      "sha256": "cb8879336431556222940845261c0427db4532646ace770419fc0d0e46b0e424"
     },
     {
       "path": "tools/release-checks/read-only-local-file-adapter.mjs",
-      "bytes": 21263,
-      "sha256": "5005cd9a71573fe692b3cc404eb0e14d0fae3910f4add938c5a1299fefb7443f"
+      "bytes": 21336,
+      "sha256": "ede72e72631a574a18c864f3129f1b0ca3fca0668959a3282b9f9271bb7a6103"
     },
     {
       "path": "tools/update-manifest.mjs",
