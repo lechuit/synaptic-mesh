@@ -69,8 +69,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 1839,
-      "sha256": "71922f2d95f878d76e681f7b7a86773e294a00d3752f4e3254aad6b8a4be5345"
+      "bytes": 1635,
+      "sha256": "1dbf758c4d450855a9ca92674c21f305d6c4d81124893fca03ab17940e3963e6"
     },
     {
       "path": "RELEASE_CANDIDATE.md",
@@ -79,8 +79,8 @@
     },
     {
       "path": "RELEASE_NOTES.md",
-      "bytes": 1129,
-      "sha256": "b024346f9b5812fb6f4e3f023a1e0ac94cc85f1d0d415b74f9f41720897571e7"
+      "bytes": 1138,
+      "sha256": "6bac5b221153061045c99c8863bf68d1573cd6b87e97d02d9894d46c79c3db5c"
     },
     {
       "path": "design-notes/adapter-boundary-langgraph-mcp-v0.md",
@@ -141,6 +141,11 @@
       "path": "docs/advisory-report-reviewer-runbook.md",
       "bytes": 3260,
       "sha256": "43af76f352400303112cddf4b311000fff80c1b8616829888577159ba9f6f479"
+    },
+    {
+      "path": "docs/authority-confusion-adversarial-hardening-v0.9.4.md",
+      "bytes": 1371,
+      "sha256": "eb56e827c1a5b21db971f03a050f2b357f8344bb77a05037c47412565df334b2"
     },
     {
       "path": "docs/authority-confusion-benchmark-spec-v0.9.0.md",
@@ -454,8 +459,8 @@
     },
     {
       "path": "docs/repo-structure.md",
-      "bytes": 8872,
-      "sha256": "7620492741ce50f9ca7f8af5dcb2f65ff1d1d9eec98b812afed4e1320b0db665"
+      "bytes": 9078,
+      "sha256": "3057bcc8cec3844e354eea1aa615dd2c64345fdc0d6dbb7a33b160753dd6f92a"
     },
     {
       "path": "docs/retention-negative-controls.md",
@@ -683,6 +688,11 @@
       "sha256": "6244035c4ce3bef4c9605dc7ae2ce81234d659760883dce8ea182b4a439b06db"
     },
     {
+      "path": "docs/status-v0.9.4.md",
+      "bytes": 1171,
+      "sha256": "e1ef7ab48e5648a7644865aba1b7e2d742d06cb096e35533b02802801318fba7"
+    },
+    {
       "path": "docs/threat-model-v0.md",
       "bytes": 6211,
       "sha256": "b00847bd4db3b2878165eda2866257420e7da8bbbdecaaad8e6aaefce2256d38"
@@ -756,6 +766,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/authority-claim-routes-fixtures.out.json",
       "bytes": 8284,
       "sha256": "240565b468d131bc3c4775ab015845bdf19eb9b6c3eb4fb0043e08d59e8ecae4"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/authority-confusion-adversarial-hardening-v0.9.4.out.json",
+      "bytes": 23331,
+      "sha256": "975ef13dc818e2871b42e3e6a9baa28846c7bcca67a02e000137571a7bdcafaa"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/authority-confusion-benchmark-spec-v0.9.0.out.json",
@@ -1418,6 +1433,11 @@
       "sha256": "55fd623a71105701e6dba5de966bb5b9870e83f34b877051132f82d2bdeada13"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/fixtures/authority-confusion-adversarial-variants-v0.9.4.json",
+      "bytes": 69149,
+      "sha256": "383c10afc04d8967e75c375fd2b929e038228ea3423c68c20c218fdbf59c25a6"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/fixtures/authority-confusion-benchmark-v0.9.0.json",
       "bytes": 17239,
       "sha256": "a2ba519797418690f7e46a175062182f4e555e2a2e8f7418fb8fc3f5c880a1bf"
@@ -1844,8 +1864,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/package.json",
-      "bytes": 22526,
-      "sha256": "4a27d9484a09e715f1d4f48069fc66e24fc697a6564714b43ef8e48db9588102"
+      "bytes": 22790,
+      "sha256": "ad8dfececafaafdb20c411116cad06112c5387430fcc99b964f1fbf31f5ec314"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/action-context-packet.mjs",
@@ -1956,6 +1976,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/tests/authority-claim-routes-fixtures.mjs",
       "bytes": 7602,
       "sha256": "74ab856f5da4e723d3e09b2dd8a3e5e178ff6d54360ae8e8f810876dd719b9a0"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/authority-confusion-adversarial-hardening-v0.9.4.mjs",
+      "bytes": 7171,
+      "sha256": "ae7437275dc0f11f3f82a2041fae64b88d6a06484730290a9c5b7d3a27d97a44"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/authority-confusion-benchmark-spec-v0.9.0.mjs",
@@ -3009,8 +3034,8 @@
     },
     {
       "path": "tools/release-checks/authority-confusion-benchmark.mjs",
-      "bytes": 13650,
-      "sha256": "8d8d698dd9163ee8fff7f5f34dc33c2ca9792e4c4dca69cd7092fea3f77a6cbd"
+      "bytes": 17033,
+      "sha256": "b8789ba3dd21d8172a987ebfca6180d9990842e30d5f016575a0f60f549a2c5f"
     },
     {
       "path": "tools/release-checks/framework-integration-readiness.mjs",
