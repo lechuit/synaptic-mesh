@@ -7,6 +7,7 @@ export const frameworkShapedAdapterGateScripts = Object.freeze([
   'test:simulated-framework-shaped-adapter',
   'test:simulated-framework-shaped-adapter-reproducibility',
   'test:framework-shaped-adapter-reviewer-runbook',
+  'test:framework-shaped-adapter-public-review-package',
 ]);
 
 export const frameworkShapedAdapterRequiredManifestPaths = Object.freeze([
@@ -22,6 +23,8 @@ export const frameworkShapedAdapterRequiredManifestPaths = Object.freeze([
   'docs/simulated-framework-shaped-adapter-reproducibility.md',
   'docs/status-v0.7.4.md',
   'docs/framework-shaped-adapter-reviewer-runbook.md',
+  'docs/status-v0.7.5.md',
+  'docs/framework-shaped-adapter-public-review-package.md',
   'docs/repo-structure.md',
   'implementation/synaptic-mesh-shadow-v0/fixtures/framework-shaped-adapter-boundaries.json',
   'implementation/synaptic-mesh-shadow-v0/fixtures/framework-shaped-adapter-hazard-catalog.json',
@@ -32,11 +35,13 @@ export const frameworkShapedAdapterRequiredManifestPaths = Object.freeze([
   'implementation/synaptic-mesh-shadow-v0/tests/simulated-framework-shaped-adapter.mjs',
   'implementation/synaptic-mesh-shadow-v0/tests/simulated-framework-shaped-adapter-reproducibility.mjs',
   'implementation/synaptic-mesh-shadow-v0/tests/framework-shaped-adapter-reviewer-runbook.mjs',
+  'implementation/synaptic-mesh-shadow-v0/tests/framework-shaped-adapter-public-review-package.mjs',
   'implementation/synaptic-mesh-shadow-v0/evidence/framework-shaped-adapter-boundary-schema.out.json',
   'implementation/synaptic-mesh-shadow-v0/evidence/framework-shaped-adapter-hazard-catalog.out.json',
   'implementation/synaptic-mesh-shadow-v0/evidence/simulated-framework-shaped-adapter.out.json',
   'implementation/synaptic-mesh-shadow-v0/evidence/simulated-framework-shaped-adapter-reproducibility.out.json',
   'implementation/synaptic-mesh-shadow-v0/evidence/framework-shaped-adapter-reviewer-runbook.out.json',
+  'implementation/synaptic-mesh-shadow-v0/evidence/framework-shaped-adapter-public-review-package.out.json',
 ]);
 
 function assertSummary(summary, expected, label, assert) {
@@ -242,9 +247,124 @@ export function assertFrameworkShapedAdapterManifestMetadata({ manifest, manifes
       'no_approval_blocking_allowing_authorization_deletion_retention_scheduler_or_enforcement',
     ], 'MANIFEST.json runtimeBoundary', assertIncludes);
   }
+
+
+  if (manifestReleaseTag === 'v0.7.5') {
+    assertAllIncluded(manifest.reproducibility, [
+      'v0.7.5',
+      'framework_shaped_adapter_public_review_package',
+      'phase_closed_true',
+      'required_docs_7',
+      'missing_docs_0',
+      'required_evidence_6',
+      'missing_evidence_0',
+      'missing_required_phrases_0',
+      'forbidden_phrase_findings_0',
+      'hazard_cases_25',
+      'pipeline_runs_for_rejected_cases_0',
+      'classifier_compactAllowed_true_0',
+      'normalized_output_mismatches_0',
+      'baseline_mismatches_0',
+      'drift_controls_8',
+      'real_adapter_implemented_false',
+      'framework_integration_authorized_false',
+      'runtime_authorized_false',
+      'record_only',
+      'machine_readable_policy_decision_false',
+      'agent_consumed_false',
+      'authorization_false',
+      'enforcement_false',
+    ], 'MANIFEST.json reproducibility', assertIncludes);
+    assertAllIncluded(manifest.runtimeBoundary, [
+      'framework_shaped_adapter_public_review_package_only',
+      'framework_shaped_phase_close_only',
+      'fake_local_redacted_fixture_only',
+      'committed_record_only_evidence_only',
+      'no_real_adapter',
+      'no_real_framework_integration',
+      'no_sdk_import',
+      'no_network_call',
+      'no_live_traffic',
+      'no_resource_fetch',
+      'no_tool_call',
+      'no_memory_write',
+      'no_config_write',
+      'no_external_publication',
+      'no_agent_consumption',
+      'no_machine_readable_policy',
+      'no_approval_blocking_allowing_authorization_deletion_retention_scheduler_or_enforcement',
+    ], 'MANIFEST.json runtimeBoundary', assertIncludes);
+  }
 }
 
 export function assertFrameworkShapedAdapterRelease({ repoRoot, packageRoot, manifestReleaseTag, readJson, assert, assertIncludes }) {
+
+  if (manifestReleaseTag === 'v0.7.5') {
+    const publicPackage = readJson(path.join(packageRoot, 'evidence/framework-shaped-adapter-public-review-package.out.json'));
+    assertSummary(publicPackage?.summary, {
+      frameworkShapedAdapterPublicReviewPackage: 'pass',
+      releaseLayer: 'v0.7.5',
+      phaseClosed: true,
+      realAdapterImplemented: false,
+      frameworkIntegrationAuthorized: false,
+      runtimeAuthorized: false,
+      positiveCases: 2,
+      hazardCases: 25,
+      rejectedOrDowngraded: 25,
+      pipelineRunsForRejectedCases: 0,
+      sourceReadsForRejectedCases: 0,
+      successOutputsForRejectedCases: 0,
+      classifierCompactAllowedTrue: 0,
+      reproducibilityRuns: 2,
+      normalizedOutputMismatches: 0,
+      baselineMismatches: 0,
+      driftControls: 8,
+      unexpectedAccepts: 0,
+      expectedReasonCodeMisses: 0,
+      requiredDocs: 7,
+      missingDocs: 0,
+      requiredEvidence: 6,
+      missingEvidence: 0,
+      missingRequiredPhrases: 0,
+      forbiddenPhraseFindings: 0,
+      reviewerRunbookForbiddenPhraseFindings: 0,
+      recordOnly: true,
+      toolExecution: false,
+      memoryWrite: false,
+      configWrite: false,
+      externalPublication: false,
+      agentConsumed: false,
+      machineReadablePolicyDecision: false,
+      mayBlock: false,
+      mayAllow: false,
+      authorization: false,
+      enforcement: false,
+    }, 'framework-shaped adapter public review package evidence', assert);
+    const statusV075 = readFileSync(path.join(repoRoot, 'docs/status-v0.7.5.md'), 'utf8');
+    const docs = readFileSync(path.join(repoRoot, 'docs/framework-shaped-adapter-public-review-package.md'), 'utf8');
+    assertAllIncluded(statusV075, [
+      'framework-shaped adapter public review package',
+      'closes the framework-shaped adapter review phase',
+      'required docs/evidence',
+      '25 hazards',
+      'pipelineRunsForRejectedCases: 0',
+      'classifier compactAllowed true count: 0',
+      'normalizedOutputMismatches: 0',
+      'baselineMismatches: 0',
+      'no real adapter',
+      'No real framework integration',
+    ], 'docs/status-v0.7.5.md', assertIncludes);
+    assertAllIncluded(docs, [
+      'This package closes the `v0.7.x` framework-shaped adapter review phase',
+      'No real adapter exists in this line.',
+      'A passing public review package is evidence that this framework-shaped adapter review phase stayed within boundary.',
+      'It is not permission to connect the shape to MCP, LangGraph, A2A, GitHub bot, a framework SDK, runtime, agent, watcher, daemon, network source, resource fetch, tool, memory store, config writer, approval path, block/allow path, authorization path, or enforcement path.',
+      'test:framework-shaped-adapter-public-review-package',
+      'release:check -- --target v0.7.5',
+      'A later phase, if any, must be explicitly authorized separately and must not inherit permission from this package.',
+    ], 'docs/framework-shaped-adapter-public-review-package.md', assertIncludes);
+  }
+
 
   if (manifestReleaseTag === 'v0.7.4') {
     const runbook = readJson(path.join(packageRoot, 'evidence/framework-shaped-adapter-reviewer-runbook.out.json'));
