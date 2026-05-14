@@ -1,0 +1,156 @@
+{
+  "artifact": "T-synaptic-mesh-read-only-local-file-batch-manifest-schema-v0.6.0-alpha",
+  "timestamp": "2026-05-14T13:00:00.000Z",
+  "summary": {
+    "readOnlyLocalFileBatchManifestSchema": "pass",
+    "releaseLayer": "v0.6.0-alpha",
+    "manifestOnly": true,
+    "schemaOnly": true,
+    "batchAdapterImplemented": false,
+    "batchBehaviorAuthorized": false,
+    "positiveCases": 2,
+    "negativeCases": 8,
+    "unexpectedAccepts": 0,
+    "unexpectedRejects": 0,
+    "sourceFilesReadForSchemaCases": 0,
+    "maxInputCount": 5,
+    "directoryDiscovery": false,
+    "globAllowed": false,
+    "watcherAllowed": false,
+    "daemonAllowed": false,
+    "networkAllowed": false,
+    "liveTrafficAllowed": false,
+    "recordOnly": true,
+    "adapterRuntimeChanged": false,
+    "toolExecution": false,
+    "memoryWrite": false,
+    "configWrite": false,
+    "externalPublication": false,
+    "approvalEmission": false,
+    "machineReadablePolicyDecision": false,
+    "agentConsumed": false,
+    "mayBlock": false,
+    "mayAllow": false,
+    "authorization": false,
+    "enforcement": false
+  },
+  "results": [
+    {
+      "caseId": "positive-one-explicit-redacted-file",
+      "expectedVerdict": "accept",
+      "actualVerdict": "accept",
+      "matchedExpected": true,
+      "errors": []
+    },
+    {
+      "caseId": "positive-three-explicit-redacted-files",
+      "expectedVerdict": "accept",
+      "actualVerdict": "accept",
+      "matchedExpected": true,
+      "errors": []
+    },
+    {
+      "caseId": "reject-directory-discovery",
+      "expectedVerdict": "reject",
+      "actualVerdict": "reject",
+      "matchedExpected": true,
+      "errors": [
+        "directoryDiscovery must be false"
+      ]
+    },
+    {
+      "caseId": "reject-glob-allowed",
+      "expectedVerdict": "reject",
+      "actualVerdict": "reject",
+      "matchedExpected": true,
+      "errors": [
+        "globAllowed must be false"
+      ]
+    },
+    {
+      "caseId": "reject-watcher-allowed",
+      "expectedVerdict": "reject",
+      "actualVerdict": "reject",
+      "matchedExpected": true,
+      "errors": [
+        "watcherAllowed must be false"
+      ]
+    },
+    {
+      "caseId": "reject-daemon-allowed",
+      "expectedVerdict": "reject",
+      "actualVerdict": "reject",
+      "matchedExpected": true,
+      "errors": [
+        "daemonAllowed must be false"
+      ]
+    },
+    {
+      "caseId": "reject-network-allowed",
+      "expectedVerdict": "reject",
+      "actualVerdict": "reject",
+      "matchedExpected": true,
+      "errors": [
+        "networkAllowed must be false"
+      ]
+    },
+    {
+      "caseId": "reject-live-traffic-allowed",
+      "expectedVerdict": "reject",
+      "actualVerdict": "reject",
+      "matchedExpected": true,
+      "errors": [
+        "liveTrafficAllowed must be false"
+      ]
+    },
+    {
+      "caseId": "reject-max-input-count-over-five",
+      "expectedVerdict": "reject",
+      "actualVerdict": "reject",
+      "matchedExpected": true,
+      "errors": [
+        "maxInputCount must be integer 1..5"
+      ]
+    },
+    {
+      "caseId": "reject-traversal-path",
+      "expectedVerdict": "reject",
+      "actualVerdict": "reject",
+      "matchedExpected": true,
+      "errors": [
+        "inputs[0].sourceFilePath pattern mismatch"
+      ]
+    }
+  ],
+  "boundary": [
+    "manifest_only",
+    "schema_only",
+    "no_batch_execution_yet",
+    "no_source_file_reads_in_schema_test",
+    "manual_explicit_redacted_file_list_only",
+    "max_input_count_5",
+    "explicit_input_list_only",
+    "already_redacted_sources_only",
+    "digest_bound_inputs_only",
+    "review_record_id_required",
+    "record_only_evidence_only",
+    "no_directory_discovery",
+    "no_glob",
+    "no_watcher",
+    "no_daemon",
+    "no_network",
+    "no_live_traffic",
+    "no_runtime_authorization",
+    "no_tool_execution",
+    "no_memory_write",
+    "no_config_write",
+    "no_external_publication",
+    "no_approval",
+    "no_machine_policy",
+    "no_agent_consumption",
+    "no_blocking",
+    "no_allowing",
+    "no_authorization",
+    "no_enforcement"
+  ]
+}

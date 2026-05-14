@@ -1,56 +1,70 @@
-# Release Notes — Synaptic Mesh v0.5.4
+# Release Notes — Synaptic Mesh v0.6.0-alpha
 
-Status: adapter public review package and phase close for the read-only local-file adapter. Manual, local, one explicit already-redacted input file only, record-only evidence, no effects. Not runtime-ready; not production/enforcement-ready.
+Status: explicit batch manifest schema alpha for future read-only local-file batch review. Manual, local, manifest only, no batch execution yet, schema-only, explicit already-redacted input list only, record-only evidence, no batch adapter behavior, no effects. Not runtime-ready; not production/enforcement-ready.
 
 ## Why this release
 
-This release closes the first real adapter public review phase without expanding it into runtime or framework integration.
+This release starts the v0.6.x effectiveness/batch-readiness track by defining the narrowest possible batch contract before any behavior expands beyond one file.
 
 ## Highlights
 
-- Added `docs/read-only-local-file-adapter-public-review-package.md`.
-- Added `test:read-only-local-file-adapter-public-review-package`.
-- Collected adapter implementation evidence, negative controls, canary, reproducibility gate, 30-case failure catalog, and reviewer runbook into one public review package.
-- Preserved the public summary that the adapter is implemented but framework/runtime authority remains unauthorized.
-- Wired the public review package into package scripts, release checks, manifest, README, and `docs/status-v0.5.4.md`.
+- Added `schemas/read-only-local-file-batch-manifest.schema.json`.
+- Added `implementation/synaptic-mesh-shadow-v0/fixtures/read-only-local-file-batch-manifests.json`.
+- Added `test:read-only-local-file-batch-manifest-schema`.
+- Added `docs/read-only-local-file-batch-manifest.md` and `docs/status-v0.6.0-alpha.md`.
+- Required manual explicit already-redacted file lists with digest-bound inputs and redaction review record IDs.
+- Added `maxInputCount` with a hard cap of 5.
+- Kept the schema test source-read-free: `sourceFilesReadForSchemaCases: 0`.
+- Kept `directoryDiscovery`, `globAllowed`, `watcherAllowed`, `daemonAllowed`, `networkAllowed`, and `liveTrafficAllowed` false.
+- Preserved schema-only status: no batch adapter implementation, runtime authorization, authorization, enforcement, or agent consumption.
 
-## Expected v0.5.4 evidence
+## Expected v0.6.0-alpha evidence
 
 ```json
 {
-  "readOnlyLocalFileAdapterPublicReviewPackage": "pass",
-  "adapterImplemented": true,
-  "frameworkIntegrationAuthorized": false,
-  "runtimeAuthorized": false,
-  "toolExecution": false,
-  "memoryWrite": false,
-  "configWrite": false,
-  "externalPublication": false,
-  "agentConsumed": false,
-  "machineReadablePolicyDecision": false,
-  "mayBlock": false,
-  "mayAllow": false,
+  "readOnlyLocalFileBatchManifestSchema": "pass",
+  "releaseLayer": "v0.6.0-alpha",
+  "manifestOnly": true,
+  "schemaOnly": true,
+  "batchAdapterImplemented": false,
+  "batchBehaviorAuthorized": false,
+  "positiveCases": 2,
+  "negativeCases": 8,
+  "unexpectedAccepts": 0,
+  "unexpectedRejects": 0,
+  "sourceFilesReadForSchemaCases": 0,
+  "maxInputCount": 5,
+  "batchMode": "manual_explicit_redacted_file_list",
+  "explicitInputListOnly": true,
+  "directoryDiscovery": false,
+  "globAllowed": false,
+  "watcherAllowed": false,
+  "daemonAllowed": false,
+  "networkAllowed": false,
+  "liveTrafficAllowed": false,
+  "recordOnly": true,
+  "authorization": false,
   "enforcement": false
 }
 ```
 
 ## Conservative release statement
 
-`v0.5.4` closes review of the local adapter evidence. It does not add runtime authorization, enforcement, MCP, A2A, LangGraph, GitHub bot, watcher, daemon, directory scan, glob input, network input, live traffic, multiple-file auto-discovery, tool execution, memory/config writes, external publication, publication automation, agent-instruction writes, automatic agent consumption, approval paths, blocking, allowing, authorization, MemoryAtom, MemoryStore, deletion, retention scheduling, or enforcement.
+`v0.6.0-alpha` defines a manifest contract only; manifest only, no batch execution yet. It does not add batch adapter behavior, runtime authorization, enforcement, MCP, A2A, LangGraph, GitHub bot, watcher, daemon, directory scan, glob input, network input, live traffic, multiple-file auto-discovery, tool execution, memory/config writes, external publication, publication automation, agent-instruction writes, automatic agent consumption, approval paths, blocking, allowing, authorization, MemoryAtom, MemoryStore, deletion, retention scheduling, or enforcement.
 
 ## Validation snapshot
 
 Expected validation command:
 
 ```bash
-npm --prefix implementation/synaptic-mesh-shadow-v0 run release:check -- --target v0.5.4
+npm --prefix implementation/synaptic-mesh-shadow-v0 run release:check -- --target v0.6.0-alpha
 ```
 
 ## Operational non-release status
 
 - Not runtime/tooling integrated.
 - Not live-monitoring integrated.
-- Not a general adapter.
+- Not a batch adapter implementation.
 - Not production/enforcement/L2+ ready.
-- The public review package closes local evidence review only; it does not authorize the next phase.
+- The manifest schema does not authorize the next phase.
 - Advisory no es authority.
