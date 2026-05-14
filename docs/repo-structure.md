@@ -36,6 +36,7 @@ Synaptic Mesh keeps protocol, implementation, research, and evidence separate so
 - [Framework integration go/no-go](framework-integration-go-no-go-v0.8.0-alpha.md) records that design may proceed while real framework adapter implementation remains blocked.
 - [Framework adapter candidate comparison](framework-adapter-candidate-comparison.md) compares MCP-like, LangGraph-like, A2A-like, and GitHub-bot-like candidates without authorizing implementation.
 - [First real framework adapter design v0.8.1](../design-notes/first-real-framework-adapter-design-v0.8.1.md) selects the MCP read-only candidate as design-only.
+- [Framework adapter implementation hazard catalog v0.8.2](framework-adapter-implementation-hazard-catalog-v0.8.2.md) records 25 implementation hazards with zero success evidence for hazard cases.
 
 ## Scaling rules
 
