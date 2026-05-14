@@ -919,8 +919,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/read-only-local-file-adapter-reproducibility.out.json",
-      "bytes": 5950,
-      "sha256": "8476ab42412005bec93b4f17ef551c07b571039653855435bc116be411100a94"
+      "bytes": 5976,
+      "sha256": "5cd406284e31851d60f79e5e9203b0dc807a65c494260dec83736b47ffada132"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/read-only-local-file-adapter-schema.out.json",
@@ -1794,8 +1794,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/read-only-local-file-adapter-reproducibility.mjs",
-      "bytes": 11195,
-      "sha256": "2d9c515129df6c7592d050624134bb8cab9c47d18131fd52ce0aeeb8f040d22e"
+      "bytes": 11221,
+      "sha256": "ec27b25f1b8d1e51e5df059d72a84b80925200bc76b27d01688571a472a1a7a1"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/read-only-local-file-adapter-schema.mjs",
