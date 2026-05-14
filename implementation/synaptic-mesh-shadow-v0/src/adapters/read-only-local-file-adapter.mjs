@@ -307,8 +307,9 @@ export async function writeReadOnlyLocalFileAdapterEvidence(output, options = {}
   const targetParent = dirname(target);
 
   const evidenceRootStat = await lstat(evidenceRoot).catch(() => null);
-  if (!evidenceRootStat?.isDirectory()) throw new Error('evidence root must already exist');
+  if (!evidenceRootStat) throw new Error('evidence root must already exist');
   if (evidenceRootStat.isSymbolicLink()) throw new Error('evidence root must not be symlink');
+  if (!evidenceRootStat.isDirectory()) throw new Error('evidence root must already exist');
 
   const allowedDirStat = await lstat(allowedDir).catch(() => null);
   if (allowedDirStat?.isSymbolicLink()) throw new Error('adapter evidence directory must not be symlink');
