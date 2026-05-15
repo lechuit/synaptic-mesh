@@ -1,20 +1,20 @@
-# Synaptic Mesh v0.28.5
+# Synaptic Mesh v0.29.5
 
-This is the public review release `v0.28.5`. Current v0.28.5 status is narrower than live runtime and crosses the next safe barrier after the v0.27 repeatability scorecard: **passive memory recall usefulness probe**.
+This is the public review release `v0.29.5`. Current v0.29.5 status is narrower than live runtime and crosses the next safe barrier after the v0.28 recall probe: **passive memory handoff candidate scorecard**.
 
-The v0.28 ladder is disabled-by-default, operator-run one-shot, local-only, passive/read-only, bounded to explicit redacted passive observation artifacts plus explicit recall need cards, human-readable report only, non-authoritative, and not runtime authority.
+The v0.29 ladder is disabled-by-default, operator-run one-shot, local-only, passive/read-only, bounded to the completed v0.28 redacted recall artifact, human-readable report only, non-authoritative, and not runtime authority.
 
-Pinned v0.28.5 evidence: `probeStatus: MEMORY_RECALL_USEFULNESS_PROBE_COMPLETE`, `cardCount: 4`, `evidenceCount: 5`, `sourceArtifactCount: 1`, `source-anchor digest verified`, `usefulRecallRatio: 0.75`, `contradictionSurfacingRatio: 1`, `staleNegativeMarkedRatio: 1`, `sourceBoundMatchRatio: 1`, `irrelevantMatchRatio: 0`, `boundaryViolationCount: 0`, `recommendation: ADVANCE_OBSERVATION_ONLY`, `recommendationIsAuthority: false`, `policyDecision: null`, and `human-readable report only`.
+Pinned v0.29.5 evidence: `handoffStatus: MEMORY_HANDOFF_CANDIDATE_SCORECARD_COMPLETE`, `candidateCount: 4`, `carryForwardCandidateCount: 2`, `contradictionCandidateCount: 1`, `staleCautionCandidateCount: 1`, `sourceBoundCandidateRatio: 1`, `contradictionFlagRatio: 1`, `staleCautionRatio: 1`, `noiseSuppressedCount: 1`, `noiseSuppressionRatio: 1`, `humanReviewCandidateRatio: 1`, `boundaryViolationCount: 0`, `recommendation: ADVANCE_OBSERVATION_ONLY`, `recommendationIsAuthority: false`, `agentConsumedOutput: false`, `notRuntimeInstruction: true`, `policyDecision: null`, and `human-readable report only`.
 
-The probe asks whether passive evidence helps recover AI-continuity memory: decisions, project rules, contradictions, source-bound evidence, and stale negative context. Source-bound now means each matched item verifies a redacted source anchor and digest against an explicit source artifact, not just declared metadata. The recommendation is only a human review signal to continue observation; it is not authorization or enforcement.
+The scorecard asks whether passive recall evidence can become a safe human-review handoff package: what can be carried forward, which contradiction should be surfaced for review, which stale context should be treated as caution rather than fresh instruction, and which noise stays out. These are handoff candidates, not agent-consumed instructions, authorization, or enforcement.
 
-## v0.28.5 phase close
+## v0.29.5 phase close
 
-Passive memory recall usefulness probe is prepared as a local review package. It demonstrates source-bound recall usefulness over four human-authored need cards without adding authority, effects, daemon/watchers, autonomous runtime, raw output, memory writes, or agent-consumed policy decisions.
+Passive memory handoff candidate scorecard is prepared as a local review package. It demonstrates source-bound, contradiction-aware, stale-aware, noise-suppressing handoff candidates without adding authority, effects, daemon/watchers, autonomous runtime, raw output, memory writes, or agent-consumed policy decisions.
 
 ## Carry-forward prior release boundaries
 
-The v0.27 passive observation repeatability scorecard remains the upstream signal source: `scorecardStatus: REPEATABILITY_SCORECARD_COMPLETE`, completed windows: 3, degraded windows: 1, usefulOutcomeRatio: 1, repeatabilityRatio: 1, recommendation-not-authority, and `policyDecision: null`.
+The v0.28 passive memory recall usefulness probe remains the upstream signal source: `probeStatus: MEMORY_RECALL_USEFULNESS_PROBE_COMPLETE`, four cards, five evidence items, one explicit source artifact, source-anchor digest verification, usefulRecallRatio: 0.75, contradictionSurfacingRatio: 1, staleNegativeMarkedRatio: 1, sourceBoundMatchRatio: 1, recommendation-not-authority, and `policyDecision: null`.
 
 No enforcement, authorization, approval/block/allow semantics, globs/recursive discovery, implicit sources, outside-repo paths, symlinks, autonomous live mode, watcher/daemon, network/resource fetch, tool execution, memory/config writes, agent-consumed machine-readable policy decisions, raw persistence/output, or external effects.
 
