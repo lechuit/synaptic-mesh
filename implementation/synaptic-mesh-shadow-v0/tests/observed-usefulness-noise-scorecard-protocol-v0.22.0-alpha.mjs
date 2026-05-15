@@ -1,0 +1,20 @@
+import assert from 'node:assert/strict';
+import { mkdir, writeFile } from 'node:fs/promises';
+import { resolve } from 'node:path';
+import { observedUsefulnessNoiseScorecardProtocol } from '../src/observed-usefulness-noise-scorecard.mjs';
+
+await mkdir(resolve('evidence'), { recursive: true });
+const protocol = observedUsefulnessNoiseScorecardProtocol();
+assert.equal(protocol.releaseLayer, 'v0.22.0-alpha');
+assert.equal(protocol.consumesPositiveUtilityPassGateOutputs, true);
+assert.equal(protocol.humanReadableOnly, true);
+assert.equal(protocol.scorecardOnly, true);
+assert.equal(protocol.nonAuthoritative, true);
+assert.equal(protocol.localOnly, true);
+assert.equal(protocol.passiveOnly, true);
+assert.equal(protocol.readOnly, true);
+assert.equal(protocol.oneShot, true);
+assert.equal(protocol.policyDecision, null);
+for (const key of ['authorization','enforcement','approvalBlockAllow','toolExecution','memoryConfigWrites','networkFetch','resourceFetch','externalEffects','agentConsumedOutput','machineReadablePolicyDecision','runtimeAuthority']) assert.equal(protocol[key], false, key);
+await writeFile(resolve('evidence/observed-usefulness-noise-scorecard-protocol-v0.22.0-alpha.out.json'), JSON.stringify({ protocol }, null, 2) + '\n');
+console.log(JSON.stringify(protocol, null, 2));
