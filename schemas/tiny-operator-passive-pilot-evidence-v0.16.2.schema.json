@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Tiny operator-run passive pilot evidence packet v0.16.2",
+  "type": "object",
+  "required": [
+    "artifact",
+    "schemaVersion",
+    "summary",
+    "pilot",
+    "observation"
+  ],
+  "properties": {
+    "artifact": {
+      "const": "T-synaptic-mesh-tiny-operator-passive-pilot-v0.16.5"
+    },
+    "schemaVersion": {
+      "const": "tiny-operator-passive-pilot-evidence-v0.16.2"
+    },
+    "summary": {
+      "type": "object",
+      "required": [
+        "operatorReviewRequired",
+        "singleSampleOnly",
+        "rawPersisted",
+        "unexpectedPermits"
+      ],
+      "properties": {
+        "operatorReviewRequired": {
+          "const": true
+        },
+        "singleSampleOnly": {
+          "const": true
+        },
+        "rawPersisted": {
+          "const": false
+        },
+        "unexpectedPermits": {
+          "const": 0
+        }
+      }
+    },
+    "pilot": {
+      "type": "object"
+    },
+    "observation": {
+      "type": "object"
+    }
+  }
+}

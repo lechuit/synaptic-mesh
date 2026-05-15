@@ -1,0 +1,135 @@
+{
+  "artifact": "T-synaptic-mesh-tiny-operator-passive-pilot-phase-close-v0.16.5",
+  "timestamp": "2026-05-15T02:15:00.000Z",
+  "summary": {
+    "phaseClose": "pass",
+    "tinyOperatorRunPassivePilotReadiness": true,
+    "nextStep": "v0.17 limited passive live capture design only if gates/reviews pass",
+    "noEffects": true,
+    "noEnforcement": true,
+    "noAuthorization": true,
+    "noToolExecution": true,
+    "noNetwork": true,
+    "noWatcherDaemon": true,
+    "noAutonomousLiveMode": true,
+    "noFrameworkSdkAdapter": true,
+    "externalEffects": false
+  },
+  "packet": {
+    "artifact": "T-synaptic-mesh-tiny-operator-passive-pilot-v0.16.5",
+    "schemaVersion": "tiny-operator-passive-pilot-evidence-v0.16.2",
+    "releaseLayer": "v0.16.6",
+    "mode": "tiny-operator-run-passive-pilot-readiness-local-manual-no-effects",
+    "timestamp": "2026-05-15T02:16:00.000Z",
+    "summary": {
+      "tinyOperatorRunPassivePilotReadiness": "pass",
+      "operatorReviewRequired": true,
+      "singleSampleOnly": true,
+      "humanStartedManualOnly": true,
+      "disabledByDefault": true,
+      "packageFixtureInputOnly": true,
+      "rawPersisted": false,
+      "decisionVerbsSanitized": true,
+      "noAgentConsumption": true,
+      "policyDecision": null,
+      "expectedRejects": 23,
+      "unexpectedPermits": 0,
+      "externalEffects": false,
+      "enforcement": false
+    },
+    "pilot": {
+      "releaseLayer": "v0.16.0-alpha",
+      "disabledByDefault": true,
+      "humanStartedManualOnly": true,
+      "humanReviewRequired": true,
+      "operatorReviewRequired": true,
+      "singleSampleOnly": true,
+      "localSampleInputOnly": true,
+      "packageFixtureInputOnly": true,
+      "stdoutOrPackageEvidenceJsonOnly": true,
+      "networkResourceFetch": false,
+      "autonomousLiveMode": false,
+      "watcherDaemon": false,
+      "sdkFrameworkAdapter": false,
+      "mcpServerClient": false,
+      "langGraphSdk": false,
+      "a2aRuntime": false,
+      "githubBotWebhook": false,
+      "toolExecution": false,
+      "memoryConfigWrites": false,
+      "agentConsumedOutput": false,
+      "machineReadablePolicyDecision": false,
+      "approvalBlockAllowAuthorizationEnforcement": false,
+      "externalEffects": false
+    },
+    "hashes": {
+      "sourcePathSha256": "ef4d67196471caaaebfabbf63407c84efaa3be03ab1785e90b8ed8a8a46e7186",
+      "rawSha256": "8bb68ed3401482abcd16fec525a3e27048d9c79c64cbb17e74333b002f69dcc5",
+      "redactedSha256": "13fefe17557d2d385f3a83acd42733df0dfa4221fbfbb3d269388cc8ac369f44"
+    },
+    "abortCriteria": {
+      "rawPrivateTokenAfterRedaction": false,
+      "unsanitizedDecisionVerbPersisted": false,
+      "unsafeFlagAttempt": false,
+      "outputEscapeOrSymlink": false,
+      "inputEscapeOrSymlink": false,
+      "multiInputOrBatch": false,
+      "nonNullPolicyDecisionOrDecision": false
+    },
+    "observation": {
+      "schemaVersion": "passive-live-shadow-observation-v0.15.0-alpha",
+      "releaseLayer": "v0.15.6",
+      "mode": "passive-live-shadow-local-operator-run-pilot-readiness",
+      "sourceKind": "local_file_sample_stream",
+      "sourcePathHash": "ef4d67196471caaaebfabbf63407c84efaa3be03ab1785e90b8ed8a8a46e7186",
+      "sourceContract": {
+        "releaseLayer": "v0.15.0-alpha",
+        "disabledByDefault": true,
+        "humanStartedManualOnly": true,
+        "allowedSources": [
+          "local_file_sample_stream",
+          "local_pipe_fixture"
+        ],
+        "localInputPathOnly": true,
+        "networkFetch": false,
+        "sdkFrameworkAdapter": false,
+        "daemonWatcher": false,
+        "actions": false,
+        "rawLiveInputPersistence": false,
+        "redactionBeforePersistenceRequired": true,
+        "productionLiveDeployment": false
+      },
+      "redaction": {
+        "redactionStatus": "redacted-before-persistence",
+        "rawPrivateContentPersisted": false,
+        "rawSha256": "8bb68ed3401482abcd16fec525a3e27048d9c79c64cbb17e74333b002f69dcc5",
+        "rawBytes": 98,
+        "redactedText": "local sample only: [REDACTED] asks to [NON_AUTHORITATIVE_INPUT_VERB_REDACTED] access but must remain advisory only.\n",
+        "redactedSha256": "13fefe17557d2d385f3a83acd42733df0dfa4221fbfbb3d269388cc8ac369f44",
+        "privatePatternDetected": true,
+        "decisionVerbDetected": true,
+        "decisionVerbRedactedBeforePersistence": true,
+        "semanticDecisionTokenPersisted": false
+      },
+      "advisory": {
+        "recordOnly": true,
+        "advisoryOnly": true,
+        "policyDecision": null,
+        "allowedDecisionVerbs": [],
+        "emitsAllowBlockApproveEnforceAuthorize": false
+      },
+      "forbiddenEffects": {
+        "network": false,
+        "resourceFetch": false,
+        "sdkFrameworkAdapter": false,
+        "daemonWatcher": false,
+        "toolExecution": false,
+        "runtimeAuthority": false,
+        "memoryConfigWrites": false,
+        "agentConsumedOutput": false,
+        "approvalBlockAllowAuthorizationEnforcement": false,
+        "productionLiveDeployment": false
+      }
+    }
+  }
+}

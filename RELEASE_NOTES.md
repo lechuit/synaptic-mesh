@@ -1,29 +1,31 @@
-# Release Notes — Synaptic Mesh v0.15.6
+# Release Notes — Synaptic Mesh v0.16.6
 
-## v0.15.0-alpha passive live shadow source contract
+## v0.16.0-alpha pilot protocol and scope
 
-Defined allowed passive sources as explicit local file/sample streams and local pipe fixtures only. Disabled by default, human-started/manual, no network fetch, no SDK/framework adapter, no daemon/watcher, no actions, and redaction-gated before persistence.
+Defined a disabled-by-default, human-started/manual, local-only tiny operator-run passive pilot protocol. Scope is one explicit local sample input at a time, with human review required before any source expansion.
 
-## v0.15.1 redaction-before-persistence gate
+## v0.16.1 tiny pilot runner/harness
 
-Added negative controls for raw/private/tool/memory/config/approval text. Raw input is not committed; persisted evidence is redacted/metadata/hashed where appropriate.
+Added a tiny runner wrapping passive live shadow redaction/no-enforcement checks. It writes stdout or package evidence JSON only and rejects --watch, --daemon, --network, --execute, --allow, --block, --approve, --enforce, --authorize, and batch/multi-input modes before work.
 
-## v0.15.2 passive observation CLI/harness
+## v0.16.2 evidence packet metadata
 
-Added manual local-input harness. It writes local evidence or stdout, never watches, never daemonizes, never uses network, never executes tools, and rejects unsafe flags. unsafeFlagsRejected: 8.
+Added an evidence packet shape with operatorReviewRequired: true; singleSampleOnly: true; rawPersisted: false; hashes present; decision verbs sanitized; no agent-consumed output; no machine-readable policy decision.
 
-## v0.15.3 no-enforcement invariant suite
+## v0.16.3 abort criteria and negative controls
 
-Asserted passive shadow cannot emit allow/block/approve/enforce/authorize decisions. Output remains record/advisory evidence only, including dangerous cases.
+Added negative controls for raw private token handling, unsanitized decision verbs, unsafe flags, output escape/symlink attempts, multi-input/batch attempts, and non-null policyDecision/decision. expectedRejects are counted and unexpectedPermits: 0.
 
-## v0.15.4 reviewer package
+## v0.16.4 reviewer runbook
 
-Added Human review package for deciding whether a tiny local operator-run pilot may be attempted next. It explicitly says no autonomous live mode, no enforcement, no tool execution, no authorization, and no daemon/watcher.
+Added the reviewer runbook/audit packet requiring human review before source expansion and reaffirming disabled/manual/local/no-effects only.
 
-## v0.15.5 phase close
+## v0.16.5 phase close
 
-passive live shadow readiness achieved for local operator-run pilot only. Next step may be v0.16 tiny operator-run pilot, still no enforcement, no tool execution, no authorization, no daemon/watcher by default, no external effects, no production/live deployment, and no autonomous live mode.
+tiny operator-run passive pilot readiness only. Next step may be v0.17 limited passive live capture design only if gates and human reviews pass. no agent-consumed output; no machine-readable policy decision; no enforcement; no authorization; no tool execution; no network; no daemon/watcher by default; no watcher/daemon; no framework/SDK adapter; no external effects.
 
-## v0.15.6 output boundary hardening
+Carry-forward from v0.15: passive live shadow readiness achieved for local operator-run pilot only; v0.16 keeps that readiness disabled/manual/local/no-effects only.
 
-Restricted passive live shadow CLI evidence writes to package `evidence/` JSON files or `--stdout`. Path escapes, fixture writes, non-JSON outputs, absolute external paths, symlinked parent directories, and symlinked output files are rejected before persistence. evidenceDirectoryOnly: true; outputPathEscapeRejected: true; symlinkParentRejected: true; symlinkOutputFileRejected: true; decisionVerbRedactions: 5; semanticDecisionTokensPersisted: false; memoryConfigWrite: false; externalEffects: false; enforcement: false.
+## v0.16.6 input boundary hardening
+
+Restricted tiny passive pilot input to one package `fixtures/` `.txt` sample file. External paths, package docs/evidence/metadata, directories, non-text fixtures, symlink input files, and symlink parent escapes are rejected before read. packageFixtureInputOnly: true; inputPathEscapeRejected: true; inputSymlinkFileRejected: true; inputSymlinkParentRejected: true; rawPersisted: false; externalEffects: false; enforcement: false.

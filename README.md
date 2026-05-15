@@ -1,14 +1,16 @@
-# Synaptic Mesh v0.15.6
+# Synaptic Mesh v0.16.6
 
-This is the public review release `v0.15.6`. Current v0.15.6 status is narrower than live runtime: passive live shadow readiness achieved with output boundary hardening for a local operator-run pilot only.
+This is the public review release `v0.16.6`. Current v0.16.6 status is narrower than live runtime: tiny operator-run passive pilot readiness only, for one explicit local sample input at a time.
 
-The v0.15.x ladder defines a disabled-by-default, human-started/manual passive observation source contract over explicit local file/sample streams and local pipe fixtures only. The harness is manual local input path only, with redaction-before-persistence, metadata/hashes for raw input, and no raw private content committed.
+The v0.16.x ladder remains disabled by default, human-started/manual, local-only, and no-effects. The tiny pilot produces stdout or package `evidence/` JSON for human review; it is not agent-consumed output and it is not a machine-readable policy decision.
 
-Boundaries: no production/live deployment, no autonomous live mode, no network/resource fetch, no SDK/framework adapter, no MCP server/client, no LangGraph SDK, no A2A runtime, no GitHub bot/webhook, no watcher/daemon by default, no tool execution, no memory/config writes, no agent-consumed output, no machine-readable policy decision, not runtime authority, no authorization, no external effects, and no approval/block/allow/authorization/enforcement.
+Boundaries: no production/live deployment, no autonomous live mode, no network/resource fetch, no SDK/framework adapter, no MCP server/client, no LangGraph SDK, no A2A runtime, no GitHub bot/webhook, no watcher/daemon, no tool execution, no memory/config writes, no agent-consumed output, no machine-readable policy decision, not runtime authority, no authorization, no external effects, and no approval/block/allow/authorization/enforcement.
 
-Final evidence: passive live shadow readiness achieved; local operator-run pilot only; next step may be v0.16 tiny operator-run pilot; unsafeFlagsRejected: 8; redactionBeforePersistence: true; rawPersisted: false; no enforcement; no tool execution; no authorization; no daemon/watcher by default; no external effects.
+Final evidence: tiny operator-run passive pilot readiness; one explicit local sample input at a time; operatorReviewRequired: true; singleSampleOnly: true; packageFixtureInputOnly: true; rawPersisted: false; unexpectedPermits: 0; no enforcement; no tool execution; no authorization; no daemon/watcher by default; no external effects. Next step may be v0.17 limited passive live capture design only if gates and human reviews pass.
+
+Carry-forward boundary from v0.15: passive live shadow readiness achieved for local operator-run pilot only; v0.16 does not expand that into runtime behavior.
 
 
-## v0.15.6 hardening
+## v0.16.6 hardening
 
-Passive live shadow evidence output is restricted to package `evidence/` JSON files or `--stdout`. Path escapes, symlinked parent directories, symlinked output files, and external output paths are rejected before persistence; this preserves the no memory/config writes and no external effects boundary. Decision verbs found in local input are also sanitized before persistence so evidence stays advisory/record-only.
+Tiny passive pilot input is restricted to one package `fixtures/` `.txt` sample file. External paths, package docs/evidence/metadata, directories, non-text fixtures, symlink input files, and symlink parent escapes are rejected before read.

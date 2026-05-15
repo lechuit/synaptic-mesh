@@ -1,0 +1,38 @@
+{
+  "artifact": "T-synaptic-mesh-tiny-operator-passive-pilot-protocol-v0.16.0-alpha",
+  "timestamp": "2026-05-15T02:10:00.000Z",
+  "summary": {
+    "protocol": "pass",
+    "disabledByDefault": true,
+    "humanStartedManualOnly": true,
+    "humanReviewRequired": true,
+    "singleSampleOnly": true,
+    "abortCriteriaDocumented": true,
+    "noEffects": true
+  },
+  "protocol": {
+    "releaseLayer": "v0.16.0-alpha",
+    "disabledByDefault": true,
+    "humanStartedManualOnly": true,
+    "humanReviewRequired": true,
+    "operatorReviewRequired": true,
+    "singleSampleOnly": true,
+    "localSampleInputOnly": true,
+    "packageFixtureInputOnly": true,
+    "stdoutOrPackageEvidenceJsonOnly": true,
+    "networkResourceFetch": false,
+    "autonomousLiveMode": false,
+    "watcherDaemon": false,
+    "sdkFrameworkAdapter": false,
+    "mcpServerClient": false,
+    "langGraphSdk": false,
+    "a2aRuntime": false,
+    "githubBotWebhook": false,
+    "toolExecution": false,
+    "memoryConfigWrites": false,
+    "agentConsumedOutput": false,
+    "machineReadablePolicyDecision": false,
+    "approvalBlockAllowAuthorizationEnforcement": false,
+    "externalEffects": false
+  }
+}
