@@ -97,8 +97,8 @@
       "kind": "explicit_repo_local_file_via_adapter",
       "repoRelativePathSha256": "b335630551682c19a781afebcf4d07bf978fb1f8ac04c6bf87428ed5106870f5",
       "absolutePathSha256": "543c81f89743c5b0f48fa0200abe84d28dd1fdb1b6687cf610469e9e998e93e0",
-      "sourceSize": 3841,
-      "sourceMtimeMs": 1778849859772,
+      "sourceSize": 3956,
+      "sourceMtimeMs": null,
       "rawSourcePathPersisted": false,
       "recordsRead": 4,
       "failureIsolated": false
@@ -109,8 +109,8 @@
       "kind": "explicit_repo_local_file_via_adapter",
       "repoRelativePathSha256": "68d24fa81558aae3d8c59e2aa57a4fa719ea3b04d7fa14beff45f16f00858f50",
       "absolutePathSha256": "4da003b5022cb2aeb34f2b51f5b6f9fe35d01a94f2607ea78b58e405df985f0b",
-      "sourceSize": 3139,
-      "sourceMtimeMs": 1778849859772,
+      "sourceSize": 3229,
+      "sourceMtimeMs": null,
       "rawSourcePathPersisted": false,
       "recordsRead": 4,
       "failureIsolated": false
@@ -121,8 +121,8 @@
       "kind": "explicit_repo_local_file_via_adapter",
       "repoRelativePathSha256": "b1896e268c37a498c37027d6e8f4fbdb83aec535bacbf695d1fb98c6a55f3029",
       "absolutePathSha256": "da155b2aa4c33190c5e847a668f106d6a50de2eab927108c9de408e9fbabf1b1",
-      "sourceSize": 610,
-      "sourceMtimeMs": 1778849719794,
+      "sourceSize": 1028,
+      "sourceMtimeMs": null,
       "rawSourcePathPersisted": false,
       "recordsRead": 2,
       "failureIsolated": false
@@ -151,10 +151,10 @@
     {
       "sourceIndex": 0,
       "index": 0,
-      "rawSha256": "24de64d10c83e1499c579a9b7462f32607496f7c79f8852fa03d38af3635c378",
+      "rawSha256": "648d33e30838f1607a2f6d6d7559eec8ac48f57226389afddc69263ad5cbc451",
       "rawBytes": 23,
-      "redactedSha256": "24de64d10c83e1499c579a9b7462f32607496f7c79f8852fa03d38af3635c378",
-      "redactedText": "# Synaptic Mesh v0.21.5",
+      "redactedSha256": "648d33e30838f1607a2f6d6d7559eec8ac48f57226389afddc69263ad5cbc451",
+      "redactedText": "# Synaptic Mesh v0.21.6",
       "privatePatternDetected": false,
       "decisionVerbDetected": false,
       "semanticDecisionTokenPersisted": false
@@ -162,10 +162,10 @@
     {
       "sourceIndex": 0,
       "index": 1,
-      "rawSha256": "12f89716c8e82a576f018f5d0aa958b142e213aa75875f6f9ea81d0dd6a93422",
+      "rawSha256": "cf73edbff8ca5968b676cfd72f408b4c297c07b443c9c1323155c1d30f18b871",
       "rawBytes": 238,
-      "redactedSha256": "12f89716c8e82a576f018f5d0aa958b142e213aa75875f6f9ea81d0dd6a93422",
-      "redactedText": "This is the public review release `v0.21.5`. Current v0.21.5 status is narrower than live runtime but crosses the next smallest safe barrier after bounded explicit multisource shadow-read: a **positive utility pass-to-human-review** gate.",
+      "redactedSha256": "cf73edbff8ca5968b676cfd72f408b4c297c07b443c9c1323155c1d30f18b871",
+      "redactedText": "This is the public review release `v0.21.6`. Current v0.21.6 status is narrower than live runtime but crosses the next smallest safe barrier after bounded explicit multisource shadow-read: a **positive utility pass-to-human-review** gate.",
       "privatePatternDetected": false,
       "decisionVerbDetected": false,
       "semanticDecisionTokenPersisted": false
@@ -195,10 +195,10 @@
     {
       "sourceIndex": 1,
       "index": 0,
-      "rawSha256": "391f6b5c3593f083a2264b3352ed26b9892b402a01fb634abffda8386679ef31",
+      "rawSha256": "75ffd6afba5b23fb07c0b4f31a3bc632a805f3292d68c7f03c1e510750cab578",
       "rawBytes": 41,
-      "redactedSha256": "391f6b5c3593f083a2264b3352ed26b9892b402a01fb634abffda8386679ef31",
-      "redactedText": "# Release Notes — Synaptic Mesh v0.21.5",
+      "redactedSha256": "75ffd6afba5b23fb07c0b4f31a3bc632a805f3292d68c7f03c1e510750cab578",
+      "redactedText": "# Release Notes — Synaptic Mesh v0.21.6",
       "privatePatternDetected": false,
       "decisionVerbDetected": false,
       "semanticDecisionTokenPersisted": false
@@ -217,10 +217,10 @@
     {
       "sourceIndex": 1,
       "index": 2,
-      "rawSha256": "138305a493c79ad8904621122f5362d88a20d5d9d356a3b6e5c51e0100b80926",
-      "rawBytes": 324,
-      "redactedSha256": "138305a493c79ad8904621122f5362d88a20d5d9d356a3b6e5c51e0100b80926",
-      "redactedText": "`v0.21.5` introduces the **positive utility pass-to-human-review** gate. It demonstrates what happens when bounded explicit multisource shadow-read evidence should pass: valid, clean, useful observations are classified as `PASS_TO_HUMAN_REV",
+      "rawSha256": "b93f01212bdcd7812f1f38b68c8b1a3f52d948468721282a954a7a86ff3078b4",
+      "rawBytes": 414,
+      "redactedSha256": "b93f01212bdcd7812f1f38b68c8b1a3f52d948468721282a954a7a86ff3078b4",
+      "redactedText": "`v0.21.6` preserves the v0.21.5 positive gate and hotfixes deterministic evidence replay. `v0.21.5` introduced the **positive utility pass-to-human-review** gate. It demonstrates what happens when bounded explicit multisource shadow-read ev",
       "privatePatternDetected": false,
       "decisionVerbDetected": false,
       "semanticDecisionTokenPersisted": false
@@ -239,10 +239,10 @@
     {
       "sourceIndex": 2,
       "index": 0,
-      "rawSha256": "d86ccc5014f59a89cd35a21cc3cca98e77a2aa0f607f13d44fe22ad7db4decce",
+      "rawSha256": "51d2286ddfffe7c3fcd54d26ec8cb5b32d23a685de9d3455a7bf675f52a69499",
       "rawBytes": 45,
-      "redactedSha256": "d86ccc5014f59a89cd35a21cc3cca98e77a2aa0f607f13d44fe22ad7db4decce",
-      "redactedText": "# Release Candidate — Synaptic Mesh v0.21.5",
+      "redactedSha256": "51d2286ddfffe7c3fcd54d26ec8cb5b32d23a685de9d3455a7bf675f52a69499",
+      "redactedText": "# Release Candidate — Synaptic Mesh v0.21.6",
       "privatePatternDetected": false,
       "decisionVerbDetected": false,
       "semanticDecisionTokenPersisted": false
@@ -250,14 +250,14 @@
     {
       "sourceIndex": 2,
       "index": 1,
-      "rawSha256": "ff9975da50e4375cd88248d3a8d48da35b79a81de92052050e280d9ca672b36a",
+      "rawSha256": "9d55731d8cd6b008da04fa58d528c2a4b403e31c0b58fb3826ab9406414831d1",
       "rawBytes": 17,
-      "redactedSha256": "ff9975da50e4375cd88248d3a8d48da35b79a81de92052050e280d9ca672b36a",
-      "redactedText": "Target: `v0.21.5`",
+      "redactedSha256": "9d55731d8cd6b008da04fa58d528c2a4b403e31c0b58fb3826ab9406414831d1",
+      "redactedText": "Target: `v0.21.6`",
       "privatePatternDetected": false,
       "decisionVerbDetected": false,
       "semanticDecisionTokenPersisted": false
     }
   ],
-  "reportMarkdown": "# Bounded Explicit Multisource Shadow-Read Report v0.20.5\n\n- Barrier crossed: bounded explicit multisource shadow-read\n- Adapter: repo-local-file-read-adapter-v0\n- Operator-run: true; one-shot: true; local-only/read-only/passive-only: true\n- Sources: 3 / max 3\n- Records read: 10 / total limit 10; per-source limit 4\n- Per-source isolation: true; failure isolation: true; isolated failures: 0\n- Redacted evidence only: true; rawPersisted: false; rawOutput: false\n- policyDecision: null; agentConsumedOutput: false; unexpectedPermits: 0\n- Enforcement/authorization/approval/block/allow: false\n\n## Source statuses\n- source #0: ok; records=4; rawSourcePathPersisted=false\n- source #1: ok; records=4; rawSourcePathPersisted=false\n- source #2: ok; records=2; rawSourcePathPersisted=false\n\n## Redacted evidence preview\n- source #0 record #0: # Synaptic Mesh v0.21.5\n- source #0 record #1: This is the public review release `v0.21.5`. Current v0.21.5 status is narrower than live runtime but crosses the next smallest safe barrier after bounded explicit multisource shadow-read: a **positive utility pass-to-human-review** gate.\n- source #0 record #2: The v0.21.x ladder is still disabled-by-default, manual/operator-run, local-only, passive/read-only, one-shot, and non-authoritative. It consumes valid v0.20-style bounded explicit multisource shadow-read evidence and may classify clean, us\n- source #0 record #3: This is not a policy [NON_AUTHORITATIVE_INPUT_VERB_REDACTED]/[NON_AUTHORITATIVE_INPUT_VERB_REDACTED]/[NON_AUTHORITATIVE_INPUT_VERB_REDACTED] gate and not runtime authority. Boundaries: `policyDecision: null`, `[NON_AUTHORITATIVE_INPUT_VERB_\n- source #1 record #0: # Release Notes — Synaptic Mesh v0.21.5\n- source #1 record #1: ## Summary\n- source #1 record #2: `v0.21.5` introduces the **positive utility pass-to-human-review** gate. It demonstrates what happens when bounded explicit multisource shadow-read evidence should pass: valid, clean, useful observations are classified as `PASS_TO_HUMAN_REV\n- source #1 record #3: ## Evidence\n- source #2 record #0: # Release Candidate — Synaptic Mesh v0.21.5\n- source #2 record #1: Target: `v0.21.5`\n"
+  "reportMarkdown": "# Bounded Explicit Multisource Shadow-Read Report v0.20.5\n\n- Barrier crossed: bounded explicit multisource shadow-read\n- Adapter: repo-local-file-read-adapter-v0\n- Operator-run: true; one-shot: true; local-only/read-only/passive-only: true\n- Sources: 3 / max 3\n- Records read: 10 / total limit 10; per-source limit 4\n- Per-source isolation: true; failure isolation: true; isolated failures: 0\n- Redacted evidence only: true; rawPersisted: false; rawOutput: false\n- policyDecision: null; agentConsumedOutput: false; unexpectedPermits: 0\n- Enforcement/authorization/approval/block/allow: false\n\n## Source statuses\n- source #0: ok; records=4; rawSourcePathPersisted=false\n- source #1: ok; records=4; rawSourcePathPersisted=false\n- source #2: ok; records=2; rawSourcePathPersisted=false\n\n## Redacted evidence preview\n- source #0 record #0: # Synaptic Mesh v0.21.6\n- source #0 record #1: This is the public review release `v0.21.6`. Current v0.21.6 status is narrower than live runtime but crosses the next smallest safe barrier after bounded explicit multisource shadow-read: a **positive utility pass-to-human-review** gate.\n- source #0 record #2: The v0.21.x ladder is still disabled-by-default, manual/operator-run, local-only, passive/read-only, one-shot, and non-authoritative. It consumes valid v0.20-style bounded explicit multisource shadow-read evidence and may classify clean, us\n- source #0 record #3: This is not a policy [NON_AUTHORITATIVE_INPUT_VERB_REDACTED]/[NON_AUTHORITATIVE_INPUT_VERB_REDACTED]/[NON_AUTHORITATIVE_INPUT_VERB_REDACTED] gate and not runtime authority. Boundaries: `policyDecision: null`, `[NON_AUTHORITATIVE_INPUT_VERB_\n- source #1 record #0: # Release Notes — Synaptic Mesh v0.21.6\n- source #1 record #1: ## Summary\n- source #1 record #2: `v0.21.6` preserves the v0.21.5 positive gate and hotfixes deterministic evidence replay. `v0.21.5` introduced the **positive utility pass-to-human-review** gate. It demonstrates what happens when bounded explicit multisource shadow-read ev\n- source #1 record #3: ## Evidence\n- source #2 record #0: # Release Candidate — Synaptic Mesh v0.21.6\n- source #2 record #1: Target: `v0.21.6`\n"
 }

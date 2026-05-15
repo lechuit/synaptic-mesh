@@ -1,6 +1,6 @@
-# Synaptic Mesh v0.21.5
+# Synaptic Mesh v0.21.6
 
-This is the public review release `v0.21.5`. Current v0.21.5 status is narrower than live runtime but crosses the next smallest safe barrier after bounded explicit multisource shadow-read: a **positive utility pass-to-human-review** gate.
+This is the public review release `v0.21.6`. Current v0.21.6 status is narrower than live runtime but crosses the next smallest safe barrier after bounded explicit multisource shadow-read: a **positive utility pass-to-human-review** gate.
 
 The v0.21.x ladder is still disabled-by-default, manual/operator-run, local-only, passive/read-only, one-shot, and non-authoritative. It consumes valid v0.20-style bounded explicit multisource shadow-read evidence and may classify clean, useful redacted observations as `PASS_TO_HUMAN_REVIEW` with `observationAccepted`, `includedInReport`, and `readyForHumanReview` set true.
 
@@ -8,9 +8,9 @@ This is not a policy allow/block/approve gate and not runtime authority. Boundar
 
 Positive cases require explicit local sources, valid bounds, sufficient redacted records, clean redaction, bounded source failures, and a generated human-readable report. Negative controls reject no-record packets, invalid bounds, excess source failures, redaction/private-token leaks, raw persistence/output, non-null policy decisions, agent-consumed output, and forbidden capability flags.
 
-## v0.21.5 phase close
+## v0.21.6 phase close
 
-Positive utility pass-to-human-review is closed as a local review package. Two independent local review notes are included for branch review context; they are not GitHub reviews and not deployment approvals.
+Positive utility pass-to-human-review remains closed as a local review package; v0.21.6 additionally stabilizes live-read evidence by removing filesystem mtime drift from persisted packets. Two independent local review notes are included for branch review context; they are not GitHub reviews and not deployment approvals.
 
 ## Carry-forward prior release boundaries
 

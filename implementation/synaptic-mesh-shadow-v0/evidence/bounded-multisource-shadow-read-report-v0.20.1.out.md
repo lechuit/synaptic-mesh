@@ -16,13 +16,13 @@
 - source #2: ok; records=2; rawSourcePathPersisted=false
 
 ## Redacted evidence preview
-- source #0 record #0: # Synaptic Mesh v0.21.5
-- source #0 record #1: This is the public review release `v0.21.5`. Current v0.21.5 status is narrower than live runtime but crosses the next smallest safe barrier after bounded explicit multisource shadow-read: a **positive utility pass-to-human-review** gate.
+- source #0 record #0: # Synaptic Mesh v0.21.6
+- source #0 record #1: This is the public review release `v0.21.6`. Current v0.21.6 status is narrower than live runtime but crosses the next smallest safe barrier after bounded explicit multisource shadow-read: a **positive utility pass-to-human-review** gate.
 - source #0 record #2: The v0.21.x ladder is still disabled-by-default, manual/operator-run, local-only, passive/read-only, one-shot, and non-authoritative. It consumes valid v0.20-style bounded explicit multisource shadow-read evidence and may classify clean, us
 - source #0 record #3: This is not a policy [NON_AUTHORITATIVE_INPUT_VERB_REDACTED]/[NON_AUTHORITATIVE_INPUT_VERB_REDACTED]/[NON_AUTHORITATIVE_INPUT_VERB_REDACTED] gate and not runtime authority. Boundaries: `policyDecision: null`, `[NON_AUTHORITATIVE_INPUT_VERB_
-- source #1 record #0: # Release Notes — Synaptic Mesh v0.21.5
+- source #1 record #0: # Release Notes — Synaptic Mesh v0.21.6
 - source #1 record #1: ## Summary
-- source #1 record #2: `v0.21.5` introduces the **positive utility pass-to-human-review** gate. It demonstrates what happens when bounded explicit multisource shadow-read evidence should pass: valid, clean, useful observations are classified as `PASS_TO_HUMAN_REV
+- source #1 record #2: `v0.21.6` preserves the v0.21.5 positive gate and hotfixes deterministic evidence replay. `v0.21.5` introduced the **positive utility pass-to-human-review** gate. It demonstrates what happens when bounded explicit multisource shadow-read ev
 - source #1 record #3: ## Evidence
-- source #2 record #0: # Release Candidate — Synaptic Mesh v0.21.5
-- source #2 record #1: Target: `v0.21.5`
+- source #2 record #0: # Release Candidate — Synaptic Mesh v0.21.6
+- source #2 record #1: Target: `v0.21.6`

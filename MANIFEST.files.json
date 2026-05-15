@@ -69,18 +69,18 @@
     },
     {
       "path": "README.md",
-      "bytes": 3841,
-      "sha256": "3e9b098900b3bedd81950bbb37506faa242be0a77c94590d75da9f64a8cb4c18"
+      "bytes": 3956,
+      "sha256": "260baa28d7f90304ac4609d501ebb78575c0ee751ff2be1fb741674babe34ab6"
     },
     {
       "path": "RELEASE_CANDIDATE.md",
-      "bytes": 610,
-      "sha256": "ac279dde741c260e5c335a9d8e722fdd77b01329d46ab8629ddf52ef194777a3"
+      "bytes": 1028,
+      "sha256": "8226c50d53b43468c7dbc7dd19de4f05fe33fe174036afddccc235108723c453"
     },
     {
       "path": "RELEASE_NOTES.md",
-      "bytes": 3139,
-      "sha256": "a74f5423ed75047c3379bd8b6cfc29366a6c7ea29b66a0531d4508515ebb8add"
+      "bytes": 3229,
+      "sha256": "d941280ab986797a5c0118e97632775a7f43701508f604e493e36933b1d73eb7"
     },
     {
       "path": "design-notes/adapter-boundary-langgraph-mcp-v0.md",
@@ -1238,6 +1238,11 @@
       "sha256": "900eda05255a042d142c18b689558f6b24c3f4d91dc66057c11dc56f00cbcee9"
     },
     {
+      "path": "docs/status-v0.21.6.md",
+      "bytes": 396,
+      "sha256": "e5109569ddef5dd01362ee124b721dd72b2826833d53bdb3f0a3fad5dfa76cba"
+    },
+    {
       "path": "docs/status-v0.3.0-alpha.md",
       "bytes": 2267,
       "sha256": "24c44a22762dd8dcba6d79c90adcbdff1dd7b5c016d2e749fef77417fead78f7"
@@ -1664,8 +1669,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/bounded-multisource-shadow-read-packet-v0.20.1.out.json",
-      "bytes": 12522,
-      "sha256": "79349e8461c71971fc889dd70e11880e415ebcdf3aded461d31a88a3cd648425"
+      "bytes": 12496,
+      "sha256": "f117c09257a8fc4c05a07b742f23edf28608db547e8726c71ea1e5183ae2e9d7"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/bounded-multisource-shadow-read-preflight-abort-v0.20.2.out.json",
@@ -1685,7 +1690,7 @@
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/bounded-multisource-shadow-read-report-v0.20.1.out.md",
       "bytes": 2158,
-      "sha256": "fbcfbde36bf766219f2dc3a0ca77d4b6d6803f1408178393d203c662b446f856"
+      "sha256": "2c36dafe9b63b4ab4935f36ec1b151705c0fa6bcf061f543f392a36cb7a245c4"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/bounded-multisource-shadow-read-reviewer-package-v0.20.5.out.json",
@@ -1849,8 +1854,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-adapter-shadow-read-packet-v0.19.1.out.json",
-      "bytes": 8169,
-      "sha256": "2e1ce0ea5c8b3e628196e4a38a55fa7b98f70028b5e0714cb0f6caf4d88667ae"
+      "bytes": 8160,
+      "sha256": "fa6b6194d8882c89d607a8cfd90f3c1f93188d7d8977e6510253f955f7a1635e"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-adapter-shadow-read-preflight-abort-v0.19.2.out.json",
@@ -1870,12 +1875,12 @@
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-adapter-shadow-read-report-v0.19.1.out.md",
       "bytes": 1516,
-      "sha256": "1e40220bcc0b9c2c3572f75aaaa6ac3e9a4a2ddf5e2276563d21557e3ebf3269"
+      "sha256": "dde0528763ff5eaf4ebd55cc1130eadc91a0ee11745c7bf92063596745b22992"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-adapter-shadow-read-reviewer-package-v0.19.5.out.json",
-      "bytes": 9700,
-      "sha256": "39e14cc0bf29e52a778036bffddcfab30fad044e1c845bbbabcfdef5651483a6"
+      "bytes": 9691,
+      "sha256": "7185c91ee5f4f3b662a8e2497968b7d8e59060437015aa88060e916668d761ef"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-input-source-boundary-contracts.out.json",
@@ -1919,8 +1924,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-read-gate-packet-v0.18.1.out.json",
-      "bytes": 6098,
-      "sha256": "6a6b29bb42c8b49c36c821d0ca2b3fda3bda8ee925ef1d6257277a2f96756534"
+      "bytes": 6089,
+      "sha256": "86554afaddf639a7c2db72c544dad0b12c4d3d918c2e6e3ccf74f42e45ebba25"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-read-gate-preflight-abort-v0.18.2.out.json",
@@ -1934,13 +1939,13 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-read-gate-redaction-retention-v0.18.3.out.json",
-      "bytes": 3798,
-      "sha256": "394b937e043d0f556c75babe571d7074653e72348a53f7c6631b8f8527009e43"
+      "bytes": 3801,
+      "sha256": "1e2d5807b9dc33589e465d458c5c28c8b5aa069bee76715e1ebe3924c7dae9e0"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-read-gate-reviewer-package-v0.18.5.out.json",
-      "bytes": 7495,
-      "sha256": "a181c08ce33db954fca24f0168e45319619da43fc930f59550613369a27b4a92"
+      "bytes": 7486,
+      "sha256": "ad14fb2c6b0857c1872b61001ff93c891813231ad9b307d7d808c3dd90d087bf"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-shadow-drift-scorecard-shape.out.json",
@@ -3179,8 +3184,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/bounded-multisource-shadow-read.mjs",
-      "bytes": 17483,
-      "sha256": "c81a74bb0713fee7ed4403a677ad2aa10b0ff49d806ea79f337290c830254ec1"
+      "bytes": 17453,
+      "sha256": "acff08d235e8fb540d76f2a36ed22b5af9d1cb91c3e2f9144956778d20e5461a"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/decision-engine.mjs",
@@ -3199,8 +3204,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/live-adapter-shadow-read.mjs",
-      "bytes": 13935,
-      "sha256": "889805f8e0676b23af2c55e747ef1e9450dc404a7d36cbb83293e9af31da4afb"
+      "bytes": 13922,
+      "sha256": "5a240d440a5dcf45ae2fc6caa9cc581b762bcdb26175431e90902a566bd13d3c"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/live-like-shadow-negative-controls.mjs",
@@ -3219,8 +3224,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/live-read-gate.mjs",
-      "bytes": 10727,
-      "sha256": "1732eb4bdd42d2b36d846337614f071ac02b6c48d860ed0e650cb1c67cf1a863"
+      "bytes": 10719,
+      "sha256": "5142bfb8bcd08fcf911204586ce60b137ebb858c7b018c60dd708e2cba06d689"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/manual-dry-run.mjs",
@@ -4839,8 +4844,8 @@
     },
     {
       "path": "tools/release-checks/positive-utility-pass-gate.mjs",
-      "bytes": 6975,
-      "sha256": "b29cdd8dcaeb9a97ff8831e36cc53bc4600eae6ed649e162935cc0db2137b227"
+      "bytes": 7033,
+      "sha256": "330283443b9a789a635bd4ac1df600500d4dd665f1e0a9bcb08d8bc5945b0b13"
     },
     {
       "path": "tools/release-checks/read-only-local-file-adapter.mjs",

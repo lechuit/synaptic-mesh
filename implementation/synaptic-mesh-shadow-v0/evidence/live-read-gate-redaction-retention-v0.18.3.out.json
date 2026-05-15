@@ -76,7 +76,7 @@
       "repoRelativePathSha256": "d53080bd7efa33b375b7f9446175db920cee307181714caf35a41173803e02f0",
       "absolutePathSha256": "d53080bd7efa33b375b7f9446175db920cee307181714caf35a41173803e02f0",
       "sourceSize": 0,
-      "sourceMtimeMs": 0,
+      "sourceMtimeMs": null,
       "rawSourcePathPersisted": false
     },
     "retention": {

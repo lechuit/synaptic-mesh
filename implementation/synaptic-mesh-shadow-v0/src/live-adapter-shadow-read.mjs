@@ -214,7 +214,7 @@ export function liveAdapterShadowReadPacketFromRecords(records, { adapterId = LI
       repoRelativePathSha256: createHash('sha256').update(String(sourceRel)).digest('hex'),
       absolutePathSha256: createHash('sha256').update(String(sourcePath)).digest('hex'),
       sourceSize,
-      sourceMtimeMs,
+      sourceMtimeMs: null,
       rawSourcePathPersisted: false
     },
     retention: {
@@ -244,7 +244,7 @@ export async function runLiveAdapterShadowRead({ source, records = LIVE_ADAPTER_
   const localAdapter = liveAdapterShadowReadAdapters[adapter];
   if (!localAdapter) throw new Error('unsupported adapter rejected: ' + adapter);
   const read = await localAdapter.read({ source, records });
-  const packet = liveAdapterShadowReadPacketFromRecords(read.records, { adapterId: adapter, sourcePath: read.sourceInfo.abs, sourceRel: read.sourceInfo.repoRelative, recordLimit: records, sourceSize: read.sourceInfo.size, sourceMtimeMs: read.sourceInfo.mtimeMs });
+  const packet = liveAdapterShadowReadPacketFromRecords(read.records, { adapterId: adapter, sourcePath: read.sourceInfo.abs, sourceRel: read.sourceInfo.repoRelative, recordLimit: records, sourceSize: read.sourceInfo.size, sourceMtimeMs: null });
   return JSON.stringify(packet, null, 2) + '\n';
 }
 

@@ -224,7 +224,7 @@ export function boundedMultisourceShadowReadPacketFromResults(results, { sources
       repoRelativePathSha256: result.sourceInfo ? createHash('sha256').update(String(result.sourceInfo.repoRelative)).digest('hex') : null,
       absolutePathSha256: result.sourceInfo ? createHash('sha256').update(String(result.sourceInfo.abs)).digest('hex') : null,
       sourceSize: result.sourceInfo?.size ?? null,
-      sourceMtimeMs: result.sourceInfo?.mtimeMs ?? null,
+      sourceMtimeMs: null,
       rawSourcePathPersisted: false,
       recordsRead: result.records.length,
       failureIsolated: result.status !== 'ok',

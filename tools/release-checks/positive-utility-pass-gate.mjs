@@ -48,13 +48,13 @@ export const positiveUtilityPassGateRequiredManifestPaths = Object.freeze([
 function all(text, phrases, label, assertIncludes) { for (const phrase of phrases) assertIncludes(text, phrase, label); }
 
 export function assertPositiveUtilityPassGateManifestMetadata({ manifest, manifestReleaseTag, assertIncludes }) {
-  if (manifestReleaseTag !== 'v0.21.5') return;
-  all(manifest.reproducibility, ['v0.21.5','positive_utility_pass_gate','PASS_TO_HUMAN_REVIEW','observationAccepted_true','includedInReport_true','readyForHumanReview_true','policy_decision_null','authorization_false','enforcement_false','tool_execution_false','agent_consumed_output_false','external_effects_false','raw_persisted_false','unexpected_permits_0'], 'MANIFEST.json reproducibility', assertIncludes);
+  if (!['v0.21.5', 'v0.21.6'].includes(manifestReleaseTag)) return;
+  all(manifest.reproducibility, [manifestReleaseTag,'positive_utility_pass_gate','PASS_TO_HUMAN_REVIEW','observationAccepted_true','includedInReport_true','readyForHumanReview_true','policy_decision_null','authorization_false','enforcement_false','tool_execution_false','agent_consumed_output_false','external_effects_false','raw_persisted_false','unexpected_permits_0'], 'MANIFEST.json reproducibility', assertIncludes);
   all(manifest.runtimeBoundary, ['disabled_by_default','manual_operator_run','local_only','passive_only','read_only','one_shot_only','non_authoritative','not_policy_allow_block_approve_gate','no_authorization','no_enforcement','no_tool_execution','no_agent_consumed_machine_readable_policy_decisions','no_external_effects','not_runtime_authority'], 'MANIFEST.json runtimeBoundary', assertIncludes);
 }
 
 export function assertPositiveUtilityPassGateRelease({ repoRoot, packageRoot, manifestReleaseTag, readJson, assert, assertIncludes }) {
-  if (manifestReleaseTag !== 'v0.21.5') return;
+  if (!['v0.21.5', 'v0.21.6'].includes(manifestReleaseTag)) return;
   const phase = readJson(path.join(packageRoot, 'evidence/positive-utility-pass-gate-reviewer-package-v0.21.5.out.json'));
   assert(phase?.classification === 'PASS_TO_HUMAN_REVIEW', 'v0.21.5 must pass positive utility evidence to human review');
   assert(phase?.summary?.nonAuthoritative === true, 'v0.21.5 must be non-authoritative');
@@ -70,7 +70,7 @@ export function assertPositiveUtilityPassGateRelease({ repoRoot, packageRoot, ma
   const readme = readFileSync(path.join(repoRoot, 'README.md'), 'utf8');
   const notes = readFileSync(path.join(repoRoot, 'RELEASE_NOTES.md'), 'utf8');
   all(readme, ['positive utility pass-to-human-review','PASS_TO_HUMAN_REVIEW','observationAccepted','includedInReport','readyForHumanReview','policyDecision: null','authorization: false','enforcement: false','toolExecution: false','agentConsumedOutput: false','externalEffects: false'], 'README.md', assertIncludes);
-  all(notes, ['v0.21.5','positive utility pass-to-human-review','PASS_TO_HUMAN_REVIEW','observationAccepted','includedInReport','readyForHumanReview','policyDecision: null','authorization: false','enforcement: false','toolExecution: false','agentConsumedOutput: false','externalEffects: false','rawPersisted: false'], 'RELEASE_NOTES.md', assertIncludes);
+  all(notes, [manifestReleaseTag,'positive utility pass-to-human-review','PASS_TO_HUMAN_REVIEW','observationAccepted','includedInReport','readyForHumanReview','policyDecision: null','authorization: false','enforcement: false','toolExecution: false','agentConsumedOutput: false','externalEffects: false','rawPersisted: false'], 'RELEASE_NOTES.md', assertIncludes);
 }
 
 export const positiveUtilityPassGateSuite = Object.freeze({

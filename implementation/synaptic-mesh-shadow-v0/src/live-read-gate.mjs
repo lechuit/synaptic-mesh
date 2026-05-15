@@ -169,7 +169,7 @@ export function liveReadGatePacketFromRecords(records, { sourcePath = 'local-sou
       repoRelativePathSha256: createHash('sha256').update(String(sourceRel)).digest('hex'),
       absolutePathSha256: createHash('sha256').update(String(sourcePath)).digest('hex'),
       sourceSize,
-      sourceMtimeMs,
+      sourceMtimeMs: null,
       rawSourcePathPersisted: false
     },
     retention: {
@@ -195,7 +195,7 @@ export async function runLiveReadGate({ source, records = LIVE_READ_GATE_MAX_REC
   const sourceInfo = await resolveLiveReadSource(source);
   const raw = await readFile(sourceInfo.abs, 'utf8');
   const rows = recordsFromRawText(raw, records);
-  const packet = liveReadGatePacketFromRecords(rows, { sourcePath: sourceInfo.abs, sourceRel: sourceInfo.repoRelative, recordLimit: records, sourceSize: sourceInfo.size, sourceMtimeMs: sourceInfo.mtimeMs });
+  const packet = liveReadGatePacketFromRecords(rows, { sourcePath: sourceInfo.abs, sourceRel: sourceInfo.repoRelative, recordLimit: records, sourceSize: sourceInfo.size, sourceMtimeMs: null });
   return JSON.stringify(packet, null, 2) + '\n';
 }
 
