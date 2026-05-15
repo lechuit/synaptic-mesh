@@ -1,0 +1,28 @@
+import assert from 'node:assert/strict';
+import { execFileSync } from 'node:child_process';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import { dirname, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { replayFrozenLiveLikeEnvelopes } from '../src/live-like-shadow-replay.mjs';
+
+const here = dirname(fileURLToPath(import.meta.url));
+const packageRoot = resolve(here, '..');
+const repoRoot = resolve(packageRoot, '../..');
+const fixturePath = resolve(packageRoot, 'fixtures/live-like-shadow-observation-v0.14.0-alpha.json');
+const evidencePath = resolve(packageRoot, 'evidence/live-like-shadow-replay-harness-v0.14.1.out.json');
+const docs = await readFile(resolve(repoRoot, 'docs/live-like-shadow-replay-harness-v0.14.1.md'), 'utf8');
+const missing = ['frozen/redacted', 'manual CLI/test only', 'no daemon', 'no file watcher', 'no network', 'no tools', 'not runtime authority', 'release:check -- --target v0.14.1'].filter((phrase) => !docs.includes(phrase));
+assert.deepEqual(missing, [], 'docs must include required phrases');
+const fixture = JSON.parse(await readFile(fixturePath, 'utf8'));
+const summary = replayFrozenLiveLikeEnvelopes([fixture]);
+assert.equal(summary.replayHarness, 'pass');
+assert.equal(summary.totalEnvelopes, 1);
+assert.equal(summary.validEnvelopes, 1);
+for (const key of ['runtimeAuthority', 'liveTraffic', 'networkAllowed', 'toolExecution', 'watcherDaemon']) assert.equal(summary[key], false, key);
+const cliOutput = JSON.parse(execFileSync(process.execPath, [resolve(packageRoot, 'bin/live-like-shadow-replay.mjs'), fixturePath], { encoding: 'utf8' }));
+assert.equal(cliOutput.validEnvelopes, 1);
+assert.equal(cliOutput.replayMode, 'frozen/redacted manual CLI/test only');
+const output = { artifact: 'T-synaptic-mesh-live-like-shadow-replay-harness-v0.14.1', timestamp: '2026-05-14T23:59:00.000Z', summary };
+await mkdir(dirname(evidencePath), { recursive: true });
+await writeFile(evidencePath, JSON.stringify(output, null, 2) + '\n');
+console.log(JSON.stringify(summary, null, 2));

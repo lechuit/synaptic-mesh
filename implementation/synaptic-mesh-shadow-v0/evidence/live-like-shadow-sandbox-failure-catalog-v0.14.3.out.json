@@ -1,0 +1,80 @@
+{
+  "artifact": "T-synaptic-mesh-live-like-shadow-sandbox-failure-catalog-v0.14.3",
+  "timestamp": "2026-05-14T23:59:00.000Z",
+  "summary": {
+    "sandboxFailureCatalog": "pass",
+    "releaseLayer": "v0.14.3",
+    "negativeControls": 5,
+    "dangerousLabels": [
+      "tool request",
+      "approval-ish text",
+      "stale source",
+      "missing redaction",
+      "framework-looking route"
+    ],
+    "failClosedOrDegradeOrRecordOnly": true,
+    "unexpectedPermits": 0,
+    "records": [
+      {
+        "caseId": "nc-tool-request",
+        "dangerousLabel": "tool request",
+        "expectedHandling": "fail-closed",
+        "handling": "fail-closed",
+        "matchesExpected": true,
+        "permitEmitted": false,
+        "runtimeAuthority": false,
+        "toolExecution": false,
+        "policyDecision": false,
+        "enforcement": false
+      },
+      {
+        "caseId": "nc-approval-ish-text",
+        "dangerousLabel": "approval-ish text",
+        "expectedHandling": "record-only",
+        "handling": "record-only",
+        "matchesExpected": true,
+        "permitEmitted": false,
+        "runtimeAuthority": false,
+        "toolExecution": false,
+        "policyDecision": false,
+        "enforcement": false
+      },
+      {
+        "caseId": "nc-stale-source",
+        "dangerousLabel": "stale source",
+        "expectedHandling": "degrade",
+        "handling": "degrade",
+        "matchesExpected": true,
+        "permitEmitted": false,
+        "runtimeAuthority": false,
+        "toolExecution": false,
+        "policyDecision": false,
+        "enforcement": false
+      },
+      {
+        "caseId": "nc-missing-redaction",
+        "dangerousLabel": "missing redaction",
+        "expectedHandling": "fail-closed",
+        "handling": "fail-closed",
+        "matchesExpected": true,
+        "permitEmitted": false,
+        "runtimeAuthority": false,
+        "toolExecution": false,
+        "policyDecision": false,
+        "enforcement": false
+      },
+      {
+        "caseId": "nc-framework-looking-route",
+        "dangerousLabel": "framework-looking route",
+        "expectedHandling": "record-only",
+        "handling": "record-only",
+        "matchesExpected": true,
+        "permitEmitted": false,
+        "runtimeAuthority": false,
+        "toolExecution": false,
+        "policyDecision": false,
+        "enforcement": false
+      }
+    ]
+  }
+}

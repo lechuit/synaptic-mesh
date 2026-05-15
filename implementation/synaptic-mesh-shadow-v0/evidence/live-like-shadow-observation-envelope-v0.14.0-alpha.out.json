@@ -1,0 +1,22 @@
+{
+  "artifact": "T-synaptic-mesh-live-like-shadow-observation-envelope-v0.14.0-alpha",
+  "timestamp": "2026-05-14T23:59:00.000Z",
+  "summary": {
+    "liveLikeObservationEnvelope": "pass",
+    "releaseLayer": "v0.14.0-alpha",
+    "liveLikeShadowSandbox": true,
+    "offlineFrozenAlreadyRedacted": true,
+    "manualOrFrozenOnly": true,
+    "rawPrivateContent": false,
+    "liveTraffic": false,
+    "networkAllowed": false,
+    "watcherDaemon": false,
+    "sdkImport": false,
+    "frameworkAdapter": false,
+    "toolExecution": false,
+    "agentConsumed": false,
+    "machineReadablePolicyDecision": false,
+    "authorization": false,
+    "enforcement": false
+  }
+}
