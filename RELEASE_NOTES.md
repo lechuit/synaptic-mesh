@@ -1,22 +1,18 @@
-# Release Notes — Synaptic Mesh v0.22.5
+# Release Notes — Synaptic Mesh v0.23.5
 
 ## Summary
 
-`v0.22.5` adds an **observed usefulness/noise scorecard** over v0.21 positive utility pass gate outputs. It measures whether `PASS_TO_HUMAN_REVIEW` is useful when mixed with noisy, failing, malformed, forbidden, and borderline cases.
+`v0.23.5` adds a **controlled operator review queue** over the v0.22 observed usefulness/noise scorecard. It converts only true useful `PASS_TO_HUMAN_REVIEW` observations into local human-review prioritization items.
 
 ## Evidence
 
-- `trueUsefulPasses: 3`
+- `queueStatus: READY_FOR_OPERATOR_REVIEW`
+- `queueItems: 3`
+- `reviewBurden: low`
+- `estimatedMinutes: 21`
 - `falsePasses: 0`
-- `usefulRejects: 0`
-- `missedUsefulPasses: 0`
-- `noisyRejects: 6`
-- `noiseRejected: 6`
-- `falseValueWarnings: 0`
-- `passPrecision: 1`
-- `passUsefulness: 1`
-- `reviewBurdenEstimate: low`
-- `recommendation: advance`
+- `authorityViolations: 0`
+- source recommendation `advance` is context only, not authority
 - `policyDecision: null`
 - `authorization: false`
 - `enforcement: false`
@@ -25,16 +21,15 @@
 - `externalEffects: false`
 - `rawPersisted: false`
 - `rawOutput: false`
-- negative controls for malformed bounds, forbidden aliases/capabilities, and forbidden authority-classification tokens
-- source failure default reject plus explicitly-thresholded allowed case
-- recommendation boundary proving advance/hold/degrade is not authority
+- negative controls for malformed scorecards, non-null policy decisions, false passes, authority violations, recommendation-as-authority, forbidden capability flags, raw persisted/output, and external effects
+- abstain behavior for `hold` or `degrade` scorecard recommendations
 
 ## Boundary
 
-This is local/manual/passive/read-only/one-shot, human-readable-only, scorecard-only, and non-authoritative. It is not a policy allow/block/approve gate, not runtime authority, not authorization, and not enforcement.
+This is local/manual/passive/read-only/one-shot, redacted-evidence-only, human-readable-only, and non-authoritative. It is not a decision queue, not an approval queue, not a policy allow/block/approve gate, not runtime authority, not authorization, and not enforcement.
 
 ## Next
 
-The next gate should keep measuring usefulness while improving reviewer ergonomics or evidence quality, still without authorization, enforcement, agent-consumed policy decisions, tool execution, network/resource fetch, external effects, daemon behavior, or raw persistence.
+The next gate should keep the queue local and human-readable while improving reviewer ergonomics or evidence quality, still without authorization, enforcement, agent-consumed policy decisions, tool execution, network/resource fetch, external effects, daemon behavior, or raw persistence.
 
 Compatibility carry-forward: passive live shadow readiness achieved for local operator-run pilot only; no enforcement; no tool execution; no authorization; no daemon/watcher by default; no external effects.

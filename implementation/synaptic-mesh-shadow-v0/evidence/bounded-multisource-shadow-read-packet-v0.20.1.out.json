@@ -97,7 +97,7 @@
       "kind": "explicit_repo_local_file_via_adapter",
       "repoRelativePathSha256": "b335630551682c19a781afebcf4d07bf978fb1f8ac04c6bf87428ed5106870f5",
       "absolutePathSha256": "543c81f89743c5b0f48fa0200abe84d28dd1fdb1b6687cf610469e9e998e93e0",
-      "sourceSize": 2753,
+      "sourceSize": 2761,
       "sourceMtimeMs": null,
       "rawSourcePathPersisted": false,
       "recordsRead": 4,
@@ -109,7 +109,7 @@
       "kind": "explicit_repo_local_file_via_adapter",
       "repoRelativePathSha256": "68d24fa81558aae3d8c59e2aa57a4fa719ea3b04d7fa14beff45f16f00858f50",
       "absolutePathSha256": "4da003b5022cb2aeb34f2b51f5b6f9fe35d01a94f2607ea78b58e405df985f0b",
-      "sourceSize": 1750,
+      "sourceSize": 1774,
       "sourceMtimeMs": null,
       "rawSourcePathPersisted": false,
       "recordsRead": 4,
@@ -121,7 +121,7 @@
       "kind": "explicit_repo_local_file_via_adapter",
       "repoRelativePathSha256": "b1896e268c37a498c37027d6e8f4fbdb83aec535bacbf695d1fb98c6a55f3029",
       "absolutePathSha256": "da155b2aa4c33190c5e847a668f106d6a50de2eab927108c9de408e9fbabf1b1",
-      "sourceSize": 861,
+      "sourceSize": 859,
       "sourceMtimeMs": null,
       "rawSourcePathPersisted": false,
       "recordsRead": 2,
@@ -151,10 +151,10 @@
     {
       "sourceIndex": 0,
       "index": 0,
-      "rawSha256": "45937bc47becea4552380724d35e793eceb4427c7fb237375e4f2e5fb89943f8",
+      "rawSha256": "cb629cd6f3ca4928a71f1cae3f516feff2f916ca8f26ed718ac683f8a9395b74",
       "rawBytes": 23,
-      "redactedSha256": "45937bc47becea4552380724d35e793eceb4427c7fb237375e4f2e5fb89943f8",
-      "redactedText": "# Synaptic Mesh v0.22.5",
+      "redactedSha256": "cb629cd6f3ca4928a71f1cae3f516feff2f916ca8f26ed718ac683f8a9395b74",
+      "redactedText": "# Synaptic Mesh v0.23.5",
       "privatePatternDetected": false,
       "decisionVerbDetected": false,
       "semanticDecisionTokenPersisted": false
@@ -162,10 +162,10 @@
     {
       "sourceIndex": 0,
       "index": 1,
-      "rawSha256": "004cf405887201f423473deb9fcaa005ca0482c9b35985bf72f93641d780cbc3",
-      "rawBytes": 220,
-      "redactedSha256": "004cf405887201f423473deb9fcaa005ca0482c9b35985bf72f93641d780cbc3",
-      "redactedText": "This is the public review release `v0.22.5`. Current v0.22.5 status is narrower than live runtime and crosses the next safe barrier after positive utility pass-to-human-review: an **observed usefulness/noise scorecard**.",
+      "rawSha256": "ebc743f9a78e1eaee0f672f38edf781d6bbf82769137ff486e7c034b07d312d4",
+      "rawBytes": 224,
+      "redactedSha256": "ebc743f9a78e1eaee0f672f38edf781d6bbf82769137ff486e7c034b07d312d4",
+      "redactedText": "This is the public review release `v0.23.5`. Current v0.23.5 status is narrower than live runtime and crosses the next safe barrier after the v0.22 observed usefulness/noise scorecard: a **controlled operator review queue**.",
       "privatePatternDetected": false,
       "decisionVerbDetected": false,
       "semanticDecisionTokenPersisted": false
@@ -173,10 +173,10 @@
     {
       "sourceIndex": 0,
       "index": 2,
-      "rawSha256": "b1ac4faab5a02aaf10d401de8fc70b8e0432f2b4af2437fe1780dc20c197f651",
+      "rawSha256": "41c5532abc0389ec1ba2abd1690c2811334810851c1fa466d529409b941c012c",
       "rawBytes": 316,
-      "redactedSha256": "b1ac4faab5a02aaf10d401de8fc70b8e0432f2b4af2437fe1780dc20c197f651",
-      "redactedText": "The v0.22 ladder is still disabled-by-default, manual/operator-run, local-only, passive/read-only, one-shot, human-readable only, scorecard only, and non-authoritative. It consumes v0.21 positive utility pass gate outputs and measures wheth",
+      "redactedSha256": "41c5532abc0389ec1ba2abd1690c2811334810851c1fa466d529409b941c012c",
+      "redactedText": "The v0.23 ladder is disabled-by-default, manual/operator-run, local-only, passive/read-only, one-shot, redacted-evidence-only, human-readable only, and non-authoritative. It consumes the v0.22 scorecard and turns only true useful `PASS_TO_H",
       "privatePatternDetected": false,
       "decisionVerbDetected": false,
       "semanticDecisionTokenPersisted": false
@@ -184,10 +184,10 @@
     {
       "sourceIndex": 0,
       "index": 3,
-      "rawSha256": "47da1b7b20f79bc1c499dba5f227c77f551695745896b7bee4ab6d6d191a7707",
-      "rawBytes": 275,
-      "redactedSha256": "47da1b7b20f79bc1c499dba5f227c77f551695745896b7bee4ab6d6d191a7707",
-      "redactedText": "Pinned v0.22.5 evidence: `trueUsefulPasses: 3`, `falsePasses: 0`, `usefulRejects: 0`, `missedUsefulPasses: 0`, `noisyRejects: 6`, `noiseRejected: 6`, `falseValueWarnings: 0`, `passPrecision: 1`, `passUsefulness: 1`, `reviewBurdenEstimate: l",
+      "rawSha256": "7f2b49fb436dd8cb6f6bdc72c7951a4abce2c12deb03ac89ae38ff8376922b5e",
+      "rawBytes": 281,
+      "redactedSha256": "7f2b49fb436dd8cb6f6bdc72c7951a4abce2c12deb03ac89ae38ff8376922b5e",
+      "redactedText": "Pinned v0.23.5 evidence: `queueStatus: READY_FOR_OPERATOR_REVIEW`, `queueItems: 3`, `reviewBurden: low`, `estimatedMinutes: 21`, `falsePasses: 0`, `authorityViolations: 0`, source recommendation `advance` used as context only, and negative ",
       "privatePatternDetected": false,
       "decisionVerbDetected": false,
       "semanticDecisionTokenPersisted": false
@@ -195,10 +195,10 @@
     {
       "sourceIndex": 1,
       "index": 0,
-      "rawSha256": "ee6c7798a3ac1b3cc5c3be5bdb18c17e7df6cea4a1fa42ec769180f1b70ba3cc",
+      "rawSha256": "fcd0afc041fbad1f81e6f4bf9d3af89120f681c87cdb9f2b81f70a851f22b447",
       "rawBytes": 41,
-      "redactedSha256": "ee6c7798a3ac1b3cc5c3be5bdb18c17e7df6cea4a1fa42ec769180f1b70ba3cc",
-      "redactedText": "# Release Notes — Synaptic Mesh v0.22.5",
+      "redactedSha256": "fcd0afc041fbad1f81e6f4bf9d3af89120f681c87cdb9f2b81f70a851f22b447",
+      "redactedText": "# Release Notes — Synaptic Mesh v0.23.5",
       "privatePatternDetected": false,
       "decisionVerbDetected": false,
       "semanticDecisionTokenPersisted": false
@@ -217,10 +217,10 @@
     {
       "sourceIndex": 1,
       "index": 2,
-      "rawSha256": "c87c71785871ebdc81304e6248a0fd05207c4a44d037249fa759b3438ce09add",
-      "rawBytes": 233,
-      "redactedSha256": "c87c71785871ebdc81304e6248a0fd05207c4a44d037249fa759b3438ce09add",
-      "redactedText": "`v0.22.5` adds an **observed usefulness/noise scorecard** over v0.21 positive utility pass gate outputs. It measures whether `PASS_TO_HUMAN_REVIEW` is useful when mixed with noisy, failing, malformed, forbidden, and borderline cases.",
+      "rawSha256": "90ed4b1ce7487e3fa377f324d5deb46bd95638c139ca418b9f6b7081122f5154",
+      "rawBytes": 216,
+      "redactedSha256": "90ed4b1ce7487e3fa377f324d5deb46bd95638c139ca418b9f6b7081122f5154",
+      "redactedText": "`v0.23.5` adds a **controlled operator review queue** over the v0.22 observed usefulness/noise scorecard. It converts only true useful `PASS_TO_HUMAN_REVIEW` observations into local human-review prioritization items.",
       "privatePatternDetected": false,
       "decisionVerbDetected": false,
       "semanticDecisionTokenPersisted": false
@@ -239,10 +239,10 @@
     {
       "sourceIndex": 2,
       "index": 0,
-      "rawSha256": "3e406e56f13c5f93c30268fc5f41c81c2ebc4265b11e37e3964d121a6016bc9f",
+      "rawSha256": "bc4dc761463c879199d8c2097e9ee0a3447ec37c02add3c7e95e22dfc768a1a9",
       "rawBytes": 45,
-      "redactedSha256": "3e406e56f13c5f93c30268fc5f41c81c2ebc4265b11e37e3964d121a6016bc9f",
-      "redactedText": "# Release Candidate — Synaptic Mesh v0.22.5",
+      "redactedSha256": "bc4dc761463c879199d8c2097e9ee0a3447ec37c02add3c7e95e22dfc768a1a9",
+      "redactedText": "# Release Candidate — Synaptic Mesh v0.23.5",
       "privatePatternDetected": false,
       "decisionVerbDetected": false,
       "semanticDecisionTokenPersisted": false
@@ -250,14 +250,14 @@
     {
       "sourceIndex": 2,
       "index": 1,
-      "rawSha256": "7024a0f86ca5c0bc0bfe98dd22241a3207f6e87c38e73c0b520ab95e36424b83",
+      "rawSha256": "0638f687380f5e2a5e7bc483379d89ba37bd5c912b4d1885f3d1270ca7657db2",
       "rawBytes": 17,
-      "redactedSha256": "7024a0f86ca5c0bc0bfe98dd22241a3207f6e87c38e73c0b520ab95e36424b83",
-      "redactedText": "Target: `v0.22.5`",
+      "redactedSha256": "0638f687380f5e2a5e7bc483379d89ba37bd5c912b4d1885f3d1270ca7657db2",
+      "redactedText": "Target: `v0.23.5`",
       "privatePatternDetected": false,
       "decisionVerbDetected": false,
       "semanticDecisionTokenPersisted": false
     }
   ],
-  "reportMarkdown": "# Bounded Explicit Multisource Shadow-Read Report v0.20.5\n\n- Barrier crossed: bounded explicit multisource shadow-read\n- Adapter: repo-local-file-read-adapter-v0\n- Operator-run: true; one-shot: true; local-only/read-only/passive-only: true\n- Sources: 3 / max 3\n- Records read: 10 / total limit 10; per-source limit 4\n- Per-source isolation: true; failure isolation: true; isolated failures: 0\n- Redacted evidence only: true; rawPersisted: false; rawOutput: false\n- policyDecision: null; agentConsumedOutput: false; unexpectedPermits: 0\n- Enforcement/authorization/approval/block/allow: false\n\n## Source statuses\n- source #0: ok; records=4; rawSourcePathPersisted=false\n- source #1: ok; records=4; rawSourcePathPersisted=false\n- source #2: ok; records=2; rawSourcePathPersisted=false\n\n## Redacted evidence preview\n- source #0 record #0: # Synaptic Mesh v0.22.5\n- source #0 record #1: This is the public review release `v0.22.5`. Current v0.22.5 status is narrower than live runtime and crosses the next safe barrier after positive utility pass-to-human-review: an **observed usefulness/noise scorecard**.\n- source #0 record #2: The v0.22 ladder is still disabled-by-default, manual/operator-run, local-only, passive/read-only, one-shot, human-readable only, scorecard only, and non-authoritative. It consumes v0.21 positive utility pass gate outputs and measures wheth\n- source #0 record #3: Pinned v0.22.5 evidence: `trueUsefulPasses: 3`, `falsePasses: 0`, `usefulRejects: 0`, `missedUsefulPasses: 0`, `noisyRejects: 6`, `noiseRejected: 6`, `falseValueWarnings: 0`, `passPrecision: 1`, `passUsefulness: 1`, `reviewBurdenEstimate: l\n- source #1 record #0: # Release Notes — Synaptic Mesh v0.22.5\n- source #1 record #1: ## Summary\n- source #1 record #2: `v0.22.5` adds an **observed usefulness/noise scorecard** over v0.21 positive utility pass gate outputs. It measures whether `PASS_TO_HUMAN_REVIEW` is useful when mixed with noisy, failing, malformed, forbidden, and borderline cases.\n- source #1 record #3: ## Evidence\n- source #2 record #0: # Release Candidate — Synaptic Mesh v0.22.5\n- source #2 record #1: Target: `v0.22.5`\n"
+  "reportMarkdown": "# Bounded Explicit Multisource Shadow-Read Report v0.20.5\n\n- Barrier crossed: bounded explicit multisource shadow-read\n- Adapter: repo-local-file-read-adapter-v0\n- Operator-run: true; one-shot: true; local-only/read-only/passive-only: true\n- Sources: 3 / max 3\n- Records read: 10 / total limit 10; per-source limit 4\n- Per-source isolation: true; failure isolation: true; isolated failures: 0\n- Redacted evidence only: true; rawPersisted: false; rawOutput: false\n- policyDecision: null; agentConsumedOutput: false; unexpectedPermits: 0\n- Enforcement/authorization/approval/block/allow: false\n\n## Source statuses\n- source #0: ok; records=4; rawSourcePathPersisted=false\n- source #1: ok; records=4; rawSourcePathPersisted=false\n- source #2: ok; records=2; rawSourcePathPersisted=false\n\n## Redacted evidence preview\n- source #0 record #0: # Synaptic Mesh v0.23.5\n- source #0 record #1: This is the public review release `v0.23.5`. Current v0.23.5 status is narrower than live runtime and crosses the next safe barrier after the v0.22 observed usefulness/noise scorecard: a **controlled operator review queue**.\n- source #0 record #2: The v0.23 ladder is disabled-by-default, manual/operator-run, local-only, passive/read-only, one-shot, redacted-evidence-only, human-readable only, and non-authoritative. It consumes the v0.22 scorecard and turns only true useful `PASS_TO_H\n- source #0 record #3: Pinned v0.23.5 evidence: `queueStatus: READY_FOR_OPERATOR_REVIEW`, `queueItems: 3`, `reviewBurden: low`, `estimatedMinutes: 21`, `falsePasses: 0`, `authorityViolations: 0`, source recommendation `advance` used as context only, and negative\n- source #1 record #0: # Release Notes — Synaptic Mesh v0.23.5\n- source #1 record #1: ## Summary\n- source #1 record #2: `v0.23.5` adds a **controlled operator review queue** over the v0.22 observed usefulness/noise scorecard. It converts only true useful `PASS_TO_HUMAN_REVIEW` observations into local human-review prioritization items.\n- source #1 record #3: ## Evidence\n- source #2 record #0: # Release Candidate — Synaptic Mesh v0.23.5\n- source #2 record #1: Target: `v0.23.5`\n"
 }

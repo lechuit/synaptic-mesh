@@ -1,0 +1,150 @@
+{
+  "rejectedNegativeControls": [
+    {
+      "name": "malformed_scorecard",
+      "validationIssues": [
+        "malformed_scorecard_schema_version",
+        "malformed_scorecard_boundary_flags",
+        "malformed_scorecard_metrics",
+        "malformed_scorecard_cases",
+        "malformed_scorecard_recommendation",
+        "recommendation_treated_as_authority"
+      ]
+    },
+    {
+      "name": "non_null_policy_decision",
+      "validationIssues": [
+        "scorecard.policyDecision_non_null"
+      ]
+    },
+    {
+      "name": "false_pass_present",
+      "validationIssues": [
+        "scorecard_false_passes_present"
+      ]
+    },
+    {
+      "name": "authority_violation_present",
+      "validationIssues": [
+        "useful-valid-pass-a.authority_violation:report_authority_token",
+        "scorecard_authority_violations_present"
+      ]
+    },
+    {
+      "name": "recommendation_as_authority",
+      "validationIssues": [
+        "recommendation_treated_as_authority"
+      ]
+    },
+    {
+      "name": "forbidden_capability_true",
+      "validationIssues": [
+        "scorecard.toolExecution_true"
+      ]
+    },
+    {
+      "name": "raw_persisted_true",
+      "validationIssues": [
+        "scorecard.rawPersisted_true",
+        "raw_persist_or_output_enabled"
+      ]
+    },
+    {
+      "name": "external_effects_true",
+      "validationIssues": [
+        "scorecard.externalEffects_true"
+      ]
+    },
+    {
+      "name": "case_authorization_true",
+      "validationIssues": [
+        "scorecard.cases[0].authorization_true"
+      ]
+    },
+    {
+      "name": "case_tool_execution_true",
+      "validationIssues": [
+        "scorecard.cases[0].toolExecution_true"
+      ]
+    },
+    {
+      "name": "case_external_effects_true",
+      "validationIssues": [
+        "scorecard.cases[0].externalEffects_true"
+      ]
+    },
+    {
+      "name": "case_raw_persisted_true",
+      "validationIssues": [
+        "scorecard.cases[0].rawPersisted_true"
+      ]
+    },
+    {
+      "name": "case_policy_decision_non_null",
+      "validationIssues": [
+        "scorecard.cases[0].policyDecision_non_null",
+        "prequeue_scorecard.cases[0].policyDecision.forbidden_capability_token:allow"
+      ]
+    },
+    {
+      "name": "case_null_malformed",
+      "validationIssues": [
+        "scorecard.cases[0].malformed_case_not_object"
+      ]
+    },
+    {
+      "name": "case_missing_id",
+      "validationIssues": [
+        "scorecard.cases[0].case_id_required"
+      ]
+    },
+    {
+      "name": "case_rejection_reason_approve_token",
+      "validationIssues": [
+        "prequeue_scorecard.cases[1].rejectionReasons[0].forbidden_capability_token:approve"
+      ]
+    },
+    {
+      "name": "case_rejection_reason_tool_execution_token",
+      "validationIssues": [
+        "prequeue_scorecard.cases[1].rejectionReasons[0].forbidden_capability_token:toolExecution"
+      ]
+    },
+    {
+      "name": "case_rejection_reason_may_allow_token",
+      "validationIssues": [
+        "prequeue_scorecard.cases[1].rejectionReasons[0].forbidden_capability_token:mayAllow"
+      ]
+    },
+    {
+      "name": "case_rejection_reason_network_fetch_token",
+      "validationIssues": [
+        "prequeue_scorecard.cases[1].rejectionReasons[0].forbidden_capability_token:networkFetch"
+      ]
+    },
+    {
+      "name": "case_rejection_reason_runtime_authority_token",
+      "validationIssues": [
+        "prequeue_scorecard.cases[1].rejectionReasons[0].forbidden_capability_token:runtimeAuthority"
+      ]
+    },
+    {
+      "name": "case_rejection_reason_policy_decision_token",
+      "validationIssues": [
+        "prequeue_scorecard.cases[1].rejectionReasons[0].forbidden_capability_token:policyDecision"
+      ]
+    },
+    {
+      "name": "case_rejection_reason_raw_output_token",
+      "validationIssues": [
+        "prequeue_scorecard.cases[1].rejectionReasons[0].forbidden_capability_token:rawOutput"
+      ]
+    },
+    {
+      "name": "case_rejection_reason_external_effects_token",
+      "validationIssues": [
+        "prequeue_scorecard.cases[1].rejectionReasons[0].forbidden_capability_token:externalEffects"
+      ]
+    }
+  ]
+}
