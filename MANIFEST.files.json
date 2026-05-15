@@ -69,8 +69,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 992,
-      "sha256": "dc59a4b7fe3f152b987fd6202738ac46499a9e71074e9c18f69c184adc41f9e8"
+      "bytes": 1044,
+      "sha256": "c9048fe9fe5b9e27e3a7257e9b602a4c9c7d751ff84b7a6ad899c9612a07f853"
     },
     {
       "path": "RELEASE_CANDIDATE.md",
@@ -79,8 +79,8 @@
     },
     {
       "path": "RELEASE_NOTES.md",
-      "bytes": 593,
-      "sha256": "c64ddec564876737b70d600f84f22a746a4c6a6762b4940dbf532fb7bd32b7fe"
+      "bytes": 613,
+      "sha256": "62559bba0ff53d35873fd9d293e04ae468827e024e46bdf3fec16cc953409b7c"
     },
     {
       "path": "design-notes/adapter-boundary-langgraph-mcp-v0.md",
@@ -326,6 +326,11 @@
       "path": "docs/integration-reviewer-runbook-v0.12.4.md",
       "bytes": 673,
       "sha256": "8c9223805c563cfdeeab24604f1a62052288bb7f7c8fe575caddccb74ee64f4d"
+    },
+    {
+      "path": "docs/live-like-shadow-compare-only-scorecards-v0.14.2.md",
+      "bytes": 611,
+      "sha256": "fe3ec96e4a46180cb8ccbce06634ad1221fb935d365a9acd2023b0f9a894f8cc"
     },
     {
       "path": "docs/live-like-shadow-observation-envelope-v0.14.0-alpha.md",
@@ -580,7 +585,7 @@
     {
       "path": "docs/release-checklist.md",
       "bytes": 11783,
-      "sha256": "d3bf9f8ab8194c331c8aab1e9c175da155970df524ee59ab9eb8c1e321dd25af"
+      "sha256": "64d6df209d56985f4471b5c6734718aa0e96cdfd7b718cb439498eb32ae67c8c"
     },
     {
       "path": "docs/release-ladder-v0.2-alpha.md",
@@ -746,6 +751,11 @@
       "path": "docs/status-v0.14.1.md",
       "bytes": 402,
       "sha256": "417760414918493ae0a8697fce8691ebfa4afd3568e1fc9fa792c8344fff4ceb"
+    },
+    {
+      "path": "docs/status-v0.14.2.md",
+      "bytes": 316,
+      "sha256": "9f125d716d0e586813cb0aa2a9cb94e911f39de5a681ec7efc2963faf8e4a1d5"
     },
     {
       "path": "docs/status-v0.2.3.md",
@@ -1246,6 +1256,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-like-shadow-observation-envelope-v0.14.0-alpha.out.json",
       "bytes": 663,
       "sha256": "39511f09ecf913a22fe3147143dff2f020362531d5034534d9a5894aad74ad71"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-like-shadow-replay-harness-v0.14.1.out.json",
+      "bytes": 1072,
+      "sha256": "7fde72a26e72780ad36d47efc0ec0ea17c4a4d0e5d129a0092374cd5c77074fe"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-shadow-drift-scorecard-shape.out.json",
@@ -2279,8 +2294,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/package.json",
-      "bytes": 28750,
-      "sha256": "b24632aaa1e6e9f1fc4bcb36733518f943ab5bba9033daca377225217f195af5"
+      "bytes": 29053,
+      "sha256": "a3b177f47cc4200ff7ac379cdbc88943df554e847efe515abe1092b0282f1e1a"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/action-context-packet.mjs",
@@ -2326,6 +2341,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/src/live-like-shadow-replay.mjs",
       "bytes": 2337,
       "sha256": "e8652c527ae9365b48ce749ab39524a0a1269175c3e6a4d86d6963beae2d7fcf"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/src/live-like-shadow-scorecard.mjs",
+      "bytes": 806,
+      "sha256": "007fb28176b22c89b0fb1a3c1a47d4c72b7116d9b31f12ffbff93a5da47ba619"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/manual-dry-run.mjs",
@@ -2601,6 +2621,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/tests/live-input-source-boundary-contracts.mjs",
       "bytes": 9735,
       "sha256": "a3547e1ba81569d34daaab0f23c4c56eb4129e8f1ee39a73d4d51463f8053b31"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/live-like-shadow-compare-only-scorecards-v0.14.2.mjs",
+      "bytes": 1871,
+      "sha256": "a0a8a1b903cb6003121ce5bbbc10227092f4153958ce03f25fb9eef765d0e2e8"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/live-like-shadow-observation-envelope-v0.14.0-alpha.mjs",
