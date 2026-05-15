@@ -1,0 +1,31 @@
+{
+  "summary": {
+    "positiveUtilityPassGate": true,
+    "nonAuthoritative": true,
+    "classificationOnly": true,
+    "consumesV20BoundedExplicitMultisourceShadowRead": true,
+    "acceptedObservationCount": 6,
+    "rejectedObservationCount": 0,
+    "sourceFailuresAccepted": 0,
+    "reportGenerated": true,
+    "policyDecision": null,
+    "authorization": false,
+    "enforcement": false,
+    "approvalBlockAllow": false,
+    "toolExecution": false,
+    "memoryConfigWrite": false,
+    "networkResourceFetch": false,
+    "externalEffects": false,
+    "rawPersisted": false,
+    "rawOutput": false,
+    "agentConsumedOutput": false,
+    "unexpectedPermits": 0,
+    "runtimeAuthority": false
+  },
+  "classification": "PASS_TO_HUMAN_REVIEW",
+  "reviewerNotes": [
+    "positive utility pass-to-human-review is not an allow/block/approve policy gate",
+    "classification is for human review readiness only and is not agent-consumed runtime authority",
+    "all effects, authorization, enforcement, raw persistence, and tool execution remain false"
+  ]
+}
