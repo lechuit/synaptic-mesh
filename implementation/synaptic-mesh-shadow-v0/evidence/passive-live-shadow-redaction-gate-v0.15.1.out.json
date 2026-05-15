@@ -1,0 +1,12 @@
+{
+  "artifact": "T-synaptic-mesh-passive-live-shadow-redaction-gate-v0.15.1",
+  "timestamp": "2026-05-15T01:41:00.000Z",
+  "summary": {
+    "redactionGate": "pass",
+    "negativeControls": 5,
+    "rawPrivatePersisted": false,
+    "redactedBeforePersistence": true,
+    "hashesPresent": true,
+    "toolMemoryConfigApprovalTextRawPersisted": false
+  }
+}
