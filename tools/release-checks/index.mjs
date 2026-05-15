@@ -9,6 +9,7 @@ import { liveLikeShadowSandboxSuite } from './live-like-shadow-sandbox-ladder.mj
 import { passiveLiveShadowLocalPilotSuite } from './passive-live-shadow-local-pilot.mjs';
 import { tinyOperatorPassivePilotSuite } from './tiny-operator-passive-pilot.mjs';
 import { limitedPassiveLiveCaptureReadinessSuite } from './limited-passive-live-capture-readiness.mjs';
+import { liveReadGateSuite } from './live-read-gate.mjs';
 
 export const releaseCheckSuites = Object.freeze([
   passiveLiveShadowCanarySuite,
@@ -22,4 +23,5 @@ export const releaseCheckSuites = Object.freeze([
   passiveLiveShadowLocalPilotSuite,
   tinyOperatorPassivePilotSuite,
   limitedPassiveLiveCaptureReadinessSuite,
+  liveReadGateSuite,
 ]);

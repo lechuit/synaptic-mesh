@@ -1,0 +1,29 @@
+{
+  "cases": [
+    "--network",
+    "--resource-fetch",
+    "--url=https://example.invalid/feed",
+    "--watch",
+    "--daemon",
+    "--autonomous-live-mode",
+    "--execute",
+    "--tool-execution",
+    "--memory-config-write",
+    "--memory-write",
+    "--config-write",
+    "--external-effect",
+    "--agent-consumed-output",
+    "--raw-persisted",
+    "--raw-output",
+    "--policy-decision=allow",
+    "--allow",
+    "--block",
+    "--approve",
+    "--authorize",
+    "--enforce",
+    "--inputs=a,b",
+    "--batch",
+    "--manifest=inputs.json",
+    "--input-list=list.txt"
+  ]
+}
