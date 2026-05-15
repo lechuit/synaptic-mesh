@@ -1,0 +1,69 @@
+{
+  "summary": {
+    "preflightAbortPass": true,
+    "expectedRejects": 10,
+    "unexpectedPermits": 0
+  },
+  "results": [
+    {
+      "expected": "at_least_two_explicit_sources_required",
+      "abortReasons": [
+        "at_least_two_explicit_sources_required"
+      ]
+    },
+    {
+      "expected": "source_count_exceeds_max",
+      "abortReasons": [
+        "source_count_exceeds_max"
+      ]
+    },
+    {
+      "expected": "duplicate_sources_rejected",
+      "abortReasons": [
+        "duplicate_sources_rejected"
+      ]
+    },
+    {
+      "expected": "glob_or_discovery_syntax_rejected",
+      "abortReasons": [
+        "glob_or_discovery_syntax_rejected"
+      ]
+    },
+    {
+      "expected": "url_source_rejected",
+      "abortReasons": [
+        "url_source_rejected"
+      ]
+    },
+    {
+      "expected": "records_per_source_exceeds_max",
+      "abortReasons": [
+        "records_per_source_exceeds_max"
+      ]
+    },
+    {
+      "expected": "total_records_exceeds_max",
+      "abortReasons": [
+        "total_records_exceeds_max"
+      ]
+    },
+    {
+      "expected": "policy_decision_must_be_null",
+      "abortReasons": [
+        "policy_decision_must_be_null"
+      ]
+    },
+    {
+      "expected": "forbidden_true:networkFetch",
+      "abortReasons": [
+        "forbidden_true:networkFetch"
+      ]
+    },
+    {
+      "expected": "decision_verbs_forbidden_in_preview",
+      "abortReasons": [
+        "decision_verbs_forbidden_in_preview"
+      ]
+    }
+  ]
+}

@@ -1,35 +1,41 @@
-# Synaptic Mesh v0.19.5
+# Synaptic Mesh v0.20.5
 
-Status: **live-adapter shadow-read release candidate**. This is not runtime authority, not production/canary/enforcement-ready, and not deployment approval.
+Status: **bounded explicit multisource shadow-read release candidate**. This is not runtime authority, not production/canary/enforcement-ready, and not deployment approval.
 
 ## Scope
 
-This release candidate crosses the next smallest safe barrier after `v0.18`: a constrained local adapter shadow-read over one explicit repo-local source.
+This release candidate crosses the next smallest safe barrier after `v0.19`: multiple explicit repo-local file sources in one bounded operator-run shadow-read through the constrained local read adapter.
 
 It adds:
 
-- `live-adapter-shadow-read` source and CLI;
-- `repo-local-file-read-adapter-v0` constrained local read adapter;
-- bounded window/count ingestion (`maxRecords: 12`);
+- `bounded-multisource-shadow-read` source and CLI;
+- reuse of `repo-local-file-read-adapter-v0` constrained local read adapter;
+- bounded multisource ingestion (`maxSources: 3`, `maxRecordsPerSource: 5`, `maxTotalRecords: 12`);
 - real repo-local source requirement for positive evidence;
+- per-source isolation and per-source failure isolation;
 - redaction-before-persist evidence packets;
 - human-readable report evidence;
-- negative controls for forbidden capabilities and unsupported/multi adapters;
+- negative controls for forbidden capabilities, globs/recursive discovery, implicit sources, outside-repo paths, symlinks, fixture positives, and excess bounds;
 - reviewer package and two independent local review notes;
-- release-check integration for `v0.19.5`.
+- release-check integration for `v0.20.5`.
 
 ## Validation expected
 
 From this release-candidate root:
 
 ```bash
-npm --prefix implementation/synaptic-mesh-shadow-v0 run release:check -- --target v0.19.5
+npm --prefix implementation/synaptic-mesh-shadow-v0 run release:check -- --target v0.20.5
 ```
 
 Expected:
 
-- local adapter shadow-read gate: pass;
+- bounded explicit multisource shadow-read gate: pass;
 - constrained local read adapter only;
+- multiple explicit repo-local file sources;
+- max sources 3;
+- max records per source 5;
+- max total records 12;
+- per-source isolation and per-source failure isolation;
 - `rawPersisted: false`;
 - `rawOutput: false`;
 - `policyDecision: null`;
@@ -39,7 +45,7 @@ Expected:
 
 ## Publication boundary
 
-This archive is a public review package update. Enforcement, authorization, approval/block/allow, runtime/tooling integration, autonomous live mode, watcher/daemon behavior, network/resource fetch, memory/config writes, external effects, production/canary operation, agent-consumed policy decisions, or L2+ operational use remain out of scope and require a separate explicit maintainer decision.
+This archive is a public review package update. Enforcement, authorization, approval/block/allow, runtime/tooling integration, autonomous live mode, watcher/daemon behavior, globs/recursive discovery, implicit source discovery, network/resource fetch, memory/config writes, external effects, production/canary operation, agent-consumed policy decisions, or L2+ operational use remain out of scope and require a separate explicit maintainer decision.
 
 ## Review wording
 

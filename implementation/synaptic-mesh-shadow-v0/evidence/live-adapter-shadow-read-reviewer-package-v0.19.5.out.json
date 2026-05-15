@@ -113,8 +113,8 @@
       "kind": "explicit_repo_local_file_via_adapter",
       "repoRelativePathSha256": "b335630551682c19a781afebcf4d07bf978fb1f8ac04c6bf87428ed5106870f5",
       "absolutePathSha256": "543c81f89743c5b0f48fa0200abe84d28dd1fdb1b6687cf610469e9e998e93e0",
-      "sourceSize": 2499,
-      "sourceMtimeMs": 1778846962139,
+      "sourceSize": 3018,
+      "sourceMtimeMs": 1778848108482,
       "rawSourcePathPersisted": false
     },
     "retention": {
@@ -137,65 +137,65 @@
     "redactedRecords": [
       {
         "index": 0,
-        "rawSha256": "79f5e196463b5c72d07358d645517760e87731888ffd674db829b3407a7a8dd7",
+        "rawSha256": "0181bf816375c81d9f46f39f26cbb0df1cb225b58a9c3ab37e014ef49b7375eb",
         "rawBytes": 23,
-        "redactedSha256": "79f5e196463b5c72d07358d645517760e87731888ffd674db829b3407a7a8dd7",
-        "redactedText": "# Synaptic Mesh v0.19.5",
+        "redactedSha256": "0181bf816375c81d9f46f39f26cbb0df1cb225b58a9c3ab37e014ef49b7375eb",
+        "redactedText": "# Synaptic Mesh v0.20.5",
         "privatePatternDetected": false,
         "decisionVerbDetected": false,
         "semanticDecisionTokenPersisted": false
       },
       {
         "index": 1,
-        "rawSha256": "f8fe7fea3b3676d0fa45ce1db9e9ac0f838079fc313b357996ca5432b5a0cd11",
-        "rawBytes": 246,
-        "redactedSha256": "f8fe7fea3b3676d0fa45ce1db9e9ac0f838079fc313b357996ca5432b5a0cd11",
-        "redactedText": "This is the public review release `v0.19.5`. Current v0.19.5 status is narrower than live runtime but crosses the next smallest safe barrier after v0.18: a **live-adapter shadow-read** through a minimal constrained local read adapter abstra",
+        "rawSha256": "397739b3bfea79a4a6ef6f61e270c0e0946d072ef35d11c017b6737e7015c3b2",
+        "rawBytes": 265,
+        "redactedSha256": "397739b3bfea79a4a6ef6f61e270c0e0946d072ef35d11c017b6737e7015c3b2",
+        "redactedText": "This is the public review release `v0.20.5`. Current v0.20.5 status is narrower than live runtime but crosses the next smallest safe barrier after v0.19: a **bounded explicit multisource shadow-read** through the existing constrained local ",
         "privatePatternDetected": false,
         "decisionVerbDetected": false,
         "semanticDecisionTokenPersisted": false
       },
       {
         "index": 2,
-        "rawSha256": "fd6a4632ba35fc95103743f2d89c897b046065fabc2eb1625713b4501c7d308e",
-        "rawBytes": 320,
-        "redactedSha256": "fd6a4632ba35fc95103743f2d89c897b046065fabc2eb1625713b4501c7d308e",
-        "redactedText": "The v0.19.x ladder is still gated, disabled/manual/operator-run/local/passive/read-only. It performs an operator-run one-shot read from one explicit repo-local real source through `repo-local-file-read-adapter-v0`, with bounded window/count",
+        "rawSha256": "398d86fb645b829fb83a695bf1ca397f4c09475155c206c900b4a2c9f5b3711c",
+        "rawBytes": 419,
+        "redactedSha256": "398d86fb645b829fb83a695bf1ca397f4c09475155c206c900b4a2c9f5b3711c",
+        "redactedText": "The v0.20.x ladder is still gated, disabled/manual/operator-run/local/passive/read-only. It performs an operator-run one-shot read from multiple explicit repo-local file sources through `repo-local-file-read-adapter-v0`, with max sources 3,",
         "privatePatternDetected": false,
         "decisionVerbDetected": false,
         "semanticDecisionTokenPersisted": false
       },
       {
         "index": 3,
-        "rawSha256": "f8c030924e566d1b1cf0fdb4e969cca6bdcf249bad2bc7cee5f7fdf74e3467ef",
-        "rawBytes": 391,
-        "redactedSha256": "8fdcf2e90fd48373b363d8e9f514f442889a1f9b4a07f4371c556f185c87ef0a",
-        "redactedText": "Boundaries: no [NON_AUTHORITATIVE_INPUT_VERB_REDACTED], no [NON_AUTHORITATIVE_INPUT_VERB_REDACTED], no approval/[NON_AUTHORITATIVE_INPUT_VERB_REDACTED]/[NON_AUTHORITATIVE_INPUT_VERB_REDACTED], no autonomous live mode, no watcher/daemon, no ",
+        "rawSha256": "0b7e965194b1945a89bb5c0334c3136e698d143d3c53a04e20886f620fbe774b",
+        "rawBytes": 478,
+        "redactedSha256": "7694fe45c7cec6d9ecc1d17fe7c1a60295be4df0ea9168039c0614359573a9cd",
+        "redactedText": "Boundaries: no [NON_AUTHORITATIVE_INPUT_VERB_REDACTED], no [NON_AUTHORITATIVE_INPUT_VERB_REDACTED], no approval/[NON_AUTHORITATIVE_INPUT_VERB_REDACTED]/[NON_AUTHORITATIVE_INPUT_VERB_REDACTED], no globs/recursive discovery, no implicit sourc",
         "privatePatternDetected": false,
         "decisionVerbDetected": true,
         "semanticDecisionTokenPersisted": false
       },
       {
         "index": 4,
-        "rawSha256": "cae27deaea23af21a6c88b778777489c44d0272bc2161137dded651719779021",
-        "rawBytes": 530,
-        "redactedSha256": "f11d99e1135e8171775a93e47d2bd5f40bf28df22ce59f4f33874dc5a920324c",
-        "redactedText": "Final evidence: live-adapter shadow-read; minimal constrained local read adapter abstraction; operator-run one-shot; local-only; passive/read-only; bounded window/count; redaction-before-persist; redacted evidence only; human-readable repor",
+        "rawSha256": "d8f189146c988a915a2dda840aabf4f6f294258f77bdeae116d59bc1f2eb99cd",
+        "rawBytes": 725,
+        "redactedSha256": "f77d5842081e5e883691c7efeb8db803c0580406376da03df28aac485da31fbe",
+        "redactedText": "Final evidence: bounded explicit multisource shadow-read; multiple explicit repo-local file sources; constrained local read adapter abstraction; operator-run one-shot; local-only; passive/read-only; max sources 3; max records per source 5; ",
         "privatePatternDetected": false,
         "decisionVerbDetected": true,
         "semanticDecisionTokenPersisted": false
       },
       {
         "index": 5,
-        "rawSha256": "1e435b45da1bc6e0676bcef3f857cfa3f990ec1615f561b4521219d14def6514",
+        "rawSha256": "abf696f40f3c553fa45bfaf688c10c884b14b8eedcc245a3e6aab2f1f8a77e85",
         "rawBytes": 22,
-        "redactedSha256": "1e435b45da1bc6e0676bcef3f857cfa3f990ec1615f561b4521219d14def6514",
-        "redactedText": "## v0.19.5 phase close",
+        "redactedSha256": "abf696f40f3c553fa45bfaf688c10c884b14b8eedcc245a3e6aab2f1f8a77e85",
+        "redactedText": "## v0.20.5 phase close",
         "privatePatternDetected": false,
         "decisionVerbDetected": false,
         "semanticDecisionTokenPersisted": false
       }
     ],
-    "reportMarkdown": "# Live Adapter Shadow-Read Report v0.19.5\n\n- Barrier crossed: local adapter shadow-read gate\n- Adapter: repo-local-file-read-adapter-v0\n- Operator-run: true; one-shot: true; local-only/read-only/passive-only: true\n- Records read: 6 / limit 6\n- Redacted evidence only: true; rawPersisted: false; rawOutput: false\n- policyDecision: null; agentConsumedOutput: false; unexpectedPermits: 0\n- Enforcement/authorization/approval/block/allow: false\n\n## Redacted evidence preview\n- #0: # Synaptic Mesh v0.19.5\n- #1: This is the public review release `v0.19.5`. Current v0.19.5 status is narrower than live runtime but crosses the next smallest safe barrier after v0.18: a **live-adapter shadow-read** through a minimal constrained local read adapter abstra\n- #2: The v0.19.x ladder is still gated, disabled/manual/operator-run/local/passive/read-only. It performs an operator-run one-shot read from one explicit repo-local real source through `repo-local-file-read-adapter-v0`, with bounded window/count\n- #3: Boundaries: no [NON_AUTHORITATIVE_INPUT_VERB_REDACTED], no [NON_AUTHORITATIVE_INPUT_VERB_REDACTED], no approval/[NON_AUTHORITATIVE_INPUT_VERB_REDACTED]/[NON_AUTHORITATIVE_INPUT_VERB_REDACTED], no autonomous live mode, no watcher/daemon, no\n- #4: Final evidence: live-adapter shadow-read; minimal constrained local read adapter abstraction; operator-run one-shot; local-only; passive/read-only; bounded window/count; redaction-before-persist; redacted evidence only; human-readable repor\n- #5: ## v0.19.5 phase close\n"
+    "reportMarkdown": "# Live Adapter Shadow-Read Report v0.19.5\n\n- Barrier crossed: local adapter shadow-read gate\n- Adapter: repo-local-file-read-adapter-v0\n- Operator-run: true; one-shot: true; local-only/read-only/passive-only: true\n- Records read: 6 / limit 6\n- Redacted evidence only: true; rawPersisted: false; rawOutput: false\n- policyDecision: null; agentConsumedOutput: false; unexpectedPermits: 0\n- Enforcement/authorization/approval/block/allow: false\n\n## Redacted evidence preview\n- #0: # Synaptic Mesh v0.20.5\n- #1: This is the public review release `v0.20.5`. Current v0.20.5 status is narrower than live runtime but crosses the next smallest safe barrier after v0.19: a **bounded explicit multisource shadow-read** through the existing constrained local\n- #2: The v0.20.x ladder is still gated, disabled/manual/operator-run/local/passive/read-only. It performs an operator-run one-shot read from multiple explicit repo-local file sources through `repo-local-file-read-adapter-v0`, with max sources 3,\n- #3: Boundaries: no [NON_AUTHORITATIVE_INPUT_VERB_REDACTED], no [NON_AUTHORITATIVE_INPUT_VERB_REDACTED], no approval/[NON_AUTHORITATIVE_INPUT_VERB_REDACTED]/[NON_AUTHORITATIVE_INPUT_VERB_REDACTED], no globs/recursive discovery, no implicit sourc\n- #4: Final evidence: bounded explicit multisource shadow-read; multiple explicit repo-local file sources; constrained local read adapter abstraction; operator-run one-shot; local-only; passive/read-only; max sources 3; max records per source 5;\n- #5: ## v0.20.5 phase close\n"
   }
 }
