@@ -1,0 +1,12 @@
+{
+  "artifact": "T-synaptic-mesh-limited-passive-live-capture-redaction-abort-v0.17.2",
+  "timestamp": "2026-05-15T10:00:00.000Z",
+  "summary": {
+    "redactionAbortCriteria": "pass",
+    "aborts": 6,
+    "rawPersisted": false,
+    "policyDecision": null,
+    "agentConsumedOutput": false,
+    "unexpectedPermits": 0
+  }
+}

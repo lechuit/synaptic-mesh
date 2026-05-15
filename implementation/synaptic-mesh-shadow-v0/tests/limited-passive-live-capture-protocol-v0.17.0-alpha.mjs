@@ -1,0 +1,16 @@
+import assert from 'node:assert/strict';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import { resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { dirname } from 'node:path';
+import { evaluateLimitedPassiveLiveCaptureEnvelope, summarizeLimitedPassiveLiveCaptureReadiness } from '../src/limited-passive-live-capture-readiness.mjs';
+const here = dirname(fileURLToPath(import.meta.url));
+const pkg = resolve(here, '..');
+const fixture = JSON.parse(await readFile(resolve(pkg, 'fixtures/limited-passive-live-capture-envelope-v0.17.1.json'), 'utf8'));
+await mkdir(resolve(pkg, 'evidence'), { recursive: true });
+const ev = evaluateLimitedPassiveLiveCaptureEnvelope(fixture);
+assert.equal(ev.readiness, 'pass');
+assert.equal(ev.summary.policyDecision, null);
+const out = { artifact:'T-synaptic-mesh-limited-passive-live-capture-protocol-v0.17.0-alpha', timestamp:'2026-05-15T10:00:00.000Z', summary:{ designReadinessOnly:true, disabledByDefault:true, operatorRun:true, localOnly:true, passiveOnly:true, readOnly:true, enforcement:false, authorization:false, approvalBlockAllow:false, autonomousLiveMode:false, toolExecution:false, memoryConfigWrite:false, externalEffects:false }};
+await writeFile(resolve(pkg,'evidence/limited-passive-live-capture-protocol-v0.17.0-alpha.out.json'), JSON.stringify(out,null,2)+'\n');
+console.log(JSON.stringify(out.summary,null,2));

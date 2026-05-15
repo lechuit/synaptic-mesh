@@ -1,0 +1,74 @@
+[
+  {
+    "name": "network-fetch",
+    "input": {
+      "networkFetch": true
+    }
+  },
+  {
+    "name": "daemon-watch",
+    "input": {
+      "daemon": true
+    }
+  },
+  {
+    "name": "autonomous-live",
+    "input": {
+      "autonomousLiveMode": true
+    }
+  },
+  {
+    "name": "tool-exec",
+    "input": {
+      "toolExecution": true
+    }
+  },
+  {
+    "name": "memory-write",
+    "input": {
+      "memoryConfigWrite": true
+    }
+  },
+  {
+    "name": "policy-decision",
+    "input": {
+      "policyDecision": "allow"
+    }
+  },
+  {
+    "name": "agent-consumed",
+    "input": {
+      "agentConsumedOutput": true
+    }
+  },
+  {
+    "name": "external-effect",
+    "input": {
+      "externalEffects": true
+    }
+  },
+  {
+    "name": "raw-persist",
+    "input": {
+      "rawPersisted": true
+    }
+  },
+  {
+    "name": "decision-verbs",
+    "input": {
+      "preview": "approve allow block enforce authorize"
+    }
+  },
+  {
+    "name": "non-local",
+    "input": {
+      "localOnly": false
+    }
+  },
+  {
+    "name": "write-mode",
+    "input": {
+      "readOnly": false
+    }
+  }
+]
