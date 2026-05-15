@@ -69,8 +69,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 1482,
-      "sha256": "30d36eef24a1039b645959530243384563fe0139571d222a8fb7da7b2d8dcb89"
+      "bytes": 1777,
+      "sha256": "5c098b79ce30b986dbdf9106b800fbc7583a92e2c6a20ac846f97ed69d10a6ee"
     },
     {
       "path": "RELEASE_CANDIDATE.md",
@@ -79,8 +79,8 @@
     },
     {
       "path": "RELEASE_NOTES.md",
-      "bytes": 1902,
-      "sha256": "1f355f62888729477f29a251e0023464790535c0c9fa631860a29a4c43e3595a"
+      "bytes": 2370,
+      "sha256": "58e70406fb8b21491790f1e73a18f0ea5c02d9074ee351b6ac54573b6f4083bb"
     },
     {
       "path": "design-notes/adapter-boundary-langgraph-mcp-v0.md",
@@ -888,6 +888,11 @@
       "sha256": "5c1d83d55b7b7b2e968f70f9c48732a8573bf7135227e4d8f8a2bce51a965337"
     },
     {
+      "path": "docs/status-v0.16.6.md",
+      "bytes": 480,
+      "sha256": "d4997fb959c8862d165b90371b584241eb66c4283501b06949dad344cafbcb11"
+    },
+    {
       "path": "docs/status-v0.2.3.md",
       "bytes": 13842,
       "sha256": "49afeeda1dbd7038180c7a4b3f21a0d3167f26101c60858b64aca956a90fc192"
@@ -1111,6 +1116,11 @@
       "path": "docs/tiny-operator-passive-pilot-evidence-packet-v0.16.2.md",
       "bytes": 294,
       "sha256": "631794edc4036eb0ab0766643cbbbf88706f274f49eec1928b3c74f685a6f74f"
+    },
+    {
+      "path": "docs/tiny-operator-passive-pilot-input-boundary-v0.16.6.md",
+      "bytes": 876,
+      "sha256": "a58e922ff68c44b33ab6a53b409f1efebb2cb282e47d9ea876e74c8d28d26e81"
     },
     {
       "path": "docs/tiny-operator-passive-pilot-negative-controls-v0.16.3.md",
@@ -2063,19 +2073,24 @@
       "sha256": "017f412530fb5df482226bd2f38cb45499f80324e0abb997212ab3239fa8ccef"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/tiny-operator-passive-pilot-input-boundary-v0.16.6.out.json",
+      "bytes": 549,
+      "sha256": "32030b62aa05266b1dc52907c1679135374436fa290ec3c3dc8b18f2e7bc270d"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/tiny-operator-passive-pilot-negative-controls-v0.16.3.out.json",
       "bytes": 465,
       "sha256": "34b1bc7fc9dfb86f04110574557f81e4c855f010df196079fc8f3b0e3f594169"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/tiny-operator-passive-pilot-phase-close-v0.16.5.out.json",
-      "bytes": 4930,
-      "sha256": "787936abe7bbcf64bf79164bb5bb5909670467719cab7225d856b4e8c897c6b6"
+      "bytes": 5045,
+      "sha256": "b43b1d262059cb2675240a3b56fbfca7195230fb7b88b87ef3276c55b124997e"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/tiny-operator-passive-pilot-protocol-v0.16.0-alpha.out.json",
-      "bytes": 1134,
-      "sha256": "4e72c874480d90fee2bffaab9d0773ccf57948105d7e2e4ef5c399bdddceb366"
+      "bytes": 1171,
+      "sha256": "80e706256cf52690f568fcbf79171615e2e67442be0b61efdbc41abb180ea6c0"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/tiny-operator-passive-pilot-reviewer-runbook-v0.16.4.out.json",
@@ -2084,13 +2099,13 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/tiny-operator-passive-pilot-runner-v0.16.1.out.json",
-      "bytes": 4721,
-      "sha256": "cf4bbfd16afda273dd65d68b9dd06cb83f9d077f1f239c3bf1003efb8ad37760"
+      "bytes": 4836,
+      "sha256": "3644631dcb1497631d2367db59beec6088f1021b8822b0c03c85abc1028ba446"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/tiny-operator-passive-pilot-v0.16.5.out.json",
-      "bytes": 4122,
-      "sha256": "2de7b0275560e1aa50f4974c7ba3fd26d91c8257870349089613f3964d4f428a"
+      "bytes": 4231,
+      "sha256": "2b624f4105cceada9ed584bd95cafcd17c8d927fc4a36dab1c5644c0815fea97"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/examples/compact-receipts.jsonl",
@@ -2589,8 +2604,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/package.json",
-      "bytes": 33524,
-      "sha256": "d2f5141366e087080fdf229ce370a333af79e1e534ceb644faa779c0c44a0076"
+      "bytes": 33784,
+      "sha256": "82945da0ef48dc154e04af7208fc1c8eabd33c98fcb85424c4ff09bfa419f92f"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/action-context-packet.mjs",
@@ -2699,8 +2714,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/tiny-operator-passive-pilot.mjs",
-      "bytes": 9195,
-      "sha256": "d87dcbffd9f2dbb6562cc503f40591b8ec9df8998d3a1af32acbfc786f4b754d"
+      "bytes": 10955,
+      "sha256": "a39b2577ec035100fab3f59cc1abcf76f4b7063a77191d79d3cbdb193c075bd6"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/types.mjs",
@@ -3508,6 +3523,11 @@
       "sha256": "8537a96a86b6822642bb77b9702b05cd7acede5bf7a08b336144bd4e891dd39f"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/tiny-operator-passive-pilot-input-boundary-v0.16.6.mjs",
+      "bytes": 3267,
+      "sha256": "22e0c8bdcb13eecbeee4bd9bb56bd5b06402bf197f24c2753f59b1705156dae9"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/tiny-operator-passive-pilot-negative-controls-v0.16.3.mjs",
       "bytes": 2601,
       "sha256": "f50a022ceb56a80320e6f505d17e2b829daa33f6c90f92ede649657b1bc595a1"
@@ -4074,8 +4094,8 @@
     },
     {
       "path": "tools/release-checks/tiny-operator-passive-pilot.mjs",
-      "bytes": 6939,
-      "sha256": "d333471aaba32647c4f095a02822301550f1a619b5e3ce66d15751eb9971d3db"
+      "bytes": 8751,
+      "sha256": "19e0604ccff4463a3710e7e0663a28f7684bf23cad1ee7ec0743f176c19c960d"
     },
     {
       "path": "tools/update-manifest.mjs",

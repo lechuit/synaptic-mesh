@@ -5,11 +5,12 @@ import { dirname, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { assertNoEnforcementInvariant, passiveObservationFromText, redactObservation } from './passive-live-shadow.mjs';
 
-export const TINY_PASSIVE_PILOT_VERSION = 'v0.16.5';
+export const TINY_PASSIVE_PILOT_VERSION = 'v0.16.6';
 export const TINY_PASSIVE_PILOT_SCHEMA_VERSION = 'tiny-operator-passive-pilot-evidence-v0.16.2';
 export const TINY_PASSIVE_PILOT_MODE = 'tiny-operator-run-passive-pilot-readiness-local-manual-no-effects';
 export const TINY_PASSIVE_PILOT_PACKAGE_ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 export const TINY_PASSIVE_PILOT_EVIDENCE_ROOT = resolve(TINY_PASSIVE_PILOT_PACKAGE_ROOT, 'evidence');
+export const TINY_PASSIVE_PILOT_FIXTURE_ROOT = resolve(TINY_PASSIVE_PILOT_PACKAGE_ROOT, 'fixtures');
 export const TINY_PASSIVE_PILOT_UNSAFE_FLAGS = Object.freeze(['--watch', '--daemon', '--network', '--execute', '--allow', '--block', '--approve', '--enforce', '--authorize']);
 export const TINY_PASSIVE_PILOT_MULTI_INPUT_FLAGS = Object.freeze(['--inputs', '--batch', '--manifest', '--input-list', '--input-glob']);
 
@@ -22,6 +23,7 @@ export function tinyPilotProtocol() {
     operatorReviewRequired: true,
     singleSampleOnly: true,
     localSampleInputOnly: true,
+    packageFixtureInputOnly: true,
     stdoutOrPackageEvidenceJsonOnly: true,
     networkResourceFetch: false,
     autonomousLiveMode: false,
@@ -38,6 +40,30 @@ export function tinyPilotProtocol() {
     approvalBlockAllowAuthorizationEnforcement: false,
     externalEffects: false
   };
+}
+
+export function resolveTinyPilotFixtureInputPath(input) {
+  const candidate = resolve(TINY_PASSIVE_PILOT_PACKAGE_ROOT, input ?? '');
+  const rel = relative(TINY_PASSIVE_PILOT_FIXTURE_ROOT, candidate);
+  if (!input || rel === '' || rel.startsWith('..') || rel.startsWith('/') || rel.startsWith('\\')) {
+    throw new Error('tiny passive pilot input must be one explicit package fixtures/ sample file');
+  }
+  if (!candidate.endsWith('.txt')) throw new Error('tiny passive pilot input must be a .txt sample file under package fixtures/');
+  return candidate;
+}
+
+export async function prepareTinyPilotFixtureInputPath(input) {
+  const candidate = resolveTinyPilotFixtureInputPath(input);
+  const fixtureRootStat = await lstat(TINY_PASSIVE_PILOT_FIXTURE_ROOT);
+  if (fixtureRootStat.isSymbolicLink() || !fixtureRootStat.isDirectory()) throw new Error('tiny passive pilot fixtures root must be a real directory');
+  const stat = await lstat(candidate);
+  if (stat.isSymbolicLink()) throw new Error('tiny passive pilot rejects symlink input file: ' + candidate);
+  if (!stat.isFile()) throw new Error('tiny passive pilot input must be a regular file: ' + candidate);
+  const fixtureReal = await realpath(TINY_PASSIVE_PILOT_FIXTURE_ROOT);
+  const inputReal = await realpath(candidate);
+  const realRel = relative(fixtureReal, inputReal);
+  if (realRel.startsWith('..') || realRel.startsWith('/') || realRel.startsWith('\\')) throw new Error('tiny passive pilot input realpath escapes package fixtures/');
+  return candidate;
 }
 
 export function rejectTinyPilotUnsafeArgs(argv = []) {
@@ -141,11 +167,12 @@ export function tinyPilotEvidenceFromText(rawText, { sourcePath = 'local-sample'
       singleSampleOnly: true,
       humanStartedManualOnly: true,
       disabledByDefault: true,
+      packageFixtureInputOnly: true,
       rawPersisted: false,
       decisionVerbsSanitized: observation.redaction.decisionVerbRedactedBeforePersistence === true,
       noAgentConsumption: true,
       policyDecision: null,
-      expectedRejects: 14,
+      expectedRejects: 23,
       unexpectedPermits: 0,
       externalEffects: false,
       enforcement: false
@@ -161,6 +188,7 @@ export function tinyPilotEvidenceFromText(rawText, { sourcePath = 'local-sample'
       unsanitizedDecisionVerbPersisted: observation.redaction.semanticDecisionTokenPersisted,
       unsafeFlagAttempt: false,
       outputEscapeOrSymlink: false,
+      inputEscapeOrSymlink: false,
       multiInputOrBatch: false,
       nonNullPolicyDecisionOrDecision: false
     },
@@ -169,7 +197,7 @@ export function tinyPilotEvidenceFromText(rawText, { sourcePath = 'local-sample'
 }
 
 export async function runTinyPilotLocalInput({ input, output, stdout = false }) {
-  const abs = resolve(input);
+  const abs = await prepareTinyPilotFixtureInputPath(input);
   const raw = await readFile(abs, 'utf8');
   const packet = tinyPilotEvidenceFromText(raw, { sourcePath: abs });
   const json = JSON.stringify(packet, null, 2) + '\n';

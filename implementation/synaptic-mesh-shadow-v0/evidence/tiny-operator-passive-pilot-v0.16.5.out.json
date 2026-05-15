@@ -1,7 +1,7 @@
 {
   "artifact": "T-synaptic-mesh-tiny-operator-passive-pilot-v0.16.5",
   "schemaVersion": "tiny-operator-passive-pilot-evidence-v0.16.2",
-  "releaseLayer": "v0.16.5",
+  "releaseLayer": "v0.16.6",
   "mode": "tiny-operator-run-passive-pilot-readiness-local-manual-no-effects",
   "timestamp": "2026-05-15T02:16:00.000Z",
   "summary": {
@@ -10,11 +10,12 @@
     "singleSampleOnly": true,
     "humanStartedManualOnly": true,
     "disabledByDefault": true,
+    "packageFixtureInputOnly": true,
     "rawPersisted": false,
     "decisionVerbsSanitized": true,
     "noAgentConsumption": true,
     "policyDecision": null,
-    "expectedRejects": 14,
+    "expectedRejects": 23,
     "unexpectedPermits": 0,
     "externalEffects": false,
     "enforcement": false
@@ -27,6 +28,7 @@
     "operatorReviewRequired": true,
     "singleSampleOnly": true,
     "localSampleInputOnly": true,
+    "packageFixtureInputOnly": true,
     "stdoutOrPackageEvidenceJsonOnly": true,
     "networkResourceFetch": false,
     "autonomousLiveMode": false,
@@ -53,6 +55,7 @@
     "unsanitizedDecisionVerbPersisted": false,
     "unsafeFlagAttempt": false,
     "outputEscapeOrSymlink": false,
+    "inputEscapeOrSymlink": false,
     "multiInputOrBatch": false,
     "nonNullPolicyDecisionOrDecision": false
   },

@@ -1,4 +1,4 @@
-# Release Notes — Synaptic Mesh v0.16.5
+# Release Notes — Synaptic Mesh v0.16.6
 
 ## v0.16.0-alpha pilot protocol and scope
 
@@ -25,3 +25,7 @@ Added the reviewer runbook/audit packet requiring human review before source exp
 tiny operator-run passive pilot readiness only. Next step may be v0.17 limited passive live capture design only if gates and human reviews pass. no agent-consumed output; no machine-readable policy decision; no enforcement; no authorization; no tool execution; no network; no daemon/watcher by default; no watcher/daemon; no framework/SDK adapter; no external effects.
 
 Carry-forward from v0.15: passive live shadow readiness achieved for local operator-run pilot only; v0.16 keeps that readiness disabled/manual/local/no-effects only.
+
+## v0.16.6 input boundary hardening
+
+Restricted tiny passive pilot input to one package `fixtures/` `.txt` sample file. External paths, package docs/evidence/metadata, directories, non-text fixtures, symlink input files, and symlink parent escapes are rejected before read. packageFixtureInputOnly: true; inputPathEscapeRejected: true; inputSymlinkFileRejected: true; inputSymlinkParentRejected: true; rawPersisted: false; externalEffects: false; enforcement: false.

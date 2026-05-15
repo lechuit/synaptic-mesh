@@ -1,0 +1,18 @@
+{
+  "artifact": "T-synaptic-mesh-tiny-operator-passive-pilot-input-boundary-v0.16.6",
+  "timestamp": "2026-05-15T02:28:00.000Z",
+  "summary": {
+    "inputBoundaryHardening": "pass",
+    "releaseLayer": "v0.16.6",
+    "packageFixtureInputOnly": true,
+    "singleSampleOnly": true,
+    "inputPathEscapeRejected": true,
+    "inputSymlinkFileRejected": true,
+    "inputSymlinkParentRejected": true,
+    "rejectedInputCandidates": 8,
+    "rawPersisted": false,
+    "memoryConfigWrite": false,
+    "externalEffects": false,
+    "enforcement": false
+  }
+}

@@ -18,6 +18,7 @@
     "operatorReviewRequired": true,
     "singleSampleOnly": true,
     "localSampleInputOnly": true,
+    "packageFixtureInputOnly": true,
     "stdoutOrPackageEvidenceJsonOnly": true,
     "networkResourceFetch": false,
     "autonomousLiveMode": false,
