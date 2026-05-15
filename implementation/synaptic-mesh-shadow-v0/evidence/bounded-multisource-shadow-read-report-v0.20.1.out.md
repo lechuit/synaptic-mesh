@@ -16,13 +16,13 @@
 - source #2: ok; records=2; rawSourcePathPersisted=false
 
 ## Redacted evidence preview
-- source #0 record #0: # Synaptic Mesh v0.26.5
-- source #0 record #1: This is the public review release `v0.26.5`. Current v0.26.5 status is narrower than live runtime and crosses the next safe barrier after the v0.25 value scorecard: **passive observation window**.
-- source #0 record #2: The v0.26 ladder is disabled-by-default, operator-run one-shot, local-only, passive/read-only, bounded to explicit repo-local sources and 3 queue/outcome items, local manual outcome fixtures only, redaction-before-persist, redacted evidence
-- source #0 record #3: Pinned v0.26.5 evidence: `windowStatus: OBSERVATION_WINDOW_COMPLETE`, `stage chain: 6`, `value scorecard: VALUE_SCORECARD_COMPLETE`, `recommendation: HOLD_FOR_MORE_EVIDENCE`, `recommendationIsAuthority: false`, `policyDecision: null`, `reda
-- source #1 record #0: # Release Notes — Synaptic Mesh v0.26.5
+- source #0 record #0: # Synaptic Mesh v0.27.5
+- source #0 record #1: This is the public review release `v0.27.5`. Current v0.27.5 status is narrower than live runtime and crosses the next safe barrier after the v0.26 passive observation window: **passive observation repeatability scorecard**.
+- source #0 record #2: The v0.27 ladder is disabled-by-default, operator-run one-shot, local-only, passive/read-only, bounded to explicit redacted v0.26 passive observation window artifacts, human-readable report only, non-authoritative, and not runtime authority
+- source #0 record #3: Pinned v0.27.5 evidence: `scorecardStatus: REPEATABILITY_SCORECARD_COMPLETE`, `completed windows: 3`, `degraded windows: 1`, `usefulOutcomeRatio: 1`, `repeatabilityRatio: 1`, `boundaryViolationCount: 0`, `recommendation: ADVANCE_OBSERVATION
+- source #1 record #0: # Release Notes — Synaptic Mesh v0.27.5
 - source #1 record #1: ## Summary
-- source #1 record #2: `v0.26.5` adds **passive observation window** over existing safe local stages. It runs one bounded operator-started observation loop from explicit repo-local sources through positive pass, review queue, manual local outcomes, and value scor
+- source #1 record #2: `v0.27.5` adds **passive observation repeatability scorecard** over v0.26 passive observation window artifacts. It aggregates several bounded local/manual/operator-run windows to measure repeatability and useful signal before any stronger l
 - source #1 record #3: ## Evidence
 - source #2 record #0: # Release Candidate — Synaptic Mesh v0.23.5
 - source #2 record #1: Target: `v0.23.5`

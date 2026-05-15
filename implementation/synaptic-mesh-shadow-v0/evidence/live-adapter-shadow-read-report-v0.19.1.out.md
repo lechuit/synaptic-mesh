@@ -9,9 +9,9 @@
 - Enforcement/authorization/approval/block/allow: false
 
 ## Redacted evidence preview
-- #0: # Synaptic Mesh v0.26.5
-- #1: This is the public review release `v0.26.5`. Current v0.26.5 status is narrower than live runtime and crosses the next safe barrier after the v0.25 value scorecard: **passive observation window**.
-- #2: The v0.26 ladder is disabled-by-default, operator-run one-shot, local-only, passive/read-only, bounded to explicit repo-local sources and 3 queue/outcome items, local manual outcome fixtures only, redaction-before-persist, redacted evidence
-- #3: Pinned v0.26.5 evidence: `windowStatus: OBSERVATION_WINDOW_COMPLETE`, `stage chain: 6`, `value scorecard: VALUE_SCORECARD_COMPLETE`, `recommendation: HOLD_FOR_MORE_EVIDENCE`, `recommendationIsAuthority: false`, `policyDecision: null`, `reda
-- #4: The window chains existing safe stages end-to-end: explicit repo-local multisource read evidence, positive pass, usefulness/noise scorecard, controlled operator review queue, local/manual outcome capture, and value scorecard. The scorecard
-- #5: ## v0.26.5 phase close
+- #0: # Synaptic Mesh v0.27.5
+- #1: This is the public review release `v0.27.5`. Current v0.27.5 status is narrower than live runtime and crosses the next safe barrier after the v0.26 passive observation window: **passive observation repeatability scorecard**.
+- #2: The v0.27 ladder is disabled-by-default, operator-run one-shot, local-only, passive/read-only, bounded to explicit redacted v0.26 passive observation window artifacts, human-readable report only, non-authoritative, and not runtime authority
+- #3: Pinned v0.27.5 evidence: `scorecardStatus: REPEATABILITY_SCORECARD_COMPLETE`, `completed windows: 3`, `degraded windows: 1`, `usefulOutcomeRatio: 1`, `repeatabilityRatio: 1`, `boundaryViolationCount: 0`, `recommendation: ADVANCE_OBSERVATION
+- #4: The scorecard aggregates multiple bounded local/manual/operator-run passive observation windows, including one degraded/noise window, to measure repeatability and useful signal before any stronger live behavior. The recommendation is only a
+- #5: ## v0.27.5 phase close
