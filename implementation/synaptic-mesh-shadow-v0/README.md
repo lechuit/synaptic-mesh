@@ -227,3 +227,5 @@ Adds `npm run bounded:multisource-shadow-read -- --source README.md --source REL
 Bounds and barriers: max sources 3; max records per source 5; max total records 12; per-source isolation; per-source failure isolation; redaction-before-persist; redacted evidence only; human-readable report; `policyDecision: null`; `agentConsumedOutput: false`; `rawPersisted: false`; `unexpectedPermits: 0`.
 
 Forbidden: enforcement, authorization, approval/block/allow, globs/recursive discovery, implicit sources, outside-repo paths, symlinks, fixtures as positive sources, autonomous live mode, watcher/daemon, network/resource fetch, tool execution, memory/config writes, agent-consumed policy decisions, and external effects.
+
+Compatibility carry-forward: passive live shadow readiness achieved for local operator-run pilot only; no enforcement; no tool execution; no authorization; no daemon/watcher by default; no external effects.

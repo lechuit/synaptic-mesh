@@ -1,11 +1,11 @@
 {
   "bundle": "synaptic-mesh",
-  "version": "0.21.6",
-  "generated": "2026-05-15T12:50:00Z",
-  "status": "v0.21.6_deterministic_live_read_evidence_hotfix_local_manual_no_effects_no_enforcement",
+  "version": "0.22.5",
+  "generated": "2026-05-15T13:35:00Z",
+  "status": "v0.22.5_observed_usefulness_noise_scorecard_local_manual_no_effects_no_enforcement",
   "repository": "https://github.com/lechuit/synaptic-mesh",
   "license": "Apache-2.0 for code; CC BY 4.0 for docs/prose unless otherwise noted",
-  "reproducibility": "expected_pass_local_shadow_gates_for_v0.21.6_deterministic_live_read_evidence_hotfix_positive_utility_pass_gate_PASS_TO_HUMAN_REVIEW_observationAccepted_true_includedInReport_true_readyForHumanReview_true_policy_decision_null_authorization_false_enforcement_false_tool_execution_false_agent_consumed_output_false_external_effects_false_raw_persisted_false_unexpected_permits_0",
+  "reproducibility": "expected_pass_local_shadow_gates_for_v0.22.5_observed_usefulness_noise_scorecard_trueUsefulPasses_3_falsePasses_0_noiseRejected_6_falseValueWarnings_0_passPrecision_1_recommendation_advance_policy_decision_null_authorization_false_enforcement_false_tool_execution_false_agent_consumed_output_false_external_effects_false_raw_persisted_false_unexpected_permits_0",
   "rawSourceCache": "excluded",
-  "runtimeBoundary": "v0.21.6_disabled_by_default_manual_operator_run_local_only_passive_only_read_only_one_shot_only_non_authoritative_not_policy_allow_block_approve_gate_no_authorization_no_enforcement_no_tool_execution_no_agent_consumed_machine_readable_policy_decisions_no_external_effects_not_runtime_authority"
+  "runtimeBoundary": "v0.22.5_disabled_by_default_manual_operator_run_local_only_passive_only_read_only_one_shot_only_non_authoritative_human_readable_only_scorecard_only_not_policy_allow_block_approve_gate_no_authorization_no_enforcement_no_tool_execution_no_agent_consumed_machine_readable_policy_decisions_no_external_effects_not_runtime_authority"
 }
