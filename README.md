@@ -1,22 +1,20 @@
-# Synaptic Mesh v0.25.5
+# Synaptic Mesh v0.26.5
 
-This is the public review release `v0.25.5`. Current v0.25.5 status is narrower than live runtime and crosses the next safe barrier after the v0.24 operator review outcome capture: **operator outcome value scorecard**.
+This is the public review release `v0.26.5`. Current v0.26.5 status is narrower than live runtime and crosses the next safe barrier after the v0.25 value scorecard: **passive observation window**.
 
-The v0.25 ladder is disabled-by-default, manual/operator-run, local-only, passive/read-only, one-shot, bounded to 3 captured outcomes, redacted-evidence-only, human-readable only, non-authoritative, and value-scorecard-only. It consumes explicit local v0.24 capture artifact(s) and scores whether the review queue appears useful, noisy, or needs more evidence.
+The v0.26 ladder is disabled-by-default, operator-run one-shot, local-only, passive/read-only, bounded to explicit repo-local sources and 3 queue/outcome items, local manual outcome fixtures only, redaction-before-persist, redacted evidence packet only, human-readable report only, non-authoritative, and not runtime authority.
 
-Pinned v0.25.5 evidence: `scorecardStatus: VALUE_SCORECARD_COMPLETE`, `usefulOutcomes: 2`, `noiseOutcomes: 1`, `needsMoreEvidence: 0`, `abstainUncertain: 0`, `reviewedItemCount: 3`, `usefulRatio: 0.6667`, `noiseRatio: 0.3333`, `recommendation: ADVANCE_OBSERVATION_ONLY`, `recommendationIsAuthority: false`, `falseAuthorityLeakage: 0`, and negative controls for malformed capture, unsafe labels/tokens including camelCase aliases, boundary keys with true/string/object values, reportMarkdown authority tokens, raw persistence/output, external effects, invalid metrics/ratios, insufficient sample, degrade/hold cases, duplicate/missing outcome IDs, and false recommendation authority leakage.
+Pinned v0.26.5 evidence: `windowStatus: OBSERVATION_WINDOW_COMPLETE`, `stage chain: 6`, `value scorecard: VALUE_SCORECARD_COMPLETE`, `recommendation: HOLD_FOR_MORE_EVIDENCE`, `recommendationIsAuthority: false`, `policyDecision: null`, `redacted evidence packet`, and `human-readable report only`.
 
-Recommendations are limited to human-readable non-authoritative queue-value signals: `ADVANCE_OBSERVATION_ONLY`, `HOLD_FOR_MORE_EVIDENCE`, and `DEGRADE_QUEUE_SIGNAL`.
+The window chains existing safe stages end-to-end: explicit repo-local multisource read evidence, positive pass, usefulness/noise scorecard, controlled operator review queue, local/manual outcome capture, and value scorecard. The scorecard recommendation remains a human review signal only.
 
-Boundaries: `policyDecision: null`, `authorization: false`, `enforcement: false`, `toolExecution: false`, `agentConsumedOutput: false`, `externalEffects: false`, `rawPersisted: false`, `rawOutput: false`, and `runtimeAuthority: false`.
+## v0.26.5 phase close
 
-## v0.25.5 phase close
-
-Operator outcome value scorecard is closed as a local review package. Two independent local review notes are included for branch review context; they are not GitHub reviews and not deployment approvals.
+Passive observation window is closed as a local review package. It demonstrates that a bounded local observation loop can produce useful human review signal without authority, effects, or autonomous runtime.
 
 ## Carry-forward prior release boundaries
 
-The v0.24 operator review outcome capture remains the input evidence baseline: `captureStatus: OUTCOME_CAPTURE_COMPLETE`, `capturedOutcomes: 3`, redaction-before-persist, value-feedback-only, human-readable-only, non-authoritative, and no raw persistence/output.
+The v0.25 operator outcome value scorecard remains the value-signal baseline: `scorecardStatus: VALUE_SCORECARD_COMPLETE`, human-readable-only, non-authoritative, recommendation-not-authority, and no raw persistence/output.
 
 No enforcement, authorization, approval/block/allow semantics, globs/recursive discovery, implicit sources, outside-repo paths, symlinks, autonomous live mode, watcher/daemon, network/resource fetch, tool execution, memory/config writes, agent-consumed machine-readable policy decisions, raw persistence/output, or external effects.
 

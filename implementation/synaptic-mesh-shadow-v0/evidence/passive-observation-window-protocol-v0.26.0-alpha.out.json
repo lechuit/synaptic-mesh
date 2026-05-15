@@ -1,0 +1,23 @@
+{
+  "protocol": {
+    "releaseLayer": "v0.26.0-alpha",
+    "barrierCrossed": "bounded_passive_observation_window_chaining_safe_local_stages",
+    "disabledByDefault": true,
+    "operatorRunOneShotOnly": true,
+    "localOnly": true,
+    "passiveOnly": true,
+    "readOnly": true,
+    "explicitRepoLocalSourcesOnly": true,
+    "boundedSources": 3,
+    "boundedItems": 3,
+    "localManualOutcomeFixturesOnly": true,
+    "redactionBeforePersist": true,
+    "redactedEvidencePacketOnly": true,
+    "humanReadableReportOnly": true,
+    "nonAuthoritative": true,
+    "noRuntimeAuthority": true,
+    "policyDecision": null
+  },
+  "windowStatus": "OBSERVATION_WINDOW_COMPLETE",
+  "policyDecision": null
+}

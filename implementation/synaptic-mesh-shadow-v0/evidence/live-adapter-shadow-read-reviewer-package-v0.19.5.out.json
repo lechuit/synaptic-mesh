@@ -113,7 +113,7 @@
       "kind": "explicit_repo_local_file_via_adapter",
       "repoRelativePathSha256": "b335630551682c19a781afebcf4d07bf978fb1f8ac04c6bf87428ed5106870f5",
       "absolutePathSha256": "543c81f89743c5b0f48fa0200abe84d28dd1fdb1b6687cf610469e9e998e93e0",
-      "sourceSize": 2780,
+      "sourceSize": 2184,
       "sourceMtimeMs": null,
       "rawSourcePathPersisted": false
     },
@@ -121,7 +121,7 @@
       "redactedEvidenceJsonAndHumanReportOnly": true,
       "rawPersisted": false,
       "privatePatternDetected": false,
-      "decisionVerbDetected": true,
+      "decisionVerbDetected": false,
       "semanticDecisionTokenPersisted": false
     },
     "usefulnessScorecard": {
@@ -137,65 +137,65 @@
     "redactedRecords": [
       {
         "index": 0,
-        "rawSha256": "2577ca8dd50ff140edec48a2330cfb0ef7b71ebca12413cacb137bf158313d68",
+        "rawSha256": "69d94475ec9341faa582399a96139ed0a9753e5561343638b9d7543f22d8f9e4",
         "rawBytes": 23,
-        "redactedSha256": "2577ca8dd50ff140edec48a2330cfb0ef7b71ebca12413cacb137bf158313d68",
-        "redactedText": "# Synaptic Mesh v0.25.5",
+        "redactedSha256": "69d94475ec9341faa582399a96139ed0a9753e5561343638b9d7543f22d8f9e4",
+        "redactedText": "# Synaptic Mesh v0.26.5",
         "privatePatternDetected": false,
         "decisionVerbDetected": false,
         "semanticDecisionTokenPersisted": false
       },
       {
         "index": 1,
-        "rawSha256": "ff61606f3c16bee6e2e2c205474ab14522503b2ff782d12f83a6b9a5014df275",
-        "rawBytes": 218,
-        "redactedSha256": "ff61606f3c16bee6e2e2c205474ab14522503b2ff782d12f83a6b9a5014df275",
-        "redactedText": "This is the public review release `v0.25.5`. Current v0.25.5 status is narrower than live runtime and crosses the next safe barrier after the v0.24 operator review outcome capture: **operator outcome value scorecard**.",
+        "rawSha256": "81118f2f2c767475a80608be0be3ccfa927335dcded66d060d110178cee1b200",
+        "rawBytes": 196,
+        "redactedSha256": "81118f2f2c767475a80608be0be3ccfa927335dcded66d060d110178cee1b200",
+        "redactedText": "This is the public review release `v0.26.5`. Current v0.26.5 status is narrower than live runtime and crosses the next safe barrier after the v0.25 value scorecard: **passive observation window**.",
         "privatePatternDetected": false,
         "decisionVerbDetected": false,
         "semanticDecisionTokenPersisted": false
       },
       {
         "index": 2,
-        "rawSha256": "41eeeeea895d4af8b22ded32ba6d5b4afdf830f9b4ba5dbca32aae5e71236c69",
-        "rawBytes": 360,
-        "redactedSha256": "41eeeeea895d4af8b22ded32ba6d5b4afdf830f9b4ba5dbca32aae5e71236c69",
-        "redactedText": "The v0.25 ladder is disabled-by-default, manual/operator-run, local-only, passive/read-only, one-shot, bounded to 3 captured outcomes, redacted-evidence-only, human-readable only, non-authoritative, and value-scorecard-only. It consumes exp",
+        "rawSha256": "2d970a7c90678796cc33de91ee8549ee03e74741de0fd0e595ffe4e464d3cb78",
+        "rawBytes": 327,
+        "redactedSha256": "2d970a7c90678796cc33de91ee8549ee03e74741de0fd0e595ffe4e464d3cb78",
+        "redactedText": "The v0.26 ladder is disabled-by-default, operator-run one-shot, local-only, passive/read-only, bounded to explicit repo-local sources and 3 queue/outcome items, local manual outcome fixtures only, redaction-before-persist, redacted evidence",
         "privatePatternDetected": false,
         "decisionVerbDetected": false,
         "semanticDecisionTokenPersisted": false
       },
       {
         "index": 3,
-        "rawSha256": "fc329e039518c4daf4b12e4b1bbc0d8ab8bceea424161a5a9eade56a9e9bd300",
-        "rawBytes": 690,
-        "redactedSha256": "fc329e039518c4daf4b12e4b1bbc0d8ab8bceea424161a5a9eade56a9e9bd300",
-        "redactedText": "Pinned v0.25.5 evidence: `scorecardStatus: VALUE_SCORECARD_COMPLETE`, `usefulOutcomes: 2`, `noiseOutcomes: 1`, `needsMoreEvidence: 0`, `abstainUncertain: 0`, `reviewedItemCount: 3`, `usefulRatio: 0.6667`, `noiseRatio: 0.3333`, `recommendati",
+        "rawSha256": "069b2439832c5843d72a813fa9c2ade9149e30982fe617d05e6214356e7c6d4a",
+        "rawBytes": 296,
+        "redactedSha256": "069b2439832c5843d72a813fa9c2ade9149e30982fe617d05e6214356e7c6d4a",
+        "redactedText": "Pinned v0.26.5 evidence: `windowStatus: OBSERVATION_WINDOW_COMPLETE`, `stage chain: 6`, `value scorecard: VALUE_SCORECARD_COMPLETE`, `recommendation: HOLD_FOR_MORE_EVIDENCE`, `recommendationIsAuthority: false`, `policyDecision: null`, `reda",
         "privatePatternDetected": false,
         "decisionVerbDetected": false,
         "semanticDecisionTokenPersisted": false
       },
       {
         "index": 4,
-        "rawSha256": "b824b51dd0d65f16d05f453ef3cb5bfc088c374c7270d1805d2bb4469f5d05f6",
-        "rawBytes": 166,
-        "redactedSha256": "b824b51dd0d65f16d05f453ef3cb5bfc088c374c7270d1805d2bb4469f5d05f6",
-        "redactedText": "Recommendations are limited to human-readable non-authoritative queue-value signals: `ADVANCE_OBSERVATION_ONLY`, `HOLD_FOR_MORE_EVIDENCE`, and `DEGRADE_QUEUE_SIGNAL`.",
+        "rawSha256": "88dbb7d40ef8eabd8bcac8aba77fec7c6dcf3d3dee44c375bcd994ecce450351",
+        "rawBytes": 290,
+        "redactedSha256": "88dbb7d40ef8eabd8bcac8aba77fec7c6dcf3d3dee44c375bcd994ecce450351",
+        "redactedText": "The window chains existing safe stages end-to-end: explicit repo-local multisource read evidence, positive pass, usefulness/noise scorecard, controlled operator review queue, local/manual outcome capture, and value scorecard. The scorecard ",
         "privatePatternDetected": false,
         "decisionVerbDetected": false,
         "semanticDecisionTokenPersisted": false
       },
       {
         "index": 5,
-        "rawSha256": "bf20004e99e2813b4da37291baaadd5ac3d06657cc0fdc7bfac6936e3e7d2c7d",
-        "rawBytes": 235,
-        "redactedSha256": "14b648baec7794e13442ac209811fa292e3512cd4055377f415e5dbd54112bc1",
-        "redactedText": "Boundaries: `policyDecision: null`, `[NON_AUTHORITATIVE_INPUT_VERB_REDACTED]: false`, `[NON_AUTHORITATIVE_INPUT_VERB_REDACTED]: false`, `toolExecution: false`, `agentConsumedOutput: false`, `externalEffects: false`, `rawPersisted: false`, `",
+        "rawSha256": "587350ac57646d0ec6cdedd56714310ad01ed1da556fc374bb547a1c626b777c",
+        "rawBytes": 22,
+        "redactedSha256": "587350ac57646d0ec6cdedd56714310ad01ed1da556fc374bb547a1c626b777c",
+        "redactedText": "## v0.26.5 phase close",
         "privatePatternDetected": false,
-        "decisionVerbDetected": true,
+        "decisionVerbDetected": false,
         "semanticDecisionTokenPersisted": false
       }
     ],
-    "reportMarkdown": "# Live Adapter Shadow-Read Report v0.19.5\n\n- Barrier crossed: local adapter shadow-read gate\n- Adapter: repo-local-file-read-adapter-v0\n- Operator-run: true; one-shot: true; local-only/read-only/passive-only: true\n- Records read: 6 / limit 6\n- Redacted evidence only: true; rawPersisted: false; rawOutput: false\n- policyDecision: null; agentConsumedOutput: false; unexpectedPermits: 0\n- Enforcement/authorization/approval/block/allow: false\n\n## Redacted evidence preview\n- #0: # Synaptic Mesh v0.25.5\n- #1: This is the public review release `v0.25.5`. Current v0.25.5 status is narrower than live runtime and crosses the next safe barrier after the v0.24 operator review outcome capture: **operator outcome value scorecard**.\n- #2: The v0.25 ladder is disabled-by-default, manual/operator-run, local-only, passive/read-only, one-shot, bounded to 3 captured outcomes, redacted-evidence-only, human-readable only, non-authoritative, and value-scorecard-only. It consumes exp\n- #3: Pinned v0.25.5 evidence: `scorecardStatus: VALUE_SCORECARD_COMPLETE`, `usefulOutcomes: 2`, `noiseOutcomes: 1`, `needsMoreEvidence: 0`, `abstainUncertain: 0`, `reviewedItemCount: 3`, `usefulRatio: 0.6667`, `noiseRatio: 0.3333`, `recommendati\n- #4: Recommendations are limited to human-readable non-authoritative queue-value signals: `ADVANCE_OBSERVATION_ONLY`, `HOLD_FOR_MORE_EVIDENCE`, and `DEGRADE_QUEUE_SIGNAL`.\n- #5: Boundaries: `policyDecision: null`, `[NON_AUTHORITATIVE_INPUT_VERB_REDACTED]: false`, `[NON_AUTHORITATIVE_INPUT_VERB_REDACTED]: false`, `toolExecution: false`, `agentConsumedOutput: false`, `externalEffects: false`, `rawPersisted: false`, `\n"
+    "reportMarkdown": "# Live Adapter Shadow-Read Report v0.19.5\n\n- Barrier crossed: local adapter shadow-read gate\n- Adapter: repo-local-file-read-adapter-v0\n- Operator-run: true; one-shot: true; local-only/read-only/passive-only: true\n- Records read: 6 / limit 6\n- Redacted evidence only: true; rawPersisted: false; rawOutput: false\n- policyDecision: null; agentConsumedOutput: false; unexpectedPermits: 0\n- Enforcement/authorization/approval/block/allow: false\n\n## Redacted evidence preview\n- #0: # Synaptic Mesh v0.26.5\n- #1: This is the public review release `v0.26.5`. Current v0.26.5 status is narrower than live runtime and crosses the next safe barrier after the v0.25 value scorecard: **passive observation window**.\n- #2: The v0.26 ladder is disabled-by-default, operator-run one-shot, local-only, passive/read-only, bounded to explicit repo-local sources and 3 queue/outcome items, local manual outcome fixtures only, redaction-before-persist, redacted evidence\n- #3: Pinned v0.26.5 evidence: `windowStatus: OBSERVATION_WINDOW_COMPLETE`, `stage chain: 6`, `value scorecard: VALUE_SCORECARD_COMPLETE`, `recommendation: HOLD_FOR_MORE_EVIDENCE`, `recommendationIsAuthority: false`, `policyDecision: null`, `reda\n- #4: The window chains existing safe stages end-to-end: explicit repo-local multisource read evidence, positive pass, usefulness/noise scorecard, controlled operator review queue, local/manual outcome capture, and value scorecard. The scorecard\n- #5: ## v0.26.5 phase close\n"
   }
 }

@@ -17,6 +17,7 @@ import { observedUsefulnessNoiseScorecardSuite } from './observed-usefulness-noi
 import { controlledOperatorReviewQueueSuite } from './controlled-operator-review-queue.mjs';
 import { operatorReviewOutcomeCaptureSuite } from './operator-review-outcome-capture.mjs';
 import { operatorOutcomeValueScorecardSuite } from './operator-outcome-value-scorecard.mjs';
+import { passiveObservationWindowSuite } from './passive-observation-window.mjs';
 
 export const releaseCheckSuites = Object.freeze([
   passiveLiveShadowCanarySuite,
@@ -38,4 +39,5 @@ export const releaseCheckSuites = Object.freeze([
   controlledOperatorReviewQueueSuite,
   operatorReviewOutcomeCaptureSuite,
   operatorOutcomeValueScorecardSuite,
+  passiveObservationWindowSuite,
 ]);
