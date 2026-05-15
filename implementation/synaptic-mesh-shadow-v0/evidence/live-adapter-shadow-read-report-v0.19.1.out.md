@@ -9,9 +9,9 @@
 - Enforcement/authorization/approval/block/allow: false
 
 ## Redacted evidence preview
-- #0: # Synaptic Mesh v0.24.5
-- #1: This is the public review release `v0.24.5`. Current v0.24.5 status is narrower than live runtime and crosses the next safe barrier after the v0.23 controlled operator review queue: **operator review outcome capture**.
-- #2: The v0.24 ladder is disabled-by-default, manual/operator-run, local-only, passive/read-only, one-shot, bounded to 3 items, redacted-evidence-only, redaction-before-persist, human-readable only, non-authoritative, and value-feedback-only. It
-- #3: Pinned v0.24.5 evidence: `captureStatus: OUTCOME_CAPTURE_COMPLETE`, `capturedOutcomes: 3`, `redactionBeforePersist: true`, `valueFeedbackOnly: true`, `falseAuthorityLeakage: 0`, and negative controls for malformed queue/outcomes, unsafe lab
-- #4: Outcome labels are limited to value feedback: `USEFUL_FOR_REVIEW`, `NOT_USEFUL_NOISE`, `NEEDS_MORE_EVIDENCE`, and `ABSTAIN_OPERATOR_UNCERTAIN`.
+- #0: # Synaptic Mesh v0.25.5
+- #1: This is the public review release `v0.25.5`. Current v0.25.5 status is narrower than live runtime and crosses the next safe barrier after the v0.24 operator review outcome capture: **operator outcome value scorecard**.
+- #2: The v0.25 ladder is disabled-by-default, manual/operator-run, local-only, passive/read-only, one-shot, bounded to 3 captured outcomes, redacted-evidence-only, human-readable only, non-authoritative, and value-scorecard-only. It consumes exp
+- #3: Pinned v0.25.5 evidence: `scorecardStatus: VALUE_SCORECARD_COMPLETE`, `usefulOutcomes: 2`, `noiseOutcomes: 1`, `needsMoreEvidence: 0`, `abstainUncertain: 0`, `reviewedItemCount: 3`, `usefulRatio: 0.6667`, `noiseRatio: 0.3333`, `recommendati
+- #4: Recommendations are limited to human-readable non-authoritative queue-value signals: `ADVANCE_OBSERVATION_ONLY`, `HOLD_FOR_MORE_EVIDENCE`, and `DEGRADE_QUEUE_SIGNAL`.
 - #5: Boundaries: `policyDecision: null`, `[NON_AUTHORITATIVE_INPUT_VERB_REDACTED]: false`, `[NON_AUTHORITATIVE_INPUT_VERB_REDACTED]: false`, `toolExecution: false`, `agentConsumedOutput: false`, `externalEffects: false`, `rawPersisted: false`, `

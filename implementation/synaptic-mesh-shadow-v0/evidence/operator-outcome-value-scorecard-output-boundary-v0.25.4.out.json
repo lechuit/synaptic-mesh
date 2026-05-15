@@ -1,0 +1,12 @@
+{
+  "boundary": {
+    "policyDecision": null,
+    "authorization": false,
+    "enforcement": false,
+    "toolExecution": false,
+    "externalEffects": false,
+    "rawPersisted": false,
+    "rawOutput": false,
+    "recommendationIsAuthority": false
+  }
+}

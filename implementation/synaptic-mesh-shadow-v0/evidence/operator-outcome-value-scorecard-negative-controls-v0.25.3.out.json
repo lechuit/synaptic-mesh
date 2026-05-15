@@ -1,0 +1,170 @@
+{
+  "rejectedNegativeControls": [
+    {
+      "name": "malformed_capture",
+      "validationIssues": [
+        "capture.malformed_not_object"
+      ]
+    },
+    {
+      "name": "unsafe_label_approve",
+      "validationIssues": [
+        "capture.capturedOutcomes[0].unsafe_or_unknown_outcome_label",
+        "capture.capturedOutcomes[0].outcomeLabel.authority_token:approve"
+      ]
+    },
+    {
+      "name": "unsafe_label_allow_camel",
+      "validationIssues": [
+        "capture.capturedOutcomes[0].unsafe_or_unknown_outcome_label",
+        "capture.capturedOutcomes[0].outcomeLabel.authority_token:mayAllow"
+      ]
+    },
+    {
+      "name": "operator_note_policy_decision",
+      "validationIssues": [
+        "capture.capturedOutcomes[0].operatorNoteRedacted.authority_token:approve",
+        "capture.capturedOutcomes[0].operatorNoteRedacted.authority_token:policyDecision"
+      ]
+    },
+    {
+      "name": "reason_tool_execution",
+      "validationIssues": [
+        "capture.capturedOutcomes[0].reasonCodes[0].authority_token:toolExecution"
+      ]
+    },
+    {
+      "name": "policy_decision_non_null",
+      "validationIssues": [
+        "capture.policyDecision_non_null",
+        "capture.policyDecision.authority_token:allow"
+      ]
+    },
+    {
+      "name": "authorization_true",
+      "validationIssues": [
+        "capture.authorization_not_false"
+      ]
+    },
+    {
+      "name": "tool_execution_string",
+      "validationIssues": [
+        "capture.toolExecution_not_false"
+      ]
+    },
+    {
+      "name": "external_effects_object",
+      "validationIssues": [
+        "capture.externalEffects_not_false"
+      ]
+    },
+    {
+      "name": "raw_persisted_true",
+      "validationIssues": [
+        "capture.rawPersisted_not_false"
+      ]
+    },
+    {
+      "name": "raw_output_string",
+      "validationIssues": [
+        "capture.rawOutput_not_false"
+      ]
+    },
+    {
+      "name": "entry_approval_block_allow_true",
+      "validationIssues": [
+        "capture.capturedOutcomes[0].approvalBlockAllow_not_false"
+      ]
+    },
+    {
+      "name": "entry_network_fetch_object",
+      "validationIssues": [
+        "capture.capturedOutcomes[0].networkFetch_not_false"
+      ]
+    },
+    {
+      "name": "entry_memory_write_string",
+      "validationIssues": [
+        "capture.capturedOutcomes[0].memoryConfigWrite_not_false"
+      ]
+    },
+    {
+      "name": "report_markdown_authority",
+      "validationIssues": [
+        "capture.reportMarkdown.authority_token:approve",
+        "capture.reportMarkdown.authority_token:policyDecision"
+      ]
+    },
+    {
+      "name": "duplicate_outcome_id",
+      "validationIssues": [
+        "capture.capturedOutcomes[1].duplicate_queue_item_id"
+      ]
+    },
+    {
+      "name": "missing_outcome_id",
+      "validationIssues": [
+        "capture.capturedOutcomes[0].queue_item_id_required"
+      ]
+    },
+    {
+      "name": "malformed_outcome_entry",
+      "validationIssues": [
+        "capture.capturedOutcomes[0].malformed_not_object"
+      ]
+    },
+    {
+      "name": "invalid_count_mismatch",
+      "validationIssues": [
+        "capture.captured_outcome_count_mismatch"
+      ]
+    },
+    {
+      "name": "captured_outcome_count_string",
+      "validationIssues": [
+        "capture.captured_outcome_count_not_integer"
+      ]
+    },
+    {
+      "name": "invalid_metrics_by_malformed_degrades",
+      "validationIssues": [
+        "capture.captured_outcome_count_out_of_bounds",
+        "capture.captured_outcome_count_mismatch"
+      ]
+    },
+    {
+      "name": "artifact_authority_token",
+      "validationIssues": [
+        "capture.artifact.authority_token:approve",
+        "capture.artifact.authority_token:rawOutput"
+      ]
+    },
+    {
+      "name": "protocol_report_markdown_authority",
+      "validationIssues": [
+        "capture.protocol.reportMarkdown.authority_token:approve",
+        "capture.protocol.reportMarkdown.authority_token:rawOutput",
+        "capture.protocol.reportMarkdown.authority_token:policyDecision"
+      ]
+    },
+    {
+      "name": "recommendation_field_authority",
+      "validationIssues": [
+        "capture.recommendation.authority_token:approve"
+      ]
+    },
+    {
+      "name": "capture_status_authority_token",
+      "validationIssues": [
+        "capture.status_not_complete",
+        "capture.captureStatus.authority_token:approve"
+      ]
+    },
+    {
+      "name": "false_recommendation_authority_leakage",
+      "validationIssues": [
+        "capture.capturedOutcomes[0].operatorNoteRedacted.authority_token:mayBlock"
+      ]
+    }
+  ]
+}

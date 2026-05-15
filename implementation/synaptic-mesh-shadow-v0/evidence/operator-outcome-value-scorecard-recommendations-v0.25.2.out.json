@@ -1,0 +1,84 @@
+{
+  "cases": [
+    {
+      "name": "advance_observation_only",
+      "metrics": {
+        "usefulOutcomes": 2,
+        "noiseOutcomes": 1,
+        "needsMoreEvidence": 0,
+        "abstainUncertain": 0,
+        "reviewedItemCount": 3,
+        "usefulRatio": 0.6667,
+        "noiseRatio": 0.3333,
+        "evidenceGapRatio": 0,
+        "validationIssueCount": 0
+      },
+      "recommendation": "ADVANCE_OBSERVATION_ONLY",
+      "status": "VALUE_SCORECARD_COMPLETE"
+    },
+    {
+      "name": "hold_needs_more_evidence",
+      "metrics": {
+        "usefulOutcomes": 2,
+        "noiseOutcomes": 0,
+        "needsMoreEvidence": 1,
+        "abstainUncertain": 0,
+        "reviewedItemCount": 3,
+        "usefulRatio": 0.6667,
+        "noiseRatio": 0,
+        "evidenceGapRatio": 0.3333,
+        "validationIssueCount": 0
+      },
+      "recommendation": "HOLD_FOR_MORE_EVIDENCE",
+      "status": "VALUE_SCORECARD_COMPLETE"
+    },
+    {
+      "name": "hold_abstain_uncertain",
+      "metrics": {
+        "usefulOutcomes": 2,
+        "noiseOutcomes": 0,
+        "needsMoreEvidence": 0,
+        "abstainUncertain": 1,
+        "reviewedItemCount": 3,
+        "usefulRatio": 0.6667,
+        "noiseRatio": 0,
+        "evidenceGapRatio": 0.3333,
+        "validationIssueCount": 0
+      },
+      "recommendation": "HOLD_FOR_MORE_EVIDENCE",
+      "status": "VALUE_SCORECARD_COMPLETE"
+    },
+    {
+      "name": "degrade_noise_signal",
+      "metrics": {
+        "usefulOutcomes": 1,
+        "noiseOutcomes": 2,
+        "needsMoreEvidence": 0,
+        "abstainUncertain": 0,
+        "reviewedItemCount": 3,
+        "usefulRatio": 0.3333,
+        "noiseRatio": 0.6667,
+        "evidenceGapRatio": 0,
+        "validationIssueCount": 0
+      },
+      "recommendation": "DEGRADE_QUEUE_SIGNAL",
+      "status": "VALUE_SCORECARD_COMPLETE"
+    },
+    {
+      "name": "hold_insufficient_sample",
+      "metrics": {
+        "usefulOutcomes": 2,
+        "noiseOutcomes": 0,
+        "needsMoreEvidence": 0,
+        "abstainUncertain": 0,
+        "reviewedItemCount": 2,
+        "usefulRatio": 1,
+        "noiseRatio": 0,
+        "evidenceGapRatio": 0,
+        "validationIssueCount": 0
+      },
+      "recommendation": "HOLD_FOR_MORE_EVIDENCE",
+      "status": "VALUE_SCORECARD_COMPLETE"
+    }
+  ]
+}

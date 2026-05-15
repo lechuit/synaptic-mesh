@@ -1,0 +1,20 @@
+import assert from 'node:assert/strict';
+import { mkdir, writeFile } from 'node:fs/promises';
+import { resolve } from 'node:path';
+import { scoreOperatorOutcomeValue } from '../src/operator-outcome-value-scorecard.mjs';
+import { operatorOutcomeCaptureFixture } from './operator-outcome-value-scorecard-fixtures.mjs';
+
+await mkdir(resolve('evidence'), { recursive: true });
+const scorecard = scoreOperatorOutcomeValue(await operatorOutcomeCaptureFixture());
+assert.equal(scorecard.humanReadableOnly, true);
+assert.equal(scorecard.nonAuthoritative, true);
+assert.equal(scorecard.valueScorecardOnly, true);
+assert.equal(scorecard.policyDecision, null);
+for (const key of ['authorization','enforcement','approvalBlockAllow','toolExecution','memoryConfigWrite','networkResourceFetch','externalEffects','rawPersisted','rawOutput','agentConsumedOutput','machineReadablePolicyDecision','runtimeAuthority']) assert.equal(scorecard[key], false, key);
+assert.equal(scorecard.recommendationIsAuthority, false);
+assert.equal(scorecard.reportMarkdown.includes('policyDecision: null'), true);
+assert.equal(scorecard.reportMarkdown.includes('human-readable non-authoritative signal only'), true);
+assert.equal(/\b(allow|block|approve|authorize|enforce)\b/i.test(scorecard.recommendation), false);
+await writeFile(resolve('evidence/operator-outcome-value-scorecard-output-boundary-v0.25.4.out.json'), JSON.stringify({ boundary: { policyDecision: scorecard.policyDecision, authorization: scorecard.authorization, enforcement: scorecard.enforcement, toolExecution: scorecard.toolExecution, externalEffects: scorecard.externalEffects, rawPersisted: scorecard.rawPersisted, rawOutput: scorecard.rawOutput, recommendationIsAuthority: scorecard.recommendationIsAuthority } }, null, 2) + '\n');
+await writeFile(resolve('evidence/operator-outcome-value-scorecard-report-v0.25.4.out.md'), scorecard.reportMarkdown);
+console.log(JSON.stringify({ ok: true, recommendation: scorecard.recommendation }, null, 2));
