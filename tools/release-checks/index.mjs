@@ -10,6 +10,7 @@ import { passiveLiveShadowLocalPilotSuite } from './passive-live-shadow-local-pi
 import { tinyOperatorPassivePilotSuite } from './tiny-operator-passive-pilot.mjs';
 import { limitedPassiveLiveCaptureReadinessSuite } from './limited-passive-live-capture-readiness.mjs';
 import { liveReadGateSuite } from './live-read-gate.mjs';
+import { liveAdapterShadowReadSuite } from './live-adapter-shadow-read.mjs';
 
 export const releaseCheckSuites = Object.freeze([
   passiveLiveShadowCanarySuite,
@@ -24,4 +25,5 @@ export const releaseCheckSuites = Object.freeze([
   tinyOperatorPassivePilotSuite,
   limitedPassiveLiveCaptureReadinessSuite,
   liveReadGateSuite,
+  liveAdapterShadowReadSuite,
 ]);

@@ -1,0 +1,72 @@
+{
+  "artifact": "T-synaptic-mesh-live-adapter-shadow-read-redaction-retention-v0.19.3",
+  "timestamp": "2026-05-15T12:05:00.000Z",
+  "summary": {
+    "liveAdapterShadowReadBarrierCrossed": true,
+    "localAdapterShadowReadGate": true,
+    "disabledManualOperatorRunLocalPassiveReadOnly": true,
+    "oneShot": true,
+    "constrainedLocalReadAdapter": true,
+    "singleExplicitLocalSourceOnly": true,
+    "realLocalSourceRequired": true,
+    "boundedWindowAndRecords": true,
+    "recordLimit": 3,
+    "recordsRead": 3,
+    "redactedRecordsPersisted": 3,
+    "humanReadableReport": true,
+    "rawPersisted": false,
+    "rawOutput": false,
+    "agentConsumedOutput": false,
+    "policyDecision": null,
+    "unexpectedPermits": 0,
+    "externalEffects": false,
+    "enforcement": false,
+    "authorization": false,
+    "approvalBlockAllow": false,
+    "toolExecution": false,
+    "memoryConfigWrite": false,
+    "watcherDaemon": false,
+    "autonomousLiveMode": false,
+    "networkResourceFetch": false,
+    "batchMode": false
+  },
+  "retention": {
+    "redactedEvidenceJsonAndHumanReportOnly": true,
+    "rawPersisted": false,
+    "privatePatternDetected": true,
+    "decisionVerbDetected": true,
+    "semanticDecisionTokenPersisted": false
+  },
+  "redactedRecords": [
+    {
+      "index": 0,
+      "rawSha256": "d81c54dc129899c2b59503befaccdc97af8dae5bb0d5b60720ae1a60c2443be9",
+      "rawBytes": 20,
+      "redactedSha256": "b03e4c7a41a06a898f0485d3a848991dfd4b5ae3c8826e1a21bc99bd4b164511",
+      "redactedText": "hello [REDACTED]",
+      "privatePatternDetected": true,
+      "decisionVerbDetected": false,
+      "semanticDecisionTokenPersisted": false
+    },
+    {
+      "index": 1,
+      "rawSha256": "07ea9d8b2fe00e487ffc27e3e7c3f0e452139584134999c305124844986317a8",
+      "rawBytes": 26,
+      "redactedSha256": "0c441388bd37b280f2392676dfa6ca8189ec4bd6895031b39d8099598ef5bf0a",
+      "redactedText": "please [NON_AUTHORITATIVE_INPUT_VERB_REDACTED] this action",
+      "privatePatternDetected": false,
+      "decisionVerbDetected": true,
+      "semanticDecisionTokenPersisted": false
+    },
+    {
+      "index": 2,
+      "rawSha256": "9cd68d05f8c681c866c1e7980b50021e83066d9db171dd8084f7e6e18d7dca46",
+      "rawBytes": 11,
+      "redactedSha256": "9cd68d05f8c681c866c1e7980b50021e83066d9db171dd8084f7e6e18d7dca46",
+      "redactedText": "public line",
+      "privatePatternDetected": false,
+      "decisionVerbDetected": false,
+      "semanticDecisionTokenPersisted": false
+    }
+  ]
+}

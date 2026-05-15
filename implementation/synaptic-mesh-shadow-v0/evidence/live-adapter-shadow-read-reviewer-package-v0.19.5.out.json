@@ -1,17 +1,19 @@
 {
-  "artifact": "T-synaptic-mesh-live-read-gate-reviewer-package-v0.18.5",
-  "timestamp": "2026-05-15T11:00:00.000Z",
+  "artifact": "T-synaptic-mesh-live-adapter-shadow-read-reviewer-package-v0.19.5",
+  "timestamp": "2026-05-15T12:05:00.000Z",
   "summary": {
-    "liveReadBarrierCrossed": true,
-    "liveInputIngestionReadGate": true,
+    "liveAdapterShadowReadBarrierCrossed": true,
+    "localAdapterShadowReadGate": true,
     "disabledManualOperatorRunLocalPassiveReadOnly": true,
     "oneShot": true,
+    "constrainedLocalReadAdapter": true,
     "singleExplicitLocalSourceOnly": true,
     "realLocalSourceRequired": true,
-    "boundedRecords": true,
+    "boundedWindowAndRecords": true,
     "recordLimit": 6,
     "recordsRead": 6,
     "redactedRecordsPersisted": 6,
+    "humanReadableReport": true,
     "rawPersisted": false,
     "rawOutput": false,
     "agentConsumedOutput": false,
@@ -34,21 +36,23 @@
     "notDeploymentApproval": true
   },
   "packet": {
-    "artifact": "T-synaptic-mesh-live-read-gate-v0.18.5",
-    "schemaVersion": "live-read-gate-v0.18.1",
-    "releaseLayer": "v0.18.5",
-    "timestamp": "2026-05-15T11:00:00.000Z",
+    "artifact": "T-synaptic-mesh-live-adapter-shadow-read-v0.19.5",
+    "schemaVersion": "live-adapter-shadow-read-v0.19.1",
+    "releaseLayer": "v0.19.5",
+    "timestamp": "2026-05-15T12:05:00.000Z",
     "summary": {
-      "liveReadBarrierCrossed": true,
-      "liveInputIngestionReadGate": true,
+      "liveAdapterShadowReadBarrierCrossed": true,
+      "localAdapterShadowReadGate": true,
       "disabledManualOperatorRunLocalPassiveReadOnly": true,
       "oneShot": true,
+      "constrainedLocalReadAdapter": true,
       "singleExplicitLocalSourceOnly": true,
       "realLocalSourceRequired": true,
-      "boundedRecords": true,
+      "boundedWindowAndRecords": true,
       "recordLimit": 6,
       "recordsRead": 6,
       "redactedRecordsPersisted": 6,
+      "humanReadableReport": true,
       "rawPersisted": false,
       "rawOutput": false,
       "agentConsumedOutput": false,
@@ -66,8 +70,8 @@
       "batchMode": false
     },
     "protocol": {
-      "releaseLayer": "v0.18.0-alpha",
-      "barrierCrossed": "live_input_ingestion_read_gate",
+      "releaseLayer": "v0.19.0-alpha",
+      "barrierCrossed": "local_adapter_shadow_read_gate",
       "disabledByDefault": true,
       "humanStartedManualOnly": true,
       "operatorRun": true,
@@ -76,8 +80,9 @@
       "passiveOnly": true,
       "readOnly": true,
       "oneShot": true,
+      "constrainedLocalReadAdapter": true,
       "singleExplicitLocalSourceOnly": true,
-      "boundedRecords": true,
+      "boundedWindowAndRecords": true,
       "maxRecords": 12,
       "realLocalSourceRequired": true,
       "fixturePositiveInputAllowed": false,
@@ -96,8 +101,16 @@
       "approvalBlockAllowAuthorizationEnforcement": false,
       "externalEffects": false
     },
+    "adapter": {
+      "id": "repo-local-file-read-adapter-v0",
+      "kind": "constrained_local_read_adapter",
+      "localOnly": true,
+      "passiveOnly": true,
+      "readOnly": true,
+      "rawAdapterOutputPersisted": false
+    },
     "source": {
-      "kind": "explicit_repo_local_file",
+      "kind": "explicit_repo_local_file_via_adapter",
       "repoRelativePathSha256": "b335630551682c19a781afebcf4d07bf978fb1f8ac04c6bf87428ed5106870f5",
       "absolutePathSha256": "543c81f89743c5b0f48fa0200abe84d28dd1fdb1b6687cf610469e9e998e93e0",
       "sourceSize": 2499,
@@ -105,19 +118,21 @@
       "rawSourcePathPersisted": false
     },
     "retention": {
-      "redactedEvidenceJsonOnly": true,
+      "redactedEvidenceJsonAndHumanReportOnly": true,
       "rawPersisted": false,
       "privatePatternDetected": false,
       "decisionVerbDetected": true,
       "semanticDecisionTokenPersisted": false
     },
     "usefulnessScorecard": {
-      "crossedLiveInputIngestionBarrier": true,
+      "crossedLocalAdapterShadowReadBarrier": true,
+      "usedConstrainedLocalReadAdapter": true,
       "usedRealRepoLocalSource": true,
       "notFixturePositiveInput": true,
       "boundedNRecords": true,
       "redactedHumanReadableEvidence": true,
-      "suitableNextStep": "v0.19_candidate_live_adapter_shadow_read_without_enforcement"
+      "readinessTheaterAvoided": true,
+      "suitableNextStep": "v0.20_candidate_adapter_shadow_read_observed_failure_modes_without_authority"
     },
     "redactedRecords": [
       {
@@ -180,6 +195,7 @@
         "decisionVerbDetected": false,
         "semanticDecisionTokenPersisted": false
       }
-    ]
+    ],
+    "reportMarkdown": "# Live Adapter Shadow-Read Report v0.19.5\n\n- Barrier crossed: local adapter shadow-read gate\n- Adapter: repo-local-file-read-adapter-v0\n- Operator-run: true; one-shot: true; local-only/read-only/passive-only: true\n- Records read: 6 / limit 6\n- Redacted evidence only: true; rawPersisted: false; rawOutput: false\n- policyDecision: null; agentConsumedOutput: false; unexpectedPermits: 0\n- Enforcement/authorization/approval/block/allow: false\n\n## Redacted evidence preview\n- #0: # Synaptic Mesh v0.19.5\n- #1: This is the public review release `v0.19.5`. Current v0.19.5 status is narrower than live runtime but crosses the next smallest safe barrier after v0.18: a **live-adapter shadow-read** through a minimal constrained local read adapter abstra\n- #2: The v0.19.x ladder is still gated, disabled/manual/operator-run/local/passive/read-only. It performs an operator-run one-shot read from one explicit repo-local real source through `repo-local-file-read-adapter-v0`, with bounded window/count\n- #3: Boundaries: no [NON_AUTHORITATIVE_INPUT_VERB_REDACTED], no [NON_AUTHORITATIVE_INPUT_VERB_REDACTED], no approval/[NON_AUTHORITATIVE_INPUT_VERB_REDACTED]/[NON_AUTHORITATIVE_INPUT_VERB_REDACTED], no autonomous live mode, no watcher/daemon, no\n- #4: Final evidence: live-adapter shadow-read; minimal constrained local read adapter abstraction; operator-run one-shot; local-only; passive/read-only; bounded window/count; redaction-before-persist; redacted evidence only; human-readable repor\n- #5: ## v0.19.5 phase close\n"
   }
 }
