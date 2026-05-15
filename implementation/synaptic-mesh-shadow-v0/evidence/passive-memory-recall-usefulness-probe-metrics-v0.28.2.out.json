@@ -3,6 +3,7 @@
   "metrics": {
     "cardCount": 4,
     "evidenceCount": 5,
+    "sourceArtifactCount": 1,
     "usefulRecallRatio": 0.75,
     "contradictionSurfacingRatio": 1,
     "staleNegativeMarkedRatio": 1,

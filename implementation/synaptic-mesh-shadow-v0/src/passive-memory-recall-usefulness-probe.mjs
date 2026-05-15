@@ -27,9 +27,18 @@ function asArray(value) { return Array.isArray(value) ? value : []; }
 function isPlainObject(value) { return value && typeof value === 'object' && !Array.isArray(value); }
 function hasOwn(object, key) { return Object.prototype.hasOwnProperty.call(object ?? {}, key); }
 function sha256(value) { return createHash('sha256').update(String(value ?? '')).digest('hex'); }
-function tokenPattern(token) { return new RegExp(`(^|[^A-Za-z0-9])${token.replace(/[.*+?^${}()|[\\]\\]/g, '\\$&')}([^A-Za-z0-9]|$)`, 'i'); }
+function escapeRe(value) { return String(value).replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
+function tokenPattern(token) { return new RegExp(`(^|[^A-Za-z0-9])${escapeRe(token)}([^A-Za-z0-9]|$)`, 'i'); }
 function ratio(numerator, denominator) { return denominator > 0 ? Number((numerator / denominator).toFixed(4)) : 0; }
 function intersects(left, right) { const set = new Set(asArray(left).map(String)); return asArray(right).map(String).some((item) => set.has(item)); }
+
+export function sourceAnchorDigest(redactedExcerpt) {
+  return sha256(String(redactedExcerpt ?? ''));
+}
+
+export function evidenceSourceDigest({ sourceArtifactId, sourceArtifactPath, sourceAnchorId, redactedExcerpt }) {
+  return sha256([sourceArtifactId, sourceArtifactPath, sourceAnchorId, redactedExcerpt].map((part) => String(part ?? '')).join('\n'));
+}
 
 function findAuthorityTokens(value, prefix = 'artifact') {
   const issues = [];
@@ -86,6 +95,7 @@ export function passiveMemoryRecallUsefulnessProtocol() {
     readOnly: true,
     explicitArtifactsOnly: true,
     acceptsOnlyRedactedObservationArtifactsAndNeedCards: true,
+    verifiesSourceAnchorsAgainstRedactedArtifactContent: true,
     evaluatesDecisionsRulesContradictionsAndStaleNegativeContext: true,
     humanReadableReportOnly: true,
     nonAuthoritative: true,
@@ -109,6 +119,8 @@ export function validatePassiveMemoryRecallUsefulnessInput(input = {}) {
   }
   if (!Array.isArray(input.evidence)) issues.push('evidence.explicit_array_required');
   else input.evidence.forEach((entry, index) => issues.push(...validateEvidence(entry, `evidence[${index}]`)));
+  if (!Array.isArray(input.sourceArtifacts)) issues.push('sourceArtifacts.explicit_array_required');
+  else input.sourceArtifacts.forEach((entry, index) => issues.push(...validateSourceArtifact(entry, `sourceArtifacts[${index}]`)));
   if (input.recommendationIsAuthority === true) issues.push('input.recommendation_treated_as_authority');
   if (input.rawPersist === true || input.rawOutput === true || input.persistRaw === true) issues.push('input.raw_persistence_or_output_requested');
   if (input.externalEffects === true || input.networkFetch === true || input.resourceFetch === true || input.toolExecution === true) issues.push('input.external_or_tool_effect_requested');
@@ -137,7 +149,23 @@ function validateEvidence(entry, prefix) {
   if (entry.policyDecision !== null) issues.push(`${prefix}.policyDecision_non_null`);
   if (entry.redacted !== true) issues.push(`${prefix}.redacted_required`);
   if (!entry.sourceArtifactId || !entry.sourceArtifactPath || !entry.digest) issues.push(`${prefix}.source_binding_required`);
+  if (!entry.sourceAnchorId || !entry.sourceAnchorDigest) issues.push(`${prefix}.source_anchor_required`);
   if (entry.sourceArtifactPath && !String(entry.sourceArtifactPath).startsWith('implementation/synaptic-mesh-shadow-v0/evidence/')) issues.push(`${prefix}.source_path_not_evidence_artifact`);
+  return issues;
+}
+
+function validateSourceArtifact(entry, prefix) {
+  const issues = [];
+  if (!isPlainObject(entry)) return [`${prefix}.malformed_source_artifact`];
+  if (typeof entry.sourceArtifactId !== 'string' || !entry.sourceArtifactId.trim()) issues.push(`${prefix}.source_artifact_id_required`);
+  if (typeof entry.sourceArtifactPath !== 'string' || !entry.sourceArtifactPath.startsWith('implementation/synaptic-mesh-shadow-v0/evidence/')) issues.push(`${prefix}.source_path_not_evidence_artifact`);
+  if (entry.policyDecision !== null) issues.push(`${prefix}.policyDecision_non_null`);
+  if (entry.redacted !== true) issues.push(`${prefix}.redacted_required`);
+  if (!Array.isArray(entry.anchors) || entry.anchors.length === 0) issues.push(`${prefix}.anchors_required`);
+  else entry.anchors.forEach((anchor, index) => {
+    if (!anchor?.id) issues.push(`${prefix}.anchors[${index}].id_required`);
+    if (typeof anchor?.redactedExcerpt !== 'string' || anchor.redactedExcerpt.length < 20) issues.push(`${prefix}.anchors[${index}].redacted_excerpt_required`);
+  });
   return issues;
 }
 
@@ -157,21 +185,55 @@ function normalizeCards(cards) {
   }));
 }
 
-function normalizeEvidence(evidence) {
-  return asArray(evidence).map((entry, index) => ({
-    id: String(entry?.id ?? `evidence-${index}`),
-    signal: entry?.signal,
-    sourceBound: Boolean(entry?.sourceArtifactId && entry?.sourceArtifactPath && entry?.digest),
-    sourceArtifactId: entry?.sourceArtifactId ?? null,
-    sourceArtifactPath: entry?.sourceArtifactPath ?? null,
-    digest: entry?.digest ?? null,
-    tags: asArray(entry?.tags).map(String),
-    stale: entry?.stale === true,
-    contradicts: asArray(entry?.contradicts).map(String),
-    redacted: entry?.redacted === true,
-    artifactSha256: sha256(JSON.stringify(entry ?? null)),
-    policyDecision: null
-  }));
+function sourceArtifactIndex(sourceArtifacts) {
+  const map = new Map();
+  for (const artifact of asArray(sourceArtifacts)) map.set(`${artifact?.sourceArtifactId ?? ''}\n${artifact?.sourceArtifactPath ?? ''}`, artifact);
+  return map;
+}
+
+function verifySourceBinding(entry, sources) {
+  const issues = [];
+  const source = sources.get(`${entry?.sourceArtifactId ?? ''}\n${entry?.sourceArtifactPath ?? ''}`);
+  if (!source) return { sourceBound: false, sourceBindingIssues: ['source_artifact_not_found'], anchorExcerptSha256: null };
+  const anchor = asArray(source.anchors).find((candidate) => candidate?.id === entry?.sourceAnchorId);
+  if (!anchor) issues.push('source_anchor_not_found');
+  else {
+    const expectedAnchorDigest = sourceAnchorDigest(anchor.redactedExcerpt);
+    const expectedEvidenceDigest = evidenceSourceDigest({
+      sourceArtifactId: source.sourceArtifactId,
+      sourceArtifactPath: source.sourceArtifactPath,
+      sourceAnchorId: anchor.id,
+      redactedExcerpt: anchor.redactedExcerpt
+    });
+    if (entry.sourceAnchorDigest !== expectedAnchorDigest) issues.push('source_anchor_digest_mismatch');
+    if (entry.digest !== expectedEvidenceDigest) issues.push('source_artifact_digest_mismatch');
+  }
+  return { sourceBound: issues.length === 0, sourceBindingIssues: issues, anchorExcerptSha256: anchor ? sourceAnchorDigest(anchor.redactedExcerpt) : null };
+}
+
+function normalizeEvidence(evidence, sourceArtifacts) {
+  const sources = sourceArtifactIndex(sourceArtifacts);
+  return asArray(evidence).map((entry, index) => {
+    const binding = verifySourceBinding(entry, sources);
+    return {
+      id: String(entry?.id ?? `evidence-${index}`),
+      signal: entry?.signal,
+      sourceBound: binding.sourceBound,
+      sourceBindingIssues: binding.sourceBindingIssues,
+      sourceArtifactId: entry?.sourceArtifactId ?? null,
+      sourceArtifactPath: entry?.sourceArtifactPath ?? null,
+      sourceAnchorId: entry?.sourceAnchorId ?? null,
+      sourceAnchorDigest: entry?.sourceAnchorDigest ?? null,
+      digest: entry?.digest ?? null,
+      tags: asArray(entry?.tags).map(String),
+      stale: entry?.stale === true,
+      contradicts: asArray(entry?.contradicts).map(String),
+      redacted: entry?.redacted === true,
+      artifactSha256: sha256(JSON.stringify(entry ?? null)),
+      anchorExcerptSha256: binding.anchorExcerptSha256,
+      policyDecision: null
+    };
+  });
 }
 
 function scoreCard(card, evidence) {
@@ -181,9 +243,12 @@ function scoreCard(card, evidence) {
       evidenceId: entry.id,
       signal: entry.signal,
       sourceBound: entry.sourceBound,
+      sourceBindingIssues: entry.sourceBindingIssues,
       stale: entry.stale,
       contradiction: entry.signal === 'contradiction' || entry.contradicts.includes(card.id),
       sourceArtifactId: entry.sourceArtifactId,
+      sourceAnchorId: entry.sourceAnchorId,
+      anchorExcerptSha256: entry.anchorExcerptSha256,
       evidenceSha256: entry.artifactSha256,
       policyDecision: null
     }));
@@ -203,7 +268,7 @@ function scoreCard(card, evidence) {
   };
 }
 
-function buildMetrics(cardSummaries, evidenceCount, boundaryViolationCount) {
+function buildMetrics(cardSummaries, evidenceCount, sourceArtifactCount, boundaryViolationCount) {
   const usefulCards = cardSummaries.filter((entry) => entry.bestSignal === 'useful').length;
   const contradictionCards = cardSummaries.filter((entry) => entry.cardType === 'contradiction');
   const surfacedContradictionCards = contradictionCards.filter((entry) => entry.contradictionSurfaced).length;
@@ -215,6 +280,7 @@ function buildMetrics(cardSummaries, evidenceCount, boundaryViolationCount) {
   return {
     cardCount: cardSummaries.length,
     evidenceCount,
+    sourceArtifactCount,
     usefulRecallRatio: ratio(usefulCards, cardSummaries.length),
     contradictionSurfacingRatio: ratio(surfacedContradictionCards, contradictionCards.length),
     staleNegativeMarkedRatio: ratio(markedStaleCards, staleCards.length),
@@ -230,6 +296,7 @@ function validateCardOutcomes(cardSummaries) {
   for (const card of cardSummaries) {
     if (card.matchCount === 0) issues.push(`cards.${card.cardId}.no_candidate_evidence`);
     if (card.matches.some((match) => !match.sourceBound)) issues.push(`cards.${card.cardId}.unsourced_match`);
+    for (const match of card.matches) for (const issue of asArray(match.sourceBindingIssues)) issues.push(`cards.${card.cardId}.source_binding.${match.evidenceId}.${issue}`);
     if (card.cardType === 'stale_negative_context' && card.matchCount > 0 && !card.staleMarked) issues.push(`cards.${card.cardId}.stale_evidence_not_marked_stale`);
     if (card.cardType === 'contradiction' && !card.contradictionSurfaced) issues.push(`cards.${card.cardId}.contradiction_evidence_not_surfaced`);
   }
@@ -253,6 +320,7 @@ function validateMetrics(metrics, prefix = 'artifact.metrics') {
 function recommendationFor(metrics, validationIssues) {
   if (validationIssues.length > 0) return 'HOLD_FOR_MORE_EVIDENCE';
   if (metrics.cardCount < PASSIVE_MEMORY_RECALL_MIN_CARDS) return 'HOLD_FOR_MORE_EVIDENCE';
+  if (metrics.sourceArtifactCount < 1) return 'HOLD_FOR_MORE_EVIDENCE';
   if (metrics.boundaryViolationCount > 0) return 'HOLD_FOR_MORE_EVIDENCE';
   if (metrics.usefulRecallRatio >= 0.75 && metrics.contradictionSurfacingRatio === 1 && metrics.staleNegativeMarkedRatio === 1 && metrics.sourceBoundMatchRatio === 1 && metrics.irrelevantMatchRatio === 0) return 'ADVANCE_OBSERVATION_ONLY';
   return 'HOLD_FOR_MORE_EVIDENCE';
@@ -261,11 +329,11 @@ function recommendationFor(metrics, validationIssues) {
 export function scorePassiveMemoryRecallUsefulness(input = {}) {
   const inputIssues = validatePassiveMemoryRecallUsefulnessInput(input);
   const cards = normalizeCards(input.cards);
-  const evidence = normalizeEvidence(input.evidence);
+  const evidence = normalizeEvidence(input.evidence, input.sourceArtifacts);
   const cardSummaries = cards.map((card) => scoreCard(card, evidence));
   const outcomeIssues = validateCardOutcomes(cardSummaries);
-  const boundaryIssueCount = [...inputIssues, ...outcomeIssues].filter((issue) => issue.includes('policyDecision') || issue.includes('authority') || issue.includes('raw') || issue.includes('effect') || issue.includes('write') || issue.includes('runtime') || issue.includes('daemon') || issue.includes('watch') || issue.includes('unsourced')).length;
-  const metrics = buildMetrics(cardSummaries, evidence.length, boundaryIssueCount);
+  const boundaryIssueCount = [...inputIssues, ...outcomeIssues].filter((issue) => issue.includes('policyDecision') || issue.includes('authority') || issue.includes('raw') || issue.includes('effect') || issue.includes('write') || issue.includes('runtime') || issue.includes('daemon') || issue.includes('watch') || issue.includes('unsourced') || issue.includes('source_binding')).length;
+  const metrics = buildMetrics(cardSummaries, evidence.length, asArray(input.sourceArtifacts).length, boundaryIssueCount);
   const metricIssues = validateMetrics(metrics, 'metrics');
   const validationIssues = [...new Set([...inputIssues, ...outcomeIssues, ...metricIssues])];
   const recommendation = recommendationFor(metrics, validationIssues);
@@ -282,6 +350,7 @@ export function scorePassiveMemoryRecallUsefulness(input = {}) {
     readOnly: true,
     explicitArtifactsOnly: true,
     acceptsOnlyRedactedObservationArtifactsAndNeedCards: true,
+    verifiesSourceAnchorsAgainstRedactedArtifactContent: true,
     humanReadableReportOnly: true,
     nonAuthoritative: true,
     recommendation,
@@ -325,6 +394,7 @@ export function passiveMemoryRecallUsefulnessReport(artifact) {
     `probeStatus: ${artifact.probeStatus}`,
     `cardCount=${artifact.metrics.cardCount}`,
     `evidenceCount=${artifact.metrics.evidenceCount}`,
+    `sourceArtifactCount=${artifact.metrics.sourceArtifactCount}`,
     `usefulRecallRatio=${artifact.metrics.usefulRecallRatio}`,
     `contradictionSurfacingRatio=${artifact.metrics.contradictionSurfacingRatio}`,
     `staleNegativeMarkedRatio=${artifact.metrics.staleNegativeMarkedRatio}`,
@@ -335,7 +405,7 @@ export function passiveMemoryRecallUsefulnessReport(artifact) {
     `recommendationIsAuthority=false`,
     `policyDecision: null`,
     '',
-    'Human-readable local evidence only. This probe does not write durable memory and does not feed a runtime.',
+    'Human-readable local evidence only. This probe verifies redacted source anchors, does not write durable memory, and does not feed a runtime.',
     '',
     '## Validation issues',
     ...(artifact.validationIssues.length ? artifact.validationIssues.map((issue) => `- ${issue}`) : ['- none']),

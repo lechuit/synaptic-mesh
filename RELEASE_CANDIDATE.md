@@ -2,7 +2,7 @@
 
 Target: `v0.28.5`
 
-Scope: passive memory recall usefulness probe over explicit redacted passive observation artifacts and explicit recall need cards. The probe measures whether passive evidence helps recover decisions, project rules, contradictions, source-bound facts, and stale negative context for AI continuity.
+Scope: passive memory recall usefulness probe over explicit redacted passive observation artifacts, explicit redacted source anchors, and explicit recall need cards. The probe measures whether passive evidence helps recover decisions, project rules, contradictions, source-bound facts, and stale negative context for AI continuity. Source-bound matches must verify redacted source anchors and digests, not just declared metadata or tags.
 
 Required local gates:
 

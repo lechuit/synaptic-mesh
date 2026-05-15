@@ -8,6 +8,7 @@
   "readOnly": true,
   "explicitArtifactsOnly": true,
   "acceptsOnlyRedactedObservationArtifactsAndNeedCards": true,
+  "verifiesSourceAnchorsAgainstRedactedArtifactContent": true,
   "evaluatesDecisionsRulesContradictionsAndStaleNegativeContext": true,
   "humanReadableReportOnly": true,
   "nonAuthoritative": true,

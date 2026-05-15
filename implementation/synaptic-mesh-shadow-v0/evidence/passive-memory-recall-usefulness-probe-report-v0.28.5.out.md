@@ -3,6 +3,7 @@
 probeStatus: MEMORY_RECALL_USEFULNESS_PROBE_COMPLETE
 cardCount=4
 evidenceCount=5
+sourceArtifactCount=1
 usefulRecallRatio=0.75
 contradictionSurfacingRatio=1
 staleNegativeMarkedRatio=1
@@ -13,7 +14,7 @@ recommendation: ADVANCE_OBSERVATION_ONLY
 recommendationIsAuthority=false
 policyDecision: null
 
-Human-readable local evidence only. This probe does not write durable memory and does not feed a runtime.
+Human-readable local evidence only. This probe verifies redacted source anchors, does not write durable memory, and does not feed a runtime.
 
 ## Validation issues
 - none

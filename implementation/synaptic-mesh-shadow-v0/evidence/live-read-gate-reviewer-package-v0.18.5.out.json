@@ -100,7 +100,7 @@
       "kind": "explicit_repo_local_file",
       "repoRelativePathSha256": "b335630551682c19a781afebcf4d07bf978fb1f8ac04c6bf87428ed5106870f5",
       "absolutePathSha256": "543c81f89743c5b0f48fa0200abe84d28dd1fdb1b6687cf610469e9e998e93e0",
-      "sourceSize": 2417,
+      "sourceSize": 2627,
       "sourceMtimeMs": null,
       "rawSourcePathPersisted": false
     },
@@ -152,18 +152,18 @@
       },
       {
         "index": 3,
-        "rawSha256": "e2cbe2ce452ce453ad3ff64ecb196a1fe88b30d509c67ffd4aa9116fac73c16b",
-        "rawBytes": 430,
-        "redactedSha256": "e2cbe2ce452ce453ad3ff64ecb196a1fe88b30d509c67ffd4aa9116fac73c16b",
-        "redactedText": "Pinned v0.28.5 evidence: `probeStatus: MEMORY_RECALL_USEFULNESS_PROBE_COMPLETE`, `cardCount: 4`, `evidenceCount: 5`, `usefulRecallRatio: 0.75`, `contradictionSurfacingRatio: 1`, `staleNegativeMarkedRatio: 1`, `sourceBoundMatchRatio: 1`, `ir",
+        "rawSha256": "61ab45b6634f3a24beddf520c3fa140d80b6360f812abd1c0a3814f02788ca15",
+        "rawBytes": 489,
+        "redactedSha256": "61ab45b6634f3a24beddf520c3fa140d80b6360f812abd1c0a3814f02788ca15",
+        "redactedText": "Pinned v0.28.5 evidence: `probeStatus: MEMORY_RECALL_USEFULNESS_PROBE_COMPLETE`, `cardCount: 4`, `evidenceCount: 5`, `sourceArtifactCount: 1`, `source-anchor digest verified`, `usefulRecallRatio: 0.75`, `contradictionSurfacingRatio: 1`, `st",
         "privatePatternDetected": false,
         "decisionVerbDetected": false,
         "semanticDecisionTokenPersisted": false
       },
       {
         "index": 4,
-        "rawSha256": "bb5215be6e7f4f1b9012c35759286417c31af5dc34ca3d740d95be86c89333ed",
-        "rawBytes": 282,
+        "rawSha256": "a853e63f8daf6186c1f8ed455a6eccb00bd1abe97f03b1eb6b9f6ca50cae636f",
+        "rawBytes": 433,
         "redactedSha256": "f59f329820c446f1125d80f2a2c2cde966a2db2e74665991b51e231d3564d526",
         "redactedText": "The probe asks whether passive evidence helps recover AI-continuity [REDACTED]",
         "privatePatternDetected": true,

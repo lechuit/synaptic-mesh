@@ -4,9 +4,9 @@ This is the public review release `v0.28.5`. Current v0.28.5 status is narrower 
 
 The v0.28 ladder is disabled-by-default, operator-run one-shot, local-only, passive/read-only, bounded to explicit redacted passive observation artifacts plus explicit recall need cards, human-readable report only, non-authoritative, and not runtime authority.
 
-Pinned v0.28.5 evidence: `probeStatus: MEMORY_RECALL_USEFULNESS_PROBE_COMPLETE`, `cardCount: 4`, `evidenceCount: 5`, `usefulRecallRatio: 0.75`, `contradictionSurfacingRatio: 1`, `staleNegativeMarkedRatio: 1`, `sourceBoundMatchRatio: 1`, `irrelevantMatchRatio: 0`, `boundaryViolationCount: 0`, `recommendation: ADVANCE_OBSERVATION_ONLY`, `recommendationIsAuthority: false`, `policyDecision: null`, and `human-readable report only`.
+Pinned v0.28.5 evidence: `probeStatus: MEMORY_RECALL_USEFULNESS_PROBE_COMPLETE`, `cardCount: 4`, `evidenceCount: 5`, `sourceArtifactCount: 1`, `source-anchor digest verified`, `usefulRecallRatio: 0.75`, `contradictionSurfacingRatio: 1`, `staleNegativeMarkedRatio: 1`, `sourceBoundMatchRatio: 1`, `irrelevantMatchRatio: 0`, `boundaryViolationCount: 0`, `recommendation: ADVANCE_OBSERVATION_ONLY`, `recommendationIsAuthority: false`, `policyDecision: null`, and `human-readable report only`.
 
-The probe asks whether passive evidence helps recover AI-continuity memory: decisions, project rules, contradictions, source-bound evidence, and stale negative context. The recommendation is only a human review signal to continue observation; it is not authorization or enforcement.
+The probe asks whether passive evidence helps recover AI-continuity memory: decisions, project rules, contradictions, source-bound evidence, and stale negative context. Source-bound now means each matched item verifies a redacted source anchor and digest against an explicit source artifact, not just declared metadata. The recommendation is only a human review signal to continue observation; it is not authorization or enforcement.
 
 ## v0.28.5 phase close
 

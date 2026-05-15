@@ -3,7 +3,8 @@
     {
       "name": "missing_cards",
       "validationIssues": [
-        "cards.explicit_array_required"
+        "cards.explicit_array_required",
+        "sourceArtifacts.explicit_array_required"
       ]
     },
     {
@@ -11,14 +12,26 @@
       "validationIssues": [
         "cards.min_four_required",
         "cards.missing_type:contradiction",
-        "cards.missing_type:stale_negative_context"
+        "cards.missing_type:stale_negative_context",
+        "sourceArtifacts.explicit_array_required",
+        "cards.card-north-star-decision.unsourced_match",
+        "cards.card-north-star-decision.source_binding.evidence-v027-repeatability.source_artifact_not_found",
+        "cards.card-boundary-project-rule.unsourced_match",
+        "cards.card-boundary-project-rule.source_binding.evidence-boundary-project-rule.source_artifact_not_found"
       ]
     },
     {
       "name": "missing_card_type",
       "validationIssues": [
         "cards.min_four_required",
-        "cards.missing_type:contradiction"
+        "cards.missing_type:contradiction",
+        "sourceArtifacts.explicit_array_required",
+        "cards.card-north-star-decision.unsourced_match",
+        "cards.card-north-star-decision.source_binding.evidence-v027-repeatability.source_artifact_not_found",
+        "cards.card-boundary-project-rule.unsourced_match",
+        "cards.card-boundary-project-rule.source_binding.evidence-boundary-project-rule.source_artifact_not_found",
+        "cards.card-stale-rag-negative-context.unsourced_match",
+        "cards.card-stale-rag-negative-context.source_binding.evidence-stale-generic-rag-context.source_artifact_not_found"
       ]
     },
     {
@@ -26,7 +39,14 @@
       "validationIssues": [
         "cards[0].need_explicit_text_required",
         "cards[0].expected_evidence_required",
-        "cards.bad.no_candidate_evidence"
+        "sourceArtifacts.explicit_array_required",
+        "cards.bad.no_candidate_evidence",
+        "cards.card-boundary-project-rule.unsourced_match",
+        "cards.card-boundary-project-rule.source_binding.evidence-boundary-project-rule.source_artifact_not_found",
+        "cards.card-readiness-theater-contradiction.unsourced_match",
+        "cards.card-readiness-theater-contradiction.source_binding.evidence-readiness-theater-contradiction.source_artifact_not_found",
+        "cards.card-stale-rag-negative-context.unsourced_match",
+        "cards.card-stale-rag-negative-context.source_binding.evidence-stale-generic-rag-context.source_artifact_not_found"
       ]
     },
     {
@@ -38,6 +58,20 @@
         "cards.card-readiness-theater-contradiction.no_candidate_evidence",
         "cards.card-readiness-theater-contradiction.contradiction_evidence_not_surfaced",
         "cards.card-stale-rag-negative-context.no_candidate_evidence"
+      ]
+    },
+    {
+      "name": "missing_source_artifacts",
+      "validationIssues": [
+        "sourceArtifacts.explicit_array_required",
+        "cards.card-north-star-decision.unsourced_match",
+        "cards.card-north-star-decision.source_binding.evidence-v027-repeatability.source_artifact_not_found",
+        "cards.card-boundary-project-rule.unsourced_match",
+        "cards.card-boundary-project-rule.source_binding.evidence-boundary-project-rule.source_artifact_not_found",
+        "cards.card-readiness-theater-contradiction.unsourced_match",
+        "cards.card-readiness-theater-contradiction.source_binding.evidence-readiness-theater-contradiction.source_artifact_not_found",
+        "cards.card-stale-rag-negative-context.unsourced_match",
+        "cards.card-stale-rag-negative-context.source_binding.evidence-stale-generic-rag-context.source_artifact_not_found"
       ]
     },
     {
@@ -100,7 +134,8 @@
       "name": "unsourced_match",
       "validationIssues": [
         "evidence[0].source_binding_required",
-        "cards.card-north-star-decision.unsourced_match"
+        "cards.card-north-star-decision.unsourced_match",
+        "cards.card-north-star-decision.source_binding.evidence-v027-repeatability.source_artifact_digest_mismatch"
       ]
     },
     {
@@ -116,9 +151,32 @@
       ]
     },
     {
+      "name": "source_anchor_digest_mismatch",
+      "validationIssues": [
+        "cards.card-north-star-decision.unsourced_match",
+        "cards.card-north-star-decision.source_binding.evidence-v027-repeatability.source_anchor_digest_mismatch"
+      ]
+    },
+    {
+      "name": "source_artifact_digest_mismatch",
+      "validationIssues": [
+        "cards.card-north-star-decision.unsourced_match",
+        "cards.card-north-star-decision.source_binding.evidence-v027-repeatability.source_artifact_digest_mismatch"
+      ]
+    },
+    {
+      "name": "source_anchor_not_found",
+      "validationIssues": [
+        "cards.card-north-star-decision.unsourced_match",
+        "cards.card-north-star-decision.source_binding.evidence-v027-repeatability.source_anchor_not_found"
+      ]
+    },
+    {
       "name": "stale_source_not_evidence_artifact",
       "validationIssues": [
-        "evidence[0].source_path_not_evidence_artifact"
+        "evidence[0].source_path_not_evidence_artifact",
+        "cards.card-north-star-decision.unsourced_match",
+        "cards.card-north-star-decision.source_binding.evidence-v027-repeatability.source_artifact_not_found"
       ]
     },
     {

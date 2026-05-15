@@ -29,6 +29,7 @@ export const passiveMemoryRecallUsefulnessProbeRequiredManifestPaths = Object.fr
   'implementation/synaptic-mesh-shadow-v0/bin/passive-memory-recall-usefulness-probe.mjs',
   'implementation/synaptic-mesh-shadow-v0/fixtures/passive-memory-recall-need-cards-v0.28.1.json',
   'implementation/synaptic-mesh-shadow-v0/fixtures/passive-memory-recall-evidence-v0.28.1.json',
+  'implementation/synaptic-mesh-shadow-v0/evidence/passive-memory-recall-source-anchors-v0.28.1.json',
   'implementation/synaptic-mesh-shadow-v0/tests/passive-memory-recall-usefulness-probe-fixtures.mjs',
   'implementation/synaptic-mesh-shadow-v0/tests/passive-memory-recall-usefulness-probe-protocol-v0.28.0-alpha.mjs',
   'implementation/synaptic-mesh-shadow-v0/tests/passive-memory-recall-usefulness-probe-cards-evidence-v0.28.1.mjs',
@@ -49,8 +50,8 @@ function all(text, phrases, label, assertIncludes) { for (const phrase of phrase
 
 export function assertPassiveMemoryRecallUsefulnessProbeManifestMetadata({ manifest, manifestReleaseTag, assertIncludes }) {
   if (manifestReleaseTag !== 'v0.28.5') return;
-  all(manifest.reproducibility, ['v0.28.5','passive_memory_recall_usefulness_probe','MEMORY_RECALL_USEFULNESS_PROBE_COMPLETE','cardCount_4','evidenceCount_5','usefulRecallRatio_0.75','contradictionSurfacingRatio_1','staleNegativeMarkedRatio_1','sourceBoundMatchRatio_1','irrelevantMatchRatio_0','ADVANCE_OBSERVATION_ONLY','recommendation_not_authority','policy_decision_null','non_authoritative','human_readable_report_only'], 'MANIFEST.json reproducibility', assertIncludes);
-  all(manifest.runtimeBoundary, ['v0.28.5','disabled_by_default','operator_run_one_shot','local_only','passive_only','read_only','explicit_redacted_artifacts_only','source_bound_recall_cards','no_memory_writes','no_runtime_integration','non_authoritative','human_readable_report_only','not_runtime_authority'], 'MANIFEST.json runtimeBoundary', assertIncludes);
+  all(manifest.reproducibility, ['v0.28.5','passive_memory_recall_usefulness_probe','MEMORY_RECALL_USEFULNESS_PROBE_COMPLETE','cardCount_4','evidenceCount_5','sourceArtifactCount_1','source_anchor_digest_verified','usefulRecallRatio_0.75','contradictionSurfacingRatio_1','staleNegativeMarkedRatio_1','sourceBoundMatchRatio_1','irrelevantMatchRatio_0','ADVANCE_OBSERVATION_ONLY','recommendation_not_authority','policy_decision_null','non_authoritative','human_readable_report_only'], 'MANIFEST.json reproducibility', assertIncludes);
+  all(manifest.runtimeBoundary, ['v0.28.5','disabled_by_default','operator_run_one_shot','local_only','passive_only','read_only','explicit_redacted_artifacts_only','source_bound_recall_cards','redacted_source_anchor_digests','no_memory_writes','no_runtime_integration','non_authoritative','human_readable_report_only','not_runtime_authority'], 'MANIFEST.json runtimeBoundary', assertIncludes);
 }
 
 export function assertPassiveMemoryRecallUsefulnessProbeRelease({ repoRoot, packageRoot, manifestReleaseTag, readJson, assert, assertIncludes }) {
@@ -59,6 +60,7 @@ export function assertPassiveMemoryRecallUsefulnessProbeRelease({ repoRoot, pack
   assert(phase?.probeStatus === 'MEMORY_RECALL_USEFULNESS_PROBE_COMPLETE', 'v0.28.5 recall usefulness probe must complete');
   assert(phase?.metrics?.cardCount === 4, 'v0.28.5 must include four recall need cards');
   assert(phase?.metrics?.evidenceCount === 5, 'v0.28.5 must include five evidence items including noise');
+  assert(phase?.metrics?.sourceArtifactCount === 1, 'v0.28.5 must include explicit redacted source-anchor artifact');
   assert(phase?.metrics?.usefulRecallRatio === 0.75, 'v0.28.5 useful recall ratio must be pinned');
   assert(phase?.metrics?.contradictionSurfacingRatio === 1, 'v0.28.5 contradiction surfacing ratio must be pinned');
   assert(phase?.metrics?.staleNegativeMarkedRatio === 1, 'v0.28.5 stale/negative context ratio must be pinned');
@@ -71,11 +73,11 @@ export function assertPassiveMemoryRecallUsefulnessProbeRelease({ repoRoot, pack
   const negative = readJson(path.join(packageRoot, 'evidence/passive-memory-recall-usefulness-probe-negative-controls-v0.28.3.out.json'));
   assert((negative?.rejectedNegativeControls ?? []).length >= 20, 'v0.28.3 must include expanded negative controls');
   const report = readFileSync(path.join(packageRoot, 'evidence/passive-memory-recall-usefulness-probe-report-v0.28.5.out.md'), 'utf8');
-  all(report, ['Passive Memory Recall Usefulness Probe v0.28.5','MEMORY_RECALL_USEFULNESS_PROBE_COMPLETE','cardCount=4','evidenceCount=5','usefulRecallRatio=0.75','contradictionSurfacingRatio=1','staleNegativeMarkedRatio=1','sourceBoundMatchRatio=1','irrelevantMatchRatio=0','boundaryViolationCount=0','ADVANCE_OBSERVATION_ONLY','recommendationIsAuthority=false','policyDecision: null'], 'recall usefulness report', assertIncludes);
+  all(report, ['Passive Memory Recall Usefulness Probe v0.28.5','MEMORY_RECALL_USEFULNESS_PROBE_COMPLETE','cardCount=4','evidenceCount=5','sourceArtifactCount=1','usefulRecallRatio=0.75','contradictionSurfacingRatio=1','staleNegativeMarkedRatio=1','sourceBoundMatchRatio=1','irrelevantMatchRatio=0','boundaryViolationCount=0','ADVANCE_OBSERVATION_ONLY','recommendationIsAuthority=false','policyDecision: null'], 'recall usefulness report', assertIncludes);
   const readme = readFileSync(path.join(repoRoot, 'README.md'), 'utf8');
   const notes = readFileSync(path.join(repoRoot, 'RELEASE_NOTES.md'), 'utf8');
-  all(readme, ['passive memory recall usefulness probe','probeStatus: MEMORY_RECALL_USEFULNESS_PROBE_COMPLETE','cardCount: 4','evidenceCount: 5','usefulRecallRatio: 0.75','contradictionSurfacingRatio: 1','staleNegativeMarkedRatio: 1','sourceBoundMatchRatio: 1','recommendation: ADVANCE_OBSERVATION_ONLY','recommendationIsAuthority: false','policyDecision: null','human-readable report only'], 'README.md', assertIncludes);
-  all(notes, [manifestReleaseTag,'passive memory recall usefulness probe','probeStatus: MEMORY_RECALL_USEFULNESS_PROBE_COMPLETE','cardCount: 4','evidenceCount: 5','usefulRecallRatio: 0.75','contradictionSurfacingRatio: 1','staleNegativeMarkedRatio: 1','sourceBoundMatchRatio: 1','recommendation: ADVANCE_OBSERVATION_ONLY','recommendationIsAuthority: false','policyDecision: null','human-readable report only'], 'RELEASE_NOTES.md', assertIncludes);
+  all(readme, ['passive memory recall usefulness probe','probeStatus: MEMORY_RECALL_USEFULNESS_PROBE_COMPLETE','cardCount: 4','evidenceCount: 5','sourceArtifactCount: 1','source-anchor digest verified','usefulRecallRatio: 0.75','contradictionSurfacingRatio: 1','staleNegativeMarkedRatio: 1','sourceBoundMatchRatio: 1','recommendation: ADVANCE_OBSERVATION_ONLY','recommendationIsAuthority: false','policyDecision: null','human-readable report only'], 'README.md', assertIncludes);
+  all(notes, [manifestReleaseTag,'passive memory recall usefulness probe','probeStatus: MEMORY_RECALL_USEFULNESS_PROBE_COMPLETE','cardCount: 4','evidenceCount: 5','sourceArtifactCount: 1','source-anchor digest verified','usefulRecallRatio: 0.75','contradictionSurfacingRatio: 1','staleNegativeMarkedRatio: 1','sourceBoundMatchRatio: 1','recommendation: ADVANCE_OBSERVATION_ONLY','recommendationIsAuthority: false','policyDecision: null','human-readable report only'], 'RELEASE_NOTES.md', assertIncludes);
 }
 
 export const passiveMemoryRecallUsefulnessProbeSuite = Object.freeze({

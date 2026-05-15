@@ -9,6 +9,8 @@
 - `probeStatus: MEMORY_RECALL_USEFULNESS_PROBE_COMPLETE`
 - `cardCount: 4`
 - `evidenceCount: 5`
+- `sourceArtifactCount: 1`
+- `source-anchor digest verified`
 - `usefulRecallRatio: 0.75`
 - `contradictionSurfacingRatio: 1`
 - `staleNegativeMarkedRatio: 1`
@@ -19,7 +21,7 @@
 - `recommendationIsAuthority: false`
 - `policyDecision: null`
 - `human-readable report only`
-- negative controls for missing/malformed cards, missing evidence, non-null policyDecision, authority tokens in nested/report fields, raw persistence/output/source text, unsafe CLI paths, network/tool/memory/config/runtime flags, invalid/NaN metrics, unsourced matches, stale evidence not marked stale, contradiction evidence not surfaced, and recommendation treated as authority
+- negative controls for missing/malformed cards, missing evidence/source artifacts, non-null policyDecision, authority tokens in nested/report fields, raw persistence/output/source text, unsafe CLI paths, network/tool/memory/config/runtime flags, invalid/NaN metrics, unsourced matches, source anchor/digest mismatch, stale evidence not marked stale, contradiction evidence not surfaced, and recommendation treated as authority
 
 ## Boundary
 

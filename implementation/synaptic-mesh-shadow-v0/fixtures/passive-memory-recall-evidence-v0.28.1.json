@@ -3,9 +3,11 @@
     {
       "id": "evidence-v027-repeatability",
       "signal": "useful",
-      "sourceArtifactId": "T-synaptic-mesh-passive-observation-repeatability-scorecard-v0.27.5",
-      "sourceArtifactPath": "implementation/synaptic-mesh-shadow-v0/evidence/passive-observation-repeatability-scorecard-reviewer-package-v0.27.5.out.json",
-      "digest": "6f5c2fd1f92967a7426ac02eb68d61c1d1990e3147e23f6e8665c3c05734a101",
+      "sourceArtifactId": "T-synaptic-mesh-passive-memory-recall-source-anchors-v0.28.1",
+      "sourceArtifactPath": "implementation/synaptic-mesh-shadow-v0/evidence/passive-memory-recall-source-anchors-v0.28.1.json",
+      "sourceAnchorId": "anchor-north-star-decision",
+      "sourceAnchorDigest": "581cd5c7cea4ec7be5eed5d79e8b70d5111eebdb47e5cce6db4d526308247b18",
+      "digest": "6fa80c847d695fa23e8a8ed87038bdc4f46cc1888318756d96f90e68c4ac3340",
       "tags": [
         "north-star",
         "continuity",
@@ -14,14 +16,17 @@
       ],
       "redacted": true,
       "stale": false,
+      "contradicts": [],
       "policyDecision": null
     },
     {
       "id": "evidence-boundary-project-rule",
       "signal": "useful",
-      "sourceArtifactId": "T-synaptic-mesh-passive-observation-repeatability-scorecard-v0.27.5",
-      "sourceArtifactPath": "implementation/synaptic-mesh-shadow-v0/evidence/passive-observation-repeatability-scorecard-reviewer-package-v0.27.5.out.json",
-      "digest": "893af3ecfbab1a0b3c94ea047b2780b610fb5a0c5aa38a7bbf456d7936ac9022",
+      "sourceArtifactId": "T-synaptic-mesh-passive-memory-recall-source-anchors-v0.28.1",
+      "sourceArtifactPath": "implementation/synaptic-mesh-shadow-v0/evidence/passive-memory-recall-source-anchors-v0.28.1.json",
+      "sourceAnchorId": "anchor-boundary-project-rule",
+      "sourceAnchorDigest": "d79bf2ecb473e23bcdfe2169fb1ff689557081825ea9485659c191acb8ac36bd",
+      "digest": "1fa10755ac578f1bec7eb739428fbe55db11a3e44d02f699fd07c1b41bc0272b",
       "tags": [
         "boundary",
         "project-rule",
@@ -29,32 +34,37 @@
       ],
       "redacted": true,
       "stale": false,
+      "contradicts": [],
       "policyDecision": null
     },
     {
       "id": "evidence-readiness-theater-contradiction",
       "signal": "contradiction",
-      "sourceArtifactId": "T-synaptic-mesh-passive-observation-repeatability-scorecard-v0.27.5",
-      "sourceArtifactPath": "implementation/synaptic-mesh-shadow-v0/evidence/passive-observation-repeatability-scorecard-reviewer-package-v0.27.5.out.json",
-      "digest": "1ad79c24a006ab85c926f2c6d544212e8fd620059d0600eafdf07e607fdb89a9",
+      "sourceArtifactId": "T-synaptic-mesh-passive-memory-recall-source-anchors-v0.28.1",
+      "sourceArtifactPath": "implementation/synaptic-mesh-shadow-v0/evidence/passive-memory-recall-source-anchors-v0.28.1.json",
+      "sourceAnchorId": "anchor-readiness-theater-contradiction",
+      "sourceAnchorDigest": "7f2d583f1290d44c9b73db702f48726720057cad3cee56253784d6b27342ae8b",
+      "digest": "54dcd623f55804a95c10789d92548ef9b4d8d84354479494f318cc6fe4a0e26e",
       "tags": [
         "contradiction",
         "readiness-theater",
         "safe-barrier"
       ],
+      "redacted": true,
+      "stale": false,
       "contradicts": [
         "card-readiness-theater-contradiction"
       ],
-      "redacted": true,
-      "stale": false,
       "policyDecision": null
     },
     {
       "id": "evidence-stale-generic-rag-context",
       "signal": "useful",
-      "sourceArtifactId": "T-synaptic-mesh-passive-observation-repeatability-scorecard-v0.27.5",
-      "sourceArtifactPath": "implementation/synaptic-mesh-shadow-v0/evidence/passive-observation-repeatability-scorecard-reviewer-package-v0.27.5.out.json",
-      "digest": "c4b47353dd9da517a54567e5d72a9e9148933c74f10ad844bb1bbe04d26802e0",
+      "sourceArtifactId": "T-synaptic-mesh-passive-memory-recall-source-anchors-v0.28.1",
+      "sourceArtifactPath": "implementation/synaptic-mesh-shadow-v0/evidence/passive-memory-recall-source-anchors-v0.28.1.json",
+      "sourceAnchorId": "anchor-stale-generic-rag-context",
+      "sourceAnchorDigest": "11c9fed89d972100d45fadbafc7eea08c5c3668f223c1ca2b1f2ccd7bfbcc121",
+      "digest": "2bcbc53aaa868fc9f8299c68b6c9f148e48472b23471258b5db656a1a1885a67",
       "tags": [
         "stale-negative",
         "generic-rag",
@@ -62,19 +72,23 @@
       ],
       "redacted": true,
       "stale": true,
+      "contradicts": [],
       "policyDecision": null
     },
     {
       "id": "evidence-noise-unmatched",
       "signal": "irrelevant",
-      "sourceArtifactId": "T-synaptic-mesh-passive-observation-repeatability-scorecard-v0.27.5",
-      "sourceArtifactPath": "implementation/synaptic-mesh-shadow-v0/evidence/passive-observation-repeatability-scorecard-negative-controls-v0.27.3.out.json",
-      "digest": "a07f11b15d4821bec91398330e2e40513eeb29fd1f47b9d9dc14d63be019f8ef",
+      "sourceArtifactId": "T-synaptic-mesh-passive-memory-recall-source-anchors-v0.28.1",
+      "sourceArtifactPath": "implementation/synaptic-mesh-shadow-v0/evidence/passive-memory-recall-source-anchors-v0.28.1.json",
+      "sourceAnchorId": "anchor-boundary-project-rule",
+      "sourceAnchorDigest": "d79bf2ecb473e23bcdfe2169fb1ff689557081825ea9485659c191acb8ac36bd",
+      "digest": "1fa10755ac578f1bec7eb739428fbe55db11a3e44d02f699fd07c1b41bc0272b",
       "tags": [
         "noise-control"
       ],
       "redacted": true,
       "stale": false,
+      "contradicts": [],
       "policyDecision": null
     }
   ]

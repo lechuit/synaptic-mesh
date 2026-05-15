@@ -8,6 +8,7 @@
   "metrics": {
     "cardCount": 4,
     "evidenceCount": 5,
+    "sourceArtifactCount": 1,
     "usefulRecallRatio": 0.75,
     "contradictionSurfacingRatio": 1,
     "staleNegativeMarkedRatio": 1,
@@ -30,10 +31,13 @@
           "evidenceId": "evidence-v027-repeatability",
           "signal": "useful",
           "sourceBound": true,
+          "sourceBindingIssues": [],
           "stale": false,
           "contradiction": false,
-          "sourceArtifactId": "T-synaptic-mesh-passive-observation-repeatability-scorecard-v0.27.5",
-          "evidenceSha256": "c6326db9308b45afe2b0c939f7f35240fc24609222bea0fe84e0a5a57233d51a",
+          "sourceArtifactId": "T-synaptic-mesh-passive-memory-recall-source-anchors-v0.28.1",
+          "sourceAnchorId": "anchor-north-star-decision",
+          "anchorExcerptSha256": "581cd5c7cea4ec7be5eed5d79e8b70d5111eebdb47e5cce6db4d526308247b18",
+          "evidenceSha256": "9d13d672102c295eb5fe96f947b690e2f8421c1797858cd5cc21ea12c7914a87",
           "policyDecision": null
         }
       ],
@@ -52,10 +56,13 @@
           "evidenceId": "evidence-boundary-project-rule",
           "signal": "useful",
           "sourceBound": true,
+          "sourceBindingIssues": [],
           "stale": false,
           "contradiction": false,
-          "sourceArtifactId": "T-synaptic-mesh-passive-observation-repeatability-scorecard-v0.27.5",
-          "evidenceSha256": "390201106879a91c66685d58d79467ab93bc1ddfce8985e050c2bc21e73b574b",
+          "sourceArtifactId": "T-synaptic-mesh-passive-memory-recall-source-anchors-v0.28.1",
+          "sourceAnchorId": "anchor-boundary-project-rule",
+          "anchorExcerptSha256": "d79bf2ecb473e23bcdfe2169fb1ff689557081825ea9485659c191acb8ac36bd",
+          "evidenceSha256": "0ded7891f98946eabb615852f439ce46869f0bdc9477ba7d436534fc833c3013",
           "policyDecision": null
         }
       ],
@@ -74,10 +81,13 @@
           "evidenceId": "evidence-readiness-theater-contradiction",
           "signal": "contradiction",
           "sourceBound": true,
+          "sourceBindingIssues": [],
           "stale": false,
           "contradiction": true,
-          "sourceArtifactId": "T-synaptic-mesh-passive-observation-repeatability-scorecard-v0.27.5",
-          "evidenceSha256": "cfcdb275c1f4e13f54f5e3d36ace60980e4b71f50881c24b8bc06b169b3d1f97",
+          "sourceArtifactId": "T-synaptic-mesh-passive-memory-recall-source-anchors-v0.28.1",
+          "sourceAnchorId": "anchor-readiness-theater-contradiction",
+          "anchorExcerptSha256": "7f2d583f1290d44c9b73db702f48726720057cad3cee56253784d6b27342ae8b",
+          "evidenceSha256": "46f3534a77ecc879e55f92318ef78b9745896ee772666c64f5d61329f5759fa4",
           "policyDecision": null
         }
       ],
@@ -96,10 +106,13 @@
           "evidenceId": "evidence-stale-generic-rag-context",
           "signal": "useful",
           "sourceBound": true,
+          "sourceBindingIssues": [],
           "stale": true,
           "contradiction": false,
-          "sourceArtifactId": "T-synaptic-mesh-passive-observation-repeatability-scorecard-v0.27.5",
-          "evidenceSha256": "770962f62e31f22072f6e6fa1cf861d67ea42a9f053c86dc45d526b1000de087",
+          "sourceArtifactId": "T-synaptic-mesh-passive-memory-recall-source-anchors-v0.28.1",
+          "sourceAnchorId": "anchor-stale-generic-rag-context",
+          "anchorExcerptSha256": "11c9fed89d972100d45fadbafc7eea08c5c3668f223c1ca2b1f2ccd7bfbcc121",
+          "evidenceSha256": "af4b16694944998de4bc36f4b06b2f51e24c8e9b8d18842abfccb5cdc5615eee",
           "policyDecision": null
         }
       ],

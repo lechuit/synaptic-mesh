@@ -13,6 +13,7 @@ assert.equal(artifact.coverage.contradiction, 1);
 assert.equal(artifact.coverage.stale_negative_context, 1);
 assert.equal(artifact.metrics.cardCount, 4);
 assert.equal(artifact.metrics.evidenceCount, 5);
+assert.equal(artifact.metrics.sourceArtifactCount, 1);
 assert.equal(artifact.policyDecision, null);
 await writeFile(resolve('evidence/passive-memory-recall-usefulness-probe-cards-evidence-v0.28.1.out.json'), JSON.stringify({ coverage: artifact.coverage, metrics: artifact.metrics, cardSummaries: artifact.cardSummaries }, null, 2) + '\n');
 console.log(JSON.stringify({ cardCount: artifact.metrics.cardCount, evidenceCount: artifact.metrics.evidenceCount }, null, 2));

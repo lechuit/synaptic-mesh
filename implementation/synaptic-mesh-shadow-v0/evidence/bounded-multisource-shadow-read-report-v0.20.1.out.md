@@ -19,7 +19,7 @@
 - source #0 record #0: # Synaptic Mesh v0.28.5
 - source #0 record #1: This is the public review release `v0.28.5`. Current v0.28.5 status is narrower than live runtime and crosses the next safe barrier after the v0.27 repeatability scorecard: **passive memory recall usefulness probe**.
 - source #0 record #2: The v0.28 ladder is disabled-by-default, operator-run one-shot, local-only, passive/read-only, bounded to explicit redacted passive observation artifacts plus explicit recall need cards, human-readable report only, non-authoritative, and no
-- source #0 record #3: Pinned v0.28.5 evidence: `probeStatus: MEMORY_RECALL_USEFULNESS_PROBE_COMPLETE`, `cardCount: 4`, `evidenceCount: 5`, `usefulRecallRatio: 0.75`, `contradictionSurfacingRatio: 1`, `staleNegativeMarkedRatio: 1`, `sourceBoundMatchRatio: 1`, `ir
+- source #0 record #3: Pinned v0.28.5 evidence: `probeStatus: MEMORY_RECALL_USEFULNESS_PROBE_COMPLETE`, `cardCount: 4`, `evidenceCount: 5`, `sourceArtifactCount: 1`, `source-anchor digest verified`, `usefulRecallRatio: 0.75`, `contradictionSurfacingRatio: 1`, `st
 - source #1 record #0: # Release Notes — Synaptic Mesh v0.28.5
 - source #1 record #1: ## Summary
 - source #1 record #2: `v0.28.5` adds **passive memory recall usefulness probe** over explicit redacted passive observation evidence and human-authored recall need cards. It tests whether the evidence helps recover continuity-relevant memory for AI agents: decisi

@@ -43,7 +43,7 @@ function degradedCliArtifact(issues) {
   };
 }
 function parseArgs(argv) {
-  const parsed = { cards: null, evidence: null, outJson: null, outMarkdown: null, stdout: false };
+  const parsed = { cards: null, evidence: null, sourceArtifacts: null, outJson: null, outMarkdown: null, stdout: false };
   const rejected = [];
   for (let index = 0; index < argv.length; index += 1) {
     const arg = argv[index];
@@ -51,6 +51,8 @@ function parseArgs(argv) {
     if (arg.startsWith('--cards=')) { parsed.cards = arg.slice('--cards='.length); continue; }
     if (arg === '--evidence') { parsed.evidence = argv[++index]; continue; }
     if (arg.startsWith('--evidence=')) { parsed.evidence = arg.slice('--evidence='.length); continue; }
+    if (arg === '--source-artifacts') { parsed.sourceArtifacts = argv[++index]; continue; }
+    if (arg.startsWith('--source-artifacts=')) { parsed.sourceArtifacts = arg.slice('--source-artifacts='.length); continue; }
     if (arg === '--out-json') { parsed.outJson = argv[++index]; continue; }
     if (arg.startsWith('--out-json=')) { parsed.outJson = arg.slice('--out-json='.length); continue; }
     if (arg === '--out-markdown') { parsed.outMarkdown = argv[++index]; continue; }
@@ -66,14 +68,16 @@ const { parsed, rejected } = parseArgs(process.argv.slice(2));
 const cliIssues = rejected.map((flag) => `cli.rejected_flag:${flag}`);
 const cardsPath = parsed.cards ? resolveSafePath(parsed.cards, 'cli.cards', { input: true, extension: '.json' }) : { issue: 'cli.cards.path_required', resolved: null };
 const evidencePath = parsed.evidence ? resolveSafePath(parsed.evidence, 'cli.evidence', { input: true, extension: '.json' }) : { issue: 'cli.evidence.path_required', resolved: null };
+const sourceArtifactsPath = parsed.sourceArtifacts ? resolveSafePath(parsed.sourceArtifacts, 'cli.sourceArtifacts', { input: true, extension: '.json' }) : { issue: 'cli.sourceArtifacts.path_required', resolved: null };
 const outJsonPath = parsed.outJson ? resolveSafePath(parsed.outJson, 'cli.outJson', { evidenceOnly: true, extension: '.json' }) : { issue: null, resolved: null };
 const outMarkdownPath = parsed.outMarkdown ? resolveSafePath(parsed.outMarkdown, 'cli.outMarkdown', { evidenceOnly: true, extension: '.md' }) : { issue: null, resolved: null };
-for (const issue of [cardsPath.issue, evidencePath.issue, outJsonPath.issue, outMarkdownPath.issue]) if (issue) cliIssues.push(issue);
+for (const issue of [cardsPath.issue, evidencePath.issue, sourceArtifactsPath.issue, outJsonPath.issue, outMarkdownPath.issue]) if (issue) cliIssues.push(issue);
 let input = {};
 if (!cliIssues.length) {
   const cards = JSON.parse(await readFile(cardsPath.resolved, 'utf8'));
   const evidence = JSON.parse(await readFile(evidencePath.resolved, 'utf8'));
-  input = { cards: cards.cards ?? cards, evidence: evidence.evidence ?? evidence };
+  const sourceArtifacts = JSON.parse(await readFile(sourceArtifactsPath.resolved, 'utf8'));
+  input = { cards: cards.cards ?? cards, evidence: evidence.evidence ?? evidence, sourceArtifacts: sourceArtifacts.sourceArtifacts ?? sourceArtifacts };
 }
 const artifact = cliIssues.length ? degradedCliArtifact(cliIssues) : scorePassiveMemoryRecallUsefulness(input);
 for (const outputPath of [outJsonPath.resolved, outMarkdownPath.resolved].filter(Boolean)) await mkdir(dirname(outputPath), { recursive: true });
