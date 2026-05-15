@@ -1,0 +1,238 @@
+{
+  "rejectedNegativeControls": [
+    {
+      "name": "missing_cards",
+      "validationIssues": [
+        "cards.explicit_array_required",
+        "sourceArtifacts.explicit_array_required"
+      ]
+    },
+    {
+      "name": "too_few_cards",
+      "validationIssues": [
+        "cards.min_four_required",
+        "cards.missing_type:contradiction",
+        "cards.missing_type:stale_negative_context",
+        "sourceArtifacts.explicit_array_required",
+        "cards.card-north-star-decision.unsourced_match",
+        "cards.card-north-star-decision.source_binding.evidence-v027-repeatability.source_artifact_not_found",
+        "cards.card-boundary-project-rule.unsourced_match",
+        "cards.card-boundary-project-rule.source_binding.evidence-boundary-project-rule.source_artifact_not_found"
+      ]
+    },
+    {
+      "name": "missing_card_type",
+      "validationIssues": [
+        "cards.min_four_required",
+        "cards.missing_type:contradiction",
+        "sourceArtifacts.explicit_array_required",
+        "cards.card-north-star-decision.unsourced_match",
+        "cards.card-north-star-decision.source_binding.evidence-v027-repeatability.source_artifact_not_found",
+        "cards.card-boundary-project-rule.unsourced_match",
+        "cards.card-boundary-project-rule.source_binding.evidence-boundary-project-rule.source_artifact_not_found",
+        "cards.card-stale-rag-negative-context.unsourced_match",
+        "cards.card-stale-rag-negative-context.source_binding.evidence-stale-generic-rag-context.source_artifact_not_found"
+      ]
+    },
+    {
+      "name": "malformed_card",
+      "validationIssues": [
+        "cards[0].need_explicit_text_required",
+        "cards[0].expected_evidence_required",
+        "sourceArtifacts.explicit_array_required",
+        "cards.bad.no_candidate_evidence",
+        "cards.card-boundary-project-rule.unsourced_match",
+        "cards.card-boundary-project-rule.source_binding.evidence-boundary-project-rule.source_artifact_not_found",
+        "cards.card-readiness-theater-contradiction.unsourced_match",
+        "cards.card-readiness-theater-contradiction.source_binding.evidence-readiness-theater-contradiction.source_artifact_not_found",
+        "cards.card-stale-rag-negative-context.unsourced_match",
+        "cards.card-stale-rag-negative-context.source_binding.evidence-stale-generic-rag-context.source_artifact_not_found"
+      ]
+    },
+    {
+      "name": "missing_evidence",
+      "validationIssues": [
+        "evidence.explicit_array_required",
+        "cards.card-north-star-decision.no_candidate_evidence",
+        "cards.card-boundary-project-rule.no_candidate_evidence",
+        "cards.card-readiness-theater-contradiction.no_candidate_evidence",
+        "cards.card-readiness-theater-contradiction.contradiction_evidence_not_surfaced",
+        "cards.card-stale-rag-negative-context.no_candidate_evidence"
+      ]
+    },
+    {
+      "name": "missing_source_artifacts",
+      "validationIssues": [
+        "sourceArtifacts.explicit_array_required",
+        "cards.card-north-star-decision.unsourced_match",
+        "cards.card-north-star-decision.source_binding.evidence-v027-repeatability.source_artifact_not_found",
+        "cards.card-boundary-project-rule.unsourced_match",
+        "cards.card-boundary-project-rule.source_binding.evidence-boundary-project-rule.source_artifact_not_found",
+        "cards.card-readiness-theater-contradiction.unsourced_match",
+        "cards.card-readiness-theater-contradiction.source_binding.evidence-readiness-theater-contradiction.source_artifact_not_found",
+        "cards.card-stale-rag-negative-context.unsourced_match",
+        "cards.card-stale-rag-negative-context.source_binding.evidence-stale-generic-rag-context.source_artifact_not_found"
+      ]
+    },
+    {
+      "name": "non_null_policy_decision",
+      "validationIssues": [
+        "evidence[0].policyDecision_non_null",
+        "input.evidence[0].policyDecision_non_null",
+        "input.evidence[0].policyDecision.authority_token_detected"
+      ]
+    },
+    {
+      "name": "nested_authority_token",
+      "validationIssues": [
+        "input.evidence[0].note.authority_token_detected"
+      ]
+    },
+    {
+      "name": "raw_output_key",
+      "validationIssues": [
+        "input.evidence[0].rawOutput_not_false"
+      ]
+    },
+    {
+      "name": "source_text_key",
+      "validationIssues": [
+        "input.evidence[0].sourceText_not_false"
+      ]
+    },
+    {
+      "name": "network_fetch_flag",
+      "validationIssues": [
+        "input.evidence[0].networkFetch_not_false"
+      ]
+    },
+    {
+      "name": "tool_execution_flag",
+      "validationIssues": [
+        "input.evidence[0].toolExecution_not_false"
+      ]
+    },
+    {
+      "name": "memory_write_flag",
+      "validationIssues": [
+        "input.evidence[0].memoryWrite_not_false"
+      ]
+    },
+    {
+      "name": "runtime_flag",
+      "validationIssues": [
+        "input.evidence[0].runtimeIntegration_not_false"
+      ]
+    },
+    {
+      "name": "recommendation_authority",
+      "validationIssues": [
+        "input.recommendation_treated_as_authority"
+      ]
+    },
+    {
+      "name": "unsourced_match",
+      "validationIssues": [
+        "evidence[0].source_binding_required",
+        "cards.card-north-star-decision.unsourced_match",
+        "cards.card-north-star-decision.source_binding.evidence-v027-repeatability.source_artifact_digest_mismatch"
+      ]
+    },
+    {
+      "name": "stale_not_marked",
+      "validationIssues": [
+        "cards.card-stale-rag-negative-context.stale_evidence_not_marked_stale"
+      ]
+    },
+    {
+      "name": "contradiction_not_surfaced",
+      "validationIssues": [
+        "cards.card-readiness-theater-contradiction.contradiction_evidence_not_surfaced"
+      ]
+    },
+    {
+      "name": "source_anchor_digest_mismatch",
+      "validationIssues": [
+        "cards.card-north-star-decision.unsourced_match",
+        "cards.card-north-star-decision.source_binding.evidence-v027-repeatability.source_anchor_digest_mismatch"
+      ]
+    },
+    {
+      "name": "source_artifact_digest_mismatch",
+      "validationIssues": [
+        "cards.card-north-star-decision.unsourced_match",
+        "cards.card-north-star-decision.source_binding.evidence-v027-repeatability.source_artifact_digest_mismatch"
+      ]
+    },
+    {
+      "name": "source_anchor_not_found",
+      "validationIssues": [
+        "cards.card-north-star-decision.unsourced_match",
+        "cards.card-north-star-decision.source_binding.evidence-v027-repeatability.source_anchor_not_found"
+      ]
+    },
+    {
+      "name": "stale_source_not_evidence_artifact",
+      "validationIssues": [
+        "evidence[0].source_path_not_evidence_artifact",
+        "cards.card-north-star-decision.unsourced_match",
+        "cards.card-north-star-decision.source_binding.evidence-v027-repeatability.source_artifact_not_found"
+      ]
+    },
+    {
+      "name": "invalid_nan_metric",
+      "validationIssues": [
+        "artifact.metrics.usefulRecallRatio_invalid"
+      ]
+    },
+    {
+      "name": "report_authority_token",
+      "validationIssues": [
+        "artifact.reportMarkdown.authority_token_detected"
+      ]
+    },
+    {
+      "name": "artifact_policy_decision",
+      "validationIssues": [
+        "artifact.policyDecision_non_null",
+        "artifact.policyDecision.authority_token_detected"
+      ]
+    },
+    {
+      "name": "cli_nonlocal_cards_path",
+      "validationIssues": [
+        "cli.cards.nonlocal_path_rejected"
+      ]
+    },
+    {
+      "name": "cli_network_evidence_path",
+      "validationIssues": [
+        "cli.evidence.network_path_rejected"
+      ]
+    },
+    {
+      "name": "cli_glob_path",
+      "validationIssues": [
+        "cli.cards.glob_or_discovery_rejected"
+      ]
+    },
+    {
+      "name": "cli_out_markdown_requires_evidence_dir",
+      "validationIssues": [
+        "cli.outMarkdown.evidence_dir_required"
+      ]
+    },
+    {
+      "name": "cli_rejects_daemon",
+      "validationIssues": [
+        "cli.rejected_flag:--daemon"
+      ]
+    },
+    {
+      "name": "cli_rejects_memory_write",
+      "validationIssues": [
+        "cli.rejected_flag:--memory-write"
+      ]
+    }
+  ]
+}
