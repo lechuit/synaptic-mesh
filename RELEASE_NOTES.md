@@ -1,27 +1,31 @@
-# Release Notes — Synaptic Mesh v0.26.5
+# Release Notes — Synaptic Mesh v0.27.5
 
 ## Summary
 
-`v0.26.5` adds **passive observation window** over existing safe local stages. It runs one bounded operator-started observation loop from explicit repo-local sources through positive pass, review queue, manual local outcomes, and value scorecard.
+`v0.27.5` adds **passive observation repeatability scorecard** over v0.26 passive observation window artifacts. It aggregates several bounded local/manual/operator-run windows to measure repeatability and useful signal before any stronger live behavior.
 
 ## Evidence
 
-- `windowStatus: OBSERVATION_WINDOW_COMPLETE`
-- `stage chain: 6`
-- `value scorecard: VALUE_SCORECARD_COMPLETE`
-- `recommendation: HOLD_FOR_MORE_EVIDENCE`
+- `scorecardStatus: REPEATABILITY_SCORECARD_COMPLETE`
+- `completed windows: 3`
+- `degraded windows: 1`
+- `usefulOutcomeRatio: 1`
+- `repeatabilityRatio: 1`
+- `boundaryViolationCount: 0`
+- `recommendation: ADVANCE_OBSERVATION_ONLY`
 - `recommendationIsAuthority: false`
 - `policyDecision: null`
-- `redacted evidence packet`
 - `human-readable report only`
-- negative controls for unsafe source specs, invalid chaining, missing/degraded intermediate artifacts, malformed authority fields/tokens in stage/reportMarkdown, unsafe outcome labels, scorecard recommendation treated as authority, raw persistence/output, external effects, nonlocal paths/symlinks/globs/network, invalid bounds, duplicate/missing ids, and output leakage
+- negative controls for malformed window artifacts, non-null policyDecision, authority tokens in nested/report fields, raw persistence/output, unsafe CLI paths, invalid counts/NaN, missing degradation cause, and recommendation treated as authority
 
 ## Boundary
 
-This is local/manual/passive/read-only/one-shot, bounded to explicit repo-local sources and local manual outcome fixtures, redacted-before-persist, redacted-evidence-packet-only, human-readable-only, non-authoritative, and not runtime authority.
+This is local/manual/passive/read-only/one-shot, bounded to explicit redacted v0.26 passive observation window artifacts, human-readable-only, non-authoritative, and not runtime authority.
+
+No enforcement, authorization, approval/block/allow semantics, tool execution, network/resource fetch, memory/config writes, external effects, daemon/watchers, autonomous runtime, raw persistence/output, or agent-consumed machine-readable policy decisions.
 
 ## Next
 
-The next gate should either increase reviewer usefulness with more local fixture variety or improve reporting ergonomics while preserving the no-effects boundary.
+The next gate may continue observation-only repeatability evidence or improve reviewer ergonomics. It must not convert recommendations into authority or live behavior.
 
 Compatibility carry-forward: passive live shadow readiness achieved for local operator-run pilot only; no enforcement; no tool execution; no authorization; no daemon/watcher by default; no external effects.

@@ -1,0 +1,119 @@
+{
+  "rejectedNegativeControls": [
+    {
+      "name": "missing_windows",
+      "validationIssues": [
+        "windows.explicit_array_required"
+      ]
+    },
+    {
+      "name": "too_few_windows",
+      "validationIssues": [
+        "windows.min_three_required"
+      ]
+    },
+    {
+      "name": "too_many_windows",
+      "validationIssues": [
+        "windows.max_six_exceeded"
+      ]
+    },
+    {
+      "name": "malformed_window",
+      "validationIssues": [
+        "windows[1].malformed_window_artifact"
+      ]
+    },
+    {
+      "name": "non_null_window_policy_decision",
+      "validationIssues": [
+        "windows[0].policyDecision_non_null",
+        "windows[0].policyDecision.authority_token:allow",
+        "input.windows[0].policyDecision_non_null",
+        "input.windows[0].policyDecision.authority_token:allow"
+      ]
+    },
+    {
+      "name": "nested_authority_token",
+      "validationIssues": [
+        "windows[0].nestedReport.text.authority_token:approve",
+        "input.windows[0].nestedReport.text.authority_token:approve"
+      ]
+    },
+    {
+      "name": "raw_persistence",
+      "validationIssues": [
+        "windows[0].rawPersisted_not_false",
+        "input.windows[0].rawPersisted_not_false"
+      ]
+    },
+    {
+      "name": "input_raw_output",
+      "validationIssues": [
+        "input.raw_persistence_or_output_requested",
+        "input.rawOutput_not_false"
+      ]
+    },
+    {
+      "name": "input_network_fetch",
+      "validationIssues": [
+        "input.external_or_tool_effect_requested",
+        "input.networkFetch_not_false"
+      ]
+    },
+    {
+      "name": "recommendation_authority",
+      "validationIssues": [
+        "input.recommendation_treated_as_authority"
+      ]
+    },
+    {
+      "name": "degraded_missing_cause",
+      "validationIssues": [
+        "windows[2].degraded_missing_cause"
+      ]
+    },
+    {
+      "name": "invalid_nan_metric",
+      "validationIssues": [
+        "artifact.metrics.usefulOutcomeRatio_invalid"
+      ]
+    },
+    {
+      "name": "report_authority_token",
+      "validationIssues": [
+        "artifact.reportMarkdown.authority_token:approve"
+      ]
+    },
+    {
+      "name": "artifact_recommendation_authority",
+      "validationIssues": [
+        "artifact.recommendation_treated_as_authority"
+      ]
+    },
+    {
+      "name": "cli_nonlocal_window_path",
+      "validationIssues": [
+        "cli.windows[0].nonlocal_path_rejected"
+      ]
+    },
+    {
+      "name": "cli_network_window_path",
+      "validationIssues": [
+        "cli.windows[0].network_path_rejected"
+      ]
+    },
+    {
+      "name": "cli_out_markdown_requires_evidence_dir",
+      "validationIssues": [
+        "cli.outMarkdown.evidence_dir_required"
+      ]
+    },
+    {
+      "name": "cli_rejects_daemon",
+      "validationIssues": [
+        "cli.rejected_flag:--daemon"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "artifact": "T-synaptic-mesh-passive-observation-window-v0.26.5",
+  "schemaVersion": "passive-observation-window-v0.26.0-alpha",
+  "releaseLayer": "v0.26.5",
+  "protocol": {
+    "releaseLayer": "v0.26.0-alpha",
+    "barrierCrossed": "bounded_passive_observation_window_chaining_safe_local_stages",
+    "disabledByDefault": true,
+    "operatorRunOneShotOnly": true,
+    "localOnly": true,
+    "passiveOnly": true,
+    "readOnly": true,
+    "explicitRepoLocalSourcesOnly": true,
+    "boundedSources": 3,
+    "boundedItems": 3,
+    "localManualOutcomeFixturesOnly": true,
+    "redactionBeforePersist": true,
+    "redactedEvidencePacketOnly": true,
+    "humanReadableReportOnly": true,
+    "nonAuthoritative": true,
+    "noRuntimeAuthority": true,
+    "policyDecision": null
+  },
+  "windowStatus": "DEGRADED_OBSERVATION_WINDOW",
+  "disabledByDefault": true,
+  "operatorRunOneShotOnly": true,
+  "localOnly": true,
+  "passiveOnly": true,
+  "readOnly": true,
+  "explicitRepoLocalSourcesOnly": true,
+  "boundedSources": 3,
+  "boundedItems": 3,
+  "localManualOutcomeFixturesOnly": true,
+  "redactionBeforePersist": true,
+  "redactedEvidencePacketOnly": true,
+  "humanReadableReportOnly": true,
+  "nonAuthoritative": true,
+  "noRuntimeAuthority": true,
+  "policyDecision": null,
+  "validationIssues": [
+    "stage.explicit_repo_local_multisource_read_failed:min_successful_sources_not_met"
+  ],
+  "stageSummaries": [
+    {
+      "stage": "explicit_repo_local_multisource_read",
+      "status": "DEGRADED",
+      "failure": "min_successful_sources_not_met",
+      "sourceCount": 0,
+      "recordsRead": 0,
+      "sourceFailuresIsolated": 0,
+      "evidencePacketSha256": "2d7e5c8d790ad97be03b54288b22c8c8f6932fad297194fe8f2f65b15b357936",
+      "redactedRecordPreviews": [],
+      "policyDecision": null
+    }
+  ],
+  "redactedEvidencePacket": {
+    "packetVersion": "passive-observation-window-redacted-evidence-v0.26.1",
+    "boundedPacketSha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "redactedPreviews": [],
+    "rawSourceCache": "excluded",
+    "rawPersisted": false,
+    "policyDecision": null
+  },
+  "valueSignal": {
+    "scorecardStatus": null,
+    "metrics": {},
+    "recommendation": null,
+    "recommendationIsAuthority": false,
+    "policyDecision": null
+  },
+  "reportMarkdown": "# Passive Observation Window v0.26.5\n\n- Window status: DEGRADED_OBSERVATION_WINDOW\n- Scope: one operator-run local passive observation loop over explicit repo-local sources and local manual outcome inputs.\n- Boundary: read-only, redacted-before-persist, human-readable signal only, non-authoritative, no runtime authority.\n- policyDecision: null\n- Value signal: status=null; recommendation=null; recommendationIsAuthority=false\n- Validation issues: stage.explicit_repo_local_multisource_read_failed:min_successful_sources_not_met\n\n## Stage summaries\n- explicit_repo_local_multisource_read: DEGRADED; policyDecision: null\n\n## Redacted evidence packet\n- packetVersion: passive-observation-window-redacted-evidence-v0.26.1\n- previewCount: 0\n- source cache: excluded; raw persistence: false\n"
+}

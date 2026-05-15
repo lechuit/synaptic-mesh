@@ -18,6 +18,7 @@ import { controlledOperatorReviewQueueSuite } from './controlled-operator-review
 import { operatorReviewOutcomeCaptureSuite } from './operator-review-outcome-capture.mjs';
 import { operatorOutcomeValueScorecardSuite } from './operator-outcome-value-scorecard.mjs';
 import { passiveObservationWindowSuite } from './passive-observation-window.mjs';
+import { passiveObservationRepeatabilityScorecardSuite } from './passive-observation-repeatability-scorecard.mjs';
 
 export const releaseCheckSuites = Object.freeze([
   passiveLiveShadowCanarySuite,
@@ -40,4 +41,5 @@ export const releaseCheckSuites = Object.freeze([
   operatorReviewOutcomeCaptureSuite,
   operatorOutcomeValueScorecardSuite,
   passiveObservationWindowSuite,
+  passiveObservationRepeatabilityScorecardSuite,
 ]);

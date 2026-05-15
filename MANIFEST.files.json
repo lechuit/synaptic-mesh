@@ -69,8 +69,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 2184,
-      "sha256": "74356c5df5b9d994f573ab19f946c316fd0704cf49b12dcd29c22652c5eb983b"
+      "bytes": 2334,
+      "sha256": "0ba67e013edb3d13c03d43b8e1fceec9591286edf2e061194acece130410413a"
     },
     {
       "path": "RELEASE_CANDIDATE.md",
@@ -79,8 +79,8 @@
     },
     {
       "path": "RELEASE_NOTES.md",
-      "bytes": 1605,
-      "sha256": "6018fd4e0014b9e5bf9db9310f9a22c9b4739a25e3c83ac9e5f16e4507f21c72"
+      "bytes": 1741,
+      "sha256": "4fc302d7c9743e963b52ba672901de05e5e6d4e21b55a18947855c44aa1d8a2a"
     },
     {
       "path": "design-notes/adapter-boundary-langgraph-mcp-v0.md",
@@ -781,6 +781,41 @@
       "path": "docs/passive-live-shadow-source-contract-v0.15.0-alpha.md",
       "bytes": 389,
       "sha256": "d0da480f7ad702388f53c927119a96e9d2e0fe8a4ab1314db995ff130d94cb86"
+    },
+    {
+      "path": "docs/passive-observation-repeatability-scorecard-local-review-notes-v0.27.5.md",
+      "bytes": 603,
+      "sha256": "b1b89419320c5c1c1467eab98d1d69b4b61c9c7a290f6ca024b327888bce3ec3"
+    },
+    {
+      "path": "docs/passive-observation-repeatability-scorecard-metrics-v0.27.2.md",
+      "bytes": 548,
+      "sha256": "f42f7489845ccc8b2d9e0cb1f06b28a835afafaeeb2308bca1705026ede09909"
+    },
+    {
+      "path": "docs/passive-observation-repeatability-scorecard-negative-controls-v0.27.3.md",
+      "bytes": 524,
+      "sha256": "2875b3f8dfbba261644bc857692222234d38c06f2645cbffa762fdc6c2050ee6"
+    },
+    {
+      "path": "docs/passive-observation-repeatability-scorecard-output-boundary-v0.27.4.md",
+      "bytes": 502,
+      "sha256": "97fcbaece0fb386b6a8e888d8c35e55ea38d5fbd7d0551a26e1f6f44d867ae45"
+    },
+    {
+      "path": "docs/passive-observation-repeatability-scorecard-protocol-v0.27.0-alpha.md",
+      "bytes": 612,
+      "sha256": "2e5b9998b707eb34cf76b485e85654f2a6177807f21c00fa734b14ebd8fa5bb4"
+    },
+    {
+      "path": "docs/passive-observation-repeatability-scorecard-reviewer-package-v0.27.5.md",
+      "bytes": 598,
+      "sha256": "ea98fc694d5947c4f37ca9cfa9bac5063c8ece5d10bbef70d54856cf89477716"
+    },
+    {
+      "path": "docs/passive-observation-repeatability-scorecard-windows-v0.27.1.md",
+      "bytes": 546,
+      "sha256": "27ffa0881930ae2a2bcbba7f12855b2992fbe533f3a2b753707a8372379e012a"
     },
     {
       "path": "docs/passive-observation-window-chain-v0.26.2.md",
@@ -1568,6 +1603,36 @@
       "sha256": "0b67ab5279ed28b7fc2cec15e60512cdf6ae1bfff1a209802901e937aece7ab0"
     },
     {
+      "path": "docs/status-v0.27.0-alpha.md",
+      "bytes": 491,
+      "sha256": "7a4edda9f632b91ec81f70c89f76ae50ed058e7697bfd4ea5672594aba9a8233"
+    },
+    {
+      "path": "docs/status-v0.27.1.md",
+      "bytes": 485,
+      "sha256": "5c5d7db12d606ef826c7653751e0e66d7bcbbaab748909463b4b3f54c4b85b08"
+    },
+    {
+      "path": "docs/status-v0.27.2.md",
+      "bytes": 485,
+      "sha256": "cde980ccd32ff995cd882930400ce6c7684806d028c71c41f90041022168a078"
+    },
+    {
+      "path": "docs/status-v0.27.3.md",
+      "bytes": 485,
+      "sha256": "4af772291252a1e12041bb1041930382e3da8e8fd2120896cfefbb8c7ec78386"
+    },
+    {
+      "path": "docs/status-v0.27.4.md",
+      "bytes": 485,
+      "sha256": "09112e6299f29afd5a88354033b46eb93522622b4ac6326515859533c3d6191c"
+    },
+    {
+      "path": "docs/status-v0.27.5.md",
+      "bytes": 485,
+      "sha256": "83127218c92348219bc8b6effe9d652c9aa4d430151fb2ea60f6b37a50e3ca8b"
+    },
+    {
       "path": "docs/status-v0.3.0-alpha.md",
       "bytes": 2267,
       "sha256": "24c44a22762dd8dcba6d79c90adcbdff1dd7b5c016d2e749fef77417fead78f7"
@@ -1898,6 +1963,11 @@
       "sha256": "e979405dd16b692b6a5c8f550252ca2e41e804c61079fd7dec2a9b81655dbb43"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/bin/passive-observation-repeatability-scorecard.mjs",
+      "bytes": 4805,
+      "sha256": "62482c65cbbd4c1cc9fa26b54f97d5176ac7a8c75234ec3dd39c77b73ef523b1"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/bin/passive-observation-window.mjs",
       "bytes": 5402,
       "sha256": "259e312eb7fdee6e356b9c36787dad1cd42c97c7af50eb61770f93a11b26e223"
@@ -2019,8 +2089,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/bounded-multisource-shadow-read-packet-v0.20.1.out.json",
-      "bytes": 12413,
-      "sha256": "3e4a1bf51526ad5aa8c86dd2c6ecb98e5c7ccb038674a5fb93cf82208c266621"
+      "bytes": 12469,
+      "sha256": "0499c40a8f5eae6def8c640e09fcd92f056aa31fa66e9189b48278b3dcf68fa1"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/bounded-multisource-shadow-read-preflight-abort-v0.20.2.out.json",
@@ -2039,8 +2109,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/bounded-multisource-shadow-read-report-v0.20.1.out.md",
-      "bytes": 2116,
-      "sha256": "83bcd3a524e92d7dc7149e0c3f7c89312c313a1d6fd6366d93edacdfdaf8eb4d"
+      "bytes": 2144,
+      "sha256": "0837238d42aeb02751353cc6e0d64a5074147024634d1f39d8226f25f29c5be8"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/bounded-multisource-shadow-read-reviewer-package-v0.20.5.out.json",
@@ -2239,8 +2309,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-adapter-shadow-read-packet-v0.19.1.out.json",
-      "bytes": 8077,
-      "sha256": "d25a45b08b3a499b3e4eb479529e30fc0f1b715b3db40a2671552dab275610f0"
+      "bytes": 8132,
+      "sha256": "b8d2c4ca7be24a457ca7701eac5e4312ae67fb60f717b8d8ced238330ba7af24"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-adapter-shadow-read-preflight-abort-v0.19.2.out.json",
@@ -2259,13 +2329,13 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-adapter-shadow-read-report-v0.19.1.out.md",
-      "bytes": 1473,
-      "sha256": "1338e81659fedb58050ff91aeb44635acb9beb8c092b640182946816b175a46b"
+      "bytes": 1502,
+      "sha256": "e5fcc477f4f12c36e9a6e02322e8b070564fa38148cea16b3e7bbe32d635833d"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-adapter-shadow-read-reviewer-package-v0.19.5.out.json",
-      "bytes": 9608,
-      "sha256": "61e17aaea07da15eae55ac9bcba8e80d551290b62069f9f51b4b65dd0701d3c6"
+      "bytes": 9663,
+      "sha256": "0edb7c3e50d3ff361225abccba093ddf369881c758502c7ec503ae6aa52b19e0"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-input-source-boundary-contracts.out.json",
@@ -2309,8 +2379,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-read-gate-packet-v0.18.1.out.json",
-      "bytes": 6049,
-      "sha256": "b22cde87f4fbf4bad2a01f80b2009a303587bbb8b665362abe1c70aaa11e9f4b"
+      "bytes": 6075,
+      "sha256": "b7fcdad64aa72bb07aba5827f297a2b1eb26632effd4be996b796c80911dc6bd"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-read-gate-preflight-abort-v0.18.2.out.json",
@@ -2329,8 +2399,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-read-gate-reviewer-package-v0.18.5.out.json",
-      "bytes": 7446,
-      "sha256": "d3f37ead4f7103ce10d91b48d19154c44ccfc8461333420d2a05bdc3ee2f7bbb"
+      "bytes": 7472,
+      "sha256": "c3cf9423fa8ac36cb9220eaf792b06bb4872729480a4f335bbb8f8674cf6ca20"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-shadow-drift-scorecard-shape.out.json",
@@ -2806,6 +2876,66 @@
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-live-shadow-source-contract-v0.15.0-alpha.out.json",
       "bytes": 444,
       "sha256": "7bdf315a9e0bde3defd6feeabaa5f1aaf29cca47109357e2806d538df0498ce7"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-observation-repeatability-scorecard-metrics-v0.27.2.out.json",
+      "bytes": 360,
+      "sha256": "d237382bcdf7abf9058ff2a8fb05e623c16a0fee8a491b413381c74f22c3ae78"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-observation-repeatability-scorecard-negative-controls-v0.27.3.out.json",
+      "bytes": 2864,
+      "sha256": "81eef6eab580da8748c97fbb611839a7b947f8e8877d4fc07689e49f8d148fc1"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-observation-repeatability-scorecard-output-boundary-v0.27.4.out.json",
+      "bytes": 213,
+      "sha256": "731a7d691aa825c7d40c83a68973ff40582657f06a1388335b23e8129632b785"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-observation-repeatability-scorecard-protocol-v0.27.0-alpha.out.json",
+      "bytes": 662,
+      "sha256": "ec98f0028ebbbfa76cdc92cc06361a49ab5c0d7e26dbe2a089e2a15ecc19d9aa"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-observation-repeatability-scorecard-report-v0.27.4.out.md",
+      "bytes": 1024,
+      "sha256": "fde4904bb3431faee7fb4693bb37a9d2680a5242c01bbef022bcbe36d427ca2c"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-observation-repeatability-scorecard-report-v0.27.5.out.md",
+      "bytes": 1024,
+      "sha256": "fde4904bb3431faee7fb4693bb37a9d2680a5242c01bbef022bcbe36d427ca2c"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-observation-repeatability-scorecard-reviewer-package-v0.27.5.out.json",
+      "bytes": 3660,
+      "sha256": "ed683d14e51f29014d31a67e12f4e08939f696bd74ef4bc20283249847aae189"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-observation-repeatability-scorecard-windows-v0.27.1.out.json",
+      "bytes": 2260,
+      "sha256": "06a1f4fc783a7e9ae7fb3a7de2ac2b97cdb5f73f9aad4e64022312db079bdb87"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-observation-repeatability-windows/window-1.json",
+      "bytes": 6306,
+      "sha256": "23b4319e396d1426171fa5b0adc2754e7dc025fa47aa5305c8af1b5aab5a113b"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-observation-repeatability-windows/window-2.json",
+      "bytes": 6306,
+      "sha256": "23b4319e396d1426171fa5b0adc2754e7dc025fa47aa5305c8af1b5aab5a113b"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-observation-repeatability-windows/window-3.json",
+      "bytes": 5940,
+      "sha256": "a5606f03964403de1167018cbe08f09fad304b3577d368274d24f8f7f568d25b"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-observation-repeatability-windows/window-4.json",
+      "bytes": 3126,
+      "sha256": "62ffc96de7797466cc24694ab1b269d6a5887ef8a2b5696a215c8bc653bfdb7e"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-observation-window-chain-v0.26.2.out.json",
@@ -3699,8 +3829,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/package.json",
-      "bytes": 52394,
-      "sha256": "ee61132877843d7e2d0c060476a201279e81d5de32dde369268075f15e6899f4"
+      "bytes": 54711,
+      "sha256": "1e9b5107ac0121810c6db77397fc19b2cd5d1918dbb60c31bcb9a3af014f1ff8"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/action-context-packet.mjs",
@@ -3806,6 +3936,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/src/passive-live-shadow.mjs",
       "bytes": 10755,
       "sha256": "51e9e5544b29bef9c054fe2624529fa5ec075b74cc830da90e1bdf1f2890fbbe"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/src/passive-observation-repeatability-scorecard.mjs",
+      "bytes": 13963,
+      "sha256": "ee9fefab4d5f9dea02fad710ce006be9f12e10a2dea198df883dcfbf2e86f6cc"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/passive-observation-window.mjs",
@@ -4616,6 +4751,41 @@
       "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-live-shadow-source-contract-v0.15.0-alpha.mjs",
       "bytes": 1739,
       "sha256": "2314b7dfebd00bcf4f276eee3291f719da41cc205678ce62e95b103b4fa8e756"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-observation-repeatability-scorecard-fixtures.mjs",
+      "bytes": 1755,
+      "sha256": "c010d3566f56b1c3541d2495d84b302711fcf83364ca9b706676622597502a77"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-observation-repeatability-scorecard-metrics-v0.27.2.mjs",
+      "bytes": 1469,
+      "sha256": "35fe94b5d39f3cb198d7244307e6abcc4d961ac48b4e7c5f90257255f4987f1f"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-observation-repeatability-scorecard-negative-controls-v0.27.3.mjs",
+      "bytes": 5519,
+      "sha256": "775f658c323ec37c2923af992c649a13d7756f19b3094ae11d4bd9a4f5ab85a7"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-observation-repeatability-scorecard-output-boundary-v0.27.4.mjs",
+      "bytes": 1960,
+      "sha256": "39e1cd436a9f0a4158ea3b13bc8d5ec11c081a3be56d3f38cc8ad04852dd534a"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-observation-repeatability-scorecard-protocol-v0.27.0-alpha.mjs",
+      "bytes": 1469,
+      "sha256": "71960bc155fa385a17dd841d26405bf33941d7eb91012008df255efc20746263"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-observation-repeatability-scorecard-reviewer-package-v0.27.5.mjs",
+      "bytes": 1774,
+      "sha256": "1491c0fa791f8ebd53aa9245011f4a8c69ecafa30e59408a5a79c61a6c6afee6"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-observation-repeatability-scorecard-windows-v0.27.1.mjs",
+      "bytes": 1238,
+      "sha256": "238452e5c029ad06253a0509bd4c54d5f04ff15f91cbefe356ea795aa74fee42"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-observation-window-chain-v0.26.2.mjs",
@@ -5554,8 +5724,8 @@
     },
     {
       "path": "tools/release-checks/index.mjs",
-      "bytes": 2399,
-      "sha256": "b563574cdb0e1e2ba63baf3ae9cdd87106507a5ea68fec403b614a545518a777"
+      "bytes": 2563,
+      "sha256": "64d2ea1de2c753e9c8218796a0877337307583bfd908fea48470af4de1304e0d"
     },
     {
       "path": "tools/release-checks/limited-passive-live-capture-readiness.mjs",
@@ -5611,6 +5781,11 @@
       "path": "tools/release-checks/passive-live-shadow-local-pilot.mjs",
       "bytes": 8255,
       "sha256": "fe81637c989b9018970c1fcd84aed2c0a9b3d487fb2268ccf1ff3a5f93f9ac7f"
+    },
+    {
+      "path": "tools/release-checks/passive-observation-repeatability-scorecard.mjs",
+      "bytes": 7822,
+      "sha256": "5fd168c0d7a87b8d9565b271add5007b8af5e984f3e482fc16b16c723dc9e5fe"
     },
     {
       "path": "tools/release-checks/passive-observation-window.mjs",
