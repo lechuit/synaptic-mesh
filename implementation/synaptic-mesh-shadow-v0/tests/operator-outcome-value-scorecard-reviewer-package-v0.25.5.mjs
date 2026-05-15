@@ -1,0 +1,22 @@
+import assert from 'node:assert/strict';
+import { mkdir, writeFile } from 'node:fs/promises';
+import { resolve } from 'node:path';
+import { scoreOperatorOutcomeValue } from '../src/operator-outcome-value-scorecard.mjs';
+import { operatorOutcomeCaptureFixture } from './operator-outcome-value-scorecard-fixtures.mjs';
+
+await mkdir(resolve('evidence'), { recursive: true });
+const scorecard = scoreOperatorOutcomeValue(await operatorOutcomeCaptureFixture(['USEFUL_FOR_REVIEW','USEFUL_FOR_REVIEW','NOT_USEFUL_NOISE']));
+assert.equal(scorecard.releaseLayer, 'v0.25.5');
+assert.equal(scorecard.scorecardStatus, 'VALUE_SCORECARD_COMPLETE');
+assert.equal(scorecard.metrics.reviewedItemCount, 3);
+assert.equal(scorecard.metrics.usefulOutcomes, 2);
+assert.equal(scorecard.metrics.noiseOutcomes, 1);
+assert.equal(scorecard.recommendation, 'ADVANCE_OBSERVATION_ONLY');
+assert.equal(scorecard.falseAuthorityLeakage.length, 0);
+assert.equal(scorecard.validationIssues.length, 0);
+for (const key of ['humanReadableOnly','nonAuthoritative','valueScorecardOnly','disabledByDefault','manualOperatorRunOnly','localOnly','oneShot']) assert.equal(scorecard[key], true, key);
+assert.equal(scorecard.policyDecision, null);
+for (const key of ['authorization','enforcement','approvalBlockAllow','toolExecution','memoryConfigWrite','networkResourceFetch','externalEffects','rawPersisted','rawOutput','agentConsumedOutput','runtimeAuthority']) assert.equal(scorecard[key], false, key);
+await writeFile(resolve('evidence/operator-outcome-value-scorecard-reviewer-package-v0.25.5.out.json'), JSON.stringify(scorecard, null, 2) + '\n');
+await writeFile(resolve('evidence/operator-outcome-value-scorecard-report-v0.25.5.out.md'), scorecard.reportMarkdown);
+console.log(JSON.stringify({ scorecardStatus: scorecard.scorecardStatus, recommendation: scorecard.recommendation, metrics: scorecard.metrics }, null, 2));

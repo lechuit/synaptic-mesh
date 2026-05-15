@@ -1,0 +1,23 @@
+import assert from 'node:assert/strict';
+import { mkdir, writeFile } from 'node:fs/promises';
+import { resolve } from 'node:path';
+import { scoreOperatorOutcomeValue } from '../src/operator-outcome-value-scorecard.mjs';
+import { operatorOutcomeCaptureFixture } from './operator-outcome-value-scorecard-fixtures.mjs';
+
+await mkdir(resolve('evidence'), { recursive: true });
+const capture = await operatorOutcomeCaptureFixture(['USEFUL_FOR_REVIEW','USEFUL_FOR_REVIEW','NOT_USEFUL_NOISE']);
+const scorecard = scoreOperatorOutcomeValue(capture);
+assert.equal(scorecard.scorecardStatus, 'VALUE_SCORECARD_COMPLETE');
+assert.equal(scorecard.metrics.usefulOutcomes, 2);
+assert.equal(scorecard.metrics.noiseOutcomes, 1);
+assert.equal(scorecard.metrics.needsMoreEvidence, 0);
+assert.equal(scorecard.metrics.abstainUncertain, 0);
+assert.equal(scorecard.metrics.reviewedItemCount, 3);
+assert.equal(scorecard.metrics.usefulRatio, 0.6667);
+assert.equal(scorecard.metrics.noiseRatio, 0.3333);
+assert.equal(scorecard.recommendation, 'ADVANCE_OBSERVATION_ONLY');
+assert.equal(scorecard.policyDecision, null);
+assert.equal(scorecard.falseAuthorityLeakage.length, 0);
+await writeFile(resolve('evidence/operator-outcome-value-scorecard-metrics-v0.25.1.out.json'), JSON.stringify(scorecard, null, 2) + '\n');
+await writeFile(resolve('evidence/operator-outcome-value-scorecard-report-v0.25.1.out.md'), scorecard.reportMarkdown);
+console.log(JSON.stringify({ metrics: scorecard.metrics, recommendation: scorecard.recommendation }, null, 2));
