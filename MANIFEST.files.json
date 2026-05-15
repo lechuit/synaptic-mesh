@@ -69,18 +69,18 @@
     },
     {
       "path": "README.md",
-      "bytes": 2753,
-      "sha256": "9359a3aa4c9fa30fdc76188a93e418366f81dc942afedaed4319ea68f2434a1d"
+      "bytes": 2761,
+      "sha256": "abfc301c60dc44036dae0178394f7136c70170062911c2416b4c588e6eaa2dd6"
     },
     {
       "path": "RELEASE_CANDIDATE.md",
-      "bytes": 861,
-      "sha256": "1787d97563169f899a2b53b0fdc25d15dd6b255f0081ae3f91672db00b18f136"
+      "bytes": 859,
+      "sha256": "aaff7efa141c6e39f6b25d6765e41eae1206fbab7040a76af59047103f264fd6"
     },
     {
       "path": "RELEASE_NOTES.md",
-      "bytes": 1750,
-      "sha256": "cd1c4d956f69d0b7ebb1cf97fcd545755cd2cfe227bcd3e7bd54e001a01009ef"
+      "bytes": 1774,
+      "sha256": "d71578a3dbc1d6ffbc309ac998e5a92f82df404002a2ca4a931f45ed69442b88"
     },
     {
       "path": "design-notes/adapter-boundary-langgraph-mcp-v0.md",
@@ -261,6 +261,41 @@
       "path": "docs/concepts/route-decision-v0.md",
       "bytes": 2761,
       "sha256": "41c4b1356f88d1a145e00c44caaddeaab197b8d3e73b672cd5cbe98308e09d41"
+    },
+    {
+      "path": "docs/controlled-operator-review-queue-abstain-v0.23.2.md",
+      "bytes": 427,
+      "sha256": "d2715ad106f878e0669b62cbc7b82e7a83b0aea9eb4948deacecc3efd1f71146"
+    },
+    {
+      "path": "docs/controlled-operator-review-queue-items-v0.23.1.md",
+      "bytes": 516,
+      "sha256": "0001ae010fa17c347cd7e82316139c3eebd784631463b26e643dd08d2485047a"
+    },
+    {
+      "path": "docs/controlled-operator-review-queue-local-review-notes-v0.23.5.md",
+      "bytes": 533,
+      "sha256": "8a604cb2a3596fc6bb6d688c12561c1747d147a34311d28c7118439879008791"
+    },
+    {
+      "path": "docs/controlled-operator-review-queue-negative-controls-v0.23.3.md",
+      "bytes": 406,
+      "sha256": "969fa592879ed5fb06f57fcc7597d53e63d261f647327cea94b8b3e8e641bc2f"
+    },
+    {
+      "path": "docs/controlled-operator-review-queue-output-boundary-v0.23.4.md",
+      "bytes": 515,
+      "sha256": "a164084c609d6ba962257586c33ea9667abf909c7ff07d40ee9dad14121079d7"
+    },
+    {
+      "path": "docs/controlled-operator-review-queue-protocol-v0.23.0-alpha.md",
+      "bytes": 560,
+      "sha256": "faec5a2784f5437c92326e5c2121acfb5267f50e18301af2f82cc7b7e3540065"
+    },
+    {
+      "path": "docs/controlled-operator-review-queue-reviewer-package-v0.23.5.md",
+      "bytes": 463,
+      "sha256": "210221524dc336be9a2ddedffe9ba490707d1d67e3b84fc0324c15c001b6013b"
     },
     {
       "path": "docs/coverage-matrix.md",
@@ -1308,6 +1343,36 @@
       "sha256": "4770bcc1daeafee3cfb3c4e7b5cd70b681678ee0253a5d1a5aa1348cc6c2a049"
     },
     {
+      "path": "docs/status-v0.23.0-alpha.md",
+      "bytes": 232,
+      "sha256": "1f2b2d754ba7c9f752088c6a44cfea661b191a245b40d609d35781b491dcd677"
+    },
+    {
+      "path": "docs/status-v0.23.1.md",
+      "bytes": 158,
+      "sha256": "856e8c903579874ae7f8a99408b3f9f58d8a9a3818732100eee227f0dfeb8ccf"
+    },
+    {
+      "path": "docs/status-v0.23.2.md",
+      "bytes": 143,
+      "sha256": "7a6fe8d28d1f4692ba1a465155736402e66304ecf56395efd34e3b102c153e0f"
+    },
+    {
+      "path": "docs/status-v0.23.3.md",
+      "bytes": 203,
+      "sha256": "c25f7d0dc90dd14bd7d9e4b871d4fd0d9c0a62de4ab87dc5a84bb1226686dcf9"
+    },
+    {
+      "path": "docs/status-v0.23.4.md",
+      "bytes": 194,
+      "sha256": "408850190a601427382a8d7821d131b385a86011262fb17d094da92729f86c23"
+    },
+    {
+      "path": "docs/status-v0.23.5.md",
+      "bytes": 215,
+      "sha256": "1e0a2fb96635d73cbe3e1cbf741d01bc8e4591246b8d1d7a69cc2d7fdb88a2aa"
+    },
+    {
       "path": "docs/status-v0.3.0-alpha.md",
       "bytes": 2267,
       "sha256": "24c44a22762dd8dcba6d79c90adcbdff1dd7b5c016d2e749fef77417fead78f7"
@@ -1588,6 +1653,11 @@
       "sha256": "b4fce16170f94e06d94361b63fd84e659e0cee6963db302870e97f5b5c6ebd68"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/bin/controlled-operator-review-queue.mjs",
+      "bytes": 712,
+      "sha256": "e7b7067f52282d525ff782857b6d10d6ba61563181a5b7fb995dc193984a6ca5"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/bin/limited-passive-capture-readiness.mjs",
       "bytes": 475,
       "sha256": "d78bf94aa9d6cf482dbcb9521736b9b1672046b9feffc9a1151fefdd0778deb5"
@@ -1739,8 +1809,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/bounded-multisource-shadow-read-packet-v0.20.1.out.json",
-      "bytes": 12447,
-      "sha256": "cc6f71379118637f93f88bff71333476a082c0bbd6b30ed5fcf09a054c5365de"
+      "bytes": 12420,
+      "sha256": "0132c4d6ac434df79d7a396302d420ee32fa68b67ec545be6b46664a6bb3151e"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/bounded-multisource-shadow-read-preflight-abort-v0.20.2.out.json",
@@ -1759,8 +1829,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/bounded-multisource-shadow-read-report-v0.20.1.out.md",
-      "bytes": 2133,
-      "sha256": "ff12ab15d3ed266d56d8d863a89a86aaed5c35a88a61f357f00f711d337c77b4"
+      "bytes": 2119,
+      "sha256": "1963c54f3a56a9d0a69b45db75a31c2c14d38f876e596cea78027a8783e7297a"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/bounded-multisource-shadow-read-reviewer-package-v0.20.5.out.json",
@@ -1776,6 +1846,41 @@
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/cli-validator.out.json",
       "bytes": 1739,
       "sha256": "0626cb1fba1151112184335dd4d1492af7e59f12c7497a1060860ab00fd391e0"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/controlled-operator-review-queue-abstain-v0.23.2.out.json",
+      "bytes": 7232,
+      "sha256": "11c069a864101154e84e3a1aa141f26497e03a076addd970a82468b69911af30"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/controlled-operator-review-queue-items-v0.23.1.out.json",
+      "bytes": 7145,
+      "sha256": "77fc65ef67fa9f61c40f9da70e5533443d948a766d4e1a106d5b12f805f859c0"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/controlled-operator-review-queue-negative-controls-v0.23.3.out.json",
+      "bytes": 4132,
+      "sha256": "455d87a4860749cc03ce95e0025943e6c6bd29a7afe38887ec3d0ddcf6bb49d1"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/controlled-operator-review-queue-output-boundary-v0.23.4.out.json",
+      "bytes": 98,
+      "sha256": "f09efab10bfd8abd03ce9f9a31f77303909c2c5ef3613ef4b1ba136c9f4ad606"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/controlled-operator-review-queue-protocol-v0.23.0-alpha.out.json",
+      "bytes": 1150,
+      "sha256": "4d20e4075d8e3dbdc86771df2fcb35e835eb77e4ce798dc2862e9be0015d833b"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/controlled-operator-review-queue-report-v0.23.5.out.md",
+      "bytes": 1708,
+      "sha256": "a96b36ac1ceba9a16956b2b94e230d2cda7617ee88c3220d1ba84d8e4674fe76"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/controlled-operator-review-queue-reviewer-package-v0.23.5.out.json",
+      "bytes": 7145,
+      "sha256": "77fc65ef67fa9f61c40f9da70e5533443d948a766d4e1a106d5b12f805f859c0"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/decision-counterfactual-checklist.out.json",
@@ -1924,8 +2029,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-adapter-shadow-read-packet-v0.19.1.out.json",
-      "bytes": 8560,
-      "sha256": "4fd0f38a80c9faa8e775d51502250d6d682ba13c9f904a5dd8770f7f3ff70432"
+      "bytes": 8568,
+      "sha256": "94b03a69a9147859bea6022b7a2031f163343524867a608617525e46f53adfbf"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-adapter-shadow-read-preflight-abort-v0.19.2.out.json",
@@ -1944,13 +2049,13 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-adapter-shadow-read-report-v0.19.1.out.md",
-      "bytes": 1716,
-      "sha256": "0033fe1f53aa8ef37e96d58b515bcaa8e7d60ceee757ef23bbb1636b1ffb7dd0"
+      "bytes": 1719,
+      "sha256": "b74b6f52eb193aabc9d0cea6f3c14547ead2b4a7ac3bccb049dca9fffc367da6"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-adapter-shadow-read-reviewer-package-v0.19.5.out.json",
-      "bytes": 10091,
-      "sha256": "1ffb457615d55284498cbb9036ee98ff41904d6a04ef93df1802a5fd2efd92a2"
+      "bytes": 10099,
+      "sha256": "1a399f105ca887550a2ffbac9135b9f74f57f846048a392f4888eaefa1435af9"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-input-source-boundary-contracts.out.json",
@@ -1994,8 +2099,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-read-gate-packet-v0.18.1.out.json",
-      "bytes": 6289,
-      "sha256": "03ba5e06721f8878fc1f4c65b6e050614aafa49828c35eaa9351aac7cab12fa8"
+      "bytes": 6294,
+      "sha256": "d4814d136867635d815ca0513879c0214186a5efd900470089175c7ab3d5d3df"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-read-gate-preflight-abort-v0.18.2.out.json",
@@ -2014,8 +2119,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-read-gate-reviewer-package-v0.18.5.out.json",
-      "bytes": 7686,
-      "sha256": "0746a1954020cfd80c44f887d9cbd4e3e35c25150661f522c30180b3e8320922"
+      "bytes": 7691,
+      "sha256": "412cbe0e0a2222a910c1a2fadc0ec784ccccb42f30c23478777305d3a3c68f76"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-shadow-drift-scorecard-shape.out.json",
@@ -3254,8 +3359,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/package.json",
-      "bytes": 44608,
-      "sha256": "b187e98756a3b2e0650195cbd0010ae28c2a3598cbc5f60672c437b3dbd88e92"
+      "bytes": 46587,
+      "sha256": "f3e3a0a87e2493109e8bccf159ec67aab8de444cc11e94db1a26762c1e47a488"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/action-context-packet.mjs",
@@ -3291,6 +3396,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/src/bounded-multisource-shadow-read.mjs",
       "bytes": 17453,
       "sha256": "acff08d235e8fb540d76f2a36ed22b5af9d1cb91c3e2f9144956778d20e5461a"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/src/controlled-operator-review-queue.mjs",
+      "bytes": 13276,
+      "sha256": "dd3f841d933b58bffdadfa496fa5560ef93f43f2d3a5143d70c08bc262a706a0"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/decision-engine.mjs",
@@ -3536,6 +3646,41 @@
       "path": "implementation/synaptic-mesh-shadow-v0/tests/cli-validator.mjs",
       "bytes": 4289,
       "sha256": "c12267a8d617a73d236b62140bdd44b5b5db92188ba034d04a47fa84805cfaae"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/controlled-operator-review-queue-abstain-v0.23.2.mjs",
+      "bytes": 1238,
+      "sha256": "7e4e7be4e6bc890f36b059be05ee407b5573333340e255b45816400465421c9d"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/controlled-operator-review-queue-fixtures.mjs",
+      "bytes": 405,
+      "sha256": "18217508835e3c8d3e86c6976c027fbf313bd53537e1843a472dde7c9031de4f"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/controlled-operator-review-queue-items-v0.23.1.mjs",
+      "bytes": 1586,
+      "sha256": "fea150d17bcffe6107afc880d6b84c1a15687c1853019a0f0bdbbb86537a9a29"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/controlled-operator-review-queue-negative-controls-v0.23.3.mjs",
+      "bytes": 6170,
+      "sha256": "d29e522dd4c02cfd24b9b4bea1206706c6b1a68067ba904dde18de5bc5cb77f6"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/controlled-operator-review-queue-output-boundary-v0.23.4.mjs",
+      "bytes": 1486,
+      "sha256": "5d54f085fdae37440c8d4ed9f480a42661a2abc581d9be8c561fdbe62ad3eb55"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/controlled-operator-review-queue-protocol-v0.23.0-alpha.mjs",
+      "bytes": 1251,
+      "sha256": "4c9feb3d9cab43fb3392c0907de6244352ec4e8ac88a02c7ecd32eb5ed1feecb"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/controlled-operator-review-queue-reviewer-package-v0.23.5.mjs",
+      "bytes": 1300,
+      "sha256": "c31471abcdbcdb699ccc5a835d22fa7fe3fc3d000de35cdd3e2a7fe6f7840a36"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/decision-counterfactual-checklist.mjs",
@@ -4933,6 +5078,11 @@
       "sha256": "7b23e00c83f2ab606e96a536f2036297efa0af3fafd7c3f12ffdccd0eb98bae4"
     },
     {
+      "path": "tools/release-checks/controlled-operator-review-queue.mjs",
+      "bytes": 7432,
+      "sha256": "e880a20fc297d23853a5f2898cab5907dfa71efd142adca54a5c7cf0c706ac20"
+    },
+    {
       "path": "tools/release-checks/framework-integration-readiness.mjs",
       "bytes": 21340,
       "sha256": "a513a22c65657953fc32da40aee70c86e824acb963d9631e9abd1ddb809d05ad"
@@ -4944,8 +5094,8 @@
     },
     {
       "path": "tools/release-checks/index.mjs",
-      "bytes": 1894,
-      "sha256": "70fb46446769d6203e2f0b2db4c6a86cfccc7766e6f5bae60ae6c8598faae137"
+      "bytes": 2025,
+      "sha256": "732f7b817a24602795c2f89e3c053e8bf7b800c24d81d241f74592befb6e0f7c"
     },
     {
       "path": "tools/release-checks/limited-passive-live-capture-readiness.mjs",

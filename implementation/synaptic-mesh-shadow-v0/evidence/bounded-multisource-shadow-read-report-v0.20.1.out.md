@@ -16,13 +16,13 @@
 - source #2: ok; records=2; rawSourcePathPersisted=false
 
 ## Redacted evidence preview
-- source #0 record #0: # Synaptic Mesh v0.22.5
-- source #0 record #1: This is the public review release `v0.22.5`. Current v0.22.5 status is narrower than live runtime and crosses the next safe barrier after positive utility pass-to-human-review: an **observed usefulness/noise scorecard**.
-- source #0 record #2: The v0.22 ladder is still disabled-by-default, manual/operator-run, local-only, passive/read-only, one-shot, human-readable only, scorecard only, and non-authoritative. It consumes v0.21 positive utility pass gate outputs and measures wheth
-- source #0 record #3: Pinned v0.22.5 evidence: `trueUsefulPasses: 3`, `falsePasses: 0`, `usefulRejects: 0`, `missedUsefulPasses: 0`, `noisyRejects: 6`, `noiseRejected: 6`, `falseValueWarnings: 0`, `passPrecision: 1`, `passUsefulness: 1`, `reviewBurdenEstimate: l
-- source #1 record #0: # Release Notes — Synaptic Mesh v0.22.5
+- source #0 record #0: # Synaptic Mesh v0.23.5
+- source #0 record #1: This is the public review release `v0.23.5`. Current v0.23.5 status is narrower than live runtime and crosses the next safe barrier after the v0.22 observed usefulness/noise scorecard: a **controlled operator review queue**.
+- source #0 record #2: The v0.23 ladder is disabled-by-default, manual/operator-run, local-only, passive/read-only, one-shot, redacted-evidence-only, human-readable only, and non-authoritative. It consumes the v0.22 scorecard and turns only true useful `PASS_TO_H
+- source #0 record #3: Pinned v0.23.5 evidence: `queueStatus: READY_FOR_OPERATOR_REVIEW`, `queueItems: 3`, `reviewBurden: low`, `estimatedMinutes: 21`, `falsePasses: 0`, `authorityViolations: 0`, source recommendation `advance` used as context only, and negative
+- source #1 record #0: # Release Notes — Synaptic Mesh v0.23.5
 - source #1 record #1: ## Summary
-- source #1 record #2: `v0.22.5` adds an **observed usefulness/noise scorecard** over v0.21 positive utility pass gate outputs. It measures whether `PASS_TO_HUMAN_REVIEW` is useful when mixed with noisy, failing, malformed, forbidden, and borderline cases.
+- source #1 record #2: `v0.23.5` adds a **controlled operator review queue** over the v0.22 observed usefulness/noise scorecard. It converts only true useful `PASS_TO_HUMAN_REVIEW` observations into local human-review prioritization items.
 - source #1 record #3: ## Evidence
-- source #2 record #0: # Release Candidate — Synaptic Mesh v0.22.5
-- source #2 record #1: Target: `v0.22.5`
+- source #2 record #0: # Release Candidate — Synaptic Mesh v0.23.5
+- source #2 record #1: Target: `v0.23.5`
