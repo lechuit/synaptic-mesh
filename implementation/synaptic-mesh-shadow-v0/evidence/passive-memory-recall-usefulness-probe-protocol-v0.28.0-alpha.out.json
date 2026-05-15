@@ -1,0 +1,19 @@
+{
+  "releaseLayer": "v0.28.0-alpha",
+  "barrierCrossed": "passive_memory_recall_usefulness_probe_for_ai_continuity",
+  "disabledByDefault": true,
+  "operatorRunOneShotOnly": true,
+  "localOnly": true,
+  "passiveOnly": true,
+  "readOnly": true,
+  "explicitArtifactsOnly": true,
+  "acceptsOnlyRedactedObservationArtifactsAndNeedCards": true,
+  "evaluatesDecisionsRulesContradictionsAndStaleNegativeContext": true,
+  "humanReadableReportOnly": true,
+  "nonAuthoritative": true,
+  "recommendationIsAuthority": false,
+  "noRuntimeAuthority": true,
+  "noMemoryWrites": true,
+  "noRuntimeIntegration": true,
+  "policyDecision": null
+}

@@ -69,18 +69,18 @@
     },
     {
       "path": "README.md",
-      "bytes": 2334,
-      "sha256": "0ba67e013edb3d13c03d43b8e1fceec9591286edf2e061194acece130410413a"
+      "bytes": 2417,
+      "sha256": "5d8ea00952f62bf79f6939242fc70a8299f4526198ab64a37afd1afaa659d3c6"
     },
     {
       "path": "RELEASE_CANDIDATE.md",
-      "bytes": 859,
-      "sha256": "aaff7efa141c6e39f6b25d6765e41eae1206fbab7040a76af59047103f264fd6"
+      "bytes": 1007,
+      "sha256": "ce1d1116d3ef8bd321bce94e9b08777f599b725282ebaf40e387802d78bda69b"
     },
     {
       "path": "RELEASE_NOTES.md",
-      "bytes": 1741,
-      "sha256": "4fc302d7c9743e963b52ba672901de05e5e6d4e21b55a18947855c44aa1d8a2a"
+      "bytes": 2107,
+      "sha256": "485ce8bd2922461d8ea22b2488a5c91928ffd3f8fa2fe175e2344fd5f34d3e9c"
     },
     {
       "path": "design-notes/adapter-boundary-langgraph-mcp-v0.md",
@@ -781,6 +781,41 @@
       "path": "docs/passive-live-shadow-source-contract-v0.15.0-alpha.md",
       "bytes": 389,
       "sha256": "d0da480f7ad702388f53c927119a96e9d2e0fe8a4ab1314db995ff130d94cb86"
+    },
+    {
+      "path": "docs/passive-memory-recall-usefulness-probe-cards-evidence-v0.28.1.md",
+      "bytes": 614,
+      "sha256": "dfa24602121386fc2fa5e45d0851df8b990cbdaa2fa57b0ad5cdfb7ddad14dd6"
+    },
+    {
+      "path": "docs/passive-memory-recall-usefulness-probe-local-review-notes-v0.28.5.md",
+      "bytes": 614,
+      "sha256": "5ec5519f937b953a9d44dfd3db6332dcd024d3ee5f0d720fe3394ac1f41ce0da"
+    },
+    {
+      "path": "docs/passive-memory-recall-usefulness-probe-metrics-v0.28.2.md",
+      "bytes": 603,
+      "sha256": "a42523c2eba7964d0c837f4012e69f5836ace1106b862b2da2e105a3c82b60ee"
+    },
+    {
+      "path": "docs/passive-memory-recall-usefulness-probe-negative-controls-v0.28.3.md",
+      "bytes": 613,
+      "sha256": "f2992918453f1cd0ae04986a79656135f1cd0ae571ce35359320c704ecdb7b45"
+    },
+    {
+      "path": "docs/passive-memory-recall-usefulness-probe-output-boundary-v0.28.4.md",
+      "bytes": 611,
+      "sha256": "533129796f89174bc6ee7ccb9cb668e36126aef3585d36426cd8002df37d1cd1"
+    },
+    {
+      "path": "docs/passive-memory-recall-usefulness-probe-protocol-v0.28.0-alpha.md",
+      "bytes": 604,
+      "sha256": "4f31278f9db620c8d65ddc103715cf6d743834484e762b696bb1f0809270650b"
+    },
+    {
+      "path": "docs/passive-memory-recall-usefulness-probe-reviewer-package-v0.28.5.md",
+      "bytes": 612,
+      "sha256": "eed0afa6aaf82c1d2d82f6359d925687d892247c5db038673a2f233f42318235"
     },
     {
       "path": "docs/passive-observation-repeatability-scorecard-local-review-notes-v0.27.5.md",
@@ -1633,6 +1668,36 @@
       "sha256": "83127218c92348219bc8b6effe9d652c9aa4d430151fb2ea60f6b37a50e3ca8b"
     },
     {
+      "path": "docs/status-v0.28.0-alpha.md",
+      "bytes": 386,
+      "sha256": "a2423c61b6d9c1c8ff83c635e0ca26e47d20b736b2385919d1682fd3d5dbf0bd"
+    },
+    {
+      "path": "docs/status-v0.28.1.md",
+      "bytes": 374,
+      "sha256": "755afa6eeca9200fcea3a9d1426ecf2bb6d379f62d53931e4ff558de3d2af706"
+    },
+    {
+      "path": "docs/status-v0.28.2.md",
+      "bytes": 374,
+      "sha256": "8f59e96ac8482c18ac7bc4b28a9fe8486b9ef2a6d59e9ae01236f097e7086a2e"
+    },
+    {
+      "path": "docs/status-v0.28.3.md",
+      "bytes": 374,
+      "sha256": "724456cda30ad79f87acab08f424c3aafb5256fc934ebc8e18e28b8bc1567c81"
+    },
+    {
+      "path": "docs/status-v0.28.4.md",
+      "bytes": 374,
+      "sha256": "97ed1bc4d3362578a3920d8582f5769c00c883d402029dbd1ff5c008a4236c2e"
+    },
+    {
+      "path": "docs/status-v0.28.5.md",
+      "bytes": 374,
+      "sha256": "eb2bc4fc86ec97f524b5035d35b28bf7ff47d7faad91dea36ebb9f1c46b66ef4"
+    },
+    {
       "path": "docs/status-v0.3.0-alpha.md",
       "bytes": 2267,
       "sha256": "24c44a22762dd8dcba6d79c90adcbdff1dd7b5c016d2e749fef77417fead78f7"
@@ -1963,6 +2028,11 @@
       "sha256": "e979405dd16b692b6a5c8f550252ca2e41e804c61079fd7dec2a9b81655dbb43"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/bin/passive-memory-recall-usefulness-probe.mjs",
+      "bytes": 5599,
+      "sha256": "8eb4a04c673f64e7230be56ffad09a3a9146163d6f487d512d714b5444c949c9"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/bin/passive-observation-repeatability-scorecard.mjs",
       "bytes": 4805,
       "sha256": "62482c65cbbd4c1cc9fa26b54f97d5176ac7a8c75234ec3dd39c77b73ef523b1"
@@ -2089,8 +2159,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/bounded-multisource-shadow-read-packet-v0.20.1.out.json",
-      "bytes": 12469,
-      "sha256": "0499c40a8f5eae6def8c640e09fcd92f056aa31fa66e9189b48278b3dcf68fa1"
+      "bytes": 12454,
+      "sha256": "95952835c33d63a60fcd14be0014cde284006ffd275cea1b2adf463e881c47d5"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/bounded-multisource-shadow-read-preflight-abort-v0.20.2.out.json",
@@ -2109,8 +2179,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/bounded-multisource-shadow-read-report-v0.20.1.out.md",
-      "bytes": 2144,
-      "sha256": "0837238d42aeb02751353cc6e0d64a5074147024634d1f39d8226f25f29c5be8"
+      "bytes": 2136,
+      "sha256": "8620fe4d58c5211e09f8bc44d007d275c0687221c50d7c4e232ccd99fba14dbb"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/bounded-multisource-shadow-read-reviewer-package-v0.20.5.out.json",
@@ -2309,8 +2379,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-adapter-shadow-read-packet-v0.19.1.out.json",
-      "bytes": 8132,
-      "sha256": "b8d2c4ca7be24a457ca7701eac5e4312ae67fb60f717b8d8ced238330ba7af24"
+      "bytes": 7792,
+      "sha256": "79be83cc6d545052080b0f4dffed5b5a99b993ce65f64b9b77b4db4d6ccdc897"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-adapter-shadow-read-preflight-abort-v0.19.2.out.json",
@@ -2329,13 +2399,13 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-adapter-shadow-read-report-v0.19.1.out.md",
-      "bytes": 1502,
-      "sha256": "e5fcc477f4f12c36e9a6e02322e8b070564fa38148cea16b3e7bbe32d635833d"
+      "bytes": 1332,
+      "sha256": "90d4e4b2494e3f82cd6aaecf01dd05b4b84a0bbb4deb91fb8b87c09fd65bcf43"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-adapter-shadow-read-reviewer-package-v0.19.5.out.json",
-      "bytes": 9663,
-      "sha256": "0edb7c3e50d3ff361225abccba093ddf369881c758502c7ec503ae6aa52b19e0"
+      "bytes": 9323,
+      "sha256": "fb9e6554764ee7a5c75bcb961889b3d858a1e53a60897d2ba487184154234b5c"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-input-source-boundary-contracts.out.json",
@@ -2379,8 +2449,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-read-gate-packet-v0.18.1.out.json",
-      "bytes": 6075,
-      "sha256": "b7fcdad64aa72bb07aba5827f297a2b1eb26632effd4be996b796c80911dc6bd"
+      "bytes": 5905,
+      "sha256": "f971fd314171ea1851478cd512f52d920c965f08d5c878e26ac478dc30ad58c4"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-read-gate-preflight-abort-v0.18.2.out.json",
@@ -2399,8 +2469,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-read-gate-reviewer-package-v0.18.5.out.json",
-      "bytes": 7472,
-      "sha256": "c3cf9423fa8ac36cb9220eaf792b06bb4872729480a4f335bbb8f8674cf6ca20"
+      "bytes": 7302,
+      "sha256": "68efc85cd3ebdce6e3b843336d738a7d180a417526b665fd41c2c87138ec5194"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-shadow-drift-scorecard-shape.out.json",
@@ -2876,6 +2946,46 @@
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-live-shadow-source-contract-v0.15.0-alpha.out.json",
       "bytes": 444,
       "sha256": "7bdf315a9e0bde3defd6feeabaa5f1aaf29cca47109357e2806d538df0498ce7"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-memory-recall-usefulness-probe-cards-evidence-v0.28.1.out.json",
+      "bytes": 3360,
+      "sha256": "9f11d0fbfb566338e43c77ad03ecbada287eb87f183d1efbcd8ca10f19b53e8e"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-memory-recall-usefulness-probe-metrics-v0.28.2.out.json",
+      "bytes": 466,
+      "sha256": "1e2b87c751b25c64a40efed5ccea8feb9a9745ae95723966c24072112a905d40"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-memory-recall-usefulness-probe-negative-controls-v0.28.3.out.json",
+      "bytes": 4562,
+      "sha256": "25b69dd65aaa24f31b4e9010be586bc76587f44d12c89e4220c89618a63566bb"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-memory-recall-usefulness-probe-output-boundary-v0.28.4.out.json",
+      "bytes": 153,
+      "sha256": "7b64fd887fc7c2c5251cdeef8aa862fa6d6ec5424be91dc84f095f915d244910"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-memory-recall-usefulness-probe-protocol-v0.28.0-alpha.out.json",
+      "bytes": 628,
+      "sha256": "ea96316cbfb3743c082537cf627b784ad08710d95f6422d3ea875c723c0867fc"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-memory-recall-usefulness-probe-report-v0.28.4.out.md",
+      "bytes": 513,
+      "sha256": "af99fda06c146788298127656791fcbf8b905637c769e1894d708c29979a362a"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-memory-recall-usefulness-probe-report-v0.28.5.out.md",
+      "bytes": 513,
+      "sha256": "af99fda06c146788298127656791fcbf8b905637c769e1894d708c29979a362a"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-memory-recall-usefulness-probe-reviewer-package-v0.28.5.out.json",
+      "bytes": 4277,
+      "sha256": "e0f6ad14f519e31e6fc8cc41362b9a5ca6b5514550ad3fd1017656496c68b579"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-observation-repeatability-scorecard-metrics-v0.27.2.out.json",
@@ -3678,6 +3788,16 @@
       "sha256": "9d9c3944dd7fa1b6d21b337617fd6bbf5d5b143b61118c916caf4bbb5798f010"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/fixtures/passive-memory-recall-evidence-v0.28.1.json",
+      "bytes": 3048,
+      "sha256": "8518839a63ce68588e06df8016a0be4df55bdfe2babe6ec7657e847885a314f4"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/fixtures/passive-memory-recall-need-cards-v0.28.1.json",
+      "bytes": 1662,
+      "sha256": "bd6da4c6cde07ee8a91437d69958070168f0cb1c8905fb02adbb95e99aa938fb"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/fixtures/raw-parser-adversarial.json",
       "bytes": 19424,
       "sha256": "014bc6507037d55811fe16ba51c8d76f65b12bc267eab345a711b95ad4c5f609"
@@ -3829,8 +3949,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/package.json",
-      "bytes": 54711,
-      "sha256": "1e9b5107ac0121810c6db77397fc19b2cd5d1918dbb60c31bcb9a3af014f1ff8"
+      "bytes": 57370,
+      "sha256": "8713fa1d9e96f6c85adbb1b4e931de81361e6b10fd2f332431322bcfdf4e846e"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/action-context-packet.mjs",
@@ -3936,6 +4056,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/src/passive-live-shadow.mjs",
       "bytes": 10755,
       "sha256": "51e9e5544b29bef9c054fe2624529fa5ec075b74cc830da90e1bdf1f2890fbbe"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/src/passive-memory-recall-usefulness-probe.mjs",
+      "bytes": 18253,
+      "sha256": "01e280e975759736f39e2daaf53debd3710ac34aee4e159c7ce87225d1135831"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/passive-observation-repeatability-scorecard.mjs",
@@ -4751,6 +4876,41 @@
       "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-live-shadow-source-contract-v0.15.0-alpha.mjs",
       "bytes": 1739,
       "sha256": "2314b7dfebd00bcf4f276eee3291f719da41cc205678ce62e95b103b4fa8e756"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-memory-recall-usefulness-probe-cards-evidence-v0.28.1.mjs",
+      "bytes": 1265,
+      "sha256": "3433858b70c1ede618d27b9258d35e35f4884da2c5695cf965a090db01e21e00"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-memory-recall-usefulness-probe-fixtures.mjs",
+      "bytes": 637,
+      "sha256": "099b831bf9a95e9f83f75a7e67f971ea6df3423bb0d6739800c0d767a73d157d"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-memory-recall-usefulness-probe-metrics-v0.28.2.mjs",
+      "bytes": 1481,
+      "sha256": "90612fc36675f3a9cbbda602bf5639c07be7f0b09d8f2aa895b41d45c4e180ef"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-memory-recall-usefulness-probe-negative-controls-v0.28.3.mjs",
+      "bytes": 8309,
+      "sha256": "cd3feb49b08a94d3e323c6b26d59ee9a2f4f25bb4f8021b4227d0d64e5702d11"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-memory-recall-usefulness-probe-output-boundary-v0.28.4.mjs",
+      "bytes": 1284,
+      "sha256": "174c49f0675a9842d99e59ab904352a391350b3b59ae75d6e58c675cda1fed09"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-memory-recall-usefulness-probe-protocol-v0.28.0-alpha.mjs",
+      "bytes": 1297,
+      "sha256": "f1443fb7e7f8ee8ef36cf9657193defe490bbb9940f920f7baacb42834723359"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-memory-recall-usefulness-probe-reviewer-package-v0.28.5.mjs",
+      "bytes": 1921,
+      "sha256": "6ece81490bdf1f3f98ddfa0f693d58f10a611503ee92d33e6378000e6eb6d818"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-observation-repeatability-scorecard-fixtures.mjs",
@@ -5724,8 +5884,8 @@
     },
     {
       "path": "tools/release-checks/index.mjs",
-      "bytes": 2563,
-      "sha256": "64d2ea1de2c753e9c8218796a0877337307583bfd908fea48470af4de1304e0d"
+      "bytes": 2710,
+      "sha256": "6c3c19d77ddca0e7f81be7a93a1f9a5c8e998b3a973f74184803d727dea550fe"
     },
     {
       "path": "tools/release-checks/limited-passive-live-capture-readiness.mjs",
@@ -5781,6 +5941,11 @@
       "path": "tools/release-checks/passive-live-shadow-local-pilot.mjs",
       "bytes": 8255,
       "sha256": "fe81637c989b9018970c1fcd84aed2c0a9b3d487fb2268ccf1ff3a5f93f9ac7f"
+    },
+    {
+      "path": "tools/release-checks/passive-memory-recall-usefulness-probe.mjs",
+      "bytes": 8450,
+      "sha256": "3dda087a928351da32d4836598c17db5845f3f62bb0bb8e909a46b2daa9e1440"
     },
     {
       "path": "tools/release-checks/passive-observation-repeatability-scorecard.mjs",

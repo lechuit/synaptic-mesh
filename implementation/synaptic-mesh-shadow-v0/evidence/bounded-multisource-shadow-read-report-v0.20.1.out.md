@@ -16,13 +16,13 @@
 - source #2: ok; records=2; rawSourcePathPersisted=false
 
 ## Redacted evidence preview
-- source #0 record #0: # Synaptic Mesh v0.27.5
-- source #0 record #1: This is the public review release `v0.27.5`. Current v0.27.5 status is narrower than live runtime and crosses the next safe barrier after the v0.26 passive observation window: **passive observation repeatability scorecard**.
-- source #0 record #2: The v0.27 ladder is disabled-by-default, operator-run one-shot, local-only, passive/read-only, bounded to explicit redacted v0.26 passive observation window artifacts, human-readable report only, non-authoritative, and not runtime authority
-- source #0 record #3: Pinned v0.27.5 evidence: `scorecardStatus: REPEATABILITY_SCORECARD_COMPLETE`, `completed windows: 3`, `degraded windows: 1`, `usefulOutcomeRatio: 1`, `repeatabilityRatio: 1`, `boundaryViolationCount: 0`, `recommendation: ADVANCE_OBSERVATION
-- source #1 record #0: # Release Notes — Synaptic Mesh v0.27.5
+- source #0 record #0: # Synaptic Mesh v0.28.5
+- source #0 record #1: This is the public review release `v0.28.5`. Current v0.28.5 status is narrower than live runtime and crosses the next safe barrier after the v0.27 repeatability scorecard: **passive memory recall usefulness probe**.
+- source #0 record #2: The v0.28 ladder is disabled-by-default, operator-run one-shot, local-only, passive/read-only, bounded to explicit redacted passive observation artifacts plus explicit recall need cards, human-readable report only, non-authoritative, and no
+- source #0 record #3: Pinned v0.28.5 evidence: `probeStatus: MEMORY_RECALL_USEFULNESS_PROBE_COMPLETE`, `cardCount: 4`, `evidenceCount: 5`, `usefulRecallRatio: 0.75`, `contradictionSurfacingRatio: 1`, `staleNegativeMarkedRatio: 1`, `sourceBoundMatchRatio: 1`, `ir
+- source #1 record #0: # Release Notes — Synaptic Mesh v0.28.5
 - source #1 record #1: ## Summary
-- source #1 record #2: `v0.27.5` adds **passive observation repeatability scorecard** over v0.26 passive observation window artifacts. It aggregates several bounded local/manual/operator-run windows to measure repeatability and useful signal before any stronger l
+- source #1 record #2: `v0.28.5` adds **passive memory recall usefulness probe** over explicit redacted passive observation evidence and human-authored recall need cards. It tests whether the evidence helps recover continuity-relevant memory for AI agents: decisi
 - source #1 record #3: ## Evidence
-- source #2 record #0: # Release Candidate — Synaptic Mesh v0.23.5
-- source #2 record #1: Target: `v0.23.5`
+- source #2 record #0: # Release Candidate — Synaptic Mesh v0.28.5
+- source #2 record #1: Target: `v0.28.5`

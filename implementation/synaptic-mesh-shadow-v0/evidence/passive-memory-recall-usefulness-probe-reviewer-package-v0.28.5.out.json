@@ -1,0 +1,118 @@
+{
+  "artifact": "T-synaptic-mesh-passive-memory-recall-usefulness-probe-reviewer-package-v0.28.5",
+  "releaseLayer": "v0.28.5",
+  "probeStatus": "MEMORY_RECALL_USEFULNESS_PROBE_COMPLETE",
+  "metrics": {
+    "cardCount": 4,
+    "evidenceCount": 5,
+    "usefulRecallRatio": 0.75,
+    "contradictionSurfacingRatio": 1,
+    "staleNegativeMarkedRatio": 1,
+    "sourceBoundMatchRatio": 1,
+    "irrelevantMatchRatio": 0,
+    "boundaryViolationCount": 0,
+    "policyDecision": null
+  },
+  "coverage": {
+    "decision": 1,
+    "project_rule": 1,
+    "contradiction": 1,
+    "stale_negative_context": 1
+  },
+  "cardSummaries": [
+    {
+      "cardId": "card-north-star-decision",
+      "cardType": "decision",
+      "bestSignal": "useful",
+      "useful": true,
+      "contradictionSurfaced": false,
+      "staleMarked": false,
+      "matchCount": 1,
+      "matches": [
+        {
+          "evidenceId": "evidence-v027-repeatability",
+          "signal": "useful",
+          "sourceBound": true,
+          "stale": false,
+          "contradiction": false,
+          "sourceArtifactId": "T-synaptic-mesh-passive-observation-repeatability-scorecard-v0.27.5",
+          "evidenceSha256": "c6326db9308b45afe2b0c939f7f35240fc24609222bea0fe84e0a5a57233d51a",
+          "policyDecision": null
+        }
+      ],
+      "policyDecision": null
+    },
+    {
+      "cardId": "card-boundary-project-rule",
+      "cardType": "project_rule",
+      "bestSignal": "useful",
+      "useful": true,
+      "contradictionSurfaced": false,
+      "staleMarked": false,
+      "matchCount": 1,
+      "matches": [
+        {
+          "evidenceId": "evidence-boundary-project-rule",
+          "signal": "useful",
+          "sourceBound": true,
+          "stale": false,
+          "contradiction": false,
+          "sourceArtifactId": "T-synaptic-mesh-passive-observation-repeatability-scorecard-v0.27.5",
+          "evidenceSha256": "390201106879a91c66685d58d79467ab93bc1ddfce8985e050c2bc21e73b574b",
+          "policyDecision": null
+        }
+      ],
+      "policyDecision": null
+    },
+    {
+      "cardId": "card-readiness-theater-contradiction",
+      "cardType": "contradiction",
+      "bestSignal": "contradiction",
+      "useful": false,
+      "contradictionSurfaced": true,
+      "staleMarked": false,
+      "matchCount": 1,
+      "matches": [
+        {
+          "evidenceId": "evidence-readiness-theater-contradiction",
+          "signal": "contradiction",
+          "sourceBound": true,
+          "stale": false,
+          "contradiction": true,
+          "sourceArtifactId": "T-synaptic-mesh-passive-observation-repeatability-scorecard-v0.27.5",
+          "evidenceSha256": "cfcdb275c1f4e13f54f5e3d36ace60980e4b71f50881c24b8bc06b169b3d1f97",
+          "policyDecision": null
+        }
+      ],
+      "policyDecision": null
+    },
+    {
+      "cardId": "card-stale-rag-negative-context",
+      "cardType": "stale_negative_context",
+      "bestSignal": "useful",
+      "useful": true,
+      "contradictionSurfaced": false,
+      "staleMarked": true,
+      "matchCount": 1,
+      "matches": [
+        {
+          "evidenceId": "evidence-stale-generic-rag-context",
+          "signal": "useful",
+          "sourceBound": true,
+          "stale": true,
+          "contradiction": false,
+          "sourceArtifactId": "T-synaptic-mesh-passive-observation-repeatability-scorecard-v0.27.5",
+          "evidenceSha256": "770962f62e31f22072f6e6fa1cf861d67ea42a9f053c86dc45d526b1000de087",
+          "policyDecision": null
+        }
+      ],
+      "policyDecision": null
+    }
+  ],
+  "recommendation": "ADVANCE_OBSERVATION_ONLY",
+  "recommendationIsAuthority": false,
+  "reportMarkdown": "# Passive Memory Recall Usefulness Probe v0.28.5\n\nprobeStatus: MEMORY_RECALL_USEFULNESS_PROBE_COMPLETE\ncardCount=4\nevidenceCount=5\nusefulRecallRatio=0.75\ncontradictionSurfacingRatio=1\nstaleNegativeMarkedRatio=1\nsourceBoundMatchRatio=1\nirrelevantMatchRatio=0\nboundaryViolationCount=0\nrecommendation: ADVANCE_OBSERVATION_ONLY\nrecommendationIsAuthority=false\npolicyDecision: null\n\nHuman-readable local evidence only. This probe does not write durable memory and does not feed a runtime.\n\n## Validation issues\n- none\n",
+  "policyDecision": null,
+  "nonAuthoritative": true,
+  "humanReadableReportOnly": true
+}

@@ -1,0 +1,20 @@
+import assert from 'node:assert/strict';
+import { mkdir, writeFile } from 'node:fs/promises';
+import { resolve } from 'node:path';
+import { scorePassiveMemoryRecallUsefulness } from '../src/passive-memory-recall-usefulness-probe.mjs';
+import { passiveMemoryRecallInput } from './passive-memory-recall-usefulness-probe-fixtures.mjs';
+
+await mkdir(resolve('evidence'), { recursive: true });
+const artifact = scorePassiveMemoryRecallUsefulness(await passiveMemoryRecallInput());
+assert.equal(artifact.probeStatus, 'MEMORY_RECALL_USEFULNESS_PROBE_COMPLETE');
+assert.equal(artifact.metrics.usefulRecallRatio, 0.75);
+assert.equal(artifact.metrics.contradictionSurfacingRatio, 1);
+assert.equal(artifact.metrics.staleNegativeMarkedRatio, 1);
+assert.equal(artifact.metrics.sourceBoundMatchRatio, 1);
+assert.equal(artifact.metrics.irrelevantMatchRatio, 0);
+assert.equal(artifact.metrics.boundaryViolationCount, 0);
+assert.equal(artifact.recommendation, 'ADVANCE_OBSERVATION_ONLY');
+assert.equal(artifact.recommendationIsAuthority, false);
+assert.equal(artifact.policyDecision, null);
+await writeFile(resolve('evidence/passive-memory-recall-usefulness-probe-metrics-v0.28.2.out.json'), JSON.stringify({ probeStatus: artifact.probeStatus, metrics: artifact.metrics, recommendation: artifact.recommendation, recommendationIsAuthority: false, policyDecision: null }, null, 2) + '\n');
+console.log(JSON.stringify({ recommendation: artifact.recommendation, metrics: artifact.metrics }, null, 2));

@@ -97,7 +97,7 @@
       "kind": "explicit_repo_local_file_via_adapter",
       "repoRelativePathSha256": "b335630551682c19a781afebcf4d07bf978fb1f8ac04c6bf87428ed5106870f5",
       "absolutePathSha256": "543c81f89743c5b0f48fa0200abe84d28dd1fdb1b6687cf610469e9e998e93e0",
-      "sourceSize": 2334,
+      "sourceSize": 2417,
       "sourceMtimeMs": null,
       "rawSourcePathPersisted": false,
       "recordsRead": 4,
@@ -109,7 +109,7 @@
       "kind": "explicit_repo_local_file_via_adapter",
       "repoRelativePathSha256": "68d24fa81558aae3d8c59e2aa57a4fa719ea3b04d7fa14beff45f16f00858f50",
       "absolutePathSha256": "4da003b5022cb2aeb34f2b51f5b6f9fe35d01a94f2607ea78b58e405df985f0b",
-      "sourceSize": 1741,
+      "sourceSize": 2107,
       "sourceMtimeMs": null,
       "rawSourcePathPersisted": false,
       "recordsRead": 4,
@@ -121,7 +121,7 @@
       "kind": "explicit_repo_local_file_via_adapter",
       "repoRelativePathSha256": "b1896e268c37a498c37027d6e8f4fbdb83aec535bacbf695d1fb98c6a55f3029",
       "absolutePathSha256": "da155b2aa4c33190c5e847a668f106d6a50de2eab927108c9de408e9fbabf1b1",
-      "sourceSize": 859,
+      "sourceSize": 1007,
       "sourceMtimeMs": null,
       "rawSourcePathPersisted": false,
       "recordsRead": 2,
@@ -151,10 +151,10 @@
     {
       "sourceIndex": 0,
       "index": 0,
-      "rawSha256": "9839f59af3115191ed7960c469c5115ec08822018b801642b615075fe4c90f9a",
+      "rawSha256": "7984a691c1157529ef13238c388e1195e9ddb80a9124d9672386bfd4b1c59874",
       "rawBytes": 23,
-      "redactedSha256": "9839f59af3115191ed7960c469c5115ec08822018b801642b615075fe4c90f9a",
-      "redactedText": "# Synaptic Mesh v0.27.5",
+      "redactedSha256": "7984a691c1157529ef13238c388e1195e9ddb80a9124d9672386bfd4b1c59874",
+      "redactedText": "# Synaptic Mesh v0.28.5",
       "privatePatternDetected": false,
       "decisionVerbDetected": false,
       "semanticDecisionTokenPersisted": false
@@ -162,10 +162,10 @@
     {
       "sourceIndex": 0,
       "index": 1,
-      "rawSha256": "532279e33f78705e8dbaae3193a6204c5c5c546f7fccce12ecef98b233987c09",
-      "rawBytes": 224,
-      "redactedSha256": "532279e33f78705e8dbaae3193a6204c5c5c546f7fccce12ecef98b233987c09",
-      "redactedText": "This is the public review release `v0.27.5`. Current v0.27.5 status is narrower than live runtime and crosses the next safe barrier after the v0.26 passive observation window: **passive observation repeatability scorecard**.",
+      "rawSha256": "eef5a9b199571e788235362fb7a4519b2b484a389356266a1e1ba643e410d7c9",
+      "rawBytes": 216,
+      "redactedSha256": "eef5a9b199571e788235362fb7a4519b2b484a389356266a1e1ba643e410d7c9",
+      "redactedText": "This is the public review release `v0.28.5`. Current v0.28.5 status is narrower than live runtime and crosses the next safe barrier after the v0.27 repeatability scorecard: **passive memory recall usefulness probe**.",
       "privatePatternDetected": false,
       "decisionVerbDetected": false,
       "semanticDecisionTokenPersisted": false
@@ -173,10 +173,10 @@
     {
       "sourceIndex": 0,
       "index": 2,
-      "rawSha256": "ee2dac9c3d20cb313f985cb39c71888de958e61682e435ecbda7d9755b880492",
-      "rawBytes": 241,
-      "redactedSha256": "ee2dac9c3d20cb313f985cb39c71888de958e61682e435ecbda7d9755b880492",
-      "redactedText": "The v0.27 ladder is disabled-by-default, operator-run one-shot, local-only, passive/read-only, bounded to explicit redacted v0.26 passive observation window artifacts, human-readable report only, non-authoritative, and not runtime authority",
+      "rawSha256": "8c83ab01850d6c74616e2a39974f184022befd24f7f21185e6bef7ae8a3679e6",
+      "rawBytes": 260,
+      "redactedSha256": "8c83ab01850d6c74616e2a39974f184022befd24f7f21185e6bef7ae8a3679e6",
+      "redactedText": "The v0.28 ladder is disabled-by-default, operator-run one-shot, local-only, passive/read-only, bounded to explicit redacted passive observation artifacts plus explicit recall need cards, human-readable report only, non-authoritative, and no",
       "privatePatternDetected": false,
       "decisionVerbDetected": false,
       "semanticDecisionTokenPersisted": false
@@ -184,10 +184,10 @@
     {
       "sourceIndex": 0,
       "index": 3,
-      "rawSha256": "9b609a4b33f4f8f78ac7b00163f901d168470fd925f93f1ab09b6c047c64df2e",
-      "rawBytes": 341,
-      "redactedSha256": "9b609a4b33f4f8f78ac7b00163f901d168470fd925f93f1ab09b6c047c64df2e",
-      "redactedText": "Pinned v0.27.5 evidence: `scorecardStatus: REPEATABILITY_SCORECARD_COMPLETE`, `completed windows: 3`, `degraded windows: 1`, `usefulOutcomeRatio: 1`, `repeatabilityRatio: 1`, `boundaryViolationCount: 0`, `recommendation: ADVANCE_OBSERVATION",
+      "rawSha256": "e2cbe2ce452ce453ad3ff64ecb196a1fe88b30d509c67ffd4aa9116fac73c16b",
+      "rawBytes": 430,
+      "redactedSha256": "e2cbe2ce452ce453ad3ff64ecb196a1fe88b30d509c67ffd4aa9116fac73c16b",
+      "redactedText": "Pinned v0.28.5 evidence: `probeStatus: MEMORY_RECALL_USEFULNESS_PROBE_COMPLETE`, `cardCount: 4`, `evidenceCount: 5`, `usefulRecallRatio: 0.75`, `contradictionSurfacingRatio: 1`, `staleNegativeMarkedRatio: 1`, `sourceBoundMatchRatio: 1`, `ir",
       "privatePatternDetected": false,
       "decisionVerbDetected": false,
       "semanticDecisionTokenPersisted": false
@@ -195,10 +195,10 @@
     {
       "sourceIndex": 1,
       "index": 0,
-      "rawSha256": "a1bbd124c77b8e74a40528201747f3eb2e9f4c5a97274937f0a147c34889fe19",
+      "rawSha256": "3d4010eb53e9a09968514457e2fd1dd3d183fd94a909e5e4ef1805ebd6dae714",
       "rawBytes": 41,
-      "redactedSha256": "a1bbd124c77b8e74a40528201747f3eb2e9f4c5a97274937f0a147c34889fe19",
-      "redactedText": "# Release Notes — Synaptic Mesh v0.27.5",
+      "redactedSha256": "3d4010eb53e9a09968514457e2fd1dd3d183fd94a909e5e4ef1805ebd6dae714",
+      "redactedText": "# Release Notes — Synaptic Mesh v0.28.5",
       "privatePatternDetected": false,
       "decisionVerbDetected": false,
       "semanticDecisionTokenPersisted": false
@@ -217,10 +217,10 @@
     {
       "sourceIndex": 1,
       "index": 2,
-      "rawSha256": "12ed84892549f934a208421fed9b19b75e08ef85e153666321e83147ae8a9c90",
-      "rawBytes": 253,
-      "redactedSha256": "12ed84892549f934a208421fed9b19b75e08ef85e153666321e83147ae8a9c90",
-      "redactedText": "`v0.27.5` adds **passive observation repeatability scorecard** over v0.26 passive observation window artifacts. It aggregates several bounded local/manual/operator-run windows to measure repeatability and useful signal before any stronger l",
+      "rawSha256": "b91ca274bceb5276d875a661c59f7922ab27e15f2e6040d513a68d15eb610994",
+      "rawBytes": 303,
+      "redactedSha256": "b91ca274bceb5276d875a661c59f7922ab27e15f2e6040d513a68d15eb610994",
+      "redactedText": "`v0.28.5` adds **passive memory recall usefulness probe** over explicit redacted passive observation evidence and human-authored recall need cards. It tests whether the evidence helps recover continuity-relevant memory for AI agents: decisi",
       "privatePatternDetected": false,
       "decisionVerbDetected": false,
       "semanticDecisionTokenPersisted": false
@@ -239,10 +239,10 @@
     {
       "sourceIndex": 2,
       "index": 0,
-      "rawSha256": "bc4dc761463c879199d8c2097e9ee0a3447ec37c02add3c7e95e22dfc768a1a9",
+      "rawSha256": "cc1ce69ed0695e7eb3be2f4d760c023ea141b2041807fab554dc95c2210c135d",
       "rawBytes": 45,
-      "redactedSha256": "bc4dc761463c879199d8c2097e9ee0a3447ec37c02add3c7e95e22dfc768a1a9",
-      "redactedText": "# Release Candidate — Synaptic Mesh v0.23.5",
+      "redactedSha256": "cc1ce69ed0695e7eb3be2f4d760c023ea141b2041807fab554dc95c2210c135d",
+      "redactedText": "# Release Candidate — Synaptic Mesh v0.28.5",
       "privatePatternDetected": false,
       "decisionVerbDetected": false,
       "semanticDecisionTokenPersisted": false
@@ -250,14 +250,14 @@
     {
       "sourceIndex": 2,
       "index": 1,
-      "rawSha256": "0638f687380f5e2a5e7bc483379d89ba37bd5c912b4d1885f3d1270ca7657db2",
+      "rawSha256": "f126477f0100d71e0ca918e2c9c168f36d8b03d3894cfb8f9761f8c778c3d389",
       "rawBytes": 17,
-      "redactedSha256": "0638f687380f5e2a5e7bc483379d89ba37bd5c912b4d1885f3d1270ca7657db2",
-      "redactedText": "Target: `v0.23.5`",
+      "redactedSha256": "f126477f0100d71e0ca918e2c9c168f36d8b03d3894cfb8f9761f8c778c3d389",
+      "redactedText": "Target: `v0.28.5`",
       "privatePatternDetected": false,
       "decisionVerbDetected": false,
       "semanticDecisionTokenPersisted": false
     }
   ],
-  "reportMarkdown": "# Bounded Explicit Multisource Shadow-Read Report v0.20.5\n\n- Barrier crossed: bounded explicit multisource shadow-read\n- Adapter: repo-local-file-read-adapter-v0\n- Operator-run: true; one-shot: true; local-only/read-only/passive-only: true\n- Sources: 3 / max 3\n- Records read: 10 / total limit 10; per-source limit 4\n- Per-source isolation: true; failure isolation: true; isolated failures: 0\n- Redacted evidence only: true; rawPersisted: false; rawOutput: false\n- policyDecision: null; agentConsumedOutput: false; unexpectedPermits: 0\n- Enforcement/authorization/approval/block/allow: false\n\n## Source statuses\n- source #0: ok; records=4; rawSourcePathPersisted=false\n- source #1: ok; records=4; rawSourcePathPersisted=false\n- source #2: ok; records=2; rawSourcePathPersisted=false\n\n## Redacted evidence preview\n- source #0 record #0: # Synaptic Mesh v0.27.5\n- source #0 record #1: This is the public review release `v0.27.5`. Current v0.27.5 status is narrower than live runtime and crosses the next safe barrier after the v0.26 passive observation window: **passive observation repeatability scorecard**.\n- source #0 record #2: The v0.27 ladder is disabled-by-default, operator-run one-shot, local-only, passive/read-only, bounded to explicit redacted v0.26 passive observation window artifacts, human-readable report only, non-authoritative, and not runtime authority\n- source #0 record #3: Pinned v0.27.5 evidence: `scorecardStatus: REPEATABILITY_SCORECARD_COMPLETE`, `completed windows: 3`, `degraded windows: 1`, `usefulOutcomeRatio: 1`, `repeatabilityRatio: 1`, `boundaryViolationCount: 0`, `recommendation: ADVANCE_OBSERVATION\n- source #1 record #0: # Release Notes — Synaptic Mesh v0.27.5\n- source #1 record #1: ## Summary\n- source #1 record #2: `v0.27.5` adds **passive observation repeatability scorecard** over v0.26 passive observation window artifacts. It aggregates several bounded local/manual/operator-run windows to measure repeatability and useful signal before any stronger l\n- source #1 record #3: ## Evidence\n- source #2 record #0: # Release Candidate — Synaptic Mesh v0.23.5\n- source #2 record #1: Target: `v0.23.5`\n"
+  "reportMarkdown": "# Bounded Explicit Multisource Shadow-Read Report v0.20.5\n\n- Barrier crossed: bounded explicit multisource shadow-read\n- Adapter: repo-local-file-read-adapter-v0\n- Operator-run: true; one-shot: true; local-only/read-only/passive-only: true\n- Sources: 3 / max 3\n- Records read: 10 / total limit 10; per-source limit 4\n- Per-source isolation: true; failure isolation: true; isolated failures: 0\n- Redacted evidence only: true; rawPersisted: false; rawOutput: false\n- policyDecision: null; agentConsumedOutput: false; unexpectedPermits: 0\n- Enforcement/authorization/approval/block/allow: false\n\n## Source statuses\n- source #0: ok; records=4; rawSourcePathPersisted=false\n- source #1: ok; records=4; rawSourcePathPersisted=false\n- source #2: ok; records=2; rawSourcePathPersisted=false\n\n## Redacted evidence preview\n- source #0 record #0: # Synaptic Mesh v0.28.5\n- source #0 record #1: This is the public review release `v0.28.5`. Current v0.28.5 status is narrower than live runtime and crosses the next safe barrier after the v0.27 repeatability scorecard: **passive memory recall usefulness probe**.\n- source #0 record #2: The v0.28 ladder is disabled-by-default, operator-run one-shot, local-only, passive/read-only, bounded to explicit redacted passive observation artifacts plus explicit recall need cards, human-readable report only, non-authoritative, and no\n- source #0 record #3: Pinned v0.28.5 evidence: `probeStatus: MEMORY_RECALL_USEFULNESS_PROBE_COMPLETE`, `cardCount: 4`, `evidenceCount: 5`, `usefulRecallRatio: 0.75`, `contradictionSurfacingRatio: 1`, `staleNegativeMarkedRatio: 1`, `sourceBoundMatchRatio: 1`, `ir\n- source #1 record #0: # Release Notes — Synaptic Mesh v0.28.5\n- source #1 record #1: ## Summary\n- source #1 record #2: `v0.28.5` adds **passive memory recall usefulness probe** over explicit redacted passive observation evidence and human-authored recall need cards. It tests whether the evidence helps recover continuity-relevant memory for AI agents: decisi\n- source #1 record #3: ## Evidence\n- source #2 record #0: # Release Candidate — Synaptic Mesh v0.28.5\n- source #2 record #1: Target: `v0.28.5`\n"
 }
