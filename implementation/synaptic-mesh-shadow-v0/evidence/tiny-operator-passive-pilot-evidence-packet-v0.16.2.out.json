@@ -1,0 +1,14 @@
+{
+  "artifact": "T-synaptic-mesh-tiny-operator-passive-pilot-evidence-packet-v0.16.2",
+  "timestamp": "2026-05-15T02:12:00.000Z",
+  "summary": {
+    "evidencePacket": "pass",
+    "operatorReviewRequired": true,
+    "singleSampleOnly": true,
+    "rawPersisted": false,
+    "hashesPresent": true,
+    "decisionVerbsSanitized": true,
+    "noAgentConsumption": true,
+    "policyDecision": null
+  }
+}
