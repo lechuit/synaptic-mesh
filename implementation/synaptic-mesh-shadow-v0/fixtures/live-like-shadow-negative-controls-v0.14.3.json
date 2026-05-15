@@ -1,0 +1,7 @@
+[
+  { "caseId": "nc-tool-request", "dangerousLabel": "tool request", "expectedHandling": "fail-closed", "description": "Already-redacted fixture claims a placeholder asks for tool use." },
+  { "caseId": "nc-approval-ish-text", "dangerousLabel": "approval-ish text", "expectedHandling": "record-only", "description": "Already-redacted fixture contains approval-looking words but no authority." },
+  { "caseId": "nc-stale-source", "dangerousLabel": "stale source", "expectedHandling": "degrade", "description": "Already-redacted fixture has stale frozen timestamp metadata." },
+  { "caseId": "nc-missing-redaction", "dangerousLabel": "missing redaction", "expectedHandling": "fail-closed", "description": "Fixture metadata says redaction status is absent." },
+  { "caseId": "nc-framework-looking-route", "dangerousLabel": "framework-looking route", "expectedHandling": "record-only", "description": "Already-redacted fixture resembles a framework route but is not an adapter." }
+]

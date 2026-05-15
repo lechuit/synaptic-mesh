@@ -69,8 +69,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 1044,
-      "sha256": "c9048fe9fe5b9e27e3a7257e9b602a4c9c7d751ff84b7a6ad899c9612a07f853"
+      "bytes": 1082,
+      "sha256": "ed3a24184cdabe64545d3ccf193207e89cd745abc0c59f256514fd5c1a8688e8"
     },
     {
       "path": "RELEASE_CANDIDATE.md",
@@ -79,8 +79,8 @@
     },
     {
       "path": "RELEASE_NOTES.md",
-      "bytes": 613,
-      "sha256": "62559bba0ff53d35873fd9d293e04ae468827e024e46bdf3fec16cc953409b7c"
+      "bytes": 759,
+      "sha256": "467a3cf317cc965b965fddb24e620da30488ebf3f9484253c6c27d0212aa5095"
     },
     {
       "path": "design-notes/adapter-boundary-langgraph-mcp-v0.md",
@@ -343,6 +343,11 @@
       "sha256": "61e9701f2cf4f70ea28fbf313db049acbfabc0785520189aa717bc324ee86d40"
     },
     {
+      "path": "docs/live-like-shadow-sandbox-failure-catalog-v0.14.3.md",
+      "bytes": 756,
+      "sha256": "95473f1a4649bcb13b14e26a1d1c2007b06e1302e8ff2691f68490d9c30a280e"
+    },
+    {
       "path": "docs/live-shadow-drift-scorecard.md",
       "bytes": 2830,
       "sha256": "ca224fde821d63f28a8da06f46b421412ceda5976bddb403517c16f37d1aad1b"
@@ -585,7 +590,7 @@
     {
       "path": "docs/release-checklist.md",
       "bytes": 11783,
-      "sha256": "64d6df209d56985f4471b5c6734718aa0e96cdfd7b718cb439498eb32ae67c8c"
+      "sha256": "b8291d242ddf10121825d2b7ab82022f43c933bd0832654e113ff0afb3ccec9d"
     },
     {
       "path": "docs/release-ladder-v0.2-alpha.md",
@@ -756,6 +761,11 @@
       "path": "docs/status-v0.14.2.md",
       "bytes": 316,
       "sha256": "9f125d716d0e586813cb0aa2a9cb94e911f39de5a681ec7efc2963faf8e4a1d5"
+    },
+    {
+      "path": "docs/status-v0.14.3.md",
+      "bytes": 533,
+      "sha256": "eb906cf4e82f3d71b7356acc429775f223a5e3667a3e75dbc0204efbada2a4cf"
     },
     {
       "path": "docs/status-v0.2.3.md",
@@ -1251,6 +1261,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-input-source-boundary-contracts.out.json",
       "bytes": 8689,
       "sha256": "35af90af0456aff58ae85af3239cb05377aff6260d1e433a5ca78497e893138c"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-like-shadow-compare-only-scorecards-v0.14.2.out.json",
+      "bytes": 829,
+      "sha256": "8111ed1c23379d757e3c0988f118e22c5c969b6002aa39d037fc5e9e585c72de"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-like-shadow-observation-envelope-v0.14.0-alpha.out.json",
@@ -1913,6 +1928,11 @@
       "sha256": "ff9113cd45b09c81d926cf01e14fada4b74ed8aff63e2ec8ae273a4226236d65"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/fixtures/live-like-shadow-negative-controls-v0.14.3.json",
+      "bytes": 979,
+      "sha256": "eca8dcef6399da09aa97d1ed7dd295d8f730cabc3a9d8275089d8534d3779955"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/fixtures/live-like-shadow-observation-v0.14.0-alpha.json",
       "bytes": 1042,
       "sha256": "bb809c36bf457224d0073acead662568043c487885fe25395768c0f9959371bc"
@@ -2294,8 +2314,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/package.json",
-      "bytes": 29053,
-      "sha256": "a3b177f47cc4200ff7ac379cdbc88943df554e847efe515abe1092b0282f1e1a"
+      "bytes": 29364,
+      "sha256": "16f2588cd3d223bc0b789862c3de4f1a4aaf3088224ceadf67c7a7c3d7cc7451"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/action-context-packet.mjs",
@@ -2336,6 +2356,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/src/fixture-manifest.mjs",
       "bytes": 2209,
       "sha256": "74c2bd8b483c660a64cd52544805cf54cc3e889f786130ea367a17bed87c062d"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/src/live-like-shadow-negative-controls.mjs",
+      "bytes": 1187,
+      "sha256": "a97740ffb3138294b20076319568e59f74853d20dae613d9115f8804df51eb71"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/live-like-shadow-replay.mjs",
@@ -2636,6 +2661,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/tests/live-like-shadow-replay-harness-v0.14.1.mjs",
       "bytes": 2060,
       "sha256": "23066e97bf063967306612deec087616bab2c5a61a392c97c6bdf27d3f3a3be3"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/live-like-shadow-sandbox-failure-catalog-v0.14.3.mjs",
+      "bytes": 2282,
+      "sha256": "ef0ab60afb227178771384aa8b76434bbcd985f7ffff5867ce5b18ec5eb57531"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/live-shadow-drift-scorecard-shape.mjs",
