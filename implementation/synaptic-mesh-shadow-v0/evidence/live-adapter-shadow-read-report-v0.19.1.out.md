@@ -9,9 +9,9 @@
 - Enforcement/authorization/approval/block/allow: false
 
 ## Redacted evidence preview
-- #0: # Synaptic Mesh v0.28.5
-- #1: This is the public review release `v0.28.5`. Current v0.28.5 status is narrower than live runtime and crosses the next safe barrier after the v0.27 repeatability scorecard: **passive memory recall usefulness probe**.
-- #2: The v0.28 ladder is disabled-by-default, operator-run one-shot, local-only, passive/read-only, bounded to explicit redacted passive observation artifacts plus explicit recall need cards, human-readable report only, non-authoritative, and no
-- #3: Pinned v0.28.5 evidence: `probeStatus: MEMORY_RECALL_USEFULNESS_PROBE_COMPLETE`, `cardCount: 4`, `evidenceCount: 5`, `sourceArtifactCount: 1`, `source-anchor digest verified`, `usefulRecallRatio: 0.75`, `contradictionSurfacingRatio: 1`, `st
-- #4: The probe asks whether passive evidence helps recover AI-continuity [REDACTED]
-- #5: ## v0.28.5 phase close
+- #0: # Synaptic Mesh v0.29.5
+- #1: This is the public review release `v0.29.5`. Current v0.29.5 status is narrower than live runtime and crosses the next safe barrier after the v0.28 recall probe: **passive memory handoff candidate scorecard**.
+- #2: The v0.29 ladder is disabled-by-default, operator-run one-shot, local-only, passive/read-only, bounded to the completed v0.28 redacted recall artifact, human-readable report only, non-authoritative, and not runtime authority.
+- #3: Pinned v0.29.5 evidence: `handoffStatus: MEMORY_HANDOFF_CANDIDATE_SCORECARD_COMPLETE`, `candidateCount: 4`, `carryForwardCandidateCount: 2`, `contradictionCandidateCount: 1`, `staleCautionCandidateCount: 1`, `sourceBoundCandidateRatio: 1`,
+- #4: The scorecard asks whether passive recall evidence can become a safe human-review handoff package: what can be carried forward, which contradiction should be surfaced for review, which stale context should be treated as caution rather than
+- #5: ## v0.29.5 phase close

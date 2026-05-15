@@ -1,0 +1,23 @@
+{
+  "releaseLayer": "v0.29.0-alpha",
+  "barrierCrossed": "passive_memory_handoff_candidate_scorecard_for_ai_continuity",
+  "buildsOn": "v0.28.5_passive_memory_recall_usefulness_probe",
+  "disabledByDefault": true,
+  "operatorRunOneShotOnly": true,
+  "localOnly": true,
+  "passiveOnly": true,
+  "readOnly": true,
+  "explicitArtifactsOnly": true,
+  "acceptsOnlyCompletedRedactedRecallProbeArtifact": true,
+  "producesHumanReviewHandoffCandidates": true,
+  "measuresWhatMayReturnToContextWithoutRuntimeConsumption": true,
+  "humanReadableReportOnly": true,
+  "nonAuthoritative": true,
+  "recommendationIsAuthority": false,
+  "agentConsumedOutput": false,
+  "notRuntimeInstruction": true,
+  "noRuntimeAuthority": true,
+  "noMemoryWrites": true,
+  "noRuntimeIntegration": true,
+  "policyDecision": null
+}

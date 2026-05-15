@@ -16,13 +16,13 @@
 - source #2: ok; records=2; rawSourcePathPersisted=false
 
 ## Redacted evidence preview
-- source #0 record #0: # Synaptic Mesh v0.28.5
-- source #0 record #1: This is the public review release `v0.28.5`. Current v0.28.5 status is narrower than live runtime and crosses the next safe barrier after the v0.27 repeatability scorecard: **passive memory recall usefulness probe**.
-- source #0 record #2: The v0.28 ladder is disabled-by-default, operator-run one-shot, local-only, passive/read-only, bounded to explicit redacted passive observation artifacts plus explicit recall need cards, human-readable report only, non-authoritative, and no
-- source #0 record #3: Pinned v0.28.5 evidence: `probeStatus: MEMORY_RECALL_USEFULNESS_PROBE_COMPLETE`, `cardCount: 4`, `evidenceCount: 5`, `sourceArtifactCount: 1`, `source-anchor digest verified`, `usefulRecallRatio: 0.75`, `contradictionSurfacingRatio: 1`, `st
-- source #1 record #0: # Release Notes — Synaptic Mesh v0.28.5
+- source #0 record #0: # Synaptic Mesh v0.29.5
+- source #0 record #1: This is the public review release `v0.29.5`. Current v0.29.5 status is narrower than live runtime and crosses the next safe barrier after the v0.28 recall probe: **passive memory handoff candidate scorecard**.
+- source #0 record #2: The v0.29 ladder is disabled-by-default, operator-run one-shot, local-only, passive/read-only, bounded to the completed v0.28 redacted recall artifact, human-readable report only, non-authoritative, and not runtime authority.
+- source #0 record #3: Pinned v0.29.5 evidence: `handoffStatus: MEMORY_HANDOFF_CANDIDATE_SCORECARD_COMPLETE`, `candidateCount: 4`, `carryForwardCandidateCount: 2`, `contradictionCandidateCount: 1`, `staleCautionCandidateCount: 1`, `sourceBoundCandidateRatio: 1`,
+- source #1 record #0: # Release Notes — Synaptic Mesh v0.29.5
 - source #1 record #1: ## Summary
-- source #1 record #2: `v0.28.5` adds **passive memory recall usefulness probe** over explicit redacted passive observation evidence and human-authored recall need cards. It tests whether the evidence helps recover continuity-relevant memory for AI agents: decisi
+- source #1 record #2: `v0.29.5` adds **passive memory handoff candidate scorecard** over the completed v0.28 redacted recall probe artifact. It tests whether passive recall evidence can become a safe human-review handoff package for AI continuity: carry-forward
 - source #1 record #3: ## Evidence
-- source #2 record #0: # Release Candidate — Synaptic Mesh v0.28.5
-- source #2 record #1: Target: `v0.28.5`
+- source #2 record #0: # Release Candidate — Synaptic Mesh v0.29.5
+- source #2 record #1: Target: `v0.29.5`

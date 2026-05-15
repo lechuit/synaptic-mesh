@@ -1,0 +1,177 @@
+{
+  "artifact": "T-synaptic-mesh-passive-memory-handoff-candidate-scorecard-v0.29.5",
+  "schemaVersion": "passive-memory-handoff-candidate-scorecard-v0.29.0-alpha",
+  "releaseLayer": "v0.29.5",
+  "protocol": {
+    "releaseLayer": "v0.29.0-alpha",
+    "barrierCrossed": "passive_memory_handoff_candidate_scorecard_for_ai_continuity",
+    "buildsOn": "v0.28.5_passive_memory_recall_usefulness_probe",
+    "disabledByDefault": true,
+    "operatorRunOneShotOnly": true,
+    "localOnly": true,
+    "passiveOnly": true,
+    "readOnly": true,
+    "explicitArtifactsOnly": true,
+    "acceptsOnlyCompletedRedactedRecallProbeArtifact": true,
+    "producesHumanReviewHandoffCandidates": true,
+    "measuresWhatMayReturnToContextWithoutRuntimeConsumption": true,
+    "humanReadableReportOnly": true,
+    "nonAuthoritative": true,
+    "recommendationIsAuthority": false,
+    "agentConsumedOutput": false,
+    "notRuntimeInstruction": true,
+    "noRuntimeAuthority": true,
+    "noMemoryWrites": true,
+    "noRuntimeIntegration": true,
+    "policyDecision": null
+  },
+  "handoffStatus": "MEMORY_HANDOFF_CANDIDATE_SCORECARD_COMPLETE",
+  "disabledByDefault": true,
+  "operatorRunOneShotOnly": true,
+  "localOnly": true,
+  "passiveOnly": true,
+  "readOnly": true,
+  "explicitArtifactsOnly": true,
+  "acceptsOnlyCompletedRedactedRecallProbeArtifact": true,
+  "humanReadableReportOnly": true,
+  "humanReviewOnly": true,
+  "nonAuthoritative": true,
+  "recommendation": "ADVANCE_OBSERVATION_ONLY",
+  "recommendationIsAuthority": false,
+  "agentConsumedOutput": false,
+  "notRuntimeInstruction": true,
+  "noRuntimeAuthority": true,
+  "noMemoryWrites": true,
+  "noRuntimeIntegration": true,
+  "policyDecision": null,
+  "validationIssues": [],
+  "metrics": {
+    "candidateCount": 4,
+    "carryForwardCandidateCount": 2,
+    "contradictionCandidateCount": 1,
+    "staleCautionCandidateCount": 1,
+    "sourceBoundCandidateRatio": 1,
+    "contradictionFlagRatio": 1,
+    "staleCautionRatio": 1,
+    "noiseSuppressedCount": 1,
+    "noiseSuppressionRatio": 1,
+    "humanReviewCandidateRatio": 1,
+    "boundaryViolationCount": 0,
+    "policyDecision": null
+  },
+  "coverage": {
+    "decision": 1,
+    "project_rule": 1,
+    "contradiction": 1,
+    "stale_negative_context": 1
+  },
+  "candidates": [
+    {
+      "candidateId": "handoff-card-north-star-decision",
+      "cardId": "card-north-star-decision",
+      "cardType": "decision",
+      "treatment": "carry_forward_candidate",
+      "rationale": "Carry forward source-bound continuity evidence for human review.",
+      "sourceBound": true,
+      "contradictionFlagged": false,
+      "staleCautionFlagged": false,
+      "matchedEvidenceIds": [
+        "evidence-v027-repeatability"
+      ],
+      "sourceAnchors": [
+        {
+          "evidenceId": "evidence-v027-repeatability",
+          "sourceArtifactId": "T-synaptic-mesh-passive-memory-recall-source-anchors-v0.28.1",
+          "sourceAnchorId": "anchor-north-star-decision",
+          "anchorExcerptSha256": "581cd5c7cea4ec7be5eed5d79e8b70d5111eebdb47e5cce6db4d526308247b18",
+          "policyDecision": null
+        }
+      ],
+      "humanReviewOnly": true,
+      "agentConsumedOutput": false,
+      "recommendationIsAuthority": false,
+      "policyDecision": null
+    },
+    {
+      "candidateId": "handoff-card-boundary-project-rule",
+      "cardId": "card-boundary-project-rule",
+      "cardType": "project_rule",
+      "treatment": "carry_forward_candidate",
+      "rationale": "Carry forward source-bound continuity evidence for human review.",
+      "sourceBound": true,
+      "contradictionFlagged": false,
+      "staleCautionFlagged": false,
+      "matchedEvidenceIds": [
+        "evidence-boundary-project-rule"
+      ],
+      "sourceAnchors": [
+        {
+          "evidenceId": "evidence-boundary-project-rule",
+          "sourceArtifactId": "T-synaptic-mesh-passive-memory-recall-source-anchors-v0.28.1",
+          "sourceAnchorId": "anchor-boundary-project-rule",
+          "anchorExcerptSha256": "d79bf2ecb473e23bcdfe2169fb1ff689557081825ea9485659c191acb8ac36bd",
+          "policyDecision": null
+        }
+      ],
+      "humanReviewOnly": true,
+      "agentConsumedOutput": false,
+      "recommendationIsAuthority": false,
+      "policyDecision": null
+    },
+    {
+      "candidateId": "handoff-card-readiness-theater-contradiction",
+      "cardId": "card-readiness-theater-contradiction",
+      "cardType": "contradiction",
+      "treatment": "surface_contradiction_candidate",
+      "rationale": "Surface contradiction evidence for human continuity review before context reuse.",
+      "sourceBound": true,
+      "contradictionFlagged": true,
+      "staleCautionFlagged": false,
+      "matchedEvidenceIds": [
+        "evidence-readiness-theater-contradiction"
+      ],
+      "sourceAnchors": [
+        {
+          "evidenceId": "evidence-readiness-theater-contradiction",
+          "sourceArtifactId": "T-synaptic-mesh-passive-memory-recall-source-anchors-v0.28.1",
+          "sourceAnchorId": "anchor-readiness-theater-contradiction",
+          "anchorExcerptSha256": "7f2d583f1290d44c9b73db702f48726720057cad3cee56253784d6b27342ae8b",
+          "policyDecision": null
+        }
+      ],
+      "humanReviewOnly": true,
+      "agentConsumedOutput": false,
+      "recommendationIsAuthority": false,
+      "policyDecision": null
+    },
+    {
+      "candidateId": "handoff-card-stale-rag-negative-context",
+      "cardId": "card-stale-rag-negative-context",
+      "cardType": "stale_negative_context",
+      "treatment": "stale_caution_candidate",
+      "rationale": "Keep stale negative context visible as caution, not as fresh instruction.",
+      "sourceBound": true,
+      "contradictionFlagged": false,
+      "staleCautionFlagged": true,
+      "matchedEvidenceIds": [
+        "evidence-stale-generic-rag-context"
+      ],
+      "sourceAnchors": [
+        {
+          "evidenceId": "evidence-stale-generic-rag-context",
+          "sourceArtifactId": "T-synaptic-mesh-passive-memory-recall-source-anchors-v0.28.1",
+          "sourceAnchorId": "anchor-stale-generic-rag-context",
+          "anchorExcerptSha256": "11c9fed89d972100d45fadbafc7eea08c5c3668f223c1ca2b1f2ccd7bfbcc121",
+          "policyDecision": null
+        }
+      ],
+      "humanReviewOnly": true,
+      "agentConsumedOutput": false,
+      "recommendationIsAuthority": false,
+      "policyDecision": null
+    }
+  ],
+  "rawSourceCache": "excluded",
+  "rawPersisted": false,
+  "reportMarkdown": "# Passive Memory Handoff Candidate Scorecard v0.29.5\n\nhandoffStatus: MEMORY_HANDOFF_CANDIDATE_SCORECARD_COMPLETE\ncandidateCount=4\ncarryForwardCandidateCount=2\ncontradictionCandidateCount=1\nstaleCautionCandidateCount=1\nsourceBoundCandidateRatio=1\ncontradictionFlagRatio=1\nstaleCautionRatio=1\nnoiseSuppressedCount=1\nnoiseSuppressionRatio=1\nhumanReviewCandidateRatio=1\nboundaryViolationCount=0\nrecommendation: ADVANCE_OBSERVATION_ONLY\nrecommendationIsAuthority=false\nagentConsumedOutput=false\nnotRuntimeInstruction=true\npolicyDecision: null\n\nHuman-readable local handoff candidates only. This scorecard does not write memory, does not feed a runtime, and does not grant authority.\n\n## Candidates\n- card-north-star-decision: carry_forward_candidate; sourceBound=true; contradictionFlagged=false; staleCautionFlagged=false\n- card-boundary-project-rule: carry_forward_candidate; sourceBound=true; contradictionFlagged=false; staleCautionFlagged=false\n- card-readiness-theater-contradiction: surface_contradiction_candidate; sourceBound=true; contradictionFlagged=true; staleCautionFlagged=false\n- card-stale-rag-negative-context: stale_caution_candidate; sourceBound=true; contradictionFlagged=false; staleCautionFlagged=true\n\n## Validation issues\n- none\n"
+}

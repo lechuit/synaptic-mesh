@@ -1,36 +1,39 @@
-# Release Notes — Synaptic Mesh v0.28.5
+# Release Notes — Synaptic Mesh v0.29.5
 
 ## Summary
 
-`v0.28.5` adds **passive memory recall usefulness probe** over explicit redacted passive observation evidence and human-authored recall need cards. It tests whether the evidence helps recover continuity-relevant memory for AI agents: decisions, project rules, contradictions, and stale negative context.
+`v0.29.5` adds **passive memory handoff candidate scorecard** over the completed v0.28 redacted recall probe artifact. It tests whether passive recall evidence can become a safe human-review handoff package for AI continuity: carry-forward candidates, surfaced contradictions, stale-context cautions, and noise suppression.
 
 ## Evidence
 
-- `probeStatus: MEMORY_RECALL_USEFULNESS_PROBE_COMPLETE`
-- `cardCount: 4`
-- `evidenceCount: 5`
-- `sourceArtifactCount: 1`
-- `source-anchor digest verified`
-- `usefulRecallRatio: 0.75`
-- `contradictionSurfacingRatio: 1`
-- `staleNegativeMarkedRatio: 1`
-- `sourceBoundMatchRatio: 1`
-- `irrelevantMatchRatio: 0`
+- `handoffStatus: MEMORY_HANDOFF_CANDIDATE_SCORECARD_COMPLETE`
+- `candidateCount: 4`
+- `carryForwardCandidateCount: 2`
+- `contradictionCandidateCount: 1`
+- `staleCautionCandidateCount: 1`
+- `sourceBoundCandidateRatio: 1`
+- `contradictionFlagRatio: 1`
+- `staleCautionRatio: 1`
+- `noiseSuppressedCount: 1`
+- `noiseSuppressionRatio: 1`
+- `humanReviewCandidateRatio: 1`
 - `boundaryViolationCount: 0`
 - `recommendation: ADVANCE_OBSERVATION_ONLY`
 - `recommendationIsAuthority: false`
+- `agentConsumedOutput: false`
+- `notRuntimeInstruction: true`
 - `policyDecision: null`
 - `human-readable report only`
-- negative controls for missing/malformed cards, missing evidence/source artifacts, non-null policyDecision, authority tokens in nested/report fields, raw persistence/output/source text, unsafe CLI paths, network/tool/memory/config/runtime flags, invalid/NaN metrics, unsourced matches, source anchor/digest mismatch, stale evidence not marked stale, contradiction evidence not surfaced, and recommendation treated as authority
+- negative controls for missing/malformed recall artifact, degraded upstream status, non-null `policyDecision`, source-bound failures, contradiction/stale failures, noise leakage, missing card coverage, unsourced matches, missing source anchors, raw persistence/output/source text, unsafe CLI paths, network/tool/memory/config/runtime flags, daemon/watch flags, invalid metrics, and authority-token text that must be detected without being re-emitted
 
 ## Boundary
 
-This is local/manual/passive/read-only/one-shot, bounded to explicit repo-local redacted artifacts and explicit recall need cards, human-readable-only, non-authoritative, and not runtime authority.
+This is local/manual/passive/read-only/one-shot, bounded to the completed repo-local v0.28 redacted recall artifact, human-readable-only, non-authoritative, and not runtime authority.
 
 No enforcement, authorization, approval/block/allow semantics, tool execution, network/resource fetch, memory/config writes, external effects, daemon/watchers, autonomous runtime, raw persistence/output, runtime integration, durable memory writes, or agent-consumed machine-readable policy decisions.
 
 ## Next
 
-The next gate may harden source/authority binding, contradiction handling, stale-memory invalidation, or receiver-side handoff decisions. It must not convert recommendations into authority or live behavior.
+The next gate may test receiver-side usefulness of these handoff candidates in a stricter shadow-only rubric, or harden authority/source conflict handling across competing memories. It must not convert recommendations or candidates into authority or live behavior.
 
 Compatibility carry-forward: passive live shadow readiness achieved for local operator-run pilot only; no enforcement; no tool execution; no authorization; no daemon/watcher by default; no external effects.

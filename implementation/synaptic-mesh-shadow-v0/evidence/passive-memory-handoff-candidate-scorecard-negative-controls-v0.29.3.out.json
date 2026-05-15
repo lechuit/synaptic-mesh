@@ -1,0 +1,203 @@
+{
+  "rejectedNegativeControls": [
+    {
+      "name": "missing recall artifact",
+      "issues": [
+        "recallArtifact.explicit_object_required"
+      ],
+      "validation": []
+    },
+    {
+      "name": "degraded recall artifact",
+      "issues": [
+        "recallArtifact.probe_status_not_complete"
+      ],
+      "validation": []
+    },
+    {
+      "name": "non-null policyDecision",
+      "issues": [
+        "recallArtifact.policyDecision_non_null",
+        "input.recallArtifact.policyDecision_non_null"
+      ],
+      "validation": [
+        "artifact.validationIssues[0].authority_token_detected",
+        "artifact.validationIssues[1].authority_token_detected",
+        "artifact.reportMarkdown.authority_token_detected"
+      ]
+    },
+    {
+      "name": "recommendation authority",
+      "issues": [
+        "recallArtifact.recommendation_treated_as_authority",
+        "input.recallArtifact.recommendation_treated_as_authority"
+      ],
+      "validation": []
+    },
+    {
+      "name": "missing metrics",
+      "issues": [
+        "recallArtifact.metrics_required"
+      ],
+      "validation": []
+    },
+    {
+      "name": "source ratio low",
+      "issues": [
+        "recallArtifact.source_bound_ratio_not_one"
+      ],
+      "validation": []
+    },
+    {
+      "name": "contradiction ratio low",
+      "issues": [
+        "recallArtifact.contradiction_ratio_not_one"
+      ],
+      "validation": []
+    },
+    {
+      "name": "stale ratio low",
+      "issues": [
+        "recallArtifact.stale_ratio_not_one"
+      ],
+      "validation": []
+    },
+    {
+      "name": "noise matched",
+      "issues": [
+        "recallArtifact.noise_match_ratio_not_zero"
+      ],
+      "validation": []
+    },
+    {
+      "name": "boundary violations present",
+      "issues": [
+        "recallArtifact.boundary_violations_present"
+      ],
+      "validation": []
+    },
+    {
+      "name": "missing card summaries",
+      "issues": [
+        "recallArtifact.card_summaries_min_four_required"
+      ],
+      "validation": []
+    },
+    {
+      "name": "missing card type",
+      "issues": [
+        "recallArtifact.card_summaries_min_four_required"
+      ],
+      "validation": []
+    },
+    {
+      "name": "unsourced match",
+      "issues": [
+        "recallArtifact.cardSummaries[0].unsourced_match",
+        "candidates.card-north-star-decision.source_not_bound"
+      ],
+      "validation": []
+    },
+    {
+      "name": "missing source anchor",
+      "issues": [
+        "recallArtifact.cardSummaries[0].matches[0].source_anchor_required"
+      ],
+      "validation": []
+    },
+    {
+      "name": "contradiction not surfaced",
+      "issues": [
+        "recallArtifact.cardSummaries[2].contradiction_not_surfaced",
+        "candidates.card-readiness-theater-contradiction.contradiction_not_flagged"
+      ],
+      "validation": []
+    },
+    {
+      "name": "stale not marked",
+      "issues": [
+        "recallArtifact.cardSummaries[3].stale_context_not_marked",
+        "candidates.card-stale-rag-negative-context.stale_caution_not_flagged"
+      ],
+      "validation": []
+    },
+    {
+      "name": "input raw output",
+      "issues": [
+        "input.raw_persistence_or_output_requested",
+        "input.forbidden_boundary_field_set"
+      ],
+      "validation": []
+    },
+    {
+      "name": "input external effect",
+      "issues": [
+        "input.external_or_tool_effect_requested",
+        "input.forbidden_boundary_field_set"
+      ],
+      "validation": []
+    },
+    {
+      "name": "input tool execution",
+      "issues": [
+        "input.external_or_tool_effect_requested",
+        "input.forbidden_boundary_field_set"
+      ],
+      "validation": []
+    },
+    {
+      "name": "input network",
+      "issues": [
+        "input.external_or_tool_effect_requested",
+        "input.forbidden_boundary_field_set"
+      ],
+      "validation": []
+    },
+    {
+      "name": "input memory write",
+      "issues": [
+        "input.memory_or_config_write_requested",
+        "input.forbidden_boundary_field_set"
+      ],
+      "validation": []
+    },
+    {
+      "name": "input config write",
+      "issues": [
+        "input.memory_or_config_write_requested",
+        "input.forbidden_boundary_field_set"
+      ],
+      "validation": []
+    },
+    {
+      "name": "input runtime",
+      "issues": [
+        "input.runtime_or_daemon_requested",
+        "input.forbidden_boundary_field_set"
+      ],
+      "validation": []
+    },
+    {
+      "name": "input daemon",
+      "issues": [
+        "input.runtime_or_daemon_requested",
+        "input.forbidden_boundary_field_set"
+      ],
+      "validation": []
+    },
+    {
+      "name": "input authority token",
+      "issues": [
+        "input.note.authority_token_detected"
+      ],
+      "validation": []
+    },
+    {
+      "name": "nested authority token",
+      "issues": [
+        "input.recallArtifact.cardSummaries[0].note.authority_token_detected"
+      ],
+      "validation": []
+    }
+  ]
+}

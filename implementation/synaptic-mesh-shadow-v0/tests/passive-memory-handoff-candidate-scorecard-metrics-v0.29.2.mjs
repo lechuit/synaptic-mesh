@@ -1,0 +1,24 @@
+import assert from 'node:assert/strict';
+import { mkdir, writeFile } from 'node:fs/promises';
+import { scorePassiveMemoryHandoffCandidates } from '../src/passive-memory-handoff-candidate-scorecard.mjs';
+import { passiveMemoryHandoffInput } from './passive-memory-handoff-candidate-scorecard-fixtures.mjs';
+
+const artifact = scorePassiveMemoryHandoffCandidates(await passiveMemoryHandoffInput());
+assert.equal(artifact.metrics.candidateCount, 4);
+assert.equal(artifact.metrics.carryForwardCandidateCount, 2);
+assert.equal(artifact.metrics.contradictionCandidateCount, 1);
+assert.equal(artifact.metrics.staleCautionCandidateCount, 1);
+assert.equal(artifact.metrics.sourceBoundCandidateRatio, 1);
+assert.equal(artifact.metrics.contradictionFlagRatio, 1);
+assert.equal(artifact.metrics.staleCautionRatio, 1);
+assert.equal(artifact.metrics.noiseSuppressedCount, 1);
+assert.equal(artifact.metrics.noiseSuppressionRatio, 1);
+assert.equal(artifact.metrics.humanReviewCandidateRatio, 1);
+assert.equal(artifact.metrics.boundaryViolationCount, 0);
+assert.equal(artifact.recommendation, 'ADVANCE_OBSERVATION_ONLY');
+assert.equal(artifact.recommendationIsAuthority, false);
+assert.equal(artifact.agentConsumedOutput, false);
+assert.equal(artifact.policyDecision, null);
+await mkdir('evidence', { recursive: true });
+await writeFile('evidence/passive-memory-handoff-candidate-scorecard-metrics-v0.29.2.out.json', `${JSON.stringify({ metrics: artifact.metrics, recommendation: artifact.recommendation, policyDecision: artifact.policyDecision }, null, 2)}\n`);
+console.log(JSON.stringify(artifact.metrics, null, 2));
