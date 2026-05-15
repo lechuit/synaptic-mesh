@@ -1,23 +1,17 @@
-# Release Notes — Synaptic Mesh v0.9.5
+# Release Notes — Synaptic Mesh v0.13.5
 
-Status: authority confusion phase close. Local/redacted evidence only. Human review only. Not runtime-ready; not production/enforcement-ready.
+## v0.10.x Benchmark Maturity Package
 
-## Highlights
+Added taxonomy, reproducibility, deterministic mutation/fuzz-lite, baseline failure documentation, public demo, and phase close: baseAndAdversarialCases: 60; mutationCases: 120; totalEvaluatedCases: 180; synapticFalsePermits: 0; unexpectedPermits: 0.
 
-- Closes the v0.9.x Authority Confusion Benchmark phase.
-- Aggregates five evidence artifacts from v0.9.0 through v0.9.4.
-- Shows total evaluated cases: 60.
-- Shows baseline false permits: 60.
-- Shows Synaptic Mesh false permits: 0.
-- Shows prevented false permits: 60 and 100% false-permit reduction in local record-only evidence.
-- Records proof-of-value achieved while framework integration remains unauthorized.
+## v0.11.x Real-redacted Corpus Evaluation
 
-## Conservative release statement
+Used existing real-redacted fixtures only; added redaction/retention gates, baseline replay, Synaptic Mesh replay comparison, reviewer agreement, and public go/no-go.
 
-`v0.9.5` does not add adapter code, MCP server/client, LangGraph SDK, A2A runtime, GitHub bot, webhook, SDK import, network call, resource fetch, live traffic, watcher/daemon behavior, tool execution, memory/config writes, external publication automation, automatic agent consumption, machine-readable policy decisions, approval paths, blocking, allowing, authorization, or enforcement.
+## v0.12.x Integration Preflight
 
-## Validation
+Documented scope, capability matrix, hazard/no-go scan, dry-run harness contract, reviewer runbook, and go/no-go. Real integration/runtime remains unauthorized.
 
-```bash
-npm --prefix implementation/synaptic-mesh-shadow-v0 run release:check -- --target v0.9.5
-```
+## v0.13.5 local harness phase close
+
+First local/fake/read-only adapter harness over already-redacted fixtures only. totalHarnessCases: 6; negativeControls: 8; reproducibilityRuns: 2; mismatches: 0; unexpectedPermits: 0; next runtime/integration step unauthorized.
