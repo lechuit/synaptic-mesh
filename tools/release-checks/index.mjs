@@ -15,6 +15,7 @@ import { boundedMultisourceShadowReadSuite } from './bounded-multisource-shadow-
 import { positiveUtilityPassGateSuite } from './positive-utility-pass-gate.mjs';
 import { observedUsefulnessNoiseScorecardSuite } from './observed-usefulness-noise-scorecard.mjs';
 import { controlledOperatorReviewQueueSuite } from './controlled-operator-review-queue.mjs';
+import { operatorReviewOutcomeCaptureSuite } from './operator-review-outcome-capture.mjs';
 
 export const releaseCheckSuites = Object.freeze([
   passiveLiveShadowCanarySuite,
@@ -34,4 +35,5 @@ export const releaseCheckSuites = Object.freeze([
   positiveUtilityPassGateSuite,
   observedUsefulnessNoiseScorecardSuite,
   controlledOperatorReviewQueueSuite,
+  operatorReviewOutcomeCaptureSuite,
 ]);

@@ -9,9 +9,9 @@
 - Enforcement/authorization/approval/block/allow: false
 
 ## Redacted evidence preview
-- #0: # Synaptic Mesh v0.23.5
-- #1: This is the public review release `v0.23.5`. Current v0.23.5 status is narrower than live runtime and crosses the next safe barrier after the v0.22 observed usefulness/noise scorecard: a **controlled operator review queue**.
-- #2: The v0.23 ladder is disabled-by-default, manual/operator-run, local-only, passive/read-only, one-shot, redacted-evidence-only, human-readable only, and non-authoritative. It consumes the v0.22 scorecard and turns only true useful `PASS_TO_H
-- #3: Pinned v0.23.5 evidence: `queueStatus: READY_FOR_OPERATOR_REVIEW`, `queueItems: 3`, `reviewBurden: low`, `estimatedMinutes: 21`, `falsePasses: 0`, `authorityViolations: 0`, source recommendation `advance` used as context only, and negative
-- #4: This is not a decision queue, not an approval queue, not a policy [NON_AUTHORITATIVE_INPUT_VERB_REDACTED]/[NON_AUTHORITATIVE_INPUT_VERB_REDACTED]/[NON_AUTHORITATIVE_INPUT_VERB_REDACTED] gate, and not runtime authority. Boundaries: `policyDe
-- #5: Queue items include priority, rationale, source case id, and redacted summary only. Deterministic ordering puts the explicit-threshold source-failure useful pass first, then the two clean useful valid passes. If the source scorecard recomme
+- #0: # Synaptic Mesh v0.24.5
+- #1: This is the public review release `v0.24.5`. Current v0.24.5 status is narrower than live runtime and crosses the next safe barrier after the v0.23 controlled operator review queue: **operator review outcome capture**.
+- #2: The v0.24 ladder is disabled-by-default, manual/operator-run, local-only, passive/read-only, one-shot, bounded to 3 items, redacted-evidence-only, redaction-before-persist, human-readable only, non-authoritative, and value-feedback-only. It
+- #3: Pinned v0.24.5 evidence: `captureStatus: OUTCOME_CAPTURE_COMPLETE`, `capturedOutcomes: 3`, `redactionBeforePersist: true`, `valueFeedbackOnly: true`, `falseAuthorityLeakage: 0`, and negative controls for malformed queue/outcomes, unsafe lab
+- #4: Outcome labels are limited to value feedback: `USEFUL_FOR_REVIEW`, `NOT_USEFUL_NOISE`, `NEEDS_MORE_EVIDENCE`, and `ABSTAIN_OPERATOR_UNCERTAIN`.
+- #5: Boundaries: `policyDecision: null`, `[NON_AUTHORITATIVE_INPUT_VERB_REDACTED]: false`, `[NON_AUTHORITATIVE_INPUT_VERB_REDACTED]: false`, `toolExecution: false`, `agentConsumedOutput: false`, `externalEffects: false`, `rawPersisted: false`, `

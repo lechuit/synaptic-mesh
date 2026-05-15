@@ -1,0 +1,194 @@
+{
+  "rejectedNegativeControls": [
+    {
+      "name": "unsafe_label_approve",
+      "validationIssues": [
+        "outcomes.outcomes[0].unsafe_or_unknown_outcome_label",
+        "outcomes.outcomes[0].outcomeLabel.authority_token:approve"
+      ]
+    },
+    {
+      "name": "unsafe_label_allow",
+      "validationIssues": [
+        "outcomes.outcomes[0].unsafe_or_unknown_outcome_label",
+        "outcomes.outcomes[0].outcomeLabel.authority_token:allow"
+      ]
+    },
+    {
+      "name": "camel_case_policy_decision",
+      "validationIssues": [
+        "outcomes.outcomes[0].operatorNote.authority_token:policyDecision"
+      ]
+    },
+    {
+      "name": "camel_case_tool_execution",
+      "validationIssues": [
+        "outcomes.outcomes[0].reasonCodes[0].authority_token:toolExecution"
+      ]
+    },
+    {
+      "name": "external_effects_true",
+      "validationIssues": [
+        "outcomes.externalEffects_not_false"
+      ]
+    },
+    {
+      "name": "raw_persisted_true",
+      "validationIssues": [
+        "outcomes.rawPersisted_not_false"
+      ]
+    },
+    {
+      "name": "raw_output_true",
+      "validationIssues": [
+        "outcomes.rawOutput_not_false"
+      ]
+    },
+    {
+      "name": "non_null_policy_decision",
+      "validationIssues": [
+        "outcomes.policyDecision_non_null"
+      ]
+    },
+    {
+      "name": "mismatched_id",
+      "validationIssues": [
+        "outcomes.outcomes[0].queue_item_id_not_in_queue",
+        "outcomes.missing_outcome_for:operator-review-source-failure-allowed-explicit-threshold"
+      ]
+    },
+    {
+      "name": "missing_outcome",
+      "validationIssues": [
+        "outcomes.count_mismatch",
+        "outcomes.missing_outcome_for:operator-review-source-failure-allowed-explicit-threshold"
+      ]
+    },
+    {
+      "name": "too_many_outcomes",
+      "validationIssues": [
+        "outcomes.count_mismatch",
+        "outcomes.count_out_of_bounds",
+        "outcomes.outcomes[3].queue_item_id_not_in_queue"
+      ]
+    },
+    {
+      "name": "queue_raw_output_true",
+      "validationIssues": [
+        "queue.rawOutput_not_false",
+        "outcomes.skipped_until_queue_valid"
+      ]
+    },
+    {
+      "name": "queue_protocol_tool_execution_true",
+      "validationIssues": [
+        "queue.protocol.toolExecution_not_false",
+        "outcomes.skipped_until_queue_valid"
+      ]
+    },
+    {
+      "name": "queue_protocol_policy_decision_non_null",
+      "validationIssues": [
+        "queue.protocol.policyDecision_non_null",
+        "outcomes.skipped_until_queue_valid"
+      ]
+    },
+    {
+      "name": "outcomes_protocol_external_effects_true",
+      "validationIssues": [
+        "outcomes.protocol.externalEffects_not_false"
+      ]
+    },
+    {
+      "name": "outcomes_protocol_machine_policy_true",
+      "validationIssues": [
+        "outcomes.protocol.machineReadablePolicyDecision_not_false"
+      ]
+    },
+    {
+      "name": "top_tool_execution_string",
+      "validationIssues": [
+        "outcomes.toolExecution_not_false"
+      ]
+    },
+    {
+      "name": "nested_protocol_authorization_string",
+      "validationIssues": [
+        "outcomes.protocol.authorization_not_false"
+      ]
+    },
+    {
+      "name": "entry_external_effects_string",
+      "validationIssues": [
+        "outcomes.outcomes[0].externalEffects_not_false"
+      ]
+    },
+    {
+      "name": "queue_protocol_tool_execution_object",
+      "validationIssues": [
+        "queue.protocol.toolExecution_not_false",
+        "outcomes.skipped_until_queue_valid"
+      ]
+    },
+    {
+      "name": "queue_item_authorization_string",
+      "validationIssues": [
+        "queue.queueItems[0].authorization_not_false",
+        "outcomes.skipped_until_queue_valid"
+      ]
+    },
+    {
+      "name": "queue_item_raw_output_object",
+      "validationIssues": [
+        "queue.queueItems[0].rawOutput_not_false",
+        "outcomes.skipped_until_queue_valid"
+      ]
+    },
+    {
+      "name": "outcomes_protocol_machine_policy_object",
+      "validationIssues": [
+        "outcomes.protocol.machineReadablePolicyDecision_not_false"
+      ]
+    },
+    {
+      "name": "outcomes_protocol_external_effects_object",
+      "validationIssues": [
+        "outcomes.protocol.externalEffects_not_false"
+      ]
+    },
+    {
+      "name": "top_allow_true",
+      "validationIssues": [
+        "outcomes.allow_not_false"
+      ]
+    },
+    {
+      "name": "entry_approve_true",
+      "validationIssues": [
+        "outcomes.outcomes[0].approve_not_false"
+      ]
+    },
+    {
+      "name": "queue_item_block_true",
+      "validationIssues": [
+        "queue.queueItems[0].block_not_false",
+        "outcomes.skipped_until_queue_valid"
+      ]
+    },
+    {
+      "name": "outcomes_report_markdown_authority_tokens",
+      "validationIssues": [
+        "outcomes.reportMarkdown.authority_token:approve",
+        "outcomes.reportMarkdown.authority_token:rawOutput",
+        "outcomes.reportMarkdown.authority_token:policyDecision"
+      ]
+    },
+    {
+      "name": "queue_authority_token",
+      "validationIssues": [
+        "queue.queueItems[0].rationale.authority_token:mayAllow",
+        "outcomes.skipped_until_queue_valid"
+      ]
+    }
+  ]
+}

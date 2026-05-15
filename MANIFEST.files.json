@@ -69,8 +69,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 2761,
-      "sha256": "abfc301c60dc44036dae0178394f7136c70170062911c2416b4c588e6eaa2dd6"
+      "bytes": 2388,
+      "sha256": "f9e9a844e742334bc90e76524afd5c6089eddafa48df52e2ca9d101d21a3a404"
     },
     {
       "path": "RELEASE_CANDIDATE.md",
@@ -79,8 +79,8 @@
     },
     {
       "path": "RELEASE_NOTES.md",
-      "bytes": 1774,
-      "sha256": "d71578a3dbc1d6ffbc309ac998e5a92f82df404002a2ca4a931f45ed69442b88"
+      "bytes": 1683,
+      "sha256": "e7a0d0c6df05ab396f6b0f30c752d9321d2e2a9e11acce7e9d5771ac4788e565"
     },
     {
       "path": "design-notes/adapter-boundary-langgraph-mcp-v0.md",
@@ -666,6 +666,41 @@
       "path": "docs/observed-usefulness-noise-scorecard-source-failure-v0.22.2.md",
       "bytes": 388,
       "sha256": "2247aaab6cd2cc3bd0641962f71c0eb7bcbe305933b1ab591d0070fb07836b6f"
+    },
+    {
+      "path": "docs/operator-review-outcome-capture-local-review-notes-v0.24.5.md",
+      "bytes": 619,
+      "sha256": "17db62760180f95729d081313e80c8feb956d6fca0c0c2eeff41100f8f6a40d8"
+    },
+    {
+      "path": "docs/operator-review-outcome-capture-negative-controls-v0.24.3.md",
+      "bytes": 445,
+      "sha256": "f7bbceebb59c7568130ee5c828cb46ffb8bfdc0cdcaa3b3f63f216fd336819e3"
+    },
+    {
+      "path": "docs/operator-review-outcome-capture-output-boundary-v0.24.4.md",
+      "bytes": 396,
+      "sha256": "2c737648a46276daade000f8b55ca187506ba501579473dc8e487708c3f59e67"
+    },
+    {
+      "path": "docs/operator-review-outcome-capture-protocol-v0.24.0-alpha.md",
+      "bytes": 662,
+      "sha256": "ccdc55d3c0dde71c3e28ad309d74e9334f201baeb942977ef842a81bebf334b5"
+    },
+    {
+      "path": "docs/operator-review-outcome-capture-reviewer-package-v0.24.5.md",
+      "bytes": 386,
+      "sha256": "1defa281f0c299583781a24ad2ffb090eb09436816d042884e2eca6fb59f1768"
+    },
+    {
+      "path": "docs/operator-review-outcome-capture-runner-v0.24.1.md",
+      "bytes": 435,
+      "sha256": "d5289ecad0e2cc6be64529ab1e25527f1f21b39df7286c7c0d26052ea6f18898"
+    },
+    {
+      "path": "docs/operator-review-outcome-capture-schema-v0.24.2.md",
+      "bytes": 445,
+      "sha256": "b7b48e4d942a7dad4d65c5ea81ab6a8ad482e1c48de6d3ce31ae9e308bf1e239"
     },
     {
       "path": "docs/parser-normalization-evidence.md",
@@ -1373,6 +1408,36 @@
       "sha256": "1e0a2fb96635d73cbe3e1cbf741d01bc8e4591246b8d1d7a69cc2d7fdb88a2aa"
     },
     {
+      "path": "docs/status-v0.24.0-alpha.md",
+      "bytes": 264,
+      "sha256": "e54e0e7c2f4596164dcd3222c075e8fe93f1a5411820e0dbda9a4cac9b3e0f22"
+    },
+    {
+      "path": "docs/status-v0.24.1.md",
+      "bytes": 252,
+      "sha256": "9e63c90f110ae998beb09dda2526e7b245aa20ad45078f5b5b14faf9484a1a92"
+    },
+    {
+      "path": "docs/status-v0.24.2.md",
+      "bytes": 252,
+      "sha256": "f3c5c8430d5e15244d67394a727dff0b25c098f79261ae6c8bcc919942c0b32c"
+    },
+    {
+      "path": "docs/status-v0.24.3.md",
+      "bytes": 252,
+      "sha256": "6d8acd56afcca1cffc63d57bb229236a87a3669189bbe99a26d18b8f8869de22"
+    },
+    {
+      "path": "docs/status-v0.24.4.md",
+      "bytes": 252,
+      "sha256": "18ff94aad8e95ff06e98b2df9e9e45f0e8077e8c3d20f3f6c2ebafb8944e25ea"
+    },
+    {
+      "path": "docs/status-v0.24.5.md",
+      "bytes": 252,
+      "sha256": "668ede2ae7efb3c53f298631d39a5b9f17d362159ef413222914187131237187"
+    },
+    {
       "path": "docs/status-v0.3.0-alpha.md",
       "bytes": 2267,
       "sha256": "24c44a22762dd8dcba6d79c90adcbdff1dd7b5c016d2e749fef77417fead78f7"
@@ -1688,6 +1753,11 @@
       "sha256": "bce88fe4f0f19b6cd9783e5a694a57b75dada07649e5f852b28f797beb48a0e2"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/bin/operator-review-outcome-capture.mjs",
+      "bytes": 879,
+      "sha256": "1ad69bb178c71b54d92307925dabb74dbb8c5429caf8d033c324b2a52cbeb86e"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/bin/passive-live-shadow-observe.mjs",
       "bytes": 352,
       "sha256": "e979405dd16b692b6a5c8f550252ca2e41e804c61079fd7dec2a9b81655dbb43"
@@ -1809,8 +1879,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/bounded-multisource-shadow-read-packet-v0.20.1.out.json",
-      "bytes": 12420,
-      "sha256": "0132c4d6ac434df79d7a396302d420ee32fa68b67ec545be6b46664a6bb3151e"
+      "bytes": 12433,
+      "sha256": "1ec5f2e95360c0bde0364846e3c9f9644a82ae7f2e28ca8a78574094c2fe7281"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/bounded-multisource-shadow-read-preflight-abort-v0.20.2.out.json",
@@ -1829,8 +1899,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/bounded-multisource-shadow-read-report-v0.20.1.out.md",
-      "bytes": 2119,
-      "sha256": "1963c54f3a56a9d0a69b45db75a31c2c14d38f876e596cea78027a8783e7297a"
+      "bytes": 2126,
+      "sha256": "b477de5f44a143e0b370183207b0de2ccc0557a1e16c0c4fff9c75f7b1435081"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/bounded-multisource-shadow-read-reviewer-package-v0.20.5.out.json",
@@ -2029,8 +2099,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-adapter-shadow-read-packet-v0.19.1.out.json",
-      "bytes": 8568,
-      "sha256": "94b03a69a9147859bea6022b7a2031f163343524867a608617525e46f53adfbf"
+      "bytes": 8363,
+      "sha256": "c1e78f4558a28674f48596193a40474ec0898f753e0630b6044ca665e82f0fa5"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-adapter-shadow-read-preflight-abort-v0.19.2.out.json",
@@ -2049,13 +2119,13 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-adapter-shadow-read-report-v0.19.1.out.md",
-      "bytes": 1719,
-      "sha256": "b74b6f52eb193aabc9d0cea6f3c14547ead2b4a7ac3bccb049dca9fffc367da6"
+      "bytes": 1617,
+      "sha256": "f786ff8ce7c53d8b3a1b603e41b7339447c796248a83fe7000461b7f6ad6fec0"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-adapter-shadow-read-reviewer-package-v0.19.5.out.json",
-      "bytes": 10099,
-      "sha256": "1a399f105ca887550a2ffbac9135b9f74f57f846048a392f4888eaefa1435af9"
+      "bytes": 9894,
+      "sha256": "479135f76ef8e61e72b2e93b3ad669418bf3a404453ea167391be079f5e03a28"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-input-source-boundary-contracts.out.json",
@@ -2099,8 +2169,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-read-gate-packet-v0.18.1.out.json",
-      "bytes": 6294,
-      "sha256": "d4814d136867635d815ca0513879c0214186a5efd900470089175c7ab3d5d3df"
+      "bytes": 6191,
+      "sha256": "320340f6f49af84b5a384d6deb9512b9699cd80279de1c4772ebfbbfa758f43a"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-read-gate-preflight-abort-v0.18.2.out.json",
@@ -2119,8 +2189,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-read-gate-reviewer-package-v0.18.5.out.json",
-      "bytes": 7691,
-      "sha256": "412cbe0e0a2222a910c1a2fadc0ec784ccccb42f30c23478777305d3a3c68f76"
+      "bytes": 7588,
+      "sha256": "fc243cae11ce7bb25d71e9354039d445dcef3a0e94f2b7f7e9b331c05180ca22"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-shadow-drift-scorecard-shape.out.json",
@@ -2396,6 +2466,51 @@
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/observed-usefulness-noise-scorecard-source-failure-v0.22.2.out.json",
       "bytes": 6667,
       "sha256": "70dfe1c6612498e13efb187f7e30cbf6a348008ca2eb99d47d1ff85b7f88b4ca"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/operator-review-outcome-capture-negative-controls-v0.24.3.out.json",
+      "bytes": 5178,
+      "sha256": "9e438c2d67928170b7faa43f186900b09129a31f2f9189bfef4b5195475410c2"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/operator-review-outcome-capture-outcomes-input-v0.24.4.json",
+      "bytes": 1280,
+      "sha256": "fba52580e183c696e27351162ee67a7824738818c08bd58f1a28a5943d597dfb"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/operator-review-outcome-capture-protocol-v0.24.0-alpha.out.json",
+      "bytes": 1182,
+      "sha256": "65978bfc46a1738be236a5cfe82d42795964e74a8379b982521ac8f57bd32ce9"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/operator-review-outcome-capture-queue-input-v0.24.4.json",
+      "bytes": 7145,
+      "sha256": "77fc65ef67fa9f61c40f9da70e5533443d948a766d4e1a106d5b12f805f859c0"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/operator-review-outcome-capture-report-v0.24.4.out.md",
+      "bytes": 1105,
+      "sha256": "a69c66de477a777b9c71a5739da568ec74ffe335e571715a37ab54e502ceada1"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/operator-review-outcome-capture-report-v0.24.5.out.md",
+      "bytes": 1105,
+      "sha256": "a69c66de477a777b9c71a5739da568ec74ffe335e571715a37ab54e502ceada1"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/operator-review-outcome-capture-reviewer-package-v0.24.5.out.json",
+      "bytes": 5869,
+      "sha256": "4f9c0980c75a20fcbc2440f692e49d9b5b359b8ce4d49c06701d3b4e10b966b0"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/operator-review-outcome-capture-runner-v0.24.1.out.json",
+      "bytes": 5869,
+      "sha256": "4f9c0980c75a20fcbc2440f692e49d9b5b359b8ce4d49c06701d3b4e10b966b0"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/operator-review-outcome-capture-schema-v0.24.2.out.json",
+      "bytes": 306,
+      "sha256": "565809dab691fb1cc9a7f423ec78462b7e89a7887e3a5a24d42a1a4f727f6722"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/parser-normalization-evidence.out.json",
@@ -3359,8 +3474,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/package.json",
-      "bytes": 46587,
-      "sha256": "f3e3a0a87e2493109e8bccf159ec67aab8de444cc11e94db1a26762c1e47a488"
+      "bytes": 48536,
+      "sha256": "074d74be517f590983cd8afe0231eff9b9533f013a23bdac44e940b1f055de0c"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/action-context-packet.mjs",
@@ -3451,6 +3566,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/src/observed-usefulness-noise-scorecard.mjs",
       "bytes": 9217,
       "sha256": "088440f9b8bb02221160b92c54221822aa4b1a59cb97b724762e43c824e09e61"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/src/operator-review-outcome-capture.mjs",
+      "bytes": 13082,
+      "sha256": "04c8595d12d873b0674abd8b9bfabbf8c6ed7498f5f250666fe5fd63aff98a0e"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/passive-live-shadow.mjs",
@@ -4086,6 +4206,41 @@
       "path": "implementation/synaptic-mesh-shadow-v0/tests/observed-usefulness-noise-scorecard-source-failure-v0.22.2.mjs",
       "bytes": 1177,
       "sha256": "13d362d548a2019a7826cba7fabd685d8e741fda61db817c5f435a29bd5c175d"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/operator-review-outcome-capture-fixtures.mjs",
+      "bytes": 1624,
+      "sha256": "1d0a1693a0d0d1960d16aa0504b5c103f07598dc08c8cf5cc49fcadecf411dfe"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/operator-review-outcome-capture-negative-controls-v0.24.3.mjs",
+      "bytes": 7132,
+      "sha256": "943c826d6e3defe886a3063f86a2b41681fe0418ef117680e32dffdc6700fff8"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/operator-review-outcome-capture-output-boundary-v0.24.4.mjs",
+      "bytes": 1536,
+      "sha256": "f1eb2f3528ed248decc4855fee39227b262380fa15059ad311f1e8891b29011e"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/operator-review-outcome-capture-protocol-v0.24.0-alpha.mjs",
+      "bytes": 1467,
+      "sha256": "153f4609c58a295cc1c5e0173e159cbab4afa1eedfc2a9557f442a2ed3f3be82"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/operator-review-outcome-capture-reviewer-package-v0.24.5.mjs",
+      "bytes": 1710,
+      "sha256": "9d9c578b2ce6aeee018a07b77f86db2b15fc70ace90ac8cbf5ac70cb6fb6c0f1"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/operator-review-outcome-capture-runner-v0.24.1.mjs",
+      "bytes": 1392,
+      "sha256": "d46653e9879ad88856b1dfd2d708b0ac2f88a4fc27a16d0e8da7d02f085bff4e"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/operator-review-outcome-capture-schema-v0.24.2.mjs",
+      "bytes": 1697,
+      "sha256": "005e58e1626b4c408e2a9dc623af083e55fbea288047b57d0908b37b2a8e4fe2"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/parser-normalization-evidence.mjs",
@@ -5094,8 +5249,8 @@
     },
     {
       "path": "tools/release-checks/index.mjs",
-      "bytes": 2025,
-      "sha256": "732f7b817a24602795c2f89e3c053e8bf7b800c24d81d241f74592befb6e0f7c"
+      "bytes": 2153,
+      "sha256": "5dd351c1f9c4b3e830021b2562a0cca55118a841244f9946b07fcfd789a6cf6b"
     },
     {
       "path": "tools/release-checks/limited-passive-live-capture-readiness.mjs",
@@ -5131,6 +5286,11 @@
       "path": "tools/release-checks/observed-usefulness-noise-scorecard.mjs",
       "bytes": 7888,
       "sha256": "a7accf850c24327255bc2f1fc59d83afd99c372cf6fdce82256eea2b216f165a"
+    },
+    {
+      "path": "tools/release-checks/operator-review-outcome-capture.mjs",
+      "bytes": 7275,
+      "sha256": "ab8a1a5be4c82d0004ea0ebc4a6ecb1706ffca8ac91ec40da989f1ad2cc0cab3"
     },
     {
       "path": "tools/release-checks/passive-live-shadow-canary.mjs",

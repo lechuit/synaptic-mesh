@@ -97,7 +97,7 @@
       "kind": "explicit_repo_local_file_via_adapter",
       "repoRelativePathSha256": "b335630551682c19a781afebcf4d07bf978fb1f8ac04c6bf87428ed5106870f5",
       "absolutePathSha256": "543c81f89743c5b0f48fa0200abe84d28dd1fdb1b6687cf610469e9e998e93e0",
-      "sourceSize": 2761,
+      "sourceSize": 2388,
       "sourceMtimeMs": null,
       "rawSourcePathPersisted": false,
       "recordsRead": 4,
@@ -109,7 +109,7 @@
       "kind": "explicit_repo_local_file_via_adapter",
       "repoRelativePathSha256": "68d24fa81558aae3d8c59e2aa57a4fa719ea3b04d7fa14beff45f16f00858f50",
       "absolutePathSha256": "4da003b5022cb2aeb34f2b51f5b6f9fe35d01a94f2607ea78b58e405df985f0b",
-      "sourceSize": 1774,
+      "sourceSize": 1683,
       "sourceMtimeMs": null,
       "rawSourcePathPersisted": false,
       "recordsRead": 4,
@@ -151,10 +151,10 @@
     {
       "sourceIndex": 0,
       "index": 0,
-      "rawSha256": "cb629cd6f3ca4928a71f1cae3f516feff2f916ca8f26ed718ac683f8a9395b74",
+      "rawSha256": "46b3c60ca1f84592fa5b177a943c9bdcb7fd1caafb93a6e85a3eed01b5a8508d",
       "rawBytes": 23,
-      "redactedSha256": "cb629cd6f3ca4928a71f1cae3f516feff2f916ca8f26ed718ac683f8a9395b74",
-      "redactedText": "# Synaptic Mesh v0.23.5",
+      "redactedSha256": "46b3c60ca1f84592fa5b177a943c9bdcb7fd1caafb93a6e85a3eed01b5a8508d",
+      "redactedText": "# Synaptic Mesh v0.24.5",
       "privatePatternDetected": false,
       "decisionVerbDetected": false,
       "semanticDecisionTokenPersisted": false
@@ -162,10 +162,10 @@
     {
       "sourceIndex": 0,
       "index": 1,
-      "rawSha256": "ebc743f9a78e1eaee0f672f38edf781d6bbf82769137ff486e7c034b07d312d4",
-      "rawBytes": 224,
-      "redactedSha256": "ebc743f9a78e1eaee0f672f38edf781d6bbf82769137ff486e7c034b07d312d4",
-      "redactedText": "This is the public review release `v0.23.5`. Current v0.23.5 status is narrower than live runtime and crosses the next safe barrier after the v0.22 observed usefulness/noise scorecard: a **controlled operator review queue**.",
+      "rawSha256": "d3be5dd0449f18cc648d31fc80402ed4e15121e79c9789322831f0e1445794c2",
+      "rawBytes": 218,
+      "redactedSha256": "d3be5dd0449f18cc648d31fc80402ed4e15121e79c9789322831f0e1445794c2",
+      "redactedText": "This is the public review release `v0.24.5`. Current v0.24.5 status is narrower than live runtime and crosses the next safe barrier after the v0.23 controlled operator review queue: **operator review outcome capture**.",
       "privatePatternDetected": false,
       "decisionVerbDetected": false,
       "semanticDecisionTokenPersisted": false
@@ -173,10 +173,10 @@
     {
       "sourceIndex": 0,
       "index": 2,
-      "rawSha256": "41c5532abc0389ec1ba2abd1690c2811334810851c1fa466d529409b941c012c",
-      "rawBytes": 316,
-      "redactedSha256": "41c5532abc0389ec1ba2abd1690c2811334810851c1fa466d529409b941c012c",
-      "redactedText": "The v0.23 ladder is disabled-by-default, manual/operator-run, local-only, passive/read-only, one-shot, redacted-evidence-only, human-readable only, and non-authoritative. It consumes the v0.22 scorecard and turns only true useful `PASS_TO_H",
+      "rawSha256": "cea0a6c834167c3db179476169276df29e3de7931721c9b55f6a0c839f00ca29",
+      "rawBytes": 326,
+      "redactedSha256": "cea0a6c834167c3db179476169276df29e3de7931721c9b55f6a0c839f00ca29",
+      "redactedText": "The v0.24 ladder is disabled-by-default, manual/operator-run, local-only, passive/read-only, one-shot, bounded to 3 items, redacted-evidence-only, redaction-before-persist, human-readable only, non-authoritative, and value-feedback-only. It",
       "privatePatternDetected": false,
       "decisionVerbDetected": false,
       "semanticDecisionTokenPersisted": false
@@ -184,10 +184,10 @@
     {
       "sourceIndex": 0,
       "index": 3,
-      "rawSha256": "7f2b49fb436dd8cb6f6bdc72c7951a4abce2c12deb03ac89ae38ff8376922b5e",
-      "rawBytes": 281,
-      "redactedSha256": "7f2b49fb436dd8cb6f6bdc72c7951a4abce2c12deb03ac89ae38ff8376922b5e",
-      "redactedText": "Pinned v0.23.5 evidence: `queueStatus: READY_FOR_OPERATOR_REVIEW`, `queueItems: 3`, `reviewBurden: low`, `estimatedMinutes: 21`, `falsePasses: 0`, `authorityViolations: 0`, source recommendation `advance` used as context only, and negative ",
+      "rawSha256": "713ff0f22ac3cbcab326881bda7c9ba106f535bbbfeadde9d9c5a38002451303",
+      "rawBytes": 368,
+      "redactedSha256": "713ff0f22ac3cbcab326881bda7c9ba106f535bbbfeadde9d9c5a38002451303",
+      "redactedText": "Pinned v0.24.5 evidence: `captureStatus: OUTCOME_CAPTURE_COMPLETE`, `capturedOutcomes: 3`, `redactionBeforePersist: true`, `valueFeedbackOnly: true`, `falseAuthorityLeakage: 0`, and negative controls for malformed queue/outcomes, unsafe lab",
       "privatePatternDetected": false,
       "decisionVerbDetected": false,
       "semanticDecisionTokenPersisted": false
@@ -195,10 +195,10 @@
     {
       "sourceIndex": 1,
       "index": 0,
-      "rawSha256": "fcd0afc041fbad1f81e6f4bf9d3af89120f681c87cdb9f2b81f70a851f22b447",
+      "rawSha256": "efc341b2d0f70c34eeb9f2acebea6f0a3a2e17dfb614c0c7cc22ba764e3f68b1",
       "rawBytes": 41,
-      "redactedSha256": "fcd0afc041fbad1f81e6f4bf9d3af89120f681c87cdb9f2b81f70a851f22b447",
-      "redactedText": "# Release Notes — Synaptic Mesh v0.23.5",
+      "redactedSha256": "efc341b2d0f70c34eeb9f2acebea6f0a3a2e17dfb614c0c7cc22ba764e3f68b1",
+      "redactedText": "# Release Notes — Synaptic Mesh v0.24.5",
       "privatePatternDetected": false,
       "decisionVerbDetected": false,
       "semanticDecisionTokenPersisted": false
@@ -217,10 +217,10 @@
     {
       "sourceIndex": 1,
       "index": 2,
-      "rawSha256": "90ed4b1ce7487e3fa377f324d5deb46bd95638c139ca418b9f6b7081122f5154",
-      "rawBytes": 216,
-      "redactedSha256": "90ed4b1ce7487e3fa377f324d5deb46bd95638c139ca418b9f6b7081122f5154",
-      "redactedText": "`v0.23.5` adds a **controlled operator review queue** over the v0.22 observed usefulness/noise scorecard. It converts only true useful `PASS_TO_HUMAN_REVIEW` observations into local human-review prioritization items.",
+      "rawSha256": "7686e7f9e0bf960704125ae1832563049efe8955f4aad2b76a8cd0c4bc9622ca",
+      "rawBytes": 228,
+      "redactedSha256": "7686e7f9e0bf960704125ae1832563049efe8955f4aad2b76a8cd0c4bc9622ca",
+      "redactedText": "`v0.24.5` adds **operator review outcome capture** over the v0.23 controlled operator review queue. It captures explicit manual operator value feedback as local evidence while remaining non-authoritative and human-readable only.",
       "privatePatternDetected": false,
       "decisionVerbDetected": false,
       "semanticDecisionTokenPersisted": false
@@ -259,5 +259,5 @@
       "semanticDecisionTokenPersisted": false
     }
   ],
-  "reportMarkdown": "# Bounded Explicit Multisource Shadow-Read Report v0.20.5\n\n- Barrier crossed: bounded explicit multisource shadow-read\n- Adapter: repo-local-file-read-adapter-v0\n- Operator-run: true; one-shot: true; local-only/read-only/passive-only: true\n- Sources: 3 / max 3\n- Records read: 10 / total limit 10; per-source limit 4\n- Per-source isolation: true; failure isolation: true; isolated failures: 0\n- Redacted evidence only: true; rawPersisted: false; rawOutput: false\n- policyDecision: null; agentConsumedOutput: false; unexpectedPermits: 0\n- Enforcement/authorization/approval/block/allow: false\n\n## Source statuses\n- source #0: ok; records=4; rawSourcePathPersisted=false\n- source #1: ok; records=4; rawSourcePathPersisted=false\n- source #2: ok; records=2; rawSourcePathPersisted=false\n\n## Redacted evidence preview\n- source #0 record #0: # Synaptic Mesh v0.23.5\n- source #0 record #1: This is the public review release `v0.23.5`. Current v0.23.5 status is narrower than live runtime and crosses the next safe barrier after the v0.22 observed usefulness/noise scorecard: a **controlled operator review queue**.\n- source #0 record #2: The v0.23 ladder is disabled-by-default, manual/operator-run, local-only, passive/read-only, one-shot, redacted-evidence-only, human-readable only, and non-authoritative. It consumes the v0.22 scorecard and turns only true useful `PASS_TO_H\n- source #0 record #3: Pinned v0.23.5 evidence: `queueStatus: READY_FOR_OPERATOR_REVIEW`, `queueItems: 3`, `reviewBurden: low`, `estimatedMinutes: 21`, `falsePasses: 0`, `authorityViolations: 0`, source recommendation `advance` used as context only, and negative\n- source #1 record #0: # Release Notes — Synaptic Mesh v0.23.5\n- source #1 record #1: ## Summary\n- source #1 record #2: `v0.23.5` adds a **controlled operator review queue** over the v0.22 observed usefulness/noise scorecard. It converts only true useful `PASS_TO_HUMAN_REVIEW` observations into local human-review prioritization items.\n- source #1 record #3: ## Evidence\n- source #2 record #0: # Release Candidate — Synaptic Mesh v0.23.5\n- source #2 record #1: Target: `v0.23.5`\n"
+  "reportMarkdown": "# Bounded Explicit Multisource Shadow-Read Report v0.20.5\n\n- Barrier crossed: bounded explicit multisource shadow-read\n- Adapter: repo-local-file-read-adapter-v0\n- Operator-run: true; one-shot: true; local-only/read-only/passive-only: true\n- Sources: 3 / max 3\n- Records read: 10 / total limit 10; per-source limit 4\n- Per-source isolation: true; failure isolation: true; isolated failures: 0\n- Redacted evidence only: true; rawPersisted: false; rawOutput: false\n- policyDecision: null; agentConsumedOutput: false; unexpectedPermits: 0\n- Enforcement/authorization/approval/block/allow: false\n\n## Source statuses\n- source #0: ok; records=4; rawSourcePathPersisted=false\n- source #1: ok; records=4; rawSourcePathPersisted=false\n- source #2: ok; records=2; rawSourcePathPersisted=false\n\n## Redacted evidence preview\n- source #0 record #0: # Synaptic Mesh v0.24.5\n- source #0 record #1: This is the public review release `v0.24.5`. Current v0.24.5 status is narrower than live runtime and crosses the next safe barrier after the v0.23 controlled operator review queue: **operator review outcome capture**.\n- source #0 record #2: The v0.24 ladder is disabled-by-default, manual/operator-run, local-only, passive/read-only, one-shot, bounded to 3 items, redacted-evidence-only, redaction-before-persist, human-readable only, non-authoritative, and value-feedback-only. It\n- source #0 record #3: Pinned v0.24.5 evidence: `captureStatus: OUTCOME_CAPTURE_COMPLETE`, `capturedOutcomes: 3`, `redactionBeforePersist: true`, `valueFeedbackOnly: true`, `falseAuthorityLeakage: 0`, and negative controls for malformed queue/outcomes, unsafe lab\n- source #1 record #0: # Release Notes — Synaptic Mesh v0.24.5\n- source #1 record #1: ## Summary\n- source #1 record #2: `v0.24.5` adds **operator review outcome capture** over the v0.23 controlled operator review queue. It captures explicit manual operator value feedback as local evidence while remaining non-authoritative and human-readable only.\n- source #1 record #3: ## Evidence\n- source #2 record #0: # Release Candidate — Synaptic Mesh v0.23.5\n- source #2 record #1: Target: `v0.23.5`\n"
 }
