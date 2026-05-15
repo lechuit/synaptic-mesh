@@ -1,17 +1,5 @@
-# Release Notes — Synaptic Mesh v0.13.5
+# Release Notes — Synaptic Mesh v0.14.0-alpha
 
-## v0.10.x Benchmark Maturity Package
+## v0.14.0-alpha live-like shadow/sandbox observation envelope
 
-Added taxonomy, reproducibility, deterministic mutation/fuzz-lite, baseline failure documentation, public demo, and phase close: baseAndAdversarialCases: 60; mutationCases: 120; totalEvaluatedCases: 180; synapticFalsePermits: 0; unexpectedPermits: 0.
-
-## v0.11.x Real-redacted Corpus Evaluation
-
-Used existing real-redacted fixtures only; added redaction/retention gates, baseline replay, Synaptic Mesh replay comparison, reviewer agreement, and public go/no-go.
-
-## v0.12.x Integration Preflight
-
-Documented scope, capability matrix, hazard/no-go scan, dry-run harness contract, reviewer runbook, and go/no-go. Real integration/runtime remains unauthorized.
-
-## v0.13.5 local harness phase close
-
-First local/fake/read-only adapter harness over already-redacted fixtures only. totalHarnessCases: 6; negativeControls: 8; reproducibilityRuns: 2; mismatches: 0; unexpectedPermits: 0; next runtime/integration step unauthorized.
+Added a local observation envelope schema and fixture for live-like shadow/sandbox inputs. Scope is offline/frozen/already-redacted and manual-or-frozen only. No raw private content, no live traffic, no network, no watcher/daemon, no SDK import, no framework adapter, no tools, not runtime authority, and no approval/block/allow/authorization/enforcement.

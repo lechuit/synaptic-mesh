@@ -69,8 +69,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 1057,
-      "sha256": "922c8523619334f2901823f11236a50929a6c2a62c665437a91edeaca61d44a9"
+      "bytes": 994,
+      "sha256": "67cce4fd1ce9c6d7aa2dc8a49c59a6ce201e4d90a2cd731291be10557df415bf"
     },
     {
       "path": "RELEASE_CANDIDATE.md",
@@ -79,8 +79,8 @@
     },
     {
       "path": "RELEASE_NOTES.md",
-      "bytes": 1008,
-      "sha256": "6dbba4664452d685162d925390d56d03414edb97ee7eac100665e13f13916dbb"
+      "bytes": 469,
+      "sha256": "59b380891ca4d3543e4278c5f6c3b257eca20128de9edea65662b7b50d1ff640"
     },
     {
       "path": "design-notes/adapter-boundary-langgraph-mcp-v0.md",
@@ -328,6 +328,11 @@
       "sha256": "8c9223805c563cfdeeab24604f1a62052288bb7f7c8fe575caddccb74ee64f4d"
     },
     {
+      "path": "docs/live-like-shadow-observation-envelope-v0.14.0-alpha.md",
+      "bytes": 755,
+      "sha256": "1cac5ef957e45063c465dddf9282a9c038dab576cebbd88c5135a73f37d44b4d"
+    },
+    {
       "path": "docs/live-shadow-drift-scorecard.md",
       "bytes": 2830,
       "sha256": "ca224fde821d63f28a8da06f46b421412ceda5976bddb403517c16f37d1aad1b"
@@ -569,8 +574,8 @@
     },
     {
       "path": "docs/release-checklist.md",
-      "bytes": 11782,
-      "sha256": "ee8c14ef2a057846a8d826ac9527b7d534e7ba45b7ef72c171d987558cca2cb9"
+      "bytes": 11789,
+      "sha256": "d2c0e3ebc3766766d0a751755c3e83897c4291f0c57d13ec7ba524e61f6e3ca2"
     },
     {
       "path": "docs/release-ladder-v0.2-alpha.md",
@@ -726,6 +731,11 @@
       "path": "docs/status-v0.13.5.md",
       "bytes": 488,
       "sha256": "f248cff1565c21e5854b461cce0268af2ad9aff00915f6f3e4ceab359e5237f0"
+    },
+    {
+      "path": "docs/status-v0.14.0-alpha.md",
+      "bytes": 428,
+      "sha256": "1ea38e1f438aeffdbb25f59cc20f749556dd42a5e089d4117e67cebf1dda7f43"
     },
     {
       "path": "docs/status-v0.2.3.md",
@@ -1868,6 +1878,11 @@
       "sha256": "ff9113cd45b09c81d926cf01e14fada4b74ed8aff63e2ec8ae273a4226236d65"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/fixtures/live-like-shadow-observation-v0.14.0-alpha.json",
+      "bytes": 1042,
+      "sha256": "bb809c36bf457224d0073acead662568043c487885fe25395768c0f9959371bc"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/fixtures/live-shadow-drift-scorecard.json",
       "bytes": 1050,
       "sha256": "2a5eec6a3dfb0662410249a4e9f3e35595270b8279bfa435e20ecf1b84fdface"
@@ -2244,8 +2259,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/package.json",
-      "bytes": 28186,
-      "sha256": "c7768f1cda775a56fa8a87bcd8c68c96f8305315a3b2720109fe9c1a05323e49"
+      "bytes": 28438,
+      "sha256": "88f06c6a90cfc4067001be1f706057095a3deeb2090703319d09c1511d3d8e90"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/action-context-packet.mjs",
@@ -2561,6 +2576,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/tests/live-input-source-boundary-contracts.mjs",
       "bytes": 9735,
       "sha256": "a3547e1ba81569d34daaab0f23c4c56eb4129e8f1ee39a73d4d51463f8053b31"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/live-like-shadow-observation-envelope-v0.14.0-alpha.mjs",
+      "bytes": 2950,
+      "sha256": "ca95825d04a2dfaf8331e3ba3421926eaead584d80b464692c9de2da6308bbbe"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/live-shadow-drift-scorecard-shape.mjs",
@@ -3416,6 +3436,11 @@
       "path": "schemas/framework-shaped-adapter-boundary.schema.json",
       "bytes": 1888,
       "sha256": "b0904aa850470d6ef15456207a0e0d705c843676678a1e669fca108a3df4b51f"
+    },
+    {
+      "path": "schemas/live-like-shadow-observation-envelope-v0.14.0.schema.json",
+      "bytes": 2799,
+      "sha256": "95845409737d3bb9f126a9f8efb19fd47b267498406796b1dedb97b4682daa97"
     },
     {
       "path": "schemas/live-shadow-drift-scorecard.schema.json",
