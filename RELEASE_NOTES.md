@@ -1,18 +1,16 @@
-# Release Notes — Synaptic Mesh v0.23.5
+# Release Notes — Synaptic Mesh v0.24.5
 
 ## Summary
 
-`v0.23.5` adds a **controlled operator review queue** over the v0.22 observed usefulness/noise scorecard. It converts only true useful `PASS_TO_HUMAN_REVIEW` observations into local human-review prioritization items.
+`v0.24.5` adds **operator review outcome capture** over the v0.23 controlled operator review queue. It captures explicit manual operator value feedback as local evidence while remaining non-authoritative and human-readable only.
 
 ## Evidence
 
-- `queueStatus: READY_FOR_OPERATOR_REVIEW`
-- `queueItems: 3`
-- `reviewBurden: low`
-- `estimatedMinutes: 21`
-- `falsePasses: 0`
-- `authorityViolations: 0`
-- source recommendation `advance` is context only, not authority
+- `captureStatus: OUTCOME_CAPTURE_COMPLETE`
+- `capturedOutcomes: 3`
+- `redactionBeforePersist: true`
+- `valueFeedbackOnly: true`
+- `falseAuthorityLeakage: 0`
 - `policyDecision: null`
 - `authorization: false`
 - `enforcement: false`
@@ -21,15 +19,14 @@
 - `externalEffects: false`
 - `rawPersisted: false`
 - `rawOutput: false`
-- negative controls for malformed scorecards, non-null policy decisions, false passes, authority violations, recommendation-as-authority, forbidden capability flags, raw persisted/output, and external effects
-- abstain behavior for `hold` or `degrade` scorecard recommendations
+- negative controls for malformed queue/outcomes, unsafe labels, authority tokens including camelCase aliases, raw persistence/output, external effects, invalid bounds, mismatched IDs, missing outcomes, and false authority leakage
 
 ## Boundary
 
-This is local/manual/passive/read-only/one-shot, redacted-evidence-only, human-readable-only, and non-authoritative. It is not a decision queue, not an approval queue, not a policy allow/block/approve gate, not runtime authority, not authorization, and not enforcement.
+This is local/manual/passive/read-only/one-shot, bounded to 3 items, redacted-evidence-only, redaction-before-persist, human-readable-only, non-authoritative, and value-feedback-only. It is not a policy artifact, not runtime authority, not authorization, and not enforcement.
 
 ## Next
 
-The next gate should keep the queue local and human-readable while improving reviewer ergonomics or evidence quality, still without authorization, enforcement, agent-consumed policy decisions, tool execution, network/resource fetch, external effects, daemon behavior, or raw persistence.
+The next gate should keep feedback local and human-readable while improving reviewer ergonomics or evidence quality, still without authorization, enforcement, agent-consumed policy decisions, tool execution, network/resource fetch, external effects, daemon behavior, or raw persistence.
 
 Compatibility carry-forward: passive live shadow readiness achieved for local operator-run pilot only; no enforcement; no tool execution; no authorization; no daemon/watcher by default; no external effects.

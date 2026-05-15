@@ -1,0 +1,13 @@
+{
+  "rejectedMalformedQueue": [
+    "queue.schema_version_not_v0.23",
+    "outcomes.skipped_until_queue_valid"
+  ],
+  "rejectedMalformedOutcomes": [
+    "outcomes.schema_version_invalid"
+  ],
+  "rejectedInvalidBounds": [
+    "queue.item_count_out_of_bounds",
+    "outcomes.skipped_until_queue_valid"
+  ]
+}

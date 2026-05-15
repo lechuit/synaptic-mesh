@@ -1,0 +1,22 @@
+import assert from 'node:assert/strict';
+import { mkdir, writeFile } from 'node:fs/promises';
+import { resolve } from 'node:path';
+import { buildOperatorReviewOutcomeCapture } from '../src/operator-review-outcome-capture.mjs';
+import { operatorReviewQueueFixture, operatorOutcomesFixture } from './operator-review-outcome-capture-fixtures.mjs';
+
+await mkdir(resolve('evidence'), { recursive: true });
+const queue = await operatorReviewQueueFixture();
+const outcomes = await operatorOutcomesFixture();
+const capture = buildOperatorReviewOutcomeCapture(queue, outcomes);
+assert.equal(capture.captureStatus, 'OUTCOME_CAPTURE_COMPLETE');
+assert.equal(capture.capturedOutcomeCount, 3);
+assert.equal(capture.validationIssues.length, 0);
+assert.equal(capture.policyDecision, null);
+assert.equal(capture.externalEffects, false);
+assert.equal(capture.rawPersisted, false);
+assert.equal(capture.rawOutput, false);
+assert.equal(capture.falseAuthorityLeakage.length, 0);
+assert.match(capture.capturedOutcomes[0].operatorNoteRedacted, /\[REDACTED\]/);
+assert.doesNotMatch(JSON.stringify(capture.capturedOutcomes), /person@example\.com/);
+await writeFile(resolve('evidence/operator-review-outcome-capture-runner-v0.24.1.out.json'), JSON.stringify(capture, null, 2) + '\n');
+console.log(JSON.stringify({ captureStatus: capture.captureStatus, capturedOutcomeCount: capture.capturedOutcomeCount }, null, 2));
