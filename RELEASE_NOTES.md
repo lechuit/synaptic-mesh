@@ -1,25 +1,25 @@
-# Release Notes — Synaptic Mesh v0.14.5
+# Release Notes — Synaptic Mesh v0.15.5
 
-## v0.14.0-alpha live-like shadow/sandbox observation envelope
+## v0.15.0-alpha passive live shadow source contract
 
-Added a local observation envelope schema and fixture for live-like shadow/sandbox inputs. Scope is offline/frozen/already-redacted and manual-or-frozen only.
+Defined allowed passive sources as explicit local file/sample streams and local pipe fixtures only. Disabled by default, human-started/manual, no network fetch, no SDK/framework adapter, no daemon/watcher, no actions, and redaction-gated before persistence.
 
-## v0.14.1 frozen/redacted replay harness
+## v0.15.1 redaction-before-persistence gate
 
-Added a frozen/redacted replay harness over local observation envelopes. It is manual CLI/test only; no daemon, no watcher, no network, no tools.
+Added negative controls for raw/private/tool/memory/config/approval text. Raw input is not committed; persisted evidence is redacted/metadata/hashed where appropriate.
 
-## v0.14.2 compare-only scorecards
+## v0.15.2 passive observation CLI/harness
 
-Added baseline vs Synaptic Mesh local comparison scorecards. Output is advisory/comparison evidence only, not policy decisions and not agent-consumed output.
+Added manual local-input harness. It writes local evidence or stdout, never watches, never daemonizes, never uses network, never executes tools, and rejects unsafe flags. unsafeFlagsRejected: 8.
 
-## v0.14.3 sandbox failure catalog
+## v0.15.3 no-enforcement invariant suite
 
-Added negative controls for tool request, approval-ish text, stale source, missing redaction, and framework-looking route. Expected handling is fail closed/degrade/record-only; unexpectedPermits: 0.
+Asserted passive shadow cannot emit allow/block/approve/enforce/authorize decisions. Output remains record/advisory evidence only, including dangerous cases.
 
-## v0.14.4 reviewer package
+## v0.15.4 reviewer package
 
-Added reviewer go/no-go package for next passive live shadow design. The next step may be designed, but live traffic/tool execution/enforcement remain unauthorized.
+Added Human review package for deciding whether a tiny local operator-run pilot may be attempted next. It explicitly says no autonomous live mode, no enforcement, no tool execution, no authorization, and no daemon/watcher.
 
-## v0.14.5 phase close
+## v0.15.5 phase close
 
-live-like shadow/sandbox readiness achieved. The repo is ready to design v0.15 passive live shadow, while still no live traffic, no tools, no runtime authority, no enforcement, no runtime integration, no framework adapter, no network, no watcher/daemon, no agent-consumed output, and no machine-readable policy decision. unexpectedPermits: 0.
+passive live shadow readiness achieved for local operator-run pilot only. Next step may be v0.16 tiny operator-run pilot, still no enforcement, no tool execution, no authorization, no daemon/watcher by default, no external effects, no production/live deployment, and no autonomous live mode.

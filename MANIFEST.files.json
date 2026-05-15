@@ -69,8 +69,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 1149,
-      "sha256": "12d1dbce0c7bbe7411f5bdbe38a589d3d9825e8e3d886c28b27913c3caa7f25d"
+      "bytes": 1301,
+      "sha256": "1443a9c81b04e7044ddeb911f64aa7d964f392e5c7d322d5f34cf3ae8ad5fb53"
     },
     {
       "path": "RELEASE_CANDIDATE.md",
@@ -79,8 +79,8 @@
     },
     {
       "path": "RELEASE_NOTES.md",
-      "bytes": 1450,
-      "sha256": "ae5f109d929d2737a1bd0251241a830fce2eabc0dde9c70df9ab3304bf0d3f38"
+      "bytes": 1582,
+      "sha256": "704c29064af831453fbe36ec9af6cf9cb167efa373dbb4dc5d8b1d566f946cee"
     },
     {
       "path": "design-notes/adapter-boundary-langgraph-mcp-v0.md",
@@ -468,6 +468,36 @@
       "sha256": "18250c1988eacc8168b6f2457791a6654594d2b379209d39d3a3fee21588420d"
     },
     {
+      "path": "docs/passive-live-shadow-no-enforcement-invariants-v0.15.3.md",
+      "bytes": 256,
+      "sha256": "729fa280b3d8daaf8e5bd1646996e63364c46d4c23a17a9cca460be2766b78da"
+    },
+    {
+      "path": "docs/passive-live-shadow-observation-cli-v0.15.2.md",
+      "bytes": 307,
+      "sha256": "a309ba29664b5a5362d8980aed72ad377634a39e1a1fb517d0a985585755edf4"
+    },
+    {
+      "path": "docs/passive-live-shadow-phase-close-v0.15.5.md",
+      "bytes": 290,
+      "sha256": "e61099811c2df4bfca3f4c991ce4427858bd5937cc1ec0f5f0754d7e0bde915c"
+    },
+    {
+      "path": "docs/passive-live-shadow-redaction-gate-v0.15.1.md",
+      "bytes": 215,
+      "sha256": "d0f12ab2c01e0f4dd38fde779dfc6c7bbd3686d37e4977769609a0b2d11c31d6"
+    },
+    {
+      "path": "docs/passive-live-shadow-reviewer-package-v0.15.4.md",
+      "bytes": 273,
+      "sha256": "8ddc5f6ec9fce340027fe526bebe9137453842926a0e320b5fae6f019113296c"
+    },
+    {
+      "path": "docs/passive-live-shadow-source-contract-v0.15.0-alpha.md",
+      "bytes": 389,
+      "sha256": "d0da480f7ad702388f53c927119a96e9d2e0fe8a4ab1314db995ff130d94cb86"
+    },
+    {
       "path": "docs/raw-parser-adversarial.md",
       "bytes": 2677,
       "sha256": "5edf47824506cbe62b18bfa18bc12b80414d751472797b0cac6eeb4abc0230de"
@@ -788,6 +818,36 @@
       "sha256": "0103127afd8b4dcaabe9cf1d79bb29afbd9fa1c599c0262e132425cb63ba3baf"
     },
     {
+      "path": "docs/status-v0.15.0-alpha.md",
+      "bytes": 227,
+      "sha256": "5a087fff7fbb58a0f443d9782d1e87cd072d67943225b564a87db84e968fe60e"
+    },
+    {
+      "path": "docs/status-v0.15.1.md",
+      "bytes": 215,
+      "sha256": "23187e27242fd3c3b55a7f58cdf5159cd4c86aa5a5368b3462ce9080d13a3dde"
+    },
+    {
+      "path": "docs/status-v0.15.2.md",
+      "bytes": 215,
+      "sha256": "8b9cdd0dc91a998d7aa890646e0f1e7b2835c6af08dec7bf6517bac7ecd7c144"
+    },
+    {
+      "path": "docs/status-v0.15.3.md",
+      "bytes": 215,
+      "sha256": "dee0f6a30eaa47c597dab3a3b241361cce14dec4e4a8dd353f1598432e426ebc"
+    },
+    {
+      "path": "docs/status-v0.15.4.md",
+      "bytes": 215,
+      "sha256": "3e44db1a1cb29eab1a80d07f790b367481f0e5a7f3cb6df169f70dd4ebd0c36b"
+    },
+    {
+      "path": "docs/status-v0.15.5.md",
+      "bytes": 215,
+      "sha256": "65dafa783a001fb30111f06d1412b93f6296dd3bafec6dbef464a7b73d5e3bf7"
+    },
+    {
       "path": "docs/status-v0.2.3.md",
       "bytes": 13842,
       "sha256": "49afeeda1dbd7038180c7a4b3f21a0d3167f26101c60858b64aca956a90fc192"
@@ -1056,6 +1116,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/bin/manual-dry-run.mjs",
       "bytes": 582,
       "sha256": "2f762faa1b682b783d21aa6455ee9fa08f62222b0e1f6a73242b470e6532cb6a"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/bin/passive-live-shadow-observe.mjs",
+      "bytes": 352,
+      "sha256": "e979405dd16b692b6a5c8f550252ca2e41e804c61079fd7dec2a9b81655dbb43"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/bin/validate-receipt.mjs",
@@ -1626,6 +1691,36 @@
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-live-shadow-canary.out.json",
       "bytes": 5510,
       "sha256": "5260c4c039ee395395224a2ffc645de8c1c8a76983f17166804a1669e3917124"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-live-shadow-no-enforcement-invariants-v0.15.3.out.json",
+      "bytes": 444,
+      "sha256": "f82ac0d50f4cbca23ee1087edbcc49dd65fb2118c042b62f9c40f7e33820b30f"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-live-shadow-observation-cli-v0.15.2.out.json",
+      "bytes": 403,
+      "sha256": "40ff4b1bf15d1918ccf9f1dfd07bad0f4505f9298fea5af527bf546d307d9cdb"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-live-shadow-phase-close-v0.15.5.out.json",
+      "bytes": 491,
+      "sha256": "dd934d522da29a2f2abc815102b4a79e9f70dea7d4890dc086c2cebfc0a59a36"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-live-shadow-redaction-gate-v0.15.1.out.json",
+      "bytes": 352,
+      "sha256": "501629f9a787e7afe4c9d5dafd6f6c3401930f170c215f5762d83bf230d05157"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-live-shadow-reviewer-package-v0.15.4.out.json",
+      "bytes": 408,
+      "sha256": "5d39f87de6559d9c45789e545fa1c71bc445d0a9a0dd1bd204a165ebb1cdc989"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-live-shadow-source-contract-v0.15.0-alpha.out.json",
+      "bytes": 444,
+      "sha256": "7bdf315a9e0bde3defd6feeabaa5f1aaf29cca47109357e2806d538df0498ce7"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/raw-parser-adversarial.out.json",
@@ -2208,6 +2303,26 @@
       "sha256": "d2e8f50d93e6608d4761cc8de4ab05e6f4c8f1a771e5121625b69e95a7369e48"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/fixtures/passive-live-shadow-dangerous-cases-v0.15.3.json",
+      "bytes": 234,
+      "sha256": "0c0be078091e330f2f599ca6effb754d33f5fc6d7690af7200227a966ba8cebe"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/fixtures/passive-live-shadow-negative-controls-v0.15.1.json",
+      "bytes": 556,
+      "sha256": "50976b0bb7ca31b2c4229f10a964bc2bb417a25e47528dcf22fd03cd83ce71e4"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/fixtures/passive-live-shadow-sample-input-v0.15.2.txt",
+      "bytes": 186,
+      "sha256": "5161efb92c0d36cf5f897985fc80b2af50dbd79e48d142f903d613cf6defae73"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/fixtures/passive-live-shadow-source-v0.15.0-alpha.json",
+      "bytes": 408,
+      "sha256": "9d9c3944dd7fa1b6d21b337617fd6bbf5d5b143b61118c916caf4bbb5798f010"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/fixtures/raw-parser-adversarial.json",
       "bytes": 19424,
       "sha256": "014bc6507037d55811fe16ba51c8d76f65b12bc267eab345a711b95ad4c5f609"
@@ -2349,8 +2464,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/package.json",
-      "bytes": 29871,
-      "sha256": "e38ba047946e7976d936b6254fbc4e5fd837a5e04ecfa6a702b3772f305b97c6"
+      "bytes": 31541,
+      "sha256": "c5e43b6b501890529d691e904956b6c9ee80630cad5d4330b9755836b7cf1dba"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/action-context-packet.mjs",
@@ -2411,6 +2526,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/src/manual-dry-run.mjs",
       "bytes": 22166,
       "sha256": "168d43aba9b18eda4d56e793f20dabeb6e62509748089b7c67ba891925aca1ec"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/src/passive-live-shadow.mjs",
+      "bytes": 6329,
+      "sha256": "9aa764f1bd059d19ac51935f7425902ca2f1b51d5989b3e02e18461f6636a245"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/receipt-parser.mjs",
@@ -2911,6 +3031,36 @@
       "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-live-shadow-canary.mjs",
       "bytes": 8540,
       "sha256": "30e8fe21f3af9389d1c35d14bda54152db8edc5e1628ba3bc2e46bc867d58e26"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-live-shadow-no-enforcement-invariants-v0.15.3.mjs",
+      "bytes": 1446,
+      "sha256": "6bf006a0ab8d64824e22e94a4ccfad1df00c0c49167e632468a5d439c8d675ff"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-live-shadow-observation-cli-v0.15.2.mjs",
+      "bytes": 1872,
+      "sha256": "411a35daf05af3ccd96b53407a42bd72da4079a83a7da80ed0ad591633e69334"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-live-shadow-phase-close-v0.15.5.mjs",
+      "bytes": 1335,
+      "sha256": "df1fd8a566581a49d32df1f91ad0153a3e87802f0864d53d1df53f1f6226bb67"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-live-shadow-redaction-gate-v0.15.1.mjs",
+      "bytes": 1553,
+      "sha256": "f10f593c50126650eb3d614f168f1d4ab5c041979a6ca112fa299482e33702c9"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-live-shadow-reviewer-package-v0.15.4.mjs",
+      "bytes": 1181,
+      "sha256": "b79984d6a01361d5d903b235599e8f122d177f7312774c6fb48c3629074bf3a8"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-live-shadow-source-contract-v0.15.0-alpha.mjs",
+      "bytes": 1739,
+      "sha256": "2314b7dfebd00bcf4f276eee3291f719da41cc205678ce62e95b103b4fa8e756"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/raw-parser-adversarial.mjs",
@@ -3618,6 +3768,11 @@
       "sha256": "2dfd0ac9e9f4ec86d493bad1b0fc9494a78b896251a295dea86c64aafc7d2ecd"
     },
     {
+      "path": "schemas/passive-live-shadow-observation-v0.15.0.schema.json",
+      "bytes": 391,
+      "sha256": "9f208dd9e18b0f7d46bcafe83c09acb0bc7b5ea106bdf7d5fe25bd43110619fc"
+    },
+    {
       "path": "schemas/read-only-local-file-adapter-input.schema.json",
       "bytes": 1941,
       "sha256": "59b988900906ac8c9310727a101d2c25c3f177566b9688f47dd4472879f1c541"
@@ -3714,8 +3869,8 @@
     },
     {
       "path": "tools/release-checks/index.mjs",
-      "bytes": 938,
-      "sha256": "13d8c31f38fc37b338b57dc6a749da7ec96313c3406590f51fe138dd331875b0"
+      "bytes": 1064,
+      "sha256": "7896d5d4081f5a4f27e1eea3694595a1a8b4759dfcc8a02d0eaed7da0fbc8a4a"
     },
     {
       "path": "tools/release-checks/live-like-shadow-sandbox-ladder.mjs",
@@ -3736,6 +3891,11 @@
       "path": "tools/release-checks/passive-live-shadow-canary.mjs",
       "bytes": 67301,
       "sha256": "cb8879336431556222940845261c0427db4532646ace770419fc0d0e46b0e424"
+    },
+    {
+      "path": "tools/release-checks/passive-live-shadow-local-pilot.mjs",
+      "bytes": 6146,
+      "sha256": "93cf1df40e915f53e2b84e60ff544736fa0e1fe56195c1040f70f1bf92d5fb93"
     },
     {
       "path": "tools/release-checks/read-only-local-file-adapter.mjs",
