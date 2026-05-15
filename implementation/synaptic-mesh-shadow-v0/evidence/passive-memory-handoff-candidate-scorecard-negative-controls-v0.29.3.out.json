@@ -42,8 +42,55 @@
       "validation": []
     },
     {
+      "name": "wrong v0.28 artifact id",
+      "issues": [
+        "recallArtifact.artifact_not_expected_v0.28_reviewer_package"
+      ],
+      "validation": []
+    },
+    {
+      "name": "wrong v0.28 release layer",
+      "issues": [
+        "recallArtifact.release_layer_not_v0.28.5"
+      ],
+      "validation": []
+    },
+    {
+      "name": "fabricated arbitrary source anchors",
+      "issues": [
+        "recallArtifact.artifact_not_expected_v0.28_reviewer_package",
+        "recallArtifact.expected_card_missing:card-north-star-decision",
+        "recallArtifact.expected_card_missing:card-boundary-project-rule",
+        "recallArtifact.expected_card_missing:card-readiness-theater-contradiction"
+      ],
+      "validation": []
+    },
+    {
+      "name": "wrong expected source anchor digest",
+      "issues": [
+        "recallArtifact.card-north-star-decision.anchor_digest_not_expected"
+      ],
+      "validation": []
+    },
+    {
+      "name": "wrong expected evidence digest",
+      "issues": [
+        "recallArtifact.card-north-star-decision.evidence_digest_not_expected"
+      ],
+      "validation": []
+    },
+    {
+      "name": "unexpected card id",
+      "issues": [
+        "recallArtifact.expected_card_missing:card-north-star-decision",
+        "recallArtifact.unexpected_card:card-unexpected"
+      ],
+      "validation": []
+    },
+    {
       "name": "source ratio low",
       "issues": [
+        "recallArtifact.metrics.sourceBoundMatchRatio_not_expected",
         "recallArtifact.source_bound_ratio_not_one"
       ],
       "validation": []
@@ -51,6 +98,7 @@
     {
       "name": "contradiction ratio low",
       "issues": [
+        "recallArtifact.metrics.contradictionSurfacingRatio_not_expected",
         "recallArtifact.contradiction_ratio_not_one"
       ],
       "validation": []
@@ -58,6 +106,7 @@
     {
       "name": "stale ratio low",
       "issues": [
+        "recallArtifact.metrics.staleNegativeMarkedRatio_not_expected",
         "recallArtifact.stale_ratio_not_one"
       ],
       "validation": []
@@ -65,6 +114,7 @@
     {
       "name": "noise matched",
       "issues": [
+        "recallArtifact.metrics.irrelevantMatchRatio_not_expected",
         "recallArtifact.noise_match_ratio_not_zero"
       ],
       "validation": []
@@ -72,6 +122,7 @@
     {
       "name": "boundary violations present",
       "issues": [
+        "recallArtifact.metrics.boundaryViolationCount_not_expected",
         "recallArtifact.boundary_violations_present"
       ],
       "validation": []
@@ -79,13 +130,18 @@
     {
       "name": "missing card summaries",
       "issues": [
-        "recallArtifact.card_summaries_min_four_required"
+        "recallArtifact.card_summaries_not_exact_expected_count",
+        "recallArtifact.expected_card_missing:card-north-star-decision",
+        "recallArtifact.expected_card_missing:card-boundary-project-rule",
+        "recallArtifact.expected_card_missing:card-readiness-theater-contradiction"
       ],
       "validation": []
     },
     {
       "name": "missing card type",
       "issues": [
+        "recallArtifact.card_summaries_not_exact_expected_count",
+        "recallArtifact.expected_card_missing:card-boundary-project-rule",
         "recallArtifact.card_summaries_min_four_required"
       ],
       "validation": []
@@ -93,6 +149,7 @@
     {
       "name": "unsourced match",
       "issues": [
+        "recallArtifact.card-north-star-decision.source_not_bound",
         "recallArtifact.cardSummaries[0].unsourced_match",
         "candidates.card-north-star-decision.source_not_bound"
       ],
@@ -101,6 +158,7 @@
     {
       "name": "missing source anchor",
       "issues": [
+        "recallArtifact.card-north-star-decision.source_anchor_not_expected",
         "recallArtifact.cardSummaries[0].matches[0].source_anchor_required"
       ],
       "validation": []
@@ -108,6 +166,7 @@
     {
       "name": "contradiction not surfaced",
       "issues": [
+        "recallArtifact.card-readiness-theater-contradiction.contradiction_not_expected",
         "recallArtifact.cardSummaries[2].contradiction_not_surfaced",
         "candidates.card-readiness-theater-contradiction.contradiction_not_flagged"
       ],
@@ -116,6 +175,7 @@
     {
       "name": "stale not marked",
       "issues": [
+        "recallArtifact.card-stale-rag-negative-context.stale_not_expected",
         "recallArtifact.cardSummaries[3].stale_context_not_marked",
         "candidates.card-stale-rag-negative-context.stale_caution_not_flagged"
       ],
@@ -196,6 +256,15 @@
       "name": "nested authority token",
       "issues": [
         "input.recallArtifact.cardSummaries[0].note.authority_token_detected"
+      ],
+      "validation": []
+    },
+    {
+      "name": "authority token in card id redacted",
+      "issues": [
+        "recallArtifact.expected_card_missing:card-north-star-decision",
+        "recallArtifact.unexpected_card:[authority-token-redacted]",
+        "input.recallArtifact.cardSummaries[0].cardId.authority_token_detected"
       ],
       "validation": []
     }

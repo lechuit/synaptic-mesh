@@ -24,7 +24,7 @@
 - `notRuntimeInstruction: true`
 - `policyDecision: null`
 - `human-readable report only`
-- negative controls for missing/malformed recall artifact, degraded upstream status, non-null `policyDecision`, source-bound failures, contradiction/stale failures, noise leakage, missing card coverage, unsourced matches, missing source anchors, raw persistence/output/source text, unsafe CLI paths, network/tool/memory/config/runtime flags, daemon/watch flags, invalid metrics, and authority-token text that must be detected without being re-emitted
+- negative controls for missing/malformed recall artifact, degraded upstream status, fabricated upstream artifacts, unexpected v0.28 artifact identity/release layer/source-anchor/evidence digests, non-null `policyDecision`, source-bound failures, contradiction/stale failures, noise leakage, missing card coverage, unsourced matches, missing source anchors, raw persistence/output/source text, unsafe CLI paths, network/tool/memory/config/runtime flags, daemon/watch flags, invalid metrics, and authority-token text/card IDs that must be detected without being re-emitted
 
 ## Boundary
 

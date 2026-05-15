@@ -79,8 +79,8 @@
     },
     {
       "path": "RELEASE_NOTES.md",
-      "bytes": 2424,
-      "sha256": "32f1165625b50bddfb5e46f8a2a30e3e2d428fd6a0ec5a9cbaaa9525d11f442f"
+      "bytes": 2545,
+      "sha256": "9daa7f3f013529e7b267bfefb51f139be4a10f8814a3f0b1582de10ca19e649a"
     },
     {
       "path": "design-notes/adapter-boundary-langgraph-mcp-v0.md",
@@ -789,8 +789,8 @@
     },
     {
       "path": "docs/passive-memory-handoff-candidate-scorecard-local-review-notes-v0.29.5.md",
-      "bytes": 364,
-      "sha256": "57746d506b821939ad463eac0946178015b0a88ea63b6f28533bd0ca528662f0"
+      "bytes": 520,
+      "sha256": "d5bdc07288053c4dba36bee1791beea338e404dc932a335a3be6ad509074018d"
     },
     {
       "path": "docs/passive-memory-handoff-candidate-scorecard-metrics-v0.29.2.md",
@@ -799,8 +799,8 @@
     },
     {
       "path": "docs/passive-memory-handoff-candidate-scorecard-negative-controls-v0.29.3.md",
-      "bytes": 535,
-      "sha256": "7358e11a60f82b7aeb6592edc8db24280146b3fac7aaf5af8f776908b64c8826"
+      "bytes": 666,
+      "sha256": "bc710fd3ebcd32b41216df1c575bd5800e0c1528536bae9bbc4729a76ac75897"
     },
     {
       "path": "docs/passive-memory-handoff-candidate-scorecard-output-boundary-v0.29.4.md",
@@ -2230,7 +2230,7 @@
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/bounded-multisource-shadow-read-packet-v0.20.1.out.json",
       "bytes": 12408,
-      "sha256": "48f5b810c728183d0984e092b3ae8ccf716dc25242351830b861b9ebecac4048"
+      "sha256": "1bab2cbe4cc2d5ab39955626bde4559384ef17ab878ef6e5ef0049773c2eb824"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/bounded-multisource-shadow-read-preflight-abort-v0.20.2.out.json",
@@ -3029,8 +3029,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-memory-handoff-candidate-scorecard-negative-controls-v0.29.3.out.json",
-      "bytes": 4962,
-      "sha256": "e5c8fdc2a15c4eccf6345d52484108e2ff55655c3d2fabdab8b52e7e2365abed"
+      "bytes": 7710,
+      "sha256": "47ddc0dd7929fb5fec5457ab871752a0067a9851a0747748ac02e58d2e1626da"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-memory-handoff-candidate-scorecard-output-boundary-v0.29.4.out.json",
@@ -4174,8 +4174,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/passive-memory-handoff-candidate-scorecard.mjs",
-      "bytes": 21550,
-      "sha256": "f64757e2a296171f8449a7057fcaaba441b5a4c001b8a4a2e50a250c1b115d9f"
+      "bytes": 29662,
+      "sha256": "0b8de851d6fe36d11500613e1425fde689e347d34c4eab7afc6b9b143d0d8344"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/passive-memory-recall-usefulness-probe.mjs",
@@ -5014,8 +5014,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-memory-handoff-candidate-scorecard-negative-controls-v0.29.3.mjs",
-      "bytes": 4584,
-      "sha256": "fc70b2259779ca5260cf8f067ed6e2987710a03fe74e76d69450579acb9ff26c"
+      "bytes": 7497,
+      "sha256": "0e3825b81bee39eb5e585a05b43529f85b070cfe1e276d3d774ed5f0eaf44d25"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-memory-handoff-candidate-scorecard-output-boundary-v0.29.4.mjs",
