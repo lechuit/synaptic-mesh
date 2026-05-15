@@ -79,13 +79,13 @@
       "validationIssues": [
         "evidence[0].policyDecision_non_null",
         "input.evidence[0].policyDecision_non_null",
-        "input.evidence[0].policyDecision.authority_token:allow"
+        "input.evidence[0].policyDecision.authority_token_detected"
       ]
     },
     {
       "name": "nested_authority_token",
       "validationIssues": [
-        "input.evidence[0].note.authority_token:approve"
+        "input.evidence[0].note.authority_token_detected"
       ]
     },
     {
@@ -188,14 +188,14 @@
     {
       "name": "report_authority_token",
       "validationIssues": [
-        "artifact.reportMarkdown.authority_token:approve"
+        "artifact.reportMarkdown.authority_token_detected"
       ]
     },
     {
       "name": "artifact_policy_decision",
       "validationIssues": [
         "artifact.policyDecision_non_null",
-        "artifact.policyDecision.authority_token:allow"
+        "artifact.policyDecision.authority_token_detected"
       ]
     },
     {

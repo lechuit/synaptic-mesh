@@ -2964,8 +2964,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-memory-recall-usefulness-probe-negative-controls-v0.28.3.out.json",
-      "bytes": 8182,
-      "sha256": "5572524bf2f2106de8a1d2d07fe10b28d35312fc9850414322e23e6e811e3efb"
+      "bytes": 8190,
+      "sha256": "48edce9c170bd83dfdd615f4f8fc1bf1db02a4491976e16600bf59ec092b700a"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-memory-recall-usefulness-probe-output-boundary-v0.28.4.out.json",
@@ -4065,7 +4065,7 @@
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/passive-memory-recall-usefulness-probe.mjs",
       "bytes": 22585,
-      "sha256": "6a5145cf54d3f1f761db623a0fea4b0ea4834e5adb4f1050255040eba8f6fc45"
+      "sha256": "ed9a8003379d3790f3df6a0f669616ce4760f6f9aecfc5ed5797167276ce1005"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/passive-observation-repeatability-scorecard.mjs",
@@ -4899,8 +4899,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-memory-recall-usefulness-probe-negative-controls-v0.28.3.mjs",
-      "bytes": 10418,
-      "sha256": "a1f729c539690f1462cc9ab673d2ee83baff272ae81a3c6e6753cacb5ed0752c"
+      "bytes": 10420,
+      "sha256": "33d082243d61048681a05fb74085ba68b7edf1590201ca041a8dfb879fc24a30"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-memory-recall-usefulness-probe-output-boundary-v0.28.4.mjs",

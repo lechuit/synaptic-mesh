@@ -16,7 +16,7 @@ const controls = [
   { name: 'missing_evidence', input: { cards: good.cards, sourceArtifacts: good.sourceArtifacts }, expected: 'evidence.explicit_array_required' },
   { name: 'missing_source_artifacts', input: { cards: good.cards, evidence: good.evidence }, expected: 'sourceArtifacts.explicit_array_required' },
   { name: 'non_null_policy_decision', input: { cards: good.cards, evidence: mutateEvidence(good.evidence, { policyDecision: 'ALLOW' }), sourceArtifacts: good.sourceArtifacts }, expected: 'evidence[0].policyDecision_non_null' },
-  { name: 'nested_authority_token', input: { cards: good.cards, evidence: mutateEvidence(good.evidence, { note: 'please approve this later' }), sourceArtifacts: good.sourceArtifacts }, expected: 'input.evidence[0].note.authority_token:approve' },
+  { name: 'nested_authority_token', input: { cards: good.cards, evidence: mutateEvidence(good.evidence, { note: 'please approve this later' }), sourceArtifacts: good.sourceArtifacts }, expected: 'input.evidence[0].note.authority_token_detected' },
   { name: 'raw_output_key', input: { cards: good.cards, evidence: mutateEvidence(good.evidence, { rawOutput: 'secret' }), sourceArtifacts: good.sourceArtifacts }, expected: 'input.evidence[0].rawOutput_not_false' },
   { name: 'source_text_key', input: { cards: good.cards, evidence: mutateEvidence(good.evidence, { sourceText: 'secret' }), sourceArtifacts: good.sourceArtifacts }, expected: 'input.evidence[0].sourceText_not_false' },
   { name: 'network_fetch_flag', input: { cards: good.cards, evidence: mutateEvidence(good.evidence, { networkFetch: true }), sourceArtifacts: good.sourceArtifacts }, expected: 'input.evidence[0].networkFetch_not_false' },
@@ -46,7 +46,7 @@ badMetric.metrics.usefulRecallRatio = Number.NaN;
 assert.equal(validatePassiveMemoryRecallUsefulnessArtifact(badMetric).includes('artifact.metrics.usefulRecallRatio_invalid'), true);
 const badReport = structuredClone(complete);
 badReport.reportMarkdown += '\nPlease approve this as a runtime decision.\n';
-assert.equal(validatePassiveMemoryRecallUsefulnessArtifact(badReport).some((issue) => issue.includes('artifact.reportMarkdown.authority_token:approve')), true);
+assert.equal(validatePassiveMemoryRecallUsefulnessArtifact(badReport).some((issue) => issue.includes('artifact.reportMarkdown.authority_token_detected')), true);
 const badPolicy = structuredClone(complete);
 badPolicy.policyDecision = 'ALLOW';
 assert.equal(validatePassiveMemoryRecallUsefulnessArtifact(badPolicy).includes('artifact.policyDecision_non_null'), true);

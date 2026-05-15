@@ -54,7 +54,7 @@ function findAuthorityTokens(value, prefix = 'artifact') {
     return issues;
   }
   if (typeof value !== 'string') return issues;
-  for (const token of AUTHORITY_TOKENS) if (tokenPattern(token).test(value)) issues.push(`${prefix}.authority_token:${token}`);
+  for (const token of AUTHORITY_TOKENS) if (tokenPattern(token).test(value)) issues.push(`${prefix}.authority_token_detected`);
   return issues;
 }
 
