@@ -1,0 +1,24 @@
+{
+  "unsafeFlags": [
+    "--watch",
+    "--daemon",
+    "--network",
+    "--execute",
+    "--allow",
+    "--block",
+    "--approve",
+    "--enforce",
+    "--authorize"
+  ],
+  "multiInput": [
+    "--input",
+    "a.txt",
+    "--input",
+    "b.txt"
+  ],
+  "batchFlags": [
+    "--batch",
+    "--inputs=fixtures/list.json",
+    "--manifest=batch.json"
+  ]
+}
