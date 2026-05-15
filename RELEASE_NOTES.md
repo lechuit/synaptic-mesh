@@ -1,38 +1,27 @@
-# Release Notes — Synaptic Mesh v0.25.5
+# Release Notes — Synaptic Mesh v0.26.5
 
 ## Summary
 
-`v0.25.5` adds **operator outcome value scorecard** over explicit v0.24 captured operator outcomes. It scores whether the controlled review queue appears useful, noisy, or still evidence-poor while remaining non-authoritative and human-readable only.
+`v0.26.5` adds **passive observation window** over existing safe local stages. It runs one bounded operator-started observation loop from explicit repo-local sources through positive pass, review queue, manual local outcomes, and value scorecard.
 
 ## Evidence
 
-- `scorecardStatus: VALUE_SCORECARD_COMPLETE`
-- `usefulOutcomes: 2`
-- `noiseOutcomes: 1`
-- `needsMoreEvidence: 0`
-- `abstainUncertain: 0`
-- `reviewedItemCount: 3`
-- `usefulRatio: 0.6667`
-- `noiseRatio: 0.3333`
-- `recommendation: ADVANCE_OBSERVATION_ONLY`
+- `windowStatus: OBSERVATION_WINDOW_COMPLETE`
+- `stage chain: 6`
+- `value scorecard: VALUE_SCORECARD_COMPLETE`
+- `recommendation: HOLD_FOR_MORE_EVIDENCE`
 - `recommendationIsAuthority: false`
-- `falseAuthorityLeakage: 0`
 - `policyDecision: null`
-- `authorization: false`
-- `enforcement: false`
-- `toolExecution: false`
-- `agentConsumedOutput: false`
-- `externalEffects: false`
-- `rawPersisted: false`
-- `rawOutput: false`
-- negative controls for malformed capture, unsafe labels/tokens including camelCase aliases, boundary keys with true/string/object values, reportMarkdown authority tokens, raw persistence/output, external effects, invalid metrics/ratios, insufficient sample, degrade/hold cases, duplicate/missing outcome IDs, and false recommendation authority leakage
+- `redacted evidence packet`
+- `human-readable report only`
+- negative controls for unsafe source specs, invalid chaining, missing/degraded intermediate artifacts, malformed authority fields/tokens in stage/reportMarkdown, unsafe outcome labels, scorecard recommendation treated as authority, raw persistence/output, external effects, nonlocal paths/symlinks/globs/network, invalid bounds, duplicate/missing ids, and output leakage
 
 ## Boundary
 
-This is local/manual/passive/read-only/one-shot, bounded to 3 captured outcomes, redacted-evidence-only, human-readable-only, non-authoritative, and value-scorecard-only. It is not a policy artifact, not runtime authority, not authorization, and not enforcement.
+This is local/manual/passive/read-only/one-shot, bounded to explicit repo-local sources and local manual outcome fixtures, redacted-before-persist, redacted-evidence-packet-only, human-readable-only, non-authoritative, and not runtime authority.
 
 ## Next
 
-The next gate should keep scoring local and human-readable while improving evidence quality or reviewer ergonomics, still without authorization, enforcement, agent-consumed policy decisions, tool execution, network/resource fetch, external effects, daemon behavior, or raw persistence.
+The next gate should either increase reviewer usefulness with more local fixture variety or improve reporting ergonomics while preserving the no-effects boundary.
 
 Compatibility carry-forward: passive live shadow readiness achieved for local operator-run pilot only; no enforcement; no tool execution; no authorization; no daemon/watcher by default; no external effects.

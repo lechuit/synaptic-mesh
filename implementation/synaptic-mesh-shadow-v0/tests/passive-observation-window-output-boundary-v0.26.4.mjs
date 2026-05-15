@@ -1,0 +1,22 @@
+import assert from 'node:assert/strict';
+import { mkdir, writeFile } from 'node:fs/promises';
+import { resolve } from 'node:path';
+import { runPassiveObservationWindow, validatePassiveObservationWindowArtifact } from '../src/passive-observation-window.mjs';
+import { passiveObservationWindowInput } from './passive-observation-window-fixtures.mjs';
+
+await mkdir(resolve('evidence'), { recursive: true });
+const artifact = await runPassiveObservationWindow(await passiveObservationWindowInput());
+assert.equal(artifact.humanReadableReportOnly, true);
+assert.equal(artifact.redactedEvidencePacketOnly, true);
+assert.equal(artifact.nonAuthoritative, true);
+assert.equal(artifact.noRuntimeAuthority, true);
+assert.equal(artifact.policyDecision, null);
+assert.equal(artifact.valueSignal.recommendationIsAuthority, false);
+assert.equal(validatePassiveObservationWindowArtifact(artifact).length, 0);
+const serialized = JSON.stringify(artifact);
+for (const forbidden of ['sk-', 'ghp_', 'person@example.com', 'rawSourcePath']) assert.equal(serialized.includes(forbidden), false, forbidden);
+assert.match(artifact.reportMarkdown, /Passive Observation Window v0\.26\.5/);
+assert.match(artifact.reportMarkdown, /policyDecision: null/);
+await writeFile(resolve('evidence/passive-observation-window-output-boundary-v0.26.4.out.json'), JSON.stringify({ windowStatus: artifact.windowStatus, policyDecision: artifact.policyDecision, recommendationIsAuthority: artifact.valueSignal.recommendationIsAuthority, validationIssues: validatePassiveObservationWindowArtifact(artifact) }, null, 2) + '\n');
+await writeFile(resolve('evidence/passive-observation-window-report-v0.26.4.out.md'), artifact.reportMarkdown);
+console.log(JSON.stringify({ outputBoundary: 'ok' }, null, 2));

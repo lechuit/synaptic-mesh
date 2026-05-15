@@ -9,9 +9,9 @@
 - Enforcement/authorization/approval/block/allow: false
 
 ## Redacted evidence preview
-- #0: # Synaptic Mesh v0.25.5
-- #1: This is the public review release `v0.25.5`. Current v0.25.5 status is narrower than live runtime and crosses the next safe barrier after the v0.24 operator review outcome capture: **operator outcome value scorecard**.
-- #2: The v0.25 ladder is disabled-by-default, manual/operator-run, local-only, passive/read-only, one-shot, bounded to 3 captured outcomes, redacted-evidence-only, human-readable only, non-authoritative, and value-scorecard-only. It consumes exp
-- #3: Pinned v0.25.5 evidence: `scorecardStatus: VALUE_SCORECARD_COMPLETE`, `usefulOutcomes: 2`, `noiseOutcomes: 1`, `needsMoreEvidence: 0`, `abstainUncertain: 0`, `reviewedItemCount: 3`, `usefulRatio: 0.6667`, `noiseRatio: 0.3333`, `recommendati
-- #4: Recommendations are limited to human-readable non-authoritative queue-value signals: `ADVANCE_OBSERVATION_ONLY`, `HOLD_FOR_MORE_EVIDENCE`, and `DEGRADE_QUEUE_SIGNAL`.
-- #5: Boundaries: `policyDecision: null`, `[NON_AUTHORITATIVE_INPUT_VERB_REDACTED]: false`, `[NON_AUTHORITATIVE_INPUT_VERB_REDACTED]: false`, `toolExecution: false`, `agentConsumedOutput: false`, `externalEffects: false`, `rawPersisted: false`, `
+- #0: # Synaptic Mesh v0.26.5
+- #1: This is the public review release `v0.26.5`. Current v0.26.5 status is narrower than live runtime and crosses the next safe barrier after the v0.25 value scorecard: **passive observation window**.
+- #2: The v0.26 ladder is disabled-by-default, operator-run one-shot, local-only, passive/read-only, bounded to explicit repo-local sources and 3 queue/outcome items, local manual outcome fixtures only, redaction-before-persist, redacted evidence
+- #3: Pinned v0.26.5 evidence: `windowStatus: OBSERVATION_WINDOW_COMPLETE`, `stage chain: 6`, `value scorecard: VALUE_SCORECARD_COMPLETE`, `recommendation: HOLD_FOR_MORE_EVIDENCE`, `recommendationIsAuthority: false`, `policyDecision: null`, `reda
+- #4: The window chains existing safe stages end-to-end: explicit repo-local multisource read evidence, positive pass, usefulness/noise scorecard, controlled operator review queue, local/manual outcome capture, and value scorecard. The scorecard
+- #5: ## v0.26.5 phase close

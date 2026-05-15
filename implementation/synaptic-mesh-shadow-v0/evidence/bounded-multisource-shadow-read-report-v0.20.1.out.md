@@ -16,13 +16,13 @@
 - source #2: ok; records=2; rawSourcePathPersisted=false
 
 ## Redacted evidence preview
-- source #0 record #0: # Synaptic Mesh v0.25.5
-- source #0 record #1: This is the public review release `v0.25.5`. Current v0.25.5 status is narrower than live runtime and crosses the next safe barrier after the v0.24 operator review outcome capture: **operator outcome value scorecard**.
-- source #0 record #2: The v0.25 ladder is disabled-by-default, manual/operator-run, local-only, passive/read-only, one-shot, bounded to 3 captured outcomes, redacted-evidence-only, human-readable only, non-authoritative, and value-scorecard-only. It consumes exp
-- source #0 record #3: Pinned v0.25.5 evidence: `scorecardStatus: VALUE_SCORECARD_COMPLETE`, `usefulOutcomes: 2`, `noiseOutcomes: 1`, `needsMoreEvidence: 0`, `abstainUncertain: 0`, `reviewedItemCount: 3`, `usefulRatio: 0.6667`, `noiseRatio: 0.3333`, `recommendati
-- source #1 record #0: # Release Notes — Synaptic Mesh v0.25.5
+- source #0 record #0: # Synaptic Mesh v0.26.5
+- source #0 record #1: This is the public review release `v0.26.5`. Current v0.26.5 status is narrower than live runtime and crosses the next safe barrier after the v0.25 value scorecard: **passive observation window**.
+- source #0 record #2: The v0.26 ladder is disabled-by-default, operator-run one-shot, local-only, passive/read-only, bounded to explicit repo-local sources and 3 queue/outcome items, local manual outcome fixtures only, redaction-before-persist, redacted evidence
+- source #0 record #3: Pinned v0.26.5 evidence: `windowStatus: OBSERVATION_WINDOW_COMPLETE`, `stage chain: 6`, `value scorecard: VALUE_SCORECARD_COMPLETE`, `recommendation: HOLD_FOR_MORE_EVIDENCE`, `recommendationIsAuthority: false`, `policyDecision: null`, `reda
+- source #1 record #0: # Release Notes — Synaptic Mesh v0.26.5
 - source #1 record #1: ## Summary
-- source #1 record #2: `v0.25.5` adds **operator outcome value scorecard** over explicit v0.24 captured operator outcomes. It scores whether the controlled review queue appears useful, noisy, or still evidence-poor while remaining non-authoritative and human-read
+- source #1 record #2: `v0.26.5` adds **passive observation window** over existing safe local stages. It runs one bounded operator-started observation loop from explicit repo-local sources through positive pass, review queue, manual local outcomes, and value scor
 - source #1 record #3: ## Evidence
 - source #2 record #0: # Release Candidate — Synaptic Mesh v0.23.5
 - source #2 record #1: Target: `v0.23.5`

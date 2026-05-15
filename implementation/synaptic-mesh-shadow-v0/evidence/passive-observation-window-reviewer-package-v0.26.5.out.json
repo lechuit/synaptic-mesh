@@ -1,0 +1,137 @@
+{
+  "artifact": "T-synaptic-mesh-passive-observation-window-reviewer-package-v0.26.5",
+  "releaseLayer": "v0.26.5",
+  "windowStatus": "OBSERVATION_WINDOW_COMPLETE",
+  "stageSummaries": [
+    {
+      "stage": "explicit_repo_local_multisource_read",
+      "status": "COMPLETE",
+      "sourceCount": 2,
+      "recordsRead": 4,
+      "sourceFailuresIsolated": 0,
+      "evidencePacketSha256": "17f8241642df4ba60486dd439848c58ff3f15297bed2191be1b9dfef8f5e8724",
+      "redactedRecordPreviews": [
+        {
+          "recordId": "redacted-record-1",
+          "text": "Alpha research note records stable local adapter observations.",
+          "rawPersisted": false
+        },
+        {
+          "recordId": "redacted-record-2",
+          "text": "Bounded source windows produce compact redacted evidence.",
+          "rawPersisted": false
+        },
+        {
+          "recordId": "redacted-record-3",
+          "text": "Beta research note records independent multisource context.",
+          "rawPersisted": false
+        }
+      ],
+      "policyDecision": null
+    },
+    {
+      "stage": "positive_pass_gate",
+      "status": "PASS",
+      "classification": "PASS_TO_HUMAN_REVIEW",
+      "rejectionReasons": [],
+      "policyDecision": null
+    },
+    {
+      "stage": "usefulness_noise_scorecard",
+      "status": "COMPLETE",
+      "recommendation": "advance",
+      "passPrecision": 1,
+      "noiseRejected": 4,
+      "policyDecision": null
+    },
+    {
+      "stage": "operator_review_queue",
+      "status": "READY_FOR_OPERATOR_REVIEW",
+      "queueItemCount": 1,
+      "queueItems": [
+        {
+          "queueItemId": "operator-review-window-useful-pass",
+          "sourceCaseId": "window-useful-pass",
+          "summary": "caseType=useful_valid_pass; classification=PASS_TO_HUMAN_REVIEW; expectedUsefulness=true; observedPass=true; reasons=none",
+          "policyDecision": null
+        }
+      ],
+      "policyDecision": null
+    },
+    {
+      "stage": "manual_local_outcome_capture",
+      "status": "OUTCOME_CAPTURE_COMPLETE",
+      "capturedOutcomeCount": 1,
+      "labels": [
+        "USEFUL_FOR_REVIEW"
+      ],
+      "policyDecision": null
+    },
+    {
+      "stage": "value_scorecard",
+      "status": "VALUE_SCORECARD_COMPLETE",
+      "metrics": {
+        "usefulOutcomes": 1,
+        "noiseOutcomes": 0,
+        "needsMoreEvidence": 0,
+        "abstainUncertain": 0,
+        "reviewedItemCount": 1,
+        "usefulRatio": 1,
+        "noiseRatio": 0,
+        "evidenceGapRatio": 0,
+        "validationIssueCount": 0
+      },
+      "recommendation": "HOLD_FOR_MORE_EVIDENCE",
+      "recommendationIsAuthority": false,
+      "policyDecision": null
+    }
+  ],
+  "redactedEvidencePacket": {
+    "packetVersion": "passive-observation-window-redacted-evidence-v0.26.1",
+    "boundedPacketSha256": "17f8241642df4ba60486dd439848c58ff3f15297bed2191be1b9dfef8f5e8724",
+    "redactedPreviews": [
+      {
+        "id": "window-evidence-1",
+        "text": "Alpha research note records stable local adapter observations.",
+        "rawPersisted": false,
+        "policyDecision": null
+      },
+      {
+        "id": "window-evidence-2",
+        "text": "Bounded source windows produce compact redacted evidence.",
+        "rawPersisted": false,
+        "policyDecision": null
+      },
+      {
+        "id": "window-evidence-3",
+        "text": "Beta research note records independent multisource context.",
+        "rawPersisted": false,
+        "policyDecision": null
+      }
+    ],
+    "rawSourceCache": "excluded",
+    "rawPersisted": false,
+    "policyDecision": null
+  },
+  "valueSignal": {
+    "scorecardStatus": "VALUE_SCORECARD_COMPLETE",
+    "metrics": {
+      "usefulOutcomes": 1,
+      "noiseOutcomes": 0,
+      "needsMoreEvidence": 0,
+      "abstainUncertain": 0,
+      "reviewedItemCount": 1,
+      "usefulRatio": 1,
+      "noiseRatio": 0,
+      "evidenceGapRatio": 0,
+      "validationIssueCount": 0
+    },
+    "recommendation": "HOLD_FOR_MORE_EVIDENCE",
+    "recommendationIsAuthority": false,
+    "policyDecision": null
+  },
+  "reportMarkdown": "# Passive Observation Window v0.26.5\n\n- Window status: OBSERVATION_WINDOW_COMPLETE\n- Scope: one operator-run local passive observation loop over explicit repo-local sources and local manual outcome inputs.\n- Boundary: read-only, redacted-before-persist, human-readable signal only, non-authoritative, no runtime authority.\n- policyDecision: null\n- Value signal: status=VALUE_SCORECARD_COMPLETE; recommendation=HOLD_FOR_MORE_EVIDENCE; recommendationIsAuthority=false\n- Validation issues: none\n\n## Stage summaries\n- explicit_repo_local_multisource_read: COMPLETE; policyDecision: null\n- positive_pass_gate: PASS; policyDecision: null\n- usefulness_noise_scorecard: COMPLETE; policyDecision: null\n- operator_review_queue: READY_FOR_OPERATOR_REVIEW; policyDecision: null\n- manual_local_outcome_capture: OUTCOME_CAPTURE_COMPLETE; policyDecision: null\n- value_scorecard: VALUE_SCORECARD_COMPLETE; policyDecision: null\n\n## Redacted evidence packet\n- packetVersion: passive-observation-window-redacted-evidence-v0.26.1\n- previewCount: 3\n- source cache: excluded; raw persistence: false\n",
+  "policyDecision": null,
+  "nonAuthoritative": true,
+  "humanReadableReportOnly": true
+}

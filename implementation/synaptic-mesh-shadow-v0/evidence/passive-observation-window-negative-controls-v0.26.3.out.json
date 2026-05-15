@@ -1,0 +1,137 @@
+{
+  "rejectedNegativeControls": [
+    {
+      "name": "network_source",
+      "validationIssues": [
+        "sources[0].network_source_rejected"
+      ]
+    },
+    {
+      "name": "nonlocal_path",
+      "validationIssues": [
+        "sources[0].nonlocal_path_rejected"
+      ]
+    },
+    {
+      "name": "glob_source",
+      "validationIssues": [
+        "sources[0].glob_or_discovery_rejected"
+      ]
+    },
+    {
+      "name": "duplicate_sources",
+      "validationIssues": [
+        "sources.duplicates_rejected"
+      ]
+    },
+    {
+      "name": "too_many_sources",
+      "validationIssues": [
+        "sources.max_three_exceeded"
+      ]
+    },
+    {
+      "name": "invalid_records_bound",
+      "validationIssues": [
+        "bounds.records_per_source_invalid"
+      ]
+    },
+    {
+      "name": "invalid_total_bound",
+      "validationIssues": [
+        "bounds.total_records_invalid"
+      ]
+    },
+    {
+      "name": "missing_outcomes",
+      "validationIssues": [
+        "outcomes.manual_fixture_object_required"
+      ]
+    },
+    {
+      "name": "unsafe_outcome_label",
+      "validationIssues": [
+        "outcomes.outcomes[0].unsafe_or_unknown_outcome_label",
+        "outcomes.outcomes[0].outcomeLabel.authority_token:approve"
+      ]
+    },
+    {
+      "name": "duplicate_outcome_id",
+      "validationIssues": [
+        "outcomes.outcomes[1].duplicate_queue_item_id"
+      ]
+    },
+    {
+      "name": "missing_outcome_id",
+      "validationIssues": [
+        "outcomes.outcomes[0].queue_item_id_required"
+      ]
+    },
+    {
+      "name": "policy_decision_non_null",
+      "validationIssues": [
+        "input.policyDecision_non_null"
+      ]
+    },
+    {
+      "name": "tool_execution_requested",
+      "validationIssues": [
+        "input.toolExecution_not_false",
+        "input.external_or_tool_effect_requested"
+      ]
+    },
+    {
+      "name": "network_fetch_requested",
+      "validationIssues": [
+        "input.networkFetch_not_false",
+        "input.external_or_tool_effect_requested"
+      ]
+    },
+    {
+      "name": "external_effects_requested",
+      "validationIssues": [
+        "input.externalEffects_not_false",
+        "input.external_or_tool_effect_requested"
+      ]
+    },
+    {
+      "name": "raw_output_requested",
+      "validationIssues": [
+        "input.rawOutput_not_false",
+        "input.raw_persistence_or_output_requested"
+      ]
+    },
+    {
+      "name": "raw_persist_requested",
+      "validationIssues": [
+        "input.raw_persistence_or_output_requested"
+      ]
+    },
+    {
+      "name": "recommendation_authority",
+      "validationIssues": [
+        "input.recommendation_treated_as_authority"
+      ]
+    },
+    {
+      "name": "outcome_authority_note",
+      "validationIssues": [
+        "outcomes.outcomes[0].operatorNote.authority_token:approve"
+      ]
+    },
+    {
+      "name": "stage_policy_decision_non_null",
+      "validationIssues": [
+        "artifact.stageSummaries[explicit_repo_local_multisource_read].policyDecision_non_null",
+        "artifact.stageSummaries[explicit_repo_local_multisource_read].policyDecision.authority_token:allow",
+        "artifact.stageSummaries[explicit_repo_local_multisource_read].policyDecision_must_be_null"
+      ]
+    },
+    {
+      "name": "report_authority_token",
+      "validationIssues": [
+        "artifact.reportMarkdown.authority_token:approve"
+      ]
+    }
+  ]
+}
