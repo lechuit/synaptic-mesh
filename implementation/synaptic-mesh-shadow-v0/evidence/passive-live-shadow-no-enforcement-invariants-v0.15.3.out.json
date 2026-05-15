@@ -1,0 +1,15 @@
+{
+  "artifact": "T-synaptic-mesh-passive-live-shadow-no-enforcement-invariants-v0.15.3",
+  "timestamp": "2026-05-15T01:41:00.000Z",
+  "summary": {
+    "noEnforcementInvariant": "pass",
+    "dangerousCases": 6,
+    "invariantFailures": 0,
+    "emitsAllowBlockApproveEnforceAuthorize": false,
+    "recordOnly": true,
+    "advisoryOnly": true,
+    "machineReadablePolicyDecision": false,
+    "authorization": false,
+    "enforcement": false
+  }
+}
