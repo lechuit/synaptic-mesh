@@ -69,8 +69,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 1054,
-      "sha256": "cf30a77d37147722bd8096e544d3f4f00bd7c3577c935e130963ea33d379b1a9"
+      "bytes": 1149,
+      "sha256": "12d1dbce0c7bbe7411f5bdbe38a589d3d9825e8e3d886c28b27913c3caa7f25d"
     },
     {
       "path": "RELEASE_CANDIDATE.md",
@@ -79,8 +79,8 @@
     },
     {
       "path": "RELEASE_NOTES.md",
-      "bytes": 929,
-      "sha256": "0f4e2b746a5171de26c0ade0cbe8d01d8db2de45f16a4f432e81a96d50f54883"
+      "bytes": 1450,
+      "sha256": "ae5f109d929d2737a1bd0251241a830fce2eabc0dde9c70df9ab3304bf0d3f38"
     },
     {
       "path": "design-notes/adapter-boundary-langgraph-mcp-v0.md",
@@ -336,6 +336,11 @@
       "path": "docs/live-like-shadow-observation-envelope-v0.14.0-alpha.md",
       "bytes": 755,
       "sha256": "1cac5ef957e45063c465dddf9282a9c038dab576cebbd88c5135a73f37d44b4d"
+    },
+    {
+      "path": "docs/live-like-shadow-phase-close-v0.14.5.md",
+      "bytes": 969,
+      "sha256": "13b4f1c20f37b313d5fd31d8b16870828ed3850cdedc8ff300b5bd473182c7e2"
     },
     {
       "path": "docs/live-like-shadow-replay-harness-v0.14.1.md",
@@ -595,7 +600,7 @@
     {
       "path": "docs/release-checklist.md",
       "bytes": 11783,
-      "sha256": "586a049d3804b7857147dbe6bfa9a5a60a9631a8500a0a42d74ae0981fcf7c2a"
+      "sha256": "92bc1d00c7825f665edb6bf689d7be2027f62a60be407bab3e4cd4af8bfa6fe4"
     },
     {
       "path": "docs/release-ladder-v0.2-alpha.md",
@@ -776,6 +781,11 @@
       "path": "docs/status-v0.14.4.md",
       "bytes": 374,
       "sha256": "b15cb819331e481276755b2ba4733a794568faefe9f32cc53a369fa7e0d6eca8"
+    },
+    {
+      "path": "docs/status-v0.14.5.md",
+      "bytes": 456,
+      "sha256": "0103127afd8b4dcaabe9cf1d79bb29afbd9fa1c599c0262e132425cb63ba3baf"
     },
     {
       "path": "docs/status-v0.2.3.md",
@@ -1283,9 +1293,19 @@
       "sha256": "39511f09ecf913a22fe3147143dff2f020362531d5034534d9a5894aad74ad71"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-like-shadow-phase-close-v0.14.5.out.json",
+      "bytes": 699,
+      "sha256": "9d18f078d054388b358884c5148eec0f2244f1c5d1fbc8c26cb1673be0461431"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-like-shadow-replay-harness-v0.14.1.out.json",
       "bytes": 1072,
       "sha256": "7fde72a26e72780ad36d47efc0ec0ea17c4a4d0e5d129a0092374cd5c77074fe"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-like-shadow-reviewer-package-v0.14.4.out.json",
+      "bytes": 632,
+      "sha256": "587780e7c27bcd5450d9392e672dc1e997d2287391fc0daa2cd15d183287c342"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-like-shadow-sandbox-failure-catalog-v0.14.3.out.json",
@@ -2329,8 +2349,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/package.json",
-      "bytes": 29588,
-      "sha256": "4803c44b99cf504e5ea7919613731dd29a4449ab1d15ae7b5fd80fa37cab59e8"
+      "bytes": 29871,
+      "sha256": "e38ba047946e7976d936b6254fbc4e5fd837a5e04ecfa6a702b3772f305b97c6"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/action-context-packet.mjs",
@@ -2671,6 +2691,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/tests/live-like-shadow-observation-envelope-v0.14.0-alpha.mjs",
       "bytes": 2950,
       "sha256": "ca95825d04a2dfaf8331e3ba3421926eaead584d80b464692c9de2da6308bbbe"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/live-like-shadow-phase-close-v0.14.5.mjs",
+      "bytes": 2950,
+      "sha256": "5d39e18025ff310b8b2f31a378176a28edb06dba7571b8b98d1bb3ccdb7bb60d"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/live-like-shadow-replay-harness-v0.14.1.mjs",
@@ -3689,8 +3714,13 @@
     },
     {
       "path": "tools/release-checks/index.mjs",
-      "bytes": 824,
-      "sha256": "3f792f2e547809f62b4f02acc1cf6a602dd148a8e35884f9cc0b61a23403c352"
+      "bytes": 938,
+      "sha256": "13d8c31f38fc37b338b57dc6a749da7ec96313c3406590f51fe138dd331875b0"
+    },
+    {
+      "path": "tools/release-checks/live-like-shadow-sandbox-ladder.mjs",
+      "bytes": 6393,
+      "sha256": "c0e6db82aed185d21e36706c448b69b5882406e2c9a433f78806f3ec2c77bff6"
     },
     {
       "path": "tools/release-checks/local-harness-ladder.mjs",
