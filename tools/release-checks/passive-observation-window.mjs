@@ -62,7 +62,7 @@ export function assertPassiveObservationWindowRelease({ repoRoot, packageRoot, m
   assert(phase?.policyDecision === null, 'v0.26.5 policyDecision must be null');
   assert(phase?.nonAuthoritative === true && phase?.humanReadableReportOnly === true, 'v0.26.5 boundary flags required');
   const negative = readJson(path.join(packageRoot, 'evidence/passive-observation-window-negative-controls-v0.26.3.out.json'));
-  assert((negative?.rejectedNegativeControls ?? []).length >= 20, 'v0.26.3 must include expanded negative controls');
+  assert((negative?.rejectedNegativeControls ?? []).length >= 30, 'v0.26.3 must include expanded negative controls');
   const report = readFileSync(path.join(packageRoot, 'evidence/passive-observation-window-report-v0.26.5.out.md'), 'utf8');
   all(report, ['Passive Observation Window v0.26.5','OBSERVATION_WINDOW_COMPLETE','explicit_repo_local_multisource_read: COMPLETE','positive_pass_gate: PASS','operator_review_queue: READY_FOR_OPERATOR_REVIEW','manual_local_outcome_capture: OUTCOME_CAPTURE_COMPLETE','value_scorecard: VALUE_SCORECARD_COMPLETE','policyDecision: null'], 'passive observation window report', assertIncludes);
   const readme = readFileSync(path.join(repoRoot, 'README.md'), 'utf8');

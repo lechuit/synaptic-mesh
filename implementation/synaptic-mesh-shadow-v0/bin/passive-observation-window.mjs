@@ -1,7 +1,35 @@
 #!/usr/bin/env node
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
-import { resolve } from 'node:path';
+import { dirname, isAbsolute, relative, resolve } from 'node:path';
 import { runPassiveObservationWindow } from '../src/passive-observation-window.mjs';
+
+function pathIssue(value, prefix, { evidenceOnly = false, extension = null } = {}) {
+  if (typeof value !== 'string' || !value.trim()) return `${prefix}.path_required`;
+  if (/^https?:\/\//i.test(value)) return `${prefix}.network_path_rejected`;
+  if (isAbsolute(value) || value.includes('..')) return `${prefix}.nonlocal_path_rejected`;
+  if (/[*?\[\]{}]/.test(value)) return `${prefix}.glob_or_discovery_rejected`;
+  if (extension && !value.endsWith(extension)) return `${prefix}.extension_required:${extension}`;
+  if (evidenceOnly && !(value === 'evidence' || value.startsWith('evidence/'))) return `${prefix}.evidence_dir_required`;
+  const root = process.cwd();
+  const resolved = resolve(root, value);
+  const rel = relative(root, resolved);
+  if (rel.startsWith('..') || isAbsolute(rel)) return `${prefix}.outside_repo_rejected`;
+  return null;
+}
+
+function resolveSafePath(value, prefix, options) {
+  const issue = pathIssue(value, prefix, options);
+  return issue ? { issue, resolved: null } : { issue: null, resolved: resolve(process.cwd(), value) };
+}
+
+function degradedCliArtifact(issues) {
+  return {
+    windowStatus: 'DEGRADED_OBSERVATION_WINDOW',
+    validationIssues: [...new Set(issues)],
+    policyDecision: null,
+    reportMarkdown: '# Passive Observation Window v0.26.5\n\n- Window status: DEGRADED_OBSERVATION_WINDOW\n- policyDecision: null\n'
+  };
+}
 
 function parseArgs(argv) {
   const parsed = { sources: [], recordsPerSource: 2, totalRecords: 6, outJson: null, outMarkdown: null, outcomes: null, stdout: false };
@@ -30,13 +58,18 @@ function parseArgs(argv) {
 }
 
 const { parsed, rejected } = parseArgs(process.argv.slice(2));
+const cliIssues = rejected.map((flag) => `cli.rejected_flag:${flag}`);
+const outcomesPath = parsed.outcomes ? resolveSafePath(parsed.outcomes, 'cli.outcomes', { extension: '.json' }) : { issue: null, resolved: null };
+const outJsonPath = parsed.outJson ? resolveSafePath(parsed.outJson, 'cli.outJson', { evidenceOnly: true, extension: '.json' }) : { issue: null, resolved: null };
+const outMarkdownPath = parsed.outMarkdown ? resolveSafePath(parsed.outMarkdown, 'cli.outMarkdown', { evidenceOnly: true, extension: '.md' }) : { issue: null, resolved: null };
+for (const issue of [outcomesPath.issue, outJsonPath.issue, outMarkdownPath.issue]) if (issue) cliIssues.push(issue);
 let outcomes = null;
-if (parsed.outcomes) outcomes = JSON.parse(await readFile(resolve(parsed.outcomes), 'utf8'));
-const artifact = rejected.length
-  ? { windowStatus: 'DEGRADED_OBSERVATION_WINDOW', validationIssues: rejected.map((flag) => `cli.rejected_flag:${flag}`), policyDecision: null, reportMarkdown: '# Passive Observation Window v0.26.5\n\n- Window status: DEGRADED_OBSERVATION_WINDOW\n- policyDecision: null\n' }
+if (!cliIssues.length && outcomesPath.resolved) outcomes = JSON.parse(await readFile(outcomesPath.resolved, 'utf8'));
+const artifact = cliIssues.length
+  ? degradedCliArtifact(cliIssues)
   : await runPassiveObservationWindow({ sources: parsed.sources, recordsPerSource: parsed.recordsPerSource, totalRecords: parsed.totalRecords, outcomes });
-if (parsed.outJson || parsed.outMarkdown) await mkdir(resolve('evidence'), { recursive: true });
-if (parsed.outJson) await writeFile(resolve(parsed.outJson), JSON.stringify(artifact, null, 2) + '\n');
-if (parsed.outMarkdown) await writeFile(resolve(parsed.outMarkdown), artifact.reportMarkdown ?? '');
-if (parsed.stdout || (!parsed.outJson && !parsed.outMarkdown)) console.log(JSON.stringify(artifact, null, 2));
+for (const outputPath of [outJsonPath.resolved, outMarkdownPath.resolved].filter(Boolean)) await mkdir(dirname(outputPath), { recursive: true });
+if (outJsonPath.resolved) await writeFile(outJsonPath.resolved, JSON.stringify(artifact, null, 2) + '\n');
+if (outMarkdownPath.resolved) await writeFile(outMarkdownPath.resolved, artifact.reportMarkdown ?? '');
+if (parsed.stdout || (!outJsonPath.resolved && !outMarkdownPath.resolved)) console.log(JSON.stringify(artifact, null, 2));
 process.exitCode = artifact.windowStatus === 'OBSERVATION_WINDOW_COMPLETE' ? 0 : 1;

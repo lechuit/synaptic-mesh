@@ -1899,8 +1899,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/bin/passive-observation-window.mjs",
-      "bytes": 3469,
-      "sha256": "ca152c3ee4e0dbf02d383c1cf0ed3e0b1f7a25a20bed9ba370aa70d464397de2"
+      "bytes": 5402,
+      "sha256": "259e312eb7fdee6e356b9c36787dad1cd42c97c7af50eb61770f93a11b26e223"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/bin/positive-utility-pass-gate.mjs",
@@ -2814,8 +2814,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-observation-window-negative-controls-v0.26.3.out.json",
-      "bytes": 3393,
-      "sha256": "f05cbdae9e653322239e4c1b2c6d1b7e8fa695f32cb62210bfb542bb138b9928"
+      "bytes": 5705,
+      "sha256": "140640a95b1c4627704e9e1380dbe93bbca5782d20bdf5ed8fba73ea4e94d4d2"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-observation-window-output-boundary-v0.26.4.out.json",
@@ -3809,8 +3809,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/passive-observation-window.mjs",
-      "bytes": 18608,
-      "sha256": "0941504fb0b391bd7acced0344cfa5f3ed6e7cbbc7db77c4a63c90c5f1a6d581"
+      "bytes": 20886,
+      "sha256": "a922e48ffb0d9b68b1e296670fe020cc1ea7f28d4f458b8bf9e71001621304ad"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/positive-utility-pass-gate.mjs",
@@ -4629,8 +4629,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-observation-window-negative-controls-v0.26.3.mjs",
-      "bytes": 5168,
-      "sha256": "9094cbc2e0e7339db0ab4c5292df78b331fc012b64429ce074d368d963a4b5c8"
+      "bytes": 7586,
+      "sha256": "de38ced730d66b38747f0f76a3595bcd62de9dadedbd30766c22522cf8243685"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-observation-window-output-boundary-v0.26.4.mjs",
@@ -5615,7 +5615,7 @@
     {
       "path": "tools/release-checks/passive-observation-window.mjs",
       "bytes": 6876,
-      "sha256": "2a072e27278f26a3ba720cf319f32e7ed3fd56528925ac0ef98fece3007afb9a"
+      "sha256": "ab80f6ae7141d3dbfc91a220c2ef30429fe7c259b9f2abcab29a9e24c2eca56f"
     },
     {
       "path": "tools/release-checks/positive-utility-pass-gate.mjs",

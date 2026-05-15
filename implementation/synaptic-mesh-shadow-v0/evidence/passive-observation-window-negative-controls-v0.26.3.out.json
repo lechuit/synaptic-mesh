@@ -19,6 +19,12 @@
       ]
     },
     {
+      "name": "missing_repo_local_source_degrades",
+      "validationIssues": [
+        "stage.explicit_repo_local_multisource_read_failed:min_successful_sources_not_met"
+      ]
+    },
+    {
       "name": "duplicate_sources",
       "validationIssues": [
         "sources.duplicates_rejected"
@@ -52,7 +58,8 @@
       "name": "unsafe_outcome_label",
       "validationIssues": [
         "outcomes.outcomes[0].unsafe_or_unknown_outcome_label",
-        "outcomes.outcomes[0].outcomeLabel.authority_token:approve"
+        "outcomes.outcomes[0].outcomeLabel.authority_token:approve",
+        "input.outcomes.outcomes[0].outcomeLabel.authority_token:approve"
       ]
     },
     {
@@ -70,7 +77,8 @@
     {
       "name": "policy_decision_non_null",
       "validationIssues": [
-        "input.policyDecision_non_null"
+        "input.policyDecision_non_null",
+        "input.policyDecision.authority_token:allow"
       ]
     },
     {
@@ -114,14 +122,56 @@
       ]
     },
     {
+      "name": "input_nested_protocol_tool_execution_true",
+      "validationIssues": [
+        "input.protocol.toolExecution_not_false"
+      ]
+    },
+    {
+      "name": "input_report_markdown_authority",
+      "validationIssues": [
+        "input.reportMarkdown.authority_token:approve",
+        "input.reportMarkdown.authority_token:rawOutput",
+        "input.reportMarkdown.authority_token:policyDecision"
+      ]
+    },
+    {
+      "name": "outcomes_protocol_tool_execution_true",
+      "validationIssues": [
+        "outcomes.protocol.toolExecution_not_false",
+        "input.outcomes.protocol.toolExecution_not_false"
+      ]
+    },
+    {
+      "name": "outcomes_report_markdown_authority",
+      "validationIssues": [
+        "outcomes.reportMarkdown.authority_token:approve",
+        "outcomes.reportMarkdown.authority_token:rawOutput",
+        "outcomes.reportMarkdown.authority_token:policyDecision",
+        "input.outcomes.reportMarkdown.authority_token:approve",
+        "input.outcomes.reportMarkdown.authority_token:rawOutput",
+        "input.outcomes.reportMarkdown.authority_token:policyDecision"
+      ]
+    },
+    {
+      "name": "outcome_tool_execution_string",
+      "validationIssues": [
+        "outcomes.outcomes[0].toolExecution_not_false",
+        "input.outcomes.outcomes[0].toolExecution_not_false"
+      ]
+    },
+    {
       "name": "outcome_authority_note",
       "validationIssues": [
-        "outcomes.outcomes[0].operatorNote.authority_token:approve"
+        "outcomes.outcomes[0].operatorNote.authority_token:approve",
+        "input.outcomes.outcomes[0].operatorNote.authority_token:approve"
       ]
     },
     {
       "name": "stage_policy_decision_non_null",
       "validationIssues": [
+        "artifact.stageSummaries[0].policyDecision_non_null",
+        "artifact.stageSummaries[0].policyDecision.authority_token:allow",
         "artifact.stageSummaries[explicit_repo_local_multisource_read].policyDecision_non_null",
         "artifact.stageSummaries[explicit_repo_local_multisource_read].policyDecision.authority_token:allow",
         "artifact.stageSummaries[explicit_repo_local_multisource_read].policyDecision_must_be_null"
@@ -131,6 +181,24 @@
       "name": "report_authority_token",
       "validationIssues": [
         "artifact.reportMarkdown.authority_token:approve"
+      ]
+    },
+    {
+      "name": "cli_nonlocal_outcomes_path",
+      "validationIssues": [
+        "cli.outcomes.nonlocal_path_rejected"
+      ]
+    },
+    {
+      "name": "cli_nonlocal_out_json_path",
+      "validationIssues": [
+        "cli.outJson.nonlocal_path_rejected"
+      ]
+    },
+    {
+      "name": "cli_out_markdown_requires_evidence_dir",
+      "validationIssues": [
+        "cli.outMarkdown.evidence_dir_required"
       ]
     }
   ]

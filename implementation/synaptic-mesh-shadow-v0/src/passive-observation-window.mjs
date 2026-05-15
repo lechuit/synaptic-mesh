@@ -23,7 +23,7 @@ const AUTHORITY_TOKENS = Object.freeze([
   'approve', 'approval', 'allow', 'authorize', 'authorization', 'block', 'deny', 'permit',
   'enforce', 'enforcement', 'execute', 'toolExecution', 'networkFetch', 'networkResourceFetch',
   'resourceFetch', 'memoryConfigWrite', 'memoryConfigWrites', 'externalEffects', 'rawPersisted',
-  'rawOutput', 'runtimeAuthority', 'machineReadablePolicyDecision', 'mayAllow', 'mayBlock'
+  'rawOutput', 'runtimeAuthority', 'policyDecision', 'policy_decision', 'machineReadablePolicyDecision', 'mayAllow', 'mayBlock'
 ]);
 const SENSITIVE_PATTERNS = Object.freeze([
   /sk-[A-Za-z0-9_-]{12,}/g,
@@ -62,7 +62,9 @@ function findAuthorityTokens(value, prefix = 'artifact') {
 }
 function findReportTokens(text, prefix) {
   if (typeof text !== 'string') return [];
-  const sanitized = text.replace(/policyDecision\s*:\s*null/gi, '');
+  const sanitized = text
+    .replace(/policyDecision\s*:\s*null/gi, '')
+    .replace(/(?:authorization|enforcement|toolExecution|agentConsumedOutput|externalEffects|rawPersisted|rawOutput)\s*:\s*false/gi, '');
   return findAuthorityTokens(sanitized, prefix);
 }
 function boundaryViolations(value, prefix) {
@@ -74,6 +76,10 @@ function boundaryViolations(value, prefix) {
   if (!isPlainObject(value)) return issues;
   if (hasOwn(value, 'policyDecision') && value.policyDecision !== null) issues.push(`${prefix}.policyDecision_non_null`);
   for (const key of AUTHORITY_FIELD_NAMES) if (hasOwn(value, key) && value[key] !== false) issues.push(`${prefix}.${key}_not_false`);
+  for (const [key, nested] of Object.entries(value)) {
+    if (key === 'reportMarkdown') continue;
+    issues.push(...boundaryViolations(nested, `${prefix}.${key}`));
+  }
   return issues;
 }
 function assertSafeStageArtifact(value, prefix, issues) {
@@ -120,7 +126,7 @@ function validateOutcomeInputs(outcomes, issues) {
     issues.push(...findAuthorityTokens(entry, prefix));
   }
   issues.push(...boundaryViolations(outcomes, 'outcomes'));
-  issues.push(...findAuthorityTokens({ outcomes: entries }, 'outcomes'));
+  issues.push(...findAuthorityTokens(outcomes, 'outcomes'));
 }
 function buildNoiseCasesFromPacket(packet) {
   const privatePacket = structuredClone(packet);
@@ -139,6 +145,19 @@ function buildNoiseCasesFromPacket(packet) {
     { id: 'window-forbidden-capability-reject', caseType: 'forbidden_alias_reject', expectedUsefulness: false, expectedNoise: true, output: evaluatePositiveUtilityPassGate(capabilityPacket) },
     { id: 'window-insufficient-records-reject', caseType: 'borderline_insufficient_records_reject', expectedUsefulness: false, expectedNoise: true, output: evaluatePositiveUtilityPassGate(insufficientPacket) }
   ];
+}
+function summarizeBoundedReadFailure(reason = 'read_error') {
+  return {
+    stage: 'explicit_repo_local_multisource_read',
+    status: 'DEGRADED',
+    failure: reason,
+    sourceCount: 0,
+    recordsRead: 0,
+    sourceFailuresIsolated: 0,
+    evidencePacketSha256: sha256('bounded-read-failed:' + reason),
+    redactedRecordPreviews: [],
+    policyDecision: null
+  };
 }
 function summarizeBoundedPacket(packet) {
   return {
@@ -194,6 +213,7 @@ export function validatePassiveObservationWindowInput(input = {}) {
   validateBounds(input, issues);
   validateOutcomeInputs(input.outcomes, issues);
   issues.push(...boundaryViolations(input, 'input'));
+  issues.push(...findAuthorityTokens(input, 'input'));
   if (hasOwn(input, 'policyDecision') && input.policyDecision !== null) issues.push('input.policyDecision_non_null');
   if (input.recommendationIsAuthority === true) issues.push('input.recommendation_treated_as_authority');
   if (input.rawPersist === true || input.rawOutput === true || input.persistRaw === true) issues.push('input.raw_persistence_or_output_requested');
@@ -208,24 +228,44 @@ export function validatePassiveObservationWindowArtifact(artifact) {
   if (artifact.windowStatus !== 'OBSERVATION_WINDOW_COMPLETE') issues.push('artifact.window_status_not_complete');
   if (artifact.nonAuthoritative !== true || artifact.humanReadableReportOnly !== true || artifact.redactedEvidencePacketOnly !== true) issues.push('artifact.boundary_flags_missing');
   if (artifact.policyDecision !== null) issues.push('artifact.policyDecision_non_null');
+  issues.push(...boundaryViolations(artifact, 'artifact'));
+  issues.push(...findAuthorityTokens(artifact, 'artifact'));
   for (const stage of asArray(artifact.stageSummaries)) assertSafeStageArtifact(stage, `artifact.stageSummaries[${stage?.stage ?? 'unknown'}]`, issues);
   assertSafeStageArtifact(artifact.redactedEvidencePacket, 'artifact.redactedEvidencePacket', issues);
   issues.push(...findReportTokens(artifact.reportMarkdown ?? '', 'artifact.reportMarkdown'));
   return [...new Set(issues)];
 }
 
+function boundedReadFailureReason(error) {
+  const message = String(error?.message ?? error ?? '');
+  if (/at least two successfully read explicit repo-local sources/i.test(message)) return 'min_successful_sources_not_met';
+  if (/source/i.test(message) && /read/i.test(message)) return 'source_read_failed';
+  return 'read_error';
+}
+
 export async function runPassiveObservationWindow(input = {}) {
   const inputIssues = validatePassiveObservationWindowInput(input);
   if (inputIssues.length) return degradedWindow(inputIssues);
-  const bounded = JSON.parse(await runBoundedMultisourceShadowRead({ sources: input.sources, recordsPerSource: input.recordsPerSource ?? 2, totalRecords: input.totalRecords ?? 6 }));
+  let bounded;
+  try {
+    bounded = JSON.parse(await runBoundedMultisourceShadowRead({ sources: input.sources, recordsPerSource: input.recordsPerSource ?? 2, totalRecords: input.totalRecords ?? 6 }));
+  } catch (error) {
+    const reason = boundedReadFailureReason(error);
+    return degradedWindow([`stage.explicit_repo_local_multisource_read_failed:${reason}`], [summarizeBoundedReadFailure(reason)]);
+  }
   const positive = evaluatePositiveUtilityPassGate(bounded, { minRecords: input.minRecords ?? 2, maxIsolatedSourceFailures: input.maxIsolatedSourceFailures ?? 0 });
   const observed = scoreObservedUsefulnessNoise(buildNoiseCasesFromPacket(bounded));
   const queue = buildControlledOperatorReviewQueue(observed);
   const capture = buildOperatorReviewOutcomeCapture(queue, input.outcomes);
   const value = scoreOperatorOutcomeValue(capture);
   const stageSummaries = [summarizeBoundedPacket(bounded), summarizePositiveGate(positive), { stage: 'usefulness_noise_scorecard', status: observed?.scorecardStatus ?? 'COMPLETE', recommendation: observed?.recommendation ?? null, passPrecision: observed?.metrics?.passPrecision ?? null, noiseRejected: observed?.metrics?.noiseRejected ?? null, policyDecision: null }, summarizeQueue(queue), summarizeCapture(capture), summarizeValue(value)];
-  const complete = positive.positiveUtilityGatePassed === true && queue.queueStatus === 'READY_FOR_OPERATOR_REVIEW' && capture.captureStatus === 'OUTCOME_CAPTURE_COMPLETE' && value.scorecardStatus === 'VALUE_SCORECARD_COMPLETE';
-  const artifact = buildWindowArtifact({ status: complete ? 'OBSERVATION_WINDOW_COMPLETE' : 'DEGRADED_OBSERVATION_WINDOW', stageSummaries, bounded, value, validationIssues: [] });
+  const stageIssues = [];
+  if (positive.positiveUtilityGatePassed !== true) stageIssues.push(`stage.positive_pass_gate_not_pass:${positive?.classification ?? 'unknown'}`, ...asArray(positive?.rejectionReasons).map((reason) => `stage.positive_pass_gate:${reason}`));
+  if (queue.queueStatus !== 'READY_FOR_OPERATOR_REVIEW') stageIssues.push(`stage.operator_review_queue_not_ready:${queue?.queueStatus ?? 'unknown'}`, ...asArray(queue?.validationIssues).map((issue) => `stage.operator_review_queue:${issue}`));
+  if (capture.captureStatus !== 'OUTCOME_CAPTURE_COMPLETE') stageIssues.push(`stage.outcome_capture_not_complete:${capture?.captureStatus ?? 'unknown'}`, ...asArray(capture?.validationIssues).map((issue) => `stage.outcome_capture:${issue}`));
+  if (value.scorecardStatus !== 'VALUE_SCORECARD_COMPLETE') stageIssues.push(`stage.value_scorecard_not_complete:${value?.scorecardStatus ?? 'unknown'}`, ...asArray(value?.validationIssues).map((issue) => `stage.value_scorecard:${issue}`));
+  const complete = stageIssues.length === 0;
+  const artifact = buildWindowArtifact({ status: complete ? 'OBSERVATION_WINDOW_COMPLETE' : 'DEGRADED_OBSERVATION_WINDOW', stageSummaries, bounded, value, validationIssues: [...new Set(stageIssues)] });
   const artifactIssues = complete ? validatePassiveObservationWindowArtifact(artifact) : [];
   if (artifactIssues.length) return degradedWindow(artifactIssues, stageSummaries);
   return artifact;
