@@ -69,8 +69,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 994,
-      "sha256": "67cce4fd1ce9c6d7aa2dc8a49c59a6ce201e4d90a2cd731291be10557df415bf"
+      "bytes": 992,
+      "sha256": "dc59a4b7fe3f152b987fd6202738ac46499a9e71074e9c18f69c184adc41f9e8"
     },
     {
       "path": "RELEASE_CANDIDATE.md",
@@ -79,8 +79,8 @@
     },
     {
       "path": "RELEASE_NOTES.md",
-      "bytes": 469,
-      "sha256": "59b380891ca4d3543e4278c5f6c3b257eca20128de9edea65662b7b50d1ff640"
+      "bytes": 593,
+      "sha256": "c64ddec564876737b70d600f84f22a746a4c6a6762b4940dbf532fb7bd32b7fe"
     },
     {
       "path": "design-notes/adapter-boundary-langgraph-mcp-v0.md",
@@ -333,6 +333,11 @@
       "sha256": "1cac5ef957e45063c465dddf9282a9c038dab576cebbd88c5135a73f37d44b4d"
     },
     {
+      "path": "docs/live-like-shadow-replay-harness-v0.14.1.md",
+      "bytes": 767,
+      "sha256": "61e9701f2cf4f70ea28fbf313db049acbfabc0785520189aa717bc324ee86d40"
+    },
+    {
       "path": "docs/live-shadow-drift-scorecard.md",
       "bytes": 2830,
       "sha256": "ca224fde821d63f28a8da06f46b421412ceda5976bddb403517c16f37d1aad1b"
@@ -574,8 +579,8 @@
     },
     {
       "path": "docs/release-checklist.md",
-      "bytes": 11789,
-      "sha256": "d2c0e3ebc3766766d0a751755c3e83897c4291f0c57d13ec7ba524e61f6e3ca2"
+      "bytes": 11783,
+      "sha256": "d3bf9f8ab8194c331c8aab1e9c175da155970df524ee59ab9eb8c1e321dd25af"
     },
     {
       "path": "docs/release-ladder-v0.2-alpha.md",
@@ -736,6 +741,11 @@
       "path": "docs/status-v0.14.0-alpha.md",
       "bytes": 428,
       "sha256": "1ea38e1f438aeffdbb25f59cc20f749556dd42a5e089d4117e67cebf1dda7f43"
+    },
+    {
+      "path": "docs/status-v0.14.1.md",
+      "bytes": 402,
+      "sha256": "417760414918493ae0a8697fce8691ebfa4afd3568e1fc9fa792c8344fff4ceb"
     },
     {
       "path": "docs/status-v0.2.3.md",
@@ -998,6 +1008,11 @@
       "sha256": "dc1d53380e944ebe302fc4e892b39e486f0d8c0a0f5708e3b256483ae06cc32b"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/bin/live-like-shadow-replay.mjs",
+      "bytes": 522,
+      "sha256": "d7d334b8fef87e1f581f8ec22073c708214d880a7cbec620b529a711026022b9"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/bin/manual-dry-run.mjs",
       "bytes": 582,
       "sha256": "2f762faa1b682b783d21aa6455ee9fa08f62222b0e1f6a73242b470e6532cb6a"
@@ -1226,6 +1241,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-input-source-boundary-contracts.out.json",
       "bytes": 8689,
       "sha256": "35af90af0456aff58ae85af3239cb05377aff6260d1e433a5ca78497e893138c"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-like-shadow-observation-envelope-v0.14.0-alpha.out.json",
+      "bytes": 663,
+      "sha256": "39511f09ecf913a22fe3147143dff2f020362531d5034534d9a5894aad74ad71"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-shadow-drift-scorecard-shape.out.json",
@@ -2259,8 +2279,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/package.json",
-      "bytes": 28438,
-      "sha256": "88f06c6a90cfc4067001be1f706057095a3deeb2090703319d09c1511d3d8e90"
+      "bytes": 28750,
+      "sha256": "b24632aaa1e6e9f1fc4bcb36733518f943ab5bba9033daca377225217f195af5"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/action-context-packet.mjs",
@@ -2301,6 +2321,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/src/fixture-manifest.mjs",
       "bytes": 2209,
       "sha256": "74c2bd8b483c660a64cd52544805cf54cc3e889f786130ea367a17bed87c062d"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/src/live-like-shadow-replay.mjs",
+      "bytes": 2337,
+      "sha256": "e8652c527ae9365b48ce749ab39524a0a1269175c3e6a4d86d6963beae2d7fcf"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/manual-dry-run.mjs",
@@ -2581,6 +2606,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/tests/live-like-shadow-observation-envelope-v0.14.0-alpha.mjs",
       "bytes": 2950,
       "sha256": "ca95825d04a2dfaf8331e3ba3421926eaead584d80b464692c9de2da6308bbbe"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/live-like-shadow-replay-harness-v0.14.1.mjs",
+      "bytes": 2060,
+      "sha256": "23066e97bf063967306612deec087616bab2c5a61a392c97c6bdf27d3f3a3be3"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/live-shadow-drift-scorecard-shape.mjs",

@@ -1,0 +1,38 @@
+{
+  "artifact": "T-synaptic-mesh-live-like-shadow-replay-harness-v0.14.1",
+  "timestamp": "2026-05-14T23:59:00.000Z",
+  "summary": {
+    "replayHarness": "pass",
+    "releaseLayer": "v0.14.1",
+    "replayMode": "frozen/redacted manual CLI/test only",
+    "totalEnvelopes": 1,
+    "validEnvelopes": 1,
+    "invalidEnvelopes": 0,
+    "advisoryOnly": true,
+    "runtimeAuthority": false,
+    "liveTraffic": false,
+    "networkAllowed": false,
+    "toolExecution": false,
+    "watcherDaemon": false,
+    "records": [
+      {
+        "envelopeId": "lls-safe-manual-fixture-001",
+        "replayMode": "frozen/redacted manual replay only",
+        "validation": {
+          "valid": true,
+          "failures": []
+        },
+        "advisoryOnly": true,
+        "runtimeAuthority": false,
+        "liveTraffic": false,
+        "networkAllowed": false,
+        "toolExecution": false,
+        "watcherDaemon": false,
+        "agentConsumed": false,
+        "machineReadablePolicyDecision": false,
+        "authorization": false,
+        "enforcement": false
+      }
+    ]
+  }
+}

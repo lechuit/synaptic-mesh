@@ -17,7 +17,7 @@ Run release gates from the package directory:
 
 ```bash
 cd implementation/synaptic-mesh-shadow-v0
-npm run release:check -- --target v0.14.0-alpha
+npm run release:check -- --target v0.14.1
 ```
 
 `release:check` verifies the manifest/docs package version, reports the explicit `releaseTarget`, reports the local Git `currentPublishedRelease` when available, blocks release-candidate validation against an already-existing tag unless the current checkout is exactly that tagged commit, and runs the release-critical local gates. If `--target` is omitted, it defaults to the manifest version and prints a warning so release PRs do not silently inherit a stale target.
