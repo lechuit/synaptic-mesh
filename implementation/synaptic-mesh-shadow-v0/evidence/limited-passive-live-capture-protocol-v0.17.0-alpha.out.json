@@ -1,0 +1,19 @@
+{
+  "artifact": "T-synaptic-mesh-limited-passive-live-capture-protocol-v0.17.0-alpha",
+  "timestamp": "2026-05-15T10:00:00.000Z",
+  "summary": {
+    "designReadinessOnly": true,
+    "disabledByDefault": true,
+    "operatorRun": true,
+    "localOnly": true,
+    "passiveOnly": true,
+    "readOnly": true,
+    "enforcement": false,
+    "authorization": false,
+    "approvalBlockAllow": false,
+    "autonomousLiveMode": false,
+    "toolExecution": false,
+    "memoryConfigWrite": false,
+    "externalEffects": false
+  }
+}

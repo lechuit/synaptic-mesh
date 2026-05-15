@@ -1,31 +1,31 @@
-# Release Notes — Synaptic Mesh v0.16.6
+# Release Notes — Synaptic Mesh v0.17.5
 
-## v0.16.0-alpha pilot protocol and scope
+## v0.17.0-alpha protocol/design
 
-Defined a disabled-by-default, human-started/manual, local-only tiny operator-run passive pilot protocol. Scope is one explicit local sample input at a time, with human review required before any source expansion.
+Defined limited passive live capture readiness as design/readiness only. Scope remains gated, disabled/manual/operator-run/local/passive/read-only with no enforcement, no authorization, no approval/block/allow, no autonomous live mode, no tool execution, no memory/config writes, no agent-consumed machine-readable policy decisions, and no external effects.
 
-## v0.16.1 tiny pilot runner/harness
+## v0.17.1 capture envelope/schema/readiness fixture
 
-Added a tiny runner wrapping passive live shadow redaction/no-enforcement checks. It writes stdout or package evidence JSON only and rejects --watch, --daemon, --network, --execute, --allow, --block, --approve, --enforce, --authorize, and batch/multi-input modes before work.
+Added a synthetic local envelope fixture for shape-only review. It records disabledByDefault, operatorRun, localOnly, passiveOnly, readOnly, rawPersisted: false, agentConsumedOutput: false, and policyDecision: null.
 
-## v0.16.2 evidence packet metadata
+## v0.17.2 redaction and abort criteria
 
-Added an evidence packet shape with operatorReviewRequired: true; singleSampleOnly: true; rawPersisted: false; hashes present; decision verbs sanitized; no agent-consumed output; no machine-readable policy decision.
+Added conservative abort criteria for raw persistence, decision verbs, non-local or write-like modes, network/resource fetch hints, daemon/watch/autonomous mode, tool execution, memory/config writes, agent-consumed output, and non-null policyDecision.
 
-## v0.16.3 abort criteria and negative controls
+## v0.17.3 negative controls and boundary hazards
 
-Added negative controls for raw private token handling, unsanitized decision verbs, unsafe flags, output escape/symlink attempts, multi-input/batch attempts, and non-null policyDecision/decision. expectedRejects are counted and unexpectedPermits: 0.
+Added negative controls for boundary hazards. Expected rejects cover unsafe flags and decision laundering; unexpectedPermits: 0.
 
-## v0.16.4 reviewer runbook
+## v0.17.4 reviewer runbook/public review package
 
-Added the reviewer runbook/audit packet requiring human review before source expansion and reaffirming disabled/manual/local/no-effects only.
+Added reviewer runbook and public review package notes. The branch includes two independent local review notes; they are not GitHub reviews and not deployment approvals.
 
-## v0.16.5 phase close
+## v0.17.5 phase close
 
-tiny operator-run passive pilot readiness only. Next step may be v0.17 limited passive live capture design only if gates and human reviews pass. no agent-consumed output; no machine-readable policy decision; no enforcement; no authorization; no tool execution; no network; no daemon/watcher by default; no watcher/daemon; no framework/SDK adapter; no external effects.
+Closed limited passive live capture readiness as design/readiness only. policyDecision: null; agentConsumedOutput: false; rawPersisted: false; unexpectedPermits: 0; no enforcement; no authorization; no approval/block/allow; no autonomous live mode; no tool execution; no memory/config writes; no external effects.
 
-Carry-forward from v0.15: passive live shadow readiness achieved for local operator-run pilot only; v0.16 keeps that readiness disabled/manual/local/no-effects only.
+## Carry-forward prior release boundaries
 
-## v0.16.6 input boundary hardening
+passive live shadow readiness achieved for local operator-run pilot only; no enforcement; no tool execution; no authorization; no daemon/watcher by default; no external effects.
 
-Restricted tiny passive pilot input to one package `fixtures/` `.txt` sample file. External paths, package docs/evidence/metadata, directories, non-text fixtures, symlink input files, and symlink parent escapes are rejected before read. packageFixtureInputOnly: true; inputPathEscapeRejected: true; inputSymlinkFileRejected: true; inputSymlinkParentRejected: true; rawPersisted: false; externalEffects: false; enforcement: false.
+tiny operator-run passive pilot readiness remains one explicit local sample input at a time with operatorReviewRequired: true; singleSampleOnly: true; packageFixtureInputOnly: true; rawPersisted: false; packageFixtureInputOnly: true; inputPathEscapeRejected: true; unexpectedPermits: 0; no agent-consumed output; no machine-readable policy decision; no enforcement; no authorization; no tool execution; no external effects.
