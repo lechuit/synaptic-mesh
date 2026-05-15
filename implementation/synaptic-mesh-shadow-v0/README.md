@@ -219,3 +219,11 @@ Reviewer interpretation: a passing local review means the reference package is r
 ## v0.18.5 live-read gate
 
 Adds `npm run live:read-gate -- --source README.md --records 6 --stdout` for a one-shot explicit repo-local source read. It persists no raw input, emits redacted evidence only, and produces no policy decision, enforcement, authorization, tool execution, memory/config writes, or external effects.
+
+## v0.20.5 bounded explicit multisource shadow-read
+
+Adds `npm run bounded:multisource-shadow-read -- --source README.md --source RELEASE_NOTES.md --source docs/release-checklist.md --records-per-source 3 --total-records 9` for one operator-run, one-shot, local-only/passive/read-only shadow-read across multiple explicit repo-local file sources via `repo-local-file-read-adapter-v0`.
+
+Bounds and barriers: max sources 3; max records per source 5; max total records 12; per-source isolation; per-source failure isolation; redaction-before-persist; redacted evidence only; human-readable report; `policyDecision: null`; `agentConsumedOutput: false`; `rawPersisted: false`; `unexpectedPermits: 0`.
+
+Forbidden: enforcement, authorization, approval/block/allow, globs/recursive discovery, implicit sources, outside-repo paths, symlinks, fixtures as positive sources, autonomous live mode, watcher/daemon, network/resource fetch, tool execution, memory/config writes, agent-consumed policy decisions, and external effects.

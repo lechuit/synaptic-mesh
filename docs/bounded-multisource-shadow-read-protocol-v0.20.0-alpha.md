@@ -1,0 +1,3 @@
+# Bounded Explicit Multisource Shadow-Read Protocol v0.20.0-alpha
+
+Defines the v0.20 barrier: disabled-by-default, human-started operator-run, one-shot, local-only, passive/read-only, constrained local adapter read of multiple explicit repo-local file sources. Bounds: max sources 3, max records per source 5, max total records 12. Forbidden: enforcement, authorization, approval/block/allow, network/resource fetch, tool execution, memory/config writes, autonomous daemon/watchers, globs/recursive discovery, implicit sources, outside-repo paths, symlinks, fixtures as positive sources, raw persistence/output, and agent-consumed policy decisions.
