@@ -1,0 +1,15 @@
+{
+  "artifact": "T-synaptic-mesh-passive-live-shadow-source-contract-v0.15.0-alpha",
+  "timestamp": "2026-05-15T01:41:00.000Z",
+  "summary": {
+    "sourceContract": "pass",
+    "disabledByDefault": true,
+    "humanStartedManualOnly": true,
+    "localFileSampleStreamsOnly": true,
+    "networkFetch": false,
+    "sdkFrameworkAdapter": false,
+    "daemonWatcher": false,
+    "actions": false,
+    "redactionBeforePersistenceRequired": true
+  }
+}

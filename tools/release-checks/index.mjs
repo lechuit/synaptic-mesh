@@ -6,6 +6,7 @@ import { frameworkIntegrationReadinessSuite } from './framework-integration-read
 import { authorityConfusionBenchmarkSuite } from './authority-confusion-benchmark.mjs';
 import { localHarnessLadderSuite } from './local-harness-ladder.mjs';
 import { liveLikeShadowSandboxSuite } from './live-like-shadow-sandbox-ladder.mjs';
+import { passiveLiveShadowLocalPilotSuite } from './passive-live-shadow-local-pilot.mjs';
 
 export const releaseCheckSuites = Object.freeze([
   passiveLiveShadowCanarySuite,
@@ -16,4 +17,5 @@ export const releaseCheckSuites = Object.freeze([
   authorityConfusionBenchmarkSuite,
   localHarnessLadderSuite,
   liveLikeShadowSandboxSuite,
+  passiveLiveShadowLocalPilotSuite,
 ]);

@@ -1,0 +1,6 @@
+import assert from 'node:assert/strict';
+import { mkdir, readFile, writeFile } from 'node:fs/promises'; import { resolve, dirname } from 'node:path'; import { fileURLToPath } from 'node:url';
+const here=dirname(fileURLToPath(import.meta.url)); const pkg=resolve(here,'..'); const repo=resolve(pkg,'../..'); const readme=await readFile(resolve(repo,'README.md'),'utf8'); const notes=await readFile(resolve(repo,'RELEASE_NOTES.md'),'utf8');
+for (const p of ['passive live shadow readiness achieved','local operator-run pilot only','no enforcement','no tool execution','no authorization','no daemon/watcher by default','no external effects']) { assert.ok(readme.includes(p),p); assert.ok(notes.includes(p),p);}
+const out={artifact:'T-synaptic-mesh-passive-live-shadow-phase-close-v0.15.5',timestamp:'2026-05-15T01:41:00.000Z',summary:{phaseClose:'pass',passiveLiveShadowReadinessAchieved:true,localOperatorRunPilotOnly:true,nextStepMayBeV016TinyOperatorRunPilot:true,noEnforcement:true,toolExecution:false,authorization:false,daemonWatcherByDefault:false,externalEffects:false,productionLiveDeployment:false}};
+await mkdir(resolve(pkg,'evidence'),{recursive:true}); await writeFile(resolve(pkg,'evidence/passive-live-shadow-phase-close-v0.15.5.out.json'),JSON.stringify(out,null,2)+'\n'); console.log(JSON.stringify(out.summary,null,2));

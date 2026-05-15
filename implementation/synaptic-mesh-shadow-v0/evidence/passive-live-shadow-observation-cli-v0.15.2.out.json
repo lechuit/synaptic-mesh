@@ -1,0 +1,15 @@
+{
+  "artifact": "T-synaptic-mesh-passive-live-shadow-observation-cli-v0.15.2",
+  "timestamp": "2026-05-15T01:41:00.000Z",
+  "summary": {
+    "observationCli": "pass",
+    "manualInvocationOnly": true,
+    "localInputPathOnly": true,
+    "unsafeFlagsRejected": 8,
+    "watcherDaemon": false,
+    "network": false,
+    "toolExecution": false,
+    "runtimeAuthority": false,
+    "enforcement": false
+  }
+}
