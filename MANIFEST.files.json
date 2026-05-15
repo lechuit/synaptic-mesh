@@ -69,8 +69,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 1710,
-      "sha256": "5338ea6cdf1d25ec1e8f0719fe4d55e9554f5f47129d1fb91445b97d3a307522"
+      "bytes": 1057,
+      "sha256": "922c8523619334f2901823f11236a50929a6c2a62c665437a91edeaca61d44a9"
     },
     {
       "path": "RELEASE_CANDIDATE.md",
@@ -79,8 +79,8 @@
     },
     {
       "path": "RELEASE_NOTES.md",
-      "bytes": 1157,
-      "sha256": "f0a143eb83a6b08dee3a10c2fadf48b8591ddf0ea9f44acdd4f8921969cad235"
+      "bytes": 1008,
+      "sha256": "6dbba4664452d685162d925390d56d03414edb97ee7eac100665e13f13916dbb"
     },
     {
       "path": "design-notes/adapter-boundary-langgraph-mcp-v0.md",
@@ -183,6 +183,36 @@
       "sha256": "0ad5b6ea79acd1e72d266902dbfe187a7cb9e47ee2c7da21993ad9cd39db57a9"
     },
     {
+      "path": "docs/benchmark-baseline-failure-docs-v0.10.3.md",
+      "bytes": 716,
+      "sha256": "1b19274df83d38eaa75104a56f7fe12a5ed4d308c9dd6c458b5faca51c1c4359"
+    },
+    {
+      "path": "docs/benchmark-maturity-phase-close-v0.10.5.md",
+      "bytes": 816,
+      "sha256": "6c6a79f03d6effa36e07f84e228c60f5955d78c40105d939c4aa2a18e3242098"
+    },
+    {
+      "path": "docs/benchmark-mutation-fuzz-lite-v0.10.2.md",
+      "bytes": 694,
+      "sha256": "79a1e81b2b1983aef51deada0f52f39faead9ffe000fc6aa4bc2f75b5ae17f7a"
+    },
+    {
+      "path": "docs/benchmark-public-demo-package-v0.10.4.md",
+      "bytes": 747,
+      "sha256": "ca1fdeab6ac166713fa519cb69cbba203b4d89f8e4d395c03f83bb571d7cce3f"
+    },
+    {
+      "path": "docs/benchmark-reproducibility-gate-v0.10.1.md",
+      "bytes": 691,
+      "sha256": "2f27cfd708acb881cc23eff5dc859955e4c0873d9bbee2aeda07acad00bdb9d4"
+    },
+    {
+      "path": "docs/benchmark-taxonomy-spec-v0.10.0-alpha.md",
+      "bytes": 757,
+      "sha256": "a56362d5bf40fc394ec64a3352137780897b61be27fe02fc52162694eaa671ac"
+    },
+    {
       "path": "docs/benchmarks.md",
       "bytes": 2794,
       "sha256": "21a252fa705ec70d709bf5dc1e6b9c6b0a7d5adda6fd74118b9d2e568f40fed0"
@@ -268,6 +298,36 @@
       "sha256": "3573f5e53bca44471f6db5dea3e9a20971c57bc2254969a7d89f733555e44a38"
     },
     {
+      "path": "docs/integration-capability-matrix-v0.12.1.md",
+      "bytes": 699,
+      "sha256": "3a5c2b048c67967a82124c93d7efd7d46dc69af0fb73773d5502013b1664a7b4"
+    },
+    {
+      "path": "docs/integration-dry-run-harness-contract-v0.12.3.md",
+      "bytes": 698,
+      "sha256": "61d73f4e7749a21cf0edb1c7078aa7d54d09ac175b282abd2250dad70905aa88"
+    },
+    {
+      "path": "docs/integration-hazard-no-go-scan-v0.12.2.md",
+      "bytes": 706,
+      "sha256": "e7555c72847140074493915c2b7c2b9e2039819eb4b994eb335cccb386ae4fbb"
+    },
+    {
+      "path": "docs/integration-preflight-go-no-go-v0.12.5.md",
+      "bytes": 730,
+      "sha256": "be01584eea96119e26ce6af5134dbb91593f32d1606366ea35243e9cb5622ed0"
+    },
+    {
+      "path": "docs/integration-preflight-scope-v0.12.0-alpha.md",
+      "bytes": 728,
+      "sha256": "2670047805d0bc22b4f728a69365c6969f9a6618f0a6ebab22dbec197faa34ae"
+    },
+    {
+      "path": "docs/integration-reviewer-runbook-v0.12.4.md",
+      "bytes": 673,
+      "sha256": "8c9223805c563cfdeeab24604f1a62052288bb7f7c8fe575caddccb74ee64f4d"
+    },
+    {
       "path": "docs/live-shadow-drift-scorecard.md",
       "bytes": 2830,
       "sha256": "ca224fde821d63f28a8da06f46b421412ceda5976bddb403517c16f37d1aad1b"
@@ -281,6 +341,36 @@
       "path": "docs/live-shadow-synthetic-replay.md",
       "bytes": 3246,
       "sha256": "f9eeb27861baf79a31a8193bd54f0eb0d1d71cf1bb4f0ff05d5da998059abf42"
+    },
+    {
+      "path": "docs/local-adapter-harness-spec-v0.13.0-alpha.md",
+      "bytes": 697,
+      "sha256": "1e71304fe7dcb086d68006ea2fd32587e83145bdca0b7fdc74fd4717e9a06af5"
+    },
+    {
+      "path": "docs/local-harness-demo-runbook-v0.13.4.md",
+      "bytes": 705,
+      "sha256": "98274f52351a52a74759437311bd8d1877031b7d7676daedab4d2569253623e1"
+    },
+    {
+      "path": "docs/local-harness-negative-controls-v0.13.2.md",
+      "bytes": 704,
+      "sha256": "b3b4a8822ccbf51673ba21b62fb4b50c16c5d75ffaaf2f7e05b14385e7cac9aa"
+    },
+    {
+      "path": "docs/local-harness-phase-close-v0.13.5.md",
+      "bytes": 856,
+      "sha256": "95313a5d7eeb92f74e73a59605c61650fccac97062a1a3ad9bd73cc7fe280d44"
+    },
+    {
+      "path": "docs/local-harness-reproducibility-gate-v0.13.3.md",
+      "bytes": 684,
+      "sha256": "7cb0582f9570416282666897a1983f74bef4cb352fa7c1169fe0b208ca06e124"
+    },
+    {
+      "path": "docs/local-redacted-fixture-harness-v0.13.1.md",
+      "bytes": 709,
+      "sha256": "83c9484e93d6cd1e025d2c4860c870bf44bda25a600cf88ec19951fdbb6df042"
     },
     {
       "path": "docs/manual-bundle-parser-evidence-replay.md",
@@ -418,6 +508,16 @@
       "sha256": "661a3b090bbc371034c6c44fcde7fb73acd22e3d8d4793ec67b49e20d5e7d31c"
     },
     {
+      "path": "docs/real-redacted-baseline-replay-v0.11.2.md",
+      "bytes": 703,
+      "sha256": "69912a172e2e01c8c7327afda9a9c914ebe680677891c44ac5ad01341073990b"
+    },
+    {
+      "path": "docs/real-redacted-corpus-protocol-v0.11.0-alpha.md",
+      "bytes": 725,
+      "sha256": "be06c2ed53dd96252f412bf6a3ee79f229e2c09cc5881c95d1d4cc29196b78a7"
+    },
+    {
       "path": "docs/real-redacted-handoff-pack.md",
       "bytes": 2376,
       "sha256": "aca80ec2f77df4fca6c185f2589275020930ff337720164ac7fed7eac34ab130"
@@ -426,6 +526,26 @@
       "path": "docs/real-redacted-handoff-replay-gate.md",
       "bytes": 2911,
       "sha256": "b22be4025366b28d2b27c8cd0e9fa2d2d8189b5ec272ce8dceff67800fad32e9"
+    },
+    {
+      "path": "docs/real-redacted-public-go-no-go-v0.11.5.md",
+      "bytes": 715,
+      "sha256": "cb2e70777f51831c072a6459f15ff54d7026d9f0fe50f02b25d6c52b97151e85"
+    },
+    {
+      "path": "docs/real-redacted-redaction-retention-gate-v0.11.1.md",
+      "bytes": 709,
+      "sha256": "625539f6f201a97e2c69132c4651f25b9658ca3afb5f47faa07208a0270701cd"
+    },
+    {
+      "path": "docs/real-redacted-reviewer-agreement-v0.11.4.md",
+      "bytes": 686,
+      "sha256": "2cf2d8a51dbc09b30bd8e788dbf433bb3e681e499515b6dbcbf27189dd882ac5"
+    },
+    {
+      "path": "docs/real-redacted-synaptic-comparison-v0.11.3.md",
+      "bytes": 703,
+      "sha256": "f2f35fbe165d98b85c544ad7dbf2e4401c3e078a38e5a37afe1ed30f1ad24e57"
     },
     {
       "path": "docs/reason-codes.md",
@@ -486,6 +606,126 @@
       "path": "docs/simulated-framework-shaped-adapter.md",
       "bytes": 1135,
       "sha256": "871d380bc8ca6d71c945fd534fde3c9baed29bcb25e65c346dc4499d079420d8"
+    },
+    {
+      "path": "docs/status-v0.10.0-alpha.md",
+      "bytes": 385,
+      "sha256": "f7a44d53ccc77623aa3982611b6b1ba87b70fb052e5ab1b2a2942f62c8dc4478"
+    },
+    {
+      "path": "docs/status-v0.10.1.md",
+      "bytes": 318,
+      "sha256": "1f892733e95c77e0d93097925209b4b21d8985006b232b9d47b2b47670340998"
+    },
+    {
+      "path": "docs/status-v0.10.2.md",
+      "bytes": 323,
+      "sha256": "cc5ebf9ebcf28aef12afb587bb43547608574365b762601128fe53f69f81b80d"
+    },
+    {
+      "path": "docs/status-v0.10.3.md",
+      "bytes": 342,
+      "sha256": "e17725b57d39e99b29091fd86cef4a0ade46648c232a471642e9ed43e6485e08"
+    },
+    {
+      "path": "docs/status-v0.10.4.md",
+      "bytes": 375,
+      "sha256": "47a1aff02c7264873ed3af58ecb72426cd46b8649dd61563f2cf3efcfe5932b5"
+    },
+    {
+      "path": "docs/status-v0.10.5.md",
+      "bytes": 443,
+      "sha256": "9306d1abdfbcb09cb3f40836f5589630cf9f1406896e535d9204114812e34170"
+    },
+    {
+      "path": "docs/status-v0.11.0-alpha.md",
+      "bytes": 347,
+      "sha256": "c31e8e3f6012c23d2f863c9a37205ddb0aef77622c6ec773a9b1dfb8db8562ba"
+    },
+    {
+      "path": "docs/status-v0.11.1.md",
+      "bytes": 328,
+      "sha256": "569d84a4e4b9a2dd9006543cc5e9cb492cb8212698a74942e18d4189b1fd1264"
+    },
+    {
+      "path": "docs/status-v0.11.2.md",
+      "bytes": 331,
+      "sha256": "671f0f961c9a08da59d3378fd73dd5538812663a3a116192b24c1c4b5279d118"
+    },
+    {
+      "path": "docs/status-v0.11.3.md",
+      "bytes": 327,
+      "sha256": "5a5d060496ff492286a62141b0cd8952c130ba95ff6850e7e6c07c7d840ad02b"
+    },
+    {
+      "path": "docs/status-v0.11.4.md",
+      "bytes": 311,
+      "sha256": "b455737efe5815913a74b712802268212cd25d8e07b30e43083221c834da4f4e"
+    },
+    {
+      "path": "docs/status-v0.11.5.md",
+      "bytes": 343,
+      "sha256": "2cebc2a267ff898defa67b1fc35ef7e9ec46b2ec1340af363b0954ace350eeb5"
+    },
+    {
+      "path": "docs/status-v0.12.0-alpha.md",
+      "bytes": 352,
+      "sha256": "46911c4f449f606406ed8a587715edacebdf534afb3ea1815c8fb99720d79b23"
+    },
+    {
+      "path": "docs/status-v0.12.1.md",
+      "bytes": 327,
+      "sha256": "14c4905b108959073e492be34736ea7df60caab92b6b999ac18fe333101bba4a"
+    },
+    {
+      "path": "docs/status-v0.12.2.md",
+      "bytes": 334,
+      "sha256": "f335d63f5b1cdf1a00cd15823a571b6b1599ae9da3fa2e3ec47bfac4e8e713c9"
+    },
+    {
+      "path": "docs/status-v0.12.3.md",
+      "bytes": 319,
+      "sha256": "2925ad97230db5ac0a8aaae96a8f2f78d9a961991163b7c720166d9a83b77298"
+    },
+    {
+      "path": "docs/status-v0.12.4.md",
+      "bytes": 302,
+      "sha256": "c985cc4d35e99d4971dd0c2dea58c0fce1b8d5772a18724882980bab940f47c7"
+    },
+    {
+      "path": "docs/status-v0.12.5.md",
+      "bytes": 357,
+      "sha256": "78a2e023d600d91b4849c0ee2c67541abae6ff60c12a79a160fcad95d890a5ca"
+    },
+    {
+      "path": "docs/status-v0.13.0-alpha.md",
+      "bytes": 322,
+      "sha256": "53df13910ed4ea1e9b53f3727f8fcde0cccfd6bbebf138a2bbb06f0fdcc8d8f5"
+    },
+    {
+      "path": "docs/status-v0.13.1.md",
+      "bytes": 336,
+      "sha256": "8638664b606b449391b13218fed4edee649b0e04c153dcf1c18ef4d2a3cf3400"
+    },
+    {
+      "path": "docs/status-v0.13.2.md",
+      "bytes": 330,
+      "sha256": "dfa6c61ce18d136c35cdfc613f91b04ed58982b9c2b8952104fc9530e4a40d2c"
+    },
+    {
+      "path": "docs/status-v0.13.3.md",
+      "bytes": 307,
+      "sha256": "e9b756bc8ba17e4e80ab99e100ab17629778da0da4224b3c608187fea58de18e"
+    },
+    {
+      "path": "docs/status-v0.13.4.md",
+      "bytes": 336,
+      "sha256": "f3026276695385d0b3685c04a0b6d6e414801015df26f192692c346acf91e75b"
+    },
+    {
+      "path": "docs/status-v0.13.5.md",
+      "bytes": 488,
+      "sha256": "f248cff1565c21e5854b461cce0268af2ad9aff00915f6f3e4ceab359e5237f0"
     },
     {
       "path": "docs/status-v0.2.3.md",
@@ -823,6 +1063,36 @@
       "sha256": "0df219ca072fffe8aedd06a074688ea7f03e87bf2c4295f46ef6b3e721603cb2"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/benchmark-baseline-failure-docs-v0.10.3.out.json",
+      "bytes": 1435,
+      "sha256": "dcc33c5be7486d6d9ccab011845af982692598f28c6fd5b55bea6d498633806a"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/benchmark-maturity-phase-close-v0.10.5.out.json",
+      "bytes": 1533,
+      "sha256": "072ad681ba20a311352db07db1dc8c9dcac586af8e9566400c143779806e36f4"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/benchmark-mutation-fuzz-lite-v0.10.2.out.json",
+      "bytes": 1408,
+      "sha256": "dffb6b83f8d4f7672e1e9722325b5b1633ae2709dc2b1c01e5809fceb88ef731"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/benchmark-public-demo-package-v0.10.4.out.json",
+      "bytes": 1479,
+      "sha256": "074623b49c6801a92472e1ae9725f2b43e47d443fe9eb114aa45c87d30b4f37b"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/benchmark-reproducibility-gate-v0.10.1.out.json",
+      "bytes": 1415,
+      "sha256": "158730f62cd8fb338db8e5f2a677463cae7c3ce81ee4fa28921c53b333d940f0"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/benchmark-taxonomy-spec-v0.10.0-alpha.out.json",
+      "bytes": 1477,
+      "sha256": "46b14b0392a1a7b59f8b6a92cf4b1c0ab3ea53ca25c2d6944b448da93bf7128c"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/category-coverage-thresholds.out.json",
       "bytes": 3451,
       "sha256": "34b01ed9c5c25adb926de2f0a9873316d68d3a8ffd36fe58e6648e6f10f95f7d"
@@ -913,6 +1183,36 @@
       "sha256": "5a556b44774da8b1eecd18d40ecf39d0a72b8ec3e92fb925e438d1e68c5ffdb0"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/integration-capability-matrix-v0.12.1.out.json",
+      "bytes": 1430,
+      "sha256": "3dde4471ca127e97c2f8b28945e2442bd6625a822422a4df4d584a4a35b939d9"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/integration-dry-run-harness-contract-v0.12.3.out.json",
+      "bytes": 1427,
+      "sha256": "06fdc658ee194b3cfdc4ad67c19d2dc4a23ce893611c7b40f360c494e9b2e4bc"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/integration-hazard-no-go-scan-v0.12.2.out.json",
+      "bytes": 1418,
+      "sha256": "7b63ab4026f467ff9010e679510a5d174984eb026ce6ef58433ab59a12286e8d"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/integration-preflight-go-no-go-v0.12.5.out.json",
+      "bytes": 1447,
+      "sha256": "faacc7151bc24539713b9e3c7790c1702e7163b0f73431ecfb7ce29e46bd01e5"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/integration-preflight-scope-v0.12.0-alpha.out.json",
+      "bytes": 1438,
+      "sha256": "d3c475251baccff5a5e10ca0c804a874dcb8977c02ac3bcae07f637b6fa851e8"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/integration-reviewer-runbook-v0.12.4.out.json",
+      "bytes": 1399,
+      "sha256": "3ac919f7103138b55abac42de7463e8f558f58b3793ef30d7906ff4a3c34f945"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-input-source-boundary-contracts.out.json",
       "bytes": 8689,
       "sha256": "35af90af0456aff58ae85af3239cb05377aff6260d1e433a5ca78497e893138c"
@@ -941,6 +1241,36 @@
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-shadow-synthetic-replay.out.json",
       "bytes": 57892,
       "sha256": "055549ca5708ca41004256b6b774741214a0b3322aacf055c2626b03239be1db"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/local-adapter-harness-spec-v0.13.0-alpha.out.json",
+      "bytes": 1404,
+      "sha256": "5b638bb48aedb1c9128f950e14f70b0907c918150387612ab1ab2b6f0e0841b1"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/local-harness-demo-runbook-v0.13.4.out.json",
+      "bytes": 1419,
+      "sha256": "305f7f4e68e93242441cdada7fc396893bdd66549da4d52ba474669a5eaf0229"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/local-harness-negative-controls-v0.13.2.out.json",
+      "bytes": 1422,
+      "sha256": "e360052809428ea86621877c2b73ad043e499674cebe2706cabd1291ea8b0ed8"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/local-harness-phase-close-v0.13.5.out.json",
+      "bytes": 1583,
+      "sha256": "f3aa14801cf51f930f90adf4a562b2f5ecdf0b1f49ecc079a7a3b8c6afc5ceed"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/local-harness-reproducibility-gate-v0.13.3.out.json",
+      "bytes": 1402,
+      "sha256": "d79e66d91d6dc338d5db7ff146e4dfc7507b9875a95332193104b683f94add98"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/local-redacted-fixture-harness-v0.13.1.out.json",
+      "bytes": 1419,
+      "sha256": "5b9e48e60a86b29f3840332cbccb5f6df8828f07583cdf2cef7958e6ae933a90"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/manual-bundle-parser-evidence-replay.out.json",
@@ -1333,6 +1663,16 @@
       "sha256": "50c0c221565292905c27a19290063ff4a6900c1f364965231d21d2028b5483ed"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/real-redacted-baseline-replay-v0.11.2.out.json",
+      "bytes": 1421,
+      "sha256": "c1d35f6293cbc17a7375f74b384d6a94e98efec577d916ba20370212065790bf"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/real-redacted-corpus-protocol-v0.11.0-alpha.out.json",
+      "bytes": 1443,
+      "sha256": "840e6b2c8f670ca0326b951d61061f47f9b483b1685d6b1bf6291d0175c45110"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/real-redacted-handoff-pack.out.json",
       "bytes": 5354,
       "sha256": "d2a32edce0e4e7aafb96b9e1658f8665faec4d2a1d08a0eaf29dba6d141c9f80"
@@ -1341,6 +1681,26 @@
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/real-redacted-handoff-replay-gate.out.json",
       "bytes": 15885,
       "sha256": "baf6ad013abfc6dd0f75add4a947ae5c57ee3ed74b646ff7ae7a210d05affa00"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/real-redacted-public-go-no-go-v0.11.5.out.json",
+      "bytes": 1438,
+      "sha256": "e5cadb2f5c51780da38b4b257c18c48af29b81177671e10da3e2f18f4779617f"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/real-redacted-redaction-retention-gate-v0.11.1.out.json",
+      "bytes": 1442,
+      "sha256": "27801491cfc41ebf37c56092c619848447bdc2bd3246b899aac8c77c666e02a7"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/real-redacted-reviewer-agreement-v0.11.4.out.json",
+      "bytes": 1410,
+      "sha256": "687b0b34fc38397ed5a6bba530419c50d2bfca14b9193c6bc6dbc9b58c5ac848"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/real-redacted-synaptic-comparison-v0.11.3.out.json",
+      "bytes": 1423,
+      "sha256": "8b767f93f5c8fad924252067061de53add47d133fce4c7e4c583bb8e349112e2"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/receipt-schema.out.json",
@@ -1526,6 +1886,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/fixtures/live-shadow-synthetic-replay.json",
       "bytes": 1341,
       "sha256": "57ad91f79327fe54fa78494846a50314a61cdce6add6f54ab4ba4fdc2c8c25a1"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/fixtures/local-already-redacted-harness-v0.13.1.json",
+      "bytes": 772,
+      "sha256": "e1a961a77329a6fece25b4e3afaad82c5057a06e827de73d10fde89b9f4a73cb"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/fixtures/manifest.json",
@@ -1879,8 +2244,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/package.json",
-      "bytes": 23014,
-      "sha256": "4bce12210cae61244913f216786663606a24363d3b9ff44981e7e6dce58dfac9"
+      "bytes": 28186,
+      "sha256": "c7768f1cda775a56fa8a87bcd8c68c96f8305315a3b2720109fe9c1a05323e49"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/action-context-packet.mjs",
@@ -2038,6 +2403,36 @@
       "sha256": "68ebcfd8d8340716db4ddfd2a57bf9a883c544877d4c5e85f47093a2b0693a6e"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/benchmark-baseline-failure-docs-v0.10.3.mjs",
+      "bytes": 2893,
+      "sha256": "5dd479e70cd134a6154a6fa98c1ccd98042b8acd82ddf296abfd2875c6ad0e2d"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/benchmark-maturity-phase-close-v0.10.5.mjs",
+      "bytes": 3006,
+      "sha256": "cdcfb3643210131b20652a3afd607f42fbe3eefbb2645ca2a367058901eeca69"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/benchmark-mutation-fuzz-lite-v0.10.2.mjs",
+      "bytes": 2841,
+      "sha256": "83fef7b973d8a046ca678211f1b3ecc2bf2df861a46bb6d7993d8c85a02a6e15"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/benchmark-public-demo-package-v0.10.4.mjs",
+      "bytes": 2966,
+      "sha256": "54267044f1cc48b00d54bdaccb8ca1dd6e53b53d885971014156a470397ea31d"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/benchmark-reproducibility-gate-v0.10.1.mjs",
+      "bytes": 2841,
+      "sha256": "e7c85181e397c99f45d01f9ae85e213b508cab14e92b5d0165b16cf013a7f158"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/benchmark-taxonomy-spec-v0.10.0-alpha.mjs",
+      "bytes": 2939,
+      "sha256": "d68aba03c1926fedae5c15fd6860f74c020057d9f78dfb8c8c1af858e419e3db"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/category-coverage-thresholds.mjs",
       "bytes": 7148,
       "sha256": "89d789d8016d30e6e91eb6fc95adb7652c5a544a4d5f99c2525e2e18caac5e84"
@@ -2133,6 +2528,36 @@
       "sha256": "7169d11cec9dad5b7b95ce3d92d16ec18774d7421fcbaae5131bfd015619feee"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/integration-capability-matrix-v0.12.1.mjs",
+      "bytes": 2869,
+      "sha256": "426a7e99ea4447aed1679a872d50108afef2f45ea68e5909b77de821cd436974"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/integration-dry-run-harness-contract-v0.12.3.mjs",
+      "bytes": 2872,
+      "sha256": "3b0ed76441e1944924fc69013aa5896352b78099a2b3660af38f1e6ee4a75eb3"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/integration-hazard-no-go-scan-v0.12.2.mjs",
+      "bytes": 2864,
+      "sha256": "78a0c6c0191c9f569145723588dfe8ce2387bcebf1e9732e22909d0715891854"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/integration-preflight-go-no-go-v0.12.5.mjs",
+      "bytes": 2918,
+      "sha256": "b86c9f088ac824d91e20d3f3d8bdd97a82d866ef850a6e7eec87c14713835405"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/integration-preflight-scope-v0.12.0-alpha.mjs",
+      "bytes": 2910,
+      "sha256": "87c49c2800cb94975459c51934e70d545e47ca6d85cc58373a008340ddab043e"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/integration-reviewer-runbook-v0.12.4.mjs",
+      "bytes": 2817,
+      "sha256": "d8ecf05f9fa9dbf4ea39f928fcd86f1f2e3afbdc4c1442e2e120e8dc5bf2ed42"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/live-input-source-boundary-contracts.mjs",
       "bytes": 9735,
       "sha256": "a3547e1ba81569d34daaab0f23c4c56eb4129e8f1ee39a73d4d51463f8053b31"
@@ -2166,6 +2591,36 @@
       "path": "implementation/synaptic-mesh-shadow-v0/tests/live-shadow-synthetic-replay.mjs",
       "bytes": 8492,
       "sha256": "1bd0f3cb38935cef2f0ae7ee8c70cafd5ec36bfd665ca6d69fb5460c5ebbd153"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/local-adapter-harness-spec-v0.13.0-alpha.mjs",
+      "bytes": 2850,
+      "sha256": "7a70d1c007437720ff0ceba1ba2282707c37c88151d5367d7e2d06bd33d9782f"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/local-harness-demo-runbook-v0.13.4.mjs",
+      "bytes": 2861,
+      "sha256": "a9defd7c13bdbcce91fbb08b3f1f8debf0393417e5851ad53743187539876224"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/local-harness-negative-controls-v0.13.2.mjs",
+      "bytes": 2868,
+      "sha256": "cc0edfcf688d7ff59ba87f04af1cf81ab1da031e75c7bb6cee40f37b4fffe5e7"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/local-harness-phase-close-v0.13.5.mjs",
+      "bytes": 3038,
+      "sha256": "2d91a99a679583dbe34c64f21105d3cfed0880ba9d856bad2980a026b236499b"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/local-harness-reproducibility-gate-v0.13.3.mjs",
+      "bytes": 2831,
+      "sha256": "9a3daa89085bc95f4d2840547ff949de58c632f7fc094a90e4f9713e9e018043"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/local-redacted-fixture-harness-v0.13.1.mjs",
+      "bytes": 2869,
+      "sha256": "6f18ff370dda877d667e13b71a964788edf3d4697a5b407dee0e0dbba7b82cef"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/manual-bundle-parser-evidence-replay.mjs",
@@ -2418,6 +2873,16 @@
       "sha256": "51e0121613992523af06f985f142013762cc187295f8019f3b4297363fab0482"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/real-redacted-baseline-replay-v0.11.2.mjs",
+      "bytes": 2864,
+      "sha256": "93ce0e46da29cb864f8bdfed8449cdbe5a8004d8cf11316bb894a86893c12c52"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/real-redacted-corpus-protocol-v0.11.0-alpha.mjs",
+      "bytes": 2914,
+      "sha256": "c3cf992189e0dc33447bb5dfde7934a54760cb9243a369b55a3bb4ad1d697428"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/real-redacted-handoff-pack.mjs",
       "bytes": 11663,
       "sha256": "b8312fb1c7b5e8770acc3380d15abf31ec8229dd05928bc85a5ab9fe39ded68c"
@@ -2426,6 +2891,26 @@
       "path": "implementation/synaptic-mesh-shadow-v0/tests/real-redacted-handoff-replay-gate.mjs",
       "bytes": 14347,
       "sha256": "c906ed42be7d4850829c4f79907906e20834ff3919b07df7b4f8575b31e4944a"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/real-redacted-public-go-no-go-v0.11.5.mjs",
+      "bytes": 2893,
+      "sha256": "1dbf6efa370db34fdb5fcd7c6a35e361dfb392c969942664c9d4977f2d9aefd5"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/real-redacted-redaction-retention-gate-v0.11.1.mjs",
+      "bytes": 2900,
+      "sha256": "58b426069c4d0457401d6629bd4d316750a66744fcd261a94d8dd38e726273d1"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/real-redacted-reviewer-agreement-v0.11.4.mjs",
+      "bytes": 2839,
+      "sha256": "afdf2ca486a5f43dc03ae93f43000e423efe15ea8175cea6e0f6b726222e3f38"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/real-redacted-synaptic-comparison-v0.11.3.mjs",
+      "bytes": 2870,
+      "sha256": "1f63c08ac358e81259f8ac14539de3b4b05467d029994daac1666efd07756ff1"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/receipt-freshness-age-policy.mjs",
@@ -2948,6 +3433,11 @@
       "sha256": "7cd337d29375b6a294990ed4e932ba8faf621cf0b628c35bdddca6b371fc31c0"
     },
     {
+      "path": "schemas/local-adapter-harness-case.schema.json",
+      "bytes": 372,
+      "sha256": "617ff0cc57df0f0510bc901a5eba40c3563e53662987e711abe84a1e53b62a1c"
+    },
+    {
       "path": "schemas/manual-dry-run-command.schema.json",
       "bytes": 4517,
       "sha256": "8cf1ad7790abf8bdee7981edef3bae3d9d37a2adb914a189e3fe6cb26ad789d2"
@@ -3069,8 +3559,13 @@
     },
     {
       "path": "tools/release-checks/index.mjs",
-      "bytes": 727,
-      "sha256": "ab0800f6a72ea244f407b565c25a55b538d1eb098772361ce94d6e6e36a1e619"
+      "bytes": 824,
+      "sha256": "3f792f2e547809f62b4f02acc1cf6a602dd148a8e35884f9cc0b61a23403c352"
+    },
+    {
+      "path": "tools/release-checks/local-harness-ladder.mjs",
+      "bytes": 11298,
+      "sha256": "35f4ca3669a46f718a573c9c80538e012c4faca7cce52bb31082a8bce3a2f428"
     },
     {
       "path": "tools/release-checks/manual-dry-run.mjs",

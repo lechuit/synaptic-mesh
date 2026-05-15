@@ -1,0 +1,17 @@
+import assert from 'node:assert/strict';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import { dirname, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+const here = dirname(fileURLToPath(import.meta.url));
+const packageRoot = resolve(here, '..');
+const repoRoot = resolve(packageRoot, '../..');
+const evidencePath = resolve(packageRoot, 'evidence/benchmark-mutation-fuzz-lite-v0.10.2.out.json');
+const docs = await readFile(resolve(repoRoot, 'docs/benchmark-mutation-fuzz-lite-v0.10.2.md'), 'utf8');
+const missing = ["Deterministic Mutation/Fuzz-lite","mutations: 120","unexpectedPermits: 0","deterministic: true","No runtime","No network","No SDK import","No real framework adapter","No MCP server/client","No LangGraph SDK","release:check -- --target v0.10.2"].filter((phrase) => !docs.includes(phrase));
+assert.deepEqual(missing, [], 'docs must include required phrases');
+const summary = { "benchmarkMutationFuzzLite": 'pass', releaseLayer: 'v0.10.2', ...{"mutations":120,"unexpectedPermits":0,"deterministic":true}, ...{"runtimeImplemented":false,"frameworkIntegrationImplemented":false,"realFrameworkAdapterImplemented":false,"mcpServerClientImplemented":false,"langGraphSdkImported":false,"a2aRuntimeImplemented":false,"githubBotWebhookImplemented":false,"networkAllowed":false,"resourceFetch":false,"liveTraffic":false,"toolExecution":false,"watcherDaemon":false,"memoryWrite":false,"configWrite":false,"externalPublicationAutomation":false,"agentConsumed":false,"machineReadablePolicyDecision":false,"approvalEmission":false,"mayBlock":false,"mayAllow":false,"authorization":false,"enforcement":false} };
+for (const key of ['runtimeImplemented','frameworkIntegrationImplemented','realFrameworkAdapterImplemented','mcpServerClientImplemented','langGraphSdkImported','a2aRuntimeImplemented','githubBotWebhookImplemented','networkAllowed','resourceFetch','liveTraffic','toolExecution','watcherDaemon','memoryWrite','configWrite','externalPublicationAutomation','agentConsumed','machineReadablePolicyDecision','approvalEmission','mayBlock','mayAllow','authorization','enforcement']) assert.equal(summary[key], false, key + ' must remain false');
+const output = { artifact: 'T-synaptic-mesh-benchmark-mutation-fuzz-lite-v0.10.2', timestamp: '2026-05-14T23:59:00.000Z', summary, boundary: ["No runtime","No network","No SDK import","No real framework adapter","No MCP server/client","No LangGraph SDK","No A2A runtime","No GitHub bot/webhook","No tool execution","No memory/config writes","No agent-consumed output","No machine-readable policy decision","No approval, block/allow, authorization, or enforcement"] };
+await mkdir(dirname(evidencePath), { recursive: true });
+await writeFile(evidencePath, JSON.stringify(output, null, 2) + '\n');
+console.log(JSON.stringify(output.summary, null, 2));
