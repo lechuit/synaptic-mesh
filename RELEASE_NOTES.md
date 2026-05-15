@@ -1,4 +1,4 @@
-# Release Notes — Synaptic Mesh v0.15.5
+# Release Notes — Synaptic Mesh v0.15.6
 
 ## v0.15.0-alpha passive live shadow source contract
 
@@ -23,3 +23,7 @@ Added Human review package for deciding whether a tiny local operator-run pilot 
 ## v0.15.5 phase close
 
 passive live shadow readiness achieved for local operator-run pilot only. Next step may be v0.16 tiny operator-run pilot, still no enforcement, no tool execution, no authorization, no daemon/watcher by default, no external effects, no production/live deployment, and no autonomous live mode.
+
+## v0.15.6 output boundary hardening
+
+Restricted passive live shadow CLI evidence writes to package `evidence/` JSON files or `--stdout`. Path escapes, fixture writes, non-JSON outputs, absolute external paths, symlinked parent directories, and symlinked output files are rejected before persistence. evidenceDirectoryOnly: true; outputPathEscapeRejected: true; symlinkParentRejected: true; symlinkOutputFileRejected: true; decisionVerbRedactions: 5; semanticDecisionTokensPersisted: false; memoryConfigWrite: false; externalEffects: false; enforcement: false.

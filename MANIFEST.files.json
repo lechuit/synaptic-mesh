@@ -69,8 +69,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 1301,
-      "sha256": "1443a9c81b04e7044ddeb911f64aa7d964f392e5c7d322d5f34cf3ae8ad5fb53"
+      "bytes": 1773,
+      "sha256": "93cfec12b4c0f87a38bd75047a6c8d64411e12e0ceeb1167cfdd0176112c0cec"
     },
     {
       "path": "RELEASE_CANDIDATE.md",
@@ -79,8 +79,8 @@
     },
     {
       "path": "RELEASE_NOTES.md",
-      "bytes": 1582,
-      "sha256": "704c29064af831453fbe36ec9af6cf9cb167efa373dbb4dc5d8b1d566f946cee"
+      "bytes": 2144,
+      "sha256": "095af6f618251fcdd8caf0cd9f158095ff9beaf683d70a01a5ccc9d4b99b2495"
     },
     {
       "path": "design-notes/adapter-boundary-langgraph-mcp-v0.md",
@@ -469,13 +469,18 @@
     },
     {
       "path": "docs/passive-live-shadow-no-enforcement-invariants-v0.15.3.md",
-      "bytes": 256,
-      "sha256": "729fa280b3d8daaf8e5bd1646996e63364c46d4c23a17a9cca460be2766b78da"
+      "bytes": 472,
+      "sha256": "a39df964f9c4c749f3a11e12a818d5ad0391ed90b1bdb48323f14f616de91863"
     },
     {
       "path": "docs/passive-live-shadow-observation-cli-v0.15.2.md",
       "bytes": 307,
       "sha256": "a309ba29664b5a5362d8980aed72ad377634a39e1a1fb517d0a985585755edf4"
+    },
+    {
+      "path": "docs/passive-live-shadow-output-boundary-v0.15.6.md",
+      "bytes": 1258,
+      "sha256": "f20551adcc8673d7aed679951178bbd8f853bbdfba2b30e3fd4a8343f569c30e"
     },
     {
       "path": "docs/passive-live-shadow-phase-close-v0.15.5.md",
@@ -846,6 +851,11 @@
       "path": "docs/status-v0.15.5.md",
       "bytes": 215,
       "sha256": "65dafa783a001fb30111f06d1412b93f6296dd3bafec6dbef464a7b73d5e3bf7"
+    },
+    {
+      "path": "docs/status-v0.15.6.md",
+      "bytes": 666,
+      "sha256": "cf32c85659038473ff650934f0abe7bfe2879d1d88b1215f755fca308483500f"
     },
     {
       "path": "docs/status-v0.2.3.md",
@@ -1694,13 +1704,18 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-live-shadow-no-enforcement-invariants-v0.15.3.out.json",
-      "bytes": 444,
-      "sha256": "f82ac0d50f4cbca23ee1087edbcc49dd65fb2118c042b62f9c40f7e33820b30f"
+      "bytes": 523,
+      "sha256": "ec61bf9475742aec70def79f81f919eb50031c28fa7f2f5a83f7f046f4f3a039"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-live-shadow-observation-cli-v0.15.2.out.json",
       "bytes": 403,
       "sha256": "40ff4b1bf15d1918ccf9f1dfd07bad0f4505f9298fea5af527bf546d307d9cdb"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-live-shadow-output-boundary-v0.15.6.out.json",
+      "bytes": 509,
+      "sha256": "6bd97739a01372c1fd3c953bd7ced2450d0f6da35eec82e345d253c1338df9b8"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-live-shadow-phase-close-v0.15.5.out.json",
@@ -2464,8 +2479,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/package.json",
-      "bytes": 31541,
-      "sha256": "c5e43b6b501890529d691e904956b6c9ee80630cad5d4330b9755836b7cf1dba"
+      "bytes": 31773,
+      "sha256": "7a8a8792cc1b0e36722e1b18525cfea11acd97f16a6ebf51e46716fae498daa0"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/action-context-packet.mjs",
@@ -2529,8 +2544,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/passive-live-shadow.mjs",
-      "bytes": 6329,
-      "sha256": "9aa764f1bd059d19ac51935f7425902ca2f1b51d5989b3e02e18461f6636a245"
+      "bytes": 10755,
+      "sha256": "51e9e5544b29bef9c054fe2624529fa5ec075b74cc830da90e1bdf1f2890fbbe"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/receipt-parser.mjs",
@@ -3034,13 +3049,18 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-live-shadow-no-enforcement-invariants-v0.15.3.mjs",
-      "bytes": 1446,
-      "sha256": "6bf006a0ab8d64824e22e94a4ccfad1df00c0c49167e632468a5d439c8d675ff"
+      "bytes": 1789,
+      "sha256": "a6742d402194b5e4da4a78b8cfd7cda8eecf38221941d0eb67d1d4c343359834"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-live-shadow-observation-cli-v0.15.2.mjs",
       "bytes": 1872,
       "sha256": "411a35daf05af3ccd96b53407a42bd72da4079a83a7da80ed0ad591633e69334"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-live-shadow-output-boundary-v0.15.6.mjs",
+      "bytes": 3486,
+      "sha256": "1d2381ad5f8dc06e0f8131525f9d21479e62d3d30732823d2b865c4b0f0dac41"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-live-shadow-phase-close-v0.15.5.mjs",
@@ -3894,8 +3914,8 @@
     },
     {
       "path": "tools/release-checks/passive-live-shadow-local-pilot.mjs",
-      "bytes": 6146,
-      "sha256": "93cf1df40e915f53e2b84e60ff544736fa0e1fe56195c1040f70f1bf92d5fb93"
+      "bytes": 8255,
+      "sha256": "fe81637c989b9018970c1fcd84aed2c0a9b3d487fb2268ccf1ff3a5f93f9ac7f"
     },
     {
       "path": "tools/release-checks/read-only-local-file-adapter.mjs",

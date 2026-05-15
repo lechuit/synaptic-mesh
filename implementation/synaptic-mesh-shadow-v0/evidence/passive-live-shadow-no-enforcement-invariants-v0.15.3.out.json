@@ -5,6 +5,8 @@
     "noEnforcementInvariant": "pass",
     "dangerousCases": 6,
     "invariantFailures": 0,
+    "decisionVerbRedactions": 5,
+    "semanticDecisionTokensPersisted": false,
     "emitsAllowBlockApproveEnforceAuthorize": false,
     "recordOnly": true,
     "advisoryOnly": true,
