@@ -214,3 +214,8 @@ Publication status: **public release candidate**. Current validation is a local 
 Runtime status: **not approved / not runtime-ready**. This local reference does not integrate with production/runtime tools, config, scheduled jobs, memory plugins, or external messaging.
 
 Reviewer interpretation: a passing local review means the reference package is reproducible locally. It does **not** mean the protocol is safe for operational authority, enforcement, production, or autonomous sensitive actions.
+
+
+## v0.18.5 live-read gate
+
+Adds `npm run live:read-gate -- --source README.md --records 6 --stdout` for a one-shot explicit repo-local source read. It persists no raw input, emits redacted evidence only, and produces no policy decision, enforcement, authorization, tool execution, memory/config writes, or external effects.

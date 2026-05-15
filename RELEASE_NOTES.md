@@ -1,31 +1,27 @@
-# Release Notes — Synaptic Mesh v0.17.5
+# Release Notes — Synaptic Mesh v0.18.5
 
-## v0.17.0-alpha protocol/design
+## Summary
 
-Defined limited passive live capture readiness as design/readiness only. Scope remains gated, disabled/manual/operator-run/local/passive/read-only with no enforcement, no authorization, no approval/block/allow, no autonomous live mode, no tool execution, no memory/config writes, no agent-consumed machine-readable policy decisions, and no external effects.
+`v0.18.5` introduces the **live-read gate**: the first controlled crossing of the live input ingestion barrier. It runs one-shot, operator-started, local/passive/read-only ingestion from one explicit repo-local source, bounded to a small N, with redaction before persistence.
 
-## v0.17.1 capture envelope/schema/readiness fixture
+## Evidence
 
-Added a synthetic local envelope fixture for shape-only review. It records disabledByDefault, operatorRun, localOnly, passiveOnly, readOnly, rawPersisted: false, agentConsumedOutput: false, and policyDecision: null.
+- `policyDecision: null`
+- `agentConsumedOutput: false`
+- `rawPersisted: false`
+- `unexpectedPermits: 0`
+- redacted evidence only
+- two independent local review notes included; not GitHub UI reviews and not deployment approvals
 
-## v0.17.2 redaction and abort criteria
+## Boundary
 
-Added conservative abort criteria for raw persistence, decision verbs, non-local or write-like modes, network/resource fetch hints, daemon/watch/autonomous mode, tool execution, memory/config writes, agent-consumed output, and non-null policyDecision.
+No enforcement, no authorization, no approval/block/allow, no autonomous live mode, no watcher/daemon, no tool execution, no memory/config writes, no network/resource fetch, no agent-consumed machine-readable policy decisions, and no external effects.
 
-## v0.17.3 negative controls and boundary hazards
+## Next
 
-Added negative controls for boundary hazards. Expected rejects cover unsafe flags and decision laundering; unexpectedPermits: 0.
+If useful, the next gate should expand source type or observation duration carefully, still without enforcement or authorization.
 
-## v0.17.4 reviewer runbook/public review package
+Compatibility note for prior release gates: passive live shadow readiness achieved; local operator-run pilot only; no daemon/watcher by default.
+Compatibility constraints retained for legacy gates: no enforcement; no tool execution; no authorization; no external effects.
 
-Added reviewer runbook and public review package notes. The branch includes two independent local review notes; they are not GitHub reviews and not deployment approvals.
-
-## v0.17.5 phase close
-
-Closed limited passive live capture readiness as design/readiness only. policyDecision: null; agentConsumedOutput: false; rawPersisted: false; unexpectedPermits: 0; no enforcement; no authorization; no approval/block/allow; no autonomous live mode; no tool execution; no memory/config writes; no external effects.
-
-## Carry-forward prior release boundaries
-
-passive live shadow readiness achieved for local operator-run pilot only; no enforcement; no tool execution; no authorization; no daemon/watcher by default; no external effects.
-
-tiny operator-run passive pilot readiness remains one explicit local sample input at a time with operatorReviewRequired: true; singleSampleOnly: true; packageFixtureInputOnly: true; rawPersisted: false; packageFixtureInputOnly: true; inputPathEscapeRejected: true; unexpectedPermits: 0; no agent-consumed output; no machine-readable policy decision; no enforcement; no authorization; no tool execution; no external effects.
+Compatibility carry-forward: passive live shadow readiness achieved for local operator-run pilot only; no enforcement; no tool execution; no authorization; no daemon/watcher by default; no external effects.

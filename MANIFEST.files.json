@@ -69,18 +69,18 @@
     },
     {
       "path": "README.md",
-      "bytes": 2410,
-      "sha256": "c6d8056ecb8dd926ffbf307cfc00e4726f257fe6ba22ad6ca6c01f0d6ee796ee"
+      "bytes": 2378,
+      "sha256": "7c1dd8d1f3ed913502b0d0644967c2998a510ecee2317d3bf6717da2a5d07b33"
     },
     {
       "path": "RELEASE_CANDIDATE.md",
-      "bytes": 1670,
-      "sha256": "e7244c1c4b2cf56a02e5fe9b38fe5921b93b82ac86e81411e59ae8dd1b063fa1"
+      "bytes": 1650,
+      "sha256": "abfe7252b34bd183431e23883ae25b49ea282933f89c316711446798cc71c9e6"
     },
     {
       "path": "RELEASE_NOTES.md",
-      "bytes": 2389,
-      "sha256": "af62c2b2922905b16ae704a7f749bb3976af7979d0d15d3a65ed669bc487131f"
+      "bytes": 1460,
+      "sha256": "f66d61af282bdd54ff65064db2c92c818b5418a033ae4f8dad2470d007c4fe83"
     },
     {
       "path": "design-notes/adapter-boundary-langgraph-mcp-v0.md",
@@ -391,6 +391,41 @@
       "path": "docs/live-like-shadow-sandbox-failure-catalog-v0.14.3.md",
       "bytes": 756,
       "sha256": "95473f1a4649bcb13b14e26a1d1c2007b06e1302e8ff2691f68490d9c30a280e"
+    },
+    {
+      "path": "docs/live-read-gate-local-review-notes-v0.18.5.md",
+      "bytes": 860,
+      "sha256": "e6f3a68a30c7bccc2b104cd34799862d8286611acfbcad97acbe803a6c7c2267"
+    },
+    {
+      "path": "docs/live-read-gate-negative-controls-v0.18.4.md",
+      "bytes": 860,
+      "sha256": "e6f3a68a30c7bccc2b104cd34799862d8286611acfbcad97acbe803a6c7c2267"
+    },
+    {
+      "path": "docs/live-read-gate-packet-v0.18.1.md",
+      "bytes": 860,
+      "sha256": "e6f3a68a30c7bccc2b104cd34799862d8286611acfbcad97acbe803a6c7c2267"
+    },
+    {
+      "path": "docs/live-read-gate-preflight-abort-v0.18.2.md",
+      "bytes": 860,
+      "sha256": "e6f3a68a30c7bccc2b104cd34799862d8286611acfbcad97acbe803a6c7c2267"
+    },
+    {
+      "path": "docs/live-read-gate-protocol-v0.18.0-alpha.md",
+      "bytes": 860,
+      "sha256": "e6f3a68a30c7bccc2b104cd34799862d8286611acfbcad97acbe803a6c7c2267"
+    },
+    {
+      "path": "docs/live-read-gate-redaction-retention-v0.18.3.md",
+      "bytes": 860,
+      "sha256": "e6f3a68a30c7bccc2b104cd34799862d8286611acfbcad97acbe803a6c7c2267"
+    },
+    {
+      "path": "docs/live-read-gate-reviewer-package-v0.18.5.md",
+      "bytes": 860,
+      "sha256": "e6f3a68a30c7bccc2b104cd34799862d8286611acfbcad97acbe803a6c7c2267"
     },
     {
       "path": "docs/live-shadow-drift-scorecard.md",
@@ -958,6 +993,36 @@
       "sha256": "073cd099ba568beff175cf9e0f0ebb463d82307039ed37fecc354930c37f201c"
     },
     {
+      "path": "docs/status-v0.18.0-alpha.md",
+      "bytes": 222,
+      "sha256": "d007276f9876256410822a2da05b21261bb581b4577a73edea1ec4f2b4da98ae"
+    },
+    {
+      "path": "docs/status-v0.18.1.md",
+      "bytes": 159,
+      "sha256": "e39d236d964b26b11834509a08c7d432a97e08c85f4f472da265b4e7e81169a4"
+    },
+    {
+      "path": "docs/status-v0.18.2.md",
+      "bytes": 285,
+      "sha256": "122fc79a297b6d185588fb894ee383fa4a97b715b61dce7eba0242eb17d69583"
+    },
+    {
+      "path": "docs/status-v0.18.3.md",
+      "bytes": 152,
+      "sha256": "fc4a8eb8cb317da188b2320a8ecfb13e5760b9b9a6b0bad31248eebc08af1ebe"
+    },
+    {
+      "path": "docs/status-v0.18.4.md",
+      "bytes": 118,
+      "sha256": "c85d844f0c86211624469cace0b81568008e6ec586b3addc99c9a750021c1cd7"
+    },
+    {
+      "path": "docs/status-v0.18.5.md",
+      "bytes": 234,
+      "sha256": "10ef921bb684b9c26c02671d87ce27469726b85aa34e8645d74d9009b9507e8c"
+    },
+    {
       "path": "docs/status-v0.2.3.md",
       "bytes": 13842,
       "sha256": "49afeeda1dbd7038180c7a4b3f21a0d3167f26101c60858b64aca956a90fc192"
@@ -1249,8 +1314,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/README.md",
-      "bytes": 11850,
-      "sha256": "dc1d53380e944ebe302fc4e892b39e486f0d8c0a0f5708e3b256483ae06cc32b"
+      "bytes": 12176,
+      "sha256": "4e16cc1e05169ab70af6a266541d6c339cd10b0690f779bbdef89a2d7d5bd4ea"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/bin/limited-passive-capture-readiness.mjs",
@@ -1261,6 +1326,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/bin/live-like-shadow-replay.mjs",
       "bytes": 522,
       "sha256": "d7d334b8fef87e1f581f8ec22073c708214d880a7cbec620b529a711026022b9"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/bin/live-read-gate.mjs",
+      "bytes": 321,
+      "sha256": "a717405ef666a268a007e09451887d4928311dff87df2c2ed3205b5b245f8ee4"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/bin/manual-dry-run.mjs",
@@ -1561,6 +1631,36 @@
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-like-shadow-sandbox-failure-catalog-v0.14.3.out.json",
       "bytes": 2374,
       "sha256": "a93c7081a7d6ddd8b7e48348449546bfd3097ddac3777429efaba56b79acc4a5"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-read-gate-negative-controls-v0.18.4.out.json",
+      "bytes": 1405,
+      "sha256": "13ec7deb617bed0ed6373b2884c256988524053e63591f5cb5ba6be9c216c089"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-read-gate-packet-v0.18.1.out.json",
+      "bytes": 6078,
+      "sha256": "1218f1e224d68f63a687292a330e21f2ddbc71f4d86c6449afadbb27bd3f0a8c"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-read-gate-preflight-abort-v0.18.2.out.json",
+      "bytes": 452,
+      "sha256": "9b4ca4b491dac74e3af041fc647379c6378f51c39f7e20561eb739f92835ff3b"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-read-gate-protocol-v0.18.0-alpha.out.json",
+      "bytes": 1089,
+      "sha256": "fcdd3d554d1a952b6ceabcb8ac393dfd57333cf75a196d6842923f9f322c7420"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-read-gate-redaction-retention-v0.18.3.out.json",
+      "bytes": 3798,
+      "sha256": "394b937e043d0f556c75babe571d7074653e72348a53f7c6631b8f8527009e43"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-read-gate-reviewer-package-v0.18.5.out.json",
+      "bytes": 7475,
+      "sha256": "a3908a3d480b2a9eec5746afb0830769a20fdb9024d59b55a93e35bd9b6b14ca"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-shadow-drift-scorecard-shape.out.json",
@@ -2308,6 +2408,11 @@
       "sha256": "bb809c36bf457224d0073acead662568043c487885fe25395768c0f9959371bc"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/fixtures/live-read-gate-negative-controls-v0.18.4.json",
+      "bytes": 585,
+      "sha256": "ede811dfb0d040e394fa38c1fa8b9c4ec07a35cdd24c07ad54836ec0ba87f458"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/fixtures/live-shadow-drift-scorecard.json",
       "bytes": 1050,
       "sha256": "2a5eec6a3dfb0662410249a4e9f3e35595270b8279bfa435e20ecf1b84fdface"
@@ -2714,8 +2819,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/package.json",
-      "bytes": 35642,
-      "sha256": "02626a78c908ce90693c003700af6f4b08e7c48a6d4cadc1ef32ec25ee29710f"
+      "bytes": 37083,
+      "sha256": "ff03c80b9fc53db9989ac4bd5f2bfcb294c84d02f58aee5e75ae3c9067e755d7"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/action-context-packet.mjs",
@@ -2776,6 +2881,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/src/live-like-shadow-scorecard.mjs",
       "bytes": 806,
       "sha256": "007fb28176b22c89b0fb1a3c1a47d4c72b7116d9b31f12ffbff93a5da47ba619"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/src/live-read-gate.mjs",
+      "bytes": 10727,
+      "sha256": "1732eb4bdd42d2b36d846337614f071ac02b6c48d860ed0e650cb1c67cf1a863"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/manual-dry-run.mjs",
@@ -3121,6 +3231,36 @@
       "path": "implementation/synaptic-mesh-shadow-v0/tests/live-like-shadow-sandbox-failure-catalog-v0.14.3.mjs",
       "bytes": 2282,
       "sha256": "ef0ab60afb227178771384aa8b76434bbcd985f7ffff5867ce5b18ec5eb57531"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/live-read-gate-negative-controls-v0.18.4.mjs",
+      "bytes": 1212,
+      "sha256": "80a2278b7a1ceb03dcce06836726da7156a24d4b15a3a9bb897e77a9e59312f3"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/live-read-gate-packet-v0.18.1.mjs",
+      "bytes": 1123,
+      "sha256": "54b17d4e4e2fb57628f4a5f9ca245e461936bc74db5b3e41de30932a88d3ce2c"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/live-read-gate-preflight-abort-v0.18.2.mjs",
+      "bytes": 1360,
+      "sha256": "8c30252e3d4b234bb1c4a8de1e148d02e4f1e79ad1a809dcfb675f7aa178b2b8"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/live-read-gate-protocol-v0.18.0-alpha.mjs",
+      "bytes": 1368,
+      "sha256": "1e81e44036a1dd5b35fd73c24d11a78b34598fe9fd3aaeb598384ee99b917737"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/live-read-gate-redaction-retention-v0.18.3.mjs",
+      "bytes": 1254,
+      "sha256": "7f001c1df66448269c54dcb3b06290febcd51807fc34edbc99d67de9efbabda8"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/live-read-gate-reviewer-package-v0.18.5.mjs",
+      "bytes": 1315,
+      "sha256": "3fc173a66c36bf531a19e288e3f9715cccb3b4d7684dccab0dc27297f57af469"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/live-shadow-drift-scorecard-shape.mjs",
@@ -4204,8 +4344,8 @@
     },
     {
       "path": "tools/release-checks/index.mjs",
-      "bytes": 1327,
-      "sha256": "756cab53019e17b27e3f007793a8e695d27100d8632f0ca8bc386d11a060a3bc"
+      "bytes": 1406,
+      "sha256": "146533a3212ce3621c22d5c26906fac23f3842e73ce44a39ea4d28b9d5ad9082"
     },
     {
       "path": "tools/release-checks/limited-passive-live-capture-readiness.mjs",
@@ -4216,6 +4356,11 @@
       "path": "tools/release-checks/live-like-shadow-sandbox-ladder.mjs",
       "bytes": 6393,
       "sha256": "c0e6db82aed185d21e36706c448b69b5882406e2c9a433f78806f3ec2c77bff6"
+    },
+    {
+      "path": "tools/release-checks/live-read-gate.mjs",
+      "bytes": 6457,
+      "sha256": "7904dff45c3fca030f983bb2084abf95525f86e96e625c7e4ef84482a53e4521"
     },
     {
       "path": "tools/release-checks/local-harness-ladder.mjs",

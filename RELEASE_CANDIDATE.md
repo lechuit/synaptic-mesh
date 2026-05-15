@@ -1,57 +1,43 @@
-# Synaptic Mesh v0.1.2
+# Synaptic Mesh v0.18.5
 
-Status: **adapter-contract hardening release candidate**. Not runtime-ready; not production/canary/enforcement-ready.
+Status: **live-read gate release candidate**. This is not runtime authority, not production/canary/enforcement-ready, and not deployment approval.
 
 ## Scope
 
-This release candidate updates the public review package with local receiver-adapter contract hardening work:
+This release candidate crosses the first live barrier in a controlled way: one-shot live input ingestion/read-only observation from one explicit repo-local source.
 
-- paper draft;
-- specs;
-- local shadow/reference implementation;
-- curated reproducibility fixtures;
-- adversarial authority-laundering regressions;
-- Framework Adapter Matrix;
-- contract-only receiver policy adapter tests;
-- duplicate authority-field regressions;
-- sensitive verb alias regressions;
-- receiver-observed source mismatch regressions;
-- bibliography and quote-check artifacts;
-- reproducibility evidence;
-- hardening roundup.
+It adds:
+
+- `live-read-gate` source and CLI;
+- bounded record ingestion (`maxRecords: 12`);
+- real repo-local source requirement for positive live-read evidence;
+- redaction-before-persist evidence packets;
+- negative controls for forbidden capabilities;
+- reviewer package and two independent local review notes;
+- release-check integration for `v0.18.5`.
 
 ## Validation expected
 
 From this release-candidate root:
 
 ```bash
-npm --prefix implementation/synaptic-mesh-shadow-v0 run review:local
+npm --prefix implementation/synaptic-mesh-shadow-v0 run release:check -- --target v0.18.5
 ```
 
 Expected:
 
-- verdict: pass;
-- commands: 13/13;
-- fixture parity: 15/15;
-- unsafe allow signals: 0;
-- source fixture mutation: false.
-
-Adapter contract check:
-
-```bash
-npm --prefix implementation/synaptic-mesh-shadow-v0 run test:receiver-adapters
-```
-
-Expected:
-
-- verdict: pass;
-- cases: 53/53;
-- unsafe allows: 0.
+- live input ingestion read gate: pass;
+- `rawPersisted: false`;
+- `rawOutput: false`;
+- `policyDecision: null`;
+- `agentConsumedOutput: false`;
+- `unexpectedPermits: 0`;
+- all forbidden capability controls remain false/rejected.
 
 ## Publication boundary
 
-This archive is a public review package update. Runtime/tooling integration, config changes, permanent memory promotion, canary, enforcement, production, or L2+ operational use remain out of scope and require a separate explicit maintainer decision.
+This archive is a public review package update. Enforcement, authorization, approval/block/allow, runtime/tooling integration, autonomous live mode, watcher/daemon behavior, network/resource fetch, memory/config writes, external effects, production/canary operation, or L2+ operational use remain out of scope and require a separate explicit maintainer decision.
 
-## Raw source cache policy
+## Review wording
 
-Raw downloaded source PDFs/HTML are intentionally excluded. Quote-check artifacts include exact snippets and source pointers; reviewers should retrieve primary sources from official URLs/DOIs as needed.
+Use “two independent local reviews” for the review evidence. Do not describe them as GitHub UI reviews or deployment approvals.
