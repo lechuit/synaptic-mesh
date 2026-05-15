@@ -1,32 +1,43 @@
-# Release Notes — Synaptic Mesh v0.20.5
+# Release Notes — Synaptic Mesh v0.21.5
 
 ## Summary
 
-`v0.20.5` introduces the **bounded explicit multisource shadow-read** gate: multiple explicit repo-local file sources in one operator-run, one-shot, local-only, passive/read-only run through the existing constrained local read adapter abstraction. It is bounded by max sources 3, max records per source 5, and max total records 12, with per-source isolation, per-source failure isolation, redaction-before-persist, redacted evidence only, and a human-readable report.
+`v0.21.5` introduces the **positive utility pass-to-human-review** gate. It demonstrates what happens when bounded explicit multisource shadow-read evidence should pass: valid, clean, useful observations are classified as `PASS_TO_HUMAN_REVIEW` with `observationAccepted`, `includedInReport`, and `readyForHumanReview` true.
 
 ## Evidence
 
 - `policyDecision: null`
+- `authorization: false`
+- `enforcement: false`
+- `toolExecution: false`
 - `agentConsumedOutput: false`
+- `externalEffects: false`
 - `rawPersisted: false`
+- `rawOutput: false`
 - `unexpectedPermits: 0`
-- bounded explicit multisource shadow-read through `repo-local-file-read-adapter-v0`
-- multiple explicit repo-local file sources
-- max sources 3
-- max records per source 5
-- max total records 12
-- per-source isolation
-- per-source failure isolation
-- redaction-before-persist and redacted evidence only
-- human-readable report
+- positive pass cases with v0.20-style bounded explicit multisource shadow-read evidence
+- explicit local sources, valid source/record bounds, sufficient redacted records, clean redaction, and generated human-readable report
+- accepted isolated source failure only when the threshold is explicitly set for that run
+- negative controls for no records, invalid bounds, excessive source failures, semantic decision/private-token leaks, raw output/persistence, policy decision, agent-consumed output, and forbidden capabilities
 - two independent local review notes included; not GitHub UI reviews and not deployment approvals
 
 ## Boundary
 
-No enforcement, no authorization, no approval/block/allow, no globs/recursive discovery, no implicit sources, no outside-repo paths, no symlinks, no autonomous live mode, no watcher/daemon, no tool execution, no memory/config writes, no network/resource fetch, no agent-consumed machine-readable policy decisions, and no external effects.
+This is non-authoritative classification-only readiness for human review. It is not a policy allow/block/approve gate, not runtime authority, and not authorization or enforcement.
 
 ## Next
 
-The next gate should review multisource shadow-read failure modes without adding authority, enforcement, daemon behavior, network/resource fetch, external effects, or agent-consumed policy decisions.
+The next gate should keep the positive path useful while adding reviewer ergonomics or additional redacted evidence quality checks, still without authorization, enforcement, agent-consumed policy decisions, tool execution, network/resource fetch, external effects, daemon behavior, or raw persistence.
+
+## v0.21.5 — positive utility pass-to-human-review
+
+`v0.21.5` introduces the **positive utility pass-to-human-review** gate. It demonstrates what happens when bounded explicit multisource shadow-read evidence should pass: valid, clean, useful observations are classified as `PASS_TO_HUMAN_REVIEW` with `observationAccepted`, `includedInReport`, and `readyForHumanReview` true.
+
+Evidence boundaries remain: `policyDecision: null`, `authorization: false`, `enforcement: false`, `toolExecution: false`, `agentConsumedOutput: false`, `externalEffects: false`, `rawPersisted: false`, `rawOutput: false`, and `unexpectedPermits: 0`.
+
+Positive pass cases use v0.20-style bounded explicit multisource shadow-read evidence with explicit local sources, valid source/record bounds, sufficient redacted records, clean redaction, and generated human-readable reports. Negative controls reject no records, invalid bounds, excessive source failures, semantic decision/private-token leaks, raw output/persistence, policy decisions, agent-consumed output, and forbidden capabilities.
+
+Two independent local review notes are included; these are not GitHub UI reviews and not deployment approvals.
+
 
 Compatibility carry-forward: passive live shadow readiness achieved for local operator-run pilot only; no enforcement; no tool execution; no authorization; no daemon/watcher by default; no external effects.

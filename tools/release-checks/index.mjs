@@ -12,6 +12,7 @@ import { limitedPassiveLiveCaptureReadinessSuite } from './limited-passive-live-
 import { liveReadGateSuite } from './live-read-gate.mjs';
 import { liveAdapterShadowReadSuite } from './live-adapter-shadow-read.mjs';
 import { boundedMultisourceShadowReadSuite } from './bounded-multisource-shadow-read.mjs';
+import { positiveUtilityPassGateSuite } from './positive-utility-pass-gate.mjs';
 
 export const releaseCheckSuites = Object.freeze([
   passiveLiveShadowCanarySuite,
@@ -28,4 +29,5 @@ export const releaseCheckSuites = Object.freeze([
   liveReadGateSuite,
   liveAdapterShadowReadSuite,
   boundedMultisourceShadowReadSuite,
+  positiveUtilityPassGateSuite,
 ]);

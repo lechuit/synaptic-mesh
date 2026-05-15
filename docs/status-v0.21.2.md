@@ -1,0 +1,3 @@
+# Status v0.21.x
+
+Synaptic Mesh v0.21 remains disabled-by-default, local-only, passive/read-only, one-shot, operator-run, and non-authoritative. The ladder adds a positive utility pass-to-human-review classification for valid bounded explicit multisource shadow-read evidence: `PASS_TO_HUMAN_REVIEW`, `observationAccepted`, `includedInReport`, and `readyForHumanReview`. It keeps `policyDecision: null`; authorization, enforcement, approval/block/allow policy gate behavior, tool execution, agent-consumed output, raw persistence/output, network/resource fetch, external effects, daemon/watcher behavior, and runtime authority remain false.
