@@ -1,0 +1,25 @@
+import assert from 'node:assert/strict';
+import { mkdir, writeFile } from 'node:fs/promises';
+import { resolve } from 'node:path';
+import { LIVE_ADAPTER_SHADOW_READ_ADAPTER_ID, runLiveAdapterShadowRead } from '../src/live-adapter-shadow-read.mjs';
+
+await mkdir(resolve('evidence'), { recursive: true });
+const packet = JSON.parse(await runLiveAdapterShadowRead({ source: 'README.md', adapter: LIVE_ADAPTER_SHADOW_READ_ADAPTER_ID, records: 6 }));
+assert.equal(packet.summary.liveAdapterShadowReadBarrierCrossed, true);
+assert.equal(packet.summary.localAdapterShadowReadGate, true);
+assert.equal(packet.summary.constrainedLocalReadAdapter, true);
+assert.equal(packet.adapter.id, LIVE_ADAPTER_SHADOW_READ_ADAPTER_ID);
+assert.equal(packet.adapter.rawAdapterOutputPersisted, false);
+assert.equal(packet.summary.policyDecision, null);
+assert.equal(packet.summary.rawPersisted, false);
+assert.equal(packet.summary.rawOutput, false);
+assert.equal(packet.summary.agentConsumedOutput, false);
+assert.equal(packet.summary.recordsRead <= 6, true);
+assert.equal(packet.retention.semanticDecisionTokenPersisted, false);
+assert.equal(packet.usefulnessScorecard.crossedLocalAdapterShadowReadBarrier, true);
+assert.equal(packet.usefulnessScorecard.usedConstrainedLocalReadAdapter, true);
+assert.equal(packet.usefulnessScorecard.usedRealRepoLocalSource, true);
+assert.match(packet.reportMarkdown, /Live Adapter Shadow-Read Report v0\.19\.5/);
+await writeFile(resolve('evidence/live-adapter-shadow-read-packet-v0.19.1.out.json'), JSON.stringify(packet, null, 2) + '\n');
+await writeFile(resolve('evidence/live-adapter-shadow-read-report-v0.19.1.out.md'), packet.reportMarkdown);
+console.log(JSON.stringify(packet.summary, null, 2));
