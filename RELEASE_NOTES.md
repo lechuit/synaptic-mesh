@@ -1,8 +1,8 @@
-# Release Notes — Synaptic Mesh v0.21.5
+# Release Notes — Synaptic Mesh v0.21.6
 
 ## Summary
 
-`v0.21.5` introduces the **positive utility pass-to-human-review** gate. It demonstrates what happens when bounded explicit multisource shadow-read evidence should pass: valid, clean, useful observations are classified as `PASS_TO_HUMAN_REVIEW` with `observationAccepted`, `includedInReport`, and `readyForHumanReview` true.
+`v0.21.6` preserves the v0.21.5 positive gate and hotfixes deterministic evidence replay. `v0.21.5` introduced the **positive utility pass-to-human-review** gate. It demonstrates what happens when bounded explicit multisource shadow-read evidence should pass: valid, clean, useful observations are classified as `PASS_TO_HUMAN_REVIEW` with `observationAccepted`, `includedInReport`, and `readyForHumanReview` true.
 
 ## Evidence
 
