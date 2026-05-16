@@ -9,9 +9,9 @@
 - Enforcement/authorization/approval/block/allow: false
 
 ## Redacted evidence preview
-- #0: # Synaptic Mesh v0.50.5
-- #1: This is the public review release `v0.50.5`. Current v0.50.5 status is narrower than production live runtime, but crosses the next safe barrier after v0.49: **local receiver/runtime test harness consumption rehearsal**.
-- #2: The v0.50 ladder is opt-in, operator-run one-shot, local-only, rehearsal/read-only, bounded to the pinned completed v0.49.5 runtime-context injection rehearsal artifact and report, pre-read path pinned, redacted-before-persist, non-authorit
-- #3: Pinned v0.50.5 evidence: `rehearsalStatus: PASSIVE_LIVE_MEMORY_COHERENCE_RECEIVER_RUNTIME_TEST_HARNESS_CONSUMPTION_REHEARSAL_COMPLETE`, `sourceReceiverBlockCountConsumedAsLocalTestInput: 4`, `harnessParseSuccessCount: 4`, `consumedContextBl
-- #4: The rehearsal parses and consumes the v0.49 receiver-facing [NON_AUTHORITATIVE_INPUT_VERB_REDACTED] as deterministic local receiver/runtime test harness input only. It records non-authoritative consumption decisions and keeps all effects [N
+- #0: # Synaptic Mesh v0.51.5
+- #1: This is the public review release `v0.51.5`. Current v0.51.5 status is narrower than production live runtime, but crosses the next safe barrier after v0.50: **local reversible receiver runtime invocation shim rehearsal**.
+- #2: The v0.51 ladder is opt-in, operator-run one-shot, local-only, rehearsal/read-only, bounded to the pinned completed v0.50.5 receiver/runtime test harness consumption rehearsal artifact and report, pre-read path pinned, redacted-before-persi
+- #3: Pinned v0.51.5 evidence: `rehearsalStatus: PASSIVE_LIVE_MEMORY_COHERENCE_RECEIVER_RUNTIME_INVOCATION_SHIM_REHEARSAL_COMPLETE`, `localShimInvocationCount: 4`, `shimOutputCount: 4`, `contextHandoffResultCount: 1`, `invokedConsumedBlockCount:
+- #4: The rehearsal invokes a deterministic local receiver runtime invocation shim over the v0.50.5 consumed [NON_AUTHORITATIVE_INPUT_VERB_REDACTED] and prepares a no-effect context handoff result for human review only. It is intentionally not pr
 - #5: ## Carry-forward prior release boundaries

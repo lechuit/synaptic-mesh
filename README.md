@@ -1,3 +1,17 @@
+# Synaptic Mesh v0.51.5
+
+This is the public review release `v0.51.5`. Current v0.51.5 status is narrower than production live runtime, but crosses the next safe barrier after v0.50: **local reversible receiver runtime invocation shim rehearsal**.
+
+The v0.51 ladder is opt-in, operator-run one-shot, local-only, rehearsal/read-only, bounded to the pinned completed v0.50.5 receiver/runtime test harness consumption rehearsal artifact and report, pre-read path pinned, redacted-before-persist, non-authoritative, rollback/no-persist, and not connected to production runtime.
+
+Pinned v0.51.5 evidence: `rehearsalStatus: PASSIVE_LIVE_MEMORY_COHERENCE_RECEIVER_RUNTIME_INVOCATION_SHIM_REHEARSAL_COMPLETE`, `localShimInvocationCount: 4`, `shimOutputCount: 4`, `contextHandoffResultCount: 1`, `invokedConsumedBlockCount: 4`, `effectsBlockedCount: 10`, `sourceBoundInvocationRatio: 1`, `agentConsumedOutputFalseRatio: 1`, `forbiddenEffectCount: 0`, `boundaryViolationCount: 0`, `operatorApprovalScope: local_receiver_runtime_invocation_shim_rehearsal_only`, `recommendationIsAuthority: false`, `agentConsumedOutput: false`, and `notRuntimeInstruction: true`.
+
+The rehearsal invokes a deterministic local receiver runtime invocation shim over the v0.50.5 consumed blocks and prepares a no-effect context handoff result for human review only. It is intentionally not production runtime behavior: no daemon, SDK/framework adapter, MCP/A2A client/server, network/resource fetch, tool execution, memory/config writes, external effects, authorization/enforcement decisions, allow/block decisions, or automatic agent consumption.
+
+## Carry-forward prior release boundaries
+
+The v0.50 local receiver/runtime test harness consumption rehearsal remains the pinned upstream source: four source-bound consumed context blocks, four local parse successes, four non-authoritative consumption decisions, all effects blocked, source-bound ratio 1, and zero boundary violations.
+
 # Synaptic Mesh v0.50.5
 
 This is the public review release `v0.50.5`. Current v0.50.5 status is narrower than production live runtime, but crosses the next safe barrier after v0.49: **local receiver/runtime test harness consumption rehearsal**.

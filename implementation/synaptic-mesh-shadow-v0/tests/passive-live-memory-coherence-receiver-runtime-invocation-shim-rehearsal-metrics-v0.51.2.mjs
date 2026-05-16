@@ -1,0 +1,17 @@
+import assert from 'node:assert/strict';
+import { scorePassiveLiveMemoryCoherenceReceiverRuntimeInvocationShimRehearsal } from '../src/passive-live-memory-coherence-receiver-runtime-invocation-shim-rehearsal.mjs';
+import { receiverRuntimeInvocationShimRehearsalInputV051 } from './passive-live-memory-coherence-receiver-runtime-invocation-shim-rehearsal-fixtures.mjs';
+const m = scorePassiveLiveMemoryCoherenceReceiverRuntimeInvocationShimRehearsal(receiverRuntimeInvocationShimRehearsalInputV051()).metrics;
+assert.equal(m.sourceConsumedContextBlockCount, 4);
+assert.equal(m.sourceHarnessParseSuccessCount, 4);
+assert.equal(m.localShimInvocationCount, 4);
+assert.equal(m.shimOutputCount, 4);
+assert.equal(m.contextHandoffResultCount, 1);
+assert.equal(m.effectsBlockedCount, 10);
+assert.equal(m.forbiddenEffectCount, 0);
+assert.equal(m.sourceBoundInvocationRatio, 1);
+assert.equal(m.rawPersistedFalseRatio, 1);
+assert.equal(m.agentConsumedOutputFalseRatio, 1);
+assert.equal(m.operatorApprovalScopeRecorded, true);
+assert.equal(m.boundaryViolationCount, 0);
+console.log(JSON.stringify(m));
