@@ -9,9 +9,9 @@
 - Enforcement/authorization/approval/block/allow: false
 
 ## Redacted evidence preview
-- #0: # Synaptic Mesh v0.44.5
-- #1: This is the public review release `v0.44.5`. Current v0.44.5 status is narrower than live runtime and crosses the next safe barrier after v0.43: **passive live memory/coherence receiver usefulness live observation**.
-- #2: The v0.44 ladder is disabled-by-default, operator-run one-shot, local-only, passive/read-only, bounded to the pinned completed v0.43.5 receiver usefulness repeatability scorecard artifact plus four explicit repo-local live sources, pre-read
-- #3: Pinned v0.44.5 evidence: `liveObservationStatus: PASSIVE_LIVE_MEMORY_COHERENCE_RECEIVER_USEFULNESS_LIVE_OBSERVATION_COMPLETE`, `explicitRepoLocalSourceCount: 4`, `sourceRepeatabilityRunCount: 3`, `sourceCandidateCount: 5`, `sourceStableCand
-- #4: The live observation maps the stable v0.43 receiver usefulness candidates onto current repo-local continuity sources. It includes three items for human context, suppresses one stale prior-release anchor, and preserves one contradiction as c
+- #0: # Synaptic Mesh v0.45.5
+- #1: This is the public review release `v0.45.5`. Current v0.45.5 status is narrower than live runtime and crosses the next safe barrier after v0.44: **passive live memory/coherence receiver usefulness live observation repeatability scorecard**.
+- #2: The v0.45 ladder is disabled-by-default, operator-run one-shot, local-only, passive/read-only, bounded to the pinned completed v0.44.5 receiver usefulness live observation artifact, pre-read path pinned, redacted-before-persist, human-reada
+- #3: Pinned v0.45.5 evidence: `repeatabilityStatus: PASSIVE_LIVE_MEMORY_COHERENCE_RECEIVER_USEFULNESS_LIVE_OBSERVATION_REPEATABILITY_SCORECARD_COMPLETE`, `repeatabilityRunCount: 3`, `sourceLiveObservationWindowCount: 1`, `candidateCount: 5`, `to
+- #4: The repeatability scorecard repeats the v0.44 live observation under baseline, paraphrased-observation, and reverse-order variants. It keeps all five live observations stable: three included for human context, one stale prior-release anchor
 - #5: ## Carry-forward prior release boundaries
