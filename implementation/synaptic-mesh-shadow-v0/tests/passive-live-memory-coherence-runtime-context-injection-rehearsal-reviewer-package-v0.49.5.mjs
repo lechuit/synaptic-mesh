@@ -1,0 +1,13 @@
+import assert from 'node:assert/strict';
+import { mkdirSync, writeFileSync } from 'node:fs';
+import { scorePassiveLiveMemoryCoherenceRuntimeContextInjectionRehearsal, validatePassiveLiveMemoryCoherenceRuntimeContextInjectionRehearsalArtifact } from '../src/passive-live-memory-coherence-runtime-context-injection-rehearsal.mjs';
+import { runtimeContextInjectionRehearsalInputV049 } from './passive-live-memory-coherence-runtime-context-injection-rehearsal-fixtures.mjs';
+const artifact = scorePassiveLiveMemoryCoherenceRuntimeContextInjectionRehearsal(runtimeContextInjectionRehearsalInputV049());
+assert.deepEqual(validatePassiveLiveMemoryCoherenceRuntimeContextInjectionRehearsalArtifact(artifact), []);
+mkdirSync('evidence', { recursive: true });
+writeFileSync('evidence/passive-live-memory-coherence-runtime-context-injection-rehearsal-reviewer-package-v0.49.5.out.json', `${JSON.stringify(artifact, null, 2)}\n`);
+writeFileSync('evidence/passive-live-memory-coherence-runtime-context-injection-rehearsal-report-v0.49.5.out.md', `${artifact.reportMarkdown}\n`);
+assert.equal(artifact.rehearsalStatus, 'PASSIVE_LIVE_MEMORY_COHERENCE_RUNTIME_CONTEXT_INJECTION_REHEARSAL_COMPLETE');
+assert.equal(artifact.recommendation, 'ADVANCE_TO_RECEIVER_RUNTIME_TEST_HARNESS_CONSUMPTION_REHEARSAL');
+assert.equal(artifact.receiverFacingContextBlocks.length, 4);
+console.log(JSON.stringify({ rehearsalStatus: artifact.rehearsalStatus, receiverFacingContextBlockCount: artifact.metrics.receiverFacingContextBlockCount }, null, 2));

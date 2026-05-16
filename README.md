@@ -1,3 +1,19 @@
+# Synaptic Mesh v0.49.5
+
+This is the public review release `v0.49.5`. Current v0.49.5 status is narrower than production live runtime, but crosses a real runtime-adjacent barrier after v0.48: **local runtime-context injection rehearsal**.
+
+The v0.49 ladder is opt-in, operator-run one-shot, local-only, rehearsal/read-only, bounded to the pinned completed v0.48.5 runtime context injection dry-run artifact and report, pre-read path pinned, redacted-before-persist, machine-shaped adapter rehearsal envelope, non-authoritative, rollback/no-persist, and not connected to production runtime.
+
+Pinned v0.49.5 evidence: `rehearsalStatus: PASSIVE_LIVE_MEMORY_COHERENCE_RUNTIME_CONTEXT_INJECTION_REHEARSAL_COMPLETE`, `sourceRuntimeContextCardCount: 5`, `contextCardsConsumedByLocalRehearsalCount: 5`, `injectionEnvelopeCount: 1`, `injectionEnvelopeContextBlockCount: 4`, `receiverFacingContextBlockCount: 4`, `allEffectsBlockedUntilNextBarrierCount: 10`, `sourceBoundContextCardRatio: 1`, `sourceBoundReceiverBlockRatio: 1`, `forbiddenEffectCount: 0`, `boundaryViolationCount: 0`, `recommendation: ADVANCE_TO_RECEIVER_RUNTIME_TEST_HARNESS_CONSUMPTION_REHEARSAL`, `recommendationIsAuthority: false`, `agentConsumedOutput: false`, and `notRuntimeInstruction: true`.
+
+The rehearsal consumes the v0.48 machine-shaped runtime context cards in a deterministic local adapter harness and emits one receiver-facing injection envelope with four source-bound context blocks. It is intentionally not production runtime behavior: no daemon, SDK/framework adapter, MCP/A2A client/server, network/resource fetch, tool execution, memory/config writes, external effects, authorization/enforcement decisions, or automatic agent consumption.
+
+## Carry-forward prior release boundaries
+
+The v0.48 local runtime-adjacent context injection dry-run remains the pinned upstream source: five runtime context cards, four harness-consumable candidates, one stale-suppressed card, every card blocked until the next barrier, source-bound ratio 1, and zero boundary violations.
+
+Compatibility carry-forward: passive live shadow readiness achieved for local operator-run pilot only; no enforcement; no tool execution; no authorization; no daemon/watcher by default; no external effects.
+
 # Synaptic Mesh v0.48.5
 
 This is the public review release `v0.48.5`. Current v0.48.5 status is narrower than production live runtime, but crosses a real runtime-adjacent boundary after v0.47: **local runtime-adjacent context injection dry-run**.
