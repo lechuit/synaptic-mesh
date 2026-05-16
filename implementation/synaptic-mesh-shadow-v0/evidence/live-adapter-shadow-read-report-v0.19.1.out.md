@@ -9,9 +9,9 @@
 - Enforcement/authorization/approval/block/allow: false
 
 ## Redacted evidence preview
-- #0: # Synaptic Mesh v0.34.5
-- #1: This is the public review release `v0.34.5`. Current v0.34.5 status is narrower than live runtime and crosses the next safe barrier after v0.33: **passive hard-case outcome value scorecard**.
-- #2: The v0.34 ladder is disabled-by-default, operator-run one-shot, local-only, passive/read-only, bounded to the pinned completed v0.33.5 hard-case context assembly artifact (path and sha256 digest pinned), human-readable report only, non-auth
-- #3: Pinned v0.34.5 evidence: `outcomeValueStatus: PASSIVE_HARD_CASE_OUTCOME_VALUE_SCORECARD_COMPLETE`, `outcomeCount: 5`, `usefulOutcomeCount: 3`, `noiseOutcomeCount: 1`, `evidenceGapOutcomeCount: 1`, `usefulOutcomeRatio: 0.6`, `noiseOutcomeRat
-- #4: The scorecard measures whether the v0.33 hard-case packages actually help a human/shadow receiver: three packages are useful for continuity, one is noise, and one needs more evidence. These outcome labels are measurement only. They are not
-- #5: ## v0.34.5 phase close
+- #0: # Synaptic Mesh v0.35.5
+- #1: This is the public review release `v0.35.5`. Current v0.35.5 status is narrower than live runtime and crosses the next safe barrier after v0.34: **passive hard-case outcome repeatability scorecard**.
+- #2: The v0.35 ladder is disabled-by-default, operator-run one-shot, local-only, passive/read-only, bounded to the pinned completed v0.34.5 hard-case outcome value artifact (path and sha256 digest pinned), human-readable report only, non-authori
+- #3: Pinned v0.35.5 evidence: `repeatabilityStatus: PASSIVE_HARD_CASE_OUTCOME_REPEATABILITY_SCORECARD_COMPLETE`, `repeatabilityRunCount: 3`, `hardCaseCount: 5`, `totalOutcomeJudgementCount: 15`, `stableHardCaseCount: 5`, `unstableHardCaseCount:
+- #4: The scorecard measures whether v0.34 usefulness/noise/evidence-gap labels remain stable across baseline, paraphrased-rationale, and order-invariant repeated receiver passes. This is a repeatability measurement for human review only. It is n
+- #5: ## v0.35.5 phase close

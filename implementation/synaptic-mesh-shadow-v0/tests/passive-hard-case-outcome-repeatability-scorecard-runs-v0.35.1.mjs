@@ -1,0 +1,16 @@
+import assert from 'node:assert/strict';
+import { mkdirSync, writeFileSync } from 'node:fs';
+import { canonicalInput } from './passive-hard-case-outcome-repeatability-scorecard-fixtures.mjs';
+import { scorePassiveHardCaseOutcomeRepeatabilityScorecard } from '../src/passive-hard-case-outcome-repeatability-scorecard.mjs';
+const out = scorePassiveHardCaseOutcomeRepeatabilityScorecard(canonicalInput());
+assert.equal(out.repeatabilityStatus, 'PASSIVE_HARD_CASE_OUTCOME_REPEATABILITY_SCORECARD_COMPLETE');
+assert.equal(out.validationIssues.length, 0);
+assert.equal(out.runSummaries.length, 3);
+assert.deepEqual(out.runSummaries.map((r)=>r.runId), ['repeat-baseline-v034-labels','repeat-paraphrased-rationales','repeat-order-invariant-human-context']);
+assert.equal(out.repeatabilityItems.length, 5);
+assert.ok(out.repeatabilityItems.every((item)=>item.stableReceiverLabel === true));
+assert.ok(out.repeatabilityItems.every((item)=>item.stableOutcomeValue === true));
+assert.ok(out.repeatabilityItems.every((item)=>item.agreesWithV034Outcome === true));
+assert.ok(out.repeatabilityItems.every((item)=>item.promoteToMemory === false && item.agentConsumedOutput === false && item.policyDecision === null));
+mkdirSync('evidence',{recursive:true});
+writeFileSync('evidence/passive-hard-case-outcome-repeatability-scorecard-runs-v0.35.1.out.json', JSON.stringify({ repeatabilityStatus: out.repeatabilityStatus, runSummaries: out.runSummaries, repeatabilityItems: out.repeatabilityItems }, null, 2)+'\n');

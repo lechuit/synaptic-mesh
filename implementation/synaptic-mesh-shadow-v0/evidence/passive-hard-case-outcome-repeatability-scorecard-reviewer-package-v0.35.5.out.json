@@ -1,0 +1,271 @@
+{
+  "artifact": "T-synaptic-mesh-passive-hard-case-outcome-repeatability-scorecard-v0.35.5",
+  "schemaVersion": "passive-hard-case-outcome-repeatability-scorecard-v0.35.0-alpha",
+  "releaseLayer": "v0.35.5",
+  "protocol": {
+    "releaseLayer": "v0.35.0-alpha",
+    "barrierCrossed": "passive_hard_case_receiver_outcome_repeatability_measurement",
+    "buildsOn": "v0.34.5_passive_hard_case_outcome_value_scorecard",
+    "disabledByDefault": true,
+    "operatorRunOneShotOnly": true,
+    "localOnly": true,
+    "passiveOnly": true,
+    "readOnly": true,
+    "explicitArtifactsOnly": true,
+    "acceptsOnlyPinnedCompletedOutcomeValueArtifact": true,
+    "producesHumanOutcomeRepeatabilityScorecardOnly": true,
+    "measuresStableUsefulnessNoiseEvidenceGapLabelsWithoutRuntimeConsumption": true,
+    "humanReadableReportOnly": true,
+    "nonAuthoritative": true,
+    "recommendationIsAuthority": false,
+    "agentConsumedOutput": false,
+    "notRuntimeInstruction": true,
+    "noRuntimeAuthority": true,
+    "noMemoryWrites": true,
+    "noRuntimeIntegration": true,
+    "policyDecision": null
+  },
+  "repeatabilityStatus": "PASSIVE_HARD_CASE_OUTCOME_REPEATABILITY_SCORECARD_COMPLETE",
+  "disabledByDefault": true,
+  "operatorRunOneShotOnly": true,
+  "localOnly": true,
+  "passiveOnly": true,
+  "readOnly": true,
+  "explicitArtifactsOnly": true,
+  "acceptsOnlyPinnedCompletedOutcomeValueArtifact": true,
+  "humanReadableReportOnly": true,
+  "humanReviewOnly": true,
+  "nonAuthoritative": true,
+  "recommendation": "ADVANCE_OBSERVATION_ONLY",
+  "recommendationIsAuthority": false,
+  "agentConsumedOutput": false,
+  "notRuntimeInstruction": true,
+  "noRuntimeAuthority": true,
+  "noMemoryWrites": true,
+  "noRuntimeIntegration": true,
+  "policyDecision": null,
+  "validationIssues": [],
+  "metrics": {
+    "repeatabilityRunCount": 3,
+    "expectedRepeatabilityRunCount": 3,
+    "hardCaseCount": 5,
+    "totalOutcomeJudgementCount": 15,
+    "expectedOutcomeJudgementCount": 15,
+    "stableHardCaseCount": 5,
+    "unstableHardCaseCount": 0,
+    "stableUsefulHardCaseCount": 3,
+    "stableNoiseHardCaseCount": 1,
+    "stableEvidenceGapHardCaseCount": 1,
+    "labelAgreementJudgementCount": 15,
+    "labelAgreementRatio": 1,
+    "stableHardCaseRatio": 1,
+    "stableUsefulHardCaseRatio": 1,
+    "stableNoiseHardCaseRatio": 1,
+    "stableEvidenceGapHardCaseRatio": 1,
+    "sourceBoundRepeatabilityRatio": 1,
+    "humanReviewOnlyRepeatabilityRatio": 1,
+    "minimalContextRepeatabilityRatio": 1,
+    "noPromotionWithoutHumanRepeatabilityRatio": 1,
+    "agentConsumedOutputFalseRatio": 1,
+    "boundaryViolationCount": 0,
+    "policyDecision": null
+  },
+  "runSummaries": [
+    {
+      "runId": "repeat-baseline-v034-labels",
+      "runKind": "baseline_replay",
+      "outcomeCount": 5,
+      "sourceBound": true,
+      "humanReviewOnly": true,
+      "minimalContextOnly": true,
+      "promoteToMemory": false,
+      "agentConsumedOutput": false,
+      "recommendationIsAuthority": false,
+      "policyDecision": null
+    },
+    {
+      "runId": "repeat-paraphrased-rationales",
+      "runKind": "rationale_paraphrase_same_labels",
+      "outcomeCount": 5,
+      "sourceBound": true,
+      "humanReviewOnly": true,
+      "minimalContextOnly": true,
+      "promoteToMemory": false,
+      "agentConsumedOutput": false,
+      "recommendationIsAuthority": false,
+      "policyDecision": null
+    },
+    {
+      "runId": "repeat-order-invariant-human-context",
+      "runKind": "order_invariant_replay",
+      "outcomeCount": 5,
+      "sourceBound": true,
+      "humanReviewOnly": true,
+      "minimalContextOnly": true,
+      "promoteToMemory": false,
+      "agentConsumedOutput": false,
+      "recommendationIsAuthority": false,
+      "policyDecision": null
+    }
+  ],
+  "repeatabilityItems": [
+    {
+      "hardCaseId": "hard-active-project-rule-vs-old-context",
+      "expectedReceiverLabel": "useful_for_human_continuity",
+      "expectedOutcomeValue": "useful",
+      "stableReceiverLabel": true,
+      "stableOutcomeValue": true,
+      "agreesWithV034Outcome": true,
+      "labelsByRun": [
+        {
+          "runId": "repeat-baseline-v034-labels",
+          "receiverLabel": "useful_for_human_continuity",
+          "outcomeValue": "useful"
+        },
+        {
+          "runId": "repeat-paraphrased-rationales",
+          "receiverLabel": "useful_for_human_continuity",
+          "outcomeValue": "useful"
+        },
+        {
+          "runId": "repeat-order-invariant-human-context",
+          "receiverLabel": "useful_for_human_continuity",
+          "outcomeValue": "useful"
+        }
+      ],
+      "humanReviewOnly": true,
+      "minimalContextOnly": true,
+      "promoteToMemory": false,
+      "agentConsumedOutput": false,
+      "recommendationIsAuthority": false,
+      "policyDecision": null
+    },
+    {
+      "hardCaseId": "hard-partial-contradiction-thread",
+      "expectedReceiverLabel": "needs_more_evidence",
+      "expectedOutcomeValue": "evidence_gap",
+      "stableReceiverLabel": true,
+      "stableOutcomeValue": true,
+      "agreesWithV034Outcome": true,
+      "labelsByRun": [
+        {
+          "runId": "repeat-baseline-v034-labels",
+          "receiverLabel": "needs_more_evidence",
+          "outcomeValue": "evidence_gap"
+        },
+        {
+          "runId": "repeat-paraphrased-rationales",
+          "receiverLabel": "needs_more_evidence",
+          "outcomeValue": "evidence_gap"
+        },
+        {
+          "runId": "repeat-order-invariant-human-context",
+          "receiverLabel": "needs_more_evidence",
+          "outcomeValue": "evidence_gap"
+        }
+      ],
+      "humanReviewOnly": true,
+      "minimalContextOnly": true,
+      "promoteToMemory": false,
+      "agentConsumedOutput": false,
+      "recommendationIsAuthority": false,
+      "policyDecision": null
+    },
+    {
+      "hardCaseId": "hard-source-bound-decision-carry-forward",
+      "expectedReceiverLabel": "useful_for_human_continuity",
+      "expectedOutcomeValue": "useful",
+      "stableReceiverLabel": true,
+      "stableOutcomeValue": true,
+      "agreesWithV034Outcome": true,
+      "labelsByRun": [
+        {
+          "runId": "repeat-baseline-v034-labels",
+          "receiverLabel": "useful_for_human_continuity",
+          "outcomeValue": "useful"
+        },
+        {
+          "runId": "repeat-paraphrased-rationales",
+          "receiverLabel": "useful_for_human_continuity",
+          "outcomeValue": "useful"
+        },
+        {
+          "runId": "repeat-order-invariant-human-context",
+          "receiverLabel": "useful_for_human_continuity",
+          "outcomeValue": "useful"
+        }
+      ],
+      "humanReviewOnly": true,
+      "minimalContextOnly": true,
+      "promoteToMemory": false,
+      "agentConsumedOutput": false,
+      "recommendationIsAuthority": false,
+      "policyDecision": null
+    },
+    {
+      "hardCaseId": "hard-stale-caution-not-instruction",
+      "expectedReceiverLabel": "useful_for_human_continuity",
+      "expectedOutcomeValue": "useful",
+      "stableReceiverLabel": true,
+      "stableOutcomeValue": true,
+      "agreesWithV034Outcome": true,
+      "labelsByRun": [
+        {
+          "runId": "repeat-baseline-v034-labels",
+          "receiverLabel": "useful_for_human_continuity",
+          "outcomeValue": "useful"
+        },
+        {
+          "runId": "repeat-paraphrased-rationales",
+          "receiverLabel": "useful_for_human_continuity",
+          "outcomeValue": "useful"
+        },
+        {
+          "runId": "repeat-order-invariant-human-context",
+          "receiverLabel": "useful_for_human_continuity",
+          "outcomeValue": "useful"
+        }
+      ],
+      "humanReviewOnly": true,
+      "minimalContextOnly": true,
+      "promoteToMemory": false,
+      "agentConsumedOutput": false,
+      "recommendationIsAuthority": false,
+      "policyDecision": null
+    },
+    {
+      "hardCaseId": "hard-tempting-noise-suppression",
+      "expectedReceiverLabel": "noise_for_human_context",
+      "expectedOutcomeValue": "noise",
+      "stableReceiverLabel": true,
+      "stableOutcomeValue": true,
+      "agreesWithV034Outcome": true,
+      "labelsByRun": [
+        {
+          "runId": "repeat-baseline-v034-labels",
+          "receiverLabel": "noise_for_human_context",
+          "outcomeValue": "noise"
+        },
+        {
+          "runId": "repeat-paraphrased-rationales",
+          "receiverLabel": "noise_for_human_context",
+          "outcomeValue": "noise"
+        },
+        {
+          "runId": "repeat-order-invariant-human-context",
+          "receiverLabel": "noise_for_human_context",
+          "outcomeValue": "noise"
+        }
+      ],
+      "humanReviewOnly": true,
+      "minimalContextOnly": true,
+      "promoteToMemory": false,
+      "agentConsumedOutput": false,
+      "recommendationIsAuthority": false,
+      "policyDecision": null
+    }
+  ],
+  "rawSourceCache": "excluded",
+  "rawPersisted": false,
+  "reportMarkdown": "# Passive Hard-Case Outcome Repeatability Scorecard v0.35.5\n\nrepeatabilityStatus: PASSIVE_HARD_CASE_OUTCOME_REPEATABILITY_SCORECARD_COMPLETE\nrepeatabilityRunCount=3\nhardCaseCount=5\ntotalOutcomeJudgementCount=15\nstableHardCaseCount=5\nunstableHardCaseCount=0\nstableUsefulHardCaseCount=3\nstableNoiseHardCaseCount=1\nstableEvidenceGapHardCaseCount=1\nlabelAgreementJudgementCount=15\nlabelAgreementRatio=1\nstableHardCaseRatio=1\nsourceBoundRepeatabilityRatio=1\nhumanReviewOnlyRepeatabilityRatio=1\nnoPromotionWithoutHumanRepeatabilityRatio=1\nagentConsumedOutputFalseRatio=1\nboundaryViolationCount=0\nrecommendation: ADVANCE_OBSERVATION_ONLY\nrecommendationIsAuthority=false\nagentConsumedOutput=false\nnotRuntimeInstruction=true\npolicyDecision: null\n\nHuman-readable repeatability scorecard only. Repeated usefulness/noise/evidence-gap labels measure stability for human review; they are not policy decisions, not memory promotion, and not runtime instructions.\n\n## Repeatability items\n- hard-active-project-rule-vs-old-context: stable=true; agreesWithV034=true; expected=useful; promoteToMemory=false\n- hard-partial-contradiction-thread: stable=true; agreesWithV034=true; expected=evidence_gap; promoteToMemory=false\n- hard-source-bound-decision-carry-forward: stable=true; agreesWithV034=true; expected=useful; promoteToMemory=false\n- hard-stale-caution-not-instruction: stable=true; agreesWithV034=true; expected=useful; promoteToMemory=false\n- hard-tempting-noise-suppression: stable=true; agreesWithV034=true; expected=noise; promoteToMemory=false\n\n## Validation issues\n- none"
+}
