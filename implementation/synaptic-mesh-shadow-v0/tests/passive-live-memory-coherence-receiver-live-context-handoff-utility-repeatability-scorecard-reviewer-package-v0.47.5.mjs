@@ -1,0 +1,14 @@
+import assert from 'node:assert/strict';
+import { mkdirSync, writeFileSync } from 'node:fs';
+import { scorePassiveLiveMemoryCoherenceReceiverLiveContextHandoffUtilityRepeatability, validatePassiveLiveMemoryCoherenceReceiverLiveContextHandoffUtilityRepeatabilityArtifact } from '../src/passive-live-memory-coherence-receiver-live-context-handoff-utility-repeatability-scorecard.mjs';
+import { receiverLiveContextHandoffUtilityRepeatabilityInputV047 } from './passive-live-memory-coherence-receiver-live-context-handoff-utility-repeatability-scorecard-fixtures.mjs';
+const artifact = scorePassiveLiveMemoryCoherenceReceiverLiveContextHandoffUtilityRepeatability(receiverLiveContextHandoffUtilityRepeatabilityInputV047());
+assert.deepEqual(validatePassiveLiveMemoryCoherenceReceiverLiveContextHandoffUtilityRepeatabilityArtifact(artifact), []);
+mkdirSync('evidence', { recursive: true });
+writeFileSync('evidence/passive-live-memory-coherence-receiver-live-context-handoff-utility-repeatability-scorecard-reviewer-package-v0.47.5.out.json', `${JSON.stringify(artifact, null, 2)}\n`);
+writeFileSync('evidence/passive-live-memory-coherence-receiver-live-context-handoff-utility-repeatability-scorecard-report-v0.47.5.out.md', `${artifact.reportMarkdown}\n`);
+assert.equal(Object.hasOwn(artifact.protocol, 'policyDecision'), false);
+assert.equal(Object.hasOwn(artifact.metrics, 'policyDecision'), false);
+assert(artifact.repeatabilityRuns.every((run) => Object.hasOwn(run, 'policyDecision') === false));
+assert(artifact.repeatabilityRuns.every((run) => run.judgements.every((judgement) => Object.hasOwn(judgement, 'policyDecision') === false)));
+console.log(JSON.stringify({ repeatabilityStatus: artifact.repeatabilityStatus, stableHandoffItemCount: artifact.metrics.stableHandoffItemCount }, null, 2));

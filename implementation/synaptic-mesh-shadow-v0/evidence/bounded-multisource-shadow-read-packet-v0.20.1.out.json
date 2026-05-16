@@ -97,7 +97,7 @@
       "kind": "explicit_repo_local_file_via_adapter",
       "repoRelativePathSha256": "b335630551682c19a781afebcf4d07bf978fb1f8ac04c6bf87428ed5106870f5",
       "absolutePathSha256": "543c81f89743c5b0f48fa0200abe84d28dd1fdb1b6687cf610469e9e998e93e0",
-      "sourceSize": 6516,
+      "sourceSize": 9535,
       "sourceMtimeMs": null,
       "rawSourcePathPersisted": false,
       "recordsRead": 4,
@@ -109,7 +109,7 @@
       "kind": "explicit_repo_local_file_via_adapter",
       "repoRelativePathSha256": "68d24fa81558aae3d8c59e2aa57a4fa719ea3b04d7fa14beff45f16f00858f50",
       "absolutePathSha256": "4da003b5022cb2aeb34f2b51f5b6f9fe35d01a94f2607ea78b58e405df985f0b",
-      "sourceSize": 6606,
+      "sourceSize": 9524,
       "sourceMtimeMs": null,
       "rawSourcePathPersisted": false,
       "recordsRead": 4,
@@ -151,10 +151,10 @@
     {
       "sourceIndex": 0,
       "index": 0,
-      "rawSha256": "b46ca645d61958f30676c0bc6bef1693e8122ff2001a43e67616f26d0ef3740c",
+      "rawSha256": "77bbd9fb67165d6b34bcfee464ca9bdf02552fad8e8ff15c9af69738c8528b6a",
       "rawBytes": 23,
-      "redactedSha256": "b46ca645d61958f30676c0bc6bef1693e8122ff2001a43e67616f26d0ef3740c",
-      "redactedText": "# Synaptic Mesh v0.46.5",
+      "redactedSha256": "77bbd9fb67165d6b34bcfee464ca9bdf02552fad8e8ff15c9af69738c8528b6a",
+      "redactedText": "# Synaptic Mesh v0.47.5",
       "privatePatternDetected": false,
       "decisionVerbDetected": false,
       "semanticDecisionTokenPersisted": false
@@ -162,10 +162,10 @@
     {
       "sourceIndex": 0,
       "index": 1,
-      "rawSha256": "09a9e5d199ccd92fc8ad710768a6a5c6b57dc6330bdf8cb2ec4866af43ac6555",
-      "rawBytes": 217,
-      "redactedSha256": "09a9e5d199ccd92fc8ad710768a6a5c6b57dc6330bdf8cb2ec4866af43ac6555",
-      "redactedText": "This is the public review release `v0.46.5`. Current v0.46.5 status is narrower than live runtime and crosses the next safe barrier after v0.45: **passive live memory/coherence receiver live-context handoff utility**.",
+      "rawSha256": "2b7dc69326b6589cf94799396693e055a3a970ebf6c047e18026efba19fd021e",
+      "rawBytes": 241,
+      "redactedSha256": "2b7dc69326b6589cf94799396693e055a3a970ebf6c047e18026efba19fd021e",
+      "redactedText": "This is the public review release `v0.47.5`. Current v0.47.5 status is narrower than live runtime and crosses the next safe barrier after v0.46: **passive live memory/coherence receiver live-context handoff utility repeatability scorecard**",
       "privatePatternDetected": false,
       "decisionVerbDetected": false,
       "semanticDecisionTokenPersisted": false
@@ -173,10 +173,10 @@
     {
       "sourceIndex": 0,
       "index": 2,
-      "rawSha256": "3b0bb715112955e90090ea783993ba86abbadf49f741d67ec702568141187b7e",
-      "rawBytes": 337,
-      "redactedSha256": "3b0bb715112955e90090ea783993ba86abbadf49f741d67ec702568141187b7e",
-      "redactedText": "The v0.46 ladder is disabled-by-default, operator-run one-shot, local-only, passive/read-only, bounded to the pinned completed v0.45.5 receiver usefulness live observation repeatability artifact, pre-read path pinned, stable-signals-only, r",
+      "rawSha256": "bf6eb0422ce9c88bd8135b6a7cde605b2fd997952e6d17264eef208f4d5e533b",
+      "rawBytes": 303,
+      "redactedSha256": "bf6eb0422ce9c88bd8135b6a7cde605b2fd997952e6d17264eef208f4d5e533b",
+      "redactedText": "The v0.47 ladder is disabled-by-default, operator-run one-shot, local-only, passive/read-only, bounded to the pinned completed v0.46.5 receiver live-context handoff utility artifact, pre-read path pinned, redacted-before-persist, human-read",
       "privatePatternDetected": false,
       "decisionVerbDetected": false,
       "semanticDecisionTokenPersisted": false
@@ -184,10 +184,10 @@
     {
       "sourceIndex": 0,
       "index": 3,
-      "rawSha256": "3e0780192a9d0ae319ef56dccb13185155884efcc8088f7d5b7a910e77862090",
-      "rawBytes": 1121,
-      "redactedSha256": "3e0780192a9d0ae319ef56dccb13185155884efcc8088f7d5b7a910e77862090",
-      "redactedText": "Pinned v0.46.5 evidence: `handoffUtilityStatus: PASSIVE_LIVE_MEMORY_COHERENCE_RECEIVER_LIVE_CONTEXT_HANDOFF_UTILITY_COMPLETE`, `sourceRepeatabilityRunCount: 3`, `sourceStableObservationCount: 5`, `sourceUnstableObservationCount: 0`, `handof",
+      "rawSha256": "d0f990cdbd55bdcfc42bce3a7db6de10fd6afd1cdacded3921556ee5dafe9b48",
+      "rawBytes": 956,
+      "redactedSha256": "d0f990cdbd55bdcfc42bce3a7db6de10fd6afd1cdacded3921556ee5dafe9b48",
+      "redactedText": "Pinned v0.47.5 evidence: `repeatabilityStatus: PASSIVE_LIVE_MEMORY_COHERENCE_RECEIVER_LIVE_CONTEXT_HANDOFF_UTILITY_REPEATABILITY_SCORECARD_COMPLETE`, `repeatabilityRunCount: 3`, `sourceHandoffWindowCount: 1`, `handoffItemCount: 5`, `totalHa",
       "privatePatternDetected": false,
       "decisionVerbDetected": false,
       "semanticDecisionTokenPersisted": false
@@ -195,10 +195,10 @@
     {
       "sourceIndex": 1,
       "index": 0,
-      "rawSha256": "418d5300eba3bda66517715374f059eb910c54825b4327391156bdef3cf8306d",
+      "rawSha256": "daebbb207408ad7014d40c0b009e15d68e3708519f5fca7fb342f7b80385c71a",
       "rawBytes": 41,
-      "redactedSha256": "418d5300eba3bda66517715374f059eb910c54825b4327391156bdef3cf8306d",
-      "redactedText": "# Release Notes — Synaptic Mesh v0.46.5",
+      "redactedSha256": "daebbb207408ad7014d40c0b009e15d68e3708519f5fca7fb342f7b80385c71a",
+      "redactedText": "# Release Notes — Synaptic Mesh v0.47.5",
       "privatePatternDetected": false,
       "decisionVerbDetected": false,
       "semanticDecisionTokenPersisted": false
@@ -217,10 +217,10 @@
     {
       "sourceIndex": 1,
       "index": 2,
-      "rawSha256": "e1ed4d8daf6b3b494e736c9b8e073e65621f9b4ee5ba9cca3f54b74426c2c41c",
-      "rawBytes": 376,
-      "redactedSha256": "e1ed4d8daf6b3b494e736c9b8e073e65621f9b4ee5ba9cca3f54b74426c2c41c",
-      "redactedText": "`v0.46.5` adds a **passive live memory/coherence receiver live-context handoff utility** gate over the completed pinned v0.45.5 live-observation repeatability scorecard. It assembles only stable observations into a bounded human live-contex",
+      "rawSha256": "f79090478ae5f504a6f84176c587dc3b38f2336cf4ea08f4cbb158034bf0d7e7",
+      "rawBytes": 366,
+      "redactedSha256": "f79090478ae5f504a6f84176c587dc3b38f2336cf4ea08f4cbb158034bf0d7e7",
+      "redactedText": "`v0.47.5` adds a **passive live memory/coherence receiver live-context handoff utility repeatability scorecard** over the completed pinned v0.46.5 handoff utility artifact. It repeats the v0.46 handoffItems / handoffUtilityJudgements under ",
       "privatePatternDetected": false,
       "decisionVerbDetected": false,
       "semanticDecisionTokenPersisted": false
@@ -259,5 +259,5 @@
       "semanticDecisionTokenPersisted": false
     }
   ],
-  "reportMarkdown": "# Bounded Explicit Multisource Shadow-Read Report v0.20.5\n\n- Barrier crossed: bounded explicit multisource shadow-read\n- Adapter: repo-local-file-read-adapter-v0\n- Operator-run: true; one-shot: true; local-only/read-only/passive-only: true\n- Sources: 3 / max 3\n- Records read: 10 / total limit 10; per-source limit 4\n- Per-source isolation: true; failure isolation: true; isolated failures: 0\n- Redacted evidence only: true; rawPersisted: false; rawOutput: false\n- policyDecision: null; agentConsumedOutput: false; unexpectedPermits: 0\n- Enforcement/authorization/approval/block/allow: false\n\n## Source statuses\n- source #0: ok; records=4; rawSourcePathPersisted=false\n- source #1: ok; records=4; rawSourcePathPersisted=false\n- source #2: ok; records=2; rawSourcePathPersisted=false\n\n## Redacted evidence preview\n- source #0 record #0: # Synaptic Mesh v0.46.5\n- source #0 record #1: This is the public review release `v0.46.5`. Current v0.46.5 status is narrower than live runtime and crosses the next safe barrier after v0.45: **passive live memory/coherence receiver live-context handoff utility**.\n- source #0 record #2: The v0.46 ladder is disabled-by-default, operator-run one-shot, local-only, passive/read-only, bounded to the pinned completed v0.45.5 receiver usefulness live observation repeatability artifact, pre-read path pinned, stable-signals-only, r\n- source #0 record #3: Pinned v0.46.5 evidence: `handoffUtilityStatus: PASSIVE_LIVE_MEMORY_COHERENCE_RECEIVER_LIVE_CONTEXT_HANDOFF_UTILITY_COMPLETE`, `sourceRepeatabilityRunCount: 3`, `sourceStableObservationCount: 5`, `sourceUnstableObservationCount: 0`, `handof\n- source #1 record #0: # Release Notes — Synaptic Mesh v0.46.5\n- source #1 record #1: ## Summary\n- source #1 record #2: `v0.46.5` adds a **passive live memory/coherence receiver live-context handoff utility** gate over the completed pinned v0.45.5 live-observation repeatability scorecard. It assembles only stable observations into a bounded human live-contex\n- source #1 record #3: ## Evidence\n- source #2 record #0: # Release Candidate — Synaptic Mesh v0.39.5\n- source #2 record #1: Target: `v0.39.5`\n"
+  "reportMarkdown": "# Bounded Explicit Multisource Shadow-Read Report v0.20.5\n\n- Barrier crossed: bounded explicit multisource shadow-read\n- Adapter: repo-local-file-read-adapter-v0\n- Operator-run: true; one-shot: true; local-only/read-only/passive-only: true\n- Sources: 3 / max 3\n- Records read: 10 / total limit 10; per-source limit 4\n- Per-source isolation: true; failure isolation: true; isolated failures: 0\n- Redacted evidence only: true; rawPersisted: false; rawOutput: false\n- policyDecision: null; agentConsumedOutput: false; unexpectedPermits: 0\n- Enforcement/authorization/approval/block/allow: false\n\n## Source statuses\n- source #0: ok; records=4; rawSourcePathPersisted=false\n- source #1: ok; records=4; rawSourcePathPersisted=false\n- source #2: ok; records=2; rawSourcePathPersisted=false\n\n## Redacted evidence preview\n- source #0 record #0: # Synaptic Mesh v0.47.5\n- source #0 record #1: This is the public review release `v0.47.5`. Current v0.47.5 status is narrower than live runtime and crosses the next safe barrier after v0.46: **passive live memory/coherence receiver live-context handoff utility repeatability scorecard**\n- source #0 record #2: The v0.47 ladder is disabled-by-default, operator-run one-shot, local-only, passive/read-only, bounded to the pinned completed v0.46.5 receiver live-context handoff utility artifact, pre-read path pinned, redacted-before-persist, human-read\n- source #0 record #3: Pinned v0.47.5 evidence: `repeatabilityStatus: PASSIVE_LIVE_MEMORY_COHERENCE_RECEIVER_LIVE_CONTEXT_HANDOFF_UTILITY_REPEATABILITY_SCORECARD_COMPLETE`, `repeatabilityRunCount: 3`, `sourceHandoffWindowCount: 1`, `handoffItemCount: 5`, `totalHa\n- source #1 record #0: # Release Notes — Synaptic Mesh v0.47.5\n- source #1 record #1: ## Summary\n- source #1 record #2: `v0.47.5` adds a **passive live memory/coherence receiver live-context handoff utility repeatability scorecard** over the completed pinned v0.46.5 handoff utility artifact. It repeats the v0.46 handoffItems / handoffUtilityJudgements under\n- source #1 record #3: ## Evidence\n- source #2 record #0: # Release Candidate — Synaptic Mesh v0.39.5\n- source #2 record #1: Target: `v0.39.5`\n"
 }
