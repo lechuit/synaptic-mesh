@@ -1,11 +1,11 @@
 {
   "bundle": "synaptic-mesh",
-  "version": "0.50.5",
-  "generated": "2026-05-16T13:20:00Z",
-  "status": "v0.50.5_passive_live_memory_coherence_receiver_runtime_test_harness_consumption_rehearsal_local_reversible_harness_consumption_no_effects_no_runtime_integration_no_memory_writes",
+  "version": "0.51.5",
+  "generated": "2026-05-16T15:17:00Z",
+  "status": "v0.51.5_passive_live_memory_coherence_receiver_runtime_invocation_shim_rehearsal_local_reversible_shim_invocation_no_effects_no_runtime_integration_no_memory_writes",
   "repository": "https://github.com/lechuit/synaptic-mesh",
   "license": "Apache-2.0 for code; CC BY 4.0 for docs/prose unless otherwise noted",
-  "reproducibility": "v0.50.5 local_receiver_runtime_test_harness_consumption_rehearsal PASSIVE_LIVE_MEMORY_COHERENCE_RECEIVER_RUNTIME_TEST_HARNESS_CONSUMPTION_REHEARSAL_COMPLETE sourceReceiverBlockCountConsumedAsLocalTestInput_4 harnessParseSuccessCount_4 consumedContextBlockCount_4 effectsBlockedCount_10 sourceBoundConsumedBlockRatio_1 boundaryViolationCount_0 local_test_harness_rehearsal_only no_tool_execution no_network_fetch no_memory_writes no_config_writes no_runtime_integration",
+  "reproducibility": "v0.51.5 local_reversible_receiver_runtime_invocation_shim_rehearsal PASSIVE_LIVE_MEMORY_COHERENCE_RECEIVER_RUNTIME_INVOCATION_SHIM_REHEARSAL_COMPLETE localShimInvocationCount_4 shimOutputCount_4 contextHandoffResultCount_1 invokedConsumedBlockCount_4 effectsBlockedCount_10 sourceBoundInvocationRatio_1 boundaryViolationCount_0 local_receiver_runtime_invocation_shim_rehearsal_only no_tool_execution no_network_fetch no_memory_writes no_config_writes no_runtime_integration",
   "rawSourceCache": "excluded",
-  "runtimeBoundary": "v0.50.5 local_receiver_runtime_test_harness_consumption_rehearsal receiver_blocks_as_test_input_only no_network no_tool_execution no_config_writes no_memory_writes no_authorization_enforcement no_allow_block_decisions no_production_runtime_integration rollback_no_persist"
+  "runtimeBoundary": "v0.51.5 local_reversible_receiver_runtime_invocation_shim_rehearsal deterministic_local_receiver_runtime_invocation_shim no_effect_context_handoff_result no_network no_tool_execution no_config_writes no_memory_writes no_authorization_enforcement no_allow_block_decisions no_production_runtime_integration rollback_no_persist"
 }

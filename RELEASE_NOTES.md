@@ -1,3 +1,13 @@
+# Release Notes — Synaptic Mesh v0.51.5
+
+v0.51.5 adds a local reversible receiver runtime invocation shim rehearsal on top of published v0.50.5. It pins the v0.50.5 reviewer package and report by exact path and SHA-256 before read, rejects absolute/traversal paths, and invokes a deterministic local receiver shim function over the harness-consumed blocks only.
+
+Pinned evidence: `PASSIVE_LIVE_MEMORY_COHERENCE_RECEIVER_RUNTIME_INVOCATION_SHIM_REHEARSAL_COMPLETE`, `localShimInvocationCount: 4`, `shimOutputCount: 4`, `contextHandoffResultCount: 1`, `invokedConsumedBlockCount: 4`, `effectsBlockedCount: 10`, `sourceBoundInvocationRatio: 1`, `agentConsumedOutputFalseRatio: 1`, `boundaryViolationCount: 0`, `operatorApprovalScope: local_receiver_runtime_invocation_shim_rehearsal_only`.
+
+Boundary: local-only, reversible, read-only, non-authoritative, no-effect context handoff result for human review only, no production runtime integration, no daemon, no SDK/framework adapter, no MCP/A2A client/server, no network/resource fetch, no tool execution, no memory/config writes, no external effects, no authorization/enforcement semantics, no allow/block decisions, and no automatic agent consumption. The operator preflight record is scoped only to this local shim rehearsal and is not runtime approval or general permission.
+
+Recommended next barrier: bounded no-effect receiver runtime shim adapter fixture suite after local invocation rehearsal.
+
 # Release Notes — Synaptic Mesh v0.50.5
 
 v0.50.5 adds a local, reversible receiver/runtime test harness consumption rehearsal on top of published v0.49.5. It pins the v0.49.5 reviewer package and report by exact path and SHA-256 before read, rejects absolute/traversal paths, and consumes the receiver-facing blocks as deterministic local test input only.

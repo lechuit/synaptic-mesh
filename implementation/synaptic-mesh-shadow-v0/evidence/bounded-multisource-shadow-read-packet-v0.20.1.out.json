@@ -97,7 +97,7 @@
       "kind": "explicit_repo_local_file_via_adapter",
       "repoRelativePathSha256": "b335630551682c19a781afebcf4d07bf978fb1f8ac04c6bf87428ed5106870f5",
       "absolutePathSha256": "543c81f89743c5b0f48fa0200abe84d28dd1fdb1b6687cf610469e9e998e93e0",
-      "sourceSize": 16572,
+      "sourceSize": 18526,
       "sourceMtimeMs": null,
       "rawSourcePathPersisted": false,
       "recordsRead": 4,
@@ -109,7 +109,7 @@
       "kind": "explicit_repo_local_file_via_adapter",
       "repoRelativePathSha256": "68d24fa81558aae3d8c59e2aa57a4fa719ea3b04d7fa14beff45f16f00858f50",
       "absolutePathSha256": "4da003b5022cb2aeb34f2b51f5b6f9fe35d01a94f2607ea78b58e405df985f0b",
-      "sourceSize": 13632,
+      "sourceSize": 15083,
       "sourceMtimeMs": null,
       "rawSourcePathPersisted": false,
       "recordsRead": 4,
@@ -151,10 +151,10 @@
     {
       "sourceIndex": 0,
       "index": 0,
-      "rawSha256": "e9a3f06387f3a383ca9ad6d3538408a25cc3ac84a85e58006b8d04c58739f901",
+      "rawSha256": "7126b0e5ff2013201cd19866a8aebdb02bafb77bfea166aa53c5d8c16d25a369",
       "rawBytes": 23,
-      "redactedSha256": "e9a3f06387f3a383ca9ad6d3538408a25cc3ac84a85e58006b8d04c58739f901",
-      "redactedText": "# Synaptic Mesh v0.50.5",
+      "redactedSha256": "7126b0e5ff2013201cd19866a8aebdb02bafb77bfea166aa53c5d8c16d25a369",
+      "redactedText": "# Synaptic Mesh v0.51.5",
       "privatePatternDetected": false,
       "decisionVerbDetected": false,
       "semanticDecisionTokenPersisted": false
@@ -162,10 +162,10 @@
     {
       "sourceIndex": 0,
       "index": 1,
-      "rawSha256": "2c976871f13b37ed9959e3cf68b5cad4b3626c67b9e5a9363d2fda9bd5fd8386",
-      "rawBytes": 219,
-      "redactedSha256": "2c976871f13b37ed9959e3cf68b5cad4b3626c67b9e5a9363d2fda9bd5fd8386",
-      "redactedText": "This is the public review release `v0.50.5`. Current v0.50.5 status is narrower than production live runtime, but crosses the next safe barrier after v0.49: **local receiver/runtime test harness consumption rehearsal**.",
+      "rawSha256": "0e4d3fc60345b14bb91d77f98527b8d27a80a4a5b00a178c6d148d7fac9f0764",
+      "rawBytes": 221,
+      "redactedSha256": "0e4d3fc60345b14bb91d77f98527b8d27a80a4a5b00a178c6d148d7fac9f0764",
+      "redactedText": "This is the public review release `v0.51.5`. Current v0.51.5 status is narrower than production live runtime, but crosses the next safe barrier after v0.50: **local reversible receiver runtime invocation shim rehearsal**.",
       "privatePatternDetected": false,
       "decisionVerbDetected": false,
       "semanticDecisionTokenPersisted": false
@@ -173,10 +173,10 @@
     {
       "sourceIndex": 0,
       "index": 2,
-      "rawSha256": "49206dd7c2088afaac5730c813b2092f9291e9119a28db7828ddd1f412cfdced",
-      "rawBytes": 308,
-      "redactedSha256": "49206dd7c2088afaac5730c813b2092f9291e9119a28db7828ddd1f412cfdced",
-      "redactedText": "The v0.50 ladder is opt-in, operator-run one-shot, local-only, rehearsal/read-only, bounded to the pinned completed v0.49.5 runtime-context injection rehearsal artifact and report, pre-read path pinned, redacted-before-persist, non-authorit",
+      "rawSha256": "aa8cf6fb11592ba428e73c9a9b7c8d0075d24536f7aba496810e70e4558fa6d3",
+      "rawBytes": 324,
+      "redactedSha256": "aa8cf6fb11592ba428e73c9a9b7c8d0075d24536f7aba496810e70e4558fa6d3",
+      "redactedText": "The v0.51 ladder is opt-in, operator-run one-shot, local-only, rehearsal/read-only, bounded to the pinned completed v0.50.5 receiver/runtime test harness consumption rehearsal artifact and report, pre-read path pinned, redacted-before-persi",
       "privatePatternDetected": false,
       "decisionVerbDetected": false,
       "semanticDecisionTokenPersisted": false
@@ -184,10 +184,10 @@
     {
       "sourceIndex": 0,
       "index": 3,
-      "rawSha256": "9de50f6c9f2c5c1e3429d35e64c4409c1bbd219191047fb8362bb8963072b829",
-      "rawBytes": 600,
-      "redactedSha256": "9de50f6c9f2c5c1e3429d35e64c4409c1bbd219191047fb8362bb8963072b829",
-      "redactedText": "Pinned v0.50.5 evidence: `rehearsalStatus: PASSIVE_LIVE_MEMORY_COHERENCE_RECEIVER_RUNTIME_TEST_HARNESS_CONSUMPTION_REHEARSAL_COMPLETE`, `sourceReceiverBlockCountConsumedAsLocalTestInput: 4`, `harnessParseSuccessCount: 4`, `consumedContextBl",
+      "rawSha256": "c0fba955c6a7ace4cef9e865ef6e077801e2eb2b399a6bab64886301a243e8ca",
+      "rawBytes": 576,
+      "redactedSha256": "c0fba955c6a7ace4cef9e865ef6e077801e2eb2b399a6bab64886301a243e8ca",
+      "redactedText": "Pinned v0.51.5 evidence: `rehearsalStatus: PASSIVE_LIVE_MEMORY_COHERENCE_RECEIVER_RUNTIME_INVOCATION_SHIM_REHEARSAL_COMPLETE`, `localShimInvocationCount: 4`, `shimOutputCount: 4`, `contextHandoffResultCount: 1`, `invokedConsumedBlockCount: ",
       "privatePatternDetected": false,
       "decisionVerbDetected": false,
       "semanticDecisionTokenPersisted": false
@@ -195,10 +195,10 @@
     {
       "sourceIndex": 1,
       "index": 0,
-      "rawSha256": "e6d2f6240281e499a101cabb0f7fa13070c1a8a279bbd9cdd9420235964f7444",
+      "rawSha256": "bf8785949a0ec83a1304507cacee3efd6264e9cc7029b66a29c44db455633a78",
       "rawBytes": 41,
-      "redactedSha256": "e6d2f6240281e499a101cabb0f7fa13070c1a8a279bbd9cdd9420235964f7444",
-      "redactedText": "# Release Notes — Synaptic Mesh v0.50.5",
+      "redactedSha256": "bf8785949a0ec83a1304507cacee3efd6264e9cc7029b66a29c44db455633a78",
+      "redactedText": "# Release Notes — Synaptic Mesh v0.51.5",
       "privatePatternDetected": false,
       "decisionVerbDetected": false,
       "semanticDecisionTokenPersisted": false
@@ -206,10 +206,10 @@
     {
       "sourceIndex": 1,
       "index": 1,
-      "rawSha256": "39363739ab134fa7636db448cf79bb73a828c266369b72744b2a7195134d5390",
-      "rawBytes": 314,
-      "redactedSha256": "08bb992db3244f571eff7ba31efb4b82132eb01cb4398f8bf0b27421bd99a396",
-      "redactedText": "v0.50.5 adds a local, reversible receiver/runtime test harness consumption rehearsal on top of published v0.49.5. It pins the v0.49.5 reviewer package and report by exact path and SHA-256 before read, rejects absolute/traversal paths, and c",
+      "rawSha256": "3ae25baab955318a7240c0fdb3a3b72e553baa663404f299cb9825e6ece21036",
+      "rawBytes": 320,
+      "redactedSha256": "dfff468573c19078836904c664c18c6db6ed64572a8ebb5f82b76e9a8c7f2afd",
+      "redactedText": "v0.51.5 adds a local reversible receiver runtime invocation shim rehearsal on top of published v0.50.5. It pins the v0.50.5 reviewer package and report by exact path and SHA-256 before read, rejects absolute/traversal paths, and invokes a d",
       "privatePatternDetected": false,
       "decisionVerbDetected": true,
       "semanticDecisionTokenPersisted": false
@@ -217,10 +217,10 @@
     {
       "sourceIndex": 1,
       "index": 2,
-      "rawSha256": "fa2d9b60efcd919d9576af6ca5e650c1027fe51d0d90cae3545f24b430aada59",
-      "rawBytes": 464,
-      "redactedSha256": "fa2d9b60efcd919d9576af6ca5e650c1027fe51d0d90cae3545f24b430aada59",
-      "redactedText": "Pinned evidence: `rehearsalStatus: PASSIVE_LIVE_MEMORY_COHERENCE_RECEIVER_RUNTIME_TEST_HARNESS_CONSUMPTION_REHEARSAL_COMPLETE`, `sourceReceiverBlockCountConsumedAsLocalTestInput: 4`, `harnessParseSuccessCount: 4`, `consumedContextBlockCount",
+      "rawSha256": "a4dd7a83bf972702fc4927a29497f3cf0744da086c0b0cb19995ce5e84d44d9c",
+      "rawBytes": 423,
+      "redactedSha256": "a4dd7a83bf972702fc4927a29497f3cf0744da086c0b0cb19995ce5e84d44d9c",
+      "redactedText": "Pinned evidence: `PASSIVE_LIVE_MEMORY_COHERENCE_RECEIVER_RUNTIME_INVOCATION_SHIM_REHEARSAL_COMPLETE`, `localShimInvocationCount: 4`, `shimOutputCount: 4`, `contextHandoffResultCount: 1`, `invokedConsumedBlockCount: 4`, `effectsBlockedCount:",
       "privatePatternDetected": false,
       "decisionVerbDetected": false,
       "semanticDecisionTokenPersisted": false
@@ -228,10 +228,10 @@
     {
       "sourceIndex": 1,
       "index": 3,
-      "rawSha256": "8ddae6c0ff2b79b76ed47d261a1c362cedcf2501b8778ba94bd8451ff3b3db8e",
-      "rawBytes": 488,
-      "redactedSha256": "f4e97cd948cd31d14983c5395c2c655ab7a3009460769ec307a8473eff317c72",
-      "redactedText": "Boundary: local-only, reversible, read-only, non-authoritative, no production runtime integration, no daemon, no SDK/framework adapter, no MCP/A2A client/server, no network/resource fetch, no tool execution, no memory/config writes, no exte",
+      "rawSha256": "3fa0768c124a604bbee2fdbc985d3e54f32d97273c33a5430c486b8d35005849",
+      "rawBytes": 536,
+      "redactedSha256": "348655cd8fa47fd54b63a32e354eccfe12071903e39fafa5811b0b08e52ad54d",
+      "redactedText": "Boundary: local-only, reversible, read-only, non-authoritative, no-effect context handoff result for human review only, no production runtime integration, no daemon, no SDK/framework adapter, no MCP/A2A client/server, no network/resource fe",
       "privatePatternDetected": false,
       "decisionVerbDetected": true,
       "semanticDecisionTokenPersisted": false
@@ -259,5 +259,5 @@
       "semanticDecisionTokenPersisted": false
     }
   ],
-  "reportMarkdown": "# Bounded Explicit Multisource Shadow-Read Report v0.20.5\n\n- Barrier crossed: bounded explicit multisource shadow-read\n- Adapter: repo-local-file-read-adapter-v0\n- Operator-run: true; one-shot: true; local-only/read-only/passive-only: true\n- Sources: 3 / max 3\n- Records read: 10 / total limit 10; per-source limit 4\n- Per-source isolation: true; failure isolation: true; isolated failures: 0\n- Redacted evidence only: true; rawPersisted: false; rawOutput: false\n- policyDecision: null; agentConsumedOutput: false; unexpectedPermits: 0\n- Enforcement/authorization/approval/block/allow: false\n\n## Source statuses\n- source #0: ok; records=4; rawSourcePathPersisted=false\n- source #1: ok; records=4; rawSourcePathPersisted=false\n- source #2: ok; records=2; rawSourcePathPersisted=false\n\n## Redacted evidence preview\n- source #0 record #0: # Synaptic Mesh v0.50.5\n- source #0 record #1: This is the public review release `v0.50.5`. Current v0.50.5 status is narrower than production live runtime, but crosses the next safe barrier after v0.49: **local receiver/runtime test harness consumption rehearsal**.\n- source #0 record #2: The v0.50 ladder is opt-in, operator-run one-shot, local-only, rehearsal/read-only, bounded to the pinned completed v0.49.5 runtime-context injection rehearsal artifact and report, pre-read path pinned, redacted-before-persist, non-authorit\n- source #0 record #3: Pinned v0.50.5 evidence: `rehearsalStatus: PASSIVE_LIVE_MEMORY_COHERENCE_RECEIVER_RUNTIME_TEST_HARNESS_CONSUMPTION_REHEARSAL_COMPLETE`, `sourceReceiverBlockCountConsumedAsLocalTestInput: 4`, `harnessParseSuccessCount: 4`, `consumedContextBl\n- source #1 record #0: # Release Notes — Synaptic Mesh v0.50.5\n- source #1 record #1: v0.50.5 adds a local, reversible receiver/runtime test harness consumption rehearsal on top of published v0.49.5. It pins the v0.49.5 reviewer package and report by exact path and SHA-256 before read, rejects absolute/traversal paths, and c\n- source #1 record #2: Pinned evidence: `rehearsalStatus: PASSIVE_LIVE_MEMORY_COHERENCE_RECEIVER_RUNTIME_TEST_HARNESS_CONSUMPTION_REHEARSAL_COMPLETE`, `sourceReceiverBlockCountConsumedAsLocalTestInput: 4`, `harnessParseSuccessCount: 4`, `consumedContextBlockCount\n- source #1 record #3: Boundary: local-only, reversible, read-only, non-authoritative, no production runtime integration, no daemon, no SDK/framework adapter, no MCP/A2A client/server, no network/resource fetch, no tool execution, no memory/config writes, no exte\n- source #2 record #0: # Release Candidate — Synaptic Mesh v0.39.5\n- source #2 record #1: Target: `v0.39.5`\n"
+  "reportMarkdown": "# Bounded Explicit Multisource Shadow-Read Report v0.20.5\n\n- Barrier crossed: bounded explicit multisource shadow-read\n- Adapter: repo-local-file-read-adapter-v0\n- Operator-run: true; one-shot: true; local-only/read-only/passive-only: true\n- Sources: 3 / max 3\n- Records read: 10 / total limit 10; per-source limit 4\n- Per-source isolation: true; failure isolation: true; isolated failures: 0\n- Redacted evidence only: true; rawPersisted: false; rawOutput: false\n- policyDecision: null; agentConsumedOutput: false; unexpectedPermits: 0\n- Enforcement/authorization/approval/block/allow: false\n\n## Source statuses\n- source #0: ok; records=4; rawSourcePathPersisted=false\n- source #1: ok; records=4; rawSourcePathPersisted=false\n- source #2: ok; records=2; rawSourcePathPersisted=false\n\n## Redacted evidence preview\n- source #0 record #0: # Synaptic Mesh v0.51.5\n- source #0 record #1: This is the public review release `v0.51.5`. Current v0.51.5 status is narrower than production live runtime, but crosses the next safe barrier after v0.50: **local reversible receiver runtime invocation shim rehearsal**.\n- source #0 record #2: The v0.51 ladder is opt-in, operator-run one-shot, local-only, rehearsal/read-only, bounded to the pinned completed v0.50.5 receiver/runtime test harness consumption rehearsal artifact and report, pre-read path pinned, redacted-before-persi\n- source #0 record #3: Pinned v0.51.5 evidence: `rehearsalStatus: PASSIVE_LIVE_MEMORY_COHERENCE_RECEIVER_RUNTIME_INVOCATION_SHIM_REHEARSAL_COMPLETE`, `localShimInvocationCount: 4`, `shimOutputCount: 4`, `contextHandoffResultCount: 1`, `invokedConsumedBlockCount:\n- source #1 record #0: # Release Notes — Synaptic Mesh v0.51.5\n- source #1 record #1: v0.51.5 adds a local reversible receiver runtime invocation shim rehearsal on top of published v0.50.5. It pins the v0.50.5 reviewer package and report by exact path and SHA-256 before read, rejects absolute/traversal paths, and invokes a d\n- source #1 record #2: Pinned evidence: `PASSIVE_LIVE_MEMORY_COHERENCE_RECEIVER_RUNTIME_INVOCATION_SHIM_REHEARSAL_COMPLETE`, `localShimInvocationCount: 4`, `shimOutputCount: 4`, `contextHandoffResultCount: 1`, `invokedConsumedBlockCount: 4`, `effectsBlockedCount:\n- source #1 record #3: Boundary: local-only, reversible, read-only, non-authoritative, no-effect context handoff result for human review only, no production runtime integration, no daemon, no SDK/framework adapter, no MCP/A2A client/server, no network/resource fe\n- source #2 record #0: # Release Candidate — Synaptic Mesh v0.39.5\n- source #2 record #1: Target: `v0.39.5`\n"
 }

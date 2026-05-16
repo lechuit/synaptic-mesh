@@ -1,0 +1,14 @@
+import assert from 'node:assert/strict';
+import { scorePassiveLiveMemoryCoherenceReceiverRuntimeInvocationShimRehearsal } from '../src/passive-live-memory-coherence-receiver-runtime-invocation-shim-rehearsal.mjs';
+import { receiverRuntimeInvocationShimRehearsalInputV051 } from './passive-live-memory-coherence-receiver-runtime-invocation-shim-rehearsal-fixtures.mjs';
+const artifact = scorePassiveLiveMemoryCoherenceReceiverRuntimeInvocationShimRehearsal(receiverRuntimeInvocationShimRehearsalInputV051());
+assert.equal(artifact.rehearsalStatus, 'PASSIVE_LIVE_MEMORY_COHERENCE_RECEIVER_RUNTIME_INVOCATION_SHIM_REHEARSAL_COMPLETE');
+assert.equal(artifact.receiverRuntimeInvocationShimRehearsal, true);
+assert.equal(artifact.shimInputEnvelope.consumedBlockRefs.length, 4);
+assert.equal(artifact.shimInvocationTrace.length, 4);
+assert.equal(artifact.shimOutputs.length, 4);
+assert.equal(artifact.contextHandoffResult.shimOutputRefs.length, 4);
+assert(artifact.shimInvocationTrace.every((t)=>t.invoked === true && t.effectBlocked === true && t.sourceBound === true && t.notRuntimeInstruction === true));
+assert(artifact.shimOutputs.every((o)=>o.rawPersisted === false && o.agentConsumedOutput === false && o.nonAuthoritative === true && o.result === 'no_effect_context_handoff_prepared_by_deterministic_local_receiver_shim'));
+assert.equal(artifact.contextHandoffResult.status, 'prepared_for_human_review_only');
+console.log(JSON.stringify({ localShimInvocationCount: artifact.shimInvocationTrace.length, shimOutputCount: artifact.shimOutputs.length }));
