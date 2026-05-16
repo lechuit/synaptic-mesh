@@ -1,0 +1,53 @@
+import { readFileSync } from 'node:fs';
+import path from 'node:path';
+export const passiveLiveMemoryCoherenceRepeatabilityScorecardScripts = Object.freeze([
+  'test:passive-live-memory-coherence-repeatability-scorecard-protocol',
+  'test:passive-live-memory-coherence-repeatability-scorecard-runs',
+  'test:passive-live-memory-coherence-repeatability-scorecard-metrics',
+  'test:passive-live-memory-coherence-repeatability-scorecard-negative-controls',
+  'test:passive-live-memory-coherence-repeatability-scorecard-output-boundary',
+  'test:passive-live-memory-coherence-repeatability-scorecard-reviewer-package',
+]);
+export const passiveLiveMemoryCoherenceRepeatabilityScorecardRequiredManifestPaths = Object.freeze([
+  'tools/release-checks/passive-live-memory-coherence-repeatability-scorecard.mjs',
+  'docs/passive-live-memory-coherence-repeatability-scorecard-protocol-v0.37.0-alpha.md','docs/passive-live-memory-coherence-repeatability-scorecard-runs-v0.37.1.md','docs/passive-live-memory-coherence-repeatability-scorecard-metrics-v0.37.2.md','docs/passive-live-memory-coherence-repeatability-scorecard-negative-controls-v0.37.3.md','docs/passive-live-memory-coherence-repeatability-scorecard-output-boundary-v0.37.4.md','docs/passive-live-memory-coherence-repeatability-scorecard-reviewer-package-v0.37.5.md','docs/passive-live-memory-coherence-repeatability-scorecard-local-review-notes-v0.37.5.md',
+  'docs/status-v0.37.0-alpha.md','docs/status-v0.37.1.md','docs/status-v0.37.2.md','docs/status-v0.37.3.md','docs/status-v0.37.4.md','docs/status-v0.37.5.md',
+  'implementation/synaptic-mesh-shadow-v0/src/passive-live-memory-coherence-repeatability-scorecard.mjs','implementation/synaptic-mesh-shadow-v0/bin/passive-live-memory-coherence-repeatability-scorecard.mjs','implementation/synaptic-mesh-shadow-v0/tests/passive-live-memory-coherence-repeatability-scorecard-fixtures.mjs','implementation/synaptic-mesh-shadow-v0/tests/passive-live-memory-coherence-repeatability-scorecard-protocol-v0.37.0-alpha.mjs','implementation/synaptic-mesh-shadow-v0/tests/passive-live-memory-coherence-repeatability-scorecard-runs-v0.37.1.mjs','implementation/synaptic-mesh-shadow-v0/tests/passive-live-memory-coherence-repeatability-scorecard-metrics-v0.37.2.mjs','implementation/synaptic-mesh-shadow-v0/tests/passive-live-memory-coherence-repeatability-scorecard-negative-controls-v0.37.3.mjs','implementation/synaptic-mesh-shadow-v0/tests/passive-live-memory-coherence-repeatability-scorecard-output-boundary-v0.37.4.mjs','implementation/synaptic-mesh-shadow-v0/tests/passive-live-memory-coherence-repeatability-scorecard-reviewer-package-v0.37.5.mjs',
+  'implementation/synaptic-mesh-shadow-v0/evidence/passive-live-memory-coherence-repeatability-scorecard-protocol-v0.37.0-alpha.out.json','implementation/synaptic-mesh-shadow-v0/evidence/passive-live-memory-coherence-repeatability-scorecard-runs-v0.37.1.out.json','implementation/synaptic-mesh-shadow-v0/evidence/passive-live-memory-coherence-repeatability-scorecard-metrics-v0.37.2.out.json','implementation/synaptic-mesh-shadow-v0/evidence/passive-live-memory-coherence-repeatability-scorecard-negative-controls-v0.37.3.out.json','implementation/synaptic-mesh-shadow-v0/evidence/passive-live-memory-coherence-repeatability-scorecard-output-boundary-v0.37.4.out.json','implementation/synaptic-mesh-shadow-v0/evidence/passive-live-memory-coherence-repeatability-scorecard-reviewer-package-v0.37.5.out.json','implementation/synaptic-mesh-shadow-v0/evidence/passive-live-memory-coherence-repeatability-scorecard-report-v0.37.5.out.md',
+]);
+function all(text, phrases, label, assertIncludes){ for (const phrase of phrases) assertIncludes(text, phrase, label); }
+export function assertPassiveLiveMemoryCoherenceRepeatabilityScorecardManifestMetadata({ manifest, manifestReleaseTag, assertIncludes }) {
+  if (manifestReleaseTag !== 'v0.37.5') return;
+  all(manifest.reproducibility, ['v0.37.5','passive_live_memory_coherence_repeatability_scorecard','PASSIVE_LIVE_MEMORY_COHERENCE_REPEATABILITY_SCORECARD_COMPLETE','repeatabilityRunCount_3','observationItemCount_4','totalObservationJudgementCount_12','stableObservationCount_4','unstableObservationCount_0','stableIncludeForHumanContextCount_3','stableHardeningCautionCount_1','labelAgreementRatio_1','stableObservationRatio_1','sourceBoundRepeatabilityRatio_1','redactedBeforePersistRepeatabilityRatio_1','humanReviewOnlyRepeatabilityRatio_1','noPromotionWithoutHumanRepeatabilityRatio_1','agentConsumedOutputFalseRatio_1','boundaryViolationCount_0','ADVANCE_OBSERVATION_ONLY','recommendation_not_authority','agent_consumed_output_false','not_runtime_instruction','policy_decision_null','non_authoritative','human_readable_report_only'], 'MANIFEST.json reproducibility', assertIncludes);
+  all(manifest.runtimeBoundary, ['v0.37.5','disabled_by_default','operator_run_one_shot','local_only','passive_only','read_only','explicit_pinned_completed_observation_artifact_only','repeated_observation_judgements_only','redacted_before_persist','raw_source_cache_excluded','raw_persisted_false','no_memory_writes','no_runtime_integration','agent_consumed_output_false','non_authoritative','human_readable_report_only','not_runtime_authority'], 'MANIFEST.json runtimeBoundary', assertIncludes);
+}
+export function assertPassiveLiveMemoryCoherenceRepeatabilityScorecardRelease({ repoRoot, packageRoot, manifestReleaseTag, readJson, assert, assertIncludes }) {
+  if (manifestReleaseTag !== 'v0.37.5') return;
+  const phase = readJson(path.join(packageRoot, 'evidence/passive-live-memory-coherence-repeatability-scorecard-reviewer-package-v0.37.5.out.json'));
+  assert(phase?.repeatabilityStatus === 'PASSIVE_LIVE_MEMORY_COHERENCE_REPEATABILITY_SCORECARD_COMPLETE', 'v0.37.5 repeatability scorecard must complete');
+  assert(phase?.metrics?.repeatabilityRunCount === 3, 'v0.37.5 must include three repeatability runs');
+  assert(phase?.metrics?.observationItemCount === 4, 'v0.37.5 observation item count must be pinned');
+  assert(phase?.metrics?.totalObservationJudgementCount === 12, 'v0.37.5 judgement count must be pinned');
+  assert(phase?.metrics?.stableObservationCount === 4, 'v0.37.5 stable observation count must be pinned');
+  assert(phase?.metrics?.unstableObservationCount === 0, 'v0.37.5 unstable observation count must be zero');
+  assert(phase?.metrics?.stableIncludeForHumanContextCount === 3, 'v0.37.5 include count must be pinned');
+  assert(phase?.metrics?.stableHardeningCautionCount === 1, 'v0.37.5 caution count must be pinned');
+  assert(phase?.metrics?.labelAgreementRatio === 1, 'v0.37.5 label agreement ratio must be pinned');
+  assert(phase?.metrics?.sourceBoundRepeatabilityRatio === 1, 'v0.37.5 source-bound repeatability must be pinned');
+  assert(phase?.metrics?.redactedBeforePersistRepeatabilityRatio === 1, 'v0.37.5 redaction repeatability must be pinned');
+  assert(phase?.metrics?.humanReviewOnlyRepeatabilityRatio === 1, 'v0.37.5 human review ratio must be pinned');
+  assert(phase?.metrics?.noPromotionWithoutHumanRepeatabilityRatio === 1, 'v0.37.5 no promotion ratio must be pinned');
+  assert(phase?.metrics?.agentConsumedOutputFalseRatio === 1, 'v0.37.5 must not be agent consumed');
+  assert(phase?.metrics?.boundaryViolationCount === 0, 'v0.37.5 boundary violations must be zero');
+  assert(phase?.policyDecision === null, 'v0.37.5 policyDecision must be null');
+  assert((phase?.repeatabilityItems ?? []).every((item) => item.promoteToMemory === false && item.agentConsumedOutput === false && item.rawPersisted === false), 'v0.37.5 repeatability items must not promote memory, persist raw content, or be agent-consumed');
+  const negative = readJson(path.join(packageRoot, 'evidence/passive-live-memory-coherence-repeatability-scorecard-negative-controls-v0.37.3.out.json'));
+  assert((negative?.rejectedNegativeControls ?? []).length >= 30, 'v0.37.3 must include expanded negative controls');
+  const report = readFileSync(path.join(packageRoot, 'evidence/passive-live-memory-coherence-repeatability-scorecard-report-v0.37.5.out.md'), 'utf8');
+  all(report, ['Passive Live Memory Coherence Repeatability Scorecard v0.37.5','PASSIVE_LIVE_MEMORY_COHERENCE_REPEATABILITY_SCORECARD_COMPLETE','repeatabilityRunCount=3','observationItemCount=4','totalObservationJudgementCount=12','stableObservationCount=4','unstableObservationCount=0','stableIncludeForHumanContextCount=3','stableHardeningCautionCount=1','labelAgreementRatio=1','sourceBoundRepeatabilityRatio=1','redactedBeforePersistRepeatabilityRatio=1','humanReviewOnlyRepeatabilityRatio=1','noPromotionWithoutHumanRepeatabilityRatio=1','agentConsumedOutputFalseRatio=1','boundaryViolationCount=0','ADVANCE_OBSERVATION_ONLY','recommendationIsAuthority=false','agentConsumedOutput=false','notRuntimeInstruction=true','policyDecision: null'], 'memory coherence repeatability report', assertIncludes);
+  const readme = readFileSync(path.join(repoRoot, 'README.md'), 'utf8');
+  const notes = readFileSync(path.join(repoRoot, 'RELEASE_NOTES.md'), 'utf8');
+  all(readme, ['passive live memory/coherence repeatability scorecard','repeatabilityStatus: PASSIVE_LIVE_MEMORY_COHERENCE_REPEATABILITY_SCORECARD_COMPLETE','repeatabilityRunCount: 3','observationItemCount: 4','totalObservationJudgementCount: 12','stableObservationCount: 4','unstableObservationCount: 0','stableIncludeForHumanContextCount: 3','stableHardeningCautionCount: 1','labelAgreementRatio: 1','sourceBoundRepeatabilityRatio: 1','recommendation: ADVANCE_OBSERVATION_ONLY','policyDecision: null','human-readable report only'], 'README.md', assertIncludes);
+  all(notes, [manifestReleaseTag,'passive live memory/coherence repeatability scorecard','repeatabilityStatus: PASSIVE_LIVE_MEMORY_COHERENCE_REPEATABILITY_SCORECARD_COMPLETE','repeatabilityRunCount: 3','observationItemCount: 4','totalObservationJudgementCount: 12','stableObservationCount: 4','unstableObservationCount: 0','stableIncludeForHumanContextCount: 3','stableHardeningCautionCount: 1','labelAgreementRatio: 1','sourceBoundRepeatabilityRatio: 1','recommendation: ADVANCE_OBSERVATION_ONLY','policyDecision: null','human-readable report only'], 'RELEASE_NOTES.md', assertIncludes);
+}
+export const passiveLiveMemoryCoherenceRepeatabilityScorecardSuite = Object.freeze({ name:'passive-live-memory-coherence-repeatability-scorecard', gatePhase:'post-real-redacted', gateScripts:passiveLiveMemoryCoherenceRepeatabilityScorecardScripts, requiredManifestPaths:passiveLiveMemoryCoherenceRepeatabilityScorecardRequiredManifestPaths, assertManifestMetadata:assertPassiveLiveMemoryCoherenceRepeatabilityScorecardManifestMetadata, assertRelease:assertPassiveLiveMemoryCoherenceRepeatabilityScorecardRelease });

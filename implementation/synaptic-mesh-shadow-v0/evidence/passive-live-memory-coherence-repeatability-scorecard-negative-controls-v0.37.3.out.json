@@ -1,0 +1,369 @@
+{
+  "rejectedNegativeControls": [
+    {
+      "name": "missing-observation-artifact",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_REPEATABILITY_SCORECARD",
+      "validationIssues": [
+        "observationArtifact.explicit_object_required",
+        "obs-current-release-continuity.observation_repeatability_label_drift",
+        "obs-boundary-invariants.observation_repeatability_label_drift",
+        "obs-repeatability-evidence.observation_repeatability_label_drift",
+        "obs-review-hardening-caution.observation_repeatability_label_drift"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "unknown-top-level-input-field",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_REPEATABILITY_SCORECARD",
+      "validationIssues": [
+        "input.unknown_field:unexpectedTopLevel"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "fabricated-observation-path",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_REPEATABILITY_SCORECARD",
+      "validationIssues": [
+        "input.observation_artifact_path_not_pinned"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "fabricated-observation-digest",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_REPEATABILITY_SCORECARD",
+      "validationIssues": [
+        "input.observation_artifact_digest_not_pinned"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "unknown-observation-artifact-field",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_REPEATABILITY_SCORECARD",
+      "validationIssues": [
+        "input.observation_artifact_object_digest_not_pinned",
+        "observationArtifact.unknown_field:extraSmuggledContext"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "unknown-observation-metric-field",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_REPEATABILITY_SCORECARD",
+      "validationIssues": [
+        "input.observation_artifact_object_digest_not_pinned",
+        "observationArtifact.metrics.unknown_field:extraMetric"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "wrong-observation-artifact",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_REPEATABILITY_SCORECARD",
+      "validationIssues": [
+        "input.observation_artifact_object_digest_not_pinned",
+        "observationArtifact.artifact_not_expected_v0.36_observation"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "wrong-observation-schema",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_REPEATABILITY_SCORECARD",
+      "validationIssues": [
+        "input.observation_artifact_object_digest_not_pinned",
+        "observationArtifact.schema_not_expected"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "wrong-observation-release",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_REPEATABILITY_SCORECARD",
+      "validationIssues": [
+        "input.observation_artifact_object_digest_not_pinned",
+        "observationArtifact.release_layer_not_v0.36.5"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "observation-not-complete",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_REPEATABILITY_SCORECARD",
+      "validationIssues": [
+        "input.observation_artifact_object_digest_not_pinned",
+        "observationArtifact.status_not_complete"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "observation-report-poisoned",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_REPEATABILITY_SCORECARD",
+      "validationIssues": [
+        "input.observation_artifact_object_digest_not_pinned",
+        "observationArtifact.reportMarkdown_digest_not_expected",
+        "observationArtifact.reportMarkdown.authority_token_detected"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "observation-local-only-false",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_REPEATABILITY_SCORECARD",
+      "validationIssues": [
+        "input.observation_artifact_object_digest_not_pinned",
+        "observationArtifact.localOnly_not_expected"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "observation-read-only-false",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_REPEATABILITY_SCORECARD",
+      "validationIssues": [
+        "input.observation_artifact_object_digest_not_pinned",
+        "observationArtifact.readOnly_not_expected"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "observation-no-memory-writes-false",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_REPEATABILITY_SCORECARD",
+      "validationIssues": [
+        "input.observation_artifact_object_digest_not_pinned",
+        "observationArtifact.noMemoryWrites_not_expected"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "observation-metric-drift",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_REPEATABILITY_SCORECARD",
+      "validationIssues": [
+        "input.observation_artifact_object_digest_not_pinned",
+        "observationArtifact.metrics.observationItemCount_not_expected"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "observation-items-missing",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_REPEATABILITY_SCORECARD",
+      "validationIssues": [
+        "input.observation_artifact_object_digest_not_pinned",
+        "observationArtifact.observation_items_not_exact_expected_count",
+        "observationArtifact.observation_item_missing:obs-review-hardening-caution",
+        "obs-review-hardening-caution.observation_repeatability_label_drift"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "observation-item-unknown-field",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_REPEATABILITY_SCORECARD",
+      "validationIssues": [
+        "input.observation_artifact_object_digest_not_pinned",
+        "observationArtifact.obs-current-release-continuity.unknown_field:secret"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "observation-item-wrong-label",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_REPEATABILITY_SCORECARD",
+      "validationIssues": [
+        "input.observation_artifact_object_digest_not_pinned",
+        "observationArtifact.obs-current-release-continuity.humanTreatment_not_pinned",
+        "obs-current-release-continuity.observation_repeatability_label_drift"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "observation-item-source-path-drift",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_REPEATABILITY_SCORECARD",
+      "validationIssues": [
+        "input.observation_artifact_object_digest_not_pinned",
+        "observationArtifact.obs-current-release-continuity.sourcePath_not_pinned"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "observation-item-source-sha-drift",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_REPEATABILITY_SCORECARD",
+      "validationIssues": [
+        "input.observation_artifact_object_digest_not_pinned",
+        "observationArtifact.obs-current-release-continuity.sourceSha256_not_pinned"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "observation-item-source-signal-drift",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_REPEATABILITY_SCORECARD",
+      "validationIssues": [
+        "input.observation_artifact_object_digest_not_pinned",
+        "observationArtifact.obs-current-release-continuity.sourceSignal_not_pinned"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "observation-item-benign-semantic-drift",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_REPEATABILITY_SCORECARD",
+      "validationIssues": [
+        "input.observation_artifact_object_digest_not_pinned",
+        "observationArtifact.obs-current-release-continuity.observation_not_pinned"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "review-b-combined-semantic-source-drift",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_REPEATABILITY_SCORECARD",
+      "validationIssues": [
+        "input.observation_artifact_object_digest_not_pinned",
+        "observationArtifact.obs-current-release-continuity.sourcePath_not_pinned",
+        "observationArtifact.obs-current-release-continuity.sourceSha256_not_pinned",
+        "observationArtifact.obs-current-release-continuity.sourceSignal_not_pinned",
+        "observationArtifact.obs-current-release-continuity.observation_not_pinned"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "observation-item-not-source-bound",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_REPEATABILITY_SCORECARD",
+      "validationIssues": [
+        "input.observation_artifact_object_digest_not_pinned",
+        "observationArtifact.obs-current-release-continuity.boundary_flags_invalid",
+        "obs-current-release-continuity.observation_repeatability_source_or_redaction_drift"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "observation-item-not-redacted",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_REPEATABILITY_SCORECARD",
+      "validationIssues": [
+        "input.observation_artifact_object_digest_not_pinned",
+        "observationArtifact.obs-current-release-continuity.boundary_flags_invalid",
+        "obs-current-release-continuity.observation_repeatability_source_or_redaction_drift"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "observation-item-raw-persisted",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_REPEATABILITY_SCORECARD",
+      "validationIssues": [
+        "input.observation_artifact_object_digest_not_pinned",
+        "observationArtifact.obs-current-release-continuity.boundary_flags_invalid",
+        "input.observationArtifact.observationItems[0].forbidden_boundary_field_set"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "observation-item-promotes-memory",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_REPEATABILITY_SCORECARD",
+      "validationIssues": [
+        "input.observation_artifact_object_digest_not_pinned",
+        "observationArtifact.obs-current-release-continuity.boundary_flags_invalid"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "tool-effect-requested",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_REPEATABILITY_SCORECARD",
+      "validationIssues": [
+        "input.unknown_field:[authority-token-redacted]",
+        "input.external_or_tool_effect_requested",
+        "input.forbidden_boundary_field_set"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "network-effect-requested",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_REPEATABILITY_SCORECARD",
+      "validationIssues": [
+        "input.unknown_field:[authority-token-redacted]",
+        "input.external_or_tool_effect_requested",
+        "input.forbidden_boundary_field_set"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "resource-fetch-requested",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_REPEATABILITY_SCORECARD",
+      "validationIssues": [
+        "input.unknown_field:[authority-token-redacted]",
+        "input.external_or_tool_effect_requested",
+        "input.forbidden_boundary_field_set"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "memory-write-requested",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_REPEATABILITY_SCORECARD",
+      "validationIssues": [
+        "input.unknown_field:[authority-token-redacted]",
+        "input.memory_or_config_write_requested",
+        "input.forbidden_boundary_field_set"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "config-write-requested",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_REPEATABILITY_SCORECARD",
+      "validationIssues": [
+        "input.unknown_field:[authority-token-redacted]",
+        "input.memory_or_config_write_requested",
+        "input.forbidden_boundary_field_set"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "runtime-requested",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_REPEATABILITY_SCORECARD",
+      "validationIssues": [
+        "input.unknown_field:[authority-token-redacted]",
+        "input.runtime_or_daemon_requested",
+        "input.forbidden_boundary_field_set"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "daemon-requested",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_REPEATABILITY_SCORECARD",
+      "validationIssues": [
+        "input.unknown_field:daemon",
+        "input.runtime_or_daemon_requested",
+        "input.forbidden_boundary_field_set"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "watch-requested",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_REPEATABILITY_SCORECARD",
+      "validationIssues": [
+        "input.unknown_field:watch",
+        "input.runtime_or_daemon_requested",
+        "input.forbidden_boundary_field_set"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "raw-output-requested",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_REPEATABILITY_SCORECARD",
+      "validationIssues": [
+        "input.unknown_field:[authority-token-redacted]",
+        "input.raw_persistence_or_output_requested",
+        "input.forbidden_boundary_field_set"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "non-null-policy",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_REPEATABILITY_SCORECARD",
+      "validationIssues": [
+        "input.unknown_field:policyDecision",
+        "input.policyDecision_non_null",
+        "input.policyDecision.authority_token_detected"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "authority-token-redacted",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_REPEATABILITY_SCORECARD",
+      "validationIssues": [
+        "input.observation_artifact_object_digest_not_pinned",
+        "observationArtifact.obs-current-release-continuity.observation_not_pinned",
+        "input.observationArtifact.observationItems[0].observation.authority_token_detected"
+      ],
+      "policyDecision": null
+    }
+  ],
+  "count": 38,
+  "authorityTokenPayloadLeaked": false
+}
