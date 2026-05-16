@@ -1,0 +1,12 @@
+import assert from 'node:assert/strict';
+import { mkdirSync, writeFileSync } from 'node:fs';
+import { scorePassiveLiveMemoryCoherenceReceiverLiveContextHandoffUtility, validatePassiveLiveMemoryCoherenceReceiverLiveContextHandoffUtilityArtifact } from '../src/passive-live-memory-coherence-receiver-live-context-handoff-utility.mjs';
+import { receiverLiveContextHandoffUtilityInputV046 } from './passive-live-memory-coherence-receiver-live-context-handoff-utility-fixtures.mjs';
+const artifact = scorePassiveLiveMemoryCoherenceReceiverLiveContextHandoffUtility(receiverLiveContextHandoffUtilityInputV046());
+assert.deepEqual(validatePassiveLiveMemoryCoherenceReceiverLiveContextHandoffUtilityArtifact(artifact), []);
+mkdirSync('evidence', { recursive: true });
+writeFileSync('evidence/passive-live-memory-coherence-receiver-live-context-handoff-utility-reviewer-package-v0.46.5.out.json', `${JSON.stringify(artifact, null, 2)}\n`);
+writeFileSync('evidence/passive-live-memory-coherence-receiver-live-context-handoff-utility-report-v0.46.5.out.md', `${artifact.reportMarkdown}\n`);
+assert.equal(Object.hasOwn(artifact.protocol, 'policyDecision'), false);
+assert.equal(Object.hasOwn(artifact.metrics, 'policyDecision'), false);
+console.log(JSON.stringify({ handoffUtilityStatus: artifact.handoffUtilityStatus, includedForLiveContextCount: artifact.metrics.includedForLiveContextCount }, null, 2));
