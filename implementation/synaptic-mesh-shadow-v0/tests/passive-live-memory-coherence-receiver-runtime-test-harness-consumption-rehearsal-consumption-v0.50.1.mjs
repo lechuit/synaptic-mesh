@@ -1,0 +1,13 @@
+import assert from 'node:assert/strict';
+import { scorePassiveLiveMemoryCoherenceReceiverRuntimeTestHarnessConsumptionRehearsal } from '../src/passive-live-memory-coherence-receiver-runtime-test-harness-consumption-rehearsal.mjs';
+import { receiverRuntimeTestHarnessConsumptionRehearsalInputV050 } from './passive-live-memory-coherence-receiver-runtime-test-harness-consumption-rehearsal-fixtures.mjs';
+const artifact = scorePassiveLiveMemoryCoherenceReceiverRuntimeTestHarnessConsumptionRehearsal(receiverRuntimeTestHarnessConsumptionRehearsalInputV050());
+assert.equal(artifact.rehearsalStatus, 'PASSIVE_LIVE_MEMORY_COHERENCE_RECEIVER_RUNTIME_TEST_HARNESS_CONSUMPTION_REHEARSAL_COMPLETE');
+assert.equal(artifact.receiverRuntimeTestHarnessConsumptionRehearsal, true);
+assert.equal(artifact.harnessInputEnvelope.receiverFacingBlockRefs.length, 4);
+assert.equal(artifact.consumedContextBlocks.length, 4);
+assert.equal(artifact.receiverHarnessTrace.length, 4);
+assert.equal(artifact.consumptionDecisions.length, 4);
+assert(artifact.consumedContextBlocks.every((b)=>b.consumedAsLocalTestInput === true && b.sourceBound === true && b.rawPersisted === false && b.agentConsumedOutput === false));
+assert(artifact.consumptionDecisions.every((d)=>d.nonAuthoritative === true && d.effect === 'no_effect'));
+console.log(JSON.stringify({ consumedContextBlocks: artifact.consumedContextBlocks.length, decisions: artifact.consumptionDecisions.length }));

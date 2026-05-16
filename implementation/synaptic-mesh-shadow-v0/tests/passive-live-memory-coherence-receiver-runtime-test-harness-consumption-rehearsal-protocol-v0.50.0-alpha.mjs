@@ -1,0 +1,17 @@
+import assert from 'node:assert/strict';
+import { passiveLiveMemoryCoherenceReceiverRuntimeTestHarnessConsumptionRehearsalProtocol } from '../src/passive-live-memory-coherence-receiver-runtime-test-harness-consumption-rehearsal.mjs';
+const p = passiveLiveMemoryCoherenceReceiverRuntimeTestHarnessConsumptionRehearsalProtocol();
+assert.equal(p.releaseLayer, 'v0.50.0-alpha');
+assert.equal(p.barrierCrossed, 'local_receiver_runtime_test_harness_consumption_rehearsal');
+assert.equal(p.localOnly, true);
+assert.equal(p.rehearsalOnly, true);
+assert.equal(p.readOnly, true);
+assert.equal(p.receiverRuntimeTestHarnessConsumptionRehearsal, true);
+assert.equal(p.noRuntimeIntegration, true);
+assert.equal(p.noNetworkFetch, true);
+assert.equal(p.noToolExecution, true);
+assert.equal(p.noMemoryWrites, true);
+assert.equal(p.noConfigWrites, true);
+assert.equal(p.agentConsumedOutput, false);
+assert(!Object.prototype.hasOwnProperty.call(p, 'policy' + 'Decision'));
+console.log(JSON.stringify({ releaseLayer: p.releaseLayer, barrierCrossed: p.barrierCrossed }));
