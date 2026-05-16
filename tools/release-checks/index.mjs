@@ -34,6 +34,7 @@ import { passiveLiveMemoryCoherenceInvalidationWindowSuite } from './passive-liv
 import { passiveLiveMemoryCoherenceInvalidationRepeatabilityScorecardSuite } from './passive-live-memory-coherence-invalidation-repeatability-scorecard.mjs';
 import { passiveLiveMemoryCoherenceStableInvalidationReceiverPackageSuite } from './passive-live-memory-coherence-stable-invalidation-receiver-package.mjs';
 import { passiveLiveMemoryCoherenceReceiverPackageUsefulnessRehearsalSuite } from './passive-live-memory-coherence-receiver-package-usefulness-rehearsal.mjs';
+import { passiveLiveMemoryCoherenceReceiverUsefulnessRepeatabilityScorecardSuite } from './passive-live-memory-coherence-receiver-usefulness-repeatability-scorecard.mjs';
 
 export const releaseCheckSuites = Object.freeze([
   passiveLiveShadowCanarySuite,
@@ -72,4 +73,5 @@ export const releaseCheckSuites = Object.freeze([
   passiveLiveMemoryCoherenceInvalidationRepeatabilityScorecardSuite,
   passiveLiveMemoryCoherenceStableInvalidationReceiverPackageSuite,
   passiveLiveMemoryCoherenceReceiverPackageUsefulnessRehearsalSuite,
+  passiveLiveMemoryCoherenceReceiverUsefulnessRepeatabilityScorecardSuite,
 ]);

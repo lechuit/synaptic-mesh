@@ -16,13 +16,13 @@
 - source #2: ok; records=2; rawSourcePathPersisted=false
 
 ## Redacted evidence preview
-- source #0 record #0: # Synaptic Mesh v0.42.5
-- source #0 record #1: This is the public review release `v0.42.5`. Current v0.42.5 status is narrower than live runtime and crosses the next safe barrier after v0.41: **passive live memory/coherence receiver package usefulness rehearsal**.
-- source #0 record #2: The v0.42 ladder is disabled-by-default, operator-run one-shot, local-only, passive/read-only, bounded to the pinned completed v0.41.5 receiver package artifact, pre-read path pinned, redacted-before-persist, human-readable report only, non
-- source #0 record #3: Pinned v0.42.5 evidence: `rehearsalStatus: PASSIVE_LIVE_MEMORY_COHERENCE_RECEIVER_PACKAGE_USEFULNESS_REHEARSAL_COMPLETE`, `rehearsalWindowCount: 1`, `comparisonModeCount: 3`, `receiverPackageItemCount: 5`, `receiverUsefulHandoffItemCount: 4
-- source #1 record #0: # Release Notes — Synaptic Mesh v0.42.5
+- source #0 record #0: # Synaptic Mesh v0.43.5
+- source #0 record #1: This is the public review release `v0.43.5`. Current v0.43.5 status is narrower than live runtime and crosses the next safe barrier after v0.42: **passive live memory/coherence receiver usefulness repeatability scorecard**.
+- source #0 record #2: The v0.43 ladder is disabled-by-default, operator-run one-shot, local-only, passive/read-only, bounded to the pinned completed v0.42.5 receiver package usefulness rehearsal artifact, pre-read path pinned, redacted-before-persist, human-read
+- source #0 record #3: Pinned v0.43.5 evidence: `repeatabilityStatus: PASSIVE_LIVE_MEMORY_COHERENCE_RECEIVER_USEFULNESS_REPEATABILITY_SCORECARD_COMPLETE`, `repeatabilityRunCount: 3`, `sourceRehearsalWindowCount: 1`, `candidateCount: 5`, `totalUsefulnessJudgementC
+- source #1 record #0: # Release Notes — Synaptic Mesh v0.43.5
 - source #1 record #1: ## Summary
-- source #1 record #2: `v0.42.5` adds a **passive live memory/coherence receiver package usefulness rehearsal** over the completed pinned v0.41.5 receiver package. It measures whether the receiver-side package improves human continuity handoff versus raw stable s
+- source #1 record #2: `v0.43.5` adds a **passive live memory/coherence receiver usefulness repeatability scorecard** over the completed pinned v0.42.5 receiver package usefulness rehearsal. It tests whether the receiver usefulness treatment remains stable across
 - source #1 record #3: ## Evidence
 - source #2 record #0: # Release Candidate — Synaptic Mesh v0.39.5
 - source #2 record #1: Target: `v0.39.5`
