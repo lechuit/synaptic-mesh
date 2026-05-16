@@ -1,0 +1,26 @@
+# Passive Live Memory/Coherence Stale/Contradiction Invalidation Window — Metrics v0.39.2
+
+Pinned metrics for the completed window:
+
+- `invalidationWindowCount: 1`
+- `candidateSignalCount: 5`
+- `validCarryForwardCount: 3`
+- `staleSignalCount: 1`
+- `contradictionSignalCount: 1`
+- `staleInvalidatedCount: 1`
+- `contradictionCautionCount: 1`
+- `includedForHumanHandoffCount: 3`
+- `invalidatedOrCautionedSignalCount: 2`
+- `sourceBoundInvalidationRatio: 1`
+- `staleInvalidationRatio: 1`
+- `contradictionCautionRatio: 1`
+- `validCarryForwardRatio: 1`
+- `redactedBeforePersistRatio: 1`
+- `rawPersistedFalseRatio: 1`
+- `humanReviewOnlyRatio: 1`
+- `noPromotionWithoutHumanRatio: 1`
+- `agentConsumedOutputFalseRatio: 1`
+- `boundaryViolationCount: 0`
+- `policyDecision: null`
+
+The metric is bounded passive stale/contradiction handling for human handoff only.
