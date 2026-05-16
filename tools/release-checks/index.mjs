@@ -29,6 +29,7 @@ import { passiveHardCaseOutcomeValueScorecardSuite } from './passive-hard-case-o
 import { passiveHardCaseOutcomeRepeatabilityScorecardSuite } from './passive-hard-case-outcome-repeatability-scorecard.mjs';
 import { passiveLiveMemoryCoherenceObservationRehearsalSuite } from './passive-live-memory-coherence-observation-rehearsal.mjs';
 import { passiveLiveMemoryCoherenceRepeatabilityScorecardSuite } from './passive-live-memory-coherence-repeatability-scorecard.mjs';
+import { passiveLiveMemoryCoherenceUsefulnessWindowSuite } from './passive-live-memory-coherence-usefulness-window.mjs';
 
 export const releaseCheckSuites = Object.freeze([
   passiveLiveShadowCanarySuite,
@@ -62,4 +63,5 @@ export const releaseCheckSuites = Object.freeze([
   passiveHardCaseOutcomeRepeatabilityScorecardSuite,
   passiveLiveMemoryCoherenceObservationRehearsalSuite,
   passiveLiveMemoryCoherenceRepeatabilityScorecardSuite,
+  passiveLiveMemoryCoherenceUsefulnessWindowSuite,
 ]);
