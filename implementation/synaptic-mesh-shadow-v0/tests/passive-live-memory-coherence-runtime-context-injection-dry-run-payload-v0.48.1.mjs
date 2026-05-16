@@ -1,0 +1,15 @@
+import assert from 'node:assert/strict';
+import { scorePassiveLiveMemoryCoherenceRuntimeContextInjectionDryRun } from '../src/passive-live-memory-coherence-runtime-context-injection-dry-run.mjs';
+import { runtimeContextInjectionDryRunInputV048 } from './passive-live-memory-coherence-runtime-context-injection-dry-run-fixtures.mjs';
+const artifact = scorePassiveLiveMemoryCoherenceRuntimeContextInjectionDryRun(runtimeContextInjectionDryRunInputV048());
+assert.equal(artifact.dryRunStatus, 'PASSIVE_LIVE_MEMORY_COHERENCE_RUNTIME_CONTEXT_INJECTION_DRY_RUN_COMPLETE');
+assert.equal(artifact.machineShapedDryRunPayload, true);
+assert.equal(artifact.metrics.runtimeContextCardCount, 5);
+assert.equal(artifact.metrics.harnessConsumableCandidateCount, 4);
+assert.equal(artifact.metrics.runtimeBridgeSignalCount, 4);
+assert.equal(artifact.metrics.runtimeBlockedUntilNextBarrierCount, 5);
+assert.equal(artifact.runtimeContextCards.length, 5);
+assert.equal(artifact.runtimeContextCards.filter((c)=>c.harnessConsumableContextCandidate).length, 4);
+assert.equal(artifact.runtimeContextCards.find((c)=>c.excludedAsStale)?.harnessConsumableContextCandidate, false);
+assert(artifact.runtimeContextCards.every((c)=>c.nextBarrier === 'runtime_adjacent_dry_run_adapter_or_live_context_injection_rehearsal'));
+console.log(JSON.stringify({ runtimeContextCardCount: artifact.metrics.runtimeContextCardCount, harnessConsumableCandidateCount: artifact.metrics.harnessConsumableCandidateCount }));

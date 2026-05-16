@@ -1,0 +1,13 @@
+import assert from 'node:assert/strict';
+import { mkdirSync, writeFileSync } from 'node:fs';
+import { scorePassiveLiveMemoryCoherenceRuntimeContextInjectionDryRun, validatePassiveLiveMemoryCoherenceRuntimeContextInjectionDryRunArtifact } from '../src/passive-live-memory-coherence-runtime-context-injection-dry-run.mjs';
+import { runtimeContextInjectionDryRunInputV048 } from './passive-live-memory-coherence-runtime-context-injection-dry-run-fixtures.mjs';
+const artifact = scorePassiveLiveMemoryCoherenceRuntimeContextInjectionDryRun(runtimeContextInjectionDryRunInputV048());
+assert.deepEqual(validatePassiveLiveMemoryCoherenceRuntimeContextInjectionDryRunArtifact(artifact), []);
+mkdirSync('evidence', { recursive: true });
+writeFileSync('evidence/passive-live-memory-coherence-runtime-context-injection-dry-run-reviewer-package-v0.48.5.out.json', `${JSON.stringify(artifact, null, 2)}\n`);
+writeFileSync('evidence/passive-live-memory-coherence-runtime-context-injection-dry-run-report-v0.48.5.out.md', `${artifact.reportMarkdown}\n`);
+assert.equal(artifact.dryRunStatus, 'PASSIVE_LIVE_MEMORY_COHERENCE_RUNTIME_CONTEXT_INJECTION_DRY_RUN_COMPLETE');
+assert.equal(artifact.recommendation, 'ADVANCE_TO_RUNTIME_ADJACENT_DRY_RUN_OR_LIVE_CONTEXT_INJECTION_REHEARSAL');
+assert.equal(artifact.runtimeContextCards.filter((card)=>card.harnessConsumableContextCandidate).length, 4);
+console.log(JSON.stringify({ dryRunStatus: artifact.dryRunStatus, harnessConsumableCandidateCount: artifact.metrics.harnessConsumableCandidateCount }, null, 2));

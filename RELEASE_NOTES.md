@@ -1,3 +1,30 @@
+# Release Notes — Synaptic Mesh v0.48.5
+
+## Summary
+
+`v0.48.5` adds a **local runtime-adjacent context injection dry-run** over the completed pinned v0.47.5 handoff utility repeatability artifact. It is not another passive readiness loop: it produces a machine-shaped local dry-run context payload a receiver/runtime test harness could consume next, while blocking production runtime integration and persistent effects.
+
+## Evidence
+
+- `dryRunStatus: PASSIVE_LIVE_MEMORY_COHERENCE_RUNTIME_CONTEXT_INJECTION_DRY_RUN_COMPLETE`
+- `runtimeContextCardCount: 5`
+- `harnessConsumableCandidateCount: 4`
+- `runtimeBridgeSignalCount: 4`
+- `runtimeBlockedUntilNextBarrierCount: 5`
+- `staleSuppressionCarriedForwardCount: 1`
+- `contradictionCautionCarriedForwardCount: 1`
+- `harnessConsumablePayloadRatio: 0.8`
+- `nextBarrierSpecificityRatio: 1`
+- `boundaryViolationCount: 0`
+- `recommendation: ADVANCE_TO_RUNTIME_ADJACENT_DRY_RUN_OR_LIVE_CONTEXT_INJECTION_REHEARSAL`
+- top-level sentinel kept null
+
+## Runtime-adjacent boundary
+
+The local runtime-adjacent context injection dry-run shapes five context payload cards from pinned evidence. Four are harness-consumable candidates; one stale card remains suppressed. The next barrier: runtime-adjacent dry-run adapter or live-context injection rehearsal.
+
+Hard stops remain: no network/resource fetch, no external effects, no production runtime integration, no config writes, no memory writes, no authorization/enforcement/approve/block/allow semantics, and rollback/no-persist behavior.
+
 # Release Notes — Synaptic Mesh v0.47.5
 
 ## Summary
@@ -37,7 +64,7 @@
 - `recommendationIsAuthority: false`
 - `agentConsumedOutput: false`
 - `notRuntimeInstruction: true`
-- `policyDecision: null` retained only as a top-level compatibility/null sentinel; not repeated in protocol, metrics, runs, judgement items, stable items, or CLI stdout
+- top-level sentinel kept null retained only as a top-level compatibility/null sentinel; not repeated in protocol, metrics, runs, judgement items, stable items, or CLI stdout
 - Negative controls for traversal-like unpinned artifact paths, malformed/spoofed pinned v0.46 handoff utility artifacts, digest drift, metric drift, handoff item tampering, nested policyDecision repetition, raw persistence, external effects, tool execution, memory/config writes, runtime integration, unknown runtime/boundary fields, raw output, and non-null `policyDecision`.
 
 ## Boundary
@@ -93,7 +120,7 @@ The next gate should keep this as local reviewer evidence or run a separate boun
 - `recommendationIsAuthority: false`
 - `agentConsumedOutput: false`
 - `notRuntimeInstruction: true`
-- `policyDecision: null` retained only as a top-level compatibility/null sentinel; not repeated in protocol, metrics, handoff items, judgement items, or CLI stdout
+- top-level sentinel kept null retained only as a top-level compatibility/null sentinel; not repeated in protocol, metrics, handoff items, judgement items, or CLI stdout
 - Negative controls for traversal-like unpinned artifact paths, malformed/spoofed pinned v0.45 repeatability artifacts, digest drift, metric drift, stable observation tampering, raw persistence, external effects, tool execution, memory/config writes, runtime integration, unknown runtime/boundary fields, raw output, and non-null `policyDecision`.
 
 ## Boundary
@@ -156,7 +183,7 @@ The next gate should repeat this handoff utility window or run a bounded shadow 
 - `recommendationIsAuthority: false`
 - `agentConsumedOutput: false`
 - `notRuntimeInstruction: true`
-- `policyDecision: null` retained only as a top-level compatibility/null sentinel; not repeated in protocol, metrics, runs, judgement items, or CLI stdout
+- top-level sentinel kept null retained only as a top-level compatibility/null sentinel; not repeated in protocol, metrics, runs, judgement items, or CLI stdout
 - Negative controls for traversal-like unpinned artifact paths, malformed/spoofed pinned v0.44 live observation artifacts, digest drift, metric drift, live-observation item tampering, raw persistence, external effects, tool execution, memory/config writes, runtime integration, unknown runtime/boundary fields, raw output, and non-null `policyDecision`.
 
 ## Boundary
