@@ -1,0 +1,3 @@
+# passive-hard-case-outcome-value-scorecard-output-boundary-v0.34.4
+
+Generated evidence/documentation for Synaptic Mesh passive hard-case outcome value scorecard. Local/manual/passive/read-only; human-readable and non-authoritative; policyDecision null.

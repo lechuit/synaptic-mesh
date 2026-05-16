@@ -1,0 +1,419 @@
+{
+  "rejectedNegativeControls": [
+    {
+      "name": "missing-hard-case-artifact",
+      "status": "DEGRADED_PASSIVE_HARD_CASE_OUTCOME_VALUE_SCORECARD",
+      "validationIssues": [
+        "hardCaseArtifact.explicit_object_required"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "unknown-top-level-input-field",
+      "status": "DEGRADED_PASSIVE_HARD_CASE_OUTCOME_VALUE_SCORECARD",
+      "validationIssues": [
+        "input.unknown_field:unexpectedTopLevel"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "fabricated-copy-path",
+      "status": "DEGRADED_PASSIVE_HARD_CASE_OUTCOME_VALUE_SCORECARD",
+      "validationIssues": [
+        "input.hard_case_artifact_path_not_pinned"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "fabricated-copy-digest",
+      "status": "DEGRADED_PASSIVE_HARD_CASE_OUTCOME_VALUE_SCORECARD",
+      "validationIssues": [
+        "input.hard_case_artifact_digest_not_pinned"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "unknown-hard-case-artifact-top-level-field",
+      "status": "DEGRADED_PASSIVE_HARD_CASE_OUTCOME_VALUE_SCORECARD",
+      "validationIssues": [
+        "hardCaseArtifact.unknown_field:extraSmuggledContext"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "unknown-hard-case-artifact-protocol-field",
+      "status": "DEGRADED_PASSIVE_HARD_CASE_OUTCOME_VALUE_SCORECARD",
+      "validationIssues": [
+        "hardCaseArtifact.protocol.unknown_field:extraSmuggledProtocol"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "unknown-hard-case-artifact-metric-field",
+      "status": "DEGRADED_PASSIVE_HARD_CASE_OUTCOME_VALUE_SCORECARD",
+      "validationIssues": [
+        "hardCaseArtifact.metrics.unknown_field:extraSmuggledMetric"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "unknown-hard-case-artifact-item-field",
+      "status": "DEGRADED_PASSIVE_HARD_CASE_OUTCOME_VALUE_SCORECARD",
+      "validationIssues": [
+        "hardCaseArtifact.hardCases[0].unknown_field:extraSmuggledItem"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "wrong-artifact",
+      "status": "DEGRADED_PASSIVE_HARD_CASE_OUTCOME_VALUE_SCORECARD",
+      "validationIssues": [
+        "hardCaseArtifact.artifact_not_expected_v0.33_hard_cases"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "wrong-schema",
+      "status": "DEGRADED_PASSIVE_HARD_CASE_OUTCOME_VALUE_SCORECARD",
+      "validationIssues": [
+        "hardCaseArtifact.schema_not_expected"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "wrong-release",
+      "status": "DEGRADED_PASSIVE_HARD_CASE_OUTCOME_VALUE_SCORECARD",
+      "validationIssues": [
+        "hardCaseArtifact.release_layer_not_v0.33.5"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "not-complete",
+      "status": "DEGRADED_PASSIVE_HARD_CASE_OUTCOME_VALUE_SCORECARD",
+      "validationIssues": [
+        "hardCaseArtifact.status_not_complete"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "top-local-only-false",
+      "status": "DEGRADED_PASSIVE_HARD_CASE_OUTCOME_VALUE_SCORECARD",
+      "validationIssues": [
+        "hardCaseArtifact.localOnly_not_expected"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "top-read-only-false",
+      "status": "DEGRADED_PASSIVE_HARD_CASE_OUTCOME_VALUE_SCORECARD",
+      "validationIssues": [
+        "hardCaseArtifact.readOnly_not_expected"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "top-no-memory-writes-false",
+      "status": "DEGRADED_PASSIVE_HARD_CASE_OUTCOME_VALUE_SCORECARD",
+      "validationIssues": [
+        "hardCaseArtifact.noMemoryWrites_not_expected"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "top-no-runtime-integration-false",
+      "status": "DEGRADED_PASSIVE_HARD_CASE_OUTCOME_VALUE_SCORECARD",
+      "validationIssues": [
+        "hardCaseArtifact.noRuntimeIntegration_not_expected"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "protocol-local-only-false",
+      "status": "DEGRADED_PASSIVE_HARD_CASE_OUTCOME_VALUE_SCORECARD",
+      "validationIssues": [
+        "hardCaseArtifact.protocol.localOnly_not_expected"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "protocol-read-only-false",
+      "status": "DEGRADED_PASSIVE_HARD_CASE_OUTCOME_VALUE_SCORECARD",
+      "validationIssues": [
+        "hardCaseArtifact.protocol.readOnly_not_expected"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "protocol-no-memory-writes-false",
+      "status": "DEGRADED_PASSIVE_HARD_CASE_OUTCOME_VALUE_SCORECARD",
+      "validationIssues": [
+        "hardCaseArtifact.protocol.noMemoryWrites_not_expected"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "protocol-no-runtime-integration-false",
+      "status": "DEGRADED_PASSIVE_HARD_CASE_OUTCOME_VALUE_SCORECARD",
+      "validationIssues": [
+        "hardCaseArtifact.protocol.noRuntimeIntegration_not_expected"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "prior-validation-issues",
+      "status": "DEGRADED_PASSIVE_HARD_CASE_OUTCOME_VALUE_SCORECARD",
+      "validationIssues": [
+        "hardCaseArtifact.prior_validation_issues_present"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "wrong-hard-case-metric",
+      "status": "DEGRADED_PASSIVE_HARD_CASE_OUTCOME_VALUE_SCORECARD",
+      "validationIssues": [
+        "hardCaseArtifact.metrics.hardCaseCount_not_expected"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "wrong-hard-case-count",
+      "status": "DEGRADED_PASSIVE_HARD_CASE_OUTCOME_VALUE_SCORECARD",
+      "validationIssues": [
+        "hardCaseArtifact.hard_cases_not_exact_expected_count",
+        "hardCaseArtifact.expected_hard_case_missing:hard-tempting-noise-suppression"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "wrong-hard-case-id",
+      "status": "DEGRADED_PASSIVE_HARD_CASE_OUTCOME_VALUE_SCORECARD",
+      "validationIssues": [
+        "hardCaseArtifact.expected_hard_case_missing:hard-active-project-rule-vs-old-context",
+        "hardCaseArtifact.unexpected_hard_case:unknown"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "hard-case-not-source-bound",
+      "status": "DEGRADED_PASSIVE_HARD_CASE_OUTCOME_VALUE_SCORECARD",
+      "validationIssues": [
+        "hardCaseArtifact.hard-active-project-rule-vs-old-context.sourceBound_not_expected",
+        "hardCaseArtifact.hard-active-project-rule-vs-old-context.source_not_bound"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "hard-case-promotes-memory",
+      "status": "DEGRADED_PASSIVE_HARD_CASE_OUTCOME_VALUE_SCORECARD",
+      "validationIssues": [
+        "hardCaseArtifact.hard-active-project-rule-vs-old-context.boundary_flags_invalid"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "hard-case-active-rule-semantic-spoof",
+      "status": "DEGRADED_PASSIVE_HARD_CASE_OUTCOME_VALUE_SCORECARD",
+      "validationIssues": [
+        "hardCaseArtifact.hard-active-project-rule-vs-old-context.activeRulePreferred_not_expected"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "hard-case-type-semantic-spoof",
+      "status": "DEGRADED_PASSIVE_HARD_CASE_OUTCOME_VALUE_SCORECARD",
+      "validationIssues": [
+        "hardCaseArtifact.hard-active-project-rule-vs-old-context.hardCaseType_not_expected"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "hard-case-source-assembly-semantic-spoof",
+      "status": "DEGRADED_PASSIVE_HARD_CASE_OUTCOME_VALUE_SCORECARD",
+      "validationIssues": [
+        "hardCaseArtifact.hard-active-project-rule-vs-old-context.sourceAssemblyItemId_not_expected"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "hard-case-treatment-semantic-spoof",
+      "status": "DEGRADED_PASSIVE_HARD_CASE_OUTCOME_VALUE_SCORECARD",
+      "validationIssues": [
+        "hardCaseArtifact.hard-active-project-rule-vs-old-context.humanTreatment_not_expected"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "hard-case-outcome-semantic-spoof",
+      "status": "DEGRADED_PASSIVE_HARD_CASE_OUTCOME_VALUE_SCORECARD",
+      "validationIssues": [
+        "hardCaseArtifact.hard-active-project-rule-vs-old-context.outcome_not_expected"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "missing-outcomes",
+      "status": "DEGRADED_PASSIVE_HARD_CASE_OUTCOME_VALUE_SCORECARD",
+      "validationIssues": [
+        "receiverOutcomes.array_required"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "wrong-outcome-count",
+      "status": "DEGRADED_PASSIVE_HARD_CASE_OUTCOME_VALUE_SCORECARD",
+      "validationIssues": [
+        "receiverOutcomes.not_exact_expected_count",
+        "receiverOutcomes.expected_hard_case_missing:hard-tempting-noise-suppression"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "unknown-outcome-field",
+      "status": "DEGRADED_PASSIVE_HARD_CASE_OUTCOME_VALUE_SCORECARD",
+      "validationIssues": [
+        "receiverOutcomes[0].unknown_field:extra"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "wrong-outcome-id",
+      "status": "DEGRADED_PASSIVE_HARD_CASE_OUTCOME_VALUE_SCORECARD",
+      "validationIssues": [
+        "receiverOutcomes[0].hard_case_id_not_expected:unknown",
+        "receiverOutcomes.expected_hard_case_missing:hard-active-project-rule-vs-old-context"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "duplicate-outcome-id",
+      "status": "DEGRADED_PASSIVE_HARD_CASE_OUTCOME_VALUE_SCORECARD",
+      "validationIssues": [
+        "receiverOutcomes[1].duplicate_hard_case_id:hard-active-project-rule-vs-old-context",
+        "receiverOutcomes.expected_hard_case_missing:hard-partial-contradiction-thread"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "bad-label",
+      "status": "DEGRADED_PASSIVE_HARD_CASE_OUTCOME_VALUE_SCORECARD",
+      "validationIssues": [
+        "receiverOutcomes[0].receiver_label_not_expected",
+        "input.receiverOutcomes[0].receiverLabel.authority_token_detected"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "missing-rationale",
+      "status": "DEGRADED_PASSIVE_HARD_CASE_OUTCOME_VALUE_SCORECARD",
+      "validationIssues": [
+        "receiverOutcomes[0].receiver_rationale_required"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "outcome-not-source-bound",
+      "status": "DEGRADED_PASSIVE_HARD_CASE_OUTCOME_VALUE_SCORECARD",
+      "validationIssues": [
+        "receiverOutcomes[0].source_not_bound"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "outcome-promotes-memory",
+      "status": "DEGRADED_PASSIVE_HARD_CASE_OUTCOME_VALUE_SCORECARD",
+      "validationIssues": [
+        "receiverOutcomes[0].boundary_flags_invalid"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "outcome-non-null-policy",
+      "status": "DEGRADED_PASSIVE_HARD_CASE_OUTCOME_VALUE_SCORECARD",
+      "validationIssues": [
+        "receiverOutcomes[0].boundary_flags_invalid",
+        "input.receiverOutcomes[0].policyDecision_non_null",
+        "input.receiverOutcomes[0].policyDecision.authority_token_detected"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "tool-effect-requested",
+      "status": "DEGRADED_PASSIVE_HARD_CASE_OUTCOME_VALUE_SCORECARD",
+      "validationIssues": [
+        "input.unknown_field:[authority-token-redacted]",
+        "input.external_or_tool_effect_requested",
+        "input.forbidden_boundary_field_set"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "network-effect-requested",
+      "status": "DEGRADED_PASSIVE_HARD_CASE_OUTCOME_VALUE_SCORECARD",
+      "validationIssues": [
+        "input.unknown_field:[authority-token-redacted]",
+        "input.external_or_tool_effect_requested",
+        "input.forbidden_boundary_field_set"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "memory-write-requested",
+      "status": "DEGRADED_PASSIVE_HARD_CASE_OUTCOME_VALUE_SCORECARD",
+      "validationIssues": [
+        "input.unknown_field:[authority-token-redacted]",
+        "input.memory_or_config_write_requested",
+        "input.forbidden_boundary_field_set"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "runtime-requested",
+      "status": "DEGRADED_PASSIVE_HARD_CASE_OUTCOME_VALUE_SCORECARD",
+      "validationIssues": [
+        "input.unknown_field:[authority-token-redacted]",
+        "input.runtime_or_daemon_requested",
+        "input.forbidden_boundary_field_set"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "daemon-requested",
+      "status": "DEGRADED_PASSIVE_HARD_CASE_OUTCOME_VALUE_SCORECARD",
+      "validationIssues": [
+        "input.unknown_field:daemon",
+        "input.runtime_or_daemon_requested",
+        "input.forbidden_boundary_field_set"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "raw-output-requested",
+      "status": "DEGRADED_PASSIVE_HARD_CASE_OUTCOME_VALUE_SCORECARD",
+      "validationIssues": [
+        "input.unknown_field:[authority-token-redacted]",
+        "input.raw_persistence_or_output_requested",
+        "input.forbidden_boundary_field_set"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "authority-token-redacted",
+      "status": "DEGRADED_PASSIVE_HARD_CASE_OUTCOME_VALUE_SCORECARD",
+      "validationIssues": [
+        "input.receiverOutcomes[0].receiverRationale.authority_token_detected"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "hard-case-report-markdown-poisoned",
+      "status": "DEGRADED_PASSIVE_HARD_CASE_OUTCOME_VALUE_SCORECARD",
+      "validationIssues": [
+        "hardCaseArtifact.reportMarkdown_digest_not_expected"
+      ],
+      "policyDecision": null
+    }
+  ],
+  "count": 49,
+  "authorityTokenPayloadLeaked": false
+}
