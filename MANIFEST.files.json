@@ -69,18 +69,18 @@
     },
     {
       "path": "README.md",
-      "bytes": 3120,
-      "sha256": "10923cd4f9868008941d3f16be476052a212adf1f408f5df6c051cc9cf913196"
+      "bytes": 3340,
+      "sha256": "6a3fd8293cecda071a89bb5598b818769ea12d7ee5b5dcee753c134a85496fc8"
     },
     {
       "path": "RELEASE_CANDIDATE.md",
-      "bytes": 1165,
-      "sha256": "13272302b0733f5cd54ec724cba8adb143571f6b8802788df6799738581a4115"
+      "bytes": 1180,
+      "sha256": "ee17babdf6ac20935c920e8dc424f752b9ca5f0ec08eb3e8349edf1aaf2a7a21"
     },
     {
       "path": "RELEASE_NOTES.md",
-      "bytes": 2810,
-      "sha256": "e739d14b2bf7799b091b05e5192245555c71cd7cde4b56fedd0449f27186762e"
+      "bytes": 2972,
+      "sha256": "83e3714254f1faa46d7436ab0c37250c442c35092b6378be9dd57e8ff32d98a1"
     },
     {
       "path": "design-notes/adapter-boundary-langgraph-mcp-v0.md",
@@ -986,6 +986,41 @@
       "path": "docs/passive-live-memory-coherence-repeatability-scorecard-runs-v0.37.1.md",
       "bytes": 412,
       "sha256": "9f652e5d2a0a16f0e173ae7f845d7dd248c5b35c1fdc789a88b9a8f8e77bed6f"
+    },
+    {
+      "path": "docs/passive-live-memory-coherence-stale-contradiction-invalidation-window-candidates-v0.39.1.md",
+      "bytes": 489,
+      "sha256": "72681eb5f2ed8dba4d16854a49fa1c7de51896b0ce65471dd3f0b3ed09058fcc"
+    },
+    {
+      "path": "docs/passive-live-memory-coherence-stale-contradiction-invalidation-window-local-review-notes-v0.39.5.md",
+      "bytes": 1579,
+      "sha256": "c287fe074e25efa9abbca1828ef199160e48d7d020870f84d23ebce506dcbdc2"
+    },
+    {
+      "path": "docs/passive-live-memory-coherence-stale-contradiction-invalidation-window-metrics-v0.39.2.md",
+      "bytes": 852,
+      "sha256": "f3448752fceda9bf304c50fce201bb6447508baa2c983b05175a3f17b71e429c"
+    },
+    {
+      "path": "docs/passive-live-memory-coherence-stale-contradiction-invalidation-window-negative-controls-v0.39.3.md",
+      "bytes": 999,
+      "sha256": "4ca5e0068a82cab0a656abb1f0e35b46d8b5d66345bc75deca6345e3f797243a"
+    },
+    {
+      "path": "docs/passive-live-memory-coherence-stale-contradiction-invalidation-window-output-boundary-v0.39.4.md",
+      "bytes": 696,
+      "sha256": "9043f3313cf8ab35dd711a587a2b2f0bbfdc5932568d467e0abc9de5cca80c4a"
+    },
+    {
+      "path": "docs/passive-live-memory-coherence-stale-contradiction-invalidation-window-protocol-v0.39.0-alpha.md",
+      "bytes": 887,
+      "sha256": "a578826a5cf5ff993f3686b7b29b0953997cf03cb374232fab1e6a281c6ce930"
+    },
+    {
+      "path": "docs/passive-live-memory-coherence-stale-contradiction-invalidation-window-reviewer-package-v0.39.5.md",
+      "bytes": 1267,
+      "sha256": "03545f8d08d877c3a20b1926ef823d6e54607c02073a61833f39a9e83f981ed3"
     },
     {
       "path": "docs/passive-live-memory-coherence-usefulness-window-handoff-v0.38.1.md",
@@ -2378,6 +2413,36 @@
       "sha256": "a9e98252a8172be2dca5412a2f706c4471484a8ea544a6f63160153ae58fd8cb"
     },
     {
+      "path": "docs/status-v0.39.0-alpha.md",
+      "bytes": 271,
+      "sha256": "0f32a77ad789980791ff3cb9ac5b639b322195c1ed22878a7b76a514c02b1968"
+    },
+    {
+      "path": "docs/status-v0.39.1.md",
+      "bytes": 174,
+      "sha256": "54159b1d5223fe44a27176540d492eb677a3c97c54349d50f0eb81a4641743f2"
+    },
+    {
+      "path": "docs/status-v0.39.2.md",
+      "bytes": 220,
+      "sha256": "151018200838fe259dd93f16dfad86513ca4217a11bbac555e557096787ca66b"
+    },
+    {
+      "path": "docs/status-v0.39.3.md",
+      "bytes": 270,
+      "sha256": "5b3c8678907ffbdcc4d6871699c13c9bf21d38e212d63775a83a7b28a4ea1ffa"
+    },
+    {
+      "path": "docs/status-v0.39.4.md",
+      "bytes": 229,
+      "sha256": "45b64c94f729a620a06fc893b973dedd82e0bdacbc4dbeeed85226b0129a6ff5"
+    },
+    {
+      "path": "docs/status-v0.39.5.md",
+      "bytes": 264,
+      "sha256": "313926449ec6e11ef4dd296da6ea1c13b8bad0d682c6c4ba8636ffe27f8de121"
+    },
+    {
       "path": "docs/status-v0.4.5.md",
       "bytes": 4795,
       "sha256": "b65d5f65e2d5f88ad65e475abc9d07d6da6dc8a463ba99c81ed57970bed3e01c"
@@ -2708,6 +2773,11 @@
       "sha256": "2436b137c1636649ad71bc5de5c6203ba0bdedd7297c276c5052dc09008854b6"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/bin/passive-live-memory-coherence-stale-contradiction-invalidation-window.mjs",
+      "bytes": 1279,
+      "sha256": "6f4e66e8b36ffa0474fc1f2d2f3a1d05fe4d3784dce6a1dcb860c308e67e8337"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/bin/passive-live-memory-coherence-usefulness-window.mjs",
       "bytes": 932,
       "sha256": "0152fcca21c2011e1569a2fc8f713c2a6e284dd6b31b30ac4ab50fb6e59e3e11"
@@ -2859,8 +2929,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/bounded-multisource-shadow-read-packet-v0.20.1.out.json",
-      "bytes": 12432,
-      "sha256": "adbecd5d6b3956ca210adc6c16434a8ea3e550e5225b78063f3239a5a2681628"
+      "bytes": 12459,
+      "sha256": "117c86a786caeb4f9804583a3b397ca87b292834c013de0a05041d2944becca5"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/bounded-multisource-shadow-read-preflight-abort-v0.20.2.out.json",
@@ -2879,8 +2949,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/bounded-multisource-shadow-read-report-v0.20.1.out.md",
-      "bytes": 2125,
-      "sha256": "7f5d8634a657ec088820f405b683bf00c366a7ed6159ad5e6ae9fe2dd0abf807"
+      "bytes": 2138,
+      "sha256": "c276a4e6bac2a34bf1a7ffa3f2a10e5f7558159af16a696e4009cc1eab2f7d1b"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/bounded-multisource-shadow-read-reviewer-package-v0.20.5.out.json",
@@ -3079,8 +3149,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-adapter-shadow-read-packet-v0.19.1.out.json",
-      "bytes": 8094,
-      "sha256": "1d1c7c755f305f9191e62925f0d597858a77b72eb02400f880af53b2552f32e0"
+      "bytes": 8121,
+      "sha256": "f167a39eca1345d9ab24d6b0ecf66f1e407953867966a7aaa271bc8d8e201960"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-adapter-shadow-read-preflight-abort-v0.19.2.out.json",
@@ -3099,13 +3169,13 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-adapter-shadow-read-report-v0.19.1.out.md",
-      "bytes": 1483,
-      "sha256": "628f7ee2a9bcccc2a9c483f7974fc011197cb915b060d7d974cea35fabb75138"
+      "bytes": 1496,
+      "sha256": "2077c06d5f9b04bb2e35313ee47b7ca73b16281b571e18ebb96fa6401de1fa82"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-adapter-shadow-read-reviewer-package-v0.19.5.out.json",
-      "bytes": 9625,
-      "sha256": "e0fde7ce563f79b9b5f4c680c2d74fcf4b5536bcab90875cae93675e45779f72"
+      "bytes": 9652,
+      "sha256": "609aece697e6c46ad615833cd2995d32c4fcd68405398cdc76ba348d89afa921"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-input-source-boundary-contracts.out.json",
@@ -3149,8 +3219,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-read-gate-packet-v0.18.1.out.json",
-      "bytes": 6056,
-      "sha256": "1703900341f1d0cf6b1f4fa72a7329cdae454c33b9fd6b8cb280ea682fb877ea"
+      "bytes": 6070,
+      "sha256": "4c52104f3bd4ba876fad1368ccc90d1c769ff800308561085e6ce147fc653c28"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-read-gate-preflight-abort-v0.18.2.out.json",
@@ -3169,8 +3239,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-read-gate-reviewer-package-v0.18.5.out.json",
-      "bytes": 7453,
-      "sha256": "bfed81bb2c12243698e12f98c0575ef7c5182090b8f3fd03eed6d6abb8ce6d79"
+      "bytes": 7467,
+      "sha256": "838273e691b05cca5ca0f802883a907486d878f06062c194ee8156ef65ed6698"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-shadow-drift-scorecard-shape.out.json",
@@ -3791,6 +3861,41 @@
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-live-memory-coherence-repeatability-scorecard-runs-v0.37.1.out.json",
       "bytes": 3163,
       "sha256": "2b606ef1ae431c1d5243fc333ca0328dd7126ef834a2122be3b751b784b7bc7b"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-live-memory-coherence-stale-contradiction-invalidation-window-candidates-v0.39.1.out.json",
+      "bytes": 3914,
+      "sha256": "bbba4981a9ab34bbbcb7e4c0ab9282c974007b573d0bbbbfca3feeb2834a7645"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-live-memory-coherence-stale-contradiction-invalidation-window-metrics-v0.39.2.out.json",
+      "bytes": 656,
+      "sha256": "bfabb913e6175b960beaa88a3459e4cb84b54ea2b4161b1728741300f5a6b7d6"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-live-memory-coherence-stale-contradiction-invalidation-window-negative-controls-v0.39.3.out.json",
+      "bytes": 13572,
+      "sha256": "4ce6cf4e193e224b77c9aefeba1ef4233f7a65d9855b5b34de325e967b49f29e"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-live-memory-coherence-stale-contradiction-invalidation-window-output-boundary-v0.39.4.out.json",
+      "bytes": 170,
+      "sha256": "5c536f6691963d8e95e72650175fcf3a5c79f6184bea67dd8637d8ea130b8795"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-live-memory-coherence-stale-contradiction-invalidation-window-protocol-v0.39.0-alpha.out.json",
+      "bytes": 948,
+      "sha256": "9c646c31268372cafeca4c2f19bdbb3ad8a1026111c9e58066eb6f46c258f803"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-live-memory-coherence-stale-contradiction-invalidation-window-report-v0.39.5.out.md",
+      "bytes": 2289,
+      "sha256": "bf4f6e13efef3a3ded8834ee86d1b208af6a1e7e0ad2828c3f85a80efe8897df"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-live-memory-coherence-stale-contradiction-invalidation-window-reviewer-package-v0.39.5.out.json",
+      "bytes": 12716,
+      "sha256": "7624d2154ee31ce54d705571d16e6fc23343af6c27a7cb2c2cd7469debbf6f04"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-live-memory-coherence-usefulness-window-handoff-v0.38.1.out.json",
@@ -5009,8 +5114,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/package.json",
-      "bytes": 78026,
-      "sha256": "2045e89ce0656932b43207d35cef14dee0adbf20a94033e1cf7ce87710da0a2f"
+      "bytes": 81054,
+      "sha256": "a6ff8a676a7b00a7a264502a0c596c3340d3d8d8cef3d3fffbf24d3c2c2abca1"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/action-context-packet.mjs",
@@ -5146,6 +5251,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/src/passive-live-memory-coherence-repeatability-scorecard.mjs",
       "bytes": 25396,
       "sha256": "51dba26b7351b9624b09ca014e6cd25d9a742330d1ac280c68bfb3b68c9c3068"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/src/passive-live-memory-coherence-stale-contradiction-invalidation-window.mjs",
+      "bytes": 29150,
+      "sha256": "7eed8b9013be2587e5c987a0330681f0d90d6284f7cbfe76635f1285a2bf76c6"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/passive-live-memory-coherence-usefulness-window.mjs",
@@ -6136,6 +6246,41 @@
       "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-live-memory-coherence-repeatability-scorecard-runs-v0.37.1.mjs",
       "bytes": 1371,
       "sha256": "8e63f771f426c70a4b28f1ad0a30bff7764fe9c288da7a2101de0c674a3495c9"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-live-memory-coherence-stale-contradiction-invalidation-window-candidates-v0.39.1.mjs",
+      "bytes": 1521,
+      "sha256": "1154bd93e46f3bc3bf7c14978b41fc7ad7f572be1547b16a3d45e2ca2b27945b"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-live-memory-coherence-stale-contradiction-invalidation-window-fixtures.mjs",
+      "bytes": 514,
+      "sha256": "8316f7b8a8ef49e8c167d2584150cb26462f93ff0e1801217a0dfa516bd473a3"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-live-memory-coherence-stale-contradiction-invalidation-window-metrics-v0.39.2.mjs",
+      "bytes": 1552,
+      "sha256": "e5d102aa3a96bdce5c3dde5cd51feff9476dad30248c6b87f29b87357477b419"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-live-memory-coherence-stale-contradiction-invalidation-window-negative-controls-v0.39.3.mjs",
+      "bytes": 7636,
+      "sha256": "51a07fc0b9cf955c99248a01f77b4393932b124fe753ce8b87691167a6d8898e"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-live-memory-coherence-stale-contradiction-invalidation-window-output-boundary-v0.39.4.mjs",
+      "bytes": 3536,
+      "sha256": "8180bc69ceba5619ab90ecff4a602f941c2c768614c6973f7cc7488a15eddeba"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-live-memory-coherence-stale-contradiction-invalidation-window-protocol-v0.39.0-alpha.mjs",
+      "bytes": 1079,
+      "sha256": "6c0e8f41cdcda3b4b0da41a9b03cb0974eee1d176168a0feff2d97296300901d"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-live-memory-coherence-stale-contradiction-invalidation-window-reviewer-package-v0.39.5.mjs",
+      "bytes": 1280,
+      "sha256": "eb9406f59e25f1f5849c1a48dfab3e227b9e0147ffd8df303864f0da0659b96a"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-live-memory-coherence-usefulness-window-fixtures.mjs",
@@ -7344,8 +7489,8 @@
     },
     {
       "path": "tools/release-checks/index.mjs",
-      "bytes": 4359,
-      "sha256": "46d649d2f7b99a8d7eddd81929777cf436259dde1a654cbb577a76625f2c519b"
+      "bytes": 4557,
+      "sha256": "9ee1bbccba00e3b2f5e8888ca0d4f86ecfbe9e5549612d1a5d7096daa85f5173"
     },
     {
       "path": "tools/release-checks/limited-passive-live-capture-readiness.mjs",
@@ -7426,6 +7571,11 @@
       "path": "tools/release-checks/passive-live-memory-coherence-repeatability-scorecard.mjs",
       "bytes": 10699,
       "sha256": "150bfcd7e8317a5d17aaa7a8562dbf678678694a5f0745f81e809a92ac96007c"
+    },
+    {
+      "path": "tools/release-checks/passive-live-memory-coherence-stale-contradiction-invalidation-window.mjs",
+      "bytes": 10758,
+      "sha256": "152b73777460b2a7e77abe46c74529bcead55eec3ea2cd2931dc4a10bea8cec1"
     },
     {
       "path": "tools/release-checks/passive-live-memory-coherence-usefulness-window.mjs",

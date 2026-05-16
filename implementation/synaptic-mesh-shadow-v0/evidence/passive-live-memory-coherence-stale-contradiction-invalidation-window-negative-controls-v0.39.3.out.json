@@ -1,0 +1,372 @@
+{
+  "rejectedNegativeControls": [
+    {
+      "name": "missing-usefulness-artifact",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_INVALIDATION_WINDOW",
+      "validationIssues": [
+        "usefulnessArtifact.explicit_object_required"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "unknown-top-level-input-field",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_INVALIDATION_WINDOW",
+      "validationIssues": [
+        "input.unknown_field:unexpectedTopLevel"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "fabricated-usefulness-path",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_INVALIDATION_WINDOW",
+      "validationIssues": [
+        "input.usefulness_artifact_path_not_pinned"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "traversal-short-usefulness-path",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_INVALIDATION_WINDOW",
+      "validationIssues": [
+        "input.usefulness_artifact_path_not_pinned"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "traversal-repo-usefulness-path",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_INVALIDATION_WINDOW",
+      "validationIssues": [
+        "input.usefulness_artifact_path_not_pinned"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "fabricated-usefulness-digest",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_INVALIDATION_WINDOW",
+      "validationIssues": [
+        "input.usefulness_artifact_digest_not_pinned"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "object-digest-drift",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_INVALIDATION_WINDOW",
+      "validationIssues": [
+        "input.usefulness_artifact_object_digest_not_pinned",
+        "usefulnessArtifact.artifact.metrics.handoffItemCount_not_expected",
+        "usefulnessArtifact.metrics.handoffItemCount_not_expected"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "wrong-usefulness-artifact",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_INVALIDATION_WINDOW",
+      "validationIssues": [
+        "input.usefulness_artifact_object_digest_not_pinned",
+        "usefulnessArtifact.artifact.artifact_not_expected",
+        "usefulnessArtifact.artifact_not_expected_v0.38_usefulness"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "wrong-usefulness-schema",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_INVALIDATION_WINDOW",
+      "validationIssues": [
+        "input.usefulness_artifact_object_digest_not_pinned",
+        "usefulnessArtifact.artifact.schemaVersion_not_expected",
+        "usefulnessArtifact.schema_not_expected"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "wrong-usefulness-release",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_INVALIDATION_WINDOW",
+      "validationIssues": [
+        "input.usefulness_artifact_object_digest_not_pinned",
+        "usefulnessArtifact.artifact.releaseLayer_not_expected",
+        "usefulnessArtifact.release_layer_not_v0.38.5"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "usefulness-not-complete",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_INVALIDATION_WINDOW",
+      "validationIssues": [
+        "input.usefulness_artifact_object_digest_not_pinned",
+        "usefulnessArtifact.artifact.usefulnessWindowStatus_not_expected",
+        "usefulnessArtifact.status_not_complete"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "usefulness-report-poisoned",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_INVALIDATION_WINDOW",
+      "validationIssues": [
+        "input.usefulness_artifact_object_digest_not_pinned",
+        "usefulnessArtifact.artifact.reportMarkdown.authority_token_detected",
+        "usefulnessArtifact.reportMarkdown_digest_not_expected",
+        "usefulnessArtifact.reportMarkdown.authority_token_detected"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "usefulness-metric-drift",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_INVALIDATION_WINDOW",
+      "validationIssues": [
+        "input.usefulness_artifact_object_digest_not_pinned",
+        "usefulnessArtifact.artifact.metrics.usefulHandoffItemCount_not_expected",
+        "usefulnessArtifact.metrics.usefulHandoffItemCount_not_expected"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "usefulness-handoff-missing",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_INVALIDATION_WINDOW",
+      "validationIssues": [
+        "input.usefulness_artifact_object_digest_not_pinned",
+        "usefulnessArtifact.artifact.handoffItems_not_exact_expected_count",
+        "usefulnessArtifact.artifact.handoffItems.missing_source_observation:obs-review-hardening-caution",
+        "usefulnessArtifact.handoff_items_not_exact_expected_count",
+        "usefulnessArtifact.handoff_missing:handoff-review-hardening-caution"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "usefulness-handoff-label-drift",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_INVALIDATION_WINDOW",
+      "validationIssues": [
+        "input.usefulness_artifact_object_digest_not_pinned",
+        "usefulnessArtifact.artifact.handoff-current-release-continuity.humanTreatment_not_pinned",
+        "usefulnessArtifact.handoff-current-release-continuity.humanTreatment_not_pinned"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "usefulness-handoff-not-source-bound",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_INVALIDATION_WINDOW",
+      "validationIssues": [
+        "input.usefulness_artifact_object_digest_not_pinned",
+        "usefulnessArtifact.artifact.handoff-current-release-continuity.boundary_flags_invalid",
+        "usefulnessArtifact.handoff-current-release-continuity.boundary_flags_invalid"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "usefulness-handoff-raw-persisted",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_INVALIDATION_WINDOW",
+      "validationIssues": [
+        "input.usefulness_artifact_object_digest_not_pinned",
+        "usefulnessArtifact.artifact.handoff-current-release-continuity.boundary_flags_invalid",
+        "usefulnessArtifact.artifact.handoffItems[0].forbidden_boundary_field_set",
+        "usefulnessArtifact.handoff-current-release-continuity.boundary_flags_invalid",
+        "input.usefulnessArtifact.handoffItems[0].forbidden_boundary_field_set"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "usefulness-handoff-promotes-memory",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_INVALIDATION_WINDOW",
+      "validationIssues": [
+        "input.usefulness_artifact_object_digest_not_pinned",
+        "usefulnessArtifact.artifact.handoff-current-release-continuity.boundary_flags_invalid",
+        "usefulnessArtifact.handoff-current-release-continuity.boundary_flags_invalid"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "tool-effect-requested",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_INVALIDATION_WINDOW",
+      "validationIssues": [
+        "input.unknown_field:[authority-token-redacted]",
+        "input.external_or_tool_effect_requested",
+        "input.forbidden_boundary_field_set"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "network-effect-requested",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_INVALIDATION_WINDOW",
+      "validationIssues": [
+        "input.unknown_field:[authority-token-redacted]",
+        "input.external_or_tool_effect_requested",
+        "input.forbidden_boundary_field_set"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "resource-fetch-requested",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_INVALIDATION_WINDOW",
+      "validationIssues": [
+        "input.unknown_field:[authority-token-redacted]",
+        "input.external_or_tool_effect_requested",
+        "input.forbidden_boundary_field_set"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "memory-write-requested",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_INVALIDATION_WINDOW",
+      "validationIssues": [
+        "input.unknown_field:[authority-token-redacted]",
+        "input.memory_or_config_write_requested",
+        "input.forbidden_boundary_field_set"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "config-write-requested",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_INVALIDATION_WINDOW",
+      "validationIssues": [
+        "input.unknown_field:[authority-token-redacted]",
+        "input.memory_or_config_write_requested",
+        "input.forbidden_boundary_field_set"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "runtime-requested",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_INVALIDATION_WINDOW",
+      "validationIssues": [
+        "input.unknown_field:[authority-token-redacted]",
+        "input.runtime_or_daemon_requested",
+        "input.forbidden_boundary_field_set"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "daemon-requested",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_INVALIDATION_WINDOW",
+      "validationIssues": [
+        "input.unknown_field:daemon",
+        "input.runtime_or_daemon_requested",
+        "input.forbidden_boundary_field_set"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "watch-requested",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_INVALIDATION_WINDOW",
+      "validationIssues": [
+        "input.unknown_field:watch",
+        "input.runtime_or_daemon_requested",
+        "input.forbidden_boundary_field_set"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "raw-output-requested",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_INVALIDATION_WINDOW",
+      "validationIssues": [
+        "input.unknown_field:[authority-token-redacted]",
+        "input.raw_persistence_or_output_requested",
+        "input.forbidden_boundary_field_set"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "non-null-policy",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_INVALIDATION_WINDOW",
+      "validationIssues": [
+        "input.unknown_field:policyDecision",
+        "input.policyDecision_non_null",
+        "input.policyDecision.authority_token_detected"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "authority-token-redacted",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_INVALIDATION_WINDOW",
+      "validationIssues": [
+        "input.usefulness_artifact_object_digest_not_pinned",
+        "usefulnessArtifact.artifact.[authority-token-redacted].handoffId_not_pinned",
+        "usefulnessArtifact.artifact.handoffItems[0].handoffId.authority_token_detected",
+        "usefulnessArtifact.handoff_missing:handoff-current-release-continuity",
+        "usefulnessArtifact.[authority-token-redacted].handoff_not_expected",
+        "input.usefulnessArtifact.handoffItems[0].handoffId.authority_token_detected"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "output-unknown-top-level-field",
+      "status": "artifact_rejected",
+      "validationIssues": [
+        "artifact.unknown_field:extraSmuggledContext"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "output-unknown-protocol-field",
+      "status": "artifact_rejected",
+      "validationIssues": [
+        "artifact.protocol.unknown_field:extraProtocol"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "output-unknown-metric-field",
+      "status": "artifact_rejected",
+      "validationIssues": [
+        "artifact.metrics.unknown_field:extraMetric"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "output-unknown-candidate-field",
+      "status": "artifact_rejected",
+      "validationIssues": [
+        "artifact.candidate-current-release-continuity.unknown_field:extraCandidate"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "output-unknown-judgement-field",
+      "status": "artifact_rejected",
+      "validationIssues": [
+        "artifact.candidate-current-release-continuity:passive-invalidation.unknown_field:extraJudgement"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "stale-signal-not-invalidated",
+      "status": "artifact_rejected",
+      "validationIssues": [
+        "artifact.candidate-stale-prior-release-anchor.stale_signal_not_invalidated"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "contradiction-not-cautioned",
+      "status": "artifact_rejected",
+      "validationIssues": [
+        "artifact.candidate-contradictory-boundary-claim.contradiction_not_cautioned"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "judgement-stale-not-invalidated",
+      "status": "artifact_rejected",
+      "validationIssues": [
+        "artifact.candidate-stale-prior-release-anchor:passive-invalidation.stale_judgement_not_invalidated"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "judgement-contradiction-not-cautioned",
+      "status": "artifact_rejected",
+      "validationIssues": [
+        "artifact.candidate-contradictory-boundary-claim:passive-invalidation.contradiction_judgement_not_cautioned"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "output-report-poisoned",
+      "status": "artifact_rejected",
+      "validationIssues": [
+        "artifact.reportMarkdown.authority_token_detected"
+      ],
+      "policyDecision": null
+    }
+  ],
+  "count": 39,
+  "authorityTokenPayloadLeaked": false
+}

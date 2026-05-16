@@ -30,6 +30,7 @@ import { passiveHardCaseOutcomeRepeatabilityScorecardSuite } from './passive-har
 import { passiveLiveMemoryCoherenceObservationRehearsalSuite } from './passive-live-memory-coherence-observation-rehearsal.mjs';
 import { passiveLiveMemoryCoherenceRepeatabilityScorecardSuite } from './passive-live-memory-coherence-repeatability-scorecard.mjs';
 import { passiveLiveMemoryCoherenceUsefulnessWindowSuite } from './passive-live-memory-coherence-usefulness-window.mjs';
+import { passiveLiveMemoryCoherenceInvalidationWindowSuite } from './passive-live-memory-coherence-stale-contradiction-invalidation-window.mjs';
 
 export const releaseCheckSuites = Object.freeze([
   passiveLiveShadowCanarySuite,
@@ -64,4 +65,5 @@ export const releaseCheckSuites = Object.freeze([
   passiveLiveMemoryCoherenceObservationRehearsalSuite,
   passiveLiveMemoryCoherenceRepeatabilityScorecardSuite,
   passiveLiveMemoryCoherenceUsefulnessWindowSuite,
+  passiveLiveMemoryCoherenceInvalidationWindowSuite,
 ]);
