@@ -1,0 +1,14 @@
+import assert from 'node:assert/strict';
+import { mkdirSync, writeFileSync } from 'node:fs';
+import { canonicalInput } from './passive-live-memory-coherence-invalidation-repeatability-scorecard-fixtures.mjs';
+import { scorePassiveLiveMemoryCoherenceInvalidationRepeatabilityScorecard } from '../src/passive-live-memory-coherence-invalidation-repeatability-scorecard.mjs';
+const out = scorePassiveLiveMemoryCoherenceInvalidationRepeatabilityScorecard(canonicalInput());
+assert.equal(out.repeatabilityStatus, 'PASSIVE_LIVE_MEMORY_COHERENCE_INVALIDATION_REPEATABILITY_SCORECARD_COMPLETE');
+assert.equal(out.validationIssues.length, 0);
+assert.equal(out.runSummaries.length, 3);
+assert.deepEqual(out.runSummaries.map((r)=>r.variant), ['baseline_order','paraphrased_invalidation_rationale','reverse_order']);
+assert.ok(out.runSummaries.every((r)=>r.invalidationJudgementCount === 5 && r.policyDecision === null && r.agentConsumedOutput === false));
+assert.equal(out.repeatabilityItems.length, 5);
+assert.ok(out.repeatabilityItems.every((item)=>item.runCount === 3 && item.agreesWithV039Invalidation === true));
+mkdirSync('evidence',{recursive:true});
+writeFileSync('evidence/passive-live-memory-coherence-invalidation-repeatability-scorecard-runs-v0.40.1.out.json', JSON.stringify({ repeatabilityStatus: out.repeatabilityStatus, runSummaries: out.runSummaries, repeatabilityItems: out.repeatabilityItems }, null, 2)+'\n');

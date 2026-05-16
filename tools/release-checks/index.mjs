@@ -31,6 +31,7 @@ import { passiveLiveMemoryCoherenceObservationRehearsalSuite } from './passive-l
 import { passiveLiveMemoryCoherenceRepeatabilityScorecardSuite } from './passive-live-memory-coherence-repeatability-scorecard.mjs';
 import { passiveLiveMemoryCoherenceUsefulnessWindowSuite } from './passive-live-memory-coherence-usefulness-window.mjs';
 import { passiveLiveMemoryCoherenceInvalidationWindowSuite } from './passive-live-memory-coherence-stale-contradiction-invalidation-window.mjs';
+import { passiveLiveMemoryCoherenceInvalidationRepeatabilityScorecardSuite } from './passive-live-memory-coherence-invalidation-repeatability-scorecard.mjs';
 
 export const releaseCheckSuites = Object.freeze([
   passiveLiveShadowCanarySuite,
@@ -66,4 +67,5 @@ export const releaseCheckSuites = Object.freeze([
   passiveLiveMemoryCoherenceRepeatabilityScorecardSuite,
   passiveLiveMemoryCoherenceUsefulnessWindowSuite,
   passiveLiveMemoryCoherenceInvalidationWindowSuite,
+  passiveLiveMemoryCoherenceInvalidationRepeatabilityScorecardSuite,
 ]);
