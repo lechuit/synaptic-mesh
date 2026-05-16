@@ -1,3 +1,55 @@
+# Release Notes — Synaptic Mesh v0.47.5
+
+## Summary
+
+`v0.47.5` adds a **passive live memory/coherence receiver live-context handoff utility repeatability scorecard** over the completed pinned v0.46.5 handoff utility artifact. It repeats the v0.46 handoffItems / handoffUtilityJudgements under baseline, paraphrased rationale/whyUseful, and reverse-order variants before any memory write or runtime integration boundary.
+
+## Evidence
+
+- `repeatabilityStatus: PASSIVE_LIVE_MEMORY_COHERENCE_RECEIVER_LIVE_CONTEXT_HANDOFF_UTILITY_REPEATABILITY_SCORECARD_COMPLETE`
+- `repeatabilityRunCount: 3`
+- `sourceHandoffWindowCount: 1`
+- `handoffItemCount: 5`
+- `totalHandoffUtilityJudgementCount: 15`
+- `stableHandoffItemCount: 5`
+- `unstableHandoffItemCount: 0`
+- `stableIncludedForLiveContextCount: 4`
+- `stableExcludedAsStaleCount: 1`
+- `stableContradictionCautionCount: 1`
+- `stableReceiverUsefulHandoffItemCount: 4`
+- `stableReceiverNoisyHandoffItemCount: 0`
+- `stableRawSignalUsefulHandoffItemCount: 3`
+- `stableRawSignalNoisyHandoffItemCount: 2`
+- `stableScorecardUsefulHandoffItemCount: 3`
+- `stableScorecardNoisyHandoffItemCount: 2`
+- `receiverUsefulnessRatio: 1`
+- `rawSignalUsefulnessRatio: 0.6`
+- `scorecardUsefulnessRatio: 0.6`
+- `stableHandoffUtilityTreatmentRatio: 1`
+- `sourceBoundRepeatabilityRatio: 1`
+- `staleSuppressionRepeatabilityRatio: 1`
+- `contradictionCautionRepeatabilityRatio: 1`
+- `rawPersistedFalseRatio: 1`
+- `agentConsumedOutputFalseRatio: 1`
+- `preReadPathPinned: true`
+- `boundaryViolationCount: 0`
+- `recommendation: ADVANCE_OBSERVATION_ONLY`
+- `recommendationIsAuthority: false`
+- `agentConsumedOutput: false`
+- `notRuntimeInstruction: true`
+- `policyDecision: null` retained only as a top-level compatibility/null sentinel; not repeated in protocol, metrics, runs, judgement items, stable items, or CLI stdout
+- Negative controls for traversal-like unpinned artifact paths, malformed/spoofed pinned v0.46 handoff utility artifacts, digest drift, metric drift, handoff item tampering, nested policyDecision repetition, raw persistence, external effects, tool execution, memory/config writes, runtime integration, unknown runtime/boundary fields, raw output, and non-null `policyDecision`.
+
+## Boundary
+
+This is local/manual/passive/read-only/one-shot, bounded to the completed repo-local v0.46.5 handoff utility artifact, pre-read path pinned, human-readable-only, non-authoritative, and not runtime authority.
+
+No enforcement, authorization, approval/block/allow semantics, tool execution, network/resource fetch, memory/config writes, durable memory promotion, external effects, daemon/watchers, autonomous runtime, raw persistence/output, runtime integration, or agent-consumed machine-readable policy decisions.
+
+## Next
+
+The next gate should keep this as local reviewer evidence or run a separate bounded shadow receiver rehearsal before any memory write or runtime integration boundary.
+
 # Release Notes — Synaptic Mesh v0.46.5
 
 ## Summary

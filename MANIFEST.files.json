@@ -69,8 +69,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 6516,
-      "sha256": "1be0de473f9d2ce946432f44df17949f40b608dcc7ca971ec6b56556d368cb99"
+      "bytes": 9535,
+      "sha256": "9de7f07dbd87113c8449a281089c7a49403502cf5d022f99902e3b7513a0bb26"
     },
     {
       "path": "RELEASE_CANDIDATE.md",
@@ -79,8 +79,8 @@
     },
     {
       "path": "RELEASE_NOTES.md",
-      "bytes": 6606,
-      "sha256": "e799c6fe7a338933428bc0476c94605d337536f3222b0a119f8473daf1abb667"
+      "bytes": 9524,
+      "sha256": "25a5944e712131e32aa5a67508f51236d97429df6e219debe2f48e0e6afab6b2"
     },
     {
       "path": "design-notes/adapter-boundary-langgraph-mcp-v0.md",
@@ -1016,6 +1016,41 @@
       "path": "docs/passive-live-memory-coherence-receiver-live-context-handoff-utility-protocol-v0.46.0-alpha.md",
       "bytes": 581,
       "sha256": "0fa7a7f87c864b166c52ab798e85a5c784690dd6463f9d2dd8228f254477d378"
+    },
+    {
+      "path": "docs/passive-live-memory-coherence-receiver-live-context-handoff-utility-repeatability-scorecard-local-review-notes-v0.47.5.md",
+      "bytes": 3114,
+      "sha256": "6bc4363177df35fa6c0e8a8c91fadf5dbb889ff3634f05ba6b679d1abac3aaaa"
+    },
+    {
+      "path": "docs/passive-live-memory-coherence-receiver-live-context-handoff-utility-repeatability-scorecard-metrics-v0.47.2.md",
+      "bytes": 381,
+      "sha256": "01d2d76f33ee88b56c270964e2ab5af752859394553ad7ae51f610cb9bfa95f3"
+    },
+    {
+      "path": "docs/passive-live-memory-coherence-receiver-live-context-handoff-utility-repeatability-scorecard-negative-controls-v0.47.3.md",
+      "bytes": 444,
+      "sha256": "62dea20474847535affefad55387e9d9c1882f0e4267894259ec0b3af966b68b"
+    },
+    {
+      "path": "docs/passive-live-memory-coherence-receiver-live-context-handoff-utility-repeatability-scorecard-output-boundary-v0.47.4.md",
+      "bytes": 360,
+      "sha256": "8c24f33f845becaa824e1cec562214ef83fddfd9e12702a9ce805bdf7dc411a5"
+    },
+    {
+      "path": "docs/passive-live-memory-coherence-receiver-live-context-handoff-utility-repeatability-scorecard-protocol-v0.47.0-alpha.md",
+      "bytes": 556,
+      "sha256": "32b28b0eb73e585bbd1e1587fe839ecc0d98f0b2c3fcec0a79fc61705c4361fd"
+    },
+    {
+      "path": "docs/passive-live-memory-coherence-receiver-live-context-handoff-utility-repeatability-scorecard-reviewer-package-v0.47.5.md",
+      "bytes": 745,
+      "sha256": "5b5408ba7ee11b67dc58b12db483b1ab2fe5622164c66bdb29b10794b875d534"
+    },
+    {
+      "path": "docs/passive-live-memory-coherence-receiver-live-context-handoff-utility-repeatability-scorecard-runs-v0.47.1.md",
+      "bytes": 240,
+      "sha256": "6624e088fe210f8659bcc99fa0e8dac69f632ddd1f0bc45ce438669067af1187"
     },
     {
       "path": "docs/passive-live-memory-coherence-receiver-live-context-handoff-utility-reviewer-package-v0.46.5.md",
@@ -2918,6 +2953,36 @@
       "sha256": "7c881e34b980ce43d00dd66e576c0ffebf17627c8ae3234cd3f375a40ebb387a"
     },
     {
+      "path": "docs/status-v0.47.0-alpha.md",
+      "bytes": 141,
+      "sha256": "eebebe99716225a4373206f8f2c26d47a19ad347c99adda5f52a38d70081a307"
+    },
+    {
+      "path": "docs/status-v0.47.1.md",
+      "bytes": 140,
+      "sha256": "2152d983c5b075fecbb8cc26270fa2b163da174d274ec92c778125c7c8562b5e"
+    },
+    {
+      "path": "docs/status-v0.47.2.md",
+      "bytes": 127,
+      "sha256": "9a459a9dd99e5205b52fa3a0ce335a1412da8998b73d3bb68b4217f0ef911ca8"
+    },
+    {
+      "path": "docs/status-v0.47.3.md",
+      "bytes": 182,
+      "sha256": "bd14906e99809e617480d7b8b4c95dc5fe392a15a301a514173ad30e712203cb"
+    },
+    {
+      "path": "docs/status-v0.47.4.md",
+      "bytes": 125,
+      "sha256": "ce424f659ce48741c45a5218e9992480f324ed2a695486a06855cf95f955494d"
+    },
+    {
+      "path": "docs/status-v0.47.5.md",
+      "bytes": 159,
+      "sha256": "542d577c91e4d82a76bcdec5657a3fad19f2bad034f4e38724d92d496304deab"
+    },
+    {
       "path": "docs/status-v0.5.0-alpha.md",
       "bytes": 4713,
       "sha256": "7e2bacbd20668fd6f3e9167547686986eb929850412a08f3ecb1130819e750b0"
@@ -3228,6 +3293,11 @@
       "sha256": "54bc6b6282dc1fa47071d90563ca1da5eb602b4f7244000cb0a841dbed37bf0f"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/bin/passive-live-memory-coherence-receiver-live-context-handoff-utility-repeatability-scorecard.mjs",
+      "bytes": 1663,
+      "sha256": "8173c1ea85d1cddda44981ce2533c21fa794eca9f0875d094fb1e0010c2d7ea6"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/bin/passive-live-memory-coherence-receiver-live-context-handoff-utility.mjs",
       "bytes": 1548,
       "sha256": "2bccfb3074d2a6935f4e6f7843bbe17f5bfb17dfe39c2ea11ed0fb0c3fc916a6"
@@ -3419,8 +3489,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/bounded-multisource-shadow-read-packet-v0.20.1.out.json",
-      "bytes": 12457,
-      "sha256": "99492fce921ae79b2f95c44071b208ac3c65a4833be6f4f181a5f5aac5d2236f"
+      "bytes": 12501,
+      "sha256": "64869001284f41f0c7b6736d841596e9981d10b911b562eec2453b9adb5f5e33"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/bounded-multisource-shadow-read-preflight-abort-v0.20.2.out.json",
@@ -3439,8 +3509,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/bounded-multisource-shadow-read-report-v0.20.1.out.md",
-      "bytes": 2137,
-      "sha256": "7ea6f64a6047faa189513bf19bed242345af6bc3a2666c732a73a854543b05f6"
+      "bytes": 2159,
+      "sha256": "4be906925fef1c3084688605d1e80b6d260d5c9e62f9824a8dbfb4969e83a537"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/bounded-multisource-shadow-read-reviewer-package-v0.20.5.out.json",
@@ -3639,8 +3709,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-adapter-shadow-read-packet-v0.19.1.out.json",
-      "bytes": 8157,
-      "sha256": "b536476ec6344427923c5f98ee0ac362cbb9d554986126f9b7dbb6b92e3ac536"
+      "bytes": 8202,
+      "sha256": "b199fe9ca210fec077deef4a9c7e98d87f86e35cac4c1325eb55e070e040972c"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-adapter-shadow-read-preflight-abort-v0.19.2.out.json",
@@ -3659,13 +3729,13 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-adapter-shadow-read-report-v0.19.1.out.md",
-      "bytes": 1514,
-      "sha256": "6598ea19dd0ef3c559b068591b63500ca42d5838f9c2698b1f4a450a121d1963"
+      "bytes": 1537,
+      "sha256": "718780fa0a73d0895ab1846398e35bd92320c7e78316da420498446a0effa2de"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-adapter-shadow-read-reviewer-package-v0.19.5.out.json",
-      "bytes": 9688,
-      "sha256": "45da2276fdd1678504fbb0cb06aa6f822e9209bef89174e1b6e2a10d6fc39547"
+      "bytes": 9733,
+      "sha256": "444c6e95c2a3e24af6873a6c83bf5ebbf5117860f06e52ab9920533e1566ae5d"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-input-source-boundary-contracts.out.json",
@@ -3709,8 +3779,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-read-gate-packet-v0.18.1.out.json",
-      "bytes": 6088,
-      "sha256": "1d6a0a0b32180b07d425376870582ba694123201f32762b8a97ed4b8c33c12b7"
+      "bytes": 6110,
+      "sha256": "71730d3b75e0aaf6dd49046723f1a1c061d8ef29f3ae939d72d0d8871102105e"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-read-gate-preflight-abort-v0.18.2.out.json",
@@ -3729,8 +3799,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-read-gate-reviewer-package-v0.18.5.out.json",
-      "bytes": 7485,
-      "sha256": "f83324ff23a2ab2c99a477ea33551b6aa006053ebf8e4bb40d8699e2df251044"
+      "bytes": 7507,
+      "sha256": "a5be8d3fc6b4d05b4463e188e0b7b414beeca3d0b0f39225a5efccdc67da5a07"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-shadow-drift-scorecard-shape.out.json",
@@ -4351,6 +4421,16 @@
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-live-memory-coherence-observation-rehearsal-sources-v0.36.1.out.json",
       "bytes": 3136,
       "sha256": "ce423aba46273a69a2043afbf6f47552c8d35cebe47ac1a87b588e40c2cdb047"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-live-memory-coherence-receiver-live-context-handoff-utility-repeatability-scorecard-report-v0.47.5.out.md",
+      "bytes": 2704,
+      "sha256": "961d30d19ad788c162458cd3e9b9156276e7c21e267ccac9c9f8673629cc9a9b"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-live-memory-coherence-receiver-live-context-handoff-utility-repeatability-scorecard-reviewer-package-v0.47.5.out.json",
+      "bytes": 35331,
+      "sha256": "bd625607d7b0f5f49e918a2279818f126d7577c473b5b9964296537e56364cae"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-live-memory-coherence-receiver-live-context-handoff-utility-report-v0.46.5.out.md",
@@ -5724,8 +5804,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/package.json",
-      "bytes": 96788,
-      "sha256": "f341db58ba4d203ba89b39713645ea49139d263d2238b8be5c0cf79e9a783407"
+      "bytes": 100430,
+      "sha256": "c18ed63c89d21f8743dd0dd544f076b723351855de47248008415b15584bf76a"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/action-context-packet.mjs",
@@ -5861,6 +5941,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/src/passive-live-memory-coherence-observation-rehearsal.mjs",
       "bytes": 25857,
       "sha256": "1ac0db92031daafea15b2b2cec930b59cc424fc3006132792e87d7732e445306"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/src/passive-live-memory-coherence-receiver-live-context-handoff-utility-repeatability-scorecard.mjs",
+      "bytes": 35511,
+      "sha256": "40282cd2fef61c49b2426cdd500097f9670c792eb1ca027d0bf9534acc1f125e"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/passive-live-memory-coherence-receiver-live-context-handoff-utility.mjs",
@@ -6921,6 +7006,41 @@
       "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-live-memory-coherence-receiver-live-context-handoff-utility-protocol-v0.46.0-alpha.mjs",
       "bytes": 1260,
       "sha256": "2e2e134713b02e9699351b1e0c4aefce32b2dd2743be26f20aa51cb827ae5fc5"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-live-memory-coherence-receiver-live-context-handoff-utility-repeatability-scorecard-fixtures.mjs",
+      "bytes": 1070,
+      "sha256": "1371cdc1fe51fb5fdbfe286bb1ef0758b7de6ec2fd2fa704be68bd628d57c647"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-live-memory-coherence-receiver-live-context-handoff-utility-repeatability-scorecard-metrics-v0.47.2.mjs",
+      "bytes": 2033,
+      "sha256": "44ff8416aa6fba0dd1c98d3e8856e98c3a6ff8f207795cc94d9622e2468ab087"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-live-memory-coherence-receiver-live-context-handoff-utility-repeatability-scorecard-negative-controls-v0.47.3.mjs",
+      "bytes": 3415,
+      "sha256": "7e291b492d899aa2a62c7c5b73f97ea19f79f2486ef30769cac0d56d315e5dcd"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-live-memory-coherence-receiver-live-context-handoff-utility-repeatability-scorecard-output-boundary-v0.47.4.mjs",
+      "bytes": 1963,
+      "sha256": "128d27537e58ca30099c1653e553f50dbdc39fa1c657772f8a02784906b6bf7b"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-live-memory-coherence-receiver-live-context-handoff-utility-repeatability-scorecard-protocol-v0.47.0-alpha.mjs",
+      "bytes": 1412,
+      "sha256": "9e07bc30c427f12bd193e3e141ca28270fa60f93ca452bb95b9987b90dbc2c45"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-live-memory-coherence-receiver-live-context-handoff-utility-repeatability-scorecard-reviewer-package-v0.47.5.mjs",
+      "bytes": 1798,
+      "sha256": "64a09df65ff0c094dcf73358770aec9cc5c78b7c57a9ac9480c496ab35b6bc71"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-live-memory-coherence-receiver-live-context-handoff-utility-repeatability-scorecard-runs-v0.47.1.mjs",
+      "bytes": 1279,
+      "sha256": "838f5dd13681fb70edcdf66d2eaa0e8f5fa8d0794c48d45a44ca0b95e652c5c9"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-live-memory-coherence-receiver-live-context-handoff-utility-reviewer-package-v0.46.5.mjs",
@@ -8379,8 +8499,8 @@
     },
     {
       "path": "tools/release-checks/index.mjs",
-      "bytes": 6227,
-      "sha256": "98b20db304af036d1295553585abd5e4c2aecf129492cfe6a0c30a7e7ed37697"
+      "bytes": 6521,
+      "sha256": "8ea27ec92187e50c78d205d28e5fce7e2d6e3a978b53563e7adcb3dbcf0058a7"
     },
     {
       "path": "tools/release-checks/limited-passive-live-capture-readiness.mjs",
@@ -8461,6 +8581,11 @@
       "path": "tools/release-checks/passive-live-memory-coherence-observation-rehearsal.mjs",
       "bytes": 9885,
       "sha256": "defd029237d708c719423df0cb38da2ea3775ef4f98603ac6a46969c69dfabaa"
+    },
+    {
+      "path": "tools/release-checks/passive-live-memory-coherence-receiver-live-context-handoff-utility-repeatability-scorecard.mjs",
+      "bytes": 11370,
+      "sha256": "c5c86751f89cbab05e6936acc605a32c7463ba26bc509d27e0af35d3215f6c58"
     },
     {
       "path": "tools/release-checks/passive-live-memory-coherence-receiver-live-context-handoff-utility.mjs",

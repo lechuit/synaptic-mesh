@@ -1,0 +1,11 @@
+import assert from 'node:assert/strict';
+import { scorePassiveLiveMemoryCoherenceReceiverLiveContextHandoffUtilityRepeatability } from '../src/passive-live-memory-coherence-receiver-live-context-handoff-utility-repeatability-scorecard.mjs';
+import { receiverLiveContextHandoffUtilityRepeatabilityInputV047 } from './passive-live-memory-coherence-receiver-live-context-handoff-utility-repeatability-scorecard-fixtures.mjs';
+const artifact = scorePassiveLiveMemoryCoherenceReceiverLiveContextHandoffUtilityRepeatability(receiverLiveContextHandoffUtilityRepeatabilityInputV047());
+assert.equal(artifact.repeatabilityStatus, 'PASSIVE_LIVE_MEMORY_COHERENCE_RECEIVER_LIVE_CONTEXT_HANDOFF_UTILITY_REPEATABILITY_SCORECARD_COMPLETE');
+assert.equal(artifact.repeatabilityRuns.length, 3);
+assert.deepEqual(artifact.repeatabilityRuns.map((r) => r.variant), ['baseline_order','paraphrased_rationale_whyUseful','reverse_order']);
+assert(artifact.repeatabilityRuns.every((r) => r.judgementCount === 5));
+assert.equal(artifact.stableHandoffUtilityJudgements.length, 5);
+assert(artifact.stableHandoffUtilityJudgements.every((j) => j.stableAcrossVariants === true));
+console.log(JSON.stringify({ runs: artifact.repeatabilityRuns.length, stable: artifact.stableHandoffUtilityJudgements.length }));

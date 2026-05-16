@@ -38,6 +38,7 @@ import { passiveLiveMemoryCoherenceReceiverUsefulnessRepeatabilityScorecardSuite
 import { passiveLiveMemoryCoherenceReceiverUsefulnessLiveObservationSuite } from './passive-live-memory-coherence-receiver-usefulness-live-observation.mjs';
 import { passiveLiveMemoryCoherenceReceiverUsefulnessLiveObservationRepeatabilityScorecardSuite } from './passive-live-memory-coherence-receiver-usefulness-live-observation-repeatability-scorecard.mjs';
 import { passiveLiveMemoryCoherenceReceiverLiveContextHandoffUtilitySuite } from './passive-live-memory-coherence-receiver-live-context-handoff-utility.mjs';
+import { passiveLiveMemoryCoherenceReceiverLiveContextHandoffUtilityRepeatabilityScorecardSuite } from './passive-live-memory-coherence-receiver-live-context-handoff-utility-repeatability-scorecard.mjs';
 
 export const releaseCheckSuites = Object.freeze([
   passiveLiveShadowCanarySuite,
@@ -80,4 +81,5 @@ export const releaseCheckSuites = Object.freeze([
   passiveLiveMemoryCoherenceReceiverUsefulnessLiveObservationSuite,
   passiveLiveMemoryCoherenceReceiverUsefulnessLiveObservationRepeatabilityScorecardSuite,
   passiveLiveMemoryCoherenceReceiverLiveContextHandoffUtilitySuite,
+  passiveLiveMemoryCoherenceReceiverLiveContextHandoffUtilityRepeatabilityScorecardSuite,
 ]);
