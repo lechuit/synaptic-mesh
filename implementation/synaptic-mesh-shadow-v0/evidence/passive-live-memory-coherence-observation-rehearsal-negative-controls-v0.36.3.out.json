@@ -1,0 +1,368 @@
+{
+  "rejectedNegativeControls": [
+    {
+      "name": "missing-repeatability-artifact",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_OBSERVATION_REHEARSAL",
+      "validationIssues": [
+        "repeatabilityArtifact.explicit_object_required"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "unknown-top-level-input-field",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_OBSERVATION_REHEARSAL",
+      "validationIssues": [
+        "input.unknown_field:unexpectedTopLevel"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "fabricated-repeatability-path",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_OBSERVATION_REHEARSAL",
+      "validationIssues": [
+        "input.repeatability_artifact_path_not_pinned"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "fabricated-repeatability-digest",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_OBSERVATION_REHEARSAL",
+      "validationIssues": [
+        "input.repeatability_artifact_digest_not_pinned"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "unknown-repeatability-artifact-field",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_OBSERVATION_REHEARSAL",
+      "validationIssues": [
+        "repeatabilityArtifact.unknown_field:extraSmuggledContext"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "unknown-repeatability-metric-field",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_OBSERVATION_REHEARSAL",
+      "validationIssues": [
+        "repeatabilityArtifact.metrics.unknown_field:extraMetric"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "wrong-repeatability-artifact",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_OBSERVATION_REHEARSAL",
+      "validationIssues": [
+        "repeatabilityArtifact.artifact_not_expected_v0.35_repeatability"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "wrong-repeatability-schema",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_OBSERVATION_REHEARSAL",
+      "validationIssues": [
+        "repeatabilityArtifact.schema_not_expected"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "wrong-repeatability-release",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_OBSERVATION_REHEARSAL",
+      "validationIssues": [
+        "repeatabilityArtifact.release_layer_not_v0.35.5"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "repeatability-not-complete",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_OBSERVATION_REHEARSAL",
+      "validationIssues": [
+        "repeatabilityArtifact.status_not_complete"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "repeatability-report-poisoned",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_OBSERVATION_REHEARSAL",
+      "validationIssues": [
+        "repeatabilityArtifact.reportMarkdown_digest_not_expected"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "repeatability-local-only-false",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_OBSERVATION_REHEARSAL",
+      "validationIssues": [
+        "repeatabilityArtifact.localOnly_not_expected"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "repeatability-read-only-false",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_OBSERVATION_REHEARSAL",
+      "validationIssues": [
+        "repeatabilityArtifact.readOnly_not_expected"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "repeatability-no-memory-writes-false",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_OBSERVATION_REHEARSAL",
+      "validationIssues": [
+        "repeatabilityArtifact.noMemoryWrites_not_expected"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "repeatability-metric-drift",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_OBSERVATION_REHEARSAL",
+      "validationIssues": [
+        "repeatabilityArtifact.metrics.stableHardCaseCount_not_expected"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "repeatability-items-missing",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_OBSERVATION_REHEARSAL",
+      "validationIssues": [
+        "repeatabilityArtifact.repeatability_items_not_exact_expected_count"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "repeatability-item-unstable",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_OBSERVATION_REHEARSAL",
+      "validationIssues": [
+        "repeatabilityArtifact.repeatability_items_not_all_stable"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "repeatability-item-promotes-memory",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_OBSERVATION_REHEARSAL",
+      "validationIssues": [
+        "repeatabilityArtifact.repeatability_item_boundary_flags_invalid"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "missing-source-packs",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_OBSERVATION_REHEARSAL",
+      "validationIssues": [
+        "sourcePacks.array_required"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "wrong-source-count",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_OBSERVATION_REHEARSAL",
+      "validationIssues": [
+        "sourcePacks.not_exact_expected_count",
+        "sourcePacks.expected_path_missing:docs/passive-hard-case-outcome-repeatability-scorecard-local-review-notes-v0.35.5.md"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "unknown-source-pack-field",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_OBSERVATION_REHEARSAL",
+      "validationIssues": [
+        "sourcePacks[0].unknown_field:rawSourceText"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "unexpected-source-path",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_OBSERVATION_REHEARSAL",
+      "validationIssues": [
+        "sourcePacks[0].path_not_expected:../../outside.md",
+        "sourcePacks.expected_path_missing:docs/status-v0.35.5.md"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "duplicate-source-path",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_OBSERVATION_REHEARSAL",
+      "validationIssues": [
+        "sourcePacks[1].duplicate_path:docs/status-v0.35.5.md",
+        "sourcePacks[1].sha256_not_expected",
+        "sourcePacks.expected_path_missing:docs/passive-hard-case-outcome-repeatability-scorecard-reviewer-package-v0.35.5.md"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "source-digest-drift",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_OBSERVATION_REHEARSAL",
+      "validationIssues": [
+        "sourcePacks[0].sha256_not_expected"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "source-not-redacted",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_OBSERVATION_REHEARSAL",
+      "validationIssues": [
+        "sourcePacks[0].boundary_flags_invalid"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "source-raw-persisted",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_OBSERVATION_REHEARSAL",
+      "validationIssues": [
+        "sourcePacks[0].boundary_flags_invalid",
+        "input.sourcePacks[0].forbidden_boundary_field_set"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "source-not-local",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_OBSERVATION_REHEARSAL",
+      "validationIssues": [
+        "sourcePacks[0].boundary_flags_invalid"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "source-not-readonly",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_OBSERVATION_REHEARSAL",
+      "validationIssues": [
+        "sourcePacks[0].boundary_flags_invalid"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "source-missing-anchors",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_OBSERVATION_REHEARSAL",
+      "validationIssues": [
+        "sourcePacks[0].anchor_phrases_required"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "source-authority-anchor",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_OBSERVATION_REHEARSAL",
+      "validationIssues": [
+        "sourcePacks[0].anchor_contains_authority_token",
+        "input.sourcePacks[0].anchorPhrases[0].authority_token_detected"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "source-missing-redacted-excerpt",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_OBSERVATION_REHEARSAL",
+      "validationIssues": [
+        "sourcePacks[0].redacted_excerpt_required"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "tool-effect-requested",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_OBSERVATION_REHEARSAL",
+      "validationIssues": [
+        "input.unknown_field:[authority-token-redacted]",
+        "input.external_or_tool_effect_requested",
+        "input.forbidden_boundary_field_set"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "network-effect-requested",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_OBSERVATION_REHEARSAL",
+      "validationIssues": [
+        "input.unknown_field:[authority-token-redacted]",
+        "input.external_or_tool_effect_requested",
+        "input.forbidden_boundary_field_set"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "resource-fetch-requested",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_OBSERVATION_REHEARSAL",
+      "validationIssues": [
+        "input.unknown_field:[authority-token-redacted]",
+        "input.external_or_tool_effect_requested",
+        "input.forbidden_boundary_field_set"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "memory-write-requested",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_OBSERVATION_REHEARSAL",
+      "validationIssues": [
+        "input.unknown_field:[authority-token-redacted]",
+        "input.memory_or_config_write_requested",
+        "input.forbidden_boundary_field_set"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "config-write-requested",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_OBSERVATION_REHEARSAL",
+      "validationIssues": [
+        "input.unknown_field:[authority-token-redacted]",
+        "input.memory_or_config_write_requested",
+        "input.forbidden_boundary_field_set"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "runtime-requested",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_OBSERVATION_REHEARSAL",
+      "validationIssues": [
+        "input.unknown_field:[authority-token-redacted]",
+        "input.runtime_or_daemon_requested",
+        "input.forbidden_boundary_field_set"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "daemon-requested",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_OBSERVATION_REHEARSAL",
+      "validationIssues": [
+        "input.unknown_field:daemon",
+        "input.runtime_or_daemon_requested",
+        "input.forbidden_boundary_field_set"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "watch-requested",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_OBSERVATION_REHEARSAL",
+      "validationIssues": [
+        "input.unknown_field:watch",
+        "input.runtime_or_daemon_requested",
+        "input.forbidden_boundary_field_set"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "raw-output-requested",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_OBSERVATION_REHEARSAL",
+      "validationIssues": [
+        "input.unknown_field:[authority-token-redacted]",
+        "input.raw_persistence_or_output_requested",
+        "input.forbidden_boundary_field_set"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "non-null-policy",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_OBSERVATION_REHEARSAL",
+      "validationIssues": [
+        "input.unknown_field:policyDecision",
+        "input.policyDecision_non_null",
+        "input.policyDecision.authority_token_detected"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "authority-token-redacted",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_OBSERVATION_REHEARSAL",
+      "validationIssues": [
+        "input.sourcePacks[0].redactedExcerpt.authority_token_detected"
+      ],
+      "policyDecision": null
+    }
+  ],
+  "count": 42,
+  "authorityTokenPayloadLeaked": false
+}
