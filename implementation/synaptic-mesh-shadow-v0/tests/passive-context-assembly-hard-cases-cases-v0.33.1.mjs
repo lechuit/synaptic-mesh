@@ -1,0 +1,14 @@
+import assert from 'node:assert/strict';
+import { mkdirSync, writeFileSync } from 'node:fs';
+import { canonicalInput } from './passive-context-assembly-hard-cases-fixtures.mjs';
+import { scorePassiveContextAssemblyHardCases } from '../src/passive-context-assembly-hard-cases.mjs';
+const out=scorePassiveContextAssemblyHardCases(canonicalInput());
+assert.equal(out.hardCaseStatus,'PASSIVE_CONTEXT_ASSEMBLY_HARD_CASES_COMPLETE');
+assert.equal(out.hardCases.length,5);
+assert.equal(out.hardCases.filter(c=>c.activeRulePreferred).length,1);
+assert.equal(out.hardCases.filter(c=>c.partialContradictionFlagged).length,1);
+assert.equal(out.hardCases.filter(c=>c.sourceBoundDecisionCarriedForward).length,1);
+assert.equal(out.hardCases.filter(c=>c.staleCautionPreserved).length,1);
+assert.equal(out.hardCases.filter(c=>c.temptingNoiseSuppressed).length,1);
+assert.ok(out.hardCases.every(c=>c.humanReviewOnly && c.minimalContextOnly && c.promoteToMemory===false && c.policyDecision===null));
+mkdirSync('evidence',{recursive:true}); writeFileSync('evidence/passive-context-assembly-hard-cases-cases-v0.33.1.out.json', JSON.stringify({hardCaseStatus:out.hardCaseStatus,hardCases:out.hardCases},null,2)+'\n');

@@ -292,6 +292,14 @@
     "test:passive-context-assembly-rehearsal-scorecard-negative-controls": "node tests/passive-context-assembly-rehearsal-scorecard-negative-controls-v0.32.3.mjs",
     "test:passive-context-assembly-rehearsal-scorecard-output-boundary": "node tests/passive-context-assembly-rehearsal-scorecard-output-boundary-v0.32.4.mjs",
     "test:passive-context-assembly-rehearsal-scorecard-reviewer-package": "node tests/passive-context-assembly-rehearsal-scorecard-reviewer-package-v0.32.5.mjs",
-    "test:passive-context-assembly-rehearsal-scorecard": "npm run test:passive-context-assembly-rehearsal-scorecard-protocol && npm run test:passive-context-assembly-rehearsal-scorecard-assembly && npm run test:passive-context-assembly-rehearsal-scorecard-metrics && npm run test:passive-context-assembly-rehearsal-scorecard-negative-controls && npm run test:passive-context-assembly-rehearsal-scorecard-output-boundary && npm run test:passive-context-assembly-rehearsal-scorecard-reviewer-package"
+    "test:passive-context-assembly-rehearsal-scorecard": "npm run test:passive-context-assembly-rehearsal-scorecard-protocol && npm run test:passive-context-assembly-rehearsal-scorecard-assembly && npm run test:passive-context-assembly-rehearsal-scorecard-metrics && npm run test:passive-context-assembly-rehearsal-scorecard-negative-controls && npm run test:passive-context-assembly-rehearsal-scorecard-output-boundary && npm run test:passive-context-assembly-rehearsal-scorecard-reviewer-package",
+    "passive:context-assembly-hard-cases": "node bin/passive-context-assembly-hard-cases.mjs",
+    "test:passive-context-assembly-hard-cases-protocol": "node tests/passive-context-assembly-hard-cases-protocol-v0.33.0-alpha.mjs",
+    "test:passive-context-assembly-hard-cases-cases": "node tests/passive-context-assembly-hard-cases-cases-v0.33.1.mjs",
+    "test:passive-context-assembly-hard-cases-metrics": "node tests/passive-context-assembly-hard-cases-metrics-v0.33.2.mjs",
+    "test:passive-context-assembly-hard-cases-negative-controls": "node tests/passive-context-assembly-hard-cases-negative-controls-v0.33.3.mjs",
+    "test:passive-context-assembly-hard-cases-output-boundary": "node tests/passive-context-assembly-hard-cases-output-boundary-v0.33.4.mjs",
+    "test:passive-context-assembly-hard-cases-reviewer-package": "node tests/passive-context-assembly-hard-cases-reviewer-package-v0.33.5.mjs",
+    "test:passive-context-assembly-hard-cases": "npm run test:passive-context-assembly-hard-cases-protocol && npm run test:passive-context-assembly-hard-cases-cases && npm run test:passive-context-assembly-hard-cases-metrics && npm run test:passive-context-assembly-hard-cases-negative-controls && npm run test:passive-context-assembly-hard-cases-output-boundary && npm run test:passive-context-assembly-hard-cases-reviewer-package"
   }
 }
