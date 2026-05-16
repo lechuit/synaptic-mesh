@@ -1,0 +1,266 @@
+{
+  "rejectedNegativeControls": [
+    {
+      "name": "missing-conflict-artifact",
+      "status": "DEGRADED_PASSIVE_CONTEXT_ASSEMBLY_REHEARSAL_SCORECARD",
+      "validationIssues": [
+        "conflictArtifact.explicit_object_required"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "fabricated-copy-path",
+      "status": "DEGRADED_PASSIVE_CONTEXT_ASSEMBLY_REHEARSAL_SCORECARD",
+      "validationIssues": [
+        "input.conflict_artifact_path_not_pinned"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "fabricated-copy-digest",
+      "status": "DEGRADED_PASSIVE_CONTEXT_ASSEMBLY_REHEARSAL_SCORECARD",
+      "validationIssues": [
+        "input.conflict_artifact_digest_not_pinned"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "unknown-top-level-content",
+      "status": "DEGRADED_PASSIVE_CONTEXT_ASSEMBLY_REHEARSAL_SCORECARD",
+      "validationIssues": [
+        "conflictArtifact.unknown_field:fabricatedBy"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "unknown-protocol-content",
+      "status": "DEGRADED_PASSIVE_CONTEXT_ASSEMBLY_REHEARSAL_SCORECARD",
+      "validationIssues": [
+        "conflictArtifact.protocol.unknown_field:fabricatedBy"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "unknown-metric-content",
+      "status": "DEGRADED_PASSIVE_CONTEXT_ASSEMBLY_REHEARSAL_SCORECARD",
+      "validationIssues": [
+        "conflictArtifact.metrics.unknown_field:fabricatedRatio"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "unknown-item-content",
+      "status": "DEGRADED_PASSIVE_CONTEXT_ASSEMBLY_REHEARSAL_SCORECARD",
+      "validationIssues": [
+        "conflictArtifact.conflictItems[0].unknown_field:extraCandidateText"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "wrong-artifact",
+      "status": "DEGRADED_PASSIVE_CONTEXT_ASSEMBLY_REHEARSAL_SCORECARD",
+      "validationIssues": [
+        "conflictArtifact.artifact_not_expected_v0.31_conflict_scorecard"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "wrong-schema",
+      "status": "DEGRADED_PASSIVE_CONTEXT_ASSEMBLY_REHEARSAL_SCORECARD",
+      "validationIssues": [
+        "conflictArtifact.schema_not_expected"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "wrong-release",
+      "status": "DEGRADED_PASSIVE_CONTEXT_ASSEMBLY_REHEARSAL_SCORECARD",
+      "validationIssues": [
+        "conflictArtifact.release_layer_not_v0.31.5"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "not-complete",
+      "status": "DEGRADED_PASSIVE_CONTEXT_ASSEMBLY_REHEARSAL_SCORECARD",
+      "validationIssues": [
+        "conflictArtifact.status_not_complete"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "non-null-policy",
+      "status": "DEGRADED_PASSIVE_CONTEXT_ASSEMBLY_REHEARSAL_SCORECARD",
+      "validationIssues": [
+        "conflictArtifact.policyDecision_non_null",
+        "input.conflictArtifact.policyDecision_non_null",
+        "input.conflictArtifact.policyDecision.authority_token_detected"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "recommendation-authority",
+      "status": "DEGRADED_PASSIVE_CONTEXT_ASSEMBLY_REHEARSAL_SCORECARD",
+      "validationIssues": [
+        "conflictArtifact.boundary_flags_invalid",
+        "input.conflictArtifact.recommendation_treated_as_authority"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "agent-consumed",
+      "status": "DEGRADED_PASSIVE_CONTEXT_ASSEMBLY_REHEARSAL_SCORECARD",
+      "validationIssues": [
+        "conflictArtifact.boundary_flags_invalid",
+        "input.conflictArtifact.forbidden_boundary_field_set"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "prior-validation-issues",
+      "status": "DEGRADED_PASSIVE_CONTEXT_ASSEMBLY_REHEARSAL_SCORECARD",
+      "validationIssues": [
+        "conflictArtifact.prior_validation_issues_present"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "wrong-metric-count",
+      "status": "DEGRADED_PASSIVE_CONTEXT_ASSEMBLY_REHEARSAL_SCORECARD",
+      "validationIssues": [
+        "conflictArtifact.metrics.conflictCaseCount_not_expected"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "wrong-item-count",
+      "status": "DEGRADED_PASSIVE_CONTEXT_ASSEMBLY_REHEARSAL_SCORECARD",
+      "validationIssues": [
+        "conflictArtifact.conflict_items_not_exact_expected_count",
+        "conflictArtifact.expected_conflict_item_missing:conflict-stale-negative-context"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "wrong-item-id",
+      "status": "DEGRADED_PASSIVE_CONTEXT_ASSEMBLY_REHEARSAL_SCORECARD",
+      "validationIssues": [
+        "conflictArtifact.expected_conflict_item_missing:conflict-source-bound-decision-vs-inference",
+        "conflictArtifact.unexpected_conflict_item:unknown"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "wrong-conflict-type",
+      "status": "DEGRADED_PASSIVE_CONTEXT_ASSEMBLY_REHEARSAL_SCORECARD",
+      "validationIssues": [
+        "conflictArtifact.conflict-source-bound-decision-vs-inference.conflict_type_not_expected"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "wrong-primary-card",
+      "status": "DEGRADED_PASSIVE_CONTEXT_ASSEMBLY_REHEARSAL_SCORECARD",
+      "validationIssues": [
+        "conflictArtifact.conflict-source-bound-decision-vs-inference.primary_card_not_expected"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "wrong-competing-context",
+      "status": "DEGRADED_PASSIVE_CONTEXT_ASSEMBLY_REHEARSAL_SCORECARD",
+      "validationIssues": [
+        "conflictArtifact.conflict-source-bound-decision-vs-inference.competing_context_not_expected"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "wrong-treatment",
+      "status": "DEGRADED_PASSIVE_CONTEXT_ASSEMBLY_REHEARSAL_SCORECARD",
+      "validationIssues": [
+        "conflictArtifact.conflict-source-bound-decision-vs-inference.treatment_not_expected"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "not-source-bound",
+      "status": "DEGRADED_PASSIVE_CONTEXT_ASSEMBLY_REHEARSAL_SCORECARD",
+      "validationIssues": [
+        "conflictArtifact.conflict-source-bound-decision-vs-inference.source_not_bound"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "item-promotes-memory",
+      "status": "DEGRADED_PASSIVE_CONTEXT_ASSEMBLY_REHEARSAL_SCORECARD",
+      "validationIssues": [
+        "conflictArtifact.conflict-source-bound-decision-vs-inference.boundary_flags_invalid"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "item-precedence-authority",
+      "status": "DEGRADED_PASSIVE_CONTEXT_ASSEMBLY_REHEARSAL_SCORECARD",
+      "validationIssues": [
+        "conflictArtifact.conflict-source-bound-decision-vs-inference.boundary_flags_invalid"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "tool-effect-requested",
+      "status": "DEGRADED_PASSIVE_CONTEXT_ASSEMBLY_REHEARSAL_SCORECARD",
+      "validationIssues": [
+        "input.external_or_tool_effect_requested",
+        "input.forbidden_boundary_field_set"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "network-effect-requested",
+      "status": "DEGRADED_PASSIVE_CONTEXT_ASSEMBLY_REHEARSAL_SCORECARD",
+      "validationIssues": [
+        "input.external_or_tool_effect_requested",
+        "input.forbidden_boundary_field_set"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "memory-write-requested",
+      "status": "DEGRADED_PASSIVE_CONTEXT_ASSEMBLY_REHEARSAL_SCORECARD",
+      "validationIssues": [
+        "input.memory_or_config_write_requested",
+        "input.forbidden_boundary_field_set"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "runtime-requested",
+      "status": "DEGRADED_PASSIVE_CONTEXT_ASSEMBLY_REHEARSAL_SCORECARD",
+      "validationIssues": [
+        "input.runtime_or_daemon_requested",
+        "input.forbidden_boundary_field_set"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "raw-output-requested",
+      "status": "DEGRADED_PASSIVE_CONTEXT_ASSEMBLY_REHEARSAL_SCORECARD",
+      "validationIssues": [
+        "input.raw_persistence_or_output_requested",
+        "input.forbidden_boundary_field_set"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "authority-token-redacted",
+      "status": "DEGRADED_PASSIVE_CONTEXT_ASSEMBLY_REHEARSAL_SCORECARD",
+      "validationIssues": [
+        "conflictArtifact.conflict-source-bound-decision-vs-inference.primary_card_not_expected",
+        "input.conflictArtifact.conflictItems[0].primaryCardId.authority_token_detected"
+      ],
+      "policyDecision": null
+    }
+  ],
+  "count": 31,
+  "authorityTokenPayloadLeaked": false
+}

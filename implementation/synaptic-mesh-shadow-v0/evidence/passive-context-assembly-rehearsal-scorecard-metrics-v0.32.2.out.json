@@ -1,0 +1,19 @@
+{
+  "recommendation": "ADVANCE_OBSERVATION_ONLY",
+  "metrics": {
+    "assemblyItemCount": 4,
+    "includeForHumanContextCount": 2,
+    "conflictReviewCount": 1,
+    "staleCautionCount": 1,
+    "sourceBoundAssemblyRatio": 1,
+    "minimalContextRatio": 1,
+    "conflictFlaggedRatio": 1,
+    "staleCautionRatio": 1,
+    "noiseSuppressedCount": 2,
+    "noiseSuppressionRatio": 1,
+    "humanReviewOnlyRatio": 1,
+    "noPromotionWithoutHumanRatio": 1,
+    "boundaryViolationCount": 0,
+    "policyDecision": null
+  }
+}

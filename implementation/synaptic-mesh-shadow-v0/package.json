@@ -284,6 +284,14 @@
     "test:passive-source-authority-conflict-scorecard-negative-controls": "node tests/passive-source-authority-conflict-scorecard-negative-controls-v0.31.3.mjs",
     "test:passive-source-authority-conflict-scorecard-output-boundary": "node tests/passive-source-authority-conflict-scorecard-output-boundary-v0.31.4.mjs",
     "test:passive-source-authority-conflict-scorecard-reviewer-package": "node tests/passive-source-authority-conflict-scorecard-reviewer-package-v0.31.5.mjs",
-    "test:passive-source-authority-conflict-scorecard": "npm run test:passive-source-authority-conflict-scorecard-protocol && npm run test:passive-source-authority-conflict-scorecard-conflicts && npm run test:passive-source-authority-conflict-scorecard-metrics && npm run test:passive-source-authority-conflict-scorecard-negative-controls && npm run test:passive-source-authority-conflict-scorecard-output-boundary && npm run test:passive-source-authority-conflict-scorecard-reviewer-package"
+    "test:passive-source-authority-conflict-scorecard": "npm run test:passive-source-authority-conflict-scorecard-protocol && npm run test:passive-source-authority-conflict-scorecard-conflicts && npm run test:passive-source-authority-conflict-scorecard-metrics && npm run test:passive-source-authority-conflict-scorecard-negative-controls && npm run test:passive-source-authority-conflict-scorecard-output-boundary && npm run test:passive-source-authority-conflict-scorecard-reviewer-package",
+    "passive:context-assembly-rehearsal-scorecard": "node bin/passive-context-assembly-rehearsal-scorecard.mjs",
+    "test:passive-context-assembly-rehearsal-scorecard-protocol": "node tests/passive-context-assembly-rehearsal-scorecard-protocol-v0.32.0-alpha.mjs",
+    "test:passive-context-assembly-rehearsal-scorecard-assembly": "node tests/passive-context-assembly-rehearsal-scorecard-assembly-v0.32.1.mjs",
+    "test:passive-context-assembly-rehearsal-scorecard-metrics": "node tests/passive-context-assembly-rehearsal-scorecard-metrics-v0.32.2.mjs",
+    "test:passive-context-assembly-rehearsal-scorecard-negative-controls": "node tests/passive-context-assembly-rehearsal-scorecard-negative-controls-v0.32.3.mjs",
+    "test:passive-context-assembly-rehearsal-scorecard-output-boundary": "node tests/passive-context-assembly-rehearsal-scorecard-output-boundary-v0.32.4.mjs",
+    "test:passive-context-assembly-rehearsal-scorecard-reviewer-package": "node tests/passive-context-assembly-rehearsal-scorecard-reviewer-package-v0.32.5.mjs",
+    "test:passive-context-assembly-rehearsal-scorecard": "npm run test:passive-context-assembly-rehearsal-scorecard-protocol && npm run test:passive-context-assembly-rehearsal-scorecard-assembly && npm run test:passive-context-assembly-rehearsal-scorecard-metrics && npm run test:passive-context-assembly-rehearsal-scorecard-negative-controls && npm run test:passive-context-assembly-rehearsal-scorecard-output-boundary && npm run test:passive-context-assembly-rehearsal-scorecard-reviewer-package"
   }
 }
