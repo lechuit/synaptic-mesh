@@ -24,6 +24,7 @@ import { passiveMemoryHandoffCandidateScorecardSuite } from './passive-memory-ha
 import { passiveHandoffReceiverShadowRubricSuite } from './passive-handoff-receiver-shadow-rubric.mjs';
 import { passiveSourceAuthorityConflictScorecardSuite } from './passive-source-authority-conflict-scorecard.mjs';
 import { passiveContextAssemblyRehearsalScorecardSuite } from './passive-context-assembly-rehearsal-scorecard.mjs';
+import { passiveContextAssemblyHardCasesSuite } from './passive-context-assembly-hard-cases.mjs';
 
 export const releaseCheckSuites = Object.freeze([
   passiveLiveShadowCanarySuite,
@@ -52,4 +53,5 @@ export const releaseCheckSuites = Object.freeze([
   passiveHandoffReceiverShadowRubricSuite,
   passiveSourceAuthorityConflictScorecardSuite,
   passiveContextAssemblyRehearsalScorecardSuite,
+  passiveContextAssemblyHardCasesSuite,
 ]);

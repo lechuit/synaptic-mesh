@@ -9,9 +9,9 @@
 - Enforcement/authorization/approval/block/allow: false
 
 ## Redacted evidence preview
-- #0: # Synaptic Mesh v0.32.5
-- #1: This is the public review release `v0.32.5`. Current v0.32.5 status is narrower than live runtime and crosses the next safe barrier after v0.31: **passive context assembly rehearsal scorecard**.
-- #2: The v0.32 ladder is disabled-by-default, operator-run one-shot, local-only, passive/read-only, bounded to the pinned completed v0.31.5 source authority conflict scorecard artifact (path and sha256 digest pinned), human-readable report only,
-- #3: Pinned v0.32.5 evidence: `assemblyStatus: PASSIVE_CONTEXT_ASSEMBLY_REHEARSAL_SCORECARD_COMPLETE`, `assemblyItemCount: 4`, `includeForHumanContextCount: 2`, `conflictReviewCount: 1`, `staleCautionCount: 1`, `sourceBoundAssemblyRatio: 1`, `mi
-- #4: The scorecard rehearses whether v0.31 source/authority/conflict signals help assemble a minimal human context package for AI continuity: what to include as core context, what to mark for conflict review, what to preserve as stale caution, a
-- #5: ## v0.32.5 phase close
+- #0: # Synaptic Mesh v0.33.5
+- #1: This is the public review release `v0.33.5`. Current v0.33.5 status is narrower than live runtime and crosses the next safe barrier after v0.32: **passive context assembly hard cases scorecard**.
+- #2: The v0.33 ladder is disabled-by-default, operator-run one-shot, local-only, passive/read-only, bounded to the pinned completed v0.32.5 context assembly rehearsal artifact (path and sha256 digest pinned), human-readable report only, non-auth
+- #3: Pinned v0.33.5 evidence: `hardCaseStatus: PASSIVE_CONTEXT_ASSEMBLY_HARD_CASES_COMPLETE`, `hardCaseCount: 5`, `activeRulePreferredCount: 1`, `partialContradictionFlagCount: 1`, `sourceBoundDecisionCarryForwardCount: 1`, `staleCautionPreserve
+- #4: The scorecard rehearses the v0.32 context package against harder long-continuity cases: active project rule versus old context, partial contradiction thread, source-bound decision carry-forward, stale caution not instruction, and tempting n
+- #5: ## v0.33.5 phase close

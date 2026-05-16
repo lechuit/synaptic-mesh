@@ -69,18 +69,18 @@
     },
     {
       "path": "README.md",
-      "bytes": 2917,
-      "sha256": "7293c7034745c402df0ccc622ca2d13630b99e8846876fce45ece7a53900e810"
+      "bytes": 2894,
+      "sha256": "4fb6caf8bca41049599d38f3e26db5e90d99672da97c5afefe277dd1d35d4552"
     },
     {
       "path": "RELEASE_CANDIDATE.md",
-      "bytes": 1117,
-      "sha256": "867d4414a0f88e81cca3e177996bcbb0ca3a296554365a243fae16d4609e5578"
+      "bytes": 1138,
+      "sha256": "c427b0eb572f989dd8740959371e3a2ab9e4a4ecec8610f9c7ef0811ba040584"
     },
     {
       "path": "RELEASE_NOTES.md",
-      "bytes": 2648,
-      "sha256": "8b2b50d8652a56dbba2abc42c803aff340b1d8b43a64d6b0d7d726c4f1512db5"
+      "bytes": 2695,
+      "sha256": "c72684de0d89bcaa3df6950fb18d78a4c62ce60f1d944780d469ef08994f408b"
     },
     {
       "path": "design-notes/adapter-boundary-langgraph-mcp-v0.md",
@@ -741,6 +741,41 @@
       "path": "docs/parser-normalization-evidence.md",
       "bytes": 2130,
       "sha256": "015df89bb164c470b28dfa65b746c795601a53e2aff37fb79abbd8af94f3bd22"
+    },
+    {
+      "path": "docs/passive-context-assembly-hard-cases-cases-v0.33.1.md",
+      "bytes": 220,
+      "sha256": "9f52fc55f5e06b80d85dee77942fd1ba5a899e61bd9ce80d66118a8d65dfa473"
+    },
+    {
+      "path": "docs/passive-context-assembly-hard-cases-local-review-notes-v0.33.5.md",
+      "bytes": 4626,
+      "sha256": "f15d5501e6b34aa729f37ad3f71e15787c0d5bff1221d4bb332a609c3ce16103"
+    },
+    {
+      "path": "docs/passive-context-assembly-hard-cases-metrics-v0.33.2.md",
+      "bytes": 222,
+      "sha256": "cb2806276bfe344ea7bed407b061e9b2f8418160c857147080be45c0eb218c6a"
+    },
+    {
+      "path": "docs/passive-context-assembly-hard-cases-negative-controls-v0.33.3.md",
+      "bytes": 232,
+      "sha256": "205cc16c45c5b177f7e09e71e3ac3dbe6a57d5924e664370f079ddbe8b013840"
+    },
+    {
+      "path": "docs/passive-context-assembly-hard-cases-output-boundary-v0.33.4.md",
+      "bytes": 230,
+      "sha256": "d7e86e7a633ec04a0b96d6d86554737792dc6d935d5e307c88dd0a0a61e615c5"
+    },
+    {
+      "path": "docs/passive-context-assembly-hard-cases-protocol-v0.33.0-alpha.md",
+      "bytes": 223,
+      "sha256": "3589d450199d6181a6dea2944b3a27ed84721ba0e4981d293c19e9cdb117a33c"
+    },
+    {
+      "path": "docs/passive-context-assembly-hard-cases-reviewer-package-v0.33.5.md",
+      "bytes": 231,
+      "sha256": "c0e77d51f7a78dcd4dc21652ff42bca63801066b5d42cd61aea692b65e60eaa4"
     },
     {
       "path": "docs/passive-context-assembly-rehearsal-scorecard-assembly-v0.32.1.md",
@@ -1988,6 +2023,36 @@
       "sha256": "9c81f69e5db1271c33f903cbad1e82a0d189698bc6aaba931b3f2f11a6486a87"
     },
     {
+      "path": "docs/status-v0.33.0-alpha.md",
+      "bytes": 164,
+      "sha256": "2c53be57315f8d9112818075c472cc699129cc8ec8cb224ec09ef29c7c146be6"
+    },
+    {
+      "path": "docs/status-v0.33.1.md",
+      "bytes": 158,
+      "sha256": "97aa46e3dfd62c1b575a3ee5d864f2fc1b49e4ee571532c1f1fe6609dead85a6"
+    },
+    {
+      "path": "docs/status-v0.33.2.md",
+      "bytes": 158,
+      "sha256": "d9db4d6bbf2dca0c6cee197282c70df530e0348b90aceba3fcd9aab3475103e1"
+    },
+    {
+      "path": "docs/status-v0.33.3.md",
+      "bytes": 158,
+      "sha256": "d52fe501a759ac64351002e61b2824891318053662006a6242eb44b033230212"
+    },
+    {
+      "path": "docs/status-v0.33.4.md",
+      "bytes": 158,
+      "sha256": "97511d6af0710856377796d5075bcbfbb68d8f985f115fce948c8f889a874559"
+    },
+    {
+      "path": "docs/status-v0.33.5.md",
+      "bytes": 158,
+      "sha256": "0f938f4b8c3e80a7b9bdef7e17d1534e47f3798bdd994052e49bae668de6874b"
+    },
+    {
       "path": "docs/status-v0.4.5.md",
       "bytes": 4795,
       "sha256": "b65d5f65e2d5f88ad65e475abc9d07d6da6dc8a463ba99c81ed57970bed3e01c"
@@ -2283,6 +2348,11 @@
       "sha256": "1ad69bb178c71b54d92307925dabb74dbb8c5429caf8d033c324b2a52cbeb86e"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/bin/passive-context-assembly-hard-cases.mjs",
+      "bytes": 1598,
+      "sha256": "b74a790297b33d01f1f3c2cf25c31f01997393baa6bdb421755090a81d20ab3a"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/bin/passive-context-assembly-rehearsal-scorecard.mjs",
       "bytes": 1535,
       "sha256": "71d44dc9868c3c5fff29e93b73473b1d1dcaea82f54fc6ff06a6e4208f22c1ea"
@@ -2439,8 +2509,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/bounded-multisource-shadow-read-packet-v0.20.1.out.json",
-      "bytes": 12410,
-      "sha256": "f6eb92ab775eee0f34806d05c1a83c28b85c890a13c5264a7290ba6e2eb9863a"
+      "bytes": 12412,
+      "sha256": "1134d57d5af3cca809b3fdade7b9411a1e1a6815c48679be95c3ec102078fbba"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/bounded-multisource-shadow-read-preflight-abort-v0.20.2.out.json",
@@ -2459,8 +2529,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/bounded-multisource-shadow-read-report-v0.20.1.out.md",
-      "bytes": 2114,
-      "sha256": "6013334d0158fabe4a7655d3afac0395596837db8c5bfcf98f14f71d2e466684"
+      "bytes": 2115,
+      "sha256": "2aae10a902883b80fabe9ec549373a32bdfeee1facaaf0ebe38b3dfaf99a0e89"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/bounded-multisource-shadow-read-reviewer-package-v0.20.5.out.json",
@@ -2659,8 +2729,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-adapter-shadow-read-packet-v0.19.1.out.json",
-      "bytes": 8072,
-      "sha256": "6c1e6dd2599178a286ceb7ad31c2c6c14d44b1622987a10f52be1c453b678f01"
+      "bytes": 8074,
+      "sha256": "54b2788c8fa193fdb91bc13d56cb79e5ed1d1cea0b166af75ce346e1608d6ac0"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-adapter-shadow-read-preflight-abort-v0.19.2.out.json",
@@ -2679,13 +2749,13 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-adapter-shadow-read-report-v0.19.1.out.md",
-      "bytes": 1472,
-      "sha256": "f8c85916129459bbc1d27dcc3523348912fdff4d853c95f8ecaa2e900d61ad8a"
+      "bytes": 1473,
+      "sha256": "e8b1ce411305b4ef296088bf0fcbf4c5ed2dc400787bd6334b46796c5c282591"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-adapter-shadow-read-reviewer-package-v0.19.5.out.json",
-      "bytes": 9603,
-      "sha256": "64f7d3d1515ca4664f4180bd500e6fa3b7136357dcb9862f413748bd4596cddc"
+      "bytes": 9605,
+      "sha256": "947c128928801110aa703228b71d027334ccf7bba6d9c04a11e2c4bebddc0c5a"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-input-source-boundary-contracts.out.json",
@@ -2729,8 +2799,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-read-gate-packet-v0.18.1.out.json",
-      "bytes": 6045,
-      "sha256": "04c5b91231fa4c1fae98999bc6ae24be7282375b65afe9db16b660841bae73c8"
+      "bytes": 6046,
+      "sha256": "3ef7c78c26673f3aa25aa69b8268d443e8531f311224693aab405972e7d1d781"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-read-gate-preflight-abort-v0.18.2.out.json",
@@ -2749,8 +2819,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-read-gate-reviewer-package-v0.18.5.out.json",
-      "bytes": 7442,
-      "sha256": "4004e9e270c7b3dbaf35aa16818eb11b24fdae62972796d7af43ab8f48428391"
+      "bytes": 7443,
+      "sha256": "d08e795db35efd023a3cba16c1d9631f7af654e7c619ce702e2576fc60e72169"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-shadow-drift-scorecard-shape.out.json",
@@ -3126,6 +3196,41 @@
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/partial-receipt-degrade.out.json",
       "bytes": 5728,
       "sha256": "8fddbe73c403ce63243cbcae2c6dcc2cdf86881b90ea3e421731677cb31f96b9"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-context-assembly-hard-cases-cases-v0.33.1.out.json",
+      "bytes": 4718,
+      "sha256": "81cf37358abaf6bf44da7b6e0890c077804a5a05a151d7b71ba35c1570bbf5e6"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-context-assembly-hard-cases-metrics-v0.33.2.out.json",
+      "bytes": 520,
+      "sha256": "bf4b6e6c83caffa642ecb93bbf42bbd36728465f00577f378ddf942da3df0976"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-context-assembly-hard-cases-negative-controls-v0.33.3.out.json",
+      "bytes": 13149,
+      "sha256": "1ee8ecd7273b37b344221e4166f58619f175caed8866cf96120111c20c11158f"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-context-assembly-hard-cases-output-boundary-v0.33.4.out.json",
+      "bytes": 198,
+      "sha256": "0882f344543b757c86b47b7a445f72234e12e79f398e2ee025aef4fa70666774"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-context-assembly-hard-cases-protocol-v0.33.0-alpha.out.json",
+      "bytes": 804,
+      "sha256": "61cab61056ed72882d8bcae36c43b6223c284a58055833832ba8d5423cca6219"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-context-assembly-hard-cases-report-v0.33.5.out.md",
+      "bytes": 1660,
+      "sha256": "ae729bc3f2a6ba6d14c8b0259c5eb94d3635080b48ce85172b2b0fd9453a3c3f"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-context-assembly-hard-cases-reviewer-package-v0.33.5.out.json",
+      "bytes": 8603,
+      "sha256": "6c291b1800a9fdbf21a2631a8dbfd84f852bc77a612d3a1b33972a9cd78c9dc6"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-context-assembly-rehearsal-scorecard-assembly-v0.32.1.out.json",
@@ -4379,8 +4484,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/package.json",
-      "bytes": 64639,
-      "sha256": "3c35e73aa6562caa09d8f243395c6038d71c24a6f6e86c992362fe0babd03a11"
+      "bytes": 65982,
+      "sha256": "cfefcdfd299dba8853a24721d2d426b68f0f91aeae970127816e36edf54fdc71"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/action-context-packet.mjs",
@@ -4481,6 +4586,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/src/operator-review-outcome-capture.mjs",
       "bytes": 13082,
       "sha256": "04c8595d12d873b0674abd8b9bfabbf8c6ed7498f5f250666fe5fd63aff98a0e"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/src/passive-context-assembly-hard-cases.mjs",
+      "bytes": 23686,
+      "sha256": "610123e654ae826769fc9ede28ca273af9df573d108771ba015621731f2d609e"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/passive-context-assembly-rehearsal-scorecard.mjs",
@@ -5231,6 +5341,41 @@
       "path": "implementation/synaptic-mesh-shadow-v0/tests/partial-receipt-degrade.mjs",
       "bytes": 7103,
       "sha256": "e9d4557033171c6862f990e3f26eaf6da65931355a30cdd1d9e6e9ab2f41da10"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-context-assembly-hard-cases-cases-v0.33.1.mjs",
+      "bytes": 1198,
+      "sha256": "36909a11610f5fb02558390ca300e5ecc4071e29b41fbf688333cc508836bee2"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-context-assembly-hard-cases-fixtures.mjs",
+      "bytes": 967,
+      "sha256": "ffe93576979142525ae7550626b1e2385543e0cbf7ac531d27f7e58897a05a3e"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-context-assembly-hard-cases-metrics-v0.33.2.mjs",
+      "bytes": 1661,
+      "sha256": "3a7f9d8b8d2aa8bae73478dd7f514ef7f22dc791d815a75fa3f383d52bf0cc65"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-context-assembly-hard-cases-negative-controls-v0.33.3.mjs",
+      "bytes": 7472,
+      "sha256": "84e381b1b33723be89b0ba25487e8699f712bc67bad59c2560b252c04e2b2b21"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-context-assembly-hard-cases-output-boundary-v0.33.4.mjs",
+      "bytes": 1251,
+      "sha256": "3becbf33470d23134325dc8c9dae8f813c91b09085173a26e1146001c8a2a1f3"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-context-assembly-hard-cases-protocol-v0.33.0-alpha.mjs",
+      "bytes": 869,
+      "sha256": "97323ef67d2ce323499dd11a27ad121820a4a50c8e7a69c0795a076f6e769ef9"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-context-assembly-hard-cases-reviewer-package-v0.33.5.mjs",
+      "bytes": 837,
+      "sha256": "a6fa65d76945e2e0125b2cc92aa554b624611f18f01aeb1d691deb4f19c11d33"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-context-assembly-rehearsal-scorecard-assembly-v0.32.1.mjs",
@@ -6474,8 +6619,8 @@
     },
     {
       "path": "tools/release-checks/index.mjs",
-      "bytes": 3343,
-      "sha256": "3b04232e26703b6f64d5879a3785ac1dd8d403d4eb8e016607372fc43d2d334a"
+      "bytes": 3481,
+      "sha256": "13b9c6a5cb4f2a86c3a2fbba4baf0fe5dd4e112b65fa865ce10b4ee12f7577c7"
     },
     {
       "path": "tools/release-checks/limited-passive-live-capture-readiness.mjs",
@@ -6521,6 +6666,11 @@
       "path": "tools/release-checks/operator-review-outcome-capture.mjs",
       "bytes": 7275,
       "sha256": "ab8a1a5be4c82d0004ea0ebc4a6ecb1706ffca8ac91ec40da989f1ad2cc0cab3"
+    },
+    {
+      "path": "tools/release-checks/passive-context-assembly-hard-cases.mjs",
+      "bytes": 9163,
+      "sha256": "1e60f9c5660cfac67b8337f38f5cbd62323a4453443b4faa1900f80318db0f2e"
     },
     {
       "path": "tools/release-checks/passive-context-assembly-rehearsal-scorecard.mjs",
