@@ -1,43 +1,37 @@
-# Release Notes — Synaptic Mesh v0.43.5
+# Release Notes — Synaptic Mesh v0.44.5
 
 ## Summary
 
-`v0.43.5` adds a **passive live memory/coherence receiver usefulness repeatability scorecard** over the completed pinned v0.42.5 receiver package usefulness rehearsal. It tests whether the receiver usefulness treatment remains stable across baseline order, paraphrased rationales, and reverse order before any passive live observation boundary.
+`v0.44.5` adds a **passive live memory/coherence receiver usefulness live observation** over the completed pinned v0.43.5 receiver usefulness repeatability scorecard. It observes current repo-local continuity sources while preserving receiver-side context treatment: include useful continuity evidence, suppress stale prior-release anchors, and preserve contradictions as human caution only.
 
 ## Evidence
 
-- `repeatabilityStatus: PASSIVE_LIVE_MEMORY_COHERENCE_RECEIVER_USEFULNESS_REPEATABILITY_SCORECARD_COMPLETE`
-- `repeatabilityRunCount: 3`
-- `sourceRehearsalWindowCount: 1`
-- `candidateCount: 5`
-- `totalUsefulnessJudgementCount: 15`
-- `stableCandidateCount: 5`
-- `unstableCandidateCount: 0`
-- `stableReceiverUsefulHandoffItemCount: 4`
-- `stableReceiverNoisyHandoffItemCount: 0`
-- `stableReceiverExcludedStaleItemCount: 1`
-- `stableReceiverContradictionCautionItemCount: 1`
-- `stableRawSignalUsefulHandoffItemCount: 3`
-- `stableRawSignalNoisyHandoffItemCount: 2`
-- `stableScorecardUsefulHandoffItemCount: 3`
-- `stableScorecardNoisyHandoffItemCount: 2`
+- `liveObservationStatus: PASSIVE_LIVE_MEMORY_COHERENCE_RECEIVER_USEFULNESS_LIVE_OBSERVATION_COMPLETE`
+- `explicitRepoLocalSourceCount: 4`
+- `sourceRepeatabilityRunCount: 3`
+- `sourceCandidateCount: 5`
+- `sourceStableCandidateCount: 5`
+- `liveObservationItemCount: 5`
+- `sourceBoundObservationCount: 5`
+- `includedForHumanContextCount: 3`
+- `staleSuppressedObservationCount: 1`
+- `contradictionCautionObservationCount: 1`
+- `receiverUsefulLiveContextItemCount: 4`
+- `receiverNoisyLiveContextItemCount: 0`
+- `rawSignalUsefulItemCount: 3`
+- `rawSignalNoisyItemCount: 2`
+- `scorecardUsefulItemCount: 3`
+- `scorecardNoisyItemCount: 2`
 - `receiverUsefulnessRatio: 1`
 - `rawSignalUsefulnessRatio: 0.6`
 - `scorecardUsefulnessRatio: 0.6`
 - `receiverImprovesOverRawSignals: true`
 - `receiverImprovesOverScorecard: true`
-- `labelAgreementRatio: 1`
-- `stableUsefulnessTreatmentRatio: 1`
-- `receiverUsefulnessRepeatabilityRatio: 1`
-- `rawSignalUsefulnessRepeatabilityRatio: 1`
-- `scorecardUsefulnessRepeatabilityRatio: 1`
-- `sourceBoundRepeatabilityRatio: 1`
-- `staleSuppressionRepeatabilityRatio: 1`
-- `contradictionCautionRepeatabilityRatio: 1`
-- `redactedBeforePersistRepeatabilityRatio: 1`
+- `sourceBoundObservationRatio: 1`
+- `redactedBeforePersistRatio: 1`
 - `rawPersistedFalseRatio: 1`
-- `humanReviewOnlyRepeatabilityRatio: 1`
-- `noPromotionWithoutHumanRepeatabilityRatio: 1`
+- `humanReviewOnlyRatio: 1`
+- `noPromotionWithoutHumanRatio: 1`
 - `agentConsumedOutputFalseRatio: 1`
 - `preReadPathPinned: true`
 - `boundaryViolationCount: 0`
@@ -45,12 +39,12 @@
 - `recommendationIsAuthority: false`
 - `agentConsumedOutput: false`
 - `notRuntimeInstruction: true`
-- `policyDecision: null` retained only as a top-level compatibility/null sentinel; not repeated in protocol, metrics, per-run/per-judgement entries, or CLI stdout
-- Negative controls for pre-read path traversal, implementation-path traversal, malformed/spoofed pinned v0.42 usefulness artifact, digest drift, object/report drift, source metric drift, judgement-count drift, unknown-field smuggling, runtime/tool/network/memory/config requests, raw output, non-null `policyDecision`, recommendation-as-authority, agent-consumed output, and memory-promotion flags.
+- `policyDecision: null` retained only as a top-level compatibility/null sentinel; not repeated in protocol, metrics, observation items, or CLI stdout
+- Negative controls for traversal-like unpinned artifact paths, unpinned source paths, malformed/spoofed pinned v0.43 repeatability artifact, digest drift, metric drift, source-count drift, repo-local source tampering, raw persistence, external effects, tool execution, memory/config writes, runtime integration, raw output, and non-null `policyDecision`.
 
 ## Boundary
 
-This is local/manual/passive/read-only/one-shot, bounded to the completed repo-local v0.42.5 usefulness rehearsal artifact, pre-read path pinned, human-readable-only, non-authoritative, and not runtime authority.
+This is local/manual/passive/read-only/one-shot, bounded to the completed repo-local v0.43.5 repeatability scorecard artifact plus explicit repo-local live sources, pre-read path pinned, human-readable-only, non-authoritative, and not runtime authority.
 
 No enforcement, authorization, approval/block/allow semantics, tool execution, network/resource fetch, memory/config writes, durable memory promotion, external effects, daemon/watchers, autonomous runtime, raw persistence/output, runtime integration, or agent-consumed machine-readable policy decisions.
 
@@ -58,4 +52,4 @@ Compatibility carry-forward: passive live shadow readiness achieved for local op
 
 ## Next
 
-The next gate may run a passive live observation rehearsal using the receiver package as human-readable context only. It should stay read-only, redacted-before-persist, source-bound, non-authoritative, and `policyDecision: null` until an explicitly reviewed live boundary exists.
+The next gate should either repeat this passive live observation window for drift/repeatability or measure receiver-side live-observation handoff utility before any memory write or runtime integration boundary.
