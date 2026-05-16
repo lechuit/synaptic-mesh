@@ -1,0 +1,13 @@
+import assert from 'node:assert/strict';
+import { mkdir, writeFile } from 'node:fs/promises';
+import { canonicalInput, assertBoundary } from './passive-source-authority-conflict-scorecard-fixtures.mjs';
+import { scorePassiveSourceAuthorityConflictScorecard, validatePassiveSourceAuthorityConflictArtifact } from '../src/passive-source-authority-conflict-scorecard.mjs';
+const out = scorePassiveSourceAuthorityConflictScorecard(canonicalInput());
+assert.equal(out.artifact, 'T-synaptic-mesh-passive-source-authority-conflict-scorecard-v0.31.5');
+assert.equal(out.conflictStatus, 'PASSIVE_SOURCE_AUTHORITY_CONFLICT_SCORECARD_COMPLETE');
+assert.equal(out.validationIssues.length, 0);
+assert.equal(validatePassiveSourceAuthorityConflictArtifact(out).length, 0);
+assertBoundary(out, assert);
+await mkdir('evidence', { recursive: true });
+await writeFile('evidence/passive-source-authority-conflict-scorecard-reviewer-package-v0.31.5.out.json', `${JSON.stringify(out, null, 2)}\n`);
+await writeFile('evidence/passive-source-authority-conflict-scorecard-report-v0.31.5.out.md', out.reportMarkdown);
