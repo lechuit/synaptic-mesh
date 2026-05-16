@@ -1,0 +1,14 @@
+import assert from 'node:assert/strict';
+import { passiveLiveMemoryCoherenceReceiverPackageUsefulnessRehearsalProtocol, assertPassiveLiveMemoryCoherenceReceiverPackageUsefulnessRehearsalInputPathPinned } from '../src/passive-live-memory-coherence-receiver-package-usefulness-rehearsal.mjs';
+const p = passiveLiveMemoryCoherenceReceiverPackageUsefulnessRehearsalProtocol();
+assert.equal(p.releaseLayer, 'v0.42.0-alpha');
+assert.equal(p.barrierCrossed, 'passive_live_memory_coherence_receiver_package_usefulness_rehearsal');
+assert.equal(p.preReadPathPinned, true);
+assert.equal(p.usefulnessRehearsalOnly, true);
+assert.equal(p.comparesReceiverPackageToRawSignalsAndScorecard, true);
+assert.equal(p.noMemoryWrites, true);
+assert.equal(p.noRuntimeIntegration, true);
+assert.equal(p.agentConsumedOutput, false);
+assert.equal(p.policyDecision, null);
+assert.equal(assertPassiveLiveMemoryCoherenceReceiverPackageUsefulnessRehearsalInputPathPinned(), 'evidence/passive-live-memory-coherence-stable-invalidation-receiver-package-reviewer-package-v0.41.5.out.json');
+console.log(JSON.stringify({ ok: true, protocol: p.releaseLayer, preReadPathPinned: p.preReadPathPinned }));

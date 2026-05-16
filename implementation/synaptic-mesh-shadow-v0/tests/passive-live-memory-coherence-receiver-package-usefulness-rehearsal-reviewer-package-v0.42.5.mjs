@@ -1,0 +1,10 @@
+import assert from 'node:assert/strict';
+import { mkdirSync, writeFileSync } from 'node:fs';
+import { scorePassiveLiveMemoryCoherenceReceiverPackageUsefulnessRehearsal, validatePassiveLiveMemoryCoherenceReceiverPackageUsefulnessRehearsalArtifact } from '../src/passive-live-memory-coherence-receiver-package-usefulness-rehearsal.mjs';
+import { receiverPackageUsefulnessRehearsalInputV042 } from './passive-live-memory-coherence-receiver-package-usefulness-rehearsal-fixtures.mjs';
+const artifact = scorePassiveLiveMemoryCoherenceReceiverPackageUsefulnessRehearsal(receiverPackageUsefulnessRehearsalInputV042());
+assert.deepEqual(validatePassiveLiveMemoryCoherenceReceiverPackageUsefulnessRehearsalArtifact(artifact), []);
+mkdirSync('evidence', { recursive: true });
+writeFileSync('evidence/passive-live-memory-coherence-receiver-package-usefulness-rehearsal-reviewer-package-v0.42.5.out.json', `${JSON.stringify(artifact, null, 2)}\n`);
+writeFileSync('evidence/passive-live-memory-coherence-receiver-package-usefulness-rehearsal-report-v0.42.5.out.md', `${artifact.reportMarkdown}\n`);
+console.log(JSON.stringify({ rehearsalStatus: artifact.rehearsalStatus, receiverUsefulnessRatio: artifact.metrics.receiverUsefulnessRatio, policyDecision: artifact.policyDecision }, null, 2));
