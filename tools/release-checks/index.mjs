@@ -28,6 +28,7 @@ import { passiveContextAssemblyHardCasesSuite } from './passive-context-assembly
 import { passiveHardCaseOutcomeValueScorecardSuite } from './passive-hard-case-outcome-value-scorecard.mjs';
 import { passiveHardCaseOutcomeRepeatabilityScorecardSuite } from './passive-hard-case-outcome-repeatability-scorecard.mjs';
 import { passiveLiveMemoryCoherenceObservationRehearsalSuite } from './passive-live-memory-coherence-observation-rehearsal.mjs';
+import { passiveLiveMemoryCoherenceRepeatabilityScorecardSuite } from './passive-live-memory-coherence-repeatability-scorecard.mjs';
 
 export const releaseCheckSuites = Object.freeze([
   passiveLiveShadowCanarySuite,
@@ -60,4 +61,5 @@ export const releaseCheckSuites = Object.freeze([
   passiveHardCaseOutcomeValueScorecardSuite,
   passiveHardCaseOutcomeRepeatabilityScorecardSuite,
   passiveLiveMemoryCoherenceObservationRehearsalSuite,
+  passiveLiveMemoryCoherenceRepeatabilityScorecardSuite,
 ]);
