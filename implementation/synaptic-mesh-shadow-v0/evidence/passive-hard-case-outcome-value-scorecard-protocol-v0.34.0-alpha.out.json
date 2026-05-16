@@ -1,0 +1,23 @@
+{
+  "releaseLayer": "v0.34.0-alpha",
+  "barrierCrossed": "passive_hard_case_receiver_outcome_value_measurement",
+  "buildsOn": "v0.33.5_passive_context_assembly_hard_cases",
+  "disabledByDefault": true,
+  "operatorRunOneShotOnly": true,
+  "localOnly": true,
+  "passiveOnly": true,
+  "readOnly": true,
+  "explicitArtifactsOnly": true,
+  "acceptsOnlyPinnedCompletedHardCaseArtifact": true,
+  "producesHumanReceiverOutcomeValueScorecardOnly": true,
+  "measuresUsefulnessNoiseAndEvidenceGapsWithoutRuntimeConsumption": true,
+  "humanReadableReportOnly": true,
+  "nonAuthoritative": true,
+  "recommendationIsAuthority": false,
+  "agentConsumedOutput": false,
+  "notRuntimeInstruction": true,
+  "noRuntimeAuthority": true,
+  "noMemoryWrites": true,
+  "noRuntimeIntegration": true,
+  "policyDecision": null
+}

@@ -1,0 +1,16 @@
+import assert from 'node:assert/strict';
+import { mkdirSync, writeFileSync } from 'node:fs';
+import { canonicalInput } from './passive-hard-case-outcome-value-scorecard-fixtures.mjs';
+import { scorePassiveHardCaseOutcomeValueScorecard } from '../src/passive-hard-case-outcome-value-scorecard.mjs';
+const out = scorePassiveHardCaseOutcomeValueScorecard(canonicalInput());
+assert.equal(out.outcomeValueStatus, 'PASSIVE_HARD_CASE_OUTCOME_VALUE_SCORECARD_COMPLETE');
+assert.equal(out.recommendation, 'ADVANCE_OBSERVATION_ONLY');
+assert.equal(out.metrics.outcomeCount, 5);
+assert.equal(out.metrics.usefulOutcomeCount, 3);
+assert.equal(out.metrics.noiseOutcomeCount, 1);
+assert.equal(out.metrics.evidenceGapOutcomeCount, 1);
+assert.equal(out.metrics.boundaryViolationCount, 0);
+assert.equal(out.policyDecision, null);
+mkdirSync('evidence',{recursive:true});
+writeFileSync('evidence/passive-hard-case-outcome-value-scorecard-reviewer-package-v0.34.5.out.json', JSON.stringify(out,null,2)+'\n');
+writeFileSync('evidence/passive-hard-case-outcome-value-scorecard-report-v0.34.5.out.md', out.reportMarkdown+'\n');

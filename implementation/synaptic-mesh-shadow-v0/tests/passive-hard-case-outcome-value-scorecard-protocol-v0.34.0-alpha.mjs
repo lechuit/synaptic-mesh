@@ -1,0 +1,18 @@
+import assert from 'node:assert/strict';
+import { mkdirSync, writeFileSync } from 'node:fs';
+import { passiveHardCaseOutcomeValueScorecardProtocol } from '../src/passive-hard-case-outcome-value-scorecard.mjs';
+const p = passiveHardCaseOutcomeValueScorecardProtocol();
+assert.equal(p.releaseLayer, 'v0.34.0-alpha');
+assert.equal(p.barrierCrossed, 'passive_hard_case_receiver_outcome_value_measurement');
+assert.equal(p.passiveOnly, true);
+assert.equal(p.readOnly, true);
+assert.equal(p.localOnly, true);
+assert.equal(p.acceptsOnlyPinnedCompletedHardCaseArtifact, true);
+assert.equal(p.producesHumanReceiverOutcomeValueScorecardOnly, true);
+assert.equal(p.measuresUsefulnessNoiseAndEvidenceGapsWithoutRuntimeConsumption, true);
+assert.equal(p.recommendationIsAuthority, false);
+assert.equal(p.agentConsumedOutput, false);
+assert.equal(p.noMemoryWrites, true);
+assert.equal(p.noRuntimeIntegration, true);
+assert.equal(p.policyDecision, null);
+mkdirSync('evidence',{recursive:true}); writeFileSync('evidence/passive-hard-case-outcome-value-scorecard-protocol-v0.34.0-alpha.out.json', JSON.stringify(p,null,2)+'\n');
