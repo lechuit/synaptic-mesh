@@ -1,20 +1,20 @@
-# Synaptic Mesh v0.31.5
+# Synaptic Mesh v0.32.5
 
-This is the public review release `v0.31.5`. Current v0.31.5 status is narrower than live runtime and crosses the next safe barrier after v0.30: **passive source authority conflict scorecard**.
+This is the public review release `v0.32.5`. Current v0.32.5 status is narrower than live runtime and crosses the next safe barrier after v0.31: **passive context assembly rehearsal scorecard**.
 
-The v0.31 ladder is disabled-by-default, operator-run one-shot, local-only, passive/read-only, bounded to the pinned completed v0.30.5 receiver rubric artifact (path and sha256 digest pinned), human-readable report only, non-authoritative, and not runtime authority.
+The v0.32 ladder is disabled-by-default, operator-run one-shot, local-only, passive/read-only, bounded to the pinned completed v0.31.5 source authority conflict scorecard artifact (path and sha256 digest pinned), human-readable report only, non-authoritative, and not runtime authority.
 
-Pinned v0.31.5 evidence: `conflictStatus: PASSIVE_SOURCE_AUTHORITY_CONFLICT_SCORECARD_COMPLETE`, `conflictCaseCount: 4`, `sourceBoundConflictRatio: 1`, `authorityConflictSurfacedRatio: 1`, `newerSourcePreferredRatio: 1`, `contradictionConflictSurfacedRatio: 1`, `staleInvalidationCautionRatio: 1`, `humanReviewOnlyRatio: 1`, `noPromotionWithoutHumanRatio: 1`, `boundaryViolationCount: 0`, `recommendation: ADVANCE_OBSERVATION_ONLY`, `recommendationIsAuthority: false`, `agentConsumedOutput: false`, `notRuntimeInstruction: true`, `policyDecision: null`, and `human-readable report only`.
+Pinned v0.32.5 evidence: `assemblyStatus: PASSIVE_CONTEXT_ASSEMBLY_REHEARSAL_SCORECARD_COMPLETE`, `assemblyItemCount: 4`, `includeForHumanContextCount: 2`, `conflictReviewCount: 1`, `staleCautionCount: 1`, `sourceBoundAssemblyRatio: 1`, `minimalContextRatio: 1`, `conflictFlaggedRatio: 1`, `staleCautionRatio: 1`, `noiseSuppressedCount: 2`, `noiseSuppressionRatio: 1`, `humanReviewOnlyRatio: 1`, `noPromotionWithoutHumanRatio: 1`, `boundaryViolationCount: 0`, `recommendation: ADVANCE_OBSERVATION_ONLY`, `recommendationIsAuthority: false`, `agentConsumedOutput: false`, `notRuntimeInstruction: true`, `policyDecision: null`, and `human-readable report only`.
 
-The scorecard asks whether competing memory/source situations can be surfaced safely for a human receiver: source-bound decisions versus unsourced inference, project rules versus generic priors, explicit contradictions, and stale-memory invalidation. These are precedence suggestions for human review only, not memory promotions, agent-consumed instructions, authorization, or enforcement.
+The scorecard rehearses whether v0.31 source/authority/conflict signals help assemble a minimal human context package for AI continuity: what to include as core context, what to mark for conflict review, what to preserve as stale caution, and what competing context to suppress as noise. These are assembly suggestions for human review only, not memory promotions, agent-consumed instructions, authorization, or enforcement.
 
-## v0.31.5 phase close
+## v0.32.5 phase close
 
-Passive source authority conflict scorecard is prepared as a local review package. It demonstrates conflict/precedence surfacing over pinned v0.30.5 receiver items without adding authority, effects, daemon/watchers, autonomous runtime, raw output, memory writes, runtime integration, durable memory promotion, or agent-consumed policy decisions.
+Passive context assembly rehearsal scorecard is prepared as a local review package. It demonstrates source-bound minimal context assembly over the pinned v0.31.5 conflict scorecard without adding authority, effects, daemon/watchers, autonomous runtime, raw output, memory writes, runtime integration, durable memory promotion, or agent-consumed policy decisions.
 
 ## Carry-forward prior release boundaries
 
-The v0.30 passive handoff receiver shadow rubric remains the upstream signal source: `receiverStatus: PASSIVE_HANDOFF_RECEIVER_RUBRIC_COMPLETE`, four receiver items, two include-for-human-context items, one contradiction review item, one stale caution item, one upstream noise item excluded, source-bound/contradiction/stale/no-promotion ratios at 1, recommendation-not-authority, and `policyDecision: null`.
+The v0.31 passive source authority conflict scorecard remains the upstream signal source: `conflictStatus: PASSIVE_SOURCE_AUTHORITY_CONFLICT_SCORECARD_COMPLETE`, four conflict cases, source-bound/authority/newer-source/contradiction/stale/no-promotion ratios at 1, recommendation-not-authority, and `policyDecision: null`.
 
 No enforcement, authorization, approval/block/allow semantics, globs/recursive discovery, implicit sources, outside-repo paths, symlinks, autonomous live mode, watcher/daemon, network/resource fetch, tool execution, memory/config writes, agent-consumed machine-readable policy decisions, raw persistence/output, durable memory promotion, or external effects.
 
