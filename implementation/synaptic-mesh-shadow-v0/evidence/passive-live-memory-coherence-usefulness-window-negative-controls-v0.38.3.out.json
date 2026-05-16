@@ -1,0 +1,389 @@
+{
+  "rejectedNegativeControls": [
+    {
+      "name": "missing-repeatability-artifact",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_USEFULNESS_WINDOW",
+      "validationIssues": [
+        "repeatabilityArtifact.explicit_object_required",
+        "handoff-current-release-continuity.source_or_stability_missing",
+        "handoff-boundary-invariants.source_or_stability_missing",
+        "handoff-repeatability-evidence.source_or_stability_missing",
+        "handoff-review-hardening-caution.source_or_stability_missing"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "unknown-top-level-input-field",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_USEFULNESS_WINDOW",
+      "validationIssues": [
+        "input.unknown_field:unexpectedTopLevel"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "fabricated-repeatability-path",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_USEFULNESS_WINDOW",
+      "validationIssues": [
+        "input.repeatability_artifact_path_not_pinned"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "fabricated-repeatability-digest",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_USEFULNESS_WINDOW",
+      "validationIssues": [
+        "input.repeatability_artifact_digest_not_pinned"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "unknown-repeatability-artifact-field",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_USEFULNESS_WINDOW",
+      "validationIssues": [
+        "input.repeatability_artifact_object_digest_not_pinned",
+        "repeatabilityArtifact.unknown_field:extraSmuggledContext"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "unknown-repeatability-metric-field",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_USEFULNESS_WINDOW",
+      "validationIssues": [
+        "input.repeatability_artifact_object_digest_not_pinned",
+        "repeatabilityArtifact.metrics.unknown_field:extraMetric"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "wrong-repeatability-artifact",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_USEFULNESS_WINDOW",
+      "validationIssues": [
+        "input.repeatability_artifact_object_digest_not_pinned",
+        "repeatabilityArtifact.artifact_not_expected_v0.37_repeatability"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "wrong-repeatability-schema",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_USEFULNESS_WINDOW",
+      "validationIssues": [
+        "input.repeatability_artifact_object_digest_not_pinned",
+        "repeatabilityArtifact.schema_not_expected"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "wrong-repeatability-release",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_USEFULNESS_WINDOW",
+      "validationIssues": [
+        "input.repeatability_artifact_object_digest_not_pinned",
+        "repeatabilityArtifact.release_layer_not_v0.37.5"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "repeatability-not-complete",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_USEFULNESS_WINDOW",
+      "validationIssues": [
+        "input.repeatability_artifact_object_digest_not_pinned",
+        "repeatabilityArtifact.status_not_complete"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "repeatability-report-poisoned",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_USEFULNESS_WINDOW",
+      "validationIssues": [
+        "input.repeatability_artifact_object_digest_not_pinned",
+        "repeatabilityArtifact.reportMarkdown_digest_not_expected",
+        "repeatabilityArtifact.reportMarkdown.authority_token_detected"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "repeatability-local-only-false",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_USEFULNESS_WINDOW",
+      "validationIssues": [
+        "input.repeatability_artifact_object_digest_not_pinned",
+        "repeatabilityArtifact.localOnly_not_expected"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "repeatability-read-only-false",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_USEFULNESS_WINDOW",
+      "validationIssues": [
+        "input.repeatability_artifact_object_digest_not_pinned",
+        "repeatabilityArtifact.readOnly_not_expected"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "repeatability-no-memory-writes-false",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_USEFULNESS_WINDOW",
+      "validationIssues": [
+        "input.repeatability_artifact_object_digest_not_pinned",
+        "repeatabilityArtifact.noMemoryWrites_not_expected"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "repeatability-metric-drift",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_USEFULNESS_WINDOW",
+      "validationIssues": [
+        "input.repeatability_artifact_object_digest_not_pinned",
+        "repeatabilityArtifact.metrics.stableObservationCount_not_expected"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "repeatability-item-missing",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_USEFULNESS_WINDOW",
+      "validationIssues": [
+        "input.repeatability_artifact_object_digest_not_pinned",
+        "repeatabilityArtifact.repeatability_items_not_exact_expected_count",
+        "repeatabilityArtifact.repeatability_item_missing:obs-review-hardening-caution",
+        "handoff-review-hardening-caution.source_or_stability_missing"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "repeatability-item-unknown-field",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_USEFULNESS_WINDOW",
+      "validationIssues": [
+        "input.repeatability_artifact_object_digest_not_pinned",
+        "repeatabilityArtifact.obs-current-release-continuity.unknown_field:secret"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "repeatability-item-label-drift",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_USEFULNESS_WINDOW",
+      "validationIssues": [
+        "input.repeatability_artifact_object_digest_not_pinned",
+        "repeatabilityArtifact.obs-current-release-continuity.receiverLabel_not_pinned"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "repeatability-item-expected-label-drift",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_USEFULNESS_WINDOW",
+      "validationIssues": [
+        "input.repeatability_artifact_object_digest_not_pinned",
+        "repeatabilityArtifact.obs-current-release-continuity.expectedReceiverLabel_not_pinned"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "repeatability-item-run-count-drift",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_USEFULNESS_WINDOW",
+      "validationIssues": [
+        "input.repeatability_artifact_object_digest_not_pinned",
+        "repeatabilityArtifact.obs-current-release-continuity.boundary_or_repeatability_flags_invalid"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "repeatability-item-not-stable",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_USEFULNESS_WINDOW",
+      "validationIssues": [
+        "input.repeatability_artifact_object_digest_not_pinned",
+        "repeatabilityArtifact.obs-current-release-continuity.boundary_or_repeatability_flags_invalid",
+        "handoff-current-release-continuity.source_or_stability_missing"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "repeatability-item-not-source-bound",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_USEFULNESS_WINDOW",
+      "validationIssues": [
+        "input.repeatability_artifact_object_digest_not_pinned",
+        "repeatabilityArtifact.obs-current-release-continuity.boundary_or_repeatability_flags_invalid",
+        "handoff-current-release-continuity.source_or_stability_missing"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "repeatability-item-not-redacted",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_USEFULNESS_WINDOW",
+      "validationIssues": [
+        "input.repeatability_artifact_object_digest_not_pinned",
+        "repeatabilityArtifact.obs-current-release-continuity.boundary_or_repeatability_flags_invalid"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "repeatability-item-raw-persisted",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_USEFULNESS_WINDOW",
+      "validationIssues": [
+        "input.repeatability_artifact_object_digest_not_pinned",
+        "repeatabilityArtifact.obs-current-release-continuity.boundary_or_repeatability_flags_invalid",
+        "input.repeatabilityArtifact.repeatabilityItems[0].forbidden_boundary_field_set"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "repeatability-item-promotes-memory",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_USEFULNESS_WINDOW",
+      "validationIssues": [
+        "input.repeatability_artifact_object_digest_not_pinned",
+        "repeatabilityArtifact.obs-current-release-continuity.boundary_or_repeatability_flags_invalid"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "tool-effect-requested",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_USEFULNESS_WINDOW",
+      "validationIssues": [
+        "input.unknown_field:[authority-token-redacted]",
+        "input.external_or_tool_effect_requested",
+        "input.forbidden_boundary_field_set"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "network-effect-requested",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_USEFULNESS_WINDOW",
+      "validationIssues": [
+        "input.unknown_field:[authority-token-redacted]",
+        "input.external_or_tool_effect_requested",
+        "input.forbidden_boundary_field_set"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "resource-fetch-requested",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_USEFULNESS_WINDOW",
+      "validationIssues": [
+        "input.unknown_field:[authority-token-redacted]",
+        "input.external_or_tool_effect_requested",
+        "input.forbidden_boundary_field_set"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "memory-write-requested",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_USEFULNESS_WINDOW",
+      "validationIssues": [
+        "input.unknown_field:[authority-token-redacted]",
+        "input.memory_or_config_write_requested",
+        "input.forbidden_boundary_field_set"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "config-write-requested",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_USEFULNESS_WINDOW",
+      "validationIssues": [
+        "input.unknown_field:[authority-token-redacted]",
+        "input.memory_or_config_write_requested",
+        "input.forbidden_boundary_field_set"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "runtime-requested",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_USEFULNESS_WINDOW",
+      "validationIssues": [
+        "input.unknown_field:[authority-token-redacted]",
+        "input.runtime_or_daemon_requested",
+        "input.forbidden_boundary_field_set"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "daemon-requested",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_USEFULNESS_WINDOW",
+      "validationIssues": [
+        "input.unknown_field:daemon",
+        "input.runtime_or_daemon_requested",
+        "input.forbidden_boundary_field_set"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "watch-requested",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_USEFULNESS_WINDOW",
+      "validationIssues": [
+        "input.unknown_field:watch",
+        "input.runtime_or_daemon_requested",
+        "input.forbidden_boundary_field_set"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "raw-output-requested",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_USEFULNESS_WINDOW",
+      "validationIssues": [
+        "input.unknown_field:[authority-token-redacted]",
+        "input.raw_persistence_or_output_requested",
+        "input.forbidden_boundary_field_set"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "non-null-policy",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_USEFULNESS_WINDOW",
+      "validationIssues": [
+        "input.unknown_field:policyDecision",
+        "input.policyDecision_non_null",
+        "input.policyDecision.authority_token_detected"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "authority-token-redacted",
+      "status": "DEGRADED_PASSIVE_LIVE_MEMORY_COHERENCE_USEFULNESS_WINDOW",
+      "validationIssues": [
+        "input.repeatability_artifact_object_digest_not_pinned",
+        "repeatabilityArtifact.repeatability_item_missing:obs-current-release-continuity",
+        "repeatabilityArtifact.[authority-token-redacted].repeatability_item_not_expected",
+        "input.repeatabilityArtifact.repeatabilityItems[0].observationId.authority_token_detected",
+        "handoff-current-release-continuity.source_or_stability_missing"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "output-unknown-top-level-field",
+      "status": "artifact_rejected",
+      "validationIssues": [
+        "artifact.unknown_field:extraSmuggledContext"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "output-unknown-protocol-field",
+      "status": "artifact_rejected",
+      "validationIssues": [
+        "artifact.protocol.unknown_field:extraProtocol"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "output-unknown-metric-field",
+      "status": "artifact_rejected",
+      "validationIssues": [
+        "artifact.metrics.unknown_field:extraMetric"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "output-unknown-handoff-field",
+      "status": "artifact_rejected",
+      "validationIssues": [
+        "artifact.handoff-current-release-continuity.unknown_field:extraHandoff"
+      ],
+      "policyDecision": null
+    },
+    {
+      "name": "output-unknown-judgement-field",
+      "status": "artifact_rejected",
+      "validationIssues": [
+        "artifact.handoff-current-release-continuity:bounded-passive-usefulness.unknown_field:extraJudgement"
+      ],
+      "policyDecision": null
+    }
+  ],
+  "count": 41,
+  "authorityTokenPayloadLeaked": false
+}

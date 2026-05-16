@@ -1,0 +1,14 @@
+import assert from 'node:assert/strict';
+import { mkdirSync, writeFileSync } from 'node:fs';
+import { canonicalInput } from './passive-live-memory-coherence-usefulness-window-fixtures.mjs';
+import { scorePassiveLiveMemoryCoherenceUsefulnessWindow } from '../src/passive-live-memory-coherence-usefulness-window.mjs';
+const out = scorePassiveLiveMemoryCoherenceUsefulnessWindow(canonicalInput());
+assert.equal(out.usefulnessWindowStatus, 'PASSIVE_LIVE_MEMORY_COHERENCE_USEFULNESS_WINDOW_COMPLETE');
+assert.equal(out.validationIssues.length, 0);
+assert.equal(out.handoffItems.length, 4);
+assert.deepEqual(out.handoffItems.map((i)=>i.humanTreatment), ['include_for_human_handoff','include_for_human_handoff','include_for_human_handoff','include_as_caution_only']);
+assert.ok(out.handoffItems.every((item)=>item.sourceBound && item.stableAcrossRuns && item.redactedBeforePersist && item.rawPersisted === false && item.promoteToMemory === false && item.agentConsumedOutput === false && item.policyDecision === null));
+assert.equal(out.usefulnessJudgements.length, 4);
+assert.ok(out.usefulnessJudgements.every((j)=>j.usefulForHumanHandoff === true && j.noiseForHumanHandoff === false && j.policyDecision === null));
+mkdirSync('evidence',{recursive:true});
+writeFileSync('evidence/passive-live-memory-coherence-usefulness-window-handoff-v0.38.1.out.json', JSON.stringify({ handoffItems: out.handoffItems, usefulnessJudgements: out.usefulnessJudgements }, null, 2)+'\n');

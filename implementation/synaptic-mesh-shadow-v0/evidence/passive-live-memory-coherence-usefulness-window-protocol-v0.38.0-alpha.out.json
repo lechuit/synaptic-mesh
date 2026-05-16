@@ -1,0 +1,28 @@
+{
+  "protocol": {
+    "releaseLayer": "v0.38.0-alpha",
+    "barrierCrossed": "bounded_passive_live_memory_coherence_usefulness_window",
+    "buildsOn": "v0.37.5_passive_live_memory_coherence_repeatability_scorecard",
+    "disabledByDefault": true,
+    "operatorRunOneShotOnly": true,
+    "localOnly": true,
+    "passiveOnly": true,
+    "readOnly": true,
+    "explicitArtifactsOnly": true,
+    "acceptsOnlyPinnedCompletedRepeatabilityArtifact": true,
+    "boundedHumanHandoffUsefulnessWindowOnly": true,
+    "redactedBeforePersist": true,
+    "rawSourceCache": "excluded",
+    "rawPersisted": false,
+    "humanReadableReportOnly": true,
+    "humanReviewOnly": true,
+    "nonAuthoritative": true,
+    "recommendationIsAuthority": false,
+    "agentConsumedOutput": false,
+    "notRuntimeInstruction": true,
+    "noRuntimeAuthority": true,
+    "noMemoryWrites": true,
+    "noRuntimeIntegration": true,
+    "policyDecision": null
+  }
+}

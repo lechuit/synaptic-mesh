@@ -9,9 +9,9 @@
 - Enforcement/authorization/approval/block/allow: false
 
 ## Redacted evidence preview
-- #0: # Synaptic Mesh v0.37.5
-- #1: This is the public review release `v0.37.5`. Current v0.37.5 status is narrower than live runtime and crosses the next safe barrier after v0.36: **passive live memory/coherence repeatability scorecard**.
-- #2: The v0.37 ladder is disabled-by-default, operator-run one-shot, local-only, passive/read-only, bounded to the pinned completed v0.36.5 passive live memory/coherence observation rehearsal artifact, redacted-before-persist, human-readable rep
-- #3: Pinned v0.37.5 evidence: `repeatabilityStatus: PASSIVE_LIVE_MEMORY_COHERENCE_REPEATABILITY_SCORECARD_COMPLETE`, `repeatabilityRunCount: 3`, `observationItemCount: 4`, `totalObservationJudgementCount: 12`, `stableObservationCount: 4`, `unsta
-- #4: The scorecard repeats current passive memory/coherence observations across baseline, paraphrased, and reverse-order receiver passes. This is observation-repeatability-only. It is not memory promotion, agent-consumed instruction, [NON_AUTHOR
-- #5: ## v0.37.5 phase close
+- #0: # Synaptic Mesh v0.38.5
+- #1: This is the public review release `v0.38.5`. Current v0.38.5 status is narrower than live runtime and crosses the next safe barrier after v0.37: **bounded passive live memory/coherence usefulness window**.
+- #2: The v0.38 ladder is disabled-by-default, operator-run one-shot, local-only, passive/read-only, bounded to the pinned completed v0.37.5 passive live memory/coherence repeatability scorecard artifact, redacted-before-persist, human-readable r
+- #3: Pinned v0.38.5 evidence: `usefulnessWindowStatus: PASSIVE_LIVE_MEMORY_COHERENCE_USEFULNESS_WINDOW_COMPLETE`, `usefulnessWindowCount: 1`, `handoffItemCount: 4`, `usefulHandoffItemCount: 4`, `noisyHandoffItemCount: 0`, `includeForHumanHandoff
+- #4: The usefulness window packages stable passive memory/coherence observations into a minimal human handoff: continuity anchor, boundary guardrail anchor, advance-evidence anchor, and hardening caution. This is bounded usefulness measurement o
+- #5: ## v0.38.5 phase close
