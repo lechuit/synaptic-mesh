@@ -1,0 +1,12 @@
+{
+  "artifact": "T-synaptic-mesh-passive-handoff-receiver-shadow-rubric-output-boundary-v0.30.4",
+  "validationIssues": [],
+  "boundary": {
+    "policyDecision": null,
+    "recommendationIsAuthority": false,
+    "agentConsumedOutput": false,
+    "noMemoryWrites": true,
+    "noRuntimeIntegration": true,
+    "rawPersisted": false
+  }
+}

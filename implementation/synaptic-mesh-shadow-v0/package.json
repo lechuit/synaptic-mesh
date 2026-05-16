@@ -268,6 +268,14 @@
     "test:passive-memory-handoff-candidate-scorecard-negative-controls": "node tests/passive-memory-handoff-candidate-scorecard-negative-controls-v0.29.3.mjs",
     "test:passive-memory-handoff-candidate-scorecard-output-boundary": "node tests/passive-memory-handoff-candidate-scorecard-output-boundary-v0.29.4.mjs",
     "test:passive-memory-handoff-candidate-scorecard-reviewer-package": "node tests/passive-memory-handoff-candidate-scorecard-reviewer-package-v0.29.5.mjs",
-    "test:passive-memory-handoff-candidate-scorecard": "npm run test:passive-memory-handoff-candidate-scorecard-protocol && npm run test:passive-memory-handoff-candidate-scorecard-candidates && npm run test:passive-memory-handoff-candidate-scorecard-metrics && npm run test:passive-memory-handoff-candidate-scorecard-negative-controls && npm run test:passive-memory-handoff-candidate-scorecard-output-boundary && npm run test:passive-memory-handoff-candidate-scorecard-reviewer-package"
+    "test:passive-memory-handoff-candidate-scorecard": "npm run test:passive-memory-handoff-candidate-scorecard-protocol && npm run test:passive-memory-handoff-candidate-scorecard-candidates && npm run test:passive-memory-handoff-candidate-scorecard-metrics && npm run test:passive-memory-handoff-candidate-scorecard-negative-controls && npm run test:passive-memory-handoff-candidate-scorecard-output-boundary && npm run test:passive-memory-handoff-candidate-scorecard-reviewer-package",
+    "passive:handoff-receiver-shadow-rubric": "node bin/passive-handoff-receiver-shadow-rubric.mjs",
+    "test:passive-handoff-receiver-shadow-rubric-protocol": "node tests/passive-handoff-receiver-shadow-rubric-protocol-v0.30.0-alpha.mjs",
+    "test:passive-handoff-receiver-shadow-rubric-decisions": "node tests/passive-handoff-receiver-shadow-rubric-decisions-v0.30.1.mjs",
+    "test:passive-handoff-receiver-shadow-rubric-metrics": "node tests/passive-handoff-receiver-shadow-rubric-metrics-v0.30.2.mjs",
+    "test:passive-handoff-receiver-shadow-rubric-negative-controls": "node tests/passive-handoff-receiver-shadow-rubric-negative-controls-v0.30.3.mjs",
+    "test:passive-handoff-receiver-shadow-rubric-output-boundary": "node tests/passive-handoff-receiver-shadow-rubric-output-boundary-v0.30.4.mjs",
+    "test:passive-handoff-receiver-shadow-rubric-reviewer-package": "node tests/passive-handoff-receiver-shadow-rubric-reviewer-package-v0.30.5.mjs",
+    "test:passive-handoff-receiver-shadow-rubric": "npm run test:passive-handoff-receiver-shadow-rubric-protocol && npm run test:passive-handoff-receiver-shadow-rubric-decisions && npm run test:passive-handoff-receiver-shadow-rubric-metrics && npm run test:passive-handoff-receiver-shadow-rubric-negative-controls && npm run test:passive-handoff-receiver-shadow-rubric-output-boundary && npm run test:passive-handoff-receiver-shadow-rubric-reviewer-package"
   }
 }

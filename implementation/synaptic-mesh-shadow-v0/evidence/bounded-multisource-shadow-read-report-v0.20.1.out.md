@@ -16,13 +16,13 @@
 - source #2: ok; records=2; rawSourcePathPersisted=false
 
 ## Redacted evidence preview
-- source #0 record #0: # Synaptic Mesh v0.29.5
-- source #0 record #1: This is the public review release `v0.29.5`. Current v0.29.5 status is narrower than live runtime and crosses the next safe barrier after the v0.28 recall probe: **passive memory handoff candidate scorecard**.
-- source #0 record #2: The v0.29 ladder is disabled-by-default, operator-run one-shot, local-only, passive/read-only, bounded to the completed v0.28 redacted recall artifact, human-readable report only, non-authoritative, and not runtime authority.
-- source #0 record #3: Pinned v0.29.5 evidence: `handoffStatus: MEMORY_HANDOFF_CANDIDATE_SCORECARD_COMPLETE`, `candidateCount: 4`, `carryForwardCandidateCount: 2`, `contradictionCandidateCount: 1`, `staleCautionCandidateCount: 1`, `sourceBoundCandidateRatio: 1`,
-- source #1 record #0: # Release Notes — Synaptic Mesh v0.29.5
+- source #0 record #0: # Synaptic Mesh v0.30.5
+- source #0 record #1: This is the public review release `v0.30.5`. Current v0.30.5 status is narrower than live runtime and crosses the next safe barrier after v0.29: **passive handoff receiver shadow rubric**.
+- source #0 record #2: The v0.30 ladder is disabled-by-default, operator-run one-shot, local-only, passive/read-only, bounded to the pinned completed v0.29.5 handoff candidate artifact, human-readable report only, non-authoritative, and not runtime authority.
+- source #0 record #3: Pinned v0.30.5 evidence: `receiverStatus: PASSIVE_HANDOFF_RECEIVER_RUBRIC_COMPLETE`, `receiverItemCount: 4`, `includeForHumanContextCount: 2`, `contradictionReviewCount: 1`, `staleCautionReviewCount: 1`, `excludedUpstreamNoiseCount: 1`, `so
+- source #1 record #0: # Release Notes — Synaptic Mesh v0.30.5
 - source #1 record #1: ## Summary
-- source #1 record #2: `v0.29.5` adds **passive memory handoff candidate scorecard** over the completed v0.28 redacted recall probe artifact. It tests whether passive recall evidence can become a safe human-review handoff package for AI continuity: carry-forward
+- source #1 record #2: `v0.30.5` adds **passive handoff receiver shadow rubric** over the completed v0.29.5 handoff candidate scorecard artifact. It tests whether passive handoff candidates help a human receiver assemble safe continuity context: include source-bo
 - source #1 record #3: ## Evidence
-- source #2 record #0: # Release Candidate — Synaptic Mesh v0.29.5
-- source #2 record #1: Target: `v0.29.5`
+- source #2 record #0: # Release Candidate — Synaptic Mesh v0.30.5
+- source #2 record #1: Target: `v0.30.5`

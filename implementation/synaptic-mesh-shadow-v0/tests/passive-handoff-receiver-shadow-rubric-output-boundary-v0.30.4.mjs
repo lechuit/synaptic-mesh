@@ -1,0 +1,15 @@
+import assert from 'node:assert/strict';
+import { mkdir, writeFile } from 'node:fs/promises';
+import { canonicalInput, assertBoundary } from './passive-handoff-receiver-shadow-rubric-fixtures.mjs';
+import { scorePassiveHandoffReceiverRubric, validatePassiveHandoffReceiverArtifact } from '../src/passive-handoff-receiver-shadow-rubric.mjs';
+const out = scorePassiveHandoffReceiverRubric(canonicalInput());
+assertBoundary(out, assert);
+assert.equal(out.rawSourceCache, 'excluded');
+assert.equal(out.rawPersisted, false);
+assert.equal(out.humanReadableReportOnly, true);
+assert.equal(out.nonAuthoritative, true);
+assert.equal(validatePassiveHandoffReceiverArtifact(out).length, 0);
+assert.match(out.reportMarkdown, /policyDecision: null/);
+assert.doesNotMatch(out.reportMarkdown, /grant|authorize|approval queue|tool execution/i);
+await mkdir('evidence', { recursive: true });
+await writeFile('evidence/passive-handoff-receiver-shadow-rubric-output-boundary-v0.30.4.out.json', `${JSON.stringify({ artifact: 'T-synaptic-mesh-passive-handoff-receiver-shadow-rubric-output-boundary-v0.30.4', validationIssues: validatePassiveHandoffReceiverArtifact(out), boundary: { policyDecision: out.policyDecision, recommendationIsAuthority: out.recommendationIsAuthority, agentConsumedOutput: out.agentConsumedOutput, noMemoryWrites: out.noMemoryWrites, noRuntimeIntegration: out.noRuntimeIntegration, rawPersisted: out.rawPersisted } }, null, 2)}\n`);

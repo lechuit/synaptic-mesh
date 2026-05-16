@@ -1,22 +1,21 @@
-# Release Notes — Synaptic Mesh v0.29.5
+# Release Notes — Synaptic Mesh v0.30.5
 
 ## Summary
 
-`v0.29.5` adds **passive memory handoff candidate scorecard** over the completed v0.28 redacted recall probe artifact. It tests whether passive recall evidence can become a safe human-review handoff package for AI continuity: carry-forward candidates, surfaced contradictions, stale-context cautions, and noise suppression.
+`v0.30.5` adds **passive handoff receiver shadow rubric** over the completed v0.29.5 handoff candidate scorecard artifact. It tests whether passive handoff candidates help a human receiver assemble safe continuity context: include source-bound carry-forward context, surface contradictions for conflict review, keep stale negative context as stale caution, and preserve upstream noise exclusion.
 
 ## Evidence
 
-- `handoffStatus: MEMORY_HANDOFF_CANDIDATE_SCORECARD_COMPLETE`
-- `candidateCount: 4`
-- `carryForwardCandidateCount: 2`
-- `contradictionCandidateCount: 1`
-- `staleCautionCandidateCount: 1`
-- `sourceBoundCandidateRatio: 1`
-- `contradictionFlagRatio: 1`
-- `staleCautionRatio: 1`
-- `noiseSuppressedCount: 1`
-- `noiseSuppressionRatio: 1`
-- `humanReviewCandidateRatio: 1`
+- `receiverStatus: PASSIVE_HANDOFF_RECEIVER_RUBRIC_COMPLETE`
+- `receiverItemCount: 4`
+- `includeForHumanContextCount: 2`
+- `contradictionReviewCount: 1`
+- `staleCautionReviewCount: 1`
+- `excludedUpstreamNoiseCount: 1`
+- `sourceBoundReceiverRatio: 1`
+- `contradictionHandledRatio: 1`
+- `staleHandledRatio: 1`
+- `noPromotionWithoutHumanRatio: 1`
 - `boundaryViolationCount: 0`
 - `recommendation: ADVANCE_OBSERVATION_ONLY`
 - `recommendationIsAuthority: false`
@@ -24,16 +23,16 @@
 - `notRuntimeInstruction: true`
 - `policyDecision: null`
 - `human-readable report only`
-- negative controls for missing/malformed recall artifact, degraded upstream status, fabricated upstream artifacts, unexpected v0.28 artifact identity/release layer/source-anchor/evidence digests, non-null `policyDecision`, source-bound failures, contradiction/stale failures, noise leakage, missing card coverage, unsourced matches, missing source anchors, raw persistence/output/source text, unsafe CLI paths, network/tool/memory/config/runtime flags, daemon/watch flags, invalid metrics, and authority-token text/card IDs that must be detected without being re-emitted
+- negative controls for missing/malformed handoff artifact, fabricated/wrong upstream artifact identity/release layer/schema/status/metrics, unexpected or missing cards, wrong treatments, source-bound failures, contradiction/stale failures, source-anchor/digest mismatches, runtime/tool/network/memory/config requests, raw persistence/output requests, non-null `policyDecision`, recommendation-as-authority, agent-consumed output, and authority-token text/card IDs that must be detected without being re-emitted
 
 ## Boundary
 
-This is local/manual/passive/read-only/one-shot, bounded to the completed repo-local v0.28 redacted recall artifact, human-readable-only, non-authoritative, and not runtime authority.
+This is local/manual/passive/read-only/one-shot, bounded to the completed repo-local v0.29.5 handoff candidate artifact, human-readable-only, non-authoritative, and not runtime authority.
 
-No enforcement, authorization, approval/block/allow semantics, tool execution, network/resource fetch, memory/config writes, external effects, daemon/watchers, autonomous runtime, raw persistence/output, runtime integration, durable memory writes, or agent-consumed machine-readable policy decisions.
+No enforcement, authorization, approval/block/allow semantics, tool execution, network/resource fetch, memory/config writes, durable memory promotion, external effects, daemon/watchers, autonomous runtime, raw persistence/output, runtime integration, or agent-consumed machine-readable policy decisions.
 
 ## Next
 
-The next gate may test receiver-side usefulness of these handoff candidates in a stricter shadow-only rubric, or harden authority/source conflict handling across competing memories. It must not convert recommendations or candidates into authority or live behavior.
+The next gate may test authority/source conflict handling across competing memories, stale-memory invalidation over newer evidence, or a receiver-side usefulness comparison on harder long-context cases. It must not convert recommendations or receiver items into authority, memory writes, or live behavior.
 
 Compatibility carry-forward: passive live shadow readiness achieved for local operator-run pilot only; no enforcement; no tool execution; no authorization; no daemon/watcher by default; no external effects.

@@ -1,0 +1,13 @@
+import assert from 'node:assert/strict';
+import { mkdir, writeFile } from 'node:fs/promises';
+import { canonicalInput, assertBoundary } from './passive-handoff-receiver-shadow-rubric-fixtures.mjs';
+import { scorePassiveHandoffReceiverRubric, validatePassiveHandoffReceiverArtifact } from '../src/passive-handoff-receiver-shadow-rubric.mjs';
+const out = scorePassiveHandoffReceiverRubric(canonicalInput());
+assert.equal(out.artifact, 'T-synaptic-mesh-passive-handoff-receiver-shadow-rubric-v0.30.5');
+assert.equal(out.receiverStatus, 'PASSIVE_HANDOFF_RECEIVER_RUBRIC_COMPLETE');
+assert.equal(out.validationIssues.length, 0);
+assert.equal(validatePassiveHandoffReceiverArtifact(out).length, 0);
+assertBoundary(out, assert);
+await mkdir('evidence', { recursive: true });
+await writeFile('evidence/passive-handoff-receiver-shadow-rubric-reviewer-package-v0.30.5.out.json', `${JSON.stringify(out, null, 2)}\n`);
+await writeFile('evidence/passive-handoff-receiver-shadow-rubric-report-v0.30.5.out.md', out.reportMarkdown);
