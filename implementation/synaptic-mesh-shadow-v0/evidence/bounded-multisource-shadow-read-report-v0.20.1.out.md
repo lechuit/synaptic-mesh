@@ -16,13 +16,13 @@
 - source #2: ok; records=2; rawSourcePathPersisted=false
 
 ## Redacted evidence preview
-- source #0 record #0: # Synaptic Mesh v0.48.5
-- source #0 record #1: This is the public review release `v0.48.5`. Current v0.48.5 status is narrower than production live runtime, but crosses a real runtime-adjacent boundary after v0.47: **local runtime-adjacent context injection dry-run**.
-- source #0 record #2: The v0.48 ladder is opt-in, operator-run one-shot, local-only, dry-run/read-only, bounded to the pinned completed v0.47.5 repeatability artifact, pre-read path pinned, redacted-before-persist, machine-shaped local dry-run context payload, t
-- source #0 record #3: Pinned v0.48.5 evidence: `dryRunStatus: PASSIVE_LIVE_MEMORY_COHERENCE_RUNTIME_CONTEXT_INJECTION_DRY_RUN_COMPLETE`, `sourceRepeatabilityRunCount: 3`, `sourceStableHandoffItemCount: 5`, `sourceIncludedForLiveContextCount: 4`, `sourceExcludedA
-- source #1 record #0: # Release Notes — Synaptic Mesh v0.48.5
-- source #1 record #1: ## Summary
-- source #1 record #2: `v0.48.5` adds a **local runtime-adjacent context injection dry-run** over the completed pinned v0.47.5 handoff utility repeatability artifact. It is not another passive readiness loop: it produces a machine-shaped local dry-run context pay
-- source #1 record #3: ## Evidence
+- source #0 record #0: # Synaptic Mesh v0.49.5
+- source #0 record #1: This is the public review release `v0.49.5`. Current v0.49.5 status is narrower than production live runtime, but crosses a real runtime-adjacent barrier after v0.48: **local runtime-context injection rehearsal**.
+- source #0 record #2: The v0.49 ladder is opt-in, operator-run one-shot, local-only, rehearsal/read-only, bounded to the pinned completed v0.48.5 runtime context injection dry-run artifact and report, pre-read path pinned, redacted-before-persist, machine-shaped
+- source #0 record #3: Pinned v0.49.5 evidence: `rehearsalStatus: PASSIVE_LIVE_MEMORY_COHERENCE_RUNTIME_CONTEXT_INJECTION_REHEARSAL_COMPLETE`, `sourceRuntimeContextCardCount: 5`, `contextCardsConsumedByLocalRehearsalCount: 5`, `injectionEnvelopeCount: 1`, `inject
+- source #1 record #0: # Release Notes — Synaptic Mesh v0.49.5
+- source #1 record #1: v0.49.5 adds a local runtime-context injection rehearsal on top of published v0.48.5. It pins the v0.48.5 reviewer package and report by path and SHA-256, consumes the v0.48 runtime context cards in a deterministic local adapter harness, an
+- source #1 record #2: Pinned evidence: `rehearsalStatus: PASSIVE_LIVE_MEMORY_COHERENCE_RUNTIME_CONTEXT_INJECTION_REHEARSAL_COMPLETE`, `contextCardsConsumedByLocalRehearsalCount: 5`, `injectionEnvelopeCount: 1`, `receiverFacingContextBlockCount: 4`, `allEffectsBl
+- source #1 record #3: Boundary: local-only, reversible, read-only, non-authoritative, no production runtime integration, no daemon, no SDK/framework adapter, no MCP/A2A client/server, no network/resource fetch, no tool execution, no memory/config writes, no exte
 - source #2 record #0: # Release Candidate — Synaptic Mesh v0.39.5
 - source #2 record #1: Target: `v0.39.5`

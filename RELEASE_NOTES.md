@@ -1,3 +1,13 @@
+# Release Notes — Synaptic Mesh v0.49.5
+
+v0.49.5 adds a local runtime-context injection rehearsal on top of published v0.48.5. It pins the v0.48.5 reviewer package and report by path and SHA-256, consumes the v0.48 runtime context cards in a deterministic local adapter harness, and emits one machine-shaped adapter rehearsal envelope for a future receiver/runtime test harness.
+
+Pinned evidence: `rehearsalStatus: PASSIVE_LIVE_MEMORY_COHERENCE_RUNTIME_CONTEXT_INJECTION_REHEARSAL_COMPLETE`, `contextCardsConsumedByLocalRehearsalCount: 5`, `injectionEnvelopeCount: 1`, `receiverFacingContextBlockCount: 4`, `allEffectsBlockedUntilNextBarrierCount: 10`, `sourceBoundReceiverBlockRatio: 1`, `boundaryViolationCount: 0`.
+
+Boundary: local-only, reversible, read-only, non-authoritative, no production runtime integration, no daemon, no SDK/framework adapter, no MCP/A2A client/server, no network/resource fetch, no tool execution, no memory/config writes, no external effects, no authorization/enforcement semantics, and no automatic agent consumption.
+
+Recommended next barrier: receiver/runtime test harness consumption rehearsal.
+
 # Release Notes — Synaptic Mesh v0.48.5
 
 ## Summary

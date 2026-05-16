@@ -9,9 +9,9 @@
 - Enforcement/authorization/approval/block/allow: false
 
 ## Redacted evidence preview
-- #0: # Synaptic Mesh v0.48.5
-- #1: This is the public review release `v0.48.5`. Current v0.48.5 status is narrower than production live runtime, but crosses a real runtime-adjacent boundary after v0.47: **local runtime-adjacent context injection dry-run**.
-- #2: The v0.48 ladder is opt-in, operator-run one-shot, local-only, dry-run/read-only, bounded to the pinned completed v0.47.5 repeatability artifact, pre-read path pinned, redacted-before-persist, machine-shaped local dry-run context payload, t
-- #3: Pinned v0.48.5 evidence: `dryRunStatus: PASSIVE_LIVE_MEMORY_COHERENCE_RUNTIME_CONTEXT_INJECTION_DRY_RUN_COMPLETE`, `sourceRepeatabilityRunCount: 3`, `sourceStableHandoffItemCount: 5`, `sourceIncludedForLiveContextCount: 4`, `sourceExcludedA
-- #4: The dry-run converts stable v0.47 handoff judgements into a machine-shaped local dry-run context payload that a receiver/runtime test harness could consume next: four harness-consumable context candidates, one stale-suppressed card, and eve
+- #0: # Synaptic Mesh v0.49.5
+- #1: This is the public review release `v0.49.5`. Current v0.49.5 status is narrower than production live runtime, but crosses a real runtime-adjacent barrier after v0.48: **local runtime-context injection rehearsal**.
+- #2: The v0.49 ladder is opt-in, operator-run one-shot, local-only, rehearsal/read-only, bounded to the pinned completed v0.48.5 runtime context injection dry-run artifact and report, pre-read path pinned, redacted-before-persist, machine-shaped
+- #3: Pinned v0.49.5 evidence: `rehearsalStatus: PASSIVE_LIVE_MEMORY_COHERENCE_RUNTIME_CONTEXT_INJECTION_REHEARSAL_COMPLETE`, `sourceRuntimeContextCardCount: 5`, `contextCardsConsumedByLocalRehearsalCount: 5`, `injectionEnvelopeCount: 1`, `inject
+- #4: The rehearsal consumes the v0.48 machine-shaped runtime context cards in a deterministic local adapter harness and emits one receiver-facing injection envelope with four source-bound context [NON_AUTHORITATIVE_INPUT_VERB_REDACTED]. It is in
 - #5: ## Carry-forward prior release boundaries
