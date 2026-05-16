@@ -9,9 +9,9 @@
 - Enforcement/authorization/approval/block/allow: false
 
 ## Redacted evidence preview
-- #0: # Synaptic Mesh v0.41.5
-- #1: This is the public review release `v0.41.5`. Current v0.41.5 status is narrower than live runtime and crosses the next safe barrier after v0.40: **passive live memory/coherence stable invalidation receiver package**.
-- #2: The v0.41 ladder is disabled-by-default, operator-run one-shot, local-only, passive/read-only, bounded to the pinned completed v0.40.5 passive live memory/coherence invalidation repeatability scorecard artifact, pre-read path pinned, redact
-- #3: Pinned v0.41.5 evidence: `receiverPackageStatus: PASSIVE_LIVE_MEMORY_COHERENCE_STABLE_INVALIDATION_RECEIVER_PACKAGE_COMPLETE`, `receiverPackageItemCount: 5`, `stableCarryForwardItemCount: 3`, `stableStaleInvalidatedItemCount: 1`, `stableCon
-- #4: The stable invalidation receiver package assembles the repeated/stable v0.40 signals into a minimal receiver-side human handoff: three current signals carry forward for human continuity context, one stale prior-release anchor is excluded as
-- #5: ## v0.41.5 phase close
+- #0: # Synaptic Mesh v0.42.5
+- #1: This is the public review release `v0.42.5`. Current v0.42.5 status is narrower than live runtime and crosses the next safe barrier after v0.41: **passive live memory/coherence receiver package usefulness rehearsal**.
+- #2: The v0.42 ladder is disabled-by-default, operator-run one-shot, local-only, passive/read-only, bounded to the pinned completed v0.41.5 receiver package artifact, pre-read path pinned, redacted-before-persist, human-readable report only, non
+- #3: Pinned v0.42.5 evidence: `rehearsalStatus: PASSIVE_LIVE_MEMORY_COHERENCE_RECEIVER_PACKAGE_USEFULNESS_REHEARSAL_COMPLETE`, `rehearsalWindowCount: 1`, `comparisonModeCount: 3`, `receiverPackageItemCount: 5`, `receiverUsefulHandoffItemCount: 4
+- #4: The receiver package usefulness rehearsal compares three handoff modes: using the v0.41 receiver package, exposing raw stable signals, and relying on the prior scorecard without receiver-side lanes. In this bounded rehearsal, the receiver p
+- #5: This is rehearsal evidence only. It is not memory promotion, agent-consumed instruction, [NON_AUTHORITATIVE_INPUT_VERB_REDACTED], approval/[NON_AUTHORITATIVE_INPUT_VERB_REDACTED]/[NON_AUTHORITATIVE_INPUT_VERB_REDACTED], [NON_AUTHORITATIVE_I
