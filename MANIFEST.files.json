@@ -69,18 +69,18 @@
     },
     {
       "path": "README.md",
-      "bytes": 2717,
-      "sha256": "eab45c37fa12122e21ca689cacf4e9b8ca4aeb05eb22bfe340447784184a43f5"
+      "bytes": 3023,
+      "sha256": "aef3822b67c25c3183ccfb04fe657a39d91a257148cfead3de7d3359401ed0e5"
     },
     {
       "path": "RELEASE_CANDIDATE.md",
-      "bytes": 1098,
-      "sha256": "264a80fe1bb7e55fba4031db8068ee45d2388bb8fb961e8a959c16be5901bbbb"
+      "bytes": 1156,
+      "sha256": "a52a11ed212158cdc2c2d9b4e7096405ac2f9189b2750101223f494f2951d895"
     },
     {
       "path": "RELEASE_NOTES.md",
-      "bytes": 2485,
-      "sha256": "9e7f0b202a2545e8343d46f475ad3bab354e6fc77c35fa1d35150c20b8c5a773"
+      "bytes": 2794,
+      "sha256": "23aa4938d015e5bfab5fb52595b6b37d1480b919d0bb0ad3f22591d64398bf17"
     },
     {
       "path": "design-notes/adapter-boundary-langgraph-mcp-v0.md",
@@ -846,6 +846,41 @@
       "path": "docs/passive-handoff-receiver-shadow-rubric-reviewer-package-v0.30.5.md",
       "bytes": 395,
       "sha256": "bbd5c3677e140b9028cc4e950068709fe11ff88d95e6d1325ad93c6f56dd50a8"
+    },
+    {
+      "path": "docs/passive-hard-case-outcome-repeatability-scorecard-local-review-notes-v0.35.5.md",
+      "bytes": 2876,
+      "sha256": "1acebe6d9f521ce72ec2f4a6b34b1741777d8e2b43e8495af10d287e5a4a428d"
+    },
+    {
+      "path": "docs/passive-hard-case-outcome-repeatability-scorecard-metrics-v0.35.2.md",
+      "bytes": 740,
+      "sha256": "bbf7de87a092e9b83be84dc58189fc3f645bc8206b8f21c4e8fbaa028785141b"
+    },
+    {
+      "path": "docs/passive-hard-case-outcome-repeatability-scorecard-negative-controls-v0.35.3.md",
+      "bytes": 858,
+      "sha256": "e7b637dd46f8117151d41d3ba7bb0569cfac427b96a9d5006c52293aa20fba72"
+    },
+    {
+      "path": "docs/passive-hard-case-outcome-repeatability-scorecard-output-boundary-v0.35.4.md",
+      "bytes": 585,
+      "sha256": "acc4f5e73083e114cdf08d2c80480308bcd24e8fc76e975913159151c58874e2"
+    },
+    {
+      "path": "docs/passive-hard-case-outcome-repeatability-scorecard-protocol-v0.35.0-alpha.md",
+      "bytes": 682,
+      "sha256": "0ed5b9340e4b7c1c5eb3b5d7378c2b02466ae7e79068afddb34adf8d842e63ba"
+    },
+    {
+      "path": "docs/passive-hard-case-outcome-repeatability-scorecard-reviewer-package-v0.35.5.md",
+      "bytes": 1020,
+      "sha256": "89e187ca1d6505e8d06c1ff53e2e8a689b07fbfae3db496e00f94d71522ad3b4"
+    },
+    {
+      "path": "docs/passive-hard-case-outcome-repeatability-scorecard-runs-v0.35.1.md",
+      "bytes": 566,
+      "sha256": "e1744a875f306befdb23155ea73b71dba7e4ad5c78ef85428e162981b3581876"
     },
     {
       "path": "docs/passive-hard-case-outcome-value-scorecard-local-review-notes-v0.34.5.md",
@@ -2118,6 +2153,36 @@
       "sha256": "793883a9c13fc57f32afdafb470a95fbbc638402951c27adbe64291a54ff69fc"
     },
     {
+      "path": "docs/status-v0.35.0-alpha.md",
+      "bytes": 220,
+      "sha256": "209fa65845aef7af275f066f5435b13d74b63a5b69e02ebd81cdf53db0857293"
+    },
+    {
+      "path": "docs/status-v0.35.1.md",
+      "bytes": 178,
+      "sha256": "d3299e7615aab108e05bd9ec43b319d1b2d3c32a3a89251794ec2c3a55641763"
+    },
+    {
+      "path": "docs/status-v0.35.2.md",
+      "bytes": 162,
+      "sha256": "853de38cb7e3f2a304a388b1347c101db661a88289923c59264a5abe08b2b010"
+    },
+    {
+      "path": "docs/status-v0.35.3.md",
+      "bytes": 200,
+      "sha256": "1dbf8d646a81b17b7d99ae0a4d2b080180e07d3beb79c435fdd6f8e9cc977a27"
+    },
+    {
+      "path": "docs/status-v0.35.4.md",
+      "bytes": 193,
+      "sha256": "8d8618a9491fe22f49a83ae0bdb2788d6daeb0f6388ae9025943779b48345166"
+    },
+    {
+      "path": "docs/status-v0.35.5.md",
+      "bytes": 182,
+      "sha256": "28b96c449b01ed621f64db2f950649f8ed9c9c8b035afe881b7f34eeadfe5a66"
+    },
+    {
       "path": "docs/status-v0.4.5.md",
       "bytes": 4795,
       "sha256": "b65d5f65e2d5f88ad65e475abc9d07d6da6dc8a463ba99c81ed57970bed3e01c"
@@ -2428,6 +2493,11 @@
       "sha256": "f2b3dc8ddd5b29c1c019bc6670a4666eb28d4656b600cda9ab665aff87f94fdb"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/bin/passive-hard-case-outcome-repeatability-scorecard.mjs",
+      "bytes": 934,
+      "sha256": "6376dae51bb32004822503d94a7ebfe5a80fa00e7619796b5b4bd98d9a12fd9d"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/bin/passive-hard-case-outcome-value-scorecard.mjs",
       "bytes": 872,
       "sha256": "84927683acc88c89333c21d46f63b6afdd116bf4d8727bd5c98464e580e44c39"
@@ -2579,8 +2649,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/bounded-multisource-shadow-read-packet-v0.20.1.out.json",
-      "bytes": 12404,
-      "sha256": "b4bb9d0773363bc5510bcf4ad40c6510a59cf5f2488c66818abc0012b1082924"
+      "bytes": 12419,
+      "sha256": "49cc97a38d1ae54498e1c8bd45c88c7c2139a1ebc34214df92b79e6042e826fb"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/bounded-multisource-shadow-read-preflight-abort-v0.20.2.out.json",
@@ -2599,8 +2669,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/bounded-multisource-shadow-read-report-v0.20.1.out.md",
-      "bytes": 2111,
-      "sha256": "0087d06f84e27a3b568c15fec11a128d6d0017f84f60b8f7b4ca7582ee308315"
+      "bytes": 2118,
+      "sha256": "5ce0246b80a57be44da44c82d7f56854c057438ff5c0721595a3252e60167648"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/bounded-multisource-shadow-read-reviewer-package-v0.20.5.out.json",
@@ -2799,8 +2869,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-adapter-shadow-read-packet-v0.19.1.out.json",
-      "bytes": 8065,
-      "sha256": "5787f9facdcb6ed958538c62a2f0d73f1e9a12bc96dbba6f358ca102466833ee"
+      "bytes": 8081,
+      "sha256": "c3930ad59497357e84c7f87d0c55eb3607afd4ae61f938790b07f790e5ae4fb9"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-adapter-shadow-read-preflight-abort-v0.19.2.out.json",
@@ -2819,13 +2889,13 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-adapter-shadow-read-report-v0.19.1.out.md",
-      "bytes": 1468,
-      "sha256": "b4024b8cf09de03f420c4798b6e725f6a601c6215382d4154c900a7e03c6076e"
+      "bytes": 1476,
+      "sha256": "8641cbe8a194b3ca3cf02b35997f0bcd5ca9638ccf50f766499c9a69f97d4f72"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-adapter-shadow-read-reviewer-package-v0.19.5.out.json",
-      "bytes": 9596,
-      "sha256": "437a9c736a46e3c8fffb134144978a708c35a965ac4f8014145595c41c98ca84"
+      "bytes": 9612,
+      "sha256": "fffe909196b225b8302833e216f292295e5ca7f4325f4935a661583ef694657e"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-input-source-boundary-contracts.out.json",
@@ -2869,8 +2939,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-read-gate-packet-v0.18.1.out.json",
-      "bytes": 6042,
-      "sha256": "20623375e5d62d8268eef0c66808c695b448c843b0695f89c0e254d01b01cb14"
+      "bytes": 6050,
+      "sha256": "4329cb00f790139623f2cff4faad440d26775f3b8eeeb377a398cc83d8a54702"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-read-gate-preflight-abort-v0.18.2.out.json",
@@ -2889,8 +2959,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-read-gate-reviewer-package-v0.18.5.out.json",
-      "bytes": 7439,
-      "sha256": "dc143f7f2529d995b989489e09bb5ef56437f6d20b812697c6d456c0ba61b613"
+      "bytes": 7447,
+      "sha256": "acf402866d136e2f540927cdc53a1a5ca95a4105e3aba5daf65e106dea061af4"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-shadow-drift-scorecard-shape.out.json",
@@ -3371,6 +3441,41 @@
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-handoff-receiver-shadow-rubric-reviewer-package-v0.30.5.out.json",
       "bytes": 6345,
       "sha256": "52891db7bb5e75718cd017acc243b4b83f9e0312843666fc77be0f4ede468c70"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-hard-case-outcome-repeatability-scorecard-metrics-v0.35.2.out.json",
+      "bytes": 911,
+      "sha256": "192065e898a86860641194d447ba8ea235c4ae0ae23a737b32cafb770d624bb5"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-hard-case-outcome-repeatability-scorecard-negative-controls-v0.35.3.out.json",
+      "bytes": 16079,
+      "sha256": "82f3c34bab5cc86d91aec6b3e748e8d69e4230779f82081b036062c8980c7afc"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-hard-case-outcome-repeatability-scorecard-output-boundary-v0.35.4.out.json",
+      "bytes": 145,
+      "sha256": "ac5eb5280615d89ab24d3c42db8ea5b54a128f3dcaab4d757ad9c86503e0a9d5"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-hard-case-outcome-repeatability-scorecard-protocol-v0.35.0-alpha.out.json",
+      "bytes": 890,
+      "sha256": "634648ed32f43fa48dfa018b399975b86431e18e1ae6845df0729b955a027638"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-hard-case-outcome-repeatability-scorecard-report-v0.35.5.out.md",
+      "bytes": 1568,
+      "sha256": "32d50d5ee8ac5e1e1e69c0ab87f5e94324dc0e114839ad54ce60285cbba3bcfd"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-hard-case-outcome-repeatability-scorecard-reviewer-package-v0.35.5.out.json",
+      "bytes": 10531,
+      "sha256": "0e5320b2799bc9744f44f9560945f13724ead18bc38a3a09e7dfa741c0bca4a9"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-hard-case-outcome-repeatability-scorecard-runs-v0.35.1.out.json",
+      "bytes": 6296,
+      "sha256": "63604f1aba945b4bf1659495b517e43ffc551cbd896fa3026618e656fdc1dd5e"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-hard-case-outcome-value-scorecard-metrics-v0.34.2.out.json",
@@ -4589,8 +4694,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/package.json",
-      "bytes": 68190,
-      "sha256": "ae9cc062d87771fd86df96a3babfb73fe8b9c5ae72b3f898e638901de0d3ea06"
+      "bytes": 70614,
+      "sha256": "e76c0eb0f1b28bb9c9490ed41c8fc94f6742dc8000a09e2095f5711d7482cdce"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/action-context-packet.mjs",
@@ -4706,6 +4811,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/src/passive-handoff-receiver-shadow-rubric.mjs",
       "bytes": 19919,
       "sha256": "456ed9663fc8a9ac52cd2ca78a55d38823c1648f03bdb86431a4a11412dc3388"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/src/passive-hard-case-outcome-repeatability-scorecard.mjs",
+      "bytes": 32372,
+      "sha256": "013de7606b1fda91a6800f918cab0401b36756dc973f575a6ef5d4852dd98004"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/passive-hard-case-outcome-value-scorecard.mjs",
@@ -5556,6 +5666,41 @@
       "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-handoff-receiver-shadow-rubric-reviewer-package-v0.30.5.mjs",
       "bytes": 1017,
       "sha256": "68311e1d4b410acafff783d26eac97b0fbf4de1aaa5fcc069939bd181f040b68"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-hard-case-outcome-repeatability-scorecard-fixtures.mjs",
+      "bytes": 1124,
+      "sha256": "42607f804eac135175071ef33df8b382f4a9d3a4b4b26c5bbbcb4a30f51fc234"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-hard-case-outcome-repeatability-scorecard-metrics-v0.35.2.mjs",
+      "bytes": 2000,
+      "sha256": "2eaf7d227c3c770508f0fd2558ebddfa610108f180994c6a05820d61b1bd1b84"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-hard-case-outcome-repeatability-scorecard-negative-controls-v0.35.3.mjs",
+      "bytes": 8124,
+      "sha256": "13c20dac000f50d8340ad123eff7d04257a99074508cf8ba205635da889363d0"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-hard-case-outcome-repeatability-scorecard-output-boundary-v0.35.4.mjs",
+      "bytes": 2336,
+      "sha256": "4d983de46d9a0d5f0c620ee9bad7323e578ed75954a309e525c510d4d19c0e90"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-hard-case-outcome-repeatability-scorecard-protocol-v0.35.0-alpha.mjs",
+      "bytes": 1716,
+      "sha256": "5083a42638147687de3619b73bb78555bafeb82ed655047901fd9fa41cd8d5f6"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-hard-case-outcome-repeatability-scorecard-reviewer-package-v0.35.5.mjs",
+      "bytes": 1690,
+      "sha256": "214da5875c0110808aa1118406972fe9a478ba2d2727cf3bc5e71e822f57b014"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-hard-case-outcome-repeatability-scorecard-runs-v0.35.1.mjs",
+      "bytes": 1497,
+      "sha256": "1176e8716c180ad98e093cbfe830569c1908bd761a8fffa5c4ae6013e3fb9ae9"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-hard-case-outcome-value-scorecard-fixtures.mjs",
@@ -6764,8 +6909,8 @@
     },
     {
       "path": "tools/release-checks/index.mjs",
-      "bytes": 3635,
-      "sha256": "bbc68122d2483ad308e447d50c5630f49f42cebed9834d526fef68feb4c73e51"
+      "bytes": 3813,
+      "sha256": "d31d8e0d454099783689d355d4222754e8e0583847190118e9599fb0176adbc9"
     },
     {
       "path": "tools/release-checks/limited-passive-live-capture-readiness.mjs",
@@ -6826,6 +6971,11 @@
       "path": "tools/release-checks/passive-handoff-receiver-shadow-rubric.mjs",
       "bytes": 9596,
       "sha256": "2d093eefc6436a0942131fc1fc740dc4fe38ab61e415c40531ea441e8bc8d5ca"
+    },
+    {
+      "path": "tools/release-checks/passive-hard-case-outcome-repeatability-scorecard.mjs",
+      "bytes": 10298,
+      "sha256": "51732223acb452ffac082597c1a6f07726c5de6561fbe780d453007df5548916"
     },
     {
       "path": "tools/release-checks/passive-hard-case-outcome-value-scorecard.mjs",

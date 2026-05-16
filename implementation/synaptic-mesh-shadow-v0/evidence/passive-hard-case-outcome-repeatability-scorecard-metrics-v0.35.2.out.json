@@ -1,0 +1,28 @@
+{
+  "metrics": {
+    "repeatabilityRunCount": 3,
+    "expectedRepeatabilityRunCount": 3,
+    "hardCaseCount": 5,
+    "totalOutcomeJudgementCount": 15,
+    "expectedOutcomeJudgementCount": 15,
+    "stableHardCaseCount": 5,
+    "unstableHardCaseCount": 0,
+    "stableUsefulHardCaseCount": 3,
+    "stableNoiseHardCaseCount": 1,
+    "stableEvidenceGapHardCaseCount": 1,
+    "labelAgreementJudgementCount": 15,
+    "labelAgreementRatio": 1,
+    "stableHardCaseRatio": 1,
+    "stableUsefulHardCaseRatio": 1,
+    "stableNoiseHardCaseRatio": 1,
+    "stableEvidenceGapHardCaseRatio": 1,
+    "sourceBoundRepeatabilityRatio": 1,
+    "humanReviewOnlyRepeatabilityRatio": 1,
+    "minimalContextRepeatabilityRatio": 1,
+    "noPromotionWithoutHumanRepeatabilityRatio": 1,
+    "agentConsumedOutputFalseRatio": 1,
+    "boundaryViolationCount": 0,
+    "policyDecision": null
+  },
+  "recommendation": "ADVANCE_OBSERVATION_ONLY"
+}
