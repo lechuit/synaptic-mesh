@@ -1,0 +1,15 @@
+import assert from 'node:assert/strict';
+import { scorePassiveLiveMemoryCoherenceReceiverUsefulnessRepeatability, validatePassiveLiveMemoryCoherenceReceiverUsefulnessRepeatabilityArtifact, passiveLiveMemoryCoherenceReceiverUsefulnessRepeatabilityReport } from '../src/passive-live-memory-coherence-receiver-usefulness-repeatability-scorecard.mjs';
+import { receiverUsefulnessRepeatabilityInputV043 } from './passive-live-memory-coherence-receiver-usefulness-repeatability-scorecard-fixtures.mjs';
+const artifact = scorePassiveLiveMemoryCoherenceReceiverUsefulnessRepeatability(receiverUsefulnessRepeatabilityInputV043());
+assert.deepEqual(validatePassiveLiveMemoryCoherenceReceiverUsefulnessRepeatabilityArtifact(artifact), []);
+assert.equal(artifact.reportMarkdown, passiveLiveMemoryCoherenceReceiverUsefulnessRepeatabilityReport(artifact));
+assert.equal(artifact.policyDecision, null);
+assert.equal(artifact.recommendationIsAuthority, false);
+assert.equal(artifact.agentConsumedOutput, false);
+assert.equal(artifact.noMemoryWrites, true);
+assert.equal(artifact.noRuntimeIntegration, true);
+assert.equal(artifact.rawPersisted, false);
+assert(artifact.stableUsefulnessJudgements.every((j) => j.promoteToMemory === false && j.agentConsumedOutput === false));
+assert(artifact.reportMarkdown.includes('policyDecision: null'));
+console.log(JSON.stringify({ outputBoundary: 'ok', status: artifact.repeatabilityStatus }));

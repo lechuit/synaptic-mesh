@@ -97,7 +97,7 @@
       "kind": "explicit_repo_local_file_via_adapter",
       "repoRelativePathSha256": "b335630551682c19a781afebcf4d07bf978fb1f8ac04c6bf87428ed5106870f5",
       "absolutePathSha256": "543c81f89743c5b0f48fa0200abe84d28dd1fdb1b6687cf610469e9e998e93e0",
-      "sourceSize": 3342,
+      "sourceSize": 3951,
       "sourceMtimeMs": null,
       "rawSourcePathPersisted": false,
       "recordsRead": 4,
@@ -109,7 +109,7 @@
       "kind": "explicit_repo_local_file_via_adapter",
       "repoRelativePathSha256": "68d24fa81558aae3d8c59e2aa57a4fa719ea3b04d7fa14beff45f16f00858f50",
       "absolutePathSha256": "4da003b5022cb2aeb34f2b51f5b6f9fe35d01a94f2607ea78b58e405df985f0b",
-      "sourceSize": 3072,
+      "sourceSize": 3567,
       "sourceMtimeMs": null,
       "rawSourcePathPersisted": false,
       "recordsRead": 4,
@@ -151,10 +151,10 @@
     {
       "sourceIndex": 0,
       "index": 0,
-      "rawSha256": "c6e5e2eee24d82b5afaa62cba15b784c1fb72982a09461daeaf76adfcaaec6cf",
+      "rawSha256": "04a357ed2704d121509ffc5a01739cade1d959ddf2e62d7cce18feaacc0acbd4",
       "rawBytes": 23,
-      "redactedSha256": "c6e5e2eee24d82b5afaa62cba15b784c1fb72982a09461daeaf76adfcaaec6cf",
-      "redactedText": "# Synaptic Mesh v0.42.5",
+      "redactedSha256": "04a357ed2704d121509ffc5a01739cade1d959ddf2e62d7cce18feaacc0acbd4",
+      "redactedText": "# Synaptic Mesh v0.43.5",
       "privatePatternDetected": false,
       "decisionVerbDetected": false,
       "semanticDecisionTokenPersisted": false
@@ -162,10 +162,10 @@
     {
       "sourceIndex": 0,
       "index": 1,
-      "rawSha256": "8bcd914dbe16a6cd35ecbdbae47c68759afd92a783b069b30970d61f0f98c1fa",
-      "rawBytes": 217,
-      "redactedSha256": "8bcd914dbe16a6cd35ecbdbae47c68759afd92a783b069b30970d61f0f98c1fa",
-      "redactedText": "This is the public review release `v0.42.5`. Current v0.42.5 status is narrower than live runtime and crosses the next safe barrier after v0.41: **passive live memory/coherence receiver package usefulness rehearsal**.",
+      "rawSha256": "dcaf5a9a97224b002c32cab5aefd802fbcfcc702e161f3811dec0d3a7c5e0365",
+      "rawBytes": 223,
+      "redactedSha256": "dcaf5a9a97224b002c32cab5aefd802fbcfcc702e161f3811dec0d3a7c5e0365",
+      "redactedText": "This is the public review release `v0.43.5`. Current v0.43.5 status is narrower than live runtime and crosses the next safe barrier after v0.42: **passive live memory/coherence receiver usefulness repeatability scorecard**.",
       "privatePatternDetected": false,
       "decisionVerbDetected": false,
       "semanticDecisionTokenPersisted": false
@@ -173,10 +173,10 @@
     {
       "sourceIndex": 0,
       "index": 2,
-      "rawSha256": "144173d76d46c0879bc0ff9a0f23e6328ee1eda049e259ff122ae733204f1617",
-      "rawBytes": 282,
-      "redactedSha256": "144173d76d46c0879bc0ff9a0f23e6328ee1eda049e259ff122ae733204f1617",
-      "redactedText": "The v0.42 ladder is disabled-by-default, operator-run one-shot, local-only, passive/read-only, bounded to the pinned completed v0.41.5 receiver package artifact, pre-read path pinned, redacted-before-persist, human-readable report only, non",
+      "rawSha256": "eabb31216fda294ed06ec0fb2ce102a10064373fb2633595c6b5cc1851f0d5f9",
+      "rawBytes": 303,
+      "redactedSha256": "eabb31216fda294ed06ec0fb2ce102a10064373fb2633595c6b5cc1851f0d5f9",
+      "redactedText": "The v0.43 ladder is disabled-by-default, operator-run one-shot, local-only, passive/read-only, bounded to the pinned completed v0.42.5 receiver package usefulness rehearsal artifact, pre-read path pinned, redacted-before-persist, human-read",
       "privatePatternDetected": false,
       "decisionVerbDetected": false,
       "semanticDecisionTokenPersisted": false
@@ -184,10 +184,10 @@
     {
       "sourceIndex": 0,
       "index": 3,
-      "rawSha256": "59921223d6716e3eb0810d91f182365952216fd357e9a3e375cdbd602a1cac50",
-      "rawBytes": 1203,
-      "redactedSha256": "59921223d6716e3eb0810d91f182365952216fd357e9a3e375cdbd602a1cac50",
-      "redactedText": "Pinned v0.42.5 evidence: `rehearsalStatus: PASSIVE_LIVE_MEMORY_COHERENCE_RECEIVER_PACKAGE_USEFULNESS_REHEARSAL_COMPLETE`, `rehearsalWindowCount: 1`, `comparisonModeCount: 3`, `receiverPackageItemCount: 5`, `receiverUsefulHandoffItemCount: 4",
+      "rawSha256": "394aeb4fab5b1f27f34276eb6e9b9336f2cde6c3777d0d96eebafff02ea83f47",
+      "rawBytes": 1603,
+      "redactedSha256": "394aeb4fab5b1f27f34276eb6e9b9336f2cde6c3777d0d96eebafff02ea83f47",
+      "redactedText": "Pinned v0.43.5 evidence: `repeatabilityStatus: PASSIVE_LIVE_MEMORY_COHERENCE_RECEIVER_USEFULNESS_REPEATABILITY_SCORECARD_COMPLETE`, `repeatabilityRunCount: 3`, `sourceRehearsalWindowCount: 1`, `candidateCount: 5`, `totalUsefulnessJudgementC",
       "privatePatternDetected": false,
       "decisionVerbDetected": false,
       "semanticDecisionTokenPersisted": false
@@ -195,10 +195,10 @@
     {
       "sourceIndex": 1,
       "index": 0,
-      "rawSha256": "6c49320754d6c660319643a77ca9b98be8537ff5e13a96675d3ea94af78acc6d",
+      "rawSha256": "d34a76c21e29268aa3d1fc0b5e1d899bf94fb0b0c62a35be6aa4d4f564481d69",
       "rawBytes": 41,
-      "redactedSha256": "6c49320754d6c660319643a77ca9b98be8537ff5e13a96675d3ea94af78acc6d",
-      "redactedText": "# Release Notes — Synaptic Mesh v0.42.5",
+      "redactedSha256": "d34a76c21e29268aa3d1fc0b5e1d899bf94fb0b0c62a35be6aa4d4f564481d69",
+      "redactedText": "# Release Notes — Synaptic Mesh v0.43.5",
       "privatePatternDetected": false,
       "decisionVerbDetected": false,
       "semanticDecisionTokenPersisted": false
@@ -217,10 +217,10 @@
     {
       "sourceIndex": 1,
       "index": 2,
-      "rawSha256": "a2c2f8a9aafd1b68260c0b20ad5333777420797c86c8d13707a7ac6c17074dc1",
-      "rawBytes": 293,
-      "redactedSha256": "a2c2f8a9aafd1b68260c0b20ad5333777420797c86c8d13707a7ac6c17074dc1",
-      "redactedText": "`v0.42.5` adds a **passive live memory/coherence receiver package usefulness rehearsal** over the completed pinned v0.41.5 receiver package. It measures whether the receiver-side package improves human continuity handoff versus raw stable s",
+      "rawSha256": "d8d1c46ee3b9efb00ff67438ed6c1649da2154cef217f2660db1b0dea66b7dd8",
+      "rawBytes": 344,
+      "redactedSha256": "d8d1c46ee3b9efb00ff67438ed6c1649da2154cef217f2660db1b0dea66b7dd8",
+      "redactedText": "`v0.43.5` adds a **passive live memory/coherence receiver usefulness repeatability scorecard** over the completed pinned v0.42.5 receiver package usefulness rehearsal. It tests whether the receiver usefulness treatment remains stable across",
       "privatePatternDetected": false,
       "decisionVerbDetected": false,
       "semanticDecisionTokenPersisted": false
@@ -259,5 +259,5 @@
       "semanticDecisionTokenPersisted": false
     }
   ],
-  "reportMarkdown": "# Bounded Explicit Multisource Shadow-Read Report v0.20.5\n\n- Barrier crossed: bounded explicit multisource shadow-read\n- Adapter: repo-local-file-read-adapter-v0\n- Operator-run: true; one-shot: true; local-only/read-only/passive-only: true\n- Sources: 3 / max 3\n- Records read: 10 / total limit 10; per-source limit 4\n- Per-source isolation: true; failure isolation: true; isolated failures: 0\n- Redacted evidence only: true; rawPersisted: false; rawOutput: false\n- policyDecision: null; agentConsumedOutput: false; unexpectedPermits: 0\n- Enforcement/authorization/approval/block/allow: false\n\n## Source statuses\n- source #0: ok; records=4; rawSourcePathPersisted=false\n- source #1: ok; records=4; rawSourcePathPersisted=false\n- source #2: ok; records=2; rawSourcePathPersisted=false\n\n## Redacted evidence preview\n- source #0 record #0: # Synaptic Mesh v0.42.5\n- source #0 record #1: This is the public review release `v0.42.5`. Current v0.42.5 status is narrower than live runtime and crosses the next safe barrier after v0.41: **passive live memory/coherence receiver package usefulness rehearsal**.\n- source #0 record #2: The v0.42 ladder is disabled-by-default, operator-run one-shot, local-only, passive/read-only, bounded to the pinned completed v0.41.5 receiver package artifact, pre-read path pinned, redacted-before-persist, human-readable report only, non\n- source #0 record #3: Pinned v0.42.5 evidence: `rehearsalStatus: PASSIVE_LIVE_MEMORY_COHERENCE_RECEIVER_PACKAGE_USEFULNESS_REHEARSAL_COMPLETE`, `rehearsalWindowCount: 1`, `comparisonModeCount: 3`, `receiverPackageItemCount: 5`, `receiverUsefulHandoffItemCount: 4\n- source #1 record #0: # Release Notes — Synaptic Mesh v0.42.5\n- source #1 record #1: ## Summary\n- source #1 record #2: `v0.42.5` adds a **passive live memory/coherence receiver package usefulness rehearsal** over the completed pinned v0.41.5 receiver package. It measures whether the receiver-side package improves human continuity handoff versus raw stable s\n- source #1 record #3: ## Evidence\n- source #2 record #0: # Release Candidate — Synaptic Mesh v0.39.5\n- source #2 record #1: Target: `v0.39.5`\n"
+  "reportMarkdown": "# Bounded Explicit Multisource Shadow-Read Report v0.20.5\n\n- Barrier crossed: bounded explicit multisource shadow-read\n- Adapter: repo-local-file-read-adapter-v0\n- Operator-run: true; one-shot: true; local-only/read-only/passive-only: true\n- Sources: 3 / max 3\n- Records read: 10 / total limit 10; per-source limit 4\n- Per-source isolation: true; failure isolation: true; isolated failures: 0\n- Redacted evidence only: true; rawPersisted: false; rawOutput: false\n- policyDecision: null; agentConsumedOutput: false; unexpectedPermits: 0\n- Enforcement/authorization/approval/block/allow: false\n\n## Source statuses\n- source #0: ok; records=4; rawSourcePathPersisted=false\n- source #1: ok; records=4; rawSourcePathPersisted=false\n- source #2: ok; records=2; rawSourcePathPersisted=false\n\n## Redacted evidence preview\n- source #0 record #0: # Synaptic Mesh v0.43.5\n- source #0 record #1: This is the public review release `v0.43.5`. Current v0.43.5 status is narrower than live runtime and crosses the next safe barrier after v0.42: **passive live memory/coherence receiver usefulness repeatability scorecard**.\n- source #0 record #2: The v0.43 ladder is disabled-by-default, operator-run one-shot, local-only, passive/read-only, bounded to the pinned completed v0.42.5 receiver package usefulness rehearsal artifact, pre-read path pinned, redacted-before-persist, human-read\n- source #0 record #3: Pinned v0.43.5 evidence: `repeatabilityStatus: PASSIVE_LIVE_MEMORY_COHERENCE_RECEIVER_USEFULNESS_REPEATABILITY_SCORECARD_COMPLETE`, `repeatabilityRunCount: 3`, `sourceRehearsalWindowCount: 1`, `candidateCount: 5`, `totalUsefulnessJudgementC\n- source #1 record #0: # Release Notes — Synaptic Mesh v0.43.5\n- source #1 record #1: ## Summary\n- source #1 record #2: `v0.43.5` adds a **passive live memory/coherence receiver usefulness repeatability scorecard** over the completed pinned v0.42.5 receiver package usefulness rehearsal. It tests whether the receiver usefulness treatment remains stable across\n- source #1 record #3: ## Evidence\n- source #2 record #0: # Release Candidate — Synaptic Mesh v0.39.5\n- source #2 record #1: Target: `v0.39.5`\n"
 }

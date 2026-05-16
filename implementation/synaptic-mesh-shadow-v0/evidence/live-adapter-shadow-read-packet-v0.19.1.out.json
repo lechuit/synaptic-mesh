@@ -76,7 +76,7 @@
     "kind": "explicit_repo_local_file_via_adapter",
     "repoRelativePathSha256": "b335630551682c19a781afebcf4d07bf978fb1f8ac04c6bf87428ed5106870f5",
     "absolutePathSha256": "543c81f89743c5b0f48fa0200abe84d28dd1fdb1b6687cf610469e9e998e93e0",
-    "sourceSize": 3342,
+    "sourceSize": 3951,
     "sourceMtimeMs": null,
     "rawSourcePathPersisted": false
   },
@@ -100,64 +100,64 @@
   "redactedRecords": [
     {
       "index": 0,
-      "rawSha256": "c6e5e2eee24d82b5afaa62cba15b784c1fb72982a09461daeaf76adfcaaec6cf",
+      "rawSha256": "04a357ed2704d121509ffc5a01739cade1d959ddf2e62d7cce18feaacc0acbd4",
       "rawBytes": 23,
-      "redactedSha256": "c6e5e2eee24d82b5afaa62cba15b784c1fb72982a09461daeaf76adfcaaec6cf",
-      "redactedText": "# Synaptic Mesh v0.42.5",
+      "redactedSha256": "04a357ed2704d121509ffc5a01739cade1d959ddf2e62d7cce18feaacc0acbd4",
+      "redactedText": "# Synaptic Mesh v0.43.5",
       "privatePatternDetected": false,
       "decisionVerbDetected": false,
       "semanticDecisionTokenPersisted": false
     },
     {
       "index": 1,
-      "rawSha256": "8bcd914dbe16a6cd35ecbdbae47c68759afd92a783b069b30970d61f0f98c1fa",
-      "rawBytes": 217,
-      "redactedSha256": "8bcd914dbe16a6cd35ecbdbae47c68759afd92a783b069b30970d61f0f98c1fa",
-      "redactedText": "This is the public review release `v0.42.5`. Current v0.42.5 status is narrower than live runtime and crosses the next safe barrier after v0.41: **passive live memory/coherence receiver package usefulness rehearsal**.",
+      "rawSha256": "dcaf5a9a97224b002c32cab5aefd802fbcfcc702e161f3811dec0d3a7c5e0365",
+      "rawBytes": 223,
+      "redactedSha256": "dcaf5a9a97224b002c32cab5aefd802fbcfcc702e161f3811dec0d3a7c5e0365",
+      "redactedText": "This is the public review release `v0.43.5`. Current v0.43.5 status is narrower than live runtime and crosses the next safe barrier after v0.42: **passive live memory/coherence receiver usefulness repeatability scorecard**.",
       "privatePatternDetected": false,
       "decisionVerbDetected": false,
       "semanticDecisionTokenPersisted": false
     },
     {
       "index": 2,
-      "rawSha256": "144173d76d46c0879bc0ff9a0f23e6328ee1eda049e259ff122ae733204f1617",
-      "rawBytes": 282,
-      "redactedSha256": "144173d76d46c0879bc0ff9a0f23e6328ee1eda049e259ff122ae733204f1617",
-      "redactedText": "The v0.42 ladder is disabled-by-default, operator-run one-shot, local-only, passive/read-only, bounded to the pinned completed v0.41.5 receiver package artifact, pre-read path pinned, redacted-before-persist, human-readable report only, non",
+      "rawSha256": "eabb31216fda294ed06ec0fb2ce102a10064373fb2633595c6b5cc1851f0d5f9",
+      "rawBytes": 303,
+      "redactedSha256": "eabb31216fda294ed06ec0fb2ce102a10064373fb2633595c6b5cc1851f0d5f9",
+      "redactedText": "The v0.43 ladder is disabled-by-default, operator-run one-shot, local-only, passive/read-only, bounded to the pinned completed v0.42.5 receiver package usefulness rehearsal artifact, pre-read path pinned, redacted-before-persist, human-read",
       "privatePatternDetected": false,
       "decisionVerbDetected": false,
       "semanticDecisionTokenPersisted": false
     },
     {
       "index": 3,
-      "rawSha256": "59921223d6716e3eb0810d91f182365952216fd357e9a3e375cdbd602a1cac50",
-      "rawBytes": 1203,
-      "redactedSha256": "59921223d6716e3eb0810d91f182365952216fd357e9a3e375cdbd602a1cac50",
-      "redactedText": "Pinned v0.42.5 evidence: `rehearsalStatus: PASSIVE_LIVE_MEMORY_COHERENCE_RECEIVER_PACKAGE_USEFULNESS_REHEARSAL_COMPLETE`, `rehearsalWindowCount: 1`, `comparisonModeCount: 3`, `receiverPackageItemCount: 5`, `receiverUsefulHandoffItemCount: 4",
+      "rawSha256": "394aeb4fab5b1f27f34276eb6e9b9336f2cde6c3777d0d96eebafff02ea83f47",
+      "rawBytes": 1603,
+      "redactedSha256": "394aeb4fab5b1f27f34276eb6e9b9336f2cde6c3777d0d96eebafff02ea83f47",
+      "redactedText": "Pinned v0.43.5 evidence: `repeatabilityStatus: PASSIVE_LIVE_MEMORY_COHERENCE_RECEIVER_USEFULNESS_REPEATABILITY_SCORECARD_COMPLETE`, `repeatabilityRunCount: 3`, `sourceRehearsalWindowCount: 1`, `candidateCount: 5`, `totalUsefulnessJudgementC",
       "privatePatternDetected": false,
       "decisionVerbDetected": false,
       "semanticDecisionTokenPersisted": false
     },
     {
       "index": 4,
-      "rawSha256": "9886c1d3ff49c7af4cd682989b9798119828ae14cd9a7261d1f18f88b6c14e67",
-      "rawBytes": 461,
-      "redactedSha256": "9886c1d3ff49c7af4cd682989b9798119828ae14cd9a7261d1f18f88b6c14e67",
-      "redactedText": "The receiver package usefulness rehearsal compares three handoff modes: using the v0.41 receiver package, exposing raw stable signals, and relying on the prior scorecard without receiver-side lanes. In this bounded rehearsal, the receiver p",
+      "rawSha256": "12d993601a48b6efce2cec807ea9af1991b6cf08ee4e47673a30a3baba69fda8",
+      "rawBytes": 601,
+      "redactedSha256": "12d993601a48b6efce2cec807ea9af1991b6cf08ee4e47673a30a3baba69fda8",
+      "redactedText": "The receiver usefulness repeatability scorecard replays the v0.42 handoff usefulness judgments across three variants: baseline order, paraphrased rationales, and reverse order. In this bounded rehearsal, the receiver package usefulness trea",
       "privatePatternDetected": false,
       "decisionVerbDetected": false,
       "semanticDecisionTokenPersisted": false
     },
     {
       "index": 5,
-      "rawSha256": "2dd9081821fa6024d0c6ad674dfc72a97f66f5dd427d337b1cd2391675552dca",
-      "rawBytes": 164,
-      "redactedSha256": "e2a363e5d64961ab2664d4b64d5c877ba4904de337dc7753ae34ff9a32046326",
-      "redactedText": "This is rehearsal evidence only. It is not memory promotion, agent-consumed instruction, [NON_AUTHORITATIVE_INPUT_VERB_REDACTED], approval/[NON_AUTHORITATIVE_INPUT_VERB_REDACTED]/[NON_AUTHORITATIVE_INPUT_VERB_REDACTED], [NON_AUTHORITATIVE_I",
+      "rawSha256": "30280a1edf6ae95452d713f7f1d6d1b6fb1b60cd32ddc98467c276662d317826",
+      "rawBytes": 168,
+      "redactedSha256": "96777966c0df9637f301162c8ac6a97fae94498f98f36c1faff2eb016ed84b3f",
+      "redactedText": "This is repeatability evidence only. It is not memory promotion, agent-consumed instruction, [NON_AUTHORITATIVE_INPUT_VERB_REDACTED], approval/[NON_AUTHORITATIVE_INPUT_VERB_REDACTED]/[NON_AUTHORITATIVE_INPUT_VERB_REDACTED], [NON_AUTHORITATI",
       "privatePatternDetected": false,
       "decisionVerbDetected": true,
       "semanticDecisionTokenPersisted": false
     }
   ],
-  "reportMarkdown": "# Live Adapter Shadow-Read Report v0.19.5\n\n- Barrier crossed: local adapter shadow-read gate\n- Adapter: repo-local-file-read-adapter-v0\n- Operator-run: true; one-shot: true; local-only/read-only/passive-only: true\n- Records read: 6 / limit 6\n- Redacted evidence only: true; rawPersisted: false; rawOutput: false\n- policyDecision: null; agentConsumedOutput: false; unexpectedPermits: 0\n- Enforcement/authorization/approval/block/allow: false\n\n## Redacted evidence preview\n- #0: # Synaptic Mesh v0.42.5\n- #1: This is the public review release `v0.42.5`. Current v0.42.5 status is narrower than live runtime and crosses the next safe barrier after v0.41: **passive live memory/coherence receiver package usefulness rehearsal**.\n- #2: The v0.42 ladder is disabled-by-default, operator-run one-shot, local-only, passive/read-only, bounded to the pinned completed v0.41.5 receiver package artifact, pre-read path pinned, redacted-before-persist, human-readable report only, non\n- #3: Pinned v0.42.5 evidence: `rehearsalStatus: PASSIVE_LIVE_MEMORY_COHERENCE_RECEIVER_PACKAGE_USEFULNESS_REHEARSAL_COMPLETE`, `rehearsalWindowCount: 1`, `comparisonModeCount: 3`, `receiverPackageItemCount: 5`, `receiverUsefulHandoffItemCount: 4\n- #4: The receiver package usefulness rehearsal compares three handoff modes: using the v0.41 receiver package, exposing raw stable signals, and relying on the prior scorecard without receiver-side lanes. In this bounded rehearsal, the receiver p\n- #5: This is rehearsal evidence only. It is not memory promotion, agent-consumed instruction, [NON_AUTHORITATIVE_INPUT_VERB_REDACTED], approval/[NON_AUTHORITATIVE_INPUT_VERB_REDACTED]/[NON_AUTHORITATIVE_INPUT_VERB_REDACTED], [NON_AUTHORITATIVE_I\n"
+  "reportMarkdown": "# Live Adapter Shadow-Read Report v0.19.5\n\n- Barrier crossed: local adapter shadow-read gate\n- Adapter: repo-local-file-read-adapter-v0\n- Operator-run: true; one-shot: true; local-only/read-only/passive-only: true\n- Records read: 6 / limit 6\n- Redacted evidence only: true; rawPersisted: false; rawOutput: false\n- policyDecision: null; agentConsumedOutput: false; unexpectedPermits: 0\n- Enforcement/authorization/approval/block/allow: false\n\n## Redacted evidence preview\n- #0: # Synaptic Mesh v0.43.5\n- #1: This is the public review release `v0.43.5`. Current v0.43.5 status is narrower than live runtime and crosses the next safe barrier after v0.42: **passive live memory/coherence receiver usefulness repeatability scorecard**.\n- #2: The v0.43 ladder is disabled-by-default, operator-run one-shot, local-only, passive/read-only, bounded to the pinned completed v0.42.5 receiver package usefulness rehearsal artifact, pre-read path pinned, redacted-before-persist, human-read\n- #3: Pinned v0.43.5 evidence: `repeatabilityStatus: PASSIVE_LIVE_MEMORY_COHERENCE_RECEIVER_USEFULNESS_REPEATABILITY_SCORECARD_COMPLETE`, `repeatabilityRunCount: 3`, `sourceRehearsalWindowCount: 1`, `candidateCount: 5`, `totalUsefulnessJudgementC\n- #4: The receiver usefulness repeatability scorecard replays the v0.42 handoff usefulness judgments across three variants: baseline order, paraphrased rationales, and reverse order. In this bounded rehearsal, the receiver package usefulness trea\n- #5: This is repeatability evidence only. It is not memory promotion, agent-consumed instruction, [NON_AUTHORITATIVE_INPUT_VERB_REDACTED], approval/[NON_AUTHORITATIVE_INPUT_VERB_REDACTED]/[NON_AUTHORITATIVE_INPUT_VERB_REDACTED], [NON_AUTHORITATI\n"
 }

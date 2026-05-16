@@ -1,0 +1,11 @@
+import assert from 'node:assert/strict';
+import { scorePassiveLiveMemoryCoherenceReceiverUsefulnessRepeatability } from '../src/passive-live-memory-coherence-receiver-usefulness-repeatability-scorecard.mjs';
+import { receiverUsefulnessRepeatabilityInputV043 } from './passive-live-memory-coherence-receiver-usefulness-repeatability-scorecard-fixtures.mjs';
+const artifact = scorePassiveLiveMemoryCoherenceReceiverUsefulnessRepeatability(receiverUsefulnessRepeatabilityInputV043());
+assert.equal(artifact.repeatabilityStatus, 'PASSIVE_LIVE_MEMORY_COHERENCE_RECEIVER_USEFULNESS_REPEATABILITY_SCORECARD_COMPLETE');
+assert.equal(artifact.repeatabilityRuns.length, 3);
+assert.deepEqual(artifact.repeatabilityRuns.map((r) => r.variant), ['baseline_order','paraphrased_rationales','reverse_order']);
+assert(artifact.repeatabilityRuns.every((r) => r.judgementCount === 5));
+assert.equal(artifact.stableUsefulnessJudgements.length, 5);
+assert(artifact.stableUsefulnessJudgements.every((j) => j.stableAcrossVariants === true));
+console.log(JSON.stringify({ runs: artifact.repeatabilityRuns.length, stable: artifact.stableUsefulnessJudgements.length }));
