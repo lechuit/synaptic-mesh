@@ -1,0 +1,17 @@
+import assert from 'node:assert/strict';
+import { passiveLiveMemoryCoherenceRuntimeContextInjectionDryRunProtocol } from '../src/passive-live-memory-coherence-runtime-context-injection-dry-run.mjs';
+const p = passiveLiveMemoryCoherenceRuntimeContextInjectionDryRunProtocol();
+assert.equal(p.releaseLayer, 'v0.48.0-alpha');
+assert.equal(p.barrierCrossed, 'local_runtime_adjacent_context_injection_dry_run_harness');
+assert.equal(p.liveRuntimeBridgeIntent, true);
+assert.equal(p.localDryRunHarnessOnly, true);
+assert.equal(p.machineShapedDryRunPayload, true);
+assert.equal(p.dryRunOnly, true);
+assert.equal(p.readOnly, true);
+assert.equal(p.noMemoryWrites, true);
+assert.equal(p.noRuntimeIntegration, true);
+assert.equal(p.noRuntimeAuthority, true);
+assert.equal(p.agentConsumedOutput, false);
+assert.equal(p.recommendationIsAuthority, false);
+assert.equal(p.nextBarrier, 'runtime_adjacent_dry_run_adapter_or_live_context_injection_rehearsal');
+console.log(JSON.stringify({ protocol: p.barrierCrossed, nextBarrier: p.nextBarrier }));

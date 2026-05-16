@@ -97,7 +97,7 @@
       "kind": "explicit_repo_local_file_via_adapter",
       "repoRelativePathSha256": "b335630551682c19a781afebcf4d07bf978fb1f8ac04c6bf87428ed5106870f5",
       "absolutePathSha256": "543c81f89743c5b0f48fa0200abe84d28dd1fdb1b6687cf610469e9e998e93e0",
-      "sourceSize": 9535,
+      "sourceSize": 12364,
       "sourceMtimeMs": null,
       "rawSourcePathPersisted": false,
       "recordsRead": 4,
@@ -109,7 +109,7 @@
       "kind": "explicit_repo_local_file_via_adapter",
       "repoRelativePathSha256": "68d24fa81558aae3d8c59e2aa57a4fa719ea3b04d7fa14beff45f16f00858f50",
       "absolutePathSha256": "4da003b5022cb2aeb34f2b51f5b6f9fe35d01a94f2607ea78b58e405df985f0b",
-      "sourceSize": 9524,
+      "sourceSize": 11068,
       "sourceMtimeMs": null,
       "rawSourcePathPersisted": false,
       "recordsRead": 4,
@@ -132,7 +132,7 @@
     "redactedEvidenceJsonAndHumanReportOnly": true,
     "rawPersisted": false,
     "privatePatternDetected": false,
-    "decisionVerbDetected": false,
+    "decisionVerbDetected": true,
     "semanticDecisionTokenPersisted": false
   },
   "usefulnessScorecard": {
@@ -151,10 +151,10 @@
     {
       "sourceIndex": 0,
       "index": 0,
-      "rawSha256": "77bbd9fb67165d6b34bcfee464ca9bdf02552fad8e8ff15c9af69738c8528b6a",
+      "rawSha256": "22f4703817c99d1e569b214d1d2fc45e7944f3dd76087268c95f9d78db2e19fe",
       "rawBytes": 23,
-      "redactedSha256": "77bbd9fb67165d6b34bcfee464ca9bdf02552fad8e8ff15c9af69738c8528b6a",
-      "redactedText": "# Synaptic Mesh v0.47.5",
+      "redactedSha256": "22f4703817c99d1e569b214d1d2fc45e7944f3dd76087268c95f9d78db2e19fe",
+      "redactedText": "# Synaptic Mesh v0.48.5",
       "privatePatternDetected": false,
       "decisionVerbDetected": false,
       "semanticDecisionTokenPersisted": false
@@ -162,10 +162,10 @@
     {
       "sourceIndex": 0,
       "index": 1,
-      "rawSha256": "2b7dc69326b6589cf94799396693e055a3a970ebf6c047e18026efba19fd021e",
-      "rawBytes": 241,
-      "redactedSha256": "2b7dc69326b6589cf94799396693e055a3a970ebf6c047e18026efba19fd021e",
-      "redactedText": "This is the public review release `v0.47.5`. Current v0.47.5 status is narrower than live runtime and crosses the next safe barrier after v0.46: **passive live memory/coherence receiver live-context handoff utility repeatability scorecard**",
+      "rawSha256": "a1633985acd7054ef5072345aa0c5ff6832708455bedcfbdfd436933429e24e0",
+      "rawBytes": 221,
+      "redactedSha256": "a1633985acd7054ef5072345aa0c5ff6832708455bedcfbdfd436933429e24e0",
+      "redactedText": "This is the public review release `v0.48.5`. Current v0.48.5 status is narrower than production live runtime, but crosses a real runtime-adjacent boundary after v0.47: **local runtime-adjacent context injection dry-run**.",
       "privatePatternDetected": false,
       "decisionVerbDetected": false,
       "semanticDecisionTokenPersisted": false
@@ -173,10 +173,10 @@
     {
       "sourceIndex": 0,
       "index": 2,
-      "rawSha256": "bf6eb0422ce9c88bd8135b6a7cde605b2fd997952e6d17264eef208f4d5e533b",
-      "rawBytes": 303,
-      "redactedSha256": "bf6eb0422ce9c88bd8135b6a7cde605b2fd997952e6d17264eef208f4d5e533b",
-      "redactedText": "The v0.47 ladder is disabled-by-default, operator-run one-shot, local-only, passive/read-only, bounded to the pinned completed v0.46.5 receiver live-context handoff utility artifact, pre-read path pinned, redacted-before-persist, human-read",
+      "rawSha256": "a2bc9c20e5dd42821f3499e57c336b265cb1096b0f7dd273c3110cb4ea88853e",
+      "rawBytes": 338,
+      "redactedSha256": "a2bc9c20e5dd42821f3499e57c336b265cb1096b0f7dd273c3110cb4ea88853e",
+      "redactedText": "The v0.48 ladder is opt-in, operator-run one-shot, local-only, dry-run/read-only, bounded to the pinned completed v0.47.5 repeatability artifact, pre-read path pinned, redacted-before-persist, machine-shaped local dry-run context payload, t",
       "privatePatternDetected": false,
       "decisionVerbDetected": false,
       "semanticDecisionTokenPersisted": false
@@ -184,10 +184,10 @@
     {
       "sourceIndex": 0,
       "index": 3,
-      "rawSha256": "d0f990cdbd55bdcfc42bce3a7db6de10fd6afd1cdacded3921556ee5dafe9b48",
-      "rawBytes": 956,
-      "redactedSha256": "d0f990cdbd55bdcfc42bce3a7db6de10fd6afd1cdacded3921556ee5dafe9b48",
-      "redactedText": "Pinned v0.47.5 evidence: `repeatabilityStatus: PASSIVE_LIVE_MEMORY_COHERENCE_RECEIVER_LIVE_CONTEXT_HANDOFF_UTILITY_REPEATABILITY_SCORECARD_COMPLETE`, `repeatabilityRunCount: 3`, `sourceHandoffWindowCount: 1`, `handoffItemCount: 5`, `totalHa",
+      "rawSha256": "3d7f8fd4fb14baecf07c1af4a14d5d2a9bb874a2e64a8957bc369919f7366ca3",
+      "rawBytes": 873,
+      "redactedSha256": "3d7f8fd4fb14baecf07c1af4a14d5d2a9bb874a2e64a8957bc369919f7366ca3",
+      "redactedText": "Pinned v0.48.5 evidence: `dryRunStatus: PASSIVE_LIVE_MEMORY_COHERENCE_RUNTIME_CONTEXT_INJECTION_DRY_RUN_COMPLETE`, `sourceRepeatabilityRunCount: 3`, `sourceStableHandoffItemCount: 5`, `sourceIncludedForLiveContextCount: 4`, `sourceExcludedA",
       "privatePatternDetected": false,
       "decisionVerbDetected": false,
       "semanticDecisionTokenPersisted": false
@@ -195,10 +195,10 @@
     {
       "sourceIndex": 1,
       "index": 0,
-      "rawSha256": "daebbb207408ad7014d40c0b009e15d68e3708519f5fca7fb342f7b80385c71a",
+      "rawSha256": "5d2e31430952e3f02ea37a4bf8135654b1890bd5c6903a87d3463e486b918fc4",
       "rawBytes": 41,
-      "redactedSha256": "daebbb207408ad7014d40c0b009e15d68e3708519f5fca7fb342f7b80385c71a",
-      "redactedText": "# Release Notes — Synaptic Mesh v0.47.5",
+      "redactedSha256": "5d2e31430952e3f02ea37a4bf8135654b1890bd5c6903a87d3463e486b918fc4",
+      "redactedText": "# Release Notes — Synaptic Mesh v0.48.5",
       "privatePatternDetected": false,
       "decisionVerbDetected": false,
       "semanticDecisionTokenPersisted": false
@@ -217,12 +217,12 @@
     {
       "sourceIndex": 1,
       "index": 2,
-      "rawSha256": "f79090478ae5f504a6f84176c587dc3b38f2336cf4ea08f4cbb158034bf0d7e7",
+      "rawSha256": "8a220cd289ac25db15cd3661c612418f3c9655813302ba024ce08488eef92f52",
       "rawBytes": 366,
-      "redactedSha256": "f79090478ae5f504a6f84176c587dc3b38f2336cf4ea08f4cbb158034bf0d7e7",
-      "redactedText": "`v0.47.5` adds a **passive live memory/coherence receiver live-context handoff utility repeatability scorecard** over the completed pinned v0.46.5 handoff utility artifact. It repeats the v0.46 handoffItems / handoffUtilityJudgements under ",
+      "redactedSha256": "96f61033c3f4f4635dafdf5283800528bbb17c071259c719b57842facb59ba79",
+      "redactedText": "`v0.48.5` adds a **local runtime-adjacent context injection dry-run** over the completed pinned v0.47.5 handoff utility repeatability artifact. It is not another passive readiness loop: it produces a machine-shaped local dry-run context pay",
       "privatePatternDetected": false,
-      "decisionVerbDetected": false,
+      "decisionVerbDetected": true,
       "semanticDecisionTokenPersisted": false
     },
     {
@@ -259,5 +259,5 @@
       "semanticDecisionTokenPersisted": false
     }
   ],
-  "reportMarkdown": "# Bounded Explicit Multisource Shadow-Read Report v0.20.5\n\n- Barrier crossed: bounded explicit multisource shadow-read\n- Adapter: repo-local-file-read-adapter-v0\n- Operator-run: true; one-shot: true; local-only/read-only/passive-only: true\n- Sources: 3 / max 3\n- Records read: 10 / total limit 10; per-source limit 4\n- Per-source isolation: true; failure isolation: true; isolated failures: 0\n- Redacted evidence only: true; rawPersisted: false; rawOutput: false\n- policyDecision: null; agentConsumedOutput: false; unexpectedPermits: 0\n- Enforcement/authorization/approval/block/allow: false\n\n## Source statuses\n- source #0: ok; records=4; rawSourcePathPersisted=false\n- source #1: ok; records=4; rawSourcePathPersisted=false\n- source #2: ok; records=2; rawSourcePathPersisted=false\n\n## Redacted evidence preview\n- source #0 record #0: # Synaptic Mesh v0.47.5\n- source #0 record #1: This is the public review release `v0.47.5`. Current v0.47.5 status is narrower than live runtime and crosses the next safe barrier after v0.46: **passive live memory/coherence receiver live-context handoff utility repeatability scorecard**\n- source #0 record #2: The v0.47 ladder is disabled-by-default, operator-run one-shot, local-only, passive/read-only, bounded to the pinned completed v0.46.5 receiver live-context handoff utility artifact, pre-read path pinned, redacted-before-persist, human-read\n- source #0 record #3: Pinned v0.47.5 evidence: `repeatabilityStatus: PASSIVE_LIVE_MEMORY_COHERENCE_RECEIVER_LIVE_CONTEXT_HANDOFF_UTILITY_REPEATABILITY_SCORECARD_COMPLETE`, `repeatabilityRunCount: 3`, `sourceHandoffWindowCount: 1`, `handoffItemCount: 5`, `totalHa\n- source #1 record #0: # Release Notes — Synaptic Mesh v0.47.5\n- source #1 record #1: ## Summary\n- source #1 record #2: `v0.47.5` adds a **passive live memory/coherence receiver live-context handoff utility repeatability scorecard** over the completed pinned v0.46.5 handoff utility artifact. It repeats the v0.46 handoffItems / handoffUtilityJudgements under\n- source #1 record #3: ## Evidence\n- source #2 record #0: # Release Candidate — Synaptic Mesh v0.39.5\n- source #2 record #1: Target: `v0.39.5`\n"
+  "reportMarkdown": "# Bounded Explicit Multisource Shadow-Read Report v0.20.5\n\n- Barrier crossed: bounded explicit multisource shadow-read\n- Adapter: repo-local-file-read-adapter-v0\n- Operator-run: true; one-shot: true; local-only/read-only/passive-only: true\n- Sources: 3 / max 3\n- Records read: 10 / total limit 10; per-source limit 4\n- Per-source isolation: true; failure isolation: true; isolated failures: 0\n- Redacted evidence only: true; rawPersisted: false; rawOutput: false\n- policyDecision: null; agentConsumedOutput: false; unexpectedPermits: 0\n- Enforcement/authorization/approval/block/allow: false\n\n## Source statuses\n- source #0: ok; records=4; rawSourcePathPersisted=false\n- source #1: ok; records=4; rawSourcePathPersisted=false\n- source #2: ok; records=2; rawSourcePathPersisted=false\n\n## Redacted evidence preview\n- source #0 record #0: # Synaptic Mesh v0.48.5\n- source #0 record #1: This is the public review release `v0.48.5`. Current v0.48.5 status is narrower than production live runtime, but crosses a real runtime-adjacent boundary after v0.47: **local runtime-adjacent context injection dry-run**.\n- source #0 record #2: The v0.48 ladder is opt-in, operator-run one-shot, local-only, dry-run/read-only, bounded to the pinned completed v0.47.5 repeatability artifact, pre-read path pinned, redacted-before-persist, machine-shaped local dry-run context payload, t\n- source #0 record #3: Pinned v0.48.5 evidence: `dryRunStatus: PASSIVE_LIVE_MEMORY_COHERENCE_RUNTIME_CONTEXT_INJECTION_DRY_RUN_COMPLETE`, `sourceRepeatabilityRunCount: 3`, `sourceStableHandoffItemCount: 5`, `sourceIncludedForLiveContextCount: 4`, `sourceExcludedA\n- source #1 record #0: # Release Notes — Synaptic Mesh v0.48.5\n- source #1 record #1: ## Summary\n- source #1 record #2: `v0.48.5` adds a **local runtime-adjacent context injection dry-run** over the completed pinned v0.47.5 handoff utility repeatability artifact. It is not another passive readiness loop: it produces a machine-shaped local dry-run context pay\n- source #1 record #3: ## Evidence\n- source #2 record #0: # Release Candidate — Synaptic Mesh v0.39.5\n- source #2 record #1: Target: `v0.39.5`\n"
 }
