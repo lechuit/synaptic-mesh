@@ -1,0 +1,18 @@
+{
+  "metrics": {
+    "explicitRepoLocalSourceCount": 4,
+    "observationItemCount": 4,
+    "sourceBoundObservationCount": 4,
+    "includeForHumanContextCount": 3,
+    "hardeningCautionCount": 1,
+    "redactedBeforePersistRatio": 1,
+    "rawPersistedFalseRatio": 1,
+    "humanReviewOnlyRatio": 1,
+    "noPromotionWithoutHumanRatio": 1,
+    "agentConsumedOutputFalseRatio": 1,
+    "sourceBoundObservationRatio": 1,
+    "boundaryViolationCount": 0,
+    "policyDecision": null
+  },
+  "recommendation": "ADVANCE_OBSERVATION_ONLY"
+}

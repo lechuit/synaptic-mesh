@@ -1,0 +1,73 @@
+{
+  "rehearsalStatus": "PASSIVE_LIVE_MEMORY_COHERENCE_OBSERVATION_REHEARSAL_COMPLETE",
+  "observationItems": [
+    {
+      "observationId": "obs-current-release-continuity",
+      "sourcePath": "docs/status-v0.35.5.md",
+      "sourceSha256": "28b96c449b01ed621f64db2f950649f8ed9c9c8b035afe881b7f34eeadfe5a66",
+      "sourceSignal": "current_release_status",
+      "observation": "current release continuity is v0.35.5 with completed repeatability evidence",
+      "humanTreatment": "include_for_human_context",
+      "sourceBound": true,
+      "redactedBeforePersist": true,
+      "rawPersisted": false,
+      "humanReviewOnly": true,
+      "minimalContextOnly": true,
+      "promoteToMemory": false,
+      "agentConsumedOutput": false,
+      "recommendationIsAuthority": false,
+      "policyDecision": null
+    },
+    {
+      "observationId": "obs-boundary-invariants",
+      "sourcePath": "docs/passive-hard-case-outcome-repeatability-scorecard-reviewer-package-v0.35.5.md",
+      "sourceSha256": "89e187ca1d6505e8d06c1ff53e2e8a689b07fbfae3db496e00f94d71522ad3b4",
+      "sourceSignal": "reviewer_package_evidence",
+      "observation": "release boundary continues to exclude memory writes, runtime integration, and agent-consumed output",
+      "humanTreatment": "include_for_human_context",
+      "sourceBound": true,
+      "redactedBeforePersist": true,
+      "rawPersisted": false,
+      "humanReviewOnly": true,
+      "minimalContextOnly": true,
+      "promoteToMemory": false,
+      "agentConsumedOutput": false,
+      "recommendationIsAuthority": false,
+      "policyDecision": null
+    },
+    {
+      "observationId": "obs-repeatability-evidence",
+      "sourcePath": "docs/passive-hard-case-outcome-repeatability-scorecard-metrics-v0.35.2.md",
+      "sourceSha256": "bbf7de87a092e9b83be84dc58189fc3f645bc8206b8f21c4e8fbaa028785141b",
+      "sourceSignal": "metrics_evidence_summary",
+      "observation": "stable outcome labels support another observation-only step toward memory coherence",
+      "humanTreatment": "include_for_human_context",
+      "sourceBound": true,
+      "redactedBeforePersist": true,
+      "rawPersisted": false,
+      "humanReviewOnly": true,
+      "minimalContextOnly": true,
+      "promoteToMemory": false,
+      "agentConsumedOutput": false,
+      "recommendationIsAuthority": false,
+      "policyDecision": null
+    },
+    {
+      "observationId": "obs-review-hardening-caution",
+      "sourcePath": "docs/passive-hard-case-outcome-repeatability-scorecard-local-review-notes-v0.35.5.md",
+      "sourceSha256": "1acebe6d9f521ce72ec2f4a6b34b1741777d8e2b43e8495af10d287e5a4a428d",
+      "sourceSignal": "review_hardening_caution",
+      "observation": "non-blocking caution: pre-check normalized CLI path before reading local file",
+      "humanTreatment": "caution_for_future_hardening",
+      "sourceBound": true,
+      "redactedBeforePersist": true,
+      "rawPersisted": false,
+      "humanReviewOnly": true,
+      "minimalContextOnly": true,
+      "promoteToMemory": false,
+      "agentConsumedOutput": false,
+      "recommendationIsAuthority": false,
+      "policyDecision": null
+    }
+  ]
+}
