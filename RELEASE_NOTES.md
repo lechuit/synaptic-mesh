@@ -1,3 +1,13 @@
+# Release Notes — Synaptic Mesh v0.50.5
+
+v0.50.5 adds a local, reversible receiver/runtime test harness consumption rehearsal on top of published v0.49.5. It pins the v0.49.5 reviewer package and report by exact path and SHA-256 before read, rejects absolute/traversal paths, and consumes the receiver-facing blocks as deterministic local test input only.
+
+Pinned evidence: `rehearsalStatus: PASSIVE_LIVE_MEMORY_COHERENCE_RECEIVER_RUNTIME_TEST_HARNESS_CONSUMPTION_REHEARSAL_COMPLETE`, `sourceReceiverBlockCountConsumedAsLocalTestInput: 4`, `harnessParseSuccessCount: 4`, `consumedContextBlockCount: 4`, `consumptionDecisionCount: 4`, `effectsBlockedCount: 10`, `sourceBoundConsumedBlockRatio: 1`, `agentConsumedOutputFalseRatio: 1`, `boundaryViolationCount: 0`, `operatorApprovalScope: local_test_harness_rehearsal_only`.
+
+Boundary: local-only, reversible, read-only, non-authoritative, no production runtime integration, no daemon, no SDK/framework adapter, no MCP/A2A client/server, no network/resource fetch, no tool execution, no memory/config writes, no external effects, no authorization/enforcement semantics, no allow/block decisions, and no automatic agent consumption. The operator preflight record is scoped only to this local test harness rehearsal and is not runtime approval or general permission.
+
+Recommended next barrier: bounded receiver/runtime test harness or fixture suite after local consumption rehearsal.
+
 # Release Notes — Synaptic Mesh v0.49.5
 
 v0.49.5 adds a local runtime-context injection rehearsal on top of published v0.48.5. It pins the v0.48.5 reviewer package and report by path and SHA-256, consumes the v0.48 runtime context cards in a deterministic local adapter harness, and emits one machine-shaped adapter rehearsal envelope for a future receiver/runtime test harness.

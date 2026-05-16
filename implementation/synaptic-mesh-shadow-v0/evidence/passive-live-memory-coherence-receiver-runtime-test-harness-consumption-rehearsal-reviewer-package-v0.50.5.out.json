@@ -1,0 +1,325 @@
+{
+  "artifact": "T-synaptic-mesh-passive-live-memory-coherence-receiver-runtime-test-harness-consumption-rehearsal-v0.50.5",
+  "schemaVersion": "passive-live-memory-coherence-receiver-runtime-test-harness-consumption-rehearsal-v0.50.0-alpha",
+  "releaseLayer": "v0.50.5",
+  "protocol": {
+    "releaseLayer": "v0.50.0-alpha",
+    "barrierCrossed": "local_receiver_runtime_test_harness_consumption_rehearsal",
+    "buildsOn": "v0.49.5_passive_live_memory_coherence_runtime_context_injection_rehearsal",
+    "disabledByDefault": true,
+    "operatorRunOneShotOnly": true,
+    "localOnly": true,
+    "rehearsalOnly": true,
+    "readOnly": true,
+    "explicitArtifactsOnly": true,
+    "preReadPathPinned": true,
+    "acceptsOnlyPinnedCompletedRuntimeContextInjectionRehearsal": true,
+    "receiverRuntimeTestHarnessConsumptionRehearsal": true,
+    "humanReviewOnly": true,
+    "nonAuthoritative": true,
+    "nextBarrier": "bounded_receiver_runtime_test_harness_or_fixture_suite_after_local_consumption_rehearsal",
+    "redactedBeforePersist": true,
+    "rawSourceCache": "excluded",
+    "rawPersisted": false,
+    "recommendationIsAuthority": false,
+    "agentConsumedOutput": false,
+    "notRuntimeInstruction": true,
+    "noRuntimeAuthority": true,
+    "noToolExecution": true,
+    "noNetworkFetch": true,
+    "noResourceFetch": true,
+    "noMemoryWrites": true,
+    "noConfigWrites": true,
+    "noRuntimeIntegration": true,
+    "noExternalEffects": true
+  },
+  "rehearsalStatus": "PASSIVE_LIVE_MEMORY_COHERENCE_RECEIVER_RUNTIME_TEST_HARNESS_CONSUMPTION_REHEARSAL_COMPLETE",
+  "disabledByDefault": true,
+  "operatorRunOneShotOnly": true,
+  "localOnly": true,
+  "rehearsalOnly": true,
+  "readOnly": true,
+  "explicitArtifactsOnly": true,
+  "preReadPathPinned": true,
+  "acceptsOnlyPinnedCompletedRuntimeContextInjectionRehearsal": true,
+  "sourceArtifactPath": "evidence/passive-live-memory-coherence-runtime-context-injection-rehearsal-reviewer-package-v0.49.5.out.json",
+  "sourceArtifactSha256": "e0dbbfa1394f614dac521d3df58a6cb9e329e22d0db1b1640131eecbfcd9265e",
+  "sourceReportPath": "evidence/passive-live-memory-coherence-runtime-context-injection-rehearsal-report-v0.49.5.out.md",
+  "sourceReportSha256": "66d017404d1bde5d3a323caea40a2a3c0f168d4ce677815c2df1ea1a71d808c1",
+  "redactedBeforePersist": true,
+  "rawSourceCache": "excluded",
+  "rawPersisted": false,
+  "receiverRuntimeTestHarnessConsumptionRehearsal": true,
+  "humanReviewOnly": true,
+  "nonAuthoritative": true,
+  "nextBarrier": "bounded_receiver_runtime_test_harness_or_fixture_suite_after_local_consumption_rehearsal",
+  "recommendation": "ADVANCE_TO_BOUNDED_RECEIVER_RUNTIME_TEST_HARNESS_OR_FIXTURE_SUITE",
+  "recommendationIsAuthority": false,
+  "agentConsumedOutput": false,
+  "notRuntimeInstruction": true,
+  "noRuntimeAuthority": true,
+  "noToolExecution": true,
+  "noNetworkFetch": true,
+  "noResourceFetch": true,
+  "noMemoryWrites": true,
+  "noConfigWrites": true,
+  "noRuntimeIntegration": true,
+  "noExternalEffects": true,
+  "operatorApprovalRecord": {
+    "operatorApprovalScope": "local_test_harness_rehearsal_only",
+    "recordKind": "local_preflight_record",
+    "localOnly": true,
+    "rehearsalOnly": true,
+    "preflightOnly": true,
+    "notRuntimeApproval": true,
+    "notGeneralPermission": true,
+    "notAuthorizationDecision": true,
+    "notAllowBlockDecision": true,
+    "notEnforcement": true,
+    "recordedBeforeHarnessConsumption": true
+  },
+  "policyDecision": null,
+  "validationIssues": [],
+  "metrics": {
+    "sourceReceiverFacingContextBlockCount": 4,
+    "sourceInjectionEnvelopeCount": 1,
+    "sourceContextCardsConsumedByLocalRehearsalCount": 5,
+    "sourceAllEffectsBlockedUntilNextBarrierCount": 10,
+    "sourceBoundaryViolationCount": 0,
+    "sourceReportDigestPinned": true,
+    "sourceArtifactDigestPinned": true,
+    "harnessInputEnvelopeCount": 1,
+    "sourceReceiverBlockCountConsumedAsLocalTestInput": 4,
+    "harnessParseSuccessCount": 4,
+    "consumedContextBlockCount": 4,
+    "consumptionDecisionCount": 4,
+    "effectsBlockedCount": 10,
+    "forbiddenEffectCount": 0,
+    "sourceBoundConsumedBlockRatio": 1,
+    "rawPersistedFalseRatio": 1,
+    "agentConsumedOutputFalseRatio": 1,
+    "operatorApprovalScopeRecorded": true,
+    "preReadPathPinned": true,
+    "boundaryViolationCount": 0
+  },
+  "harnessInputEnvelope": {
+    "envelopeId": "local-receiver-runtime-test-harness-input-envelope-v0.50.5-001",
+    "sourceEnvelopeId": "local-adapter-rehearsal-envelope-v0.49.5-001",
+    "schemaVersion": "passive-live-memory-coherence-receiver-runtime-test-harness-consumption-rehearsal-envelope-v0.50.0-alpha",
+    "harnessKind": "deterministic_local_receiver_runtime_test_harness_simulator",
+    "localOnly": true,
+    "rehearsalOnly": true,
+    "parseMode": "receiver_facing_blocks_as_test_input_only",
+    "receiverFacingBlockRefs": [
+      "consumed-receiver-context-block-01",
+      "consumed-receiver-context-block-02",
+      "consumed-receiver-context-block-03",
+      "consumed-receiver-context-block-04"
+    ],
+    "operatorApprovalScope": "local_test_harness_rehearsal_only",
+    "effectDisposition": "all_effects_blocked_no_runtime_authority",
+    "nextBarrier": "bounded_receiver_runtime_test_harness_or_fixture_suite_after_local_consumption_rehearsal",
+    "notRuntimeInstruction": true
+  },
+  "receiverHarnessTrace": [
+    {
+      "traceId": "receiver-harness-trace-receiver-context-block-01",
+      "blockId": "consumed-receiver-context-block-01",
+      "operation": "parse_receiver_facing_block_as_local_test_input",
+      "result": "parsed_and_consumed_by_deterministic_local_test_harness_simulator",
+      "sourceBound": true,
+      "effectBlocked": true,
+      "notRuntimeInstruction": true
+    },
+    {
+      "traceId": "receiver-harness-trace-receiver-context-block-02",
+      "blockId": "consumed-receiver-context-block-02",
+      "operation": "parse_receiver_facing_block_as_local_test_input",
+      "result": "parsed_and_consumed_by_deterministic_local_test_harness_simulator",
+      "sourceBound": true,
+      "effectBlocked": true,
+      "notRuntimeInstruction": true
+    },
+    {
+      "traceId": "receiver-harness-trace-receiver-context-block-03",
+      "blockId": "consumed-receiver-context-block-03",
+      "operation": "parse_receiver_facing_block_as_local_test_input",
+      "result": "parsed_and_consumed_by_deterministic_local_test_harness_simulator",
+      "sourceBound": true,
+      "effectBlocked": true,
+      "notRuntimeInstruction": true
+    },
+    {
+      "traceId": "receiver-harness-trace-receiver-context-block-04",
+      "blockId": "consumed-receiver-context-block-04",
+      "operation": "parse_receiver_facing_block_as_local_test_input",
+      "result": "parsed_and_consumed_by_deterministic_local_test_harness_simulator",
+      "sourceBound": true,
+      "effectBlocked": true,
+      "notRuntimeInstruction": true
+    }
+  ],
+  "consumedContextBlocks": [
+    {
+      "blockId": "consumed-receiver-context-block-01",
+      "sourceBlockId": "receiver-context-block-01",
+      "sourceCardId": "dryrun-handoff-live-observation-boundary-invariants",
+      "handoffItemId": "handoff-live-observation-boundary-invariants",
+      "receiverFacingKind": "local_receiver_runtime_test_harness_input_block",
+      "contentDigest": "ceb9aa073bf7006567fe7fc742954c71580ad92400693bcedd1fc7971cb7b520",
+      "sourcePath": "docs/passive-live-memory-coherence-receiver-usefulness-repeatability-scorecard-reviewer-package-v0.43.5.md",
+      "sourceSha256": "cbb0674cd2ac50eb023354cd869fc5162b71b03e0c8a0e8024e5073fb2cfc1f7",
+      "consumedAsLocalTestInput": true,
+      "sourceBound": true,
+      "rawPersisted": false,
+      "agentConsumedOutput": false,
+      "notRuntimeInstruction": true
+    },
+    {
+      "blockId": "consumed-receiver-context-block-02",
+      "sourceBlockId": "receiver-context-block-02",
+      "sourceCardId": "dryrun-handoff-live-observation-contradictory-boundary-claim",
+      "handoffItemId": "handoff-live-observation-contradictory-boundary-claim",
+      "receiverFacingKind": "local_receiver_runtime_test_harness_input_block",
+      "contentDigest": "02aeaa233837da9f9380de06bc66a77a6b2b714d7381d676d2fe640bfaab151c",
+      "sourcePath": "docs/passive-live-memory-coherence-receiver-usefulness-repeatability-scorecard-local-review-notes-v0.43.5.md",
+      "sourceSha256": "1469b5f2f4d89cce6f64b3a61a955b7d7ef0e031207af34af31848923acfa364",
+      "consumedAsLocalTestInput": true,
+      "sourceBound": true,
+      "rawPersisted": false,
+      "agentConsumedOutput": false,
+      "notRuntimeInstruction": true
+    },
+    {
+      "blockId": "consumed-receiver-context-block-03",
+      "sourceBlockId": "receiver-context-block-03",
+      "sourceCardId": "dryrun-handoff-live-observation-current-release-continuity",
+      "handoffItemId": "handoff-live-observation-current-release-continuity",
+      "receiverFacingKind": "local_receiver_runtime_test_harness_input_block",
+      "contentDigest": "0c3a79aa4de315bcc18496bdc97ccc2d5eff4da2780f0a1e517664426c758a2a",
+      "sourcePath": "docs/status-v0.43.5.md",
+      "sourceSha256": "9f963464e59aa11a310e96d66f5c40fe7d635125047edc7ae782ff0ce328ae61",
+      "consumedAsLocalTestInput": true,
+      "sourceBound": true,
+      "rawPersisted": false,
+      "agentConsumedOutput": false,
+      "notRuntimeInstruction": true
+    },
+    {
+      "blockId": "consumed-receiver-context-block-04",
+      "sourceBlockId": "receiver-context-block-04",
+      "sourceCardId": "dryrun-handoff-live-observation-repeatability-evidence",
+      "handoffItemId": "handoff-live-observation-repeatability-evidence",
+      "receiverFacingKind": "local_receiver_runtime_test_harness_input_block",
+      "contentDigest": "577c3128f7e7897c79eadf08667e6216adae5fdf6603d7b4b0d60605d137ff00",
+      "sourcePath": "docs/passive-live-memory-coherence-receiver-usefulness-repeatability-scorecard-metrics-v0.43.2.md",
+      "sourceSha256": "d5ec5ed360481fd3cb3d176d03745e9f5523c1415858cb766cbd993b4843068d",
+      "consumedAsLocalTestInput": true,
+      "sourceBound": true,
+      "rawPersisted": false,
+      "agentConsumedOutput": false,
+      "notRuntimeInstruction": true
+    }
+  ],
+  "consumptionDecisions": [
+    {
+      "decisionId": "non-authoritative-consumption-receiver-context-block-01",
+      "blockId": "consumed-receiver-context-block-01",
+      "decisionKind": "local_test_input_consumed_no_runtime_authority",
+      "nonAuthoritative": true,
+      "reason": "receiver-facing context block was parsed for deterministic local harness rehearsal only",
+      "effect": "no_effect",
+      "notRuntimeInstruction": true
+    },
+    {
+      "decisionId": "non-authoritative-consumption-receiver-context-block-02",
+      "blockId": "consumed-receiver-context-block-02",
+      "decisionKind": "local_test_input_consumed_no_runtime_authority",
+      "nonAuthoritative": true,
+      "reason": "receiver-facing context block was parsed for deterministic local harness rehearsal only",
+      "effect": "no_effect",
+      "notRuntimeInstruction": true
+    },
+    {
+      "decisionId": "non-authoritative-consumption-receiver-context-block-03",
+      "blockId": "consumed-receiver-context-block-03",
+      "decisionKind": "local_test_input_consumed_no_runtime_authority",
+      "nonAuthoritative": true,
+      "reason": "receiver-facing context block was parsed for deterministic local harness rehearsal only",
+      "effect": "no_effect",
+      "notRuntimeInstruction": true
+    },
+    {
+      "decisionId": "non-authoritative-consumption-receiver-context-block-04",
+      "blockId": "consumed-receiver-context-block-04",
+      "decisionKind": "local_test_input_consumed_no_runtime_authority",
+      "nonAuthoritative": true,
+      "reason": "receiver-facing context block was parsed for deterministic local harness rehearsal only",
+      "effect": "no_effect",
+      "notRuntimeInstruction": true
+    }
+  ],
+  "blockedEffects": [
+    {
+      "effectKind": "production_runtime_integration",
+      "status": "blocked_until_next_barrier",
+      "reason": "v0.50 parses and consumes local receiver-facing blocks as deterministic test input only",
+      "nextBarrier": "bounded_receiver_runtime_test_harness_or_fixture_suite_after_local_consumption_rehearsal"
+    },
+    {
+      "effectKind": "daemon_or_watch_mode",
+      "status": "blocked_until_next_barrier",
+      "reason": "v0.50 parses and consumes local receiver-facing blocks as deterministic test input only",
+      "nextBarrier": "bounded_receiver_runtime_test_harness_or_fixture_suite_after_local_consumption_rehearsal"
+    },
+    {
+      "effectKind": "sdk_or_framework_adapter",
+      "status": "blocked_until_next_barrier",
+      "reason": "v0.50 parses and consumes local receiver-facing blocks as deterministic test input only",
+      "nextBarrier": "bounded_receiver_runtime_test_harness_or_fixture_suite_after_local_consumption_rehearsal"
+    },
+    {
+      "effectKind": "mcp_or_a2a_client_server",
+      "status": "blocked_until_next_barrier",
+      "reason": "v0.50 parses and consumes local receiver-facing blocks as deterministic test input only",
+      "nextBarrier": "bounded_receiver_runtime_test_harness_or_fixture_suite_after_local_consumption_rehearsal"
+    },
+    {
+      "effectKind": "network_or_resource_fetch",
+      "status": "blocked_until_next_barrier",
+      "reason": "v0.50 parses and consumes local receiver-facing blocks as deterministic test input only",
+      "nextBarrier": "bounded_receiver_runtime_test_harness_or_fixture_suite_after_local_consumption_rehearsal"
+    },
+    {
+      "effectKind": "tool_execution",
+      "status": "blocked_until_next_barrier",
+      "reason": "v0.50 parses and consumes local receiver-facing blocks as deterministic test input only",
+      "nextBarrier": "bounded_receiver_runtime_test_harness_or_fixture_suite_after_local_consumption_rehearsal"
+    },
+    {
+      "effectKind": "memory_or_config_write",
+      "status": "blocked_until_next_barrier",
+      "reason": "v0.50 parses and consumes local receiver-facing blocks as deterministic test input only",
+      "nextBarrier": "bounded_receiver_runtime_test_harness_or_fixture_suite_after_local_consumption_rehearsal"
+    },
+    {
+      "effectKind": "external_side_effect",
+      "status": "blocked_until_next_barrier",
+      "reason": "v0.50 parses and consumes local receiver-facing blocks as deterministic test input only",
+      "nextBarrier": "bounded_receiver_runtime_test_harness_or_fixture_suite_after_local_consumption_rehearsal"
+    },
+    {
+      "effectKind": "authorization_enforcement_decision",
+      "status": "blocked_until_next_barrier",
+      "reason": "v0.50 parses and consumes local receiver-facing blocks as deterministic test input only",
+      "nextBarrier": "bounded_receiver_runtime_test_harness_or_fixture_suite_after_local_consumption_rehearsal"
+    },
+    {
+      "effectKind": "automatic_agent_consumption",
+      "status": "blocked_until_next_barrier",
+      "reason": "v0.50 parses and consumes local receiver-facing blocks as deterministic test input only",
+      "nextBarrier": "bounded_receiver_runtime_test_harness_or_fixture_suite_after_local_consumption_rehearsal"
+    }
+  ],
+  "reportMarkdown": "# Passive Live Memory Coherence Receiver Runtime Test Harness Consumption Rehearsal v0.50.5\n\nrehearsalStatus: PASSIVE_LIVE_MEMORY_COHERENCE_RECEIVER_RUNTIME_TEST_HARNESS_CONSUMPTION_REHEARSAL_COMPLETE\nsourceReceiverBlockCountConsumedAsLocalTestInput=4\nharnessParseSuccessCount=4\nconsumedContextBlockCount=4\nconsumptionDecisionCount=4\neffectsBlockedCount=10\nsourceBoundConsumedBlockRatio=1\nagentConsumedOutputFalseRatio=1\nforbiddenEffectCount=0\nboundaryViolationCount=0\noperatorApprovalScope: local_test_harness_rehearsal_only\nnextBarrier: bounded_receiver_runtime_test_harness_or_fixture_suite_after_local_consumption_rehearsal\nrecommendation: ADVANCE_TO_BOUNDED_RECEIVER_RUNTIME_TEST_HARNESS_OR_FIXTURE_SUITE\nrecommendationIsAuthority=false\nagentConsumedOutput=false\nnotRuntimeInstruction=true\n\nRehearsal claim: v0.50 consumes the pinned v0.49.5 receiver-facing blocks as deterministic local receiver/runtime test harness input only. It parses the local envelope and records non-authoritative consumption decisions while blocking production runtime integration, network, tools, memory/config writes, external effects, authorization/enforcement, and automatic agent consumption.\n\n## Harness input envelope\n- local-receiver-runtime-test-harness-input-envelope-v0.50.5-001: blocks=4; parseMode=receiver_facing_blocks_as_test_input_only; disposition=all_effects_blocked_no_runtime_authority\n\n## Consumed context blocks\n- consumed-receiver-context-block-01: sourceBlock=receiver-context-block-01; source=docs/passive-live-memory-coherence-receiver-usefulness-repeatability-scorecard-reviewer-package-v0.43.5.md; sourceBound=true; consumedAsLocalTestInput=true; contentDigest=ceb9aa073bf7006567fe7fc742954c71580ad92400693bcedd1fc7971cb7b520\n- consumed-receiver-context-block-02: sourceBlock=receiver-context-block-02; source=docs/passive-live-memory-coherence-receiver-usefulness-repeatability-scorecard-local-review-notes-v0.43.5.md; sourceBound=true; consumedAsLocalTestInput=true; contentDigest=02aeaa233837da9f9380de06bc66a77a6b2b714d7381d676d2fe640bfaab151c\n- consumed-receiver-context-block-03: sourceBlock=receiver-context-block-03; source=docs/status-v0.43.5.md; sourceBound=true; consumedAsLocalTestInput=true; contentDigest=0c3a79aa4de315bcc18496bdc97ccc2d5eff4da2780f0a1e517664426c758a2a\n- consumed-receiver-context-block-04: sourceBlock=receiver-context-block-04; source=docs/passive-live-memory-coherence-receiver-usefulness-repeatability-scorecard-metrics-v0.43.2.md; sourceBound=true; consumedAsLocalTestInput=true; contentDigest=577c3128f7e7897c79eadf08667e6216adae5fdf6603d7b4b0d60605d137ff00\n\n## Blocked effects\n- production_runtime_integration: blocked_until_next_barrier\n- daemon_or_watch_mode: blocked_until_next_barrier\n- sdk_or_framework_adapter: blocked_until_next_barrier\n- mcp_or_a2a_client_server: blocked_until_next_barrier\n- network_or_resource_fetch: blocked_until_next_barrier\n- tool_execution: blocked_until_next_barrier\n- memory_or_config_write: blocked_until_next_barrier\n- external_side_effect: blocked_until_next_barrier\n- authorization_enforcement_decision: blocked_until_next_barrier\n- automatic_agent_consumption: blocked_until_next_barrier\n\n## Validation issues\n- none"
+}

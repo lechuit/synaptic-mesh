@@ -1,3 +1,17 @@
+# Synaptic Mesh v0.50.5
+
+This is the public review release `v0.50.5`. Current v0.50.5 status is narrower than production live runtime, but crosses the next safe barrier after v0.49: **local receiver/runtime test harness consumption rehearsal**.
+
+The v0.50 ladder is opt-in, operator-run one-shot, local-only, rehearsal/read-only, bounded to the pinned completed v0.49.5 runtime-context injection rehearsal artifact and report, pre-read path pinned, redacted-before-persist, non-authoritative, rollback/no-persist, and not connected to production runtime.
+
+Pinned v0.50.5 evidence: `rehearsalStatus: PASSIVE_LIVE_MEMORY_COHERENCE_RECEIVER_RUNTIME_TEST_HARNESS_CONSUMPTION_REHEARSAL_COMPLETE`, `sourceReceiverBlockCountConsumedAsLocalTestInput: 4`, `harnessParseSuccessCount: 4`, `consumedContextBlockCount: 4`, `consumptionDecisionCount: 4`, `effectsBlockedCount: 10`, `sourceBoundConsumedBlockRatio: 1`, `agentConsumedOutputFalseRatio: 1`, `forbiddenEffectCount: 0`, `boundaryViolationCount: 0`, `operatorApprovalScope: local_test_harness_rehearsal_only`, `recommendationIsAuthority: false`, `agentConsumedOutput: false`, and `notRuntimeInstruction: true`.
+
+The rehearsal parses and consumes the v0.49 receiver-facing blocks as deterministic local receiver/runtime test harness input only. It records non-authoritative consumption decisions and keeps all effects blocked. It is intentionally not production runtime behavior: no daemon, SDK/framework adapter, MCP/A2A client/server, network/resource fetch, tool execution, memory/config writes, external effects, authorization/enforcement decisions, allow/block decisions, or automatic agent consumption.
+
+## Carry-forward prior release boundaries
+
+The v0.49 local runtime-context injection rehearsal remains the pinned upstream source: one machine-shaped adapter rehearsal envelope, four source-bound receiver-facing context blocks, all effects blocked, source-bound ratio 1, and zero boundary violations.
+
 # Synaptic Mesh v0.49.5
 
 This is the public review release `v0.49.5`. Current v0.49.5 status is narrower than production live runtime, but crosses a real runtime-adjacent barrier after v0.48: **local runtime-context injection rehearsal**.

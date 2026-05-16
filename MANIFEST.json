@@ -1,11 +1,11 @@
 {
   "bundle": "synaptic-mesh",
-  "version": "0.49.5",
+  "version": "0.50.5",
   "generated": "2026-05-16T13:20:00Z",
-  "status": "v0.49.5_passive_live_memory_coherence_runtime_context_injection_rehearsal_local_adapter_envelope_no_effects_no_runtime_integration_no_memory_writes",
+  "status": "v0.50.5_passive_live_memory_coherence_receiver_runtime_test_harness_consumption_rehearsal_local_reversible_harness_consumption_no_effects_no_runtime_integration_no_memory_writes",
   "repository": "https://github.com/lechuit/synaptic-mesh",
   "license": "Apache-2.0 for code; CC BY 4.0 for docs/prose unless otherwise noted",
-  "reproducibility": "v0.49.5 local_adapter_live_context_injection_envelope_rehearsal PASSIVE_LIVE_MEMORY_COHERENCE_RUNTIME_CONTEXT_INJECTION_REHEARSAL_COMPLETE contextCardsConsumedByLocalRehearsalCount_5 injectionEnvelopeCount_1 receiverFacingContextBlockCount_4 allEffectsBlockedUntilNextBarrierCount_10 sourceBoundReceiverBlockRatio_1 boundaryViolationCount_0 ADVANCE_TO_RECEIVER_RUNTIME_TEST_HARNESS_CONSUMPTION_REHEARSAL machine_shaped_adapter_rehearsal_envelope no_tool_execution no_network_fetch no_memory_writes no_config_writes no_runtime_integration",
+  "reproducibility": "v0.50.5 local_receiver_runtime_test_harness_consumption_rehearsal PASSIVE_LIVE_MEMORY_COHERENCE_RECEIVER_RUNTIME_TEST_HARNESS_CONSUMPTION_REHEARSAL_COMPLETE sourceReceiverBlockCountConsumedAsLocalTestInput_4 harnessParseSuccessCount_4 consumedContextBlockCount_4 effectsBlockedCount_10 sourceBoundConsumedBlockRatio_1 boundaryViolationCount_0 local_test_harness_rehearsal_only no_tool_execution no_network_fetch no_memory_writes no_config_writes no_runtime_integration",
   "rawSourceCache": "excluded",
-  "runtimeBoundary": "v0.49.5 local_reversible_adapter_rehearsal receiver_facing_injection_envelope test_harness_consumable_next no_network no_tool_execution no_config_writes no_memory_writes no_authorization_enforcement no_production_runtime_integration rollback_no_persist"
+  "runtimeBoundary": "v0.50.5 local_receiver_runtime_test_harness_consumption_rehearsal receiver_blocks_as_test_input_only no_network no_tool_execution no_config_writes no_memory_writes no_authorization_enforcement no_allow_block_decisions no_production_runtime_integration rollback_no_persist"
 }
