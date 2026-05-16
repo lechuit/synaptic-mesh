@@ -1,0 +1,15 @@
+import assert from 'node:assert/strict';
+import { passiveLiveMemoryCoherenceReceiverLiveContextHandoffUtilityProtocol, assertPassiveLiveMemoryCoherenceReceiverLiveContextHandoffUtilityInputPathPinned } from '../src/passive-live-memory-coherence-receiver-live-context-handoff-utility.mjs';
+const p = passiveLiveMemoryCoherenceReceiverLiveContextHandoffUtilityProtocol();
+assert.equal(p.releaseLayer, 'v0.46.0-alpha');
+assert.equal(p.barrierCrossed, 'passive_live_memory_coherence_receiver_live_context_handoff_utility');
+assert.equal(p.preReadPathPinned, true);
+assert.equal(p.acceptsOnlyPinnedCompletedLiveObservationRepeatability, true);
+assert.equal(p.stableSignalsOnly, true);
+assert.equal(p.liveContextHandoffUtilityOnly, true);
+assert.equal(p.noMemoryWrites, true);
+assert.equal(p.noRuntimeIntegration, true);
+assert.equal(p.agentConsumedOutput, false);
+assert.equal(Object.hasOwn(p, 'policyDecision'), false);
+assert.equal(assertPassiveLiveMemoryCoherenceReceiverLiveContextHandoffUtilityInputPathPinned(), 'evidence/passive-live-memory-coherence-receiver-usefulness-live-observation-repeatability-scorecard-reviewer-package-v0.45.5.out.json');
+console.log(JSON.stringify({ ok: true, protocol: p.releaseLayer, stableSignalsOnly: p.stableSignalsOnly }));
