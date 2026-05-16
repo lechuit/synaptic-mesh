@@ -1,0 +1,14 @@
+import assert from 'node:assert/strict';
+import { mkdir, writeFile } from 'node:fs/promises';
+import { canonicalInput, assertBoundary } from './passive-source-authority-conflict-scorecard-fixtures.mjs';
+import { scorePassiveSourceAuthorityConflictScorecard } from '../src/passive-source-authority-conflict-scorecard.mjs';
+const out = scorePassiveSourceAuthorityConflictScorecard(canonicalInput());
+assert.equal(out.conflictStatus, 'PASSIVE_SOURCE_AUTHORITY_CONFLICT_SCORECARD_COMPLETE');
+assert.equal(out.conflictItems.length, 4);
+assert.deepEqual(out.conflictItems.map(i => i.conflictType), ['source_authority','project_rule_precedence','explicit_contradiction','stale_memory_invalidation']);
+assert.equal(out.conflictItems.filter(i => i.newerSourcePreferred).length, 2);
+assert.equal(out.conflictItems.filter(i => i.contradictionSurfaced).length, 1);
+assert.equal(out.conflictItems.filter(i => i.staleInvalidated).length, 1);
+assertBoundary(out, assert);
+await mkdir('evidence', { recursive: true });
+await writeFile('evidence/passive-source-authority-conflict-scorecard-conflicts-v0.31.1.out.json', `${JSON.stringify(out, null, 2)}\n`);

@@ -1,0 +1,26 @@
+{
+  "artifact": "T-synaptic-mesh-passive-source-authority-conflict-scorecard-protocol-v0.31.0-alpha",
+  "protocol": {
+    "releaseLayer": "v0.31.0-alpha",
+    "barrierCrossed": "passive_source_authority_conflict_scorecard_for_ai_continuity",
+    "buildsOn": "v0.30.5_passive_handoff_receiver_shadow_rubric",
+    "disabledByDefault": true,
+    "operatorRunOneShotOnly": true,
+    "localOnly": true,
+    "passiveOnly": true,
+    "readOnly": true,
+    "explicitArtifactsOnly": true,
+    "acceptsOnlyPinnedCompletedReceiverArtifact": true,
+    "producesHumanConflictScorecardOnly": true,
+    "measuresSourceAuthorityConflictsWithoutRuntimeConsumption": true,
+    "humanReadableReportOnly": true,
+    "nonAuthoritative": true,
+    "recommendationIsAuthority": false,
+    "agentConsumedOutput": false,
+    "notRuntimeInstruction": true,
+    "noRuntimeAuthority": true,
+    "noMemoryWrites": true,
+    "noRuntimeIntegration": true,
+    "policyDecision": null
+  }
+}

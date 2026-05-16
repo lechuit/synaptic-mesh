@@ -69,18 +69,18 @@
     },
     {
       "path": "README.md",
-      "bytes": 2823,
-      "sha256": "84b6031b5c62eb4a3fc95d947ffacc404f2214fc5e4e924f8170744701d80296"
+      "bytes": 2859,
+      "sha256": "42c6a8ec50b8037e587968e09c4628bd700e72a4a0d3046d52d6a02f1bcc3a1d"
     },
     {
       "path": "RELEASE_CANDIDATE.md",
-      "bytes": 1074,
-      "sha256": "45767b56dd3d2bc896d2f9b45ac6ec12cf00c6fdcb7316029c0df7294fcb7992"
+      "bytes": 1117,
+      "sha256": "c205ede43c730c3d5a3ddc48da3e2b3674ef5429f431f0662efdb082795a4050"
     },
     {
       "path": "RELEASE_NOTES.md",
-      "bytes": 2583,
-      "sha256": "088e6d34bb642f7474dbf613be70359c5d91ec04b08dc22e3dbb8148ab93da35"
+      "bytes": 2547,
+      "sha256": "87ce961015ddbc60cffad28f3a76ac6dbe3c41f1335ec0ff07dfe3d424484461"
     },
     {
       "path": "design-notes/adapter-boundary-langgraph-mcp-v0.md",
@@ -956,6 +956,41 @@
       "path": "docs/passive-observation-window-reviewer-package-v0.26.5.md",
       "bytes": 320,
       "sha256": "367e11b8bc15cda8e24f14e85a412d0c9758c6e0ac85f703ca494235c5ae7f35"
+    },
+    {
+      "path": "docs/passive-source-authority-conflict-scorecard-conflicts-v0.31.1.md",
+      "bytes": 425,
+      "sha256": "95266473e93070e0b9fb702509931b1efe06a4429de2392f9ab2c14ee8d34e29"
+    },
+    {
+      "path": "docs/passive-source-authority-conflict-scorecard-local-review-notes-v0.31.5.md",
+      "bytes": 2132,
+      "sha256": "a34be9b8c5392c75e8d1c0aab5351f9512ca72aaa7ec01502fbe669a39847a07"
+    },
+    {
+      "path": "docs/passive-source-authority-conflict-scorecard-metrics-v0.31.2.md",
+      "bytes": 429,
+      "sha256": "d6f9823b89096aa4054300700f13aece02a3c0d10d24180402585599eb427c87"
+    },
+    {
+      "path": "docs/passive-source-authority-conflict-scorecard-negative-controls-v0.31.3.md",
+      "bytes": 662,
+      "sha256": "60254e74f62be8fcd762bb88f48098055a5a2008013de9c0d2d78f2c519d9f82"
+    },
+    {
+      "path": "docs/passive-source-authority-conflict-scorecard-output-boundary-v0.31.4.md",
+      "bytes": 432,
+      "sha256": "a43c21fb723090cf332222c39a55aeba4668c0f49a8f4f4ade4c3f6ee43d91aa"
+    },
+    {
+      "path": "docs/passive-source-authority-conflict-scorecard-protocol-v0.31.0-alpha.md",
+      "bytes": 393,
+      "sha256": "4b8a6a2c27839c5f99addba7a8ba6a9330909ef339d2d3bae3b05b4a4c2329ac"
+    },
+    {
+      "path": "docs/passive-source-authority-conflict-scorecard-reviewer-package-v0.31.5.md",
+      "bytes": 431,
+      "sha256": "1ef87bd78219df88e0e8c44d5b803e76fb253cf55161cd63e9647b58688300db"
     },
     {
       "path": "docs/positive-utility-pass-gate-bounds-v0.21.2.md",
@@ -1858,6 +1893,36 @@
       "sha256": "8abcdc021df459da0ec9e5b1552ac3f2cc12db599541769c338951552770a36d"
     },
     {
+      "path": "docs/status-v0.31.0-alpha.md",
+      "bytes": 220,
+      "sha256": "89189d5697dc487c87860a9af52a73ec6b7db7fe35f5a8b6e755cc2a59aa1c4d"
+    },
+    {
+      "path": "docs/status-v0.31.1.md",
+      "bytes": 208,
+      "sha256": "a464cb6f39d1a76382c6c1cf64f350efd9c416048aaa93347e8e67a1308a1c56"
+    },
+    {
+      "path": "docs/status-v0.31.2.md",
+      "bytes": 208,
+      "sha256": "c103b0423237a24431487ffc197105f8b6b3acc72a8289a022535c9cc3bfdd92"
+    },
+    {
+      "path": "docs/status-v0.31.3.md",
+      "bytes": 208,
+      "sha256": "2573ee6077455d45580aa8a3539aa07e7f63ddf2194308f49b0f9bee3f64e9e3"
+    },
+    {
+      "path": "docs/status-v0.31.4.md",
+      "bytes": 208,
+      "sha256": "9b6340d69cd783ae89f6631f2c3c7c8953ed3f843e783dd1206bfcb7c9147685"
+    },
+    {
+      "path": "docs/status-v0.31.5.md",
+      "bytes": 208,
+      "sha256": "b44242295ef39e59ff9701c44fffc421baa87658482f166230aae532c7abd46e"
+    },
+    {
       "path": "docs/status-v0.4.5.md",
       "bytes": 4795,
       "sha256": "b65d5f65e2d5f88ad65e475abc9d07d6da6dc8a463ba99c81ed57970bed3e01c"
@@ -2183,6 +2248,11 @@
       "sha256": "259e312eb7fdee6e356b9c36787dad1cd42c97c7af50eb61770f93a11b26e223"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/bin/passive-source-authority-conflict-scorecard.mjs",
+      "bytes": 1547,
+      "sha256": "eb1a7f4d2ee57a80bb381a896ad69df18b4d15fc9f99a091a2d712a94905e136"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/bin/positive-utility-pass-gate.mjs",
       "bytes": 2165,
       "sha256": "c39cb0e4f8f837b4b3035311a912489e7886af71fc5f232c2ea07b2e79acd59c"
@@ -2299,8 +2369,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/bounded-multisource-shadow-read-packet-v0.20.1.out.json",
-      "bytes": 12390,
-      "sha256": "c776ed0bdb202f82946432a128360b91bb6276b3158ed8ba0570f4eca87a901f"
+      "bytes": 12407,
+      "sha256": "6ff918086ff2fafe59a3f40ecaa33a9d0c0741383c847e789bebf177cc09a63b"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/bounded-multisource-shadow-read-preflight-abort-v0.20.2.out.json",
@@ -2319,8 +2389,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/bounded-multisource-shadow-read-report-v0.20.1.out.md",
-      "bytes": 2104,
-      "sha256": "d2c9a3c2f7c703a2948c5ae3448096a266d11a52b2b0c60853944e62e0c7099e"
+      "bytes": 2112,
+      "sha256": "0874fb566bcf0c7df89cb50e21c45044e00af24dd1b1f850f8701cd92f05bd62"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/bounded-multisource-shadow-read-reviewer-package-v0.20.5.out.json",
@@ -2519,8 +2589,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-adapter-shadow-read-packet-v0.19.1.out.json",
-      "bytes": 8052,
-      "sha256": "6d631ebfb0da27320aceb4bd2f71f01f4b42387b6c6a3d4f8d360302fc0f877d"
+      "bytes": 8069,
+      "sha256": "2f8f60c3cb5b7ea1c04ead05866f3eb013392582af2df9876420775df4cea6d2"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-adapter-shadow-read-preflight-abort-v0.19.2.out.json",
@@ -2539,13 +2609,13 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-adapter-shadow-read-report-v0.19.1.out.md",
-      "bytes": 1462,
-      "sha256": "53a9a56610c316c47e0f524892d85d2eb114733b0987059dbfa5d88fd0cfac45"
+      "bytes": 1470,
+      "sha256": "7ca724ff09716b4f123e6ce088eedb679ba2b784c59dc65d3789740aa38059e8"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-adapter-shadow-read-reviewer-package-v0.19.5.out.json",
-      "bytes": 9583,
-      "sha256": "1b64e33b58e5e9d0bf44f74a36271eee31eb1182c036a2b69e26694d66812917"
+      "bytes": 9600,
+      "sha256": "898f1942e173ed6a37e3ba0779c0154c649dedddf41c95551185c81cea9ebf6a"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-input-source-boundary-contracts.out.json",
@@ -2589,8 +2659,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-read-gate-packet-v0.18.1.out.json",
-      "bytes": 6035,
-      "sha256": "8f31271649ae4300c2360df018ff55965cdd1b17a2591f13500f6aa776b4a4a7"
+      "bytes": 6044,
+      "sha256": "70ed2d04be9d4aeaa8b1325fee277fc00f3324877ca06e3ad5ccd25abc4bb802"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-read-gate-preflight-abort-v0.18.2.out.json",
@@ -2609,8 +2679,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-read-gate-reviewer-package-v0.18.5.out.json",
-      "bytes": 7432,
-      "sha256": "9da63338f5083ce58fdfeac7ca0206636222415f6d74cff4966321aa4eb451d3"
+      "bytes": 7441,
+      "sha256": "2b63784246183721433ad8f45f9203d106364dcf5a1a428f8ca9e0c38e5975c6"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-shadow-drift-scorecard-shape.out.json",
@@ -3306,6 +3376,41 @@
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-observation-window-reviewer-package-v0.26.5.out.json",
       "bytes": 5261,
       "sha256": "919a7ec00bce2a045ec0d765deb0375f8c11e893363dbf40aa0249ec282884b1"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-source-authority-conflict-scorecard-conflicts-v0.31.1.out.json",
+      "bytes": 6116,
+      "sha256": "a2cd9e04f8eb1c17eec18afc182f62c38166b582fe2b0f3d5106c26368a37362"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-source-authority-conflict-scorecard-metrics-v0.31.2.out.json",
+      "bytes": 339,
+      "sha256": "82dcb9f82cdae3bbd8fc62fae0bfc72b39e6a03d5f984235ea9ae5a44be50f3b"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-source-authority-conflict-scorecard-negative-controls-v0.31.3.out.json",
+      "bytes": 8750,
+      "sha256": "2f7b547271f01797d05e7f4e8865536dfffc6b594f59c98b29dc85de323554cc"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-source-authority-conflict-scorecard-output-boundary-v0.31.4.out.json",
+      "bytes": 341,
+      "sha256": "9b16f0c03b47aab9712f5cc27563b697b04eef0ded0d781a09f6f6cce866610a"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-source-authority-conflict-scorecard-protocol-v0.31.0-alpha.out.json",
+      "bytes": 958,
+      "sha256": "0dc24a6c00de28376f212bd6612289fa218d54f0ab4686b03c2ecadf71fd55b6"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-source-authority-conflict-scorecard-report-v0.31.5.out.md",
+      "bytes": 1225,
+      "sha256": "d32add3aafcf3110a20c8fb374569559da5af5f14f151bd730b5d9c752777e1a"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-source-authority-conflict-scorecard-reviewer-package-v0.31.5.out.json",
+      "bytes": 6116,
+      "sha256": "a2cd9e04f8eb1c17eec18afc182f62c38166b582fe2b0f3d5106c26368a37362"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/positive-utility-pass-gate-bounds-v0.21.2.out.json",
@@ -4169,8 +4274,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/package.json",
-      "bytes": 61575,
-      "sha256": "ef6d0948927314ed55be0bf21a26032c89ace504b26be547c7b77af98409c290"
+      "bytes": 63098,
+      "sha256": "805b369cfa254f8882415f7e9a0a7b6f7f3e48f9be9425e83978a03f390e20c6"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/action-context-packet.mjs",
@@ -4301,6 +4406,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/src/passive-observation-window.mjs",
       "bytes": 20886,
       "sha256": "a922e48ffb0d9b68b1e296670fe020cc1ea7f28d4f458b8bf9e71001621304ad"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/src/passive-source-authority-conflict-scorecard.mjs",
+      "bytes": 18697,
+      "sha256": "6c203aea3b849918b45ec5a1503ffa30c56f1eada210c458942735d37dff0032"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/positive-utility-pass-gate.mjs",
@@ -5283,6 +5393,41 @@
       "sha256": "b291cf118f26208c09f3347fe5847b4c776c9d36de617983db3241183425c5e4"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-source-authority-conflict-scorecard-conflicts-v0.31.1.mjs",
+      "bytes": 1140,
+      "sha256": "8e105727eb8d7317478d065545f15191458cefaf97f6485c4c016d06a9c50537"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-source-authority-conflict-scorecard-fixtures.mjs",
+      "bytes": 1579,
+      "sha256": "d287b771cbc6fad4159c298f7febe750c4601901b8b6c3efe088ade1e8321afa"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-source-authority-conflict-scorecard-metrics-v0.31.2.mjs",
+      "bytes": 1189,
+      "sha256": "a68acd851312fe880a4becd970f5bf90abd1c01b500a61c73ac96593df9bd9ff"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-source-authority-conflict-scorecard-negative-controls-v0.31.3.mjs",
+      "bytes": 5063,
+      "sha256": "0dde11ce7f83bff1e21e99768fc343a92d4b2589769454a801e388b10b546e99"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-source-authority-conflict-scorecard-output-boundary-v0.31.4.mjs",
+      "bytes": 1507,
+      "sha256": "b7e89214802a5a48393e3d415cfbb55e2679ff324483ae58d91e97933ed46396"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-source-authority-conflict-scorecard-protocol-v0.31.0-alpha.mjs",
+      "bytes": 1446,
+      "sha256": "74858d4c58d05898a15ccabf9895375335ec0c4227ee5839dcedd0a3981d1892"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-source-authority-conflict-scorecard-reviewer-package-v0.31.5.mjs",
+      "bytes": 1092,
+      "sha256": "5bb3e28c4c471d321bb056ea416b63df163a3ce8900b19972ac8f7966fa0f693"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/positive-utility-pass-gate-bounds-v0.21.2.mjs",
       "bytes": 3142,
       "sha256": "dd4db6bb4a7d3d5006e606b03f1995a9fae722d1de0ae74f3ab5d78554666613"
@@ -6184,8 +6329,8 @@
     },
     {
       "path": "tools/release-checks/index.mjs",
-      "bytes": 3016,
-      "sha256": "77786c59502810d8a127310d8c542ec87aa2b5a04095a06ff547dff0fbc49530"
+      "bytes": 3178,
+      "sha256": "f44851e9a02ad2d71e139d96b88ee893aa2cdcc364c4359d2fa0f5608c5b9bc1"
     },
     {
       "path": "tools/release-checks/limited-passive-live-capture-readiness.mjs",
@@ -6266,6 +6411,11 @@
       "path": "tools/release-checks/passive-observation-window.mjs",
       "bytes": 6876,
       "sha256": "ab80f6ae7141d3dbfc91a220c2ef30429fe7c259b9f2abcab29a9e24c2eca56f"
+    },
+    {
+      "path": "tools/release-checks/passive-source-authority-conflict-scorecard.mjs",
+      "bytes": 9485,
+      "sha256": "aec769971ad4c17ffcccc8d741edbae201e8a27c8af25aa68a94fc903af49fc5"
     },
     {
       "path": "tools/release-checks/positive-utility-pass-gate.mjs",

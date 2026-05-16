@@ -9,9 +9,9 @@
 - Enforcement/authorization/approval/block/allow: false
 
 ## Redacted evidence preview
-- #0: # Synaptic Mesh v0.30.5
-- #1: This is the public review release `v0.30.5`. Current v0.30.5 status is narrower than live runtime and crosses the next safe barrier after v0.29: **passive handoff receiver shadow rubric**.
-- #2: The v0.30 ladder is disabled-by-default, operator-run one-shot, local-only, passive/read-only, bounded to the pinned completed v0.29.5 handoff candidate artifact, human-readable report only, non-authoritative, and not runtime authority.
-- #3: Pinned v0.30.5 evidence: `receiverStatus: PASSIVE_HANDOFF_RECEIVER_RUBRIC_COMPLETE`, `receiverItemCount: 4`, `includeForHumanContextCount: 2`, `contradictionReviewCount: 1`, `staleCautionReviewCount: 1`, `excludedUpstreamNoiseCount: 1`, `so
-- #4: The rubric asks whether passive handoff candidates help a human receiver assemble safe context: source-bound carry-forward items can be included for human context, contradictions are surfaced for human conflict review, stale negative contex
-- #5: ## v0.30.5 phase close
+- #0: # Synaptic Mesh v0.31.5
+- #1: This is the public review release `v0.31.5`. Current v0.31.5 status is narrower than live runtime and crosses the next safe barrier after v0.30: **passive source authority conflict scorecard**.
+- #2: The v0.31 ladder is disabled-by-default, operator-run one-shot, local-only, passive/read-only, bounded to the pinned completed v0.30.5 receiver rubric artifact (path and sha256 digest pinned), human-readable report only, non-authoritative,
+- #3: Pinned v0.31.5 evidence: `conflictStatus: PASSIVE_SOURCE_AUTHORITY_CONFLICT_SCORECARD_COMPLETE`, `conflictCaseCount: 4`, `sourceBoundConflictRatio: 1`, `authorityConflictSurfacedRatio: 1`, `newerSourcePreferredRatio: 1`, `contradictionConfl
+- #4: The scorecard asks whether competing memory/source situations can be surfaced safely for a human receiver: source-bound decisions versus unsourced inference, project rules versus generic priors, explicit contradictions, and stale-memory inv
+- #5: ## v0.31.5 phase close
