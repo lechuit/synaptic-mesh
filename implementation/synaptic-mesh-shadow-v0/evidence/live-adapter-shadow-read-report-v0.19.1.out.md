@@ -9,9 +9,9 @@
 - Enforcement/authorization/approval/block/allow: false
 
 ## Redacted evidence preview
-- #0: # Synaptic Mesh v0.39.5
-- #1: This is the public review release `v0.39.5`. Current v0.39.5 status is narrower than live runtime and crosses the next safe barrier after v0.38: **passive live memory/coherence stale/contradiction invalidation window**.
-- #2: The v0.39 ladder is disabled-by-default, operator-run one-shot, local-only, passive/read-only, bounded to the pinned completed v0.38.5 passive live memory/coherence usefulness window artifact, redacted-before-persist, human-readable report
-- #3: Pinned v0.39.5 evidence: `invalidationWindowStatus: PASSIVE_LIVE_MEMORY_COHERENCE_INVALIDATION_WINDOW_COMPLETE`, `invalidationWindowCount: 1`, `candidateSignalCount: 5`, `validCarryForwardCount: 3`, `staleSignalCount: 1`, `contradictionSign
-- #4: The invalidation window tests whether passive memory/coherence handoffs can preserve current useful signals while rejecting stale claims and labeling contradictions for human review. This is bounded usefulness/invalidation measurement only.
-- #5: ## v0.39.5 phase close
+- #0: # Synaptic Mesh v0.40.5
+- #1: This is the public review release `v0.40.5`. Current v0.40.5 status is narrower than live runtime and crosses the next safe barrier after v0.39: **passive live memory/coherence invalidation repeatability scorecard**.
+- #2: The v0.40 ladder is disabled-by-default, operator-run one-shot, local-only, passive/read-only, bounded to the pinned completed v0.39.5 passive live memory/coherence stale/contradiction invalidation artifact, redacted-before-persist, human-r
+- #3: Pinned v0.40.5 evidence: `repeatabilityStatus: PASSIVE_LIVE_MEMORY_COHERENCE_INVALIDATION_REPEATABILITY_SCORECARD_COMPLETE`, `repeatabilityRunCount: 3`, `candidateSignalCount: 5`, `totalInvalidationJudgementCount: 15`, `stableCandidateCount
+- #4: The invalidation repeatability scorecard tests whether passive memory/coherence invalidation handoffs remain stable under paraphrased rationale and order reversal. It verifies that three current signals carry forward, one stale signal stays
+- #5: ## v0.40.5 phase close

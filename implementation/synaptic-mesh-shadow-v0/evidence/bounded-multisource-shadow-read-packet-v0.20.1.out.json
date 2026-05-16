@@ -97,7 +97,7 @@
       "kind": "explicit_repo_local_file_via_adapter",
       "repoRelativePathSha256": "b335630551682c19a781afebcf4d07bf978fb1f8ac04c6bf87428ed5106870f5",
       "absolutePathSha256": "543c81f89743c5b0f48fa0200abe84d28dd1fdb1b6687cf610469e9e998e93e0",
-      "sourceSize": 3340,
+      "sourceSize": 3534,
       "sourceMtimeMs": null,
       "rawSourcePathPersisted": false,
       "recordsRead": 4,
@@ -109,7 +109,7 @@
       "kind": "explicit_repo_local_file_via_adapter",
       "repoRelativePathSha256": "68d24fa81558aae3d8c59e2aa57a4fa719ea3b04d7fa14beff45f16f00858f50",
       "absolutePathSha256": "4da003b5022cb2aeb34f2b51f5b6f9fe35d01a94f2607ea78b58e405df985f0b",
-      "sourceSize": 2972,
+      "sourceSize": 3088,
       "sourceMtimeMs": null,
       "rawSourcePathPersisted": false,
       "recordsRead": 4,
@@ -151,10 +151,10 @@
     {
       "sourceIndex": 0,
       "index": 0,
-      "rawSha256": "f0150e931a7aa44bd77245b234fbcca7fdc960b0894a3d97d32216c22f0d6fa0",
+      "rawSha256": "81ef7cef23adf1c43cfb156e66f5513d00d55b40ab81c738d4d6c1a1ec8992d2",
       "rawBytes": 23,
-      "redactedSha256": "f0150e931a7aa44bd77245b234fbcca7fdc960b0894a3d97d32216c22f0d6fa0",
-      "redactedText": "# Synaptic Mesh v0.39.5",
+      "redactedSha256": "81ef7cef23adf1c43cfb156e66f5513d00d55b40ab81c738d4d6c1a1ec8992d2",
+      "redactedText": "# Synaptic Mesh v0.40.5",
       "privatePatternDetected": false,
       "decisionVerbDetected": false,
       "semanticDecisionTokenPersisted": false
@@ -162,10 +162,10 @@
     {
       "sourceIndex": 0,
       "index": 1,
-      "rawSha256": "276cc6340530d7ce12ede861c19df1d6d074efd0407fff9254b853de90e2224c",
-      "rawBytes": 219,
-      "redactedSha256": "276cc6340530d7ce12ede861c19df1d6d074efd0407fff9254b853de90e2224c",
-      "redactedText": "This is the public review release `v0.39.5`. Current v0.39.5 status is narrower than live runtime and crosses the next safe barrier after v0.38: **passive live memory/coherence stale/contradiction invalidation window**.",
+      "rawSha256": "c9821d289ceafaac4d23b5018a3e6c63119bf0e461ea0c3f1f56c7aec3bfbfb2",
+      "rawBytes": 216,
+      "redactedSha256": "c9821d289ceafaac4d23b5018a3e6c63119bf0e461ea0c3f1f56c7aec3bfbfb2",
+      "redactedText": "This is the public review release `v0.40.5`. Current v0.40.5 status is narrower than live runtime and crosses the next safe barrier after v0.39: **passive live memory/coherence invalidation repeatability scorecard**.",
       "privatePatternDetected": false,
       "decisionVerbDetected": false,
       "semanticDecisionTokenPersisted": false
@@ -173,10 +173,10 @@
     {
       "sourceIndex": 0,
       "index": 2,
-      "rawSha256": "725c2c31aad1dae82866a8d34b1165af52af84f2897a696b29bd8ce3bda2b2d9",
-      "rawBytes": 291,
-      "redactedSha256": "725c2c31aad1dae82866a8d34b1165af52af84f2897a696b29bd8ce3bda2b2d9",
-      "redactedText": "The v0.39 ladder is disabled-by-default, operator-run one-shot, local-only, passive/read-only, bounded to the pinned completed v0.38.5 passive live memory/coherence usefulness window artifact, redacted-before-persist, human-readable report ",
+      "rawSha256": "b1b3bab2ddb85721ba65522e55e275b6c4f899de90e8f0ab5146120ca4210939",
+      "rawBytes": 306,
+      "redactedSha256": "b1b3bab2ddb85721ba65522e55e275b6c4f899de90e8f0ab5146120ca4210939",
+      "redactedText": "The v0.40 ladder is disabled-by-default, operator-run one-shot, local-only, passive/read-only, bounded to the pinned completed v0.39.5 passive live memory/coherence stale/contradiction invalidation artifact, redacted-before-persist, human-r",
       "privatePatternDetected": false,
       "decisionVerbDetected": false,
       "semanticDecisionTokenPersisted": false
@@ -184,10 +184,10 @@
     {
       "sourceIndex": 0,
       "index": 3,
-      "rawSha256": "8451bb274bcf25b717ee07e42f362fca8e47221c330d3714cfe9453082686ecb",
-      "rawBytes": 900,
-      "redactedSha256": "8451bb274bcf25b717ee07e42f362fca8e47221c330d3714cfe9453082686ecb",
-      "redactedText": "Pinned v0.39.5 evidence: `invalidationWindowStatus: PASSIVE_LIVE_MEMORY_COHERENCE_INVALIDATION_WINDOW_COMPLETE`, `invalidationWindowCount: 1`, `candidateSignalCount: 5`, `validCarryForwardCount: 3`, `staleSignalCount: 1`, `contradictionSign",
+      "rawSha256": "8a9d4c8d44f82c20c1ad4ce2c2ae70262e1c6dcbb147bf1788e2f4510542322e",
+      "rawBytes": 1045,
+      "redactedSha256": "8a9d4c8d44f82c20c1ad4ce2c2ae70262e1c6dcbb147bf1788e2f4510542322e",
+      "redactedText": "Pinned v0.40.5 evidence: `repeatabilityStatus: PASSIVE_LIVE_MEMORY_COHERENCE_INVALIDATION_REPEATABILITY_SCORECARD_COMPLETE`, `repeatabilityRunCount: 3`, `candidateSignalCount: 5`, `totalInvalidationJudgementCount: 15`, `stableCandidateCount",
       "privatePatternDetected": false,
       "decisionVerbDetected": false,
       "semanticDecisionTokenPersisted": false
@@ -195,10 +195,10 @@
     {
       "sourceIndex": 1,
       "index": 0,
-      "rawSha256": "923abd7c3616100f40650613057b49f6e86fb7714cb21c4bc9de56d16bccdbe3",
+      "rawSha256": "45856ac02d048199ea37719ed2136797593607f220b5084410068a821e4a4e42",
       "rawBytes": 41,
-      "redactedSha256": "923abd7c3616100f40650613057b49f6e86fb7714cb21c4bc9de56d16bccdbe3",
-      "redactedText": "# Release Notes — Synaptic Mesh v0.39.5",
+      "redactedSha256": "45856ac02d048199ea37719ed2136797593607f220b5084410068a821e4a4e42",
+      "redactedText": "# Release Notes — Synaptic Mesh v0.40.5",
       "privatePatternDetected": false,
       "decisionVerbDetected": false,
       "semanticDecisionTokenPersisted": false
@@ -217,10 +217,10 @@
     {
       "sourceIndex": 1,
       "index": 2,
-      "rawSha256": "eb593e9d318d7e6633b8700efea151b6eccd76fea6b49820d402867d727850b2",
-      "rawBytes": 328,
-      "redactedSha256": "eb593e9d318d7e6633b8700efea151b6eccd76fea6b49820d402867d727850b2",
-      "redactedText": "`v0.39.5` adds a **passive live memory/coherence stale/contradiction invalidation window** over the completed pinned v0.38.5 usefulness window artifact. It measures whether passive handoff can preserve current useful signals while invalidat",
+      "rawSha256": "3458f55fa93ce9f33c999147e68cf5dda56bb1dd1f8ce8b66998b9e4fe88b329",
+      "rawBytes": 351,
+      "redactedSha256": "3458f55fa93ce9f33c999147e68cf5dda56bb1dd1f8ce8b66998b9e4fe88b329",
+      "redactedText": "`v0.40.5` adds a **passive live memory/coherence invalidation repeatability scorecard** over the completed pinned v0.39.5 stale/contradiction invalidation artifact. It measures whether carry-forward, stale invalidation, and contradiction ca",
       "privatePatternDetected": false,
       "decisionVerbDetected": false,
       "semanticDecisionTokenPersisted": false
@@ -259,5 +259,5 @@
       "semanticDecisionTokenPersisted": false
     }
   ],
-  "reportMarkdown": "# Bounded Explicit Multisource Shadow-Read Report v0.20.5\n\n- Barrier crossed: bounded explicit multisource shadow-read\n- Adapter: repo-local-file-read-adapter-v0\n- Operator-run: true; one-shot: true; local-only/read-only/passive-only: true\n- Sources: 3 / max 3\n- Records read: 10 / total limit 10; per-source limit 4\n- Per-source isolation: true; failure isolation: true; isolated failures: 0\n- Redacted evidence only: true; rawPersisted: false; rawOutput: false\n- policyDecision: null; agentConsumedOutput: false; unexpectedPermits: 0\n- Enforcement/authorization/approval/block/allow: false\n\n## Source statuses\n- source #0: ok; records=4; rawSourcePathPersisted=false\n- source #1: ok; records=4; rawSourcePathPersisted=false\n- source #2: ok; records=2; rawSourcePathPersisted=false\n\n## Redacted evidence preview\n- source #0 record #0: # Synaptic Mesh v0.39.5\n- source #0 record #1: This is the public review release `v0.39.5`. Current v0.39.5 status is narrower than live runtime and crosses the next safe barrier after v0.38: **passive live memory/coherence stale/contradiction invalidation window**.\n- source #0 record #2: The v0.39 ladder is disabled-by-default, operator-run one-shot, local-only, passive/read-only, bounded to the pinned completed v0.38.5 passive live memory/coherence usefulness window artifact, redacted-before-persist, human-readable report\n- source #0 record #3: Pinned v0.39.5 evidence: `invalidationWindowStatus: PASSIVE_LIVE_MEMORY_COHERENCE_INVALIDATION_WINDOW_COMPLETE`, `invalidationWindowCount: 1`, `candidateSignalCount: 5`, `validCarryForwardCount: 3`, `staleSignalCount: 1`, `contradictionSign\n- source #1 record #0: # Release Notes — Synaptic Mesh v0.39.5\n- source #1 record #1: ## Summary\n- source #1 record #2: `v0.39.5` adds a **passive live memory/coherence stale/contradiction invalidation window** over the completed pinned v0.38.5 usefulness window artifact. It measures whether passive handoff can preserve current useful signals while invalidat\n- source #1 record #3: ## Evidence\n- source #2 record #0: # Release Candidate — Synaptic Mesh v0.39.5\n- source #2 record #1: Target: `v0.39.5`\n"
+  "reportMarkdown": "# Bounded Explicit Multisource Shadow-Read Report v0.20.5\n\n- Barrier crossed: bounded explicit multisource shadow-read\n- Adapter: repo-local-file-read-adapter-v0\n- Operator-run: true; one-shot: true; local-only/read-only/passive-only: true\n- Sources: 3 / max 3\n- Records read: 10 / total limit 10; per-source limit 4\n- Per-source isolation: true; failure isolation: true; isolated failures: 0\n- Redacted evidence only: true; rawPersisted: false; rawOutput: false\n- policyDecision: null; agentConsumedOutput: false; unexpectedPermits: 0\n- Enforcement/authorization/approval/block/allow: false\n\n## Source statuses\n- source #0: ok; records=4; rawSourcePathPersisted=false\n- source #1: ok; records=4; rawSourcePathPersisted=false\n- source #2: ok; records=2; rawSourcePathPersisted=false\n\n## Redacted evidence preview\n- source #0 record #0: # Synaptic Mesh v0.40.5\n- source #0 record #1: This is the public review release `v0.40.5`. Current v0.40.5 status is narrower than live runtime and crosses the next safe barrier after v0.39: **passive live memory/coherence invalidation repeatability scorecard**.\n- source #0 record #2: The v0.40 ladder is disabled-by-default, operator-run one-shot, local-only, passive/read-only, bounded to the pinned completed v0.39.5 passive live memory/coherence stale/contradiction invalidation artifact, redacted-before-persist, human-r\n- source #0 record #3: Pinned v0.40.5 evidence: `repeatabilityStatus: PASSIVE_LIVE_MEMORY_COHERENCE_INVALIDATION_REPEATABILITY_SCORECARD_COMPLETE`, `repeatabilityRunCount: 3`, `candidateSignalCount: 5`, `totalInvalidationJudgementCount: 15`, `stableCandidateCount\n- source #1 record #0: # Release Notes — Synaptic Mesh v0.40.5\n- source #1 record #1: ## Summary\n- source #1 record #2: `v0.40.5` adds a **passive live memory/coherence invalidation repeatability scorecard** over the completed pinned v0.39.5 stale/contradiction invalidation artifact. It measures whether carry-forward, stale invalidation, and contradiction ca\n- source #1 record #3: ## Evidence\n- source #2 record #0: # Release Candidate — Synaptic Mesh v0.39.5\n- source #2 record #1: Target: `v0.39.5`\n"
 }

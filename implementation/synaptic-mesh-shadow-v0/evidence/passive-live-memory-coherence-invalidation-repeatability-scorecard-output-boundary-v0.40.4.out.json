@@ -1,0 +1,12 @@
+{
+  "policyDecision": null,
+  "recommendationIsAuthority": false,
+  "agentConsumedOutput": false,
+  "notRuntimeInstruction": true,
+  "noMemoryWrites": true,
+  "noRuntimeIntegration": true,
+  "rawPersisted": false,
+  "humanReadableReportOnly": true,
+  "humanReviewOnly": true,
+  "boundaryViolationCount": 0
+}
