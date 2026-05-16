@@ -69,18 +69,18 @@
     },
     {
       "path": "README.md",
-      "bytes": 2790,
-      "sha256": "d9ce3a823e4969745f91775b5b65a31542ecd010178a89515f81e3510b1d1cce"
+      "bytes": 2823,
+      "sha256": "84b6031b5c62eb4a3fc95d947ffacc404f2214fc5e4e924f8170744701d80296"
     },
     {
       "path": "RELEASE_CANDIDATE.md",
-      "bytes": 1014,
-      "sha256": "c87e903c2f23907b0a775526b6f004315bb64938b02e1a1a3003c23db22fe429"
+      "bytes": 1074,
+      "sha256": "45767b56dd3d2bc896d2f9b45ac6ec12cf00c6fdcb7316029c0df7294fcb7992"
     },
     {
       "path": "RELEASE_NOTES.md",
-      "bytes": 2545,
-      "sha256": "9daa7f3f013529e7b267bfefb51f139be4a10f8814a3f0b1582de10ca19e649a"
+      "bytes": 2583,
+      "sha256": "088e6d34bb642f7474dbf613be70359c5d91ec04b08dc22e3dbb8148ab93da35"
     },
     {
       "path": "design-notes/adapter-boundary-langgraph-mcp-v0.md",
@@ -741,6 +741,41 @@
       "path": "docs/parser-normalization-evidence.md",
       "bytes": 2130,
       "sha256": "015df89bb164c470b28dfa65b746c795601a53e2aff37fb79abbd8af94f3bd22"
+    },
+    {
+      "path": "docs/passive-handoff-receiver-shadow-rubric-decisions-v0.30.1.md",
+      "bytes": 426,
+      "sha256": "63310d1c971c615f1ee8992bff09f3c6aad7532ef778c174f1480f728676a19d"
+    },
+    {
+      "path": "docs/passive-handoff-receiver-shadow-rubric-local-review-notes-v0.30.5.md",
+      "bytes": 219,
+      "sha256": "835bddfb33bbe4cb3ad69c95957746fa903e6d1138b4f5bebc46872b145e8fd4"
+    },
+    {
+      "path": "docs/passive-handoff-receiver-shadow-rubric-metrics-v0.30.2.md",
+      "bytes": 448,
+      "sha256": "01d9b80ea98a452543f810602984ea32135130ba650d293a1b624e618b4b5ad6"
+    },
+    {
+      "path": "docs/passive-handoff-receiver-shadow-rubric-negative-controls-v0.30.3.md",
+      "bytes": 421,
+      "sha256": "574418130475f1afe21abe620f103d0ea39bd7823f6217eb05a7e444e58513a7"
+    },
+    {
+      "path": "docs/passive-handoff-receiver-shadow-rubric-output-boundary-v0.30.4.md",
+      "bytes": 433,
+      "sha256": "c053590626959c49c959c4bb483f8fcc3c273a985ee2571d45d54044f7ace198"
+    },
+    {
+      "path": "docs/passive-handoff-receiver-shadow-rubric-protocol-v0.30.0-alpha.md",
+      "bytes": 438,
+      "sha256": "e6436f42b37a56d9680b2179b454c9f671ee54766f660c34db4718247284363e"
+    },
+    {
+      "path": "docs/passive-handoff-receiver-shadow-rubric-reviewer-package-v0.30.5.md",
+      "bytes": 395,
+      "sha256": "bbd5c3677e140b9028cc4e950068709fe11ff88d95e6d1325ad93c6f56dd50a8"
     },
     {
       "path": "docs/passive-live-shadow-canary-runbook.md",
@@ -1793,6 +1828,36 @@
       "sha256": "89b8a04f58993321ba3e8e7ce66bf192407845bc5ee7eb0ea12c393ce7188857"
     },
     {
+      "path": "docs/status-v0.30.0-alpha.md",
+      "bytes": 215,
+      "sha256": "7bd4904ff8353d8c2b1c7ae5f5cab76ebede18e1b591efcdeffcaf853d72cc60"
+    },
+    {
+      "path": "docs/status-v0.30.1.md",
+      "bytes": 203,
+      "sha256": "8ea9294608fc827ed8679321a13740a8f47b9078ace00a1b27c4bd59d1f4f661"
+    },
+    {
+      "path": "docs/status-v0.30.2.md",
+      "bytes": 203,
+      "sha256": "35287601cf8bd900ea9f313779572fdfc7929d6aace41c80d108a60feb28538c"
+    },
+    {
+      "path": "docs/status-v0.30.3.md",
+      "bytes": 203,
+      "sha256": "ec79cb6d7bd24f5b81230fc2a0651692d0e5b096fc277c50914e4471f90f2898"
+    },
+    {
+      "path": "docs/status-v0.30.4.md",
+      "bytes": 203,
+      "sha256": "11c6689292edffdb2ea7abac130714a357f12cc9aa549d0b2168bd1da1939ab0"
+    },
+    {
+      "path": "docs/status-v0.30.5.md",
+      "bytes": 203,
+      "sha256": "8abcdc021df459da0ec9e5b1552ac3f2cc12db599541769c338951552770a36d"
+    },
+    {
       "path": "docs/status-v0.4.5.md",
       "bytes": 4795,
       "sha256": "b65d5f65e2d5f88ad65e475abc9d07d6da6dc8a463ba99c81ed57970bed3e01c"
@@ -2088,6 +2153,11 @@
       "sha256": "1ad69bb178c71b54d92307925dabb74dbb8c5429caf8d033c324b2a52cbeb86e"
     },
     {
+      "path": "implementation/synaptic-mesh-shadow-v0/bin/passive-handoff-receiver-shadow-rubric.mjs",
+      "bytes": 1518,
+      "sha256": "f2b3dc8ddd5b29c1c019bc6670a4666eb28d4656b600cda9ab665aff87f94fdb"
+    },
+    {
       "path": "implementation/synaptic-mesh-shadow-v0/bin/passive-live-shadow-observe.mjs",
       "bytes": 352,
       "sha256": "e979405dd16b692b6a5c8f550252ca2e41e804c61079fd7dec2a9b81655dbb43"
@@ -2229,8 +2299,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/bounded-multisource-shadow-read-packet-v0.20.1.out.json",
-      "bytes": 12408,
-      "sha256": "1bab2cbe4cc2d5ab39955626bde4559384ef17ab878ef6e5ef0049773c2eb824"
+      "bytes": 12390,
+      "sha256": "c776ed0bdb202f82946432a128360b91bb6276b3158ed8ba0570f4eca87a901f"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/bounded-multisource-shadow-read-preflight-abort-v0.20.2.out.json",
@@ -2249,8 +2319,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/bounded-multisource-shadow-read-report-v0.20.1.out.md",
-      "bytes": 2112,
-      "sha256": "b51eaf908978a7e8e8e18e8378bdc8ed6170381d03f7c9972a3777c250740421"
+      "bytes": 2104,
+      "sha256": "d2c9a3c2f7c703a2948c5ae3448096a266d11a52b2b0c60853944e62e0c7099e"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/bounded-multisource-shadow-read-reviewer-package-v0.20.5.out.json",
@@ -2449,8 +2519,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-adapter-shadow-read-packet-v0.19.1.out.json",
-      "bytes": 8070,
-      "sha256": "5186ec7806f5c5ad75d6652af71ccee80abb88585845bb435e9f197c981eb8ed"
+      "bytes": 8052,
+      "sha256": "6d631ebfb0da27320aceb4bd2f71f01f4b42387b6c6a3d4f8d360302fc0f877d"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-adapter-shadow-read-preflight-abort-v0.19.2.out.json",
@@ -2469,13 +2539,13 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-adapter-shadow-read-report-v0.19.1.out.md",
-      "bytes": 1470,
-      "sha256": "dd26f2d83445b677538a0bfc793c4659e86d561ccff6b5cb36004889f613865e"
+      "bytes": 1462,
+      "sha256": "53a9a56610c316c47e0f524892d85d2eb114733b0987059dbfa5d88fd0cfac45"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-adapter-shadow-read-reviewer-package-v0.19.5.out.json",
-      "bytes": 9601,
-      "sha256": "22e51e8718170acfd790d217f10ef19656a374465dec32a401f0525714f0f03c"
+      "bytes": 9583,
+      "sha256": "1b64e33b58e5e9d0bf44f74a36271eee31eb1182c036a2b69e26694d66812917"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-input-source-boundary-contracts.out.json",
@@ -2519,8 +2589,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-read-gate-packet-v0.18.1.out.json",
-      "bytes": 6045,
-      "sha256": "6168151bfc6bd166ef1aa76f78b0b4c72efd2935cd2800f8d2237e279c7d7408"
+      "bytes": 6035,
+      "sha256": "8f31271649ae4300c2360df018ff55965cdd1b17a2591f13500f6aa776b4a4a7"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-read-gate-preflight-abort-v0.18.2.out.json",
@@ -2539,8 +2609,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-read-gate-reviewer-package-v0.18.5.out.json",
-      "bytes": 7442,
-      "sha256": "fc5776161c5327fa20a6201509f91644c87d66c17c0147b35c652f20c098b210"
+      "bytes": 7432,
+      "sha256": "9da63338f5083ce58fdfeac7ca0206636222415f6d74cff4966321aa4eb451d3"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/live-shadow-drift-scorecard-shape.out.json",
@@ -2916,6 +2986,41 @@
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/partial-receipt-degrade.out.json",
       "bytes": 5728,
       "sha256": "8fddbe73c403ce63243cbcae2c6dcc2cdf86881b90ea3e421731677cb31f96b9"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-handoff-receiver-shadow-rubric-decisions-v0.30.1.out.json",
+      "bytes": 6345,
+      "sha256": "52891db7bb5e75718cd017acc243b4b83f9e0312843666fc77be0f4ede468c70"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-handoff-receiver-shadow-rubric-metrics-v0.30.2.out.json",
+      "bytes": 352,
+      "sha256": "be4b9f64117de880e99cc8469cf7e156de4211deff570649da0ce7ad3ba7f9b8"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-handoff-receiver-shadow-rubric-negative-controls-v0.30.3.out.json",
+      "bytes": 7490,
+      "sha256": "6eca16913c93260fa177eb71688c2c4836d4c3439e78bcd40e999e1cc82fbbb5"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-handoff-receiver-shadow-rubric-output-boundary-v0.30.4.out.json",
+      "bytes": 336,
+      "sha256": "b6a48b1ad3162b86818e6e8628d694a7a025207da16996c8eb3c19d7187c7b7a"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-handoff-receiver-shadow-rubric-protocol-v0.30.0-alpha.out.json",
+      "bytes": 953,
+      "sha256": "f13a60c88799b24957287cb3617a7caed4f88734d6c4ed832de89cb6ee7be7f5"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-handoff-receiver-shadow-rubric-report-v0.30.5.out.md",
+      "bytes": 1121,
+      "sha256": "40c33651297cc77fbbf9835d01cae9f926cec891fb8b4a70a772335f7477a080"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-handoff-receiver-shadow-rubric-reviewer-package-v0.30.5.out.json",
+      "bytes": 6345,
+      "sha256": "52891db7bb5e75718cd017acc243b4b83f9e0312843666fc77be0f4ede468c70"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/evidence/passive-live-shadow-canary-advisory-public-review-package.out.json",
@@ -4064,8 +4169,8 @@
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/package.json",
-      "bytes": 60157,
-      "sha256": "937ccd3805e444132eaa9bd3bcfdf727de9c63f48b7a323eaa0ca102c2253f40"
+      "bytes": 61575,
+      "sha256": "ef6d0948927314ed55be0bf21a26032c89ace504b26be547c7b77af98409c290"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/action-context-packet.mjs",
@@ -4166,6 +4271,11 @@
       "path": "implementation/synaptic-mesh-shadow-v0/src/operator-review-outcome-capture.mjs",
       "bytes": 13082,
       "sha256": "04c8595d12d873b0674abd8b9bfabbf8c6ed7498f5f250666fe5fd63aff98a0e"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/src/passive-handoff-receiver-shadow-rubric.mjs",
+      "bytes": 19919,
+      "sha256": "456ed9663fc8a9ac52cd2ca78a55d38823c1648f03bdb86431a4a11412dc3388"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/src/passive-live-shadow.mjs",
@@ -4901,6 +5011,41 @@
       "path": "implementation/synaptic-mesh-shadow-v0/tests/partial-receipt-degrade.mjs",
       "bytes": 7103,
       "sha256": "e9d4557033171c6862f990e3f26eaf6da65931355a30cdd1d9e6e9ab2f41da10"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-handoff-receiver-shadow-rubric-decisions-v0.30.1.mjs",
+      "bytes": 1213,
+      "sha256": "48589c5aafa9ebe9d05344396bef6214b4b89050ea9944bcb149d3d0f96ca485"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-handoff-receiver-shadow-rubric-fixtures.mjs",
+      "bytes": 1278,
+      "sha256": "c9e26be6bea2f79bd5c6abc5365e0061491d10c720931d3094e4e62fde425c68"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-handoff-receiver-shadow-rubric-metrics-v0.30.2.mjs",
+      "bytes": 1187,
+      "sha256": "d2e27aa7781976f67926f8fe612ab83836ef5862f3fed68ce98a9c04ace92e7e"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-handoff-receiver-shadow-rubric-negative-controls-v0.30.3.mjs",
+      "bytes": 4744,
+      "sha256": "837eb4a7cb201916b8aeab52240cdb5bfbae7b0facbf7032b1cc9cb528e7eff2"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-handoff-receiver-shadow-rubric-output-boundary-v0.30.4.mjs",
+      "bytes": 1437,
+      "sha256": "d08dd70b6359677d79228e0d7eb0ef4f8b94db803efcad6fc3bc8ab03c14adbe"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-handoff-receiver-shadow-rubric-protocol-v0.30.0-alpha.mjs",
+      "bytes": 1546,
+      "sha256": "0cf3af81d2c8c41bd5b20c079cd80a32f5f15ac51cdb25e09fe39aacc3753c89"
+    },
+    {
+      "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-handoff-receiver-shadow-rubric-reviewer-package-v0.30.5.mjs",
+      "bytes": 1017,
+      "sha256": "68311e1d4b410acafff783d26eac97b0fbf4de1aaa5fcc069939bd181f040b68"
     },
     {
       "path": "implementation/synaptic-mesh-shadow-v0/tests/passive-live-shadow-canary-advisory-public-review-package.mjs",
@@ -6039,8 +6184,8 @@
     },
     {
       "path": "tools/release-checks/index.mjs",
-      "bytes": 2869,
-      "sha256": "467d000cf193b08cd6abdb1f772a08d18dc8023af93e85cdb6137f463f744885"
+      "bytes": 3016,
+      "sha256": "77786c59502810d8a127310d8c542ec87aa2b5a04095a06ff547dff0fbc49530"
     },
     {
       "path": "tools/release-checks/limited-passive-live-capture-readiness.mjs",
@@ -6086,6 +6231,11 @@
       "path": "tools/release-checks/operator-review-outcome-capture.mjs",
       "bytes": 7275,
       "sha256": "ab8a1a5be4c82d0004ea0ebc4a6ecb1706ffca8ac91ec40da989f1ad2cc0cab3"
+    },
+    {
+      "path": "tools/release-checks/passive-handoff-receiver-shadow-rubric.mjs",
+      "bytes": 9596,
+      "sha256": "2d093eefc6436a0942131fc1fc740dc4fe38ab61e415c40531ea441e8bc8d5ca"
     },
     {
       "path": "tools/release-checks/passive-live-shadow-canary.mjs",

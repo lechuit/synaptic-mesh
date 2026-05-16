@@ -1,0 +1,14 @@
+import assert from 'node:assert/strict';
+import { mkdir, writeFile } from 'node:fs/promises';
+import { canonicalInput, assertBoundary } from './passive-handoff-receiver-shadow-rubric-fixtures.mjs';
+import { scorePassiveHandoffReceiverRubric } from '../src/passive-handoff-receiver-shadow-rubric.mjs';
+const out = scorePassiveHandoffReceiverRubric(canonicalInput());
+assert.equal(out.receiverStatus, 'PASSIVE_HANDOFF_RECEIVER_RUBRIC_COMPLETE');
+assert.equal(out.receiverItems.length, 4);
+assert.deepEqual(out.receiverItems.map(i => i.receiverTreatment), ['include_for_human_context','include_for_human_context','surface_for_human_conflict_review','include_as_stale_caution_for_human_review']);
+assert.equal(out.receiverItems.filter(i => i.receiverTreatment === 'include_for_human_context').length, 2);
+assert.equal(out.receiverItems.find(i => i.cardType === 'contradiction').contradictionHandled, true);
+assert.equal(out.receiverItems.find(i => i.cardType === 'stale_negative_context').staleHandled, true);
+assertBoundary(out, assert);
+await mkdir('evidence', { recursive: true });
+await writeFile('evidence/passive-handoff-receiver-shadow-rubric-decisions-v0.30.1.out.json', `${JSON.stringify(out, null, 2)}\n`);
