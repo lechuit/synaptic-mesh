@@ -757,6 +757,30 @@ describe('RetrievalRouter', () => {
     expect(result.conflicts).toHaveLength(0);
   });
 
+  it('returns the visible latest atom in a supersedes chain by default', async () => {
+    const { authority, memoryStore } = makeRuntime();
+    const previous = atom({
+      memoryId: 'mem-lineage-prev' as MemoryId,
+      validFrom: '2026-05-16T12:00:00Z',
+    });
+    const successor = atom({
+      memoryId: 'mem-lineage-next' as MemoryId,
+      sourceMemoryIds: [previous.memoryId],
+      validFrom: '2026-05-16T12:20:00Z',
+      links: [{ relation: 'supersedes', targetMemoryId: previous.memoryId }],
+    });
+    await memoryStore.insert(previous);
+    await memoryStore.insert(successor);
+
+    const result = await authority.recall({
+      agentId: 'agent-1' as AgentId,
+      scope: { kind: 'local' },
+    });
+
+    expect(result.decision.outcome).toBe('allow_local_shadow');
+    expect(result.atoms.map((a) => a.memoryId)).toEqual([successor.memoryId]);
+  });
+
   it('fails closed for topic queries without a topic index', async () => {
     const { authority } = makeRuntime();
 

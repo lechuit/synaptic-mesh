@@ -233,24 +233,13 @@ export class DynamicsEngine {
       );
     }
 
-    if (atom.status === 'candidate') {
-      const staleDecision = this.staleDecision(atom, nowMs);
-      if (staleDecision !== null) {
-        return this.transition(
-          atom,
-          'deprecated',
-          staleDecision,
-          [],
-          input.now,
-          input.applyTransitions === true,
-        );
-      }
+    const evidence = await this.evidenceProvider.evidenceFor(atom, {
+      now: input.now,
+      scope: input.scope,
+      permittedVisibilities: input.permittedVisibilities,
+    });
 
-      const evidence = await this.evidenceProvider.evidenceFor(atom, {
-        now: input.now,
-        scope: input.scope,
-        permittedVisibilities: input.permittedVisibilities,
-      });
+    if (atom.status === 'candidate') {
       if (this.canPromoteCandidate(atom, evidence)) {
         return this.transition(
           atom,
@@ -262,10 +251,22 @@ export class DynamicsEngine {
         );
       }
 
+      const staleDecision = this.staleDecision(atom, nowMs, evidence);
+      if (staleDecision !== null) {
+        return this.transition(
+          atom,
+          'deprecated',
+          staleDecision,
+          [],
+          input.now,
+          input.applyTransitions === true,
+        );
+      }
+
       return skipped(atom, 'insufficient_promotion_evidence', []);
     }
 
-    const staleDecision = this.staleDecision(atom, nowMs);
+    const staleDecision = this.staleDecision(atom, nowMs, evidence);
     if (staleDecision !== null) {
       return this.transition(
         atom,
@@ -286,15 +287,18 @@ export class DynamicsEngine {
   ): Promise<readonly ConflictRecord[]> {
     return this.conflictRegistry.query({
       touchingMemoryIds: [atom.memoryId],
-      statuses: ['unresolved'],
+      statuses: ['unresolved', 'requires_human'],
       scope: input.scope,
       permittedVisibilities: input.permittedVisibilities,
     });
   }
 
-  private staleDecision(atom: MemoryAtom, nowMs: number): 'stale_by_policy' | null {
-    const anchor = atom.lastConfirmedAt ?? atom.validFrom;
-    const anchorMs = timestampMs(anchor);
+  private staleDecision(
+    atom: MemoryAtom,
+    nowMs: number,
+    evidence: DynamicsEvidence,
+  ): 'stale_by_policy' | null {
+    const anchorMs = latestAnchorMs(atom, evidence);
     if (anchorMs === null) {
       return 'stale_by_policy';
     }
@@ -371,6 +375,15 @@ function statusThresholdMs(status: MemoryStatus, policy: DynamicsPolicy): number
 function timestampMs(timestamp: IsoTimestamp): number | null {
   const parsed = Date.parse(timestamp);
   return Number.isNaN(parsed) ? null : parsed;
+}
+
+function latestAnchorMs(atom: MemoryAtom, evidence: DynamicsEvidence): number | null {
+  const anchors = [atom.validFrom, atom.lastConfirmedAt, evidence.lastUsedAt].filter(
+    (timestamp): timestamp is IsoTimestamp => timestamp !== null && timestamp !== undefined,
+  );
+  const parsed = anchors.map(timestampMs);
+  if (parsed.some((value) => value === null)) return null;
+  return Math.max(...(parsed as number[]));
 }
 
 function skipped(

@@ -183,6 +183,8 @@ Measured before Phase 2 work, excluding `dist/`, JSON config, Markdown, and gene
 
 Built on top of Phase 1.
 
+**Status (closed through Phase 2.4, 2026-05-17)**: the lifecycle substrate is executable. Aletheia can age already-authorized recall results, derive promotion/staleness evidence from append-only recall events, apply deterministic sleep-cycle transitions through audited storage APIs, and reconstruct successor lineage without overwriting prior beliefs.
+
 ### Phase 2.0 status
 
 - [x] `@aletheia/dynamics` package created as the first Phase 2 surface.
@@ -205,6 +207,32 @@ Built on top of Phase 1.
 - [x] `AletheiaAuthority` passes the optional scorer through without making `@aletheia/core` depend on `@aletheia/dynamics`.
 - [x] Deterministic tests cover status-specific decay, advancing logical time, future/expired validity windows, and filtered recall ranking.
 
+### Phase 2.2 — Auto-transition evidence status
+
+- [x] Candidate promotion is evaluated before stale-candidate deprecation, so a source-consistently recalled candidate can become `verified` instead of being discarded only because it is old.
+- [x] `LedgerRecallEvidenceProvider` derives promotion and last-used evidence from append-only `EventLedger` records after ledger-level scope and visibility filtering.
+- [x] `sourceConsistentRecallPayload(atom)` gives hosts a canonical event payload for recording source-consistent memory use.
+- [x] Verified/trusted staleness uses the latest available anchor among `validFrom`, `lastConfirmedAt`, and ledger-derived `lastUsedAt`.
+- [x] Tests cover no-permission fail-closed behavior, stale deprecation, candidate promotion, recent recall protection, unresolved/requires-human conflict handling, and sealed/human-required skipping.
+- [x] No auto-promotion to `trusted` or `sealed`; those remain outside operational lifecycle transitions.
+
+### Phase 2.3 — Reconsolidation and lineage status
+
+- [x] Reconsolidation uses successor atoms with `supersedes` links; it does not overwrite existing memory content, scope, visibility, scores, or links.
+- [x] Successor insertion remains gated: `ReconsolidationApplier` requires explicit human confirmation and inserts successors as `candidate`.
+- [x] Superseded prior atoms are deprecated only through `MemoryStore.transitionStatus()` with audit history.
+- [x] `LineageTracer.traceBack()` reconstructs visible `supersedes` chains newest-to-oldest and fails closed on missing/invisible ancestors, cycles, or excessive depth.
+- [x] `RetrievalRouter` omits older visible atoms when a visible successor supersedes them, after hard permission/scope/status/freshness filters and before recall limits.
+- [x] Tests reconstruct belief history from lineage, verify fail-closed lineage gaps, and verify recall returns the latest visible atom in a successor chain.
+
+### Phase 2.4 — Sleep cycle status
+
+- [x] `SleepCycleRunner` remains a host-triggered function, not a daemon or watcher.
+- [x] Dry-run and apply modes are deterministic for the same store, policy, evidence, and logical clock.
+- [x] SQLite sleep-cycle tests now exercise ledger-derived recall evidence end to end: candidate promotion, verified staleness deprecation, logical transition timestamps, and status-history audit rows.
+- [x] Explicit multi-cycle runs aggregate planned/applied/rejected/skipped memory IDs without hidden scheduling.
+- [x] A store left to explicit `tick()` calls evolves observably through `memory_status_history`; transitions can be explained from policy, evidence, unresolved/requires-human conflicts, validity windows, and the cycle clock.
+
 ### Scope
 
 - **Status transitions driven by use/disuse**: candidate → verified after repeated source-consistent recall; verified → deprecated after contradicting evidence or staleness threshold.
@@ -218,9 +246,10 @@ Most memory libraries treat memory as read-mostly storage. Treating it as a cont
 
 ### Acceptance (sketch)
 
-- A memory store subjected to explicit scheduled lifecycle passes, with no queries, visibly evolves in observable, deterministic ways.
-- Reconsolidation produces lineage chains the user can inspect.
-- A simulated agent's beliefs over time can be reconstructed from the store alone.
+- [x] A memory store subjected to explicit lifecycle passes, with no semantic queries, visibly evolves in observable, deterministic ways.
+- [x] Reconsolidation produces lineage chains the user can inspect.
+- [x] A simulated agent's belief history can be reconstructed from `memory_status_history` plus `supersedes` links.
+- [x] Permission, scope, status, freshness, and conflict checks stay ahead of ranking or lifecycle decisions.
 
 ---
 

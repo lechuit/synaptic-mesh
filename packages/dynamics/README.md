@@ -43,11 +43,13 @@ Use `applyTransitions: true` only when the host wants audited status transitions
 - Scans lifecycle candidates without `validAt` filtering so expired or corrupt validity windows can be decommissioned.
 - Plans status transitions from explicit policy and evidence.
 - Applies transitions only through `MemoryStore.transitionStatus`.
-- Treats unresolved conflicts that touch an atom as authority blockers.
+- Treats unresolved or human-required conflicts that touch an atom as authority blockers.
+- Counts source-consistent recall evidence from an append-only `EventLedger`.
 - Provides `SleepCycleRunner` for deterministic dry-run/apply reports over a host-provided store.
 - Runs explicit multi-cycle sleep sequences when the host provides each cycle input; no hidden scheduler is started.
 - Provides `ReconsolidationPlanner` for successor drafts with `supersedes` lineage and planned transitions.
 - Provides `ReconsolidationApplier` for explicit human-confirmed successor insertion plus audited prior-atom deprecation.
+- Provides `LineageTracer` for permission-guarded reconstruction of `supersedes` chains.
 - Keeps `@aletheia/core` SDK-free and free of background scheduling.
 
 ## Decayed Recall Ranking
@@ -74,6 +76,57 @@ Defaults decay candidates fastest, verified memories over weeks, and trusted
 memories over months. Sealed memory does not decay; rejected, deprecated, and
 human-required memory scores zero.
 
+## Recall Evidence
+
+`LedgerRecallEvidenceProvider` turns host-recorded recall events into lifecycle
+evidence. It queries the ledger by scope and visibility before inspecting
+payloads, then counts only events whose payload cites the target atom and all of
+its `sourceEventIds`.
+
+```ts
+import {
+  LedgerRecallEvidenceProvider,
+  sourceConsistentRecallPayload,
+} from '@aletheia/dynamics';
+
+await eventLedger.append({
+  eventId,
+  kind: 'decision',
+  agentId,
+  occurredAt,
+  scope: atom.scope,
+  visibility: atom.visibility,
+  payload: sourceConsistentRecallPayload(atom),
+});
+
+const engine = new DynamicsEngine({
+  stores,
+  policy,
+  evidenceProvider: new LedgerRecallEvidenceProvider({ eventLedger }),
+});
+```
+
+The event is evidence that a host used a memory with its original sources still
+present. It is not permission, not semantic relevance, and not model confidence.
+
+## Lineage
+
+Reconsolidation never overwrites an atom. A successor carries a `supersedes`
+link to the prior atom, and the prior atom is deprecated through audited status
+history. `LineageTracer` reconstructs that chain only through visible atoms:
+
+```ts
+import { LineageTracer } from '@aletheia/dynamics';
+
+const lineage = await new LineageTracer({ memoryStore }).traceBack({
+  memoryId: successorId,
+  permittedVisibilities,
+});
+```
+
+If an ancestor is missing, invisible, cyclic, or too deep, the tracer returns
+`fetch_abstain` with the partial chain instead of inventing continuity.
+
 ## What this package does NOT do
 
 - No hidden daemon.
@@ -94,8 +147,12 @@ Public surface for the initial library cycle:
 - `AuthorityDecayPolicy` and `AuthorityDecayPolicyOverrides`
 - `DynamicsEngine`
 - `SleepCycleRunner`
+- `LedgerRecallEvidenceProvider`
+- `sourceConsistentRecallPayload`
+- `SOURCE_CONSISTENT_RECALL_EVENT`
 - `ReconsolidationPlanner`
 - `ReconsolidationApplier`
+- `LineageTracer`
 - policy, decision, report, and evidence-provider types
 
 Everything else is lifecycle plumbing and may change before the first `0.1.0` release. Dynamics can change persisted memory status, so hosts should treat policy changes as operationally significant even when TypeScript signatures stay stable.
