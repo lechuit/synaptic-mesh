@@ -8,9 +8,11 @@ export interface ProposalSafetyFinding {
 }
 
 const SECRET_PATTERNS: readonly RegExp[] = [
-  /\bsk-[A-Za-z0-9_-]{3,}\b/,
+  /\bsk-[A-Za-z0-9_-]{16,}\b/,
   /\bAKIA[0-9A-Z]{16}\b/,
   /\bgh[pousr]_[A-Za-z0-9_]{20,}\b/,
+  /\beyJ[A-Za-z0-9_-]{10,}\.[A-Za-z0-9_-]{10,}\.[A-Za-z0-9_-]{10,}\b/,
+  /-----BEGIN [A-Z ]*PRIVATE KEY-----/,
   /\b(?:api[_-]?key|secret|token|password)\s*[:=]\s*["']?[^"'\s]{8,}/i,
 ];
 

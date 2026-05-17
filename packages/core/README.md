@@ -82,9 +82,25 @@ Every call returns a structured decision. Memory text, receipts, model prose, co
 - **Domain schemas and types**: `Receipt`, `CompressedReceipt`, `MemoryAtom`, `MemoryProposal`, `ActionContextPacket`, `Coverage`, `ConflictRecord`, `Decision`, and discriminated unions for status/scope/visibility.
 - **Storage interfaces**: `EventLedger`, `MemoryStore`, and `ConflictRegistry`. Implementations live in other packages.
 - **WriteGate**: validates source events, scope, visibility, risk, and conflict boundaries before memory insertion.
+- **Proposal safety guard**: deterministic checks for credential-like claims, permission-bypass policies, and destructive durable instructions before a proposal can become actionable memory.
 - **RetrievalRouter**: non-semantic recall by visibility, scope, status, type, freshness, and conflict state.
 - **ActionAuthorizer**: receiver-side `tryAct()` guard. Sensitive actions always ask human.
 - **AletheiaAuthority**: small facade exposing `propose()`, `recall()`, and `tryAct()`.
+
+## Proposal Safety Guard
+
+`WriteGate` calls `evaluateProposalSafety()` after visibility/source/scope checks
+and before insertion. The guard can only deny or escalate; it never grants
+authority. Current deterministic canaries cover:
+
+- long `sk-...` provider-style tokens, AWS access keys, GitHub tokens, JWT-like compact tokens, PEM private-key headers, and explicit `api_key`/`secret`/`token`/`password` assignments;
+- durable policies that try to bypass receiver-side permission checks;
+- destructive runtime instructions such as deleting repositories or databases.
+
+This is not a general DLP system or proof that arbitrary secrets cannot appear
+in source events. It prevents matching proposal claims from becoming actionable
+MemoryAtoms. Hosts that ingest sensitive raw conversations should still redact
+or scope those source events appropriately.
 
 ## Fail-closed examples
 
