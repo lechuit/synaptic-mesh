@@ -10,6 +10,8 @@ remain recoverable through git history.
 - Added an `@aletheia-labs/episodic` continuity brief projection that combines
   current self-state, recent visible episode anchors, and optional status
   changes since a prior instant without adding authority or action permission.
+- Added an explicit experience index projection that maps visible scoped
+  episode anchors to the visible atoms grounded in those events.
 
 ## 0.1.1 - 2026-05-17
 

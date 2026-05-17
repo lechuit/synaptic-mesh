@@ -49,6 +49,19 @@ export interface EpisodeCatalog {
   readonly events: readonly EpisodeEvent[];
 }
 
+export interface ExperienceIndexEntry {
+  readonly episode: EpisodeSummary;
+  readonly events: readonly EpisodeEvent[];
+  readonly atoms: readonly MemoryAtom[];
+  readonly statusesAt: readonly MemoryStatusAt[];
+}
+
+export interface ExperienceIndex {
+  readonly decision: Decision;
+  readonly at: IsoTimestamp;
+  readonly entries: readonly ExperienceIndexEntry[];
+}
+
 export interface MemoryStatusAt {
   readonly memoryId: MemoryId;
   readonly status: MemoryStatus;
@@ -164,6 +177,16 @@ export interface EpisodeCatalogQuery extends EpisodicQueryBase {
   readonly limit?: number;
 }
 
+export interface ExperienceIndexQuery extends EpisodicQueryBase {
+  readonly kind?: EpisodeKind;
+  readonly since?: IsoTimestamp;
+  readonly until?: IsoTimestamp;
+  readonly asOf?: IsoTimestamp;
+  readonly statusesAt?: readonly MemoryStatus[];
+  readonly contentIncludes?: string;
+  readonly limit?: number;
+}
+
 export interface BeliefsAtQuery extends EpisodicQueryBase {
   readonly asOf: IsoTimestamp;
   readonly statusesAt?: readonly MemoryStatus[];
@@ -268,6 +291,71 @@ export class EpisodicTimeline {
       ),
       episodes: limitedEpisodes,
       events: limitedEvents,
+    };
+  }
+
+  /**
+   * Index visible memories by the explicit experiences that produced them.
+   *
+   * @remarks
+   * This is the Phase 3 "biography" join: visible scoped episode events are
+   * loaded first, visible scoped atoms are loaded second, and only then are
+   * atoms connected to episodes through shared `sourceEventIds`. No semantic
+   * matching or hidden event inference is performed.
+   */
+  async experienceIndex(query: ExperienceIndexQuery): Promise<ExperienceIndex> {
+    const emittedAt = this.clock.now();
+    const at = query.asOf ?? query.until ?? emittedAt;
+    const permitted = this.permittedFor(query.agentId);
+    if (permitted.length === 0) {
+      return emptyExperienceIndex(
+        at,
+        failClosed('visibility_denied', 'caller has no permitted visibility planes', emittedAt),
+      );
+    }
+
+    const events = await this.loadAnchoredEvents(query, permitted);
+    const matchingEvents =
+      query.kind !== undefined
+        ? events.filter((event) => event.anchor.kind === query.kind)
+        : events;
+    if (matchingEvents.length === 0) {
+      return emptyExperienceIndex(at, failClosed('tuple_incomplete', 'episodeAnchors', emittedAt));
+    }
+
+    const snapshot = await this.loadSnapshot(
+      {
+        agentId: query.agentId,
+        scope: query.scope,
+        asOf: at,
+        statusesAt: query.statusesAt ?? ALL_STATUSES,
+        ...(query.contentIncludes !== undefined ? { contentIncludes: query.contentIncludes } : {}),
+      },
+      permitted,
+    );
+    const entries = buildExperienceEntries(matchingEvents, snapshot).filter(
+      (entry) => entry.atoms.length > 0,
+    );
+    const limitedEntries = query.limit !== undefined ? entries.slice(0, query.limit) : entries;
+    if (limitedEntries.length === 0) {
+      return emptyExperienceIndex(at, failClosed('tuple_incomplete', 'experienceAtoms', emittedAt));
+    }
+
+    const relatedMemoryIds = [
+      ...uniqueMemoryIds(
+        limitedEntries.flatMap((entry) => entry.atoms.map((atom) => atom.memoryId)),
+      ),
+    ];
+    return {
+      decision: decision(
+        'allow_local_shadow',
+        [{ kind: 'all_checks_passed', citedMemoryIds: relatedMemoryIds }],
+        relatedMemoryIds,
+        [],
+        emittedAt,
+      ),
+      at,
+      entries: limitedEntries,
     };
   }
 
@@ -816,6 +904,14 @@ function emptyCatalog(decisionValue: Decision): EpisodeCatalog {
   };
 }
 
+function emptyExperienceIndex(at: IsoTimestamp, decisionValue: Decision): ExperienceIndex {
+  return {
+    decision: decisionValue,
+    at,
+    entries: [],
+  };
+}
+
 function emptyEpisodeProjection(decisionValue: Decision): EpisodeProjection {
   return {
     decision: decisionValue,
@@ -910,6 +1006,31 @@ function summarizeEpisodes(events: readonly EpisodeEvent[]): readonly EpisodeSum
       }
       return a.episodeId.localeCompare(b.episodeId);
     });
+}
+
+function buildExperienceEntries(
+  events: readonly EpisodeEvent[],
+  snapshot: {
+    readonly atoms: readonly MemoryAtom[];
+    readonly statusesAt: readonly MemoryStatusAt[];
+  },
+): readonly ExperienceIndexEntry[] {
+  return summarizeEpisodes(events).map((episode) => {
+    const episodeEvents = events.filter(
+      (event) => event.anchor.kind === episode.kind && event.anchor.episodeId === episode.episodeId,
+    );
+    const eventIds = new Set(episodeEvents.map((event) => event.event.eventId));
+    const atoms = snapshot.atoms.filter((atom) =>
+      atom.sourceEventIds.some((eventId) => eventIds.has(eventId)),
+    );
+    const memoryIds = new Set(atoms.map((atom) => atom.memoryId));
+    return {
+      episode: summarizeEpisode(episode.episodeId, episodeEvents, atoms),
+      events: episodeEvents,
+      atoms,
+      statusesAt: snapshot.statusesAt.filter((status) => memoryIds.has(status.memoryId)),
+    };
+  });
 }
 
 function summarizeEpisode(
