@@ -5,7 +5,7 @@ removed from the active tree during repo hygiene cleanup so new readers see the
 live TypeScript library, not historical review scaffolding. Those artifacts
 remain recoverable through git history.
 
-## Unreleased
+## 0.1.2 - 2026-05-17
 
 - Added an `@aletheia-labs/episodic` continuity brief projection that combines
   current self-state, recent visible episode anchors, and optional status
