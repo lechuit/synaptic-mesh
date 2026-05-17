@@ -5,9 +5,11 @@ import {
   type AgentId,
   type Event,
   type EventId,
+  type EventLedger,
   type IsoTimestamp,
   type MemoryAtom,
   type MemoryId,
+  type MemoryStore,
   type Scope,
   type Visibility,
   staticVisibilityPolicy,
@@ -269,9 +271,8 @@ describe('EpisodicTimeline', () => {
     expect(result.decision.outcome).toBe('fetch_abstain');
     expect(result.decision.reasons).toEqual([
       {
-        kind: 'scope_outside_boundary',
-        requestedScope: 'project:aletheia',
-        allowedScope: 'project:other',
+        kind: 'source_check_failed',
+        detail: 'memory is missing, not visible, or outside requested scope',
       },
     ]);
     expect(result.atom).toBeNull();
@@ -411,6 +412,182 @@ describe('EpisodicTimeline', () => {
     }
   });
 
+  it('builds a restart continuity brief with recent episodes and status changes', async () => {
+    await stores.eventLedger.append(
+      event({
+        eventId: 'evt-session-a' as EventId,
+        episodeId: 'session-a',
+        episodeKind: 'session',
+        occurredAt: '2026-05-01T12:00:00Z' as IsoTimestamp,
+      }),
+    );
+    await stores.eventLedger.append(
+      event({
+        eventId: 'evt-session-b' as EventId,
+        episodeId: 'session-b',
+        episodeKind: 'session',
+        occurredAt: '2026-05-12T12:00:00Z' as IsoTimestamp,
+      }),
+    );
+    await stores.eventLedger.append(
+      event({
+        eventId: 'evt-hidden-session' as EventId,
+        episodeId: 'session-hidden',
+        episodeKind: 'session',
+        visibility: HIDDEN_VISIBILITY,
+        occurredAt: '2026-05-13T12:00:00Z' as IsoTimestamp,
+      }),
+    );
+    await stores.eventLedger.append(
+      event({
+        eventId: 'evt-other-scope-session' as EventId,
+        episodeId: 'session-other-scope',
+        episodeKind: 'session',
+        scope: OTHER_SCOPE,
+        occurredAt: '2026-05-14T12:00:00Z' as IsoTimestamp,
+      }),
+    );
+
+    const persisted = atom({
+      memoryId: 'mem-continuity-persisted' as MemoryId,
+      status: 'candidate',
+      validFrom: '2026-05-01T00:00:00Z' as IsoTimestamp,
+    });
+    const added = atom({
+      memoryId: 'mem-continuity-added' as MemoryId,
+      status: 'candidate',
+      sourceEventIds: ['evt-session-b' as EventId],
+      validFrom: '2026-05-12T00:00:00Z' as IsoTimestamp,
+    });
+    const removed = atom({
+      memoryId: 'mem-continuity-removed' as MemoryId,
+      status: 'candidate',
+      validFrom: '2026-05-01T00:00:00Z' as IsoTimestamp,
+      validUntil: '2026-05-10T00:00:00Z' as IsoTimestamp,
+    });
+    const human = atom({
+      memoryId: 'mem-continuity-human' as MemoryId,
+      status: 'candidate',
+      validFrom: '2026-05-01T00:00:00Z' as IsoTimestamp,
+    });
+    await stores.memoryStore.insert(persisted);
+    await stores.memoryStore.insert(added);
+    await stores.memoryStore.insert(removed);
+    await stores.memoryStore.insert(human);
+    await stores.memoryStore.transitionStatus(
+      persisted.memoryId,
+      'verified',
+      { actor: AGENT, rationale: 'pre-restart belief' },
+      { at: '2026-05-02T00:00:00Z' as IsoTimestamp },
+    );
+    await stores.memoryStore.transitionStatus(
+      persisted.memoryId,
+      'trusted',
+      { actor: AGENT, rationale: 'stronger later evidence' },
+      { at: '2026-05-13T00:00:00Z' as IsoTimestamp },
+    );
+    await stores.memoryStore.transitionStatus(
+      added.memoryId,
+      'verified',
+      { actor: AGENT, rationale: 'new session belief' },
+      { at: '2026-05-12T00:00:00Z' as IsoTimestamp },
+    );
+    await stores.memoryStore.transitionStatus(
+      removed.memoryId,
+      'verified',
+      { actor: AGENT, rationale: 'expired belief before restart' },
+      { at: '2026-05-02T00:00:00Z' as IsoTimestamp },
+    );
+    await stores.memoryStore.transitionStatus(
+      human.memoryId,
+      'human_required',
+      { actor: AGENT, rationale: 'requires operator review' },
+      { at: '2026-05-03T00:00:00Z' as IsoTimestamp },
+    );
+
+    const brief = await timeline().continuityBrief({
+      agentId: AGENT,
+      scope: SCOPE,
+      since: '2026-05-05T00:00:00Z' as IsoTimestamp,
+      at: '2026-05-15T00:00:00Z' as IsoTimestamp,
+      episodeKind: 'session',
+      episodeLimit: 1,
+    });
+
+    expect(brief.decision.outcome).toBe('allow_local_shadow');
+    expect(brief.recentEpisodes.map((episode) => episode.episodeId)).toEqual(['session-b']);
+    expect(brief.selfState.beliefs.map((memory) => memory.memoryId).sort()).toEqual([
+      'mem-continuity-added',
+      'mem-continuity-persisted',
+    ]);
+    expect(brief.selfState.humanRequired.map((memory) => memory.memoryId)).toEqual([
+      'mem-continuity-human',
+    ]);
+    expect(brief.changedSince).toEqual({
+      addedMemoryIds: ['mem-continuity-added'],
+      removedMemoryIds: ['mem-continuity-removed'],
+      persistedMemoryIds: ['mem-continuity-human', 'mem-continuity-persisted'],
+      statusChanged: [
+        {
+          memoryId: 'mem-continuity-persisted',
+          fromStatus: 'verified',
+          toStatus: 'trusted',
+        },
+      ],
+    });
+  });
+
+  it('allows continuity reconstruction even when no explicit episodes are visible', async () => {
+    const memory = atom({
+      memoryId: 'mem-continuity-no-episodes' as MemoryId,
+      status: 'candidate',
+    });
+    await stores.memoryStore.insert(memory);
+    await stores.memoryStore.transitionStatus(
+      memory.memoryId,
+      'verified',
+      { actor: AGENT, rationale: 'visible belief without episode anchor' },
+      { at: '2026-05-01T00:00:00Z' as IsoTimestamp },
+    );
+
+    const brief = await timeline().continuityBrief({
+      agentId: AGENT,
+      scope: SCOPE,
+      at: '2026-05-15T00:00:00Z' as IsoTimestamp,
+    });
+
+    expect(brief.decision.outcome).toBe('allow_local_shadow');
+    expect(brief.recentEpisodes).toEqual([]);
+    expect(brief.selfState.beliefs.map((memory) => memory.memoryId)).toEqual([
+      'mem-continuity-no-episodes',
+    ]);
+    expect(brief.changedSince).toBeNull();
+  });
+
+  it('fails closed on continuity brief requests with no visibility or invalid time range', async () => {
+    const denied = await new EpisodicTimeline({
+      eventLedger: throwingEventLedger(),
+      memoryStore: throwingMemoryStore(),
+    }).continuityBrief({
+      agentId: AGENT,
+      scope: SCOPE,
+      at: '2026-05-15T00:00:00Z' as IsoTimestamp,
+    });
+    const invalidRange = await timeline().continuityBrief({
+      agentId: AGENT,
+      scope: SCOPE,
+      since: '2026-05-16T00:00:00Z' as IsoTimestamp,
+      at: '2026-05-15T00:00:00Z' as IsoTimestamp,
+    });
+
+    expect(denied.decision.outcome).toBe('fetch_abstain');
+    expect(denied.selfState.beliefs).toEqual([]);
+    expect(invalidRange.decision.outcome).toBe('fetch_abstain');
+    expect(invalidRange.decision.reasons).toEqual([
+      { kind: 'tuple_incomplete', missingFields: ['timeRange:since<=at'] },
+    ]);
+  });
+
   it('parses only explicit episodic payload anchors', () => {
     expect(episodeAnchorFromEvent(event({ eventId: 'evt-anchor' as EventId }))).toMatchObject({
       episodeId: 'conversation-a',
@@ -519,5 +696,42 @@ function atom(overrides: Partial<MemoryAtom> = {}): MemoryAtom {
     validUntil: overrides.validUntil ?? null,
     lastConfirmedAt: overrides.lastConfirmedAt ?? null,
     links: overrides.links ?? [],
+  };
+}
+
+function throwingEventLedger(): EventLedger {
+  return {
+    append: async () => {
+      throw new Error('event ledger should not be called');
+    },
+    get: async () => {
+      throw new Error('event ledger should not be called');
+    },
+    query: async () => {
+      throw new Error('event ledger should not be called');
+    },
+    count: async () => {
+      throw new Error('event ledger should not be called');
+    },
+  };
+}
+
+function throwingMemoryStore(): MemoryStore {
+  return {
+    insert: async () => {
+      throw new Error('memory store should not be called');
+    },
+    get: async () => {
+      throw new Error('memory store should not be called');
+    },
+    query: async () => {
+      throw new Error('memory store should not be called');
+    },
+    transitionStatus: async () => {
+      throw new Error('memory store should not be called');
+    },
+    statusHistory: async () => {
+      throw new Error('memory store should not be called');
+    },
   };
 }
