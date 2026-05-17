@@ -12,7 +12,7 @@ This is not RAG. It is not semantic memory. It is the substrate underneath both.
 
 ## Status (honest)
 
-This repo is in **Phase 1: building the executable reference**. What exists today:
+This repo is in **Phase 3.0: executable authority memory with dynamics and episodic projections**. What exists today:
 
 - a paper draft (`paper/aletheia-paper-v0.md`)
 - protocol specifications (`specs/`)
@@ -20,13 +20,16 @@ This repo is in **Phase 1: building the executable reference**. What exists toda
 - reproducibility evidence (`evidence/`)
 - a public-review research package (`research-package/`)
 - the historical no-effect reference implementation in JS, preserved for parity testing (`archive/synaptic-mesh-shadow-v0/`)
-- a TypeScript monorepo skeleton under construction (`packages/core/`)
+- `@aletheia/core`: strict TypeScript authority types, storage interfaces, WriteGate, RetrievalRouter, and ActionAuthorizer
+- `@aletheia/store-sqlite`: SQLite-backed event, memory, and conflict stores
+- `@aletheia/dynamics`: deterministic lifecycle dynamics and explicit sleep-cycle reports
+- `@aletheia/episodic`: subjective-time projections, historical belief snapshots, and restart self-state reconstruction
 
-What does **not** exist yet (Phase 1 deliverables):
+What does **not** exist yet:
 
-- a real `MemoryStore` with persistence (SQLite)
 - live LLM integration
-- a consumer API (`propose`, `recall`, `tryAct`)
+- published npm packages
+- a mutating reconsolidation apply path for successor atoms; the current surface is planner-only until the gate contract is explicit
 
 See `ROADMAP.md` for the phase breakdown.
 
@@ -38,13 +41,16 @@ Three claims, layered, increasing in ambition:
 2. **Memory as a process, not an index** — memories consolidate, decay, re-evaluate themselves when new evidence arrives; the system has internal dynamics, not just a query interface.
 3. **Subjective time / episodic continuity** — the agent has a sense of its own lived experience; "what I believed last week" is a first-class query.
 
-Phase 1 of the roadmap delivers claim 1 as running code. Claims 2 and 3 are the destination.
+Phase 1 delivers claim 1 as running code; Phase 2 adds lifecycle dynamics; Phase 3 begins subjective-time continuity.
 
 ## Repository layout
 
 ```
 packages/               TypeScript monorepo (pnpm workspaces) — the live system
-  └── core/             @aletheia/core — types, write gate, memory store, retrieval router
+  ├── core/             @aletheia/core — types, write gate, memory store, retrieval router
+  ├── store-sqlite/     @aletheia/store-sqlite — SQLite storage implementations
+  ├── dynamics/         @aletheia/dynamics — decay, promotion, conflict revisit, sleep cycles
+  └── episodic/         @aletheia/episodic — subjective time and continuity projections
 paper/                  research paper draft (aletheia-paper-v0.md)
 specs/                  protocol specs (memory authority, compressed receipts, system architecture)
 runs/                   experiment lab — fixtures, scenarios, validators (preserves Synaptic Mesh names as historical evidence)

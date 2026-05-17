@@ -8,7 +8,7 @@ Releases are listed newest first.
 
 ---
 
-## Unreleased — Aletheia Phase 2.0 memory dynamics
+## Unreleased — Aletheia Phase 2/3 memory dynamics and episodic continuity
 
 - Added `@aletheia/dynamics`, a deterministic sleep-cycle engine for memory decay, candidate promotion, and unresolved-conflict revisits.
 - Dynamics plans transitions by default and applies them only through `MemoryStore.transitionStatus`, preserving the append-only atom model and audit history.
@@ -19,6 +19,7 @@ Releases are listed newest first.
 - Documented the reconsolidation blocker: successor atoms need an explicit planner/gate contract before implementation can safely proceed.
 - Added `ReconsolidationPlanner`, a planner-only Phase 2.2 surface that drafts candidate successors with `supersedes` lineage and planned deprecation transitions without inserting or mutating memory.
 - Added explicit multi-cycle sleep runs: hosts provide each cycle clock/input; Aletheia aggregates deterministic reports without a daemon or hidden scheduler.
+- Added `@aletheia/episodic`, a Phase 3.0 projection package for explicit episodic anchors, historical belief snapshots from status history, episode comparisons, and restart self-state reconstruction.
 
 ---
 

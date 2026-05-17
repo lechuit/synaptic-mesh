@@ -137,6 +137,15 @@ Most memory libraries treat memory as read-mostly storage. Treating it as a cont
 
 Built on top of Phases 1 + 2.
 
+### Phase 3.0 status
+
+- [x] `@aletheia/episodic` package created as the first Phase 3 surface.
+- [x] Explicit episodic anchors are parsed from event payloads without treating them as authority.
+- [x] Episode memory projection respects visibility and scope before matching source-event anchors.
+- [x] Historical belief snapshots reconstruct status at an `asOf` time from `MemoryStore.statusHistory`, not just current atom status.
+- [x] Episode comparison reports added, removed, persisted, and status-changed beliefs across session boundaries.
+- [x] Restart self-state reconstruction categorizes visible atoms into beliefs, uncertain, distrusted, and human-required memory.
+
 ### Scope
 
 - Atoms indexed not just by wall-clock time but by the agent's **experiential timeline**: which conversation, which task, which decision context they emerged from.
@@ -178,7 +187,8 @@ The bare package `aletheia` on npm is taken but abandoned (last published 9 year
 - `@aletheia/core` — the authority engine (Phase 1).
 - `@aletheia/store-sqlite` — the SQLite-backed MemoryStore (Phase 1).
 - `@aletheia/adapters-anthropic` — reference LLM integration (Phase 1).
-- Future sub-packages (`@aletheia/dynamics`, `@aletheia/episodic`) for Phases 2 and 3.
+- `@aletheia/dynamics` — deterministic lifecycle dynamics (Phase 2).
+- `@aletheia/episodic` — subjective-time projections and continuity snapshots (Phase 3).
 
 Scoped namespace also clears the way for a CLI binary `aletheia` (e.g. `aletheia recall --status verified`).
 
