@@ -44,7 +44,7 @@ Those may return later as separate packages once the library has external users 
 
 ## 0.1.0 release baseline (2026-05-17)
 
-The initial public release target is `0.1.0` across six packages:
+The initial public release is `0.1.0` across six packages:
 
 - `@aletheia-labs/core`
 - `@aletheia-labs/store-sqlite`
