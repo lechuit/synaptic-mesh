@@ -12,6 +12,12 @@ Releases are listed newest first.
 
 - Added `@aletheia/dynamics`, a deterministic sleep-cycle engine for memory decay, candidate promotion, and unresolved-conflict revisits.
 - Added `decayedAuthority()` plus an optional `RetrievalRouter` authority scorer hook so hosts can rank already-authorized recall results by effective authority after hard permission/scope/status/freshness filters.
+- Added `LedgerRecallEvidenceProvider` and `sourceConsistentRecallPayload()` so source-consistent recall events in the append-only ledger can drive candidate promotion and last-used staleness anchors.
+- Candidate promotion now runs before stale-candidate deprecation, allowing old but repeatedly source-consistently recalled candidates to become `verified` instead of being discarded.
+- Added visible-successor recall collapsing: when a visible atom supersedes another visible atom, `RetrievalRouter` returns the latest visible member of that chain by default.
+- Added `LineageTracer`, a permission-guarded `supersedes` chain reader that fails closed on missing/invisible ancestors, cycles, or excessive depth.
+- Extended SQLite sleep-cycle tests to evolve a store from ledger recall evidence through promotion/deprecation and verify auditable logical transition timestamps.
+- Hardened dynamics conflict handling so both `unresolved` and `requires_human` conflicts block lifecycle authority.
 - Dynamics plans transitions by default and applies them only through `MemoryStore.transitionStatus`, preserving the append-only atom model and audit history.
 - Candidate promotion requires explicit source-consistent recall evidence plus evidence/authority/stability scores; `confidence` and `consensus` remain metadata, not authority.
 - Added tests for fail-closed no-permission behavior, stale deprecation, promotion evidence, trusted-vs-verified decay windows, unresolved conflict handling, sealed/human-required skipping, and deterministic dry-run output.

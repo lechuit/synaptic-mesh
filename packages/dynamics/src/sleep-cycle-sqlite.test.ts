@@ -1,5 +1,8 @@
 import type {
   AgentId,
+  ConflictId,
+  ConflictRecord,
+  Event,
   EventId,
   IsoTimestamp,
   MemoryAtom,
@@ -10,6 +13,7 @@ import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { type SqliteStores, openSqliteStores } from '../../store-sqlite/src/index.js';
 import { DynamicsEngine, type DynamicsEvidenceProvider } from './dynamics-engine.js';
 import { createDynamicsPolicy } from './policy.js';
+import { LedgerRecallEvidenceProvider, sourceConsistentRecallPayload } from './recall-evidence.js';
 import { SleepCycleRunner } from './sleep-cycle.js';
 
 const ACTOR = 'agent-sleep-cycle' as AgentId;
@@ -44,7 +48,13 @@ describe('SleepCycleRunner with SQLite stores', () => {
       }),
     );
 
-    const runner = runnerFor(stores, evidenceProviderFor(3));
+    const runner = runnerFor(
+      stores,
+      evidenceProviderByMemoryId({
+        'mem-promotable': 3,
+        'mem-stale': 0,
+      }),
+    );
     const first = await runner.run(input());
     const second = await runner.run(input());
 
@@ -121,7 +131,13 @@ describe('SleepCycleRunner with SQLite stores', () => {
     await stores.memoryStore.insert(stale);
     await stores.memoryStore.insert(promotable);
 
-    const runner = runnerFor(stores, evidenceProviderFor(3));
+    const runner = runnerFor(
+      stores,
+      evidenceProviderByMemoryId({
+        'mem-promotable-cycle': 3,
+        'mem-stale-cycle': 0,
+      }),
+    );
     const report = await runner.runMany([
       input({ cycleId: 'cycle-1', applyTransitions: false }),
       input({ cycleId: 'cycle-2', applyTransitions: true }),
@@ -135,6 +151,118 @@ describe('SleepCycleRunner with SQLite stores', () => {
 
     expect((await stores.memoryStore.get(promotable.memoryId, PERMITTED))?.status).toBe('verified');
     expect((await stores.memoryStore.get(stale.memoryId, PERMITTED))?.status).toBe('deprecated');
+  });
+
+  it('evolves a SQLite store from ledger recall evidence with auditable history', async () => {
+    const promotable = atom({
+      memoryId: 'mem-ledger-promotable' as MemoryId,
+      status: 'candidate',
+      validFrom: '2026-05-01T00:00:00Z' as IsoTimestamp,
+    });
+    const stale = atom({
+      memoryId: 'mem-ledger-stale' as MemoryId,
+      status: 'verified',
+      validFrom: '2026-05-01T00:00:00Z' as IsoTimestamp,
+    });
+    await stores.memoryStore.insert(promotable);
+    await stores.memoryStore.insert(stale);
+    await stores.eventLedger.append(recallEvent(promotable, 'evt-recall-1' as EventId));
+    await stores.eventLedger.append(
+      recallEvent(promotable, 'evt-recall-2' as EventId, {
+        occurredAt: '2026-05-16T12:00:00Z' as IsoTimestamp,
+      }),
+    );
+
+    const runner = new SleepCycleRunner(
+      new DynamicsEngine({
+        stores: {
+          memoryStore: stores.memoryStore,
+          conflictRegistry: stores.conflictRegistry,
+        },
+        policy: createDynamicsPolicy(ACTOR, {
+          decay: {
+            candidateAfterMs: dayMs(3),
+            verifiedAfterMs: dayMs(3),
+            trustedAfterMs: dayMs(180),
+          },
+        }),
+        evidenceProvider: new LedgerRecallEvidenceProvider({ eventLedger: stores.eventLedger }),
+      }),
+    );
+
+    const report = await runner.run(input({ cycleId: 'cycle-ledger', applyTransitions: true }));
+
+    expect(report.appliedMemoryIds).toEqual(['mem-ledger-promotable', 'mem-ledger-stale']);
+    expect((await stores.memoryStore.get(promotable.memoryId, PERMITTED))?.status).toBe('verified');
+    expect((await stores.memoryStore.get(stale.memoryId, PERMITTED))?.status).toBe('deprecated');
+
+    const promotableHistory = await stores.memoryStore.statusHistory(promotable.memoryId);
+    const staleHistory = await stores.memoryStore.statusHistory(stale.memoryId);
+    expect(
+      promotableHistory.find(
+        (entry) => entry.reason.rationale === 'phase2:promotion_evidence_satisfied',
+      ),
+    ).toMatchObject({
+      at: NOW,
+      fromStatus: 'candidate',
+      toStatus: 'verified',
+      reason: {
+        actor: ACTOR,
+        rationale: 'phase2:promotion_evidence_satisfied',
+      },
+    });
+    expect(
+      staleHistory.find((entry) => entry.reason.rationale === 'phase2:stale_by_policy'),
+    ).toMatchObject({
+      at: NOW,
+      fromStatus: 'verified',
+      toStatus: 'deprecated',
+      reason: {
+        actor: ACTOR,
+        rationale: 'phase2:stale_by_policy',
+      },
+    });
+  });
+
+  it('treats requires-human conflicts as sleep-cycle blockers with audited deprecation', async () => {
+    const candidate = atom({
+      memoryId: 'mem-sqlite-human-candidate' as MemoryId,
+      status: 'candidate',
+      validFrom: '2026-05-16T00:00:00Z' as IsoTimestamp,
+    });
+    const verified = atom({
+      memoryId: 'mem-sqlite-human-verified' as MemoryId,
+      status: 'verified',
+      validFrom: '2026-05-16T00:00:00Z' as IsoTimestamp,
+    });
+    const conflict = conflictFor([candidate.memoryId, verified.memoryId]);
+    await stores.memoryStore.insert(candidate);
+    await stores.memoryStore.insert(verified);
+    await stores.conflictRegistry.record(conflict);
+
+    const runner = runnerFor(stores, evidenceProviderFor(99));
+    const report = await runner.run(
+      input({ cycleId: 'cycle-human-conflict', applyTransitions: true }),
+    );
+
+    expect(report.appliedMemoryIds).toEqual([verified.memoryId]);
+    expect(report.skippedMemoryIds).toEqual([candidate.memoryId]);
+    expect((await stores.memoryStore.get(candidate.memoryId, PERMITTED))?.status).toBe('candidate');
+    expect((await stores.memoryStore.get(verified.memoryId, PERMITTED))?.status).toBe('deprecated');
+
+    const history = await stores.memoryStore.statusHistory(verified.memoryId);
+    expect(
+      history.find((entry) => entry.reason.rationale === 'phase2:unresolved_conflict'),
+    ).toMatchObject({
+      at: NOW,
+      fromStatus: 'verified',
+      toStatus: 'deprecated',
+      reason: {
+        actor: ACTOR,
+        conflictId: conflict.conflictId,
+        rationale: 'phase2:unresolved_conflict',
+      },
+    });
   });
 
   it('returns an empty aggregate for an empty explicit cycle list', async () => {
@@ -214,6 +342,14 @@ function evidenceProviderFor(sourceConsistentRecalls: number): DynamicsEvidenceP
   };
 }
 
+function evidenceProviderByMemoryId(recalls: Record<string, number>): DynamicsEvidenceProvider {
+  return {
+    async evidenceFor(memory) {
+      return { sourceConsistentRecalls: recalls[memory.memoryId] ?? 0 };
+    },
+  };
+}
+
 function atom(overrides: Partial<MemoryAtom> = {}): MemoryAtom {
   return {
     memoryId: 'mem-default' as MemoryId,
@@ -238,6 +374,37 @@ function atom(overrides: Partial<MemoryAtom> = {}): MemoryAtom {
     lastConfirmedAt: null,
     links: [],
     ...overrides,
+  };
+}
+
+function recallEvent(memory: MemoryAtom, eventId: EventId, overrides: Partial<Event> = {}): Event {
+  return {
+    eventId,
+    kind: 'decision',
+    agentId: ACTOR,
+    occurredAt: '2026-05-16T00:00:00Z' as IsoTimestamp,
+    payload: sourceConsistentRecallPayload(memory),
+    scope: { kind: 'local' },
+    visibility: VISIBILITY,
+    ...overrides,
+  };
+}
+
+function conflictFor(memoryIds: readonly MemoryId[]): ConflictRecord {
+  return {
+    conflictId: 'conflict-requires-human' as ConflictId,
+    topic: 'operator approval needed',
+    scope: { kind: 'local' },
+    claims: memoryIds.map((memoryId, index) => ({
+      memoryId,
+      value: `claim-${index}`,
+      authority: 0.8,
+      freshness: 'current',
+    })),
+    status: 'requires_human',
+    decisionPolicy: 'ask_human',
+    recordedAt: '2026-05-16T00:00:00Z' as IsoTimestamp,
+    resolvedAt: null,
   };
 }
 

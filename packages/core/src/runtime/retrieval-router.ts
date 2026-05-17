@@ -237,10 +237,12 @@ export class RetrievalRouter {
       return true;
     });
 
+    const lineageFiltered = omitSupersededAtoms(filtered);
+
     const rankedResult =
       this.options.authorityScorer === undefined
-        ? { ok: true as const, atoms: filtered }
-        : rankByAuthority(filtered, this.options.authorityScorer, validAt);
+        ? { ok: true as const, atoms: lineageFiltered }
+        : rankByAuthority(lineageFiltered, this.options.authorityScorer, validAt);
 
     if (!rankedResult.ok) {
       return {
@@ -256,6 +258,17 @@ export class RetrievalRouter {
       query.limit !== undefined ? rankedResult.atoms.slice(0, query.limit) : rankedResult.atoms;
     return { ok: true, atoms: limited };
   }
+}
+
+function omitSupersededAtoms(atoms: readonly MemoryAtom[]): readonly MemoryAtom[] {
+  const superseded = new Set(
+    atoms.flatMap((atom) =>
+      atom.links
+        .filter((link) => link.relation === 'supersedes')
+        .map((link) => link.targetMemoryId),
+    ),
+  );
+  return atoms.filter((atom) => !superseded.has(atom.memoryId));
 }
 
 function rankByAuthority(

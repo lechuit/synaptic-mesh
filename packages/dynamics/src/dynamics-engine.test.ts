@@ -218,6 +218,65 @@ describe('DynamicsEngine', () => {
     );
   });
 
+  it('promotes recall-consistent candidates before stale candidate deprecation', async () => {
+    const candidate = atom({
+      memoryId: 'mem-old-but-recalled' as MemoryId,
+      status: 'candidate',
+      validFrom: '2026-05-01T00:00:00Z' as IsoTimestamp,
+    });
+    const memoryStore = new FakeMemoryStore([candidate]);
+    const engine = engineFor({
+      memoryStore,
+      policy: createDynamicsPolicy(ACTOR, {
+        decay: { candidateAfterMs: dayMs(3) },
+        promotion: { minSourceConsistentRecalls: 2 },
+      }),
+      evidenceProvider: evidenceProviderFor(2),
+    });
+
+    const result = await engine.tick(tickInput({ applyTransitions: true }));
+
+    expect(memoryStore.atom(candidate.memoryId)?.status).toBe('verified');
+    expect(result.decisions[0]).toMatchObject({
+      memoryId: candidate.memoryId,
+      outcome: 'applied',
+      reason: 'promotion_evidence_satisfied',
+      recommendedStatus: 'verified',
+    });
+  });
+
+  it('uses recent recall evidence when deciding verified staleness', async () => {
+    const verified = atom({
+      memoryId: 'mem-recently-used' as MemoryId,
+      status: 'verified',
+      lastConfirmedAt: '2026-05-01T00:00:00Z' as IsoTimestamp,
+    });
+    const memoryStore = new FakeMemoryStore([verified]);
+    const engine = engineFor({
+      memoryStore,
+      policy: createDynamicsPolicy(ACTOR, {
+        decay: { verifiedAfterMs: dayMs(3) },
+      }),
+      evidenceProvider: {
+        async evidenceFor() {
+          return {
+            sourceConsistentRecalls: 0,
+            lastUsedAt: '2026-05-16T00:00:00Z' as IsoTimestamp,
+          };
+        },
+      },
+    });
+
+    const result = await engine.tick(tickInput({ applyTransitions: true }));
+
+    expect(result.decisions[0]).toMatchObject({
+      memoryId: verified.memoryId,
+      outcome: 'skipped',
+      reason: 'not_due',
+    });
+    expect(memoryStore.atom(verified.memoryId)?.status).toBe('verified');
+  });
+
   it('lets trusted memories decay slower than verified memories', async () => {
     const verified = atom({
       memoryId: 'mem-verified-old' as MemoryId,
@@ -332,6 +391,52 @@ describe('DynamicsEngine', () => {
 
     const history = await memoryStore.statusHistory(verified.memoryId);
     expect(history.at(-1)?.reason.conflictId).toBe(conflict.conflictId);
+  });
+
+  it('treats requires-human conflicts as lifecycle blockers', async () => {
+    const candidate = atom({
+      memoryId: 'mem-human-conflicted-candidate' as MemoryId,
+      status: 'candidate',
+      validFrom: '2026-05-16T00:00:00Z' as IsoTimestamp,
+    });
+    const verified = atom({
+      memoryId: 'mem-human-conflicted-verified' as MemoryId,
+      status: 'verified',
+      validFrom: '2026-05-16T00:00:00Z' as IsoTimestamp,
+    });
+    const memoryStore = new FakeMemoryStore([candidate, verified]);
+    const conflict = conflictFor([candidate.memoryId, verified.memoryId], {
+      conflictId: 'conflict-human-required' as ConflictId,
+      status: 'requires_human',
+      decisionPolicy: 'ask_human',
+    });
+    const engine = engineFor({
+      memoryStore,
+      conflictRegistry: new FakeConflictRegistry([conflict]),
+      evidenceProvider: evidenceProviderFor(99),
+    });
+
+    const result = await engine.tick(tickInput({ applyTransitions: true }));
+
+    expect(memoryStore.atom(candidate.memoryId)?.status).toBe('candidate');
+    expect(memoryStore.atom(verified.memoryId)?.status).toBe('deprecated');
+    expect(result.decisions).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          memoryId: candidate.memoryId,
+          outcome: 'skipped',
+          reason: 'unresolved_conflict',
+          conflicts: [conflict.conflictId],
+        }),
+        expect.objectContaining({
+          memoryId: verified.memoryId,
+          outcome: 'applied',
+          reason: 'unresolved_conflict',
+          recommendedStatus: 'deprecated',
+          conflicts: [conflict.conflictId],
+        }),
+      ]),
+    );
   });
 
   it('reports transition rejections without pretending the tick applied them', async () => {
@@ -470,7 +575,10 @@ function atom(overrides: Partial<MemoryAtom> = {}): MemoryAtom {
   };
 }
 
-function conflictFor(memoryIds: readonly MemoryId[]): ConflictRecord {
+function conflictFor(
+  memoryIds: readonly MemoryId[],
+  overrides: Partial<ConflictRecord> = {},
+): ConflictRecord {
   return {
     conflictId: 'conflict-1' as ConflictId,
     topic: 'deployment policy',
@@ -485,6 +593,7 @@ function conflictFor(memoryIds: readonly MemoryId[]): ConflictRecord {
     decisionPolicy: 'surface_conflict',
     recordedAt: '2026-05-16T00:00:00Z' as IsoTimestamp,
     resolvedAt: null,
+    ...overrides,
   };
 }
 
