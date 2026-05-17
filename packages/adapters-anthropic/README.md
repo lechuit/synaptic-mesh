@@ -4,6 +4,13 @@ Anthropic-compatible adapter for Aletheia authority-governed memory.
 
 > **Status**: `0.1.0` public baseline. Reference Anthropic integration is live as a narrow library adapter. It does not own OAuth, API keys, terminal UX, tools, publication, or provider account state.
 
+## Requirements
+
+- Node 20+.
+- ESM-only. Add `"type": "module"` to your `package.json`, use `.mjs`, or use
+  a build tool/runtime that handles ESM. CommonJS `require()` is not shipped in
+  `0.1.x`.
+
 ## Quickstart
 
 ```bash

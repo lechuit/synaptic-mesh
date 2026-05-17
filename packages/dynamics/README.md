@@ -4,6 +4,13 @@ Deterministic memory dynamics for Aletheia.
 
 > **Status**: `0.1.0` public baseline. Dynamics engine, deterministic sleep-cycle reports, explicit multi-cycle runs, and human-confirmed reconsolidation apply are live.
 
+## Requirements
+
+- Node 20+.
+- ESM-only. Add `"type": "module"` to your `package.json`, use `.mjs`, or use
+  a build tool/runtime that handles ESM. CommonJS `require()` is not shipped in
+  `0.1.x`.
+
 ## Quickstart
 
 ```bash
