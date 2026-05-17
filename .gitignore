@@ -1,5 +1,45 @@
+# Dependencies
 node_modules/
+.pnpm-store/
+
+# Build output
+dist/
+build/
+*.tsbuildinfo
+
+# Test / coverage
+coverage/
+.vitest/
+
+# Caches
+.turbo/
+.cache/
+
+# Editor / OS
 .DS_Store
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+*.swp
+
+# Logs
 *.log
+npm-debug.log*
+pnpm-debug.log*
+
+# Env
 .env
 .env.*
+!.env.example
+
+# Backup files from in-place edits
+*.bak
+
+# Local SQLite databases (real runtime data)
+*.sqlite
+*.sqlite-journal
+*.db
+
+# OS / temp
+.tmp/
