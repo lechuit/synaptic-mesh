@@ -2,7 +2,38 @@
 
 Subjective time and episodic continuity projections for Aletheia.
 
-> **Status**: Phase 3.1. Episodic timeline projections are live; they read from existing event and memory stores and do not add authority by themselves.
+> **Status**: Phase 3.1. Episodic timeline projections are live; they read from existing event and memory stores and do not add authority by themselves. Package version is still `0.0.0` until the first release version is chosen.
+
+## Quickstart
+
+```bash
+pnpm add @aletheia/core @aletheia/store-sqlite @aletheia/episodic
+```
+
+```ts
+import { AgentIdSchema, staticVisibilityPolicy } from '@aletheia/core';
+import { EpisodicTimeline } from '@aletheia/episodic';
+import { openSqliteStores } from '@aletheia/store-sqlite';
+
+const stores = openSqliteStores('./aletheia.sqlite');
+const timeline = new EpisodicTimeline({
+  eventLedger: stores.eventLedger,
+  memoryStore: stores.memoryStore,
+  visibilityPolicy: staticVisibilityPolicy([{ kind: 'private:user' }]),
+});
+
+const catalog = await timeline.listEpisodes({
+  agentId: AgentIdSchema.parse('agent-1'),
+  scope: { kind: 'project', projectId: 'demo' },
+  kind: 'conversation',
+  limit: 10,
+});
+
+console.log(catalog.decision.outcome, catalog.episodes.length);
+stores.close();
+```
+
+The timeline only projects what the caller can already see through visibility and scope filtering.
 
 ## What this package does
 
@@ -36,3 +67,26 @@ Events can opt into subjective time by carrying an `episodic` object:
 ```
 
 Supported `kind` values are `conversation`, `task`, `decision_context`, and `session`.
+
+## Stability
+
+Public surface for the initial library cycle:
+
+- `EpisodicTimeline`
+- episode catalog/projection/comparison types
+- belief snapshot and self-state snapshot types
+- memory timeline types
+- explicit `EpisodeAnchor` payload convention
+
+Everything else is projection plumbing and may change before the first `0.1.0` release. Episodic outputs are audit context, not permission tokens; callers must still route actions through `tryAct()`.
+
+## Development
+
+From the repo root:
+
+```bash
+pnpm install
+pnpm -F @aletheia/episodic typecheck
+pnpm -F @aletheia/episodic test
+pnpm -F @aletheia/episodic build
+```
