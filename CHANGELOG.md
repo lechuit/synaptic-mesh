@@ -17,6 +17,7 @@ Releases are listed newest first.
 - Added `SleepCycleRunner`, with SQLite-backed tests for deterministic dry-run reports, explicit apply mode, fail-closed no-permission reports, and logical transition timestamps.
 - Extended `MemoryStore.transitionStatus` with an optional deterministic `at` timestamp so sleep-cycle audit history can be replayed from the cycle clock instead of the process clock.
 - Documented the reconsolidation blocker: successor atoms need an explicit planner/gate contract before implementation can safely proceed.
+- Added `ReconsolidationPlanner`, a planner-only Phase 2.2 surface that drafts candidate successors with `supersedes` lineage and planned deprecation transitions without inserting or mutating memory.
 
 ---
 
