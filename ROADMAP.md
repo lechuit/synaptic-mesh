@@ -99,6 +99,17 @@ This is the phase that crosses the line from "research artifact" to "real softwa
 
 Built on top of Phase 1.
 
+### Phase 2.0 status
+
+- [x] `@aletheia/dynamics` package created as the first Phase 2 surface.
+- [x] Deterministic `DynamicsEngine.tick()` plans/applies status transitions from explicit policy and evidence.
+- [x] Decay is per status: candidates and verified memories expire sooner than trusted memories.
+- [x] Candidate promotion requires explicit source-consistent recall evidence; confidence/consensus do not authorize promotion.
+- [x] Unresolved conflicts touching an atom block candidate promotion and deprecate previously actionable verified/trusted claims.
+- [x] Sealed and human-required atoms are skipped by the dynamics engine.
+- [ ] Reconsolidation with successor atoms and `supersedes` lineage.
+- [ ] Long-running sleep-cycle harness over a SQLite store.
+
 ### Scope
 
 - **Status transitions driven by use/disuse**: candidate → verified after repeated source-consistent recall; verified → deprecated after contradicting evidence or staleness threshold.

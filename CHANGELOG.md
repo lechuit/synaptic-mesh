@@ -8,6 +8,15 @@ Releases are listed newest first.
 
 ---
 
+## Unreleased — Aletheia Phase 2.0 memory dynamics
+
+- Added `@aletheia/dynamics`, a deterministic sleep-cycle engine for memory decay, candidate promotion, and unresolved-conflict revisits.
+- Dynamics plans transitions by default and applies them only through `MemoryStore.transitionStatus`, preserving the append-only atom model and audit history.
+- Candidate promotion requires explicit source-consistent recall evidence plus evidence/authority/stability scores; `confidence` and `consensus` remain metadata, not authority.
+- Added tests for fail-closed no-permission behavior, stale deprecation, promotion evidence, trusted-vs-verified decay windows, unresolved conflict handling, sealed/human-required skipping, and deterministic dry-run output.
+
+---
+
 ## v0.52.5 — bounded no-effect receiver runtime adapter fixture suite
 
 This is the public review release `v0.52.5`. Current v0.52.5 status is narrower than production live runtime, but crosses the next safe barrier after v0.51: **bounded no-effect receiver runtime adapter fixture suite**.
