@@ -167,3 +167,10 @@ pnpm -F @aletheia-labs/dynamics typecheck
 pnpm -F @aletheia-labs/dynamics test
 pnpm -F @aletheia-labs/dynamics build
 ```
+
+## Specs
+
+This package implements:
+
+- `specs/memory-dynamics-v0.md` — lifecycle dynamics, decay, recall evidence, sleep-cycle, and reconsolidation.
+- `specs/aletheia-memory-authority-v0.md` — how dynamics fits the broader authority protocol.

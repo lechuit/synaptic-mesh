@@ -139,6 +139,25 @@ only after visibility, scope, status, freshness, and conflict checks.
 Receipts and packets carry evidence between those steps. They never bypass the
 steps.
 
+## Relationship to dynamics
+
+Lifecycle transitions in `@aletheia-labs/dynamics` are audit events, not
+permission receipts. A status transition history can explain why an atom moved
+from `candidate` to `verified` or from `verified` to `deprecated`, but it does
+not authorize action by itself.
+
+Receivers must still check:
+
+- current atom status;
+- current validity;
+- scope and visibility;
+- unresolved or human-required conflicts;
+- the proposed action class.
+
+Dynamics reports and sleep-cycle summaries are evidence for audits and
+debugging. They are not substitutes for receipt validation, governed recall, or
+`tryAct()`.
+
 ## Boundary
 
 This spec describes receipt semantics in the library. It does not authorize
