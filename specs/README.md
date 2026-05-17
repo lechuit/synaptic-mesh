@@ -8,9 +8,9 @@ are the source of truth for authority semantics; executable zod schemas live in
 
 | Spec | Purpose | Status |
 |---|---|---|
-| `aletheia-memory-authority-v0.md` | System architecture: Event Ledger, Proposal Layer, Write Gate, MemoryAtom, Conflict Registry, Retrieval Router, Action Context Packet | draft stable |
-| `memory-authority-receipt-v0.md` | Receipt semantics and fail-closed interpretation rules | draft stable |
-| `compressed-temporal-receipt-v0.md` | Compact cross-source handoff tuple and receiver validation order | draft stable |
+| `aletheia-memory-authority-v0.md` | System architecture and runtime contracts for core, SQLite, adapters, dynamics, and episodic packages | executable baseline |
+| `memory-authority-receipt-v0.md` | Receipt semantics and fail-closed interpretation rules | executable baseline |
+| `compressed-temporal-receipt-v0.md` | Compact cross-source handoff tuple and receiver validation order | executable baseline |
 | `decision-counterfactual-receiver-rule-v0.5.md` | Receiver-side counterfactual check rule | draft |
 | `framework-adapter-matrix-v0.md` | Adapter boundary notes for future host integrations | draft |
 
@@ -27,9 +27,10 @@ human-required evidence cannot be laundered into action authority.
 3. Source, freshness, scope, promotion, and forbidden-effect receipt fields.
 4. Later restrictive events and conflict state.
 5. Receiver-side action classification.
-6. Semantic relevance, similarity, confidence, and prose.
+6. Exact host filters and receipt-derived ranking.
+7. Semantic relevance, similarity, confidence, and prose.
 
-Semantic relevance never upgrades authority.
+Semantic relevance never upgrades authority and is not part of the substrate.
 
 ## Shared Fail-Closed Rule
 

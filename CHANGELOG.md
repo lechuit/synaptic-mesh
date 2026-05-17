@@ -5,7 +5,7 @@ removed from the active tree during repo hygiene cleanup so new readers see the
 live TypeScript library, not historical review scaffolding. Those artifacts
 remain recoverable through git history.
 
-## Unreleased
+## 0.1.0 - 2026-05-17
 
 - Removed inactive pre-Aletheia research/release artifacts from the active repo
   surface: archived JS shadow implementation, historical ladder docs, generated
@@ -13,9 +13,6 @@ remain recoverable through git history.
   release-check tooling.
 - Replaced the old shadow-baseline CI workflow with active Aletheia monorepo
   gates.
-
-## 0.0.0
-
 - Added `@aletheia/core`, with zod-backed domain schemas, storage interfaces,
   WriteGate, RetrievalRouter, ActionAuthorizer, proposal safety, and the
   `AletheiaAuthority` facade.
@@ -32,3 +29,5 @@ remain recoverable through git history.
   human-confirmed reconsolidation.
 - Added `@aletheia/episodic`, with permission-guarded episodic projections,
   status-history timelines, and restart self-state reconstruction.
+- Aligned protocol specs with the executable TypeScript baseline and set the
+  workspace/package release version to `0.1.0`.

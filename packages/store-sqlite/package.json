@@ -1,6 +1,6 @@
 {
   "name": "@aletheia/store-sqlite",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "SQLite-backed implementations of @aletheia/core storage interfaces.",
   "license": "Apache-2.0",
   "type": "module",

@@ -1,7 +1,7 @@
 cff-version: 1.2.0
 message: "If you use this work, please cite it as below."
 title: "Aletheia: Memory as Governance for LLM Agents"
-version: "0.0.0"
+version: "0.1.0"
 authors:
   - family-names: "Peña"
     given-names: "Gabriel"

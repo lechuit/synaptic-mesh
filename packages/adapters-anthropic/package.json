@@ -1,6 +1,6 @@
 {
   "name": "@aletheia/adapters-anthropic",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Anthropic-compatible LLM adapter for Aletheia authority-governed memory.",
   "license": "Apache-2.0",
   "type": "module",

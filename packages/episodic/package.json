@@ -1,6 +1,6 @@
 {
   "name": "@aletheia/episodic",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Subjective time and episodic continuity projections for Aletheia memory stores.",
   "license": "Apache-2.0",
   "type": "module",
