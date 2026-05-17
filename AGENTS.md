@@ -41,8 +41,8 @@ The roadmap has three phases: (1) authority-governed memory executable in TS,
   `verbatimModuleSyntax` are all ON. Never weaken them.
 - Domain types: zod is the source of truth. `FooSchema` is the schema,
   `type Foo = z.infer<typeof FooSchema>` is the type. No hand-written brands.
-- Storage interfaces in `@aletheia/core`. Implementations in adapter packages
-  (`@aletheia/store-sqlite`, etc.). Core has zero native deps.
+- Storage interfaces in `@aletheia-labs/core`. Implementations in adapter packages
+  (`@aletheia-labs/store-sqlite`, etc.). Core has zero native deps.
 - Authority decisions are values (`Decision` discriminated union), never
   exceptions. Storage may still throw on malformed inserts or duplicate IDs.
 - Tests with vitest, explicit imports (no `globals`). One test file per

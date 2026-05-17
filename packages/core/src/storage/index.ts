@@ -1,6 +1,6 @@
 /**
  * Storage interfaces. The implementations live in adapter packages
- * (e.g. @aletheia/store-sqlite).
+ * (e.g. @aletheia-labs/store-sqlite).
  */
 
 export * from './event-ledger.js';

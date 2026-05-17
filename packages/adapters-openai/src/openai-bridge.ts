@@ -19,7 +19,7 @@ import type {
   Scope,
   Visibility,
   WriteGateResult,
-} from '@aletheia/core';
+} from '@aletheia-labs/core';
 
 export interface OpenAIResponseTextContent {
   readonly type: 'output_text' | 'text';

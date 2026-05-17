@@ -1,4 +1,4 @@
-import type { Event, Visibility } from '@aletheia/core';
+import type { Event, Visibility } from '@aletheia-labs/core';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { type SqliteStores, openSqliteStores } from './index.js';
 

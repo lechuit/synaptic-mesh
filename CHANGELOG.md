@@ -13,21 +13,21 @@ remain recoverable through git history.
   release-check tooling.
 - Replaced the old shadow-baseline CI workflow with active Aletheia monorepo
   gates.
-- Added `@aletheia/core`, with zod-backed domain schemas, storage interfaces,
+- Added `@aletheia-labs/core`, with zod-backed domain schemas, storage interfaces,
   WriteGate, RetrievalRouter, ActionAuthorizer, proposal safety, and the
   `AletheiaAuthority` facade.
-- Added `@aletheia/store-sqlite`, with versioned idempotent migrations,
+- Added `@aletheia-labs/store-sqlite`, with versioned idempotent migrations,
   append-only event/memory/conflict stores, status-transition audit history,
   and permission-filtered queries.
-- Added `@aletheia/adapters-anthropic` and `@aletheia/adapters-openai`,
+- Added `@aletheia-labs/adapters-anthropic` and `@aletheia-labs/adapters-openai`,
   both accepting caller-provided clients and preserving governed
   `propose()` / `recall()` / `tryAct()` boundaries.
 - Added no-key demos plus live Anthropic happy-path and adversarial evidence
   under `evidence/live-llm-e2e/`.
-- Added `@aletheia/dynamics`, with deterministic authority decay,
+- Added `@aletheia-labs/dynamics`, with deterministic authority decay,
   source-consistent recall evidence, audited sleep-cycle transitions, and
   human-confirmed reconsolidation.
-- Added `@aletheia/episodic`, with permission-guarded episodic projections,
+- Added `@aletheia-labs/episodic`, with permission-guarded episodic projections,
   status-history timelines, and restart self-state reconstruction.
 - Aligned protocol specs with the executable TypeScript baseline and set the
   workspace/package release version to `0.1.0`.

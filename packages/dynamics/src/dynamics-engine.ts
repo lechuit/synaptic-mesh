@@ -10,7 +10,7 @@ import type {
   Scope,
   StatusTransitionResult,
   Visibility,
-} from '@aletheia/core';
+} from '@aletheia-labs/core';
 import type { DynamicsPolicy } from './policy.js';
 
 export interface DynamicsEvidence {

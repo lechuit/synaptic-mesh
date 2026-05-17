@@ -1,4 +1,4 @@
-import type { IsoTimestamp, MemoryAtom, MemoryStatus } from '@aletheia/core';
+import type { IsoTimestamp, MemoryAtom, MemoryStatus } from '@aletheia-labs/core';
 
 export interface AuthorityDecayPolicy {
   readonly candidateHalfLifeMs: number;

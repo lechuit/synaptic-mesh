@@ -18,14 +18,14 @@ authority memory with dynamics and episodic continuity.
 
 What exists today:
 
-- `@aletheia/core`: strict TypeScript authority types, storage interfaces,
+- `@aletheia-labs/core`: strict TypeScript authority types, storage interfaces,
   WriteGate, RetrievalRouter, ActionAuthorizer, and `AletheiaAuthority`.
-- `@aletheia/store-sqlite`: SQLite-backed event, memory, and conflict stores.
-- `@aletheia/adapters-anthropic`: Anthropic-compatible reference adapter.
-- `@aletheia/adapters-openai`: OpenAI Responses-compatible reference adapter.
-- `@aletheia/dynamics`: deterministic decay, promotion evidence, sleep-cycle
+- `@aletheia-labs/store-sqlite`: SQLite-backed event, memory, and conflict stores.
+- `@aletheia-labs/adapters-anthropic`: Anthropic-compatible reference adapter.
+- `@aletheia-labs/adapters-openai`: OpenAI Responses-compatible reference adapter.
+- `@aletheia-labs/dynamics`: deterministic decay, promotion evidence, sleep-cycle
   reports, and human-confirmed reconsolidation.
-- `@aletheia/episodic`: subjective-time projections, episode catalog,
+- `@aletheia-labs/episodic`: subjective-time projections, episode catalog,
   historical timelines, and restart self-state reconstruction.
 - No-key canaries, package tests, publish dry-runs, and live Anthropic happy
   path plus adversarial evidence in `evidence/live-llm-e2e/`.
@@ -50,12 +50,12 @@ What does **not** exist yet:
 
 ```text
 packages/                 TypeScript monorepo, the live system
-  core/                   @aletheia/core
-  store-sqlite/           @aletheia/store-sqlite
-  adapters-anthropic/     @aletheia/adapters-anthropic
-  adapters-openai/        @aletheia/adapters-openai
-  dynamics/               @aletheia/dynamics
-  episodic/               @aletheia/episodic
+  core/                   @aletheia-labs/core
+  store-sqlite/           @aletheia-labs/store-sqlite
+  adapters-anthropic/     @aletheia-labs/adapters-anthropic
+  adapters-openai/        @aletheia-labs/adapters-openai
+  dynamics/               @aletheia-labs/dynamics
+  episodic/               @aletheia-labs/episodic
 examples/                 executable demos and live-provider wiring
 evidence/live-llm-e2e/    live Claude happy-path and adversarial evidence
 specs/                    protocol specs

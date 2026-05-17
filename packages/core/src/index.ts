@@ -1,5 +1,5 @@
 /**
- * @aletheia/core
+ * @aletheia-labs/core
  *
  * Memory as governance for LLM agents.
  *
@@ -11,7 +11,7 @@
  *    Build a memory that knows when to distrust itself."
  */
 
-export const PACKAGE_NAME = '@aletheia/core';
+export const PACKAGE_NAME = '@aletheia-labs/core';
 export const PACKAGE_VERSION = '0.1.0';
 
 // Domain types and schemas — the public protocol surface.

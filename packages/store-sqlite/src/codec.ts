@@ -14,7 +14,7 @@ import {
   MemoryAtomSchema,
   scopeKey,
   visibilityKey,
-} from '@aletheia/core';
+} from '@aletheia-labs/core';
 
 // -- Event row codec ---------------------------------------------------------
 
@@ -164,7 +164,7 @@ export function rowToConflict(row: ConflictRow): ConflictRecord {
 
 // -- Permission filtering helper --------------------------------------------
 
-import type { Visibility } from '@aletheia/core';
+import type { Visibility } from '@aletheia-labs/core';
 
 /**
  * Build the `visibility_key IN (?, ?, ...)` clause and its parameter array.

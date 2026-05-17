@@ -28,7 +28,7 @@ useful prose. Receipts keep the boundary attached to the claim.
 | Coverage receipt | `CoverageReceiptSchema` | Retrieved vs required coverage. |
 | Action context packet | `ActionContextPacketSchema` | Receiver-side action context. |
 
-The zod schemas in `@aletheia/core` are the executable source of truth for the
+The zod schemas in `@aletheia-labs/core` are the executable source of truth for the
 library. This document explains the semantics those schemas preserve.
 
 ## Human-readable receipt fields

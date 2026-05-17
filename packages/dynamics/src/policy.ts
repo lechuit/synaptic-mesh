@@ -1,4 +1,4 @@
-import type { AgentId } from '@aletheia/core';
+import type { AgentId } from '@aletheia-labs/core';
 
 export interface DecayPolicy {
   readonly candidateAfterMs: number;

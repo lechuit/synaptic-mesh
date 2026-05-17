@@ -14,8 +14,8 @@ import type {
   StatusTransitionReason,
   StatusTransitionResult,
   Visibility,
-} from '@aletheia/core';
-import { AgentIdSchema, IsoTimestampSchema, MemoryAtomSchema, scopeKey } from '@aletheia/core';
+} from '@aletheia-labs/core';
+import { AgentIdSchema, IsoTimestampSchema, MemoryAtomSchema, scopeKey } from '@aletheia-labs/core';
 
 export type ReconsolidationOutcome = 'plan' | 'fetch_abstain';
 export type ReconsolidationApplyOutcome =

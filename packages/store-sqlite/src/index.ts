@@ -1,7 +1,7 @@
 /**
- * @aletheia/store-sqlite
+ * @aletheia-labs/store-sqlite
  *
- * SQLite-backed implementations of the @aletheia/core storage interfaces.
+ * SQLite-backed implementations of the @aletheia-labs/core storage interfaces.
  */
 
 import { type AletheiaConnection, type OpenOptions, openConnection } from './connection.js';

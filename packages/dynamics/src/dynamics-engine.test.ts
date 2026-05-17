@@ -20,7 +20,7 @@ import {
   isAllowedTransition,
   scopeKey,
   visibilityKey,
-} from '@aletheia/core';
+} from '@aletheia-labs/core';
 import { describe, expect, it } from 'vitest';
 import { DynamicsEngine, type DynamicsEvidenceProvider } from './dynamics-engine.js';
 import { createDynamicsPolicy } from './policy.js';

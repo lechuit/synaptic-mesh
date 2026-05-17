@@ -8,7 +8,7 @@ import type {
   MemoryId,
   Scope,
   Visibility,
-} from '@aletheia/core';
+} from '@aletheia-labs/core';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { type SqliteStores, openSqliteStores } from '../../store-sqlite/src/index.js';
 import { ReconsolidationApplier } from './reconsolidation-planner.js';

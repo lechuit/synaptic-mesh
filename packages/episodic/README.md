@@ -1,4 +1,4 @@
-# @aletheia/episodic
+# @aletheia-labs/episodic
 
 Subjective time and episodic continuity projections for Aletheia.
 
@@ -7,13 +7,13 @@ Subjective time and episodic continuity projections for Aletheia.
 ## Quickstart
 
 ```bash
-pnpm add @aletheia/core @aletheia/store-sqlite @aletheia/episodic
+pnpm add @aletheia-labs/core @aletheia-labs/store-sqlite @aletheia-labs/episodic
 ```
 
 ```ts
-import { AgentIdSchema, staticVisibilityPolicy } from '@aletheia/core';
-import { EpisodicTimeline } from '@aletheia/episodic';
-import { openSqliteStores } from '@aletheia/store-sqlite';
+import { AgentIdSchema, staticVisibilityPolicy } from '@aletheia-labs/core';
+import { EpisodicTimeline } from '@aletheia-labs/episodic';
+import { openSqliteStores } from '@aletheia-labs/store-sqlite';
 
 const stores = openSqliteStores('./aletheia.sqlite');
 const timeline = new EpisodicTimeline({
@@ -86,7 +86,7 @@ From the repo root:
 
 ```bash
 pnpm install
-pnpm -F @aletheia/episodic typecheck
-pnpm -F @aletheia/episodic test
-pnpm -F @aletheia/episodic build
+pnpm -F @aletheia-labs/episodic typecheck
+pnpm -F @aletheia-labs/episodic test
+pnpm -F @aletheia-labs/episodic build
 ```

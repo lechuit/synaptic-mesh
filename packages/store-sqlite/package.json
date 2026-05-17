@@ -1,7 +1,7 @@
 {
-  "name": "@aletheia/store-sqlite",
+  "name": "@aletheia-labs/store-sqlite",
   "version": "0.1.0",
-  "description": "SQLite-backed implementations of @aletheia/core storage interfaces.",
+  "description": "SQLite-backed implementations of @aletheia-labs/core storage interfaces.",
   "license": "Apache-2.0",
   "type": "module",
   "main": "./dist/index.js",
@@ -21,7 +21,7 @@
     "test:watch": "vitest"
   },
   "dependencies": {
-    "@aletheia/core": "workspace:*",
+    "@aletheia-labs/core": "workspace:*",
     "better-sqlite3": "^11.5.0",
     "zod": "^3.23.8"
   },

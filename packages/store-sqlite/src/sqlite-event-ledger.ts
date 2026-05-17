@@ -16,7 +16,7 @@ import {
   EventSchema,
   type Visibility,
   scopeKey,
-} from '@aletheia/core';
+} from '@aletheia-labs/core';
 import type Database from 'better-sqlite3';
 import { type EventRow, eventToRow, permittedClause, rowToEvent } from './codec.js';
 

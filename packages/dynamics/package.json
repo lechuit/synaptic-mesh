@@ -1,5 +1,5 @@
 {
-  "name": "@aletheia/dynamics",
+  "name": "@aletheia-labs/dynamics",
   "version": "0.1.0",
   "description": "Deterministic memory dynamics for Aletheia: decay, promotion, and conflict revisits.",
   "license": "Apache-2.0",
@@ -21,7 +21,7 @@
     "test:watch": "vitest"
   },
   "dependencies": {
-    "@aletheia/core": "workspace:*"
+    "@aletheia-labs/core": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^22.10.0",
