@@ -1,5 +1,5 @@
 /**
- * Schema migrations for @aletheia/store-sqlite.
+ * Schema migrations for @aletheia-labs/store-sqlite.
  *
  * Migrations are embedded as strings so the package works the same when
  * bundled. Each migration runs once and is recorded in `schema_migrations`.

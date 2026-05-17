@@ -1,4 +1,4 @@
-# @aletheia/core
+# @aletheia-labs/core
 
 The core authority engine of Aletheia: memory as governance for LLM agents.
 
@@ -7,12 +7,12 @@ The core authority engine of Aletheia: memory as governance for LLM agents.
 ## Quickstart
 
 ```bash
-pnpm add @aletheia/core @aletheia/store-sqlite
+pnpm add @aletheia-labs/core @aletheia-labs/store-sqlite
 ```
 
 ```ts
-import { AletheiaAuthority, staticVisibilityPolicy } from '@aletheia/core';
-import { openSqliteStores } from '@aletheia/store-sqlite';
+import { AletheiaAuthority, staticVisibilityPolicy } from '@aletheia-labs/core';
+import { openSqliteStores } from '@aletheia-labs/store-sqlite';
 
 const stores = openSqliteStores('./aletheia.sqlite');
 const authority = new AletheiaAuthority({
@@ -38,7 +38,7 @@ import {
   MemoryProposalSchema,
   ProposedActionSchema,
   RecallQuerySchema,
-} from '@aletheia/core';
+} from '@aletheia-labs/core';
 
 const proposalResult = await authority.propose(
   MemoryProposalSchema.parse({
@@ -115,7 +115,7 @@ or scope those source events appropriately.
 
 - No embeddings, vector store, semantic retrieval, or semantic ranking.
 - Optional authority scoring is receipt-derived and runs only after hard visibility/scope/status/freshness filters.
-- No LLM SDK dependency. Use `@aletheia/adapters-anthropic`, `@aletheia/adapters-openai`, or your own adapter.
+- No LLM SDK dependency. Use `@aletheia-labs/adapters-anthropic`, `@aletheia-labs/adapters-openai`, or your own adapter.
 - No OAuth, CLI, MCP server, daemon, watcher, or terminal UX.
 - No authorization service. Aletheia classifies memory authority; your host still owns real-world permissions.
 - No automatic promotion to `trusted`.
@@ -125,9 +125,9 @@ or scope those source events appropriately.
 Public surface for the initial library cycle:
 
 - `AletheiaAuthority`
-- `WriteGate`, `RetrievalRouter`, `ActionAuthorizer` from `@aletheia/core/runtime`
-- storage interfaces exported from `@aletheia/core`
-- zod schemas and inferred types from `@aletheia/core` or `@aletheia/core/types`
+- `WriteGate`, `RetrievalRouter`, `ActionAuthorizer` from `@aletheia-labs/core/runtime`
+- storage interfaces exported from `@aletheia-labs/core`
+- zod schemas and inferred types from `@aletheia-labs/core` or `@aletheia-labs/core/types`
 - decision outcomes and reason shapes
 
 In the `0.x` line, breaking changes are possible but semver-relevant: changes to `propose()`, `recall()`, `tryAct()`, exported schemas, storage interfaces, or decision unions should ship with an explicit version bump and migration notes.
@@ -140,16 +140,16 @@ From the repo root:
 
 ```bash
 pnpm install
-pnpm -F @aletheia/core typecheck
-pnpm -F @aletheia/core test
-pnpm -F @aletheia/core build
-pnpm -F @aletheia/core smoke:e2e
+pnpm -F @aletheia-labs/core typecheck
+pnpm -F @aletheia-labs/core test
+pnpm -F @aletheia-labs/core build
+pnpm -F @aletheia-labs/core smoke:e2e
 ```
 
 Publish dry-run:
 
 ```bash
-pnpm -F @aletheia/core publish --dry-run --no-git-checks
+pnpm -F @aletheia-labs/core publish --dry-run --no-git-checks
 ```
 
 ## Specs

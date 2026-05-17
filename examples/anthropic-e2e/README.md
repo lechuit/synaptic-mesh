@@ -14,7 +14,7 @@ It prints a report with `boundaryViolations: []`.
 The adapter contract checks live in `packages/adapters-anthropic/src/anthropic-bridge.test.ts`:
 
 ```bash
-pnpm -F @aletheia/adapters-anthropic test
+pnpm -F @aletheia-labs/adapters-anthropic test
 ```
 
 They verify:
@@ -31,9 +31,9 @@ Application code can swap the fixture client for the Anthropic SDK:
 
 ```ts
 import Anthropic from '@anthropic-ai/sdk';
-import { AletheiaAuthority, staticVisibilityPolicy } from '@aletheia/core';
-import { AletheiaAnthropicBridge } from '@aletheia/adapters-anthropic';
-import { openSqliteStores } from '@aletheia/store-sqlite';
+import { AletheiaAuthority, staticVisibilityPolicy } from '@aletheia-labs/core';
+import { AletheiaAnthropicBridge } from '@aletheia-labs/adapters-anthropic';
+import { openSqliteStores } from '@aletheia-labs/store-sqlite';
 
 const stores = openSqliteStores('./aletheia-demo.sqlite');
 const authority = new AletheiaAuthority({

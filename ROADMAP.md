@@ -28,12 +28,12 @@ await authority.recall(query);
 await authority.tryAct(action, context);
 ```
 
-LLM adapters receive a caller-provided, already-authenticated client or runner. Aletheia does not own OAuth flows, refresh tokens, device login, terminal UX, or provider account state. `@aletheia/core` stays provider-free, SDK-free, and native-dependency-free.
+LLM adapters receive a caller-provided, already-authenticated client or runner. Aletheia does not own OAuth flows, refresh tokens, device login, terminal UX, or provider account state. `@aletheia-labs/core` stays provider-free, SDK-free, and native-dependency-free.
 
 Explicitly out of scope for the initial release cycle:
 
-- `@aletheia/cli`
-- `@aletheia/mcp-server`
+- `@aletheia-labs/cli`
+- `@aletheia-labs/mcp-server`
 - OAuth flows for Codex, Claude, ChatGPT, or any other provider
 - ChatGPT Plus / Codex subscription plumbing
 - terminal UI/ergonomics
@@ -46,12 +46,12 @@ Those may return later as separate packages once the library has external users 
 
 The initial public release target is `0.1.0` across six packages:
 
-- `@aletheia/core`
-- `@aletheia/store-sqlite`
-- `@aletheia/adapters-anthropic`
-- `@aletheia/adapters-openai`
-- `@aletheia/dynamics`
-- `@aletheia/episodic`
+- `@aletheia-labs/core`
+- `@aletheia-labs/store-sqlite`
+- `@aletheia-labs/adapters-anthropic`
+- `@aletheia-labs/adapters-openai`
+- `@aletheia-labs/dynamics`
+- `@aletheia-labs/episodic`
 
 Measured at release prep:
 
@@ -64,7 +64,7 @@ Measured at release prep:
 - **Specs**: `aletheia-memory-authority-v0.md` and
   `memory-authority-receipt-v0.md` aligned to the executable package surface.
 
-`@aletheia/episodic` is included in `0.1.0` as an experimental public baseline:
+`@aletheia-labs/episodic` is included in `0.1.0` as an experimental public baseline:
 it is useful enough to ship, but its projection APIs remain more likely to
 move during the `0.x` line than the Phase 1 authority spine.
 
@@ -81,7 +81,7 @@ move during the `0.x` line than the Phase 1 authority spine.
   ladder removed from the active tree and left to git history.
 - [x] `GLOSSARY.md`: every recurring term defined.
 - [x] `ROADMAP.md`: this document.
-- [x] **Naming decision**: project renamed to **Aletheia**; npm namespace `@aletheia/*`. See below.
+- [x] **Naming decision**: project renamed to **Aletheia**; npm namespace `@aletheia-labs/*`. See below.
 - [x] **Repo hygiene**: inactive historical docs, manifests, old schemas,
   fixture runs, archived JS implementation, and release-check tooling removed
   from the active tree to prevent reader confusion. Git history remains the
@@ -106,31 +106,31 @@ This is the phase that crossed the line from "research artifact" to "real softwa
 Measured before Phase 2 work, excluding `dist/`, JSON config, Markdown, and generated artifacts.
 
 - **Publishable packages**: 4
-  - `@aletheia/core`
-  - `@aletheia/store-sqlite`
-  - `@aletheia/adapters-anthropic`
-  - `@aletheia/adapters-openai`
+  - `@aletheia-labs/core`
+  - `@aletheia-labs/store-sqlite`
+  - `@aletheia-labs/adapters-anthropic`
+  - `@aletheia-labs/adapters-openai`
 - **Implementation source**: 39 TypeScript source files, 4,706 LOC under Phase 1 package `src/`, excluding `*.test.ts`.
-  - `@aletheia/core`: 28 files, 2,643 LOC
-  - `@aletheia/store-sqlite`: 7 files, 1,154 LOC
-  - `@aletheia/adapters-anthropic`: 2 files, 450 LOC
-  - `@aletheia/adapters-openai`: 2 files, 459 LOC
+  - `@aletheia-labs/core`: 28 files, 2,643 LOC
+  - `@aletheia-labs/store-sqlite`: 7 files, 1,154 LOC
+  - `@aletheia-labs/adapters-anthropic`: 2 files, 450 LOC
+  - `@aletheia-labs/adapters-openai`: 2 files, 459 LOC
 - **Executable test surface**: 103 package tests plus 1 no-LLM smoke test.
-  - `@aletheia/core`: 62 package tests
-  - `@aletheia/store-sqlite`: 27 package tests
-  - `@aletheia/adapters-anthropic`: 6 package tests
-  - `@aletheia/adapters-openai`: 8 package tests
+  - `@aletheia-labs/core`: 62 package tests
+  - `@aletheia-labs/store-sqlite`: 27 package tests
+  - `@aletheia-labs/adapters-anthropic`: 6 package tests
+  - `@aletheia-labs/adapters-openai`: 8 package tests
   - `packages/core/examples/end-to-end.ts`: 1 smoke canary
 - **Canary evidence**: 3 executable closure canaries report `boundaryViolations: []`.
   - `pnpm run smoke:core-e2e`
   - `node examples/anthropic-e2e/fixture-demo.mjs`
-  - `pnpm -F @aletheia/adapters-openai run demo:fixture`
+  - `pnpm -F @aletheia-labs/adapters-openai run demo:fixture`
 - **Publish dry-runs**: all 4 Phase 1 packages pass `pnpm -F <package> publish --dry-run --no-git-checks`.
 - **Code/test/demo footprint**: 7,418 TS/MJS LOC across Phase 1 implementation, tests, and executable demos.
 
 ### Scope
 
-1. **Implement `@aletheia/core` in TypeScript from scratch**, with formal types
+1. **Implement `@aletheia-labs/core` in TypeScript from scratch**, with formal types
    derived directly from `specs/` and zod schemas in
    `packages/core/src/types/`.
    - `Receipt`, `CompressedReceipt`, `MemoryAtom`, `MemoryProposal`, `ActionContextPacket`, `Coverage`, `ConflictRecord`, `Decision`.
@@ -168,7 +168,7 @@ Measured before Phase 2 work, excluding `dist/`, JSON config, Markdown, and gene
 | Language | TypeScript (strict) | Per user — TS+Angular background, types-as-spec is the right level |
 | Storage | SQLite (`better-sqlite3`) | Zero infra, real transactions, file-portable; can swap later |
 | Runtime target | Node 20+ | Phase 1 is server-side; browser/edge is later |
-| Packaging | Monorepo (pnpm workspaces) from day 1 | Phase 1.4 already needs `@aletheia/adapters-anthropic` separate from `@aletheia/core` to keep core SDK-free. Setting it up later costs more than setting it up now. |
+| Packaging | Monorepo (pnpm workspaces) from day 1 | Phase 1.4 already needs `@aletheia-labs/adapters-anthropic` separate from `@aletheia-labs/core` to keep core SDK-free. Setting it up later costs more than setting it up now. |
 | Lint/format | Biome | TS-native, single binary, replaces ESLint + Prettier |
 | LLM clients | Caller-provided clients/runners | Aletheia is a library. Adapters accept authenticated clients; they do not own OAuth or provider login. |
 | Tests | Vitest | Modern, TS-native, fast |
@@ -188,7 +188,7 @@ Measured before Phase 2 work, excluding `dist/`, JSON config, Markdown, and gene
 - [x] Reference OpenAI adapter has deterministic fixture tests and a no-key fixture demo.
 - [x] Live Anthropic happy-path run with a user-provided API key is captured as release evidence: `evidence/live-llm-e2e/anthropic.json`.
 - [x] Live Anthropic adversarial run is captured as release evidence: `evidence/live-llm-e2e/anthropic-adversarial.json`.
-- [x] Phase 1 package set passes build plus publish dry-run: `@aletheia/core`, `@aletheia/store-sqlite`, `@aletheia/adapters-anthropic`, `@aletheia/adapters-openai`.
+- [x] Phase 1 package set passes build plus publish dry-run: `@aletheia-labs/core`, `@aletheia-labs/store-sqlite`, `@aletheia-labs/adapters-anthropic`, `@aletheia-labs/adapters-openai`.
 - [x] Package version strategy is decided: `0.1.0` is the initial public
   research-ready release line.
 
@@ -196,14 +196,14 @@ Measured before Phase 2 work, excluding `dist/`, JSON config, Markdown, and gene
 
 - [x] `AletheiaAuthority` facade exposes the roadmap-shaped consumer API: `propose()`, `recall()`, `tryAct()`.
 - [x] `packages/core/examples/end-to-end.ts` opens a SQLite store and verifies sealed proposal -> recall abstain, verified recall -> allow, sensitive action -> ask human, and safe local action -> allow.
-- [x] `@aletheia/adapters-anthropic` added as a separate SDK-compatible adapter package; `@aletheia/core` remains SDK-free.
+- [x] `@aletheia-labs/adapters-anthropic` added as a separate SDK-compatible adapter package; `@aletheia-labs/core` remains SDK-free.
 - [x] Anthropic-compatible bridge records conversation events, asks the model only for proposal drafts, and routes drafts through `AletheiaAuthority.propose()`.
 - [x] Answer path calls the model only after governed `recall()` and receiver-side `tryAct()` both allow local/shadow use.
 - [x] Fixture tests validate malformed model JSON, recall fail-closed, sensitive-action ask-human, and local allowed answer behavior.
 - [x] `examples/anthropic-e2e/README.md` documents live Claude wiring with a user-provided API key.
-- [x] `@aletheia/adapters-openai` accepts a caller-provided Responses-compatible client and does not implement OAuth.
-- [x] OpenAI fixture demo runs without an API key after build: `pnpm -F @aletheia/adapters-openai run demo:fixture`.
-- [x] Publish dry-run passed for `@aletheia/core`, `@aletheia/store-sqlite`, `@aletheia/adapters-anthropic`, and `@aletheia/adapters-openai`.
+- [x] `@aletheia-labs/adapters-openai` accepts a caller-provided Responses-compatible client and does not implement OAuth.
+- [x] OpenAI fixture demo runs without an API key after build: `pnpm -F @aletheia-labs/adapters-openai run demo:fixture`.
+- [x] Publish dry-run passed for `@aletheia-labs/core`, `@aletheia-labs/store-sqlite`, `@aletheia-labs/adapters-anthropic`, and `@aletheia-labs/adapters-openai`.
 - [x] No-key closure canaries pass with `boundaryViolations: []`: core SQLite smoke, Anthropic fixture demo, OpenAI fixture demo.
 - [x] Real-provider live demo script exists: `pnpm run demo:live-llm` with `ANTHROPIC_API_KEY` or `OPENAI_API_KEY`.
 - [x] Live Anthropic API run passed with an operator-provided key and explicit approval; evidence captured in `evidence/live-llm-e2e/anthropic.json`.
@@ -221,7 +221,7 @@ Built on top of Phase 1.
 
 ### Phase 2.0 status
 
-- [x] `@aletheia/dynamics` package created as the first Phase 2 surface.
+- [x] `@aletheia-labs/dynamics` package created as the first Phase 2 surface.
 - [x] Deterministic `DynamicsEngine.tick()` plans/applies status transitions from explicit policy and evidence.
 - [x] Decay is per status: candidates and verified memories expire sooner than trusted memories.
 - [x] Candidate promotion requires explicit source-consistent recall evidence; confidence/consensus do not authorize promotion.
@@ -235,10 +235,10 @@ Built on top of Phase 1.
 
 ### Phase 2.1 — Decay model status
 
-- [x] Pure `decayedAuthority(atom, now)` helper exported from `@aletheia/dynamics`.
+- [x] Pure `decayedAuthority(atom, now)` helper exported from `@aletheia-labs/dynamics`.
 - [x] Configurable half-life curves: candidates decay fastest, verified memories over weeks, trusted memories over months, sealed memories do not decay, and non-actionable terminal statuses score zero.
 - [x] `RetrievalRouter` accepts an optional `authorityScorer` hook that runs only after visibility, scope, status, freshness, type, and topic filters, and before recall limits.
-- [x] `AletheiaAuthority` passes the optional scorer through without making `@aletheia/core` depend on `@aletheia/dynamics`.
+- [x] `AletheiaAuthority` passes the optional scorer through without making `@aletheia-labs/core` depend on `@aletheia-labs/dynamics`.
 - [x] Deterministic tests cover status-specific decay, advancing logical time, future/expired validity windows, and filtered recall ranking.
 
 ### Phase 2.2 — Auto-transition evidence status
@@ -295,7 +295,7 @@ Built on top of Phases 1 + 2.
 
 ### Phase 3.0 status
 
-- [x] `@aletheia/episodic` package created as the first Phase 3 surface.
+- [x] `@aletheia-labs/episodic` package created as the first Phase 3 surface.
 - [x] Explicit episodic anchors are parsed from event payloads without treating them as authority.
 - [x] Episode memory projection respects visibility and scope before matching source-event anchors.
 - [x] Historical belief snapshots reconstruct status at an `asOf` time from `MemoryStore.statusHistory`, not just current atom status.
@@ -344,14 +344,14 @@ The name encodes the design maxim directly:
 
 ### npm namespace
 
-The bare package `aletheia` on npm is taken but abandoned (last published 9 years ago, ~1 download/week, unrelated compile-to-JS toy). Rather than fight for the squatted name, we publish under the **scoped namespace `@aletheia/*`**:
+The bare package `aletheia` on npm is taken but abandoned (last published 9 years ago, ~1 download/week, unrelated compile-to-JS toy). The shorter `@aletheia/*` npm organization also already exists and is not controlled by this project. Rather than block the release on namespace access, we publish under the owned **scoped namespace `@aletheia-labs/*`**:
 
-- `@aletheia/core` — the authority engine (Phase 1).
-- `@aletheia/store-sqlite` — the SQLite-backed MemoryStore (Phase 1).
-- `@aletheia/adapters-anthropic` — reference LLM integration (Phase 1).
-- `@aletheia/adapters-openai` — OpenAI Responses-compatible reference LLM integration (Phase 1).
-- `@aletheia/dynamics` — deterministic lifecycle dynamics (Phase 2).
-- `@aletheia/episodic` — subjective-time projections and continuity snapshots (Phase 3).
+- `@aletheia-labs/core` — the authority engine (Phase 1).
+- `@aletheia-labs/store-sqlite` — the SQLite-backed MemoryStore (Phase 1).
+- `@aletheia-labs/adapters-anthropic` — reference LLM integration (Phase 1).
+- `@aletheia-labs/adapters-openai` — OpenAI Responses-compatible reference LLM integration (Phase 1).
+- `@aletheia-labs/dynamics` — deterministic lifecycle dynamics (Phase 2).
+- `@aletheia-labs/episodic` — subjective-time projections and continuity snapshots (Phase 3).
 
 Scoped namespace keeps optional future packages possible, but CLI/MCP packages are explicitly outside the initial library release cycle.
 

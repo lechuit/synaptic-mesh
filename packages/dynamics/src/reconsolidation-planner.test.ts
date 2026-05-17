@@ -20,8 +20,8 @@ import type {
   StatusTransitionReason,
   StatusTransitionResult,
   Visibility,
-} from '@aletheia/core';
-import { scopeKey, visibilityKey } from '@aletheia/core';
+} from '@aletheia-labs/core';
+import { scopeKey, visibilityKey } from '@aletheia-labs/core';
 import { describe, expect, it } from 'vitest';
 import { ReconsolidationApplier, ReconsolidationPlanner } from './reconsolidation-planner.js';
 

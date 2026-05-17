@@ -1,4 +1,11 @@
-import type { Event, EventId, EventLedger, JsonValue, MemoryAtom, MemoryId } from '@aletheia/core';
+import type {
+  Event,
+  EventId,
+  EventLedger,
+  JsonValue,
+  MemoryAtom,
+  MemoryId,
+} from '@aletheia-labs/core';
 import type {
   DynamicsEvidence,
   DynamicsEvidenceContext,

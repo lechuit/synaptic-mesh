@@ -17,7 +17,7 @@ importers:
 
   packages/adapters-anthropic:
     dependencies:
-      '@aletheia/core':
+      '@aletheia-labs/core':
         specifier: workspace:*
         version: link:../core
       '@anthropic-ai/sdk':
@@ -36,7 +36,7 @@ importers:
 
   packages/adapters-openai:
     dependencies:
-      '@aletheia/core':
+      '@aletheia-labs/core':
         specifier: workspace:*
         version: link:../core
     devDependencies:
@@ -68,7 +68,7 @@ importers:
 
   packages/dynamics:
     dependencies:
-      '@aletheia/core':
+      '@aletheia-labs/core':
         specifier: workspace:*
         version: link:../core
     devDependencies:
@@ -84,7 +84,7 @@ importers:
 
   packages/episodic:
     dependencies:
-      '@aletheia/core':
+      '@aletheia-labs/core':
         specifier: workspace:*
         version: link:../core
     devDependencies:
@@ -100,7 +100,7 @@ importers:
 
   packages/store-sqlite:
     dependencies:
-      '@aletheia/core':
+      '@aletheia-labs/core':
         specifier: workspace:*
         version: link:../core
       better-sqlite3:

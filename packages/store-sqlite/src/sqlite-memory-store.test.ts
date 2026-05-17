@@ -1,4 +1,4 @@
-import type { AgentId, EventId, MemoryAtom, MemoryId, Visibility } from '@aletheia/core';
+import type { AgentId, EventId, MemoryAtom, MemoryId, Visibility } from '@aletheia-labs/core';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { type SqliteStores, openSqliteStores } from './index.js';
 

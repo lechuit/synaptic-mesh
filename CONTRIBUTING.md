@@ -8,7 +8,7 @@ The most useful contributions right now are:
   scope/visibility mistakes;
 - small API ergonomics improvements that preserve fail-closed behavior;
 - package README improvements and copyable examples;
-- provider adapter fixtures that do not pull SDKs into `@aletheia/core`;
+- provider adapter fixtures that do not pull SDKs into `@aletheia-labs/core`;
 - spec clarifications when code and protocol wording diverge.
 
 Please keep these boundaries intact:

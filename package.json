@@ -13,7 +13,7 @@
     "build": "pnpm -r run build",
     "test": "pnpm -r run test",
     "typecheck": "pnpm -r run typecheck",
-    "smoke:core-e2e": "pnpm -F @aletheia/core run smoke:e2e",
+    "smoke:core-e2e": "pnpm -F @aletheia-labs/core run smoke:e2e",
     "demo:live-llm": "node examples/live-llm-e2e/live-demo.mjs",
     "demo:live-llm:adversarial": "node examples/live-llm-e2e/live-demo-adversarial.mjs",
     "lint": "biome check .",

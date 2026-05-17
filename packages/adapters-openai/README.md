@@ -1,4 +1,4 @@
-# @aletheia/adapters-openai
+# @aletheia-labs/adapters-openai
 
 OpenAI Responses-compatible adapter for Aletheia authority-governed memory.
 
@@ -7,14 +7,14 @@ OpenAI Responses-compatible adapter for Aletheia authority-governed memory.
 ## Quickstart
 
 ```bash
-pnpm add @aletheia/core @aletheia/store-sqlite @aletheia/adapters-openai openai
+pnpm add @aletheia-labs/core @aletheia-labs/store-sqlite @aletheia-labs/adapters-openai openai
 ```
 
 ```ts
 import OpenAI from 'openai';
-import { AletheiaAuthority, staticVisibilityPolicy } from '@aletheia/core';
-import { AletheiaOpenAIResponsesBridge } from '@aletheia/adapters-openai';
-import { openSqliteStores } from '@aletheia/store-sqlite';
+import { AletheiaAuthority, staticVisibilityPolicy } from '@aletheia-labs/core';
+import { AletheiaOpenAIResponsesBridge } from '@aletheia-labs/adapters-openai';
+import { openSqliteStores } from '@aletheia-labs/store-sqlite';
 
 const stores = openSqliteStores('./aletheia.sqlite');
 const authority = new AletheiaAuthority({
@@ -70,7 +70,7 @@ After building the workspace:
 
 ```bash
 pnpm -r run build
-pnpm -F @aletheia/adapters-openai run demo:fixture
+pnpm -F @aletheia-labs/adapters-openai run demo:fixture
 ```
 
 The fixture uses a fake Responses client and should print `boundaryViolations: []`.
@@ -94,8 +94,8 @@ From the repo root:
 
 ```bash
 pnpm install
-pnpm -F @aletheia/adapters-openai typecheck
-pnpm -F @aletheia/adapters-openai test
-pnpm -F @aletheia/adapters-openai build
-pnpm -F @aletheia/adapters-openai run demo:fixture
+pnpm -F @aletheia-labs/adapters-openai typecheck
+pnpm -F @aletheia-labs/adapters-openai test
+pnpm -F @aletheia-labs/adapters-openai build
+pnpm -F @aletheia-labs/adapters-openai run demo:fixture
 ```

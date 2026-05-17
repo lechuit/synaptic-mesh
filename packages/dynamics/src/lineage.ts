@@ -1,4 +1,4 @@
-import type { MemoryAtom, MemoryId, MemoryStore, Visibility } from '@aletheia/core';
+import type { MemoryAtom, MemoryId, MemoryStore, Visibility } from '@aletheia-labs/core';
 
 export type LineageTraceOutcome = 'ok' | 'fetch_abstain';
 export type LineageTraceReason =

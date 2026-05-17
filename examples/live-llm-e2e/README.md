@@ -4,9 +4,9 @@ This demo runs Aletheia against a real provider API, not a fixture client.
 
 It uses the published library shape:
 
-- `@aletheia/core` for `AletheiaAuthority`
-- `@aletheia/store-sqlite` for storage
-- `@aletheia/adapters-openai` or `@aletheia/adapters-anthropic` for the provider bridge
+- `@aletheia-labs/core` for `AletheiaAuthority`
+- `@aletheia-labs/store-sqlite` for storage
+- `@aletheia-labs/adapters-openai` or `@aletheia-labs/adapters-anthropic` for the provider bridge
 - caller-provided API key and HTTP client
 
 No OAuth, no CLI auth flow, no SDK dependency, and no mock fallback.

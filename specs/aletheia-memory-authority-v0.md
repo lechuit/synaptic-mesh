@@ -17,15 +17,15 @@ Design maxim:
 
 The `0.1.0` release line is a library surface, not an application:
 
-- `@aletheia/core`: zod domain schemas, storage ports, runtime gates, and the
+- `@aletheia-labs/core`: zod domain schemas, storage ports, runtime gates, and the
   `AletheiaAuthority` facade.
-- `@aletheia/store-sqlite`: SQLite implementation of the core storage ports.
-- `@aletheia/adapters-anthropic`: BYO Anthropic client adapter that drafts
+- `@aletheia-labs/store-sqlite`: SQLite implementation of the core storage ports.
+- `@aletheia-labs/adapters-anthropic`: BYO Anthropic client adapter that drafts
   proposals and answers after governed recall.
-- `@aletheia/adapters-openai`: BYO OpenAI client adapter with the same boundary.
-- `@aletheia/dynamics`: lifecycle policies, authority decay, sleep-cycle
+- `@aletheia-labs/adapters-openai`: BYO OpenAI client adapter with the same boundary.
+- `@aletheia-labs/dynamics`: lifecycle policies, authority decay, sleep-cycle
   orchestration, recall evidence, and reconsolidation helpers.
-- `@aletheia/episodic`: read-only subjective-time projections over events and
+- `@aletheia-labs/episodic`: read-only subjective-time projections over events and
   memory status history.
 
 Core has no native database dependency and no provider SDK dependency. Storage,
@@ -173,13 +173,13 @@ atoms. They are not returned as ordinary actionable recall.
 
 ## Storage contract
 
-`@aletheia/core` defines storage ports only:
+`@aletheia-labs/core` defines storage ports only:
 
 - `EventLedger`;
 - `MemoryStore`;
 - `ConflictRegistry`.
 
-`@aletheia/store-sqlite` implements those ports with embedded idempotent
+`@aletheia-labs/store-sqlite` implements those ports with embedded idempotent
 migrations, WAL, foreign keys, zod decode on read, append-only inserts, and
 status/history tables.
 
@@ -233,7 +233,7 @@ receiver algorithm.
 
 ## Dynamics contract
 
-`@aletheia/dynamics` implements memory-as-process without introducing a daemon
+`@aletheia-labs/dynamics` implements memory-as-process without introducing a daemon
 or hidden mutation.
 
 ### Authority decay
@@ -285,7 +285,7 @@ timestamp, the reported decisions are deterministic.
 
 ## Episodic contract
 
-`@aletheia/episodic` implements subjective-time projections over explicit
+`@aletheia-labs/episodic` implements subjective-time projections over explicit
 event anchors and memory status history. It is read-only.
 
 It can:

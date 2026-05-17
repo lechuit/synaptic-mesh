@@ -1,5 +1,5 @@
 {
-  "name": "@aletheia/episodic",
+  "name": "@aletheia-labs/episodic",
   "version": "0.1.0",
   "description": "Subjective time and episodic continuity projections for Aletheia memory stores.",
   "license": "Apache-2.0",
@@ -21,7 +21,7 @@
     "test:watch": "vitest"
   },
   "dependencies": {
-    "@aletheia/core": "workspace:*"
+    "@aletheia-labs/core": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^22.10.0",

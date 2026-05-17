@@ -1,5 +1,5 @@
 {
-  "name": "@aletheia/core",
+  "name": "@aletheia-labs/core",
   "version": "0.1.0",
   "description": "Aletheia core — types and runtime for memory as governance in LLM agents.",
   "license": "Apache-2.0",

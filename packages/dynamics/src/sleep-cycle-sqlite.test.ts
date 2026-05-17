@@ -8,7 +8,7 @@ import type {
   MemoryAtom,
   MemoryId,
   Visibility,
-} from '@aletheia/core';
+} from '@aletheia-labs/core';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { type SqliteStores, openSqliteStores } from '../../store-sqlite/src/index.js';
 import { DynamicsEngine, type DynamicsEvidenceProvider } from './dynamics-engine.js';

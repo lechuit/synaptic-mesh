@@ -1,5 +1,5 @@
-import type { MemoryId } from '@aletheia/core';
-import { scopeKey } from '@aletheia/core';
+import type { MemoryId } from '@aletheia-labs/core';
+import { scopeKey } from '@aletheia-labs/core';
 import type { DynamicsDecision, DynamicsTickInput, DynamicsTickResult } from './dynamics-engine.js';
 
 export type SleepCycleMode = 'dry_run' | 'apply';

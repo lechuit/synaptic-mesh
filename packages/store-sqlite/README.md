@@ -1,18 +1,18 @@
-# @aletheia/store-sqlite
+# @aletheia-labs/store-sqlite
 
-SQLite-backed implementations of the storage interfaces declared in `@aletheia/core`.
+SQLite-backed implementations of the storage interfaces declared in `@aletheia-labs/core`.
 
 > **Status**: `0.1.0` public baseline. Event, memory, conflict, migrations, and audit-history paths are live.
 
 ## Quickstart
 
 ```bash
-pnpm add @aletheia/core @aletheia/store-sqlite
+pnpm add @aletheia-labs/core @aletheia-labs/store-sqlite
 ```
 
 ```ts
-import { AletheiaAuthority, staticVisibilityPolicy } from '@aletheia/core';
-import { openSqliteStores } from '@aletheia/store-sqlite';
+import { AletheiaAuthority, staticVisibilityPolicy } from '@aletheia-labs/core';
+import { openSqliteStores } from '@aletheia-labs/store-sqlite';
 
 const stores = openSqliteStores('./aletheia.sqlite');
 const authority = new AletheiaAuthority({
@@ -53,8 +53,8 @@ Always call `stores.close()` when the host is done.
 ## Example
 
 ```ts
-import { EventSchema } from '@aletheia/core';
-import { openSqliteStores } from '@aletheia/store-sqlite';
+import { EventSchema } from '@aletheia-labs/core';
+import { openSqliteStores } from '@aletheia-labs/store-sqlite';
 
 const stores = openSqliteStores(':memory:');
 
@@ -107,13 +107,13 @@ From the repo root:
 
 ```bash
 pnpm install
-pnpm -F @aletheia/store-sqlite typecheck
-pnpm -F @aletheia/store-sqlite test
-pnpm -F @aletheia/store-sqlite build
+pnpm -F @aletheia-labs/store-sqlite typecheck
+pnpm -F @aletheia-labs/store-sqlite test
+pnpm -F @aletheia-labs/store-sqlite build
 ```
 
 Publish dry-run:
 
 ```bash
-pnpm -F @aletheia/store-sqlite publish --dry-run --no-git-checks
+pnpm -F @aletheia-labs/store-sqlite publish --dry-run --no-git-checks
 ```

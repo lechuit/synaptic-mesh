@@ -25,7 +25,7 @@ import {
   type Visibility,
   isAllowedTransition,
   scopeKey,
-} from '@aletheia/core';
+} from '@aletheia-labs/core';
 import type Database from 'better-sqlite3';
 import { type AtomRow, atomToRow, permittedClause, rowToAtom } from './codec.js';
 

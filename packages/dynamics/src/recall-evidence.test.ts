@@ -9,8 +9,8 @@ import type {
   MemoryId,
   Scope,
   Visibility,
-} from '@aletheia/core';
-import { scopeKey, visibilityKey } from '@aletheia/core';
+} from '@aletheia-labs/core';
+import { scopeKey, visibilityKey } from '@aletheia-labs/core';
 import { describe, expect, it } from 'vitest';
 import { LedgerRecallEvidenceProvider, sourceConsistentRecallPayload } from './recall-evidence.js';
 

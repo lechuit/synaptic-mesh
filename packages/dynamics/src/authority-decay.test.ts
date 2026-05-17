@@ -1,4 +1,4 @@
-import type { AgentId, EventId, IsoTimestamp, MemoryAtom, MemoryId } from '@aletheia/core';
+import type { AgentId, EventId, IsoTimestamp, MemoryAtom, MemoryId } from '@aletheia-labs/core';
 import { describe, expect, it } from 'vitest';
 import { DEFAULT_AUTHORITY_DECAY_POLICY, decayedAuthority } from './authority-decay.js';
 

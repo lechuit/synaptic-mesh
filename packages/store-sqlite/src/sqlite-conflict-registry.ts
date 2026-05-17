@@ -19,7 +19,7 @@ import {
   type ResolveReason,
   type Visibility,
   scopeKey,
-} from '@aletheia/core';
+} from '@aletheia-labs/core';
 import type Database from 'better-sqlite3';
 import { type ConflictRow, conflictToRow, rowToConflict } from './codec.js';
 

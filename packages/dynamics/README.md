@@ -1,4 +1,4 @@
-# @aletheia/dynamics
+# @aletheia-labs/dynamics
 
 Deterministic memory dynamics for Aletheia.
 
@@ -7,13 +7,13 @@ Deterministic memory dynamics for Aletheia.
 ## Quickstart
 
 ```bash
-pnpm add @aletheia/core @aletheia/store-sqlite @aletheia/dynamics
+pnpm add @aletheia-labs/core @aletheia-labs/store-sqlite @aletheia-labs/dynamics
 ```
 
 ```ts
-import { AgentIdSchema, IsoTimestampSchema } from '@aletheia/core';
-import { createDynamicsPolicy, DynamicsEngine, SleepCycleRunner } from '@aletheia/dynamics';
-import { openSqliteStores } from '@aletheia/store-sqlite';
+import { AgentIdSchema, IsoTimestampSchema } from '@aletheia-labs/core';
+import { createDynamicsPolicy, DynamicsEngine, SleepCycleRunner } from '@aletheia-labs/dynamics';
+import { openSqliteStores } from '@aletheia-labs/store-sqlite';
 
 const stores = openSqliteStores('./aletheia.sqlite');
 const engine = new DynamicsEngine({
@@ -50,7 +50,7 @@ Use `applyTransitions: true` only when the host wants audited status transitions
 - Provides `ReconsolidationPlanner` for successor drafts with `supersedes` lineage and planned transitions.
 - Provides `ReconsolidationApplier` for explicit human-confirmed successor insertion plus audited prior-atom deprecation.
 - Provides `LineageTracer` for permission-guarded reconstruction of `supersedes` chains.
-- Keeps `@aletheia/core` SDK-free and free of background scheduling.
+- Keeps `@aletheia-labs/core` SDK-free and free of background scheduling.
 
 ## Decayed Recall Ranking
 
@@ -59,8 +59,8 @@ for ranking atoms that have already passed core visibility, scope, status, and
 freshness filters. It is not a permission check and it never mutates status.
 
 ```ts
-import { AletheiaAuthority } from '@aletheia/core';
-import { decayedAuthority } from '@aletheia/dynamics';
+import { AletheiaAuthority } from '@aletheia-labs/core';
+import { decayedAuthority } from '@aletheia-labs/dynamics';
 
 const authority = new AletheiaAuthority({
   eventLedger,
@@ -87,7 +87,7 @@ its `sourceEventIds`.
 import {
   LedgerRecallEvidenceProvider,
   sourceConsistentRecallPayload,
-} from '@aletheia/dynamics';
+} from '@aletheia-labs/dynamics';
 
 await eventLedger.append({
   eventId,
@@ -116,7 +116,7 @@ link to the prior atom, and the prior atom is deprecated through audited status
 history. `LineageTracer` reconstructs that chain only through visible atoms:
 
 ```ts
-import { LineageTracer } from '@aletheia/dynamics';
+import { LineageTracer } from '@aletheia-labs/dynamics';
 
 const lineage = await new LineageTracer({ memoryStore }).traceBack({
   memoryId: successorId,
@@ -163,7 +163,7 @@ From the repo root:
 
 ```bash
 pnpm install
-pnpm -F @aletheia/dynamics typecheck
-pnpm -F @aletheia/dynamics test
-pnpm -F @aletheia/dynamics build
+pnpm -F @aletheia-labs/dynamics typecheck
+pnpm -F @aletheia-labs/dynamics test
+pnpm -F @aletheia-labs/dynamics build
 ```

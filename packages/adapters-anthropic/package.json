@@ -1,5 +1,5 @@
 {
-  "name": "@aletheia/adapters-anthropic",
+  "name": "@aletheia-labs/adapters-anthropic",
   "version": "0.1.0",
   "description": "Anthropic-compatible LLM adapter for Aletheia authority-governed memory.",
   "license": "Apache-2.0",
@@ -21,7 +21,7 @@
     "test:watch": "vitest"
   },
   "dependencies": {
-    "@aletheia/core": "workspace:*"
+    "@aletheia-labs/core": "workspace:*"
   },
   "peerDependencies": {
     "@anthropic-ai/sdk": ">=0.30.0"

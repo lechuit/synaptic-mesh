@@ -17,7 +17,7 @@ import {
   type VisibilityPolicy,
   decision,
   scopeKey,
-} from '@aletheia/core';
+} from '@aletheia-labs/core';
 
 export type EpisodeKind = 'conversation' | 'task' | 'decision_context' | 'session';
 

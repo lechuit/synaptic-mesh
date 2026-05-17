@@ -1,4 +1,4 @@
-# @aletheia/adapters-anthropic
+# @aletheia-labs/adapters-anthropic
 
 Anthropic-compatible adapter for Aletheia authority-governed memory.
 
@@ -7,14 +7,14 @@ Anthropic-compatible adapter for Aletheia authority-governed memory.
 ## Quickstart
 
 ```bash
-pnpm add @aletheia/core @aletheia/store-sqlite @aletheia/adapters-anthropic @anthropic-ai/sdk
+pnpm add @aletheia-labs/core @aletheia-labs/store-sqlite @aletheia-labs/adapters-anthropic @anthropic-ai/sdk
 ```
 
 ```ts
 import Anthropic from '@anthropic-ai/sdk';
-import { AletheiaAuthority, staticVisibilityPolicy } from '@aletheia/core';
-import { AletheiaAnthropicBridge } from '@aletheia/adapters-anthropic';
-import { openSqliteStores } from '@aletheia/store-sqlite';
+import { AletheiaAuthority, staticVisibilityPolicy } from '@aletheia-labs/core';
+import { AletheiaAnthropicBridge } from '@aletheia-labs/adapters-anthropic';
+import { openSqliteStores } from '@aletheia-labs/store-sqlite';
 
 const stores = openSqliteStores('./aletheia.sqlite');
 const authority = new AletheiaAuthority({
@@ -55,7 +55,7 @@ const bridge = new AletheiaAnthropicBridge({
 });
 ```
 
-`@anthropic-ai/sdk` is an optional peer dependency. `@aletheia/core` stays SDK-free.
+`@anthropic-ai/sdk` is an optional peer dependency. `@aletheia-labs/core` stays SDK-free.
 
 ## What this package does NOT do
 
@@ -84,9 +84,9 @@ From the repo root:
 
 ```bash
 pnpm install
-pnpm -F @aletheia/adapters-anthropic typecheck
-pnpm -F @aletheia/adapters-anthropic test
-pnpm -F @aletheia/adapters-anthropic build
+pnpm -F @aletheia-labs/adapters-anthropic typecheck
+pnpm -F @aletheia-labs/adapters-anthropic test
+pnpm -F @aletheia-labs/adapters-anthropic build
 ```
 
 ## Boundary
