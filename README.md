@@ -13,8 +13,8 @@ authority cannot be verified.
 
 ## Status
 
-This repo is preparing the **0.1.0 public library release**: executable
-authority memory with dynamics and episodic continuity.
+This repo is at the **0.1.0 public library release**: executable authority
+memory with dynamics and episodic continuity.
 
 What exists today:
 
