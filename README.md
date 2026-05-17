@@ -4,7 +4,7 @@
 
 > **Do not build a memory that remembers more. Build a memory that knows when to distrust itself.**
 
-A research protocol — and, in upcoming releases, an executable reference implementation — for **memory as governance** in LLM-based agents.
+A research protocol and executable reference implementation for **memory as governance** in LLM-based agents.
 
 Most "memory for LLM" projects are retrieval systems (RAG, vector stores, mem0, MemGPT, Letta, Zep): they answer *"how do I find what's relevant"*. Aletheia asks a different question: *"what authority does a recalled fact have to influence an action"*. Every remembered claim carries a verifiable receipt — source, freshness, scope, status, lineage, effect-boundary — and the system **fails closed** whenever that authority cannot be verified. Stale, denied, sealed, local-only or human-required evidence cannot be laundered into action authority through summarization or handoff.
 
@@ -22,12 +22,12 @@ This repo is in **Phase 3.1: executable authority memory with dynamics and episo
 - the historical no-effect reference implementation in JS, preserved for parity testing (`archive/synaptic-mesh-shadow-v0/`)
 - `@aletheia/core`: strict TypeScript authority types, storage interfaces, WriteGate, RetrievalRouter, and ActionAuthorizer
 - `@aletheia/store-sqlite`: SQLite-backed event, memory, and conflict stores
+- `@aletheia/adapters-anthropic`: Anthropic-compatible reference LLM adapter
 - `@aletheia/dynamics`: deterministic lifecycle dynamics and explicit sleep-cycle reports
 - `@aletheia/episodic`: subjective-time projections, episode catalog, historical timelines, and restart self-state reconstruction
 
 What does **not** exist yet:
 
-- live LLM integration
 - published npm packages
 - a mutating reconsolidation apply path for successor atoms; the current surface is planner-only until the gate contract is explicit
 
@@ -49,8 +49,10 @@ Phase 1 delivers claim 1 as running code; Phase 2 adds lifecycle dynamics; Phase
 packages/               TypeScript monorepo (pnpm workspaces) — the live system
   ├── core/             @aletheia/core — types, write gate, memory store, retrieval router
   ├── store-sqlite/     @aletheia/store-sqlite — SQLite storage implementations
+  ├── adapters-anthropic/ @aletheia/adapters-anthropic — Claude-compatible bridge
   ├── dynamics/         @aletheia/dynamics — decay, promotion, conflict revisit, sleep cycles
   └── episodic/         @aletheia/episodic — subjective time and continuity projections
+examples/               quickstart wiring and reproducibility notes
 paper/                  research paper draft (aletheia-paper-v0.md)
 specs/                  protocol specs (memory authority, compressed receipts, system architecture)
 runs/                   experiment lab — fixtures, scenarios, validators (preserves Synaptic Mesh names as historical evidence)

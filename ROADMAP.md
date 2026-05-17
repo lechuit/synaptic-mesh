@@ -91,6 +91,14 @@ This is the phase that crosses the line from "research artifact" to "real softwa
 - An external developer can `npm install` the package, follow a 5-minute quickstart, and run the end-to-end demo with their own Claude API key.
 - Zero boundary violations in the demo, validated by an automated reproducibility check.
 
+### Phase 1.4/1.5 status
+
+- [x] `@aletheia/adapters-anthropic` added as a separate SDK-compatible adapter package; `@aletheia/core` remains SDK-free.
+- [x] Anthropic-compatible bridge records conversation events, asks the model only for proposal drafts, and routes drafts through `AletheiaAuthority.propose()`.
+- [x] Answer path calls the model only after governed `recall()` and receiver-side `tryAct()` both allow local/shadow use.
+- [x] Fixture tests validate malformed model JSON, recall fail-closed, sensitive-action ask-human, and local allowed answer behavior.
+- [x] `examples/anthropic-e2e/README.md` documents live Claude wiring with a user-provided API key.
+
 ---
 
 ## Phase 2 — Memory as a process, not an index
