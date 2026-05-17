@@ -27,6 +27,18 @@ export interface SleepCycleReport {
   readonly skippedCount: number;
 }
 
+export interface MultiCycleReport {
+  readonly reports: readonly SleepCycleReport[];
+  readonly appliedMemoryIds: readonly MemoryId[];
+  readonly plannedMemoryIds: readonly MemoryId[];
+  readonly rejectedMemoryIds: readonly MemoryId[];
+  readonly skippedMemoryIds: readonly MemoryId[];
+  readonly appliedCount: number;
+  readonly plannedCount: number;
+  readonly rejectedCount: number;
+  readonly skippedCount: number;
+}
+
 export interface SleepCycleEngine {
   tick(input: DynamicsTickInput): Promise<DynamicsTickResult>;
 }
@@ -57,6 +69,25 @@ export class SleepCycleRunner {
       skippedCount: result.skippedCount,
     };
   }
+
+  async runMany(inputs: readonly SleepCycleInput[]): Promise<MultiCycleReport> {
+    const reports: SleepCycleReport[] = [];
+    for (const input of inputs) {
+      reports.push(await this.run(input));
+    }
+
+    return {
+      reports,
+      appliedMemoryIds: uniqueFlatMap(reports, (report) => report.appliedMemoryIds),
+      plannedMemoryIds: uniqueFlatMap(reports, (report) => report.plannedMemoryIds),
+      rejectedMemoryIds: uniqueFlatMap(reports, (report) => report.rejectedMemoryIds),
+      skippedMemoryIds: uniqueFlatMap(reports, (report) => report.skippedMemoryIds),
+      appliedCount: reports.reduce((sum, report) => sum + report.appliedCount, 0),
+      plannedCount: reports.reduce((sum, report) => sum + report.plannedCount, 0),
+      rejectedCount: reports.reduce((sum, report) => sum + report.rejectedCount, 0),
+      skippedCount: reports.reduce((sum, report) => sum + report.skippedCount, 0),
+    };
+  }
 }
 
 function idsFor(
@@ -66,4 +97,11 @@ function idsFor(
   return decisions
     .filter((decision) => decision.outcome === outcome)
     .map((decision) => decision.memoryId);
+}
+
+function uniqueFlatMap(
+  reports: readonly SleepCycleReport[],
+  getIds: (report: SleepCycleReport) => readonly MemoryId[],
+): readonly MemoryId[] {
+  return [...new Set(reports.flatMap((report) => getIds(report)))];
 }
