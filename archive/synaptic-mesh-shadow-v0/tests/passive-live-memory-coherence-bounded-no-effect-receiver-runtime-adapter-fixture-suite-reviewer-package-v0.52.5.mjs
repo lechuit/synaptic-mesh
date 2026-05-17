@@ -1,0 +1,13 @@
+import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+import { scorePassiveLiveMemoryCoherenceBoundedNoEffectReceiverRuntimeAdapterFixtureSuite, validatePassiveLiveMemoryCoherenceBoundedNoEffectReceiverRuntimeAdapterFixtureSuiteArtifact } from '../src/passive-live-memory-coherence-bounded-no-effect-receiver-runtime-adapter-fixture-suite.mjs';
+import { boundedNoEffectReceiverRuntimeAdapterFixtureSuiteInputV052 } from './passive-live-memory-coherence-bounded-no-effect-receiver-runtime-adapter-fixture-suite-fixtures.mjs';
+const artifact = scorePassiveLiveMemoryCoherenceBoundedNoEffectReceiverRuntimeAdapterFixtureSuite(boundedNoEffectReceiverRuntimeAdapterFixtureSuiteInputV052());
+assert.deepEqual(validatePassiveLiveMemoryCoherenceBoundedNoEffectReceiverRuntimeAdapterFixtureSuiteArtifact(artifact), []);
+assert.equal(artifact.recommendation, 'ADVANCE_TO_HUMAN_REVIEWED_RECEIVER_RUNTIME_ADAPTER_CONTRACT_DRY_RUN');
+const report = artifact.reportMarkdown;
+for (const phrase of ['Bounded No-Effect Receiver Runtime Adapter Fixture Suite v0.52.5','PASSIVE_LIVE_MEMORY_COHERENCE_BOUNDED_NO_EFFECT_RECEIVER_RUNTIME_ADAPTER_FIXTURE_SUITE_COMPLETE','fixtureScenarioCount=5','adapterInvocationCount=5','fixtureFailClosedCount=1','effectsBlockedCount=10','boundaryViolationCount=0','malformed_or_boundary_violation_fixture','deterministic local bounded receiver runtime adapter contract fixture suite']) assert(report.includes(phrase), phrase);
+assert.equal(readFileSync('evidence/passive-live-memory-coherence-bounded-no-effect-receiver-runtime-adapter-fixture-suite-report-v0.52.5.out.md', 'utf8'), `${artifact.reportMarkdown}\n`);
+assert(readFileSync('../../README.md','utf8').includes('v0.52.5'));
+assert(readFileSync('../../RELEASE_NOTES.md','utf8').includes('v0.52.5'));
+console.log(JSON.stringify({ suiteStatus: artifact.suiteStatus, fixtureScenarioCount: artifact.metrics.fixtureScenarioCount }));

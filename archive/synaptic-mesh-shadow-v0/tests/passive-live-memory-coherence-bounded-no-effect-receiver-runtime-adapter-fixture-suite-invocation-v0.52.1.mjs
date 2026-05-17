@@ -1,0 +1,11 @@
+import assert from 'node:assert/strict';
+import { scorePassiveLiveMemoryCoherenceBoundedNoEffectReceiverRuntimeAdapterFixtureSuite, validatePassiveLiveMemoryCoherenceBoundedNoEffectReceiverRuntimeAdapterFixtureSuiteArtifact } from '../src/passive-live-memory-coherence-bounded-no-effect-receiver-runtime-adapter-fixture-suite.mjs';
+import { boundedNoEffectReceiverRuntimeAdapterFixtureSuiteInputV052 } from './passive-live-memory-coherence-bounded-no-effect-receiver-runtime-adapter-fixture-suite-fixtures.mjs';
+const artifact = scorePassiveLiveMemoryCoherenceBoundedNoEffectReceiverRuntimeAdapterFixtureSuite(boundedNoEffectReceiverRuntimeAdapterFixtureSuiteInputV052());
+assert.deepEqual(validatePassiveLiveMemoryCoherenceBoundedNoEffectReceiverRuntimeAdapterFixtureSuiteArtifact(artifact), []);
+assert.equal(artifact.suiteStatus, 'PASSIVE_LIVE_MEMORY_COHERENCE_BOUNDED_NO_EFFECT_RECEIVER_RUNTIME_ADAPTER_FIXTURE_SUITE_COMPLETE');
+assert.deepEqual(artifact.fixtureResults.map((r) => r.scenarioId), ['baseline_handoff','stale_suppression_fixture','contradiction_caution_fixture','noisy_context_suppression_fixture','malformed_or_boundary_violation_fixture']);
+assert.equal(artifact.metrics.adapterInvocationCount, 5);
+assert.equal(artifact.metrics.fixtureFailClosedCount, 1);
+assert.equal(artifact.fixtureResults.at(-1).actualDisposition, 'fail_closed_block_effects');
+console.log(JSON.stringify({ suiteStatus: artifact.suiteStatus, adapterInvocationCount: artifact.metrics.adapterInvocationCount }));
