@@ -153,7 +153,8 @@ Measured before Phase 2 work, excluding `dist/`, JSON config, Markdown, and gene
 - [x] A no-LLM SQLite smoke canary exercises `propose()`, `recall()`, and `tryAct()` with zero boundary violations: `pnpm run smoke:core-e2e`.
 - [x] Reference Anthropic adapter has deterministic fixture tests and a no-key fixture demo.
 - [x] Reference OpenAI adapter has deterministic fixture tests and a no-key fixture demo.
-- [x] Live Anthropic run with a user-provided API key is captured as release evidence: `evidence/live-llm-e2e/anthropic.json`.
+- [x] Live Anthropic happy-path run with a user-provided API key is captured as release evidence: `evidence/live-llm-e2e/anthropic.json`.
+- [x] Live Anthropic adversarial run is captured as release evidence: `evidence/live-llm-e2e/anthropic-adversarial.json`.
 - [x] Phase 1 package set passes build plus publish dry-run: `@aletheia/core`, `@aletheia/store-sqlite`, `@aletheia/adapters-anthropic`, `@aletheia/adapters-openai`.
 - [ ] Package version strategy is decided (`0.1.0` research-ready vs `0.0.1` dev) before publish.
 
@@ -172,6 +173,7 @@ Measured before Phase 2 work, excluding `dist/`, JSON config, Markdown, and gene
 - [x] No-key closure canaries pass with `boundaryViolations: []`: core SQLite smoke, Anthropic fixture demo, OpenAI fixture demo.
 - [x] Real-provider live demo script exists: `pnpm run demo:live-llm` with `ANTHROPIC_API_KEY` or `OPENAI_API_KEY`.
 - [x] Live Anthropic API run passed with an operator-provided key and explicit approval; evidence captured in `evidence/live-llm-e2e/anthropic.json`.
+- [x] Adversarial live run passed against Anthropic: Claude suppressed credential/policy/destructive prompts, and direct WriteGate canaries denied or escalated matching unsafe proposals.
 
 ---
 

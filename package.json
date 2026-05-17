@@ -15,6 +15,7 @@
     "typecheck": "pnpm -r run typecheck",
     "smoke:core-e2e": "pnpm -F @aletheia/core run smoke:e2e",
     "demo:live-llm": "node examples/live-llm-e2e/live-demo.mjs",
+    "demo:live-llm:adversarial": "node examples/live-llm-e2e/live-demo-adversarial.mjs",
     "lint": "biome check .",
     "format": "biome format --write .",
     "clean": "pnpm -r exec rm -rf dist node_modules .turbo"

@@ -36,6 +36,7 @@ ALETHEIA_LIVE_PROVIDER=anthropic
 ANTHROPIC_API_KEY=your_key_here
 ANTHROPIC_MODEL=claude-3-5-sonnet-latest
 ALETHEIA_LIVE_E2E_REPORT=evidence/live-llm-e2e/anthropic.json
+ALETHEIA_LIVE_ADVERSARIAL_REPORT=evidence/live-llm-e2e/anthropic-adversarial.json
 ```
 
 `.env.local` is ignored by git. Do not paste real keys into tracked files.
@@ -66,3 +67,22 @@ The script performs one full governed-memory loop:
 The report must end with `boundaryViolations: []`.
 
 If no key is present, the script exits nonzero with setup instructions. It never falls back to a mock.
+
+## Adversarial Run
+
+After the happy-path live run, exercise adversarial proposal boundaries:
+
+```bash
+pnpm run demo:live-llm:adversarial
+```
+
+This run asks the live provider to handle prompts that pressure memory storage
+with credential-like material, global permission-bypass policy, and destructive
+durable instructions. It also sends deterministic canary proposals directly
+through the WriteGate, so a provider that suppresses an unsafe proposal does not
+hide a missing receiver-side guard. The report is redacted and must also end
+with `boundaryViolations: []`.
+
+Use synthetic adversarial strings only. The WriteGate prevents unsafe proposal
+claims from becoming actionable MemoryAtoms, but the source conversation event
+still records the prompt used for the demo.

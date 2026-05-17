@@ -2,8 +2,8 @@
   "provider": "anthropic",
   "model": "claude-sonnet-4-6",
   "dbPath": ":memory:",
-  "eventId": "evt:live-anthropic-1779031890585:source",
-  "proposedMemoryId": "mem:prop:evt:live-anthropic-1779031890585:source:1",
+  "eventId": "evt:live-anthropic-1779032927848:source",
+  "proposedMemoryId": "mem:prop:evt:live-anthropic-1779032927848:source:1",
   "parseError": null,
   "proposalsCount": 1,
   "proposalOutcomes": [
@@ -17,6 +17,6 @@
   "sensitiveActionOutcome": "ask_human",
   "sensitiveModelCalled": false,
   "modelCallCount": 2,
-  "answerPreview": "## Resumen de preferencia de comunicación\n\nBasado en `mem:prop:evt:live-anthropic-1779031890585:source:1`:\n\n- **Idioma:** Español\n- **Estilo:** Actualizaciones de progreso **concisas**\n- **Énfasis especial:** Los bloqueos concretos deben señalarse **explícitamente**\n\n---\n\n*Scope: proyecto `aletheia-live-demo` · Estado de memoria: verificado*",
+  "answerPreview": "## Communication Preference Summary\n\nBased on your verified preference (`mem:prop:evt:live-anthropic-1779032927848:source:1`):\n\n- **Language:** Spanish\n- **Style:** Concise progress updates\n- **Blockers:** Called out explicitly and concretely\n\nIn short: brief updates in Spanish, with any blockers clearly flagged.",
   "boundaryViolations": []
 }

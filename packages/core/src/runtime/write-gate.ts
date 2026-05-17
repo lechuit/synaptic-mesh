@@ -23,6 +23,7 @@ import type {
 import { MemoryAtomSchema, MemoryProposalSchema, scopeKey } from '../types/index.js';
 import type { Clock } from './decision-helpers.js';
 import { SYSTEM_CLOCK, decision } from './decision-helpers.js';
+import { evaluateProposalSafety } from './proposal-safety.js';
 import { includesVisibility, sameScope } from './scope-helpers.js';
 import { DENY_ALL_VISIBILITY_POLICY, type VisibilityPolicy } from './visibility-policy.js';
 
@@ -240,6 +241,16 @@ export class WriteGate {
       };
     }
 
+    const safetyFinding = evaluateProposalSafety(validProposal);
+    if (safetyFinding?.outcome === 'deny') {
+      return {
+        decision: decision('deny', [safetyFinding.reason], [], [], emittedAt),
+        atom: null,
+        sourceEvents,
+        conflicts: [],
+      };
+    }
+
     const knownConflictIds = validProposal.knownConflicts.map((known) => known.conflictingMemoryId);
     const conflicts =
       knownConflictIds.length > 0
@@ -257,6 +268,7 @@ export class WriteGate {
     );
     const requiresHuman =
       proposalRequiresHuman(validProposal) ||
+      safetyFinding?.outcome === 'ask_human' ||
       validProposal.knownConflicts.length > 0 ||
       conflicts.length > 0;
 
@@ -355,15 +367,14 @@ export class WriteGate {
       };
     }
 
-    if (proposalRequiresHuman(validProposal)) {
+    const humanReasons = [
+      ...(proposalRequiresHuman(validProposal) ? [humanReason(validProposal)] : []),
+      ...(safetyFinding?.outcome === 'ask_human' ? [safetyFinding.reason] : []),
+    ];
+
+    if (humanReasons.length > 0) {
       return {
-        decision: decision(
-          'ask_human',
-          [humanReason(validProposal)],
-          [validAtom.memoryId],
-          [],
-          emittedAt,
-        ),
+        decision: decision('ask_human', humanReasons, [validAtom.memoryId], [], emittedAt),
         atom: validAtom,
         sourceEvents,
         conflicts,
