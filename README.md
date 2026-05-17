@@ -19,17 +19,19 @@ This repo is in **Phase 3.1: executable authority memory with dynamics and episo
 - a fixture/experiment lab on memory retrieval, contradiction handling, and boundary coverage (`runs/2026-05-03-memory-retrieval-contradiction-lab/`)
 - reproducibility evidence (`evidence/`)
 - a public-review research package (`research-package/`)
-- the historical no-effect reference implementation in JS, preserved for parity testing (`archive/synaptic-mesh-shadow-v0/`)
-- `@aletheia/core`: strict TypeScript authority types, storage interfaces, WriteGate, RetrievalRouter, and ActionAuthorizer
+- the historical no-effect reference implementation in JS, preserved as a historical parity target (`archive/synaptic-mesh-shadow-v0/`)
+- `@aletheia/core`: strict TypeScript authority types, storage interfaces, WriteGate, RetrievalRouter, ActionAuthorizer, and `AletheiaAuthority`
 - `@aletheia/store-sqlite`: SQLite-backed event, memory, and conflict stores
 - `@aletheia/adapters-anthropic`: Anthropic-compatible reference LLM adapter
-- `@aletheia/dynamics`: deterministic lifecycle dynamics and explicit sleep-cycle reports
+- `@aletheia/dynamics`: deterministic lifecycle dynamics, explicit sleep-cycle reports, and human-confirmed reconsolidation apply
 - `@aletheia/episodic`: subjective-time projections, episode catalog, historical timelines, and restart self-state reconstruction
+- `pnpm run smoke:core-e2e`: no-LLM SQLite canary for propose/recall/tryAct boundaries
 
 What does **not** exist yet:
 
 - published npm packages
-- a mutating reconsolidation apply path for successor atoms; the current surface is planner-only until the gate contract is explicit
+- a live API-key-backed Claude/GPT validation run captured as release evidence
+- a TS harness that runs the archived JS fixture lab as an automated parity gate
 
 See `ROADMAP.md` for the phase breakdown.
 
@@ -38,7 +40,7 @@ See `ROADMAP.md` for the phase breakdown.
 Three claims, layered, increasing in ambition:
 
 1. **Authority-governed memory** — every memory carries verifiable provenance; semantic relevance never upgrades authority; contradictions are first-class and block action until resolved.
-2. **Memory as a process, not an index** — memories consolidate, decay, re-evaluate themselves when new evidence arrives; the system has internal dynamics, not just a query interface.
+2. **Memory as a process, not an index** — memories consolidate, decay, and re-evaluate themselves through explicit lifecycle passes; the system has internal dynamics, not just a query interface.
 3. **Subjective time / episodic continuity** — the agent has a sense of its own lived experience; "what I believed last week" is a first-class query.
 
 Phase 1 delivers claim 1 as running code; Phase 2 adds lifecycle dynamics; Phase 3 begins subjective-time continuity.

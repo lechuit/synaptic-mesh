@@ -1,4 +1,4 @@
-#Aletheia
+# Aletheia
 
 This file is loaded automatically in every session for this repo.
 Read it before doing any work. Update it when project conventions change.
@@ -15,14 +15,14 @@ system fails closed when authority cannot be verified.
 > Build a memory that knows when to distrust itself.
 
 The roadmap has three phases: (1) authority-governed memory executable in TS,
-(2) memory as a process — autonomous consolidation/decay/reconsolidation,
+(2) memory as a process — explicit consolidation/decay/reconsolidation passes,
 (3) subjective time / episodic continuity. See ROADMAP.md.
 
 ## Non-negotiable rules (do NOT break these in any code you write)
 
 1. **Fail-closed**: when verification fails → `fetch_abstain` / `ask_human` /
-   `block_local`. Never assume permission. Never throw — return a structured
-   refusal.
+   `block_local`. Never assume permission. Authority-decision paths return a
+   structured refusal instead of throwing for verification failure.
 2. **Permission before semantics**: visibility/scope filtering BEFORE any
    ranking, scoring, or relevance. Always.
 3. **Receipts are evidence, not tokens**: never use a receipt as proof of
@@ -43,7 +43,8 @@ The roadmap has three phases: (1) authority-governed memory executable in TS,
   `type Foo = z.infer<typeof FooSchema>` is the type. No hand-written brands.
 - Storage interfaces in `@aletheia/core`. Implementations in adapter packages
   (`@aletheia/store-sqlite`, etc.). Core has zero native deps.
-- Decisions are values (`Decision` discriminated union), never exceptions.
+- Authority decisions are values (`Decision` discriminated union), never
+  exceptions. Storage may still throw on malformed inserts or duplicate IDs.
 - Tests with vitest, explicit imports (no `globals`). One test file per
   source file when it makes sense; use round-trip tests for storage.
 - Append-only by default. No UPDATE paths for content/scope/visibility/links.
@@ -57,13 +58,13 @@ The roadmap has three phases: (1) authority-governed memory executable in TS,
 - `packages/core/src/types/` — domain types and schemas.
 - `packages/core/src/storage/` — interfaces only.
 - `packages/core/src/runtime/` — WriteGate, RetrievalRouter, ActionAuthorizer,
-  AuthorityEngine.
+  and the `AletheiaAuthority` facade in `authority-engine.ts`.
 - `packages/store-sqlite/` — SQLite implementation of storage interfaces.
 - `specs/` — protocol specs (the source of truth when in doubt).
-- `archive/synaptic-mesh-shadow-v0/` — JS reference impl, read-only, used as
-  parity baseline.
+- `archive/synaptic-mesh-shadow-v0/` — JS reference impl, read-only historical
+  baseline. Do not call it a live parity gate until a TS harness wires it in.
 - `runs/2026-05-03-memory-retrieval-contradiction-lab/` — fixture lab, used as
-  regression suite.
+  historical regression material and parity targets when touching old behavior.
 - `CHANGELOG.md`, `GLOSSARY.md`, `ROADMAP.md` — read these first.
 
 ## Working style
@@ -75,14 +76,14 @@ The roadmap has three phases: (1) authority-governed memory executable in TS,
   to confirm.
 - Tests are spec executable, not afterthought. Write the failing test, then
   the implementation, then check it passes.
-- Use the existing fixtures in `runs/2026-05-03-*` to check that new
-  implementations preserve the historical behavior.
+- Use the existing fixtures in `runs/2026-05-03-*` as historical behavior
+  targets. If a change depends on parity, add or run an explicit parity harness.
 
 ## What NOT to do
 
 - Don't add semantic retrieval / embeddings / vector storage.
 - Don't add an auth/permission service. Aletheia is the layer beneath that.
-- Don't promote memory automatically beyond `verified`. Trusted requires
-  human-actor reasoning.
+- Don't promote memory automatically to `trusted`. Trusted requires human-actor
+  reasoning.
 - Don't introduce a watcher / daemon by default.
 - Don't expand `SAFE_LOCAL_ACTIONS`. Adding a verb to that set is a spec change.

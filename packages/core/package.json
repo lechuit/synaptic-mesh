@@ -25,6 +25,7 @@
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "typecheck": "tsc -p tsconfig.json --noEmit",
+    "smoke:e2e": "tsc -p examples/tsconfig.json && vitest run --config examples/vitest.config.ts",
     "test": "vitest run",
     "test:watch": "vitest"
   },

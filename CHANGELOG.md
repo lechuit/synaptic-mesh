@@ -23,6 +23,7 @@ Releases are listed newest first.
 - Added `@aletheia/episodic`, a Phase 3.0 projection package for explicit episodic anchors, historical belief snapshots from status history, episode comparisons, and restart self-state reconstruction.
 - Extended `@aletheia/episodic` with a visible episode catalog and permission-guarded single-memory timelines for audited status history.
 - Added `@aletheia/adapters-anthropic`, a Claude-compatible reference adapter that routes model-drafted memory through `propose()` and calls the model for answers only after `recall()` + `tryAct()` allow local/shadow use.
+- Added `pnpm run smoke:core-e2e`, a no-LLM SQLite canary that exercises sealed proposal, verified recall, sensitive action, and safe local action boundaries.
 
 ---
 
