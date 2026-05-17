@@ -224,6 +224,80 @@ describe('SleepCycleRunner with SQLite stores', () => {
     });
   });
 
+  it('evolves the same store across advancing logical clocks', async () => {
+    const t0 = '2026-05-17T00:00:00Z' as IsoTimestamp;
+    const t1 = '2026-05-17T12:00:00Z' as IsoTimestamp;
+    const t2 = '2026-05-20T13:00:00Z' as IsoTimestamp;
+    const memory = atom({
+      memoryId: 'mem-temporal-lifecycle' as MemoryId,
+      status: 'candidate',
+      validFrom: '2026-05-16T00:00:00Z' as IsoTimestamp,
+    });
+    await stores.memoryStore.insert(memory);
+    await stores.eventLedger.append(
+      recallEvent(memory, 'evt-temporal-recall-1' as EventId, {
+        occurredAt: '2026-05-17T10:00:00Z' as IsoTimestamp,
+      }),
+    );
+    await stores.eventLedger.append(
+      recallEvent(memory, 'evt-temporal-recall-2' as EventId, {
+        occurredAt: '2026-05-17T11:00:00Z' as IsoTimestamp,
+      }),
+    );
+
+    const runner = new SleepCycleRunner(
+      new DynamicsEngine({
+        stores: {
+          memoryStore: stores.memoryStore,
+          conflictRegistry: stores.conflictRegistry,
+        },
+        policy: createDynamicsPolicy(ACTOR, {
+          decay: {
+            candidateAfterMs: dayMs(3),
+            verifiedAfterMs: dayMs(2),
+            trustedAfterMs: dayMs(180),
+          },
+          promotion: { minSourceConsistentRecalls: 2 },
+        }),
+        evidenceProvider: new LedgerRecallEvidenceProvider({ eventLedger: stores.eventLedger }),
+      }),
+    );
+
+    const beforeEvidence = await runner.run(
+      input({ cycleId: 'cycle-temporal-t0', now: t0, applyTransitions: true }),
+    );
+    expect(beforeEvidence.skippedMemoryIds).toEqual([memory.memoryId]);
+    expect((await stores.memoryStore.get(memory.memoryId, PERMITTED))?.status).toBe('candidate');
+
+    const promotion = await runner.run(
+      input({ cycleId: 'cycle-temporal-t1', now: t1, applyTransitions: true }),
+    );
+    expect(promotion.appliedMemoryIds).toEqual([memory.memoryId]);
+    expect((await stores.memoryStore.get(memory.memoryId, PERMITTED))?.status).toBe('verified');
+
+    const stale = await runner.run(
+      input({ cycleId: 'cycle-temporal-t2', now: t2, applyTransitions: true }),
+    );
+    expect(stale.appliedMemoryIds).toEqual([memory.memoryId]);
+    expect((await stores.memoryStore.get(memory.memoryId, PERMITTED))?.status).toBe('deprecated');
+
+    const history = await stores.memoryStore.statusHistory(memory.memoryId);
+    expect(
+      history.find((entry) => entry.reason.rationale === 'phase2:promotion_evidence_satisfied'),
+    ).toMatchObject({
+      at: t1,
+      fromStatus: 'candidate',
+      toStatus: 'verified',
+    });
+    expect(
+      history.find((entry) => entry.reason.rationale === 'phase2:stale_by_policy'),
+    ).toMatchObject({
+      at: t2,
+      fromStatus: 'verified',
+      toStatus: 'deprecated',
+    });
+  });
+
   it('treats requires-human conflicts as sleep-cycle blockers with audited deprecation', async () => {
     const candidate = atom({
       memoryId: 'mem-sqlite-human-candidate' as MemoryId,
@@ -322,6 +396,7 @@ function input(
   overrides: Partial<{
     applyTransitions: boolean;
     cycleId: string;
+    now: IsoTimestamp;
     permittedVisibilities: readonly Visibility[];
   }> = {},
 ) {

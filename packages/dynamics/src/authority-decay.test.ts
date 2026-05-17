@@ -51,6 +51,18 @@ describe('decayedAuthority', () => {
     expect(later).toBeLessThan(early);
   });
 
+  it('does not mutate the atom while calculating decay', () => {
+    const memory = atom({
+      status: 'verified',
+      lastConfirmedAt: '2026-05-16T00:00:00Z' as IsoTimestamp,
+    });
+    const before = JSON.stringify(memory);
+
+    decayedAuthority(memory, NOW);
+
+    expect(JSON.stringify(memory)).toBe(before);
+  });
+
   it('decays trusted memories slower than verified memories by default', () => {
     const verified = decayedAuthority(
       atom({
