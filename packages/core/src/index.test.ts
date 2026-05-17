@@ -7,6 +7,6 @@ describe('@aletheia-labs/core public surface', () => {
   });
 
   it('exports the package version', () => {
-    expect(PACKAGE_VERSION).toBe('0.1.0');
+    expect(PACKAGE_VERSION).toBe('0.1.1');
   });
 });

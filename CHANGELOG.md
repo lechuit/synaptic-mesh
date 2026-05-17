@@ -5,6 +5,15 @@ removed from the active tree during repo hygiene cleanup so new readers see the
 live TypeScript library, not historical review scaffolding. Those artifacts
 remain recoverable through git history.
 
+## 0.1.1 - 2026-05-17
+
+- Documented package runtime requirements across the published READMEs:
+  Node 20+ and ESM-only consumption via `import`, `.mjs`, `"type": "module"`,
+  or an ESM-aware toolchain.
+- Clarified that CommonJS `require()` is not shipped in `0.1.x`; dual package
+  output remains a future compatibility track rather than part of the initial
+  public baseline.
+
 ## 0.1.0 - 2026-05-17
 
 - Removed inactive pre-Aletheia research/release artifacts from the active repo
