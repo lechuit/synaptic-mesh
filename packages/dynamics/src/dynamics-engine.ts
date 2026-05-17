@@ -160,6 +160,7 @@ export class DynamicsEngine {
         'deprecated',
         'invalid_clock',
         [],
+        input.now,
         input.applyTransitions === true,
       );
     }
@@ -175,11 +176,19 @@ export class DynamicsEngine {
           'deprecated',
           'invalid_clock',
           [],
+          input.now,
           input.applyTransitions === true,
         );
       }
       if (validUntilMs < nowMs) {
-        return this.transition(atom, 'deprecated', 'expired', [], input.applyTransitions === true);
+        return this.transition(
+          atom,
+          'deprecated',
+          'expired',
+          [],
+          input.now,
+          input.applyTransitions === true,
+        );
       }
     }
 
@@ -193,6 +202,7 @@ export class DynamicsEngine {
         'deprecated',
         'unresolved_conflict',
         conflictIds(unresolvedConflicts),
+        input.now,
         input.applyTransitions === true,
       );
     }
@@ -205,6 +215,7 @@ export class DynamicsEngine {
           'deprecated',
           staleDecision,
           [],
+          input.now,
           input.applyTransitions === true,
         );
       }
@@ -220,6 +231,7 @@ export class DynamicsEngine {
           'verified',
           'promotion_evidence_satisfied',
           [],
+          input.now,
           input.applyTransitions === true,
         );
       }
@@ -234,6 +246,7 @@ export class DynamicsEngine {
         'deprecated',
         staleDecision,
         [],
+        input.now,
         input.applyTransitions === true,
       );
     }
@@ -269,6 +282,9 @@ export class DynamicsEngine {
   }
 
   private canPromoteCandidate(atom: MemoryAtom, evidence: DynamicsEvidence): boolean {
+    // These scores are gate-produced metadata thresholds. They are never
+    // authority by themselves; explicit source-consistent recall evidence is
+    // required before any candidate can become verified.
     return (
       evidence.sourceConsistentRecalls >= this.policy.promotion.minSourceConsistentRecalls &&
       atom.scores.evidence >= this.policy.promotion.minEvidenceScore &&
@@ -282,6 +298,7 @@ export class DynamicsEngine {
     recommendedStatus: MemoryStatus,
     reason: DynamicsDecisionReason,
     conflicts: readonly ConflictId[],
+    at: IsoTimestamp,
     apply: boolean,
   ): Promise<DynamicsDecision> {
     if (!apply) {
@@ -295,11 +312,16 @@ export class DynamicsEngine {
       };
     }
 
-    const transition = await this.memoryStore.transitionStatus(atom.memoryId, recommendedStatus, {
-      actor: this.policy.actor,
-      rationale: `phase2:${reason}`,
-      ...(conflicts[0] !== undefined ? { conflictId: conflicts[0] } : {}),
-    });
+    const transition = await this.memoryStore.transitionStatus(
+      atom.memoryId,
+      recommendedStatus,
+      {
+        actor: this.policy.actor,
+        rationale: `phase2:${reason}`,
+        ...(conflicts[0] !== undefined ? { conflictId: conflicts[0] } : {}),
+      },
+      { at },
+    );
 
     return {
       memoryId: atom.memoryId,

@@ -11,6 +11,7 @@ Deterministic memory dynamics for Aletheia.
 - Plans status transitions from explicit policy and evidence.
 - Applies transitions only through `MemoryStore.transitionStatus`.
 - Treats unresolved conflicts that touch an atom as authority blockers.
+- Provides `SleepCycleRunner` for deterministic dry-run/apply reports over a host-provided store.
 - Keeps `@aletheia/core` SDK-free and free of background scheduling.
 
 ## What this package does NOT do

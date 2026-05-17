@@ -12,12 +12,14 @@
 import {
   type AgentId,
   type IsoTimestamp,
+  IsoTimestampSchema,
   type MemoryAtom,
   MemoryAtomSchema,
   type MemoryId,
   type MemoryQuery,
   type MemoryStatus,
   type MemoryStore,
+  type StatusTransitionOptions,
   type StatusTransitionReason,
   type StatusTransitionResult,
   type Visibility,
@@ -158,6 +160,7 @@ export class SqliteMemoryStore implements MemoryStore {
     memoryId: MemoryId,
     nextStatus: MemoryStatus,
     reason: StatusTransitionReason,
+    options?: StatusTransitionOptions,
   ): Promise<StatusTransitionResult> {
     const row = this.getAtom.get(memoryId) as AtomRow | undefined;
     if (!row) {
@@ -175,7 +178,8 @@ export class SqliteMemoryStore implements MemoryStore {
       };
     }
 
-    const now = new Date().toISOString();
+    const now =
+      options?.at !== undefined ? IsoTimestampSchema.parse(options.at) : new Date().toISOString();
     const tx = this.db.transaction(() => {
       this.updateStatus.run(nextStatus, memoryId);
       this.insertHistory.run(
