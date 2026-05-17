@@ -12,11 +12,18 @@ import type {
   MemoryType,
   Scope,
   StatusTransitionReason,
+  StatusTransitionResult,
   Visibility,
 } from '@aletheia/core';
-import { MemoryAtomSchema, scopeKey } from '@aletheia/core';
+import { AgentIdSchema, IsoTimestampSchema, MemoryAtomSchema, scopeKey } from '@aletheia/core';
 
 export type ReconsolidationOutcome = 'plan' | 'fetch_abstain';
+export type ReconsolidationApplyOutcome =
+  | 'applied'
+  | 'ask_human'
+  | 'fetch_abstain'
+  | 'partial_applied'
+  | 'rejected';
 
 export type ReconsolidationReason =
   | 'empty_source_events'
@@ -26,6 +33,10 @@ export type ReconsolidationReason =
   | 'previous_status_not_reconsolidatable'
   | 'source_event_missing_or_invisible'
   | 'source_event_scope_mismatch'
+  | 'successor_insert_failed'
+  | 'transition_rejected'
+  | 'human_confirmation_required'
+  | 'invalid_human_confirmation'
   | 'unresolved_conflict';
 
 export interface ReconsolidationPlannerStores {
@@ -60,6 +71,24 @@ export interface ReconsolidationPlan {
   readonly successorDraft: MemoryAtom | null;
   readonly plannedTransitions: readonly PlannedStatusTransition[];
   readonly relatedConflictIds: readonly ConflictId[];
+}
+
+export interface ReconsolidationHumanConfirmation {
+  readonly confirmedBy: AgentId;
+  readonly confirmedAt: IsoTimestamp;
+  readonly rationale: string;
+}
+
+export interface ReconsolidationApplyInput extends ReconsolidationPlanInput {
+  readonly humanConfirmation?: ReconsolidationHumanConfirmation;
+}
+
+export interface ReconsolidationApplyResult {
+  readonly outcome: ReconsolidationApplyOutcome;
+  readonly reasons: readonly ReconsolidationReason[];
+  readonly plan: ReconsolidationPlan;
+  readonly successorAtom: MemoryAtom | null;
+  readonly transitionResults: readonly StatusTransitionResult[];
 }
 
 export class ReconsolidationPlanner {
@@ -169,6 +198,87 @@ export class ReconsolidationPlanner {
   }
 }
 
+export class ReconsolidationApplier {
+  private readonly planner: ReconsolidationPlanner;
+
+  constructor(private readonly stores: ReconsolidationPlannerStores) {
+    this.planner = new ReconsolidationPlanner(stores);
+  }
+
+  async apply(input: ReconsolidationApplyInput): Promise<ReconsolidationApplyResult> {
+    const plan = await this.planner.plan(input);
+    if (plan.outcome !== 'plan' || plan.successorDraft === null) {
+      return {
+        outcome: 'fetch_abstain',
+        reasons: plan.reasons,
+        plan,
+        successorAtom: null,
+        transitionResults: [],
+      };
+    }
+
+    if (input.humanConfirmation === undefined) {
+      return {
+        outcome: 'ask_human',
+        reasons: ['human_confirmation_required'],
+        plan,
+        successorAtom: null,
+        transitionResults: [],
+      };
+    }
+    if (!validHumanConfirmation(input.humanConfirmation)) {
+      return {
+        outcome: 'ask_human',
+        reasons: ['invalid_human_confirmation'],
+        plan,
+        successorAtom: null,
+        transitionResults: [],
+      };
+    }
+
+    let successorAtom: MemoryAtom;
+    try {
+      successorAtom = await this.stores.memoryStore.insert(plan.successorDraft);
+    } catch {
+      return {
+        outcome: 'rejected',
+        reasons: ['successor_insert_failed'],
+        plan,
+        successorAtom: null,
+        transitionResults: [],
+      };
+    }
+
+    const transitionResults: StatusTransitionResult[] = [];
+    for (const transition of plan.plannedTransitions) {
+      try {
+        transitionResults.push(
+          await this.stores.memoryStore.transitionStatus(
+            transition.memoryId,
+            transition.nextStatus,
+            confirmationReason(transition.reason, input.humanConfirmation),
+            { at: input.humanConfirmation.confirmedAt },
+          ),
+        );
+      } catch (err) {
+        transitionResults.push({
+          kind: 'rejected',
+          reason: err instanceof Error ? err.message : 'transition threw',
+        });
+      }
+    }
+
+    const rejected = transitionResults.some((result) => result.kind === 'rejected');
+    return {
+      outcome: rejected ? 'partial_applied' : 'applied',
+      reasons: rejected ? ['transition_rejected'] : [],
+      plan,
+      successorAtom,
+      transitionResults,
+    };
+  }
+}
+
 function isReconsolidatableStatus(status: MemoryAtom['status']): boolean {
   return (
     status === 'candidate' ||
@@ -176,6 +286,26 @@ function isReconsolidatableStatus(status: MemoryAtom['status']): boolean {
     status === 'trusted' ||
     status === 'deprecated'
   );
+}
+
+function validHumanConfirmation(confirmation: ReconsolidationHumanConfirmation): boolean {
+  return (
+    AgentIdSchema.safeParse(confirmation.confirmedBy).success &&
+    IsoTimestampSchema.safeParse(confirmation.confirmedAt).success &&
+    typeof confirmation.rationale === 'string' &&
+    confirmation.rationale.trim().length > 0
+  );
+}
+
+function confirmationReason(
+  plannedReason: StatusTransitionReason,
+  confirmation: ReconsolidationHumanConfirmation,
+): StatusTransitionReason {
+  return {
+    actor: confirmation.confirmedBy,
+    rationale: `${plannedReason.rationale}; human_confirmed: ${confirmation.rationale}`,
+    ...(plannedReason.conflictId !== undefined ? { conflictId: plannedReason.conflictId } : {}),
+  };
 }
 
 function abstain(

@@ -19,6 +19,7 @@ Releases are listed newest first.
 - Documented the reconsolidation blocker: successor atoms need an explicit planner/gate contract before implementation can safely proceed.
 - Added `ReconsolidationPlanner`, a planner-only Phase 2.2 surface that drafts candidate successors with `supersedes` lineage and planned deprecation transitions without inserting or mutating memory.
 - Added explicit multi-cycle sleep runs: hosts provide each cycle clock/input; Aletheia aggregates deterministic reports without a daemon or hidden scheduler.
+- Added `ReconsolidationApplier`, a human-confirmed Phase 2.4 apply path that inserts candidate successors, deprecates superseded atoms through audited status transitions, validates confirmation before mutation, and reports `partial_applied` instead of silently succeeding when a later transition rejects.
 - Added `@aletheia/episodic`, a Phase 3.0 projection package for explicit episodic anchors, historical belief snapshots from status history, episode comparisons, and restart self-state reconstruction.
 - Extended `@aletheia/episodic` with a visible episode catalog and permission-guarded single-memory timelines for audited status history.
 - Added `@aletheia/adapters-anthropic`, a Claude-compatible reference adapter that routes model-drafted memory through `propose()` and calls the model for answers only after `recall()` + `tryAct()` allow local/shadow use.
