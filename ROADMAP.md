@@ -16,6 +16,31 @@ The roadmap below operationalizes that maxim in three layered phases. **Phase 1 
 
 ---
 
+## Scope decision (2026-05)
+
+Aletheia is a **library**, not a CLI or standalone app. The forward plan optimizes for being imported into other agents, runtimes, and pipelines:
+
+```ts
+const authority = new AletheiaAuthority({ eventLedger, memoryStore, conflictRegistry });
+await authority.propose(proposal);
+await authority.recall(query);
+await authority.tryAct(action, context);
+```
+
+LLM adapters receive a caller-provided, already-authenticated client or runner. Aletheia does not own OAuth flows, refresh tokens, device login, terminal UX, or provider account state. `@aletheia/core` stays provider-free, SDK-free, and native-dependency-free.
+
+Explicitly out of scope for the initial release cycle:
+
+- `@aletheia/cli`
+- `@aletheia/mcp-server`
+- OAuth flows for Codex, Claude, ChatGPT, or any other provider
+- ChatGPT Plus / Codex subscription plumbing
+- terminal UI/ergonomics
+
+Those may return later as separate packages once the library has external users or a concrete host integration needs them. Until then, examples and tests are the delivery shape.
+
+---
+
 ## Phase 0 — Saneamiento (current sprint)
 
 **Goal**: make the repo legible to outside reviewers and pin the forward direction.
@@ -82,19 +107,28 @@ This is the phase that crosses the line from "research artifact" to "real softwa
 | Runtime target | Node 20+ | Phase 1 is server-side; browser/edge is later |
 | Packaging | Monorepo (pnpm workspaces) from day 1 | Phase 1.4 already needs `@aletheia/adapters-anthropic` separate from `@aletheia/core` to keep core SDK-free. Setting it up later costs more than setting it up now. |
 | Lint/format | Biome | TS-native, single binary, replaces ESLint + Prettier |
-| LLM client | Anthropic SDK (`@anthropic-ai/sdk`) | Reference integration; SDK-agnostic adapter underneath |
+| LLM clients | Caller-provided clients/runners | Aletheia is a library. Adapters accept authenticated clients; they do not own OAuth or provider login. |
 | Tests | Vitest | Modern, TS-native, fast |
 | Style | Functional core / imperative shell | Easier to test the gate logic in isolation |
+
+### Library DX requirements
+
+- Package READMEs are release artifacts: each publishable package needs a short quickstart, copyable examples, non-goals, and a stability section.
+- Public API stability matters: `propose()`, `recall()`, `tryAct()`, storage interfaces, and exported zod schemas are the consumer surface.
+- Schema stability matters: changes to `MemoryAtomSchema`, receipt schemas, or SQLite codecs require migration/replay thinking, not only SQL migration strings.
+- Examples live under `packages/*/examples/` or top-level `examples/`; tests can validate examples, but tests are not the documentation surface.
 
 ### Acceptance
 
 - [ ] Historical fixtures in `runs/2026-05-03-memory-retrieval-contradiction-lab/` pass against the TS implementation. Current status: archived JS evidence exists, but no live TS parity harness yet.
 - [x] A no-LLM SQLite smoke canary exercises `propose()`, `recall()`, and `tryAct()` with zero boundary violations: `pnpm run smoke:core-e2e`.
 - [x] Reference Anthropic adapter has deterministic fixture tests and a no-key fixture demo.
-- [ ] Live Claude/GPT run with a user-provided API key is captured as release evidence.
+- [ ] Reference OpenAI adapter has deterministic fixture tests and a no-key fixture demo.
+- [ ] Live Claude/OpenAI run with a user-provided API key is captured as release evidence.
+- [ ] `@aletheia/core` and `@aletheia/store-sqlite` pass build plus publish dry-run for the initial package target.
 - [ ] Package version strategy is decided (`0.1.0` research-ready vs `0.0.1` dev) before publish.
 
-### Phase 1.4/1.5 status
+### Phase 1.4/1.5 library closure status
 
 - [x] `AletheiaAuthority` facade exposes the roadmap-shaped consumer API: `propose()`, `recall()`, `tryAct()`.
 - [x] `packages/core/examples/end-to-end.ts` opens a SQLite store and verifies sealed proposal -> recall abstain, verified recall -> allow, sensitive action -> ask human, and safe local action -> allow.
@@ -103,7 +137,9 @@ This is the phase that crosses the line from "research artifact" to "real softwa
 - [x] Answer path calls the model only after governed `recall()` and receiver-side `tryAct()` both allow local/shadow use.
 - [x] Fixture tests validate malformed model JSON, recall fail-closed, sensitive-action ask-human, and local allowed answer behavior.
 - [x] `examples/anthropic-e2e/README.md` documents live Claude wiring with a user-provided API key.
-- [ ] Live Anthropic API run pending operator-provided key and explicit approval.
+- [ ] `@aletheia/adapters-openai` pending; it should accept a caller-provided authenticated client, not implement OAuth.
+- [ ] Live Anthropic/OpenAI API run pending operator-provided key and explicit approval.
+- [ ] Publish dry-run pending for `@aletheia/core` and `@aletheia/store-sqlite`.
 
 ---
 
@@ -211,7 +247,7 @@ The bare package `aletheia` on npm is taken but abandoned (last published 9 year
 - `@aletheia/dynamics` — deterministic lifecycle dynamics (Phase 2).
 - `@aletheia/episodic` — subjective-time projections and continuity snapshots (Phase 3).
 
-Scoped namespace also clears the way for a CLI binary `aletheia` (e.g. `aletheia recall --status verified`).
+Scoped namespace keeps optional future packages possible, but CLI/MCP packages are explicitly outside the initial library release cycle.
 
 ### Rename surface (what still needs to change)
 
@@ -229,6 +265,7 @@ To keep this honest:
 - No semantic vector store. Ever. If embeddings show up, it's a clearly-labeled optional adapter, never the substrate.
 - No automatic memory promotion to production-affecting state without human confirmation. The fail-closed maxim is non-negotiable across all phases.
 - No daemon / watcher by default.
+- No CLI, MCP server, terminal UX, or OAuth/account-management flow in the initial library release cycle.
 - No claim of biological plausibility. Phase 2's "sleep cycle" is an engineering pattern inspired by neuroscience, not a model of it.
 
 ---
