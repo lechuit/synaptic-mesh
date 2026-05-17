@@ -23,7 +23,7 @@ import type {
 } from '@aletheia/core';
 import { scopeKey, visibilityKey } from '@aletheia/core';
 import { describe, expect, it } from 'vitest';
-import { ReconsolidationPlanner } from './reconsolidation-planner.js';
+import { ReconsolidationApplier, ReconsolidationPlanner } from './reconsolidation-planner.js';
 
 const ACTOR = 'agent-reconsolidator' as AgentId;
 const NOW = '2026-05-17T05:30:00Z' as IsoTimestamp;
@@ -255,6 +255,32 @@ describe('ReconsolidationPlanner', () => {
     expect(result.successorDraft?.links).toEqual([
       { relation: 'supersedes', targetMemoryId: previous.memoryId },
     ]);
+  });
+
+  it('reports partial apply when successor insertion succeeds but transition rejects', async () => {
+    const previous = atom({ memoryId: 'mem-prev' as MemoryId, status: 'verified' });
+    const newEvent = event({ eventId: 'evt-new' as EventId });
+    const stores = storesFor({ atoms: [previous], events: [newEvent] });
+    const applier = new ReconsolidationApplier(stores);
+
+    const result = await applier.apply(
+      input({
+        humanConfirmation: {
+          confirmedBy: ACTOR,
+          confirmedAt: NOW,
+          rationale: 'fake store transition rejection fixture',
+        },
+      }),
+    );
+
+    expect(result.outcome).toBe('partial_applied');
+    expect(result.reasons).toEqual(['transition_rejected']);
+    expect(result.successorAtom?.memoryId).toBe('mem-next');
+    expect(result.transitionResults).toEqual([
+      { kind: 'rejected', reason: 'planner should not transition' },
+    ]);
+    expect(stores.memoryStore.insertCalls).toBe(1);
+    expect(stores.memoryStore.transitionCalls).toBe(1);
   });
 });
 

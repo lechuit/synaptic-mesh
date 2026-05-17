@@ -117,14 +117,15 @@ Built on top of Phase 1.
 - [x] Sealed and human-required atoms are skipped by the dynamics engine.
 - [x] `SleepCycleRunner` produces deterministic dry-run/apply reports over host-provided stores.
 - [x] SQLite-backed sleep-cycle tests verify apply mode and logical transition timestamps.
-- [x] Reconsolidation planner with successor drafts, `sourceMemoryIds`, `supersedes` lineage, and planned deprecation transitions. Mutating apply path remains blocked pending the gate decision in `docs/phase-2-reconsolidation-design-note.md`.
+- [x] Reconsolidation planner with successor drafts, `sourceMemoryIds`, `supersedes` lineage, and planned deprecation transitions.
 - [x] Explicit multi-cycle sleep harness over a SQLite store, without daemon/scheduler behavior.
+- [x] Human-confirmed reconsolidation apply path inserts only `candidate` successors and deprecates previous atoms through audited `transitionStatus`.
 
 ### Scope
 
 - **Status transitions driven by use/disuse**: candidate → verified after repeated source-consistent recall; verified → deprecated after contradicting evidence or staleness threshold.
 - **Decay curves**: explicit per-status decay, not a single TTL. Sealed memories never decay; trusted memories decay slower than candidates.
-- **Reconsolidation**: when new evidence enters that bears on an existing atom, the atom re-enters the Write Gate. This is *not* an overwrite — it produces a successor atom and a `supersedes` link.
+- **Reconsolidation**: when new evidence enters that bears on an existing atom, an explicit human-confirmed reconsolidation gate can produce a candidate successor atom and a `supersedes` link. This is *not* an overwrite and it does not upgrade authority.
 - **"Sleep cycle"**: an explicit host-triggered lifecycle pass that walks the store and runs consolidation/decay/conflict-revisit. Inspired by — not literally modeling — biological memory consolidation. No hidden daemon is started by default.
 
 ### What's genuinely novel here
