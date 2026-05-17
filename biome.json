@@ -7,14 +7,7 @@
   },
   "files": {
     "ignoreUnknown": true,
-    "ignore": [
-      "**/dist/**",
-      "**/node_modules/**",
-      "**/.turbo/**",
-      "archive/**",
-      "evidence/**",
-      "runs/**/T-synaptic-mesh-*"
-    ]
+    "ignore": ["**/dist/**", "**/node_modules/**", "**/.turbo/**", "evidence/**"]
   },
   "formatter": {
     "enabled": true,

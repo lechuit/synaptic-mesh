@@ -4,7 +4,7 @@ Status: draft / contract-only / not runtime-ready
 
 ## Purpose
 
-This matrix describes how Synaptic Mesh receiver-side authority receipts could map into common agent framework shapes without claiming a real runtime integration.
+This matrix describes how Aletheia receiver-side authority receipts could map into common agent framework shapes without claiming a real runtime integration.
 
 The goal is to make portability review concrete:
 
@@ -22,7 +22,7 @@ This document is **not**:
 - a runtime hook;
 - an enforcement layer;
 - production/canary/L2+ approval;
-- a claim that any listed framework currently supports Synaptic Mesh.
+- a claim that any listed framework currently supports Aletheia.
 
 It is a contract map for review.
 
@@ -76,9 +76,19 @@ Receiver rule:
 7. Sensitive effects ask a human.
 8. Contract tests do not imply runtime integration.
 
-## Current local contract coverage
+## Current Contract Coverage
 
-`implementation/synaptic-mesh-shadow-v0/tests/receiver-policy-adapter-contracts.mjs` currently exercises all rows above as contract-shaped packet mappings. It covers representative fail-closed cases across the matrix: missing receipts/metadata, duplicate authority fields, source mismatch, receiver-observed source digest/mtime/run-id mismatch, missing digest, stale receipt, delegated publish/config/delete, external send, sensitive verb aliases, and framework/server prose that claims an action is safe; and ambiguous framework action names that require explicit receiver classification.
+The active adapter packages and tests cover the same receiver-side shape at the
+library boundary: callers provide already-authenticated provider clients,
+model-drafted memory is routed through `AletheiaAuthority.propose()`, governed
+recall runs before answer generation, and receiver-side `tryAct()` classifies
+the proposed action before the model output is treated as usable context.
+
+Future framework adapters should add contract tests for missing receipts,
+source mismatch, stale receipts, delegated publish/config/delete, external
+send, sensitive verb aliases, framework/server prose that claims an action is
+safe, and ambiguous framework action names that require explicit receiver
+classification.
 
 The coverage is intentionally contract-level. It does not prove real framework integration or runtime enforcement.
 

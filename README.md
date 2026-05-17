@@ -1,101 +1,117 @@
 # Aletheia
 
-> Formerly developed as **"Synaptic Mesh"**. The project was renamed in 2026-05 to avoid permanent confusion with the unrelated [ruvnet/Synaptic-Mesh](https://github.com/ruvnet/Synaptic-Mesh). The historical release titles in `CHANGELOG.md` preserve the original name; the rationale for the rename lives in `ROADMAP.md`. The npm namespace is **`@aletheia/*`** (e.g. `@aletheia/core`).
-
 > **Do not build a memory that remembers more. Build a memory that knows when to distrust itself.**
 
-A research protocol and executable reference implementation for **memory as governance** in LLM-based agents.
+Aletheia is a TypeScript library for **memory as governance** in LLM agents.
+It is not RAG, not semantic retrieval, and not a vector store. Aletheia asks a
+different question: **what authority does a recalled fact have to influence an
+action?**
 
-Most "memory for LLM" projects are retrieval systems (RAG, vector stores, mem0, MemGPT, Letta, Zep): they answer *"how do I find what's relevant"*. Aletheia asks a different question: *"what authority does a recalled fact have to influence an action"*. Every remembered claim carries a verifiable receipt — source, freshness, scope, status, lineage, effect-boundary — and the system **fails closed** whenever that authority cannot be verified. Stale, denied, sealed, local-only or human-required evidence cannot be laundered into action authority through summarization or handoff.
+Every remembered claim carries a verifiable receipt: source, freshness, scope,
+status, lineage, and effect boundary. The system fails closed whenever that
+authority cannot be verified.
 
-This is not RAG. It is not semantic memory. It is the substrate underneath both.
+## Status
 
-## Status (honest)
+This repo is in **Phase 3.1: executable authority memory with dynamics and
+episodic continuity**.
 
-This repo is in **Phase 3.1: executable authority memory with dynamics and episodic continuity**. What exists today:
+What exists today:
 
-- a paper draft (`paper/aletheia-paper-v0.md`)
-- protocol specifications (`specs/`)
-- a fixture/experiment lab on memory retrieval, contradiction handling, and boundary coverage (`runs/2026-05-03-memory-retrieval-contradiction-lab/`)
-- reproducibility evidence (`evidence/`)
-- a public-review research package (`research-package/`)
-- the historical no-effect reference implementation in JS, preserved as a historical parity target (`archive/synaptic-mesh-shadow-v0/`)
-- `@aletheia/core`: strict TypeScript authority types, storage interfaces, WriteGate, RetrievalRouter, ActionAuthorizer, and `AletheiaAuthority`
-- `@aletheia/store-sqlite`: SQLite-backed event, memory, and conflict stores
-- `@aletheia/adapters-anthropic`: Anthropic-compatible reference LLM adapter
-- `@aletheia/adapters-openai`: OpenAI Responses-compatible reference LLM adapter
-- `@aletheia/dynamics`: deterministic lifecycle dynamics, explicit sleep-cycle reports, and human-confirmed reconsolidation apply
-- `@aletheia/episodic`: subjective-time projections, episode catalog, historical timelines, and restart self-state reconstruction
-- `pnpm run smoke:core-e2e`: no-LLM SQLite canary for propose/recall/tryAct boundaries
+- `@aletheia/core`: strict TypeScript authority types, storage interfaces,
+  WriteGate, RetrievalRouter, ActionAuthorizer, and `AletheiaAuthority`.
+- `@aletheia/store-sqlite`: SQLite-backed event, memory, and conflict stores.
+- `@aletheia/adapters-anthropic`: Anthropic-compatible reference adapter.
+- `@aletheia/adapters-openai`: OpenAI Responses-compatible reference adapter.
+- `@aletheia/dynamics`: deterministic decay, promotion evidence, sleep-cycle
+  reports, and human-confirmed reconsolidation.
+- `@aletheia/episodic`: subjective-time projections, episode catalog,
+  historical timelines, and restart self-state reconstruction.
+- No-key canaries, package tests, publish dry-runs, and live Anthropic happy
+  path plus adversarial evidence in `evidence/live-llm-e2e/`.
 
 What does **not** exist yet:
 
-- published npm packages
-- a live API-key-backed Claude/GPT validation run captured as release evidence
-- a TS harness that runs the archived JS fixture lab as an automated parity gate
-- a version strategy beyond `0.0.0`
+- published npm packages;
+- a stable version strategy beyond `0.0.0`;
+- production-runtime integration;
+- a CLI, MCP server, daemon, watcher, or OAuth flow.
 
-See `ROADMAP.md` for the phase breakdown.
+## Novel Claim
 
-## What's the novel claim?
+1. **Authority-governed memory**: every memory carries provenance; semantic
+   relevance never upgrades authority; contradictions block action until
+   resolved.
+2. **Memory as a process, not an index**: memories decay, consolidate, and
+   re-evaluate themselves through explicit lifecycle passes.
+3. **Subjective time / episodic continuity**: the agent can ask what it knew,
+   believed, or was allowed to use at a prior point in its own history.
 
-Three claims, layered, increasing in ambition:
+## Repository Layout
 
-1. **Authority-governed memory** — every memory carries verifiable provenance; semantic relevance never upgrades authority; contradictions are first-class and block action until resolved.
-2. **Memory as a process, not an index** — memories consolidate, decay, and re-evaluate themselves through explicit lifecycle passes; the system has internal dynamics, not just a query interface.
-3. **Subjective time / episodic continuity** — the agent has a sense of its own lived experience; "what I believed last week" is a first-class query.
-
-Phase 1 delivers claim 1 as running code; Phase 2 adds lifecycle dynamics; Phase 3 begins subjective-time continuity.
-
-## Repository layout
-
-```
-packages/               TypeScript monorepo (pnpm workspaces) — the live system
-  ├── core/             @aletheia/core — types, write gate, memory store, retrieval router
-  ├── store-sqlite/     @aletheia/store-sqlite — SQLite storage implementations
-  ├── adapters-anthropic/ @aletheia/adapters-anthropic — Claude-compatible bridge
-  ├── adapters-openai/  @aletheia/adapters-openai — OpenAI Responses-compatible bridge
-  ├── dynamics/         @aletheia/dynamics — decay, promotion, conflict revisit, sleep cycles
-  └── episodic/         @aletheia/episodic — subjective time and continuity projections
-examples/               quickstart wiring and reproducibility notes
-paper/                  research paper draft (aletheia-paper-v0.md)
-specs/                  protocol specs (memory authority, compressed receipts, system architecture)
-runs/                   experiment lab — fixtures, scenarios, validators (preserves Synaptic Mesh names as historical evidence)
-evidence/               reproducibility outputs
-research-package/       public-review trace maps, audits, blocker ledger (T-* tasks preserve original names)
-archive/                pre-rename and pre-TS artifacts kept for parity testing and citation
-  └── synaptic-mesh-shadow-v0/   the JS reference implementation (read-only)
-CHANGELOG.md            full v0.45.5 → v0.52.5 release-ladder history
-GLOSSARY.md             every term used in this repo, defined
-ROADMAP.md              the forward plan and naming decision
+```text
+packages/                 TypeScript monorepo, the live system
+  core/                   @aletheia/core
+  store-sqlite/           @aletheia/store-sqlite
+  adapters-anthropic/     @aletheia/adapters-anthropic
+  adapters-openai/        @aletheia/adapters-openai
+  dynamics/               @aletheia/dynamics
+  episodic/               @aletheia/episodic
+examples/                 executable demos and live-provider wiring
+evidence/live-llm-e2e/    live Claude happy-path and adversarial evidence
+specs/                    protocol specs
+CHANGELOG.md              current Aletheia change history
+GLOSSARY.md               project vocabulary
+ROADMAP.md                phase plan and scope decisions
 ```
 
-## Design principles (carry-forward through all phases)
+Historical pre-Aletheia research artifacts were removed from the active tree to
+keep the repo legible. They remain available through git history.
 
-- **Fail-closed**: if you can't verify authority, abstain or ask a human. Never infer permission from confidence, polished prose, sender label, checksum, or chain length.
-- **Permission before semantics**: visibility/scope filtering happens *before* semantic ranking, never after.
-- **Summaries never replace sources**: every summary carries a receipt back to the originating event.
-- **Later restrictive events override older optimistic ones**: time has a direction.
-- **Sensitive effects ask human**: there is no automatic promotion path for high-risk action.
+## Quick Commands
 
-These come from `specs/aletheia-memory-authority-v0.md` and are not negotiable across phases.
+```sh
+pnpm install
+pnpm -r run typecheck
+pnpm -r run test
+pnpm -r run build
+pnpm run smoke:core-e2e
+```
 
-## Reading order for new contributors
+Live demos use caller-provided provider credentials:
 
-1. This README.
-2. `GLOSSARY.md` (~5 min — necessary before any spec).
-3. `specs/aletheia-memory-authority-v0.md` (the architecture).
-4. `specs/memory-authority-receipt-v0.md` (the receipt contract).
-5. `ROADMAP.md` (where we're going next).
-6. `paper/aletheia-paper-v0.md` (the long-form argument).
+```sh
+ANTHROPIC_API_KEY=... pnpm run demo:live-llm
+ANTHROPIC_API_KEY=... pnpm run demo:live-llm:adversarial
+```
 
-## Boundaries (what this is NOT)
+## Design Principles
 
-- Not production-ready, not runtime-ready, not L2+ operational.
-- Not a permission system or authorization service.
-- Not connected to any production runtime.
-- Not a daemon or watcher.
+- **Fail closed**: if authority cannot be verified, abstain, block locally, or
+  ask a human.
+- **Permission before semantics**: visibility, scope, status, freshness, and
+  conflict filters run before ranking.
+- **Receipts are evidence, not permission tokens**: the receiver always
+  classifies the proposed action.
+- **Sensitive effects ask human**: receipts never auto-authorize high-risk
+  action.
+- **Confidence, consensus, CHAIN, and PROSE are never authority**.
+- **No semantic retrieval, embeddings, or vector store**.
+
+## Reading Order
+
+1. `GLOSSARY.md`
+2. `ROADMAP.md`
+3. `specs/aletheia-memory-authority-v0.md`
+4. `specs/memory-authority-receipt-v0.md`
+5. package READMEs under `packages/*/README.md`
+
+## Boundaries
+
+Aletheia is a library. It does not own OAuth, provider accounts, terminal UX,
+production authorization, or background workers. Hosts call explicit APIs and
+pass in already-authenticated provider clients when they want LLM integration.
 
 ## License
 
-See `LICENSE` (code) and `LICENSE-DOCS` (documents).
+See `LICENSE` for code and `LICENSE-DOCS` for documentation.

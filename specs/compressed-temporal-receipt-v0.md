@@ -1,15 +1,12 @@
 # Compressed Temporal Receipt v0
 
-Status: public spec draft v0 / not runtime-ready  
-Generated: 2026-05-06T16:42Z
+Status: protocol spec draft v0 / executable TypeScript baseline exists
 
 ## Purpose
 
 A Compressed Temporal Receipt is a compact cross-source handoff tuple for memory-derived summaries. It preserves enough source, freshness, boundary, prohibition, temporal, completeness, and action information for a receiver to avoid laundering stale, denied, sensitive, or local-only claims into action authority.
 
-## Current authority-critical tuple
-
-Latest local fixture: `T-synaptic-mesh-compressed-temporal-receipt-cross-source-minimal-fields-v0`.
+## Current Authority-Critical Tuple
 
 Authority-critical fields retained:
 
@@ -23,7 +20,10 @@ Optional audit/readability fields:
 CTRID, RB, CHAIN, CONF, PROSE
 ```
 
-The latest fixture reduced field count from 16 to 11 while preserving zero unsafe allows and zero false rejects in local tests.
+The historical fixture line reduced field count from 16 to 11 while preserving
+zero unsafe allows and zero false rejects in local tests. The fixture artifacts
+are no longer part of the active tree; the tuple contract is preserved here as
+the spec surface.
 
 ## Field definitions
 
@@ -114,14 +114,13 @@ Correct interpretation:
 
 The receiver must not treat the presence of words like “runtime” or “L2+” inside `NO` as operational grants.
 
-## Known local test metrics
+## Historical Test Summary
 
-| Fixture | Cases | Allow | Ask-human | Fetch/abstain | Unsafe allows | False rejects |
-|---|---:|---:|---:|---:|---:|---:|
-| `T-synaptic-mesh-compressed-temporal-receipt-role-separation-v0` | 10 | 2 | 6 | 2 | 0 | 0 |
-| `T-synaptic-mesh-compressed-temporal-boundary-normalization-v0` | 12 | 4 | 3 | 5 | 0 | 0 |
-| `T-synaptic-mesh-compressed-temporal-boundary-normalization-cross-source-v0` | 14 | 3 | 3 | 8 | 0 | 0 |
-| `T-synaptic-mesh-compressed-temporal-receipt-cross-source-minimal-fields-v0` | 23 | 3 | 3 | 17 | 0 | 0 |
+The local fixture line that produced this tuple covered role separation,
+boundary normalization, cross-source binding, and minimal-field compression with
+zero unsafe allows in the tested cases. The active TypeScript repo now keeps the
+contract in specs and zod/runtime tests instead of carrying the old generated
+fixture artifacts.
 
 ## Known failures repaired
 
@@ -130,9 +129,11 @@ The receiver must not treat the presence of words like “runtime” or “L2+�
 3. **Cross-source laundering:** known-looking source labels/prose could mislead receiver. Repair: source label + path + digest + freshness must bind before normalization.
 4. **NO lane bug:** forbidden words inside `NO` were mistaken for grants. Repair: treat `NO` as prohibition lane.
 
-## Local-only boundary
+## Boundary
 
-This spec is documentation for local research. It does not authorize parsing receipts in runtime, enforcing policies automatically, changing config, writing permanent memory, sending external messages, publishing, deleting, or production/canary use.
+This spec describes receipt semantics. It does not authorize production/canary
+use, provider account access, host config changes, external sends, deletion, or
+automatic enforcement beyond the explicit decisions returned by Aletheia APIs.
 
 ## Open questions
 

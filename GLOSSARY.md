@@ -8,7 +8,7 @@ Terms are grouped by concept area, not alphabetical.
 
 ## About the name
 
-**Aletheia** (ἀλήθεια) — Greek: "unconcealment", "disclosure", or truth as *that which is no longer hidden*. The project's design maxim is "build a memory that knows when to distrust itself"; the name encodes exactly that — pursuing the unconcealment of gaps, contradictions, and stale claims over the comfort of always producing an answer. The project was previously developed as "Synaptic Mesh" (see `CHANGELOG.md` and `ROADMAP.md` for the rename rationale).
+**Aletheia** (ἀλήθεια) — Greek: "unconcealment", "disclosure", or truth as *that which is no longer hidden*. The project's design maxim is "build a memory that knows when to distrust itself"; the name encodes exactly that — pursuing the unconcealment of gaps, contradictions, and stale claims over the comfort of always producing an answer. The project was previously developed under another name; `ROADMAP.md` keeps the rename rationale.
 
 ---
 

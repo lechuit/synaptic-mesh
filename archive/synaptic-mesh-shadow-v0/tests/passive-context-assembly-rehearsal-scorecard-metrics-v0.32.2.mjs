@@ -1,8 +1,0 @@
-import assert from 'node:assert/strict';
-import { writeFileSync, mkdirSync } from 'node:fs';
-import { canonicalInput } from './passive-context-assembly-rehearsal-scorecard-fixtures.mjs';
-import { scorePassiveContextAssemblyRehearsalScorecard } from '../src/passive-context-assembly-rehearsal-scorecard.mjs';
-const out=scorePassiveContextAssemblyRehearsalScorecard(canonicalInput()); const m=out.metrics;
-assert.deepEqual({assemblyItemCount:m.assemblyItemCount,includeForHumanContextCount:m.includeForHumanContextCount,conflictReviewCount:m.conflictReviewCount,staleCautionCount:m.staleCautionCount,sourceBoundAssemblyRatio:m.sourceBoundAssemblyRatio,minimalContextRatio:m.minimalContextRatio,conflictFlaggedRatio:m.conflictFlaggedRatio,staleCautionRatio:m.staleCautionRatio,noiseSuppressedCount:m.noiseSuppressedCount,noiseSuppressionRatio:m.noiseSuppressionRatio,humanReviewOnlyRatio:m.humanReviewOnlyRatio,noPromotionWithoutHumanRatio:m.noPromotionWithoutHumanRatio,boundaryViolationCount:m.boundaryViolationCount,policyDecision:m.policyDecision},{assemblyItemCount:4,includeForHumanContextCount:2,conflictReviewCount:1,staleCautionCount:1,sourceBoundAssemblyRatio:1,minimalContextRatio:1,conflictFlaggedRatio:1,staleCautionRatio:1,noiseSuppressedCount:2,noiseSuppressionRatio:1,humanReviewOnlyRatio:1,noPromotionWithoutHumanRatio:1,boundaryViolationCount:0,policyDecision:null});
-assert.equal(out.recommendation,'ADVANCE_OBSERVATION_ONLY');
-mkdirSync('evidence',{recursive:true}); writeFileSync('evidence/passive-context-assembly-rehearsal-scorecard-metrics-v0.32.2.out.json', JSON.stringify({recommendation:out.recommendation,metrics:m},null,2)+'\n');
