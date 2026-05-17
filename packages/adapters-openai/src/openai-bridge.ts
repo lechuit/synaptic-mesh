@@ -53,6 +53,7 @@ export interface OpenAIResponsesClient {
 }
 
 export interface Clock {
+  /** Return the logical timestamp used for fixtureable event/proposal creation. */
   now(): IsoTimestamp;
 }
 
@@ -139,10 +140,25 @@ const RECEIVER_INSTRUCTIONS = [
 export class AletheiaOpenAIResponsesBridge {
   private readonly clock: Clock;
 
+  /**
+   * Create an OpenAI Responses-compatible bridge.
+   *
+   * @remarks
+   * The bridge receives an already-authenticated client. It does not import the
+   * OpenAI SDK, own OAuth, execute tools, or grant authority from model output.
+   */
   constructor(private readonly options: AletheiaOpenAIResponsesBridgeOptions) {
     this.clock = options.clock ?? DEFAULT_CLOCK;
   }
 
+  /**
+   * Record a conversation event and ask the model for memory proposal drafts.
+   *
+   * @remarks
+   * Model JSON is treated as untrusted draft material. Each parsed proposal is
+   * routed through `AletheiaAuthority.propose()` before any atom exists. Malformed
+   * extraction returns `parseError` and writes no memory atom beyond the source event.
+   */
   async ingestConversation(
     input: ConversationIngestionInput,
   ): Promise<ConversationIngestionResult> {
@@ -202,6 +218,15 @@ export class AletheiaOpenAIResponsesBridge {
     };
   }
 
+  /**
+   * Answer a user message only after governed recall and action authorization.
+   *
+   * @remarks
+   * The implementation calls `authority.recall()` first. If recall does not
+   * allow local/shadow use, the model is not called. It then calls `tryAct()`;
+   * if the action is sensitive, conflicted, stale, or otherwise blocked, the
+   * model is still not called.
+   */
   async answerWithRecall(input: AnswerWithRecallInput): Promise<AnswerWithRecallResult> {
     const recall = await this.options.authority.recall({
       ...input.recall,
@@ -250,6 +275,14 @@ export class AletheiaOpenAIResponsesBridge {
   }
 }
 
+/**
+ * Extract text from the OpenAI Responses shapes this adapter supports.
+ *
+ * @remarks
+ * Prefer non-empty `output_text`; otherwise fall back to nested output content.
+ * The helper is exported so fixture tests and alternate callers can validate
+ * provider response handling without constructing the bridge.
+ */
 export function textFromOpenAIResponse(response: OpenAIResponse): string {
   if (typeof response.output_text === 'string' && response.output_text.trim().length > 0) {
     return response.output_text.trim();

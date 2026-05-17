@@ -45,6 +45,13 @@ export class SqliteMemoryStore implements MemoryStore {
   private readonly insertHistory: Database.Statement;
   private readonly historyQuery: Database.Statement<[string]>;
 
+  /**
+   * Create a MemoryStore backed by an existing `better-sqlite3` connection.
+   *
+   * @remarks
+   * Direct construction is for custom composition roots. Most hosts should use
+   * `openSqliteStores()` so all stores share the same migrated connection.
+   */
   constructor(private readonly db: Database.Database) {
     this.insertAtom = db.prepare(`
       INSERT INTO memory_atoms (
@@ -77,6 +84,14 @@ export class SqliteMemoryStore implements MemoryStore {
     );
   }
 
+  /**
+   * Insert an immutable memory atom and record its initial status history.
+   *
+   * @remarks
+   * The method zod-validates the atom before writing, then uses a transaction
+   * to insert both `memory_atoms` and the initial `memory_status_history` row.
+   * Duplicate memory IDs throw because content updates must use successor atoms.
+   */
   async insert(atom: MemoryAtom): Promise<MemoryAtom> {
     const validated = MemoryAtomSchema.parse(atom);
     const now = new Date().toISOString();
@@ -107,6 +122,13 @@ export class SqliteMemoryStore implements MemoryStore {
     return validated;
   }
 
+  /**
+   * Retrieve one visible atom by ID.
+   *
+   * @remarks
+   * Hidden and missing atoms both return `null`; this avoids leaking existence
+   * across visibility boundaries.
+   */
   async get(
     memoryId: MemoryId,
     permittedVisibilities: readonly Visibility[],
@@ -121,6 +143,13 @@ export class SqliteMemoryStore implements MemoryStore {
     return rowToAtom(row);
   }
 
+  /**
+   * Query visible atoms with optional status, scope, validity, and limit filters.
+   *
+   * @remarks
+   * Permission filtering is the first SQL predicate. `validAt` is opt-in so
+   * lifecycle scanners can intentionally see expired atoms for deprecation.
+   */
   async query(filter: MemoryQuery): Promise<readonly MemoryAtom[]> {
     const where: string[] = [];
     const params: unknown[] = [];
@@ -156,6 +185,14 @@ export class SqliteMemoryStore implements MemoryStore {
     return rows.map(rowToAtom);
   }
 
+  /**
+   * Transition an atom through the allowed status matrix and audit the change.
+   *
+   * @remarks
+   * This is the only UPDATE path in the store. It changes `status` only and
+   * records the logical transition timestamp plus actor/rationale in
+   * `memory_status_history`.
+   */
   async transitionStatus(
     memoryId: MemoryId,
     nextStatus: MemoryStatus,
@@ -198,6 +235,13 @@ export class SqliteMemoryStore implements MemoryStore {
     return { kind: 'applied', atom: rowToAtom(updated) };
   }
 
+  /**
+   * Return the audited status timeline for one atom.
+   *
+   * @remarks
+   * Consumers use this for Phase 2 dynamics, episodic historical snapshots, and
+   * operator audit views. The first row has `fromStatus: null` for insertion.
+   */
   async statusHistory(memoryId: MemoryId): Promise<
     readonly {
       at: IsoTimestamp;

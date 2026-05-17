@@ -41,6 +41,14 @@ export const DEFAULT_PROMOTION_POLICY: PromotionPolicy = {
   minStabilityScore: 0.5,
 };
 
+/**
+ * Build a dynamics policy from defaults plus host overrides.
+ *
+ * @remarks
+ * Use this helper instead of hand-copying defaults in hosts. The `actor` is
+ * written into transition audit reasons when the dynamics engine applies
+ * status changes.
+ */
 export function createDynamicsPolicy(
   actor: AgentId,
   overrides: DynamicsPolicyOverrides = {},

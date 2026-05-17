@@ -179,11 +179,26 @@ export class EpisodicTimeline {
   private readonly visibilityPolicy: VisibilityPolicy;
   private readonly clock: Clock;
 
+  /**
+   * Create subjective-time projections over existing event and memory stores.
+   *
+   * @remarks
+   * This component is read-only. It does not create memory, authorize actions,
+   * or infer permission from episode membership.
+   */
   constructor(private readonly options: EpisodicTimelineOptions) {
     this.visibilityPolicy = options.visibilityPolicy ?? DENY_ALL_VISIBILITY_POLICY;
     this.clock = options.clock ?? SYSTEM_CLOCK;
   }
 
+  /**
+   * List visible explicit episodes in a scope.
+   *
+   * @remarks
+   * Use this to populate session/conversation/task catalogs. The implementation
+   * queries permitted events first, extracts only explicit `payload.episodic`
+   * anchors, groups them by episode, and fails closed when none are visible.
+   */
   async listEpisodes(query: EpisodeCatalogQuery): Promise<EpisodeCatalog> {
     const emittedAt = this.clock.now();
     const permitted = this.permittedFor(query.agentId);
@@ -222,6 +237,14 @@ export class EpisodicTimeline {
     };
   }
 
+  /**
+   * Project memories formed from the source events of one episode.
+   *
+   * @remarks
+   * The method first verifies the episode events are visible and in scope, then
+   * reconstructs memory status at the requested episode instant. It returns
+   * audit context only; callers still need `tryAct()` before acting.
+   */
   async episodeMemories(query: EpisodeQuery): Promise<EpisodeProjection> {
     const emittedAt = this.clock.now();
     const permitted = this.permittedFor(query.agentId);
@@ -285,6 +308,14 @@ export class EpisodicTimeline {
     };
   }
 
+  /**
+   * Reconstruct the caller-visible belief snapshot at a historical instant.
+   *
+   * @remarks
+   * Status is read from `MemoryStore.statusHistory()` rather than trusting the
+   * atom's current status, so reopened stores can answer "what was believed
+   * then" even after later decay or reconsolidation.
+   */
   async beliefsAt(query: BeliefsAtQuery): Promise<BeliefSnapshot> {
     const emittedAt = this.clock.now();
     const permitted = this.permittedFor(query.agentId);
@@ -322,6 +353,14 @@ export class EpisodicTimeline {
     };
   }
 
+  /**
+   * Compare visible belief snapshots at two episode boundaries.
+   *
+   * @remarks
+   * This compares the agent's visible belief state at each boundary, not only
+   * atoms born inside those episodes. It reports added, removed, persisted, and
+   * status-changed memory IDs.
+   */
   async compareEpisodes(query: CompareEpisodesQuery): Promise<EpisodeComparison> {
     const emittedAt = this.clock.now();
     const permitted = this.permittedFor(query.agentId);
@@ -402,6 +441,14 @@ export class EpisodicTimeline {
     };
   }
 
+  /**
+   * Build a restart-oriented self-state snapshot.
+   *
+   * @remarks
+   * Use this when a host wants to rehydrate an agent's current memory posture:
+   * beliefs, uncertain candidates, distrusted/deprecated atoms, and
+   * human-required material remain separate categories.
+   */
   async selfState(query: SelfStateQuery): Promise<SelfStateSnapshot> {
     const at = query.at ?? this.clock.now();
     const emittedAt = this.clock.now();
@@ -443,6 +490,13 @@ export class EpisodicTimeline {
     };
   }
 
+  /**
+   * Return the permission-guarded status timeline for one memory.
+   *
+   * @remarks
+   * The atom must be visible and exactly in scope before status history is
+   * exposed. This prevents timeline lookups from leaking hidden memory IDs.
+   */
   async memoryTimeline(query: MemoryTimelineQuery): Promise<MemoryTimeline> {
     const emittedAt = this.clock.now();
     const permitted = this.permittedFor(query.agentId);
@@ -577,6 +631,14 @@ export class EpisodicTimeline {
   }
 }
 
+/**
+ * Parse an explicit episodic anchor from an event payload.
+ *
+ * @remarks
+ * This helper is intentionally conservative: malformed or missing
+ * `payload.episodic` objects return `null` instead of being inferred from
+ * prose, timestamps, or event kind.
+ */
 export function episodeAnchorFromEvent(event: Event): EpisodeAnchor | null {
   if (!hasEpisodicPayload(event.payload)) return null;
   const raw = event.payload.episodic;

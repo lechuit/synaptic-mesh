@@ -50,6 +50,7 @@ export interface AnthropicMessagesClient {
 }
 
 export interface Clock {
+  /** Return the logical timestamp used for fixtureable event/proposal creation. */
   now(): IsoTimestamp;
 }
 
@@ -136,10 +137,25 @@ const RECEIVER_SYSTEM_PROMPT = [
 export class AletheiaAnthropicBridge {
   private readonly clock: Clock;
 
+  /**
+   * Create an Anthropic Messages-compatible bridge.
+   *
+   * @remarks
+   * The bridge receives an already-authenticated client. It does not own OAuth,
+   * execute tools, or treat model output as authority.
+   */
   constructor(private readonly options: AletheiaAnthropicBridgeOptions) {
     this.clock = options.clock ?? DEFAULT_CLOCK;
   }
 
+  /**
+   * Record a conversation event and ask the model for memory proposal drafts.
+   *
+   * @remarks
+   * Model JSON is untrusted draft material. Parsed proposals are routed through
+   * `AletheiaAuthority.propose()` before any atom can be stored. Malformed
+   * extraction returns `parseError` and does not write memory atoms.
+   */
   async ingestConversation(
     input: ConversationIngestionInput,
   ): Promise<ConversationIngestionResult> {
@@ -204,6 +220,14 @@ export class AletheiaAnthropicBridge {
     };
   }
 
+  /**
+   * Answer a user message only after governed recall and action authorization.
+   *
+   * @remarks
+   * The model is not called unless `recall()` and receiver-side `tryAct()` both
+   * return `allow_local_shadow`. Sensitive actions and unresolved conflicts stay
+   * on the fail-closed side of the boundary.
+   */
   async answerWithRecall(input: AnswerWithRecallInput): Promise<AnswerWithRecallResult> {
     const recall = await this.options.authority.recall({
       ...input.recall,
@@ -257,6 +281,13 @@ export class AletheiaAnthropicBridge {
   }
 }
 
+/**
+ * Extract concatenated text blocks from an Anthropic Messages response.
+ *
+ * @remarks
+ * Non-text content blocks are ignored. This helper is exported for fixture
+ * tests and alternate callers that need the same response normalization.
+ */
 export function textFromAnthropicResponse(response: AnthropicMessageResponse): string {
   return response.content
     .filter((block): block is AnthropicTextBlock => block.type === 'text')

@@ -20,12 +20,23 @@ export interface OpenOptions {
 
 export interface AletheiaConnection {
   readonly db: Database.Database;
-  /** Close the connection. Subsequent calls are no-ops. */
+  /**
+   * Close the SQLite connection.
+   *
+   * @remarks
+   * Subsequent calls are no-ops so hosts can safely call `close()` from
+   * `finally` blocks without tracking ownership twice.
+   */
   close(): void;
 }
 
 /**
  * Open a connection, enable WAL + foreign keys, and apply migrations.
+ *
+ * @remarks
+ * In write mode, migrations are applied immediately and idempotently. In
+ * read-only mode, migrations are skipped because SQLite cannot write the
+ * `schema_migrations` table.
  */
 export function openConnection(options: OpenOptions): AletheiaConnection {
   const db = new Database(options.path, {

@@ -41,11 +41,28 @@ export class RetrievalRouter {
   private readonly visibilityPolicy: VisibilityPolicy;
   private readonly clock: Clock;
 
+  /**
+   * Create an authority-first recall router.
+   *
+   * @remarks
+   * The optional topic matcher is an exact host-provided predicate, not an
+   * embedding or semantic ranking hook. If a topic query is supplied without a
+   * matcher, recall fails closed.
+   */
   constructor(private readonly options: RetrievalRouterOptions) {
     this.visibilityPolicy = options.visibilityPolicy ?? DENY_ALL_VISIBILITY_POLICY;
     this.clock = options.clock ?? SYSTEM_CLOCK;
   }
 
+  /**
+   * Recall atoms that are visible, in scope, currently valid, and actionable.
+   *
+   * @remarks
+   * Implementation order is permission before semantics: caller visibility is
+   * resolved first, then the store query applies scope/status/freshness, then
+   * optional type/topic filtering, then conflict checks. The returned decision
+   * must be inspected before passing atoms to a model.
+   */
   async recall(query: RecallQuery): Promise<RetrievalResult> {
     const emittedAt = this.clock.now();
     const queryResult = RecallQuerySchema.safeParse(query);
