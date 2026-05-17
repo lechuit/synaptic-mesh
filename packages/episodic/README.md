@@ -2,7 +2,7 @@
 
 Subjective time and episodic continuity projections for Aletheia.
 
-> **Status**: `0.1.0` experimental public baseline. Episodic timeline projections are live; they read from existing event and memory stores and do not add authority by themselves.
+> **Status**: `0.1.x` experimental public baseline. Episodic timeline projections are live; they read from existing event and memory stores and do not add authority by themselves.
 
 ## Requirements
 
@@ -51,6 +51,11 @@ The timeline only projects what the caller can already see through visibility an
 - Compares visible belief snapshots at two episode boundaries to show added, removed, persisted, and status-changed beliefs.
 - Exposes a permission-guarded timeline for one visible memory's audited status history.
 - Builds a self-state snapshot so a restarted agent can recover what it currently believes, doubts, distrusts, or must route to a human.
+- Builds a compact restart continuity brief from current self-state, recent visible episodes, and optional status changes since a prior instant.
+
+`continuityBrief().changedSince` compares endpoint snapshots. Use
+`memoryTimeline()` when you need the full audited transition path for one
+memory.
 
 ## Non-goals
 
@@ -82,6 +87,7 @@ Public surface for the initial library cycle:
 - `EpisodicTimeline`
 - episode catalog/projection/comparison types
 - belief snapshot and self-state snapshot types
+- continuity brief and continuity change-set types
 - memory timeline types
 - explicit `EpisodeAnchor` payload convention
 

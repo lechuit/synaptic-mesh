@@ -16,7 +16,6 @@ import {
   type Visibility,
   type VisibilityPolicy,
   decision,
-  scopeKey,
 } from '@aletheia-labs/core';
 
 export type EpisodeKind = 'conversation' | 'task' | 'decision_context' | 'session';
@@ -112,6 +111,34 @@ export interface SelfStateSnapshot {
   }[];
 }
 
+export interface ContinuityChangeSet {
+  readonly addedMemoryIds: readonly MemoryId[];
+  readonly removedMemoryIds: readonly MemoryId[];
+  readonly persistedMemoryIds: readonly MemoryId[];
+  readonly statusChanged: readonly {
+    readonly memoryId: MemoryId;
+    readonly fromStatus: MemoryStatus;
+    readonly toStatus: MemoryStatus;
+  }[];
+}
+
+export interface ContinuitySelfState {
+  readonly beliefs: readonly MemoryAtom[];
+  readonly uncertain: readonly MemoryAtom[];
+  readonly distrusted: readonly MemoryAtom[];
+  readonly humanRequired: readonly MemoryAtom[];
+  readonly statusesAt: readonly MemoryStatusAt[];
+}
+
+export interface ContinuityBrief {
+  readonly decision: Decision;
+  readonly at: IsoTimestamp;
+  readonly since: IsoTimestamp | null;
+  readonly recentEpisodes: readonly EpisodeSummary[];
+  readonly selfState: ContinuitySelfState;
+  readonly changedSince: ContinuityChangeSet | null;
+}
+
 export interface EpisodicTimelineOptions {
   readonly eventLedger: EventLedger;
   readonly memoryStore: MemoryStore;
@@ -152,6 +179,13 @@ export interface CompareEpisodesQuery extends EpisodicQueryBase {
 
 export interface SelfStateQuery extends EpisodicQueryBase {
   readonly at?: IsoTimestamp;
+}
+
+export interface ContinuityBriefQuery extends EpisodicQueryBase {
+  readonly at?: IsoTimestamp;
+  readonly since?: IsoTimestamp;
+  readonly episodeKind?: EpisodeKind;
+  readonly episodeLimit?: number;
 }
 
 export interface MemoryTimelineQuery extends EpisodicQueryBase {
@@ -491,6 +525,110 @@ export class EpisodicTimeline {
   }
 
   /**
+   * Build a compact restart brief for an agent host.
+   *
+   * @remarks
+   * This is a read-only continuity projection: it combines current self-state,
+   * recent explicit episodes, and an optional status diff since an earlier
+   * instant. It does not summarize prose, infer hidden memories, or authorize
+   * any action. Hosts must still call `tryAct()` before using the brief to act.
+   * `changedSince` is an endpoint snapshot diff; use `memoryTimeline()` when
+   * the full transition audit path matters.
+   */
+  async continuityBrief(query: ContinuityBriefQuery): Promise<ContinuityBrief> {
+    const at = query.at ?? this.clock.now();
+    const emittedAt = this.clock.now();
+    const permitted = this.permittedFor(query.agentId);
+    if (permitted.length === 0) {
+      return emptyContinuityBrief(
+        at,
+        query.since ?? null,
+        failClosed('visibility_denied', 'caller has no permitted visibility planes', emittedAt),
+      );
+    }
+
+    if (query.since !== undefined && query.since > at) {
+      return emptyContinuityBrief(
+        at,
+        query.since,
+        failClosed('tuple_incomplete', 'timeRange:since<=at', emittedAt),
+      );
+    }
+
+    const currentSnapshot = await this.loadSnapshot(
+      { agentId: query.agentId, scope: query.scope, asOf: at, statusesAt: ALL_STATUSES },
+      permitted,
+    );
+    if (currentSnapshot.atoms.length === 0) {
+      return emptyContinuityBrief(
+        at,
+        query.since ?? null,
+        failClosed('tuple_incomplete', 'memoryAtoms', emittedAt),
+      );
+    }
+
+    const recentEvents = await this.loadAnchoredEvents(
+      {
+        agentId: query.agentId,
+        scope: query.scope,
+        ...(query.since !== undefined ? { since: query.since } : {}),
+        until: at,
+      },
+      permitted,
+    );
+    const matchingEpisodes =
+      query.episodeKind !== undefined
+        ? summarizeEpisodes(recentEvents).filter((episode) => episode.kind === query.episodeKind)
+        : summarizeEpisodes(recentEvents);
+    const recentEpisodes = takeLast(matchingEpisodes, query.episodeLimit ?? 10);
+
+    const changedSince =
+      query.since !== undefined
+        ? diffSnapshots(
+            await this.loadSnapshot(
+              {
+                agentId: query.agentId,
+                scope: query.scope,
+                asOf: query.since,
+                statusesAt: ALL_STATUSES,
+              },
+              permitted,
+            ),
+            currentSnapshot,
+          )
+        : null;
+    const relatedMemoryIds = [
+      ...uniqueMemoryIds([
+        ...currentSnapshot.atoms.map((atom) => atom.memoryId),
+        ...(changedSince?.addedMemoryIds ?? []),
+        ...(changedSince?.removedMemoryIds ?? []),
+        ...(changedSince?.persistedMemoryIds ?? []),
+      ]),
+    ];
+
+    return {
+      decision: decision(
+        'allow_local_shadow',
+        [{ kind: 'all_checks_passed', citedMemoryIds: relatedMemoryIds }],
+        relatedMemoryIds,
+        [],
+        emittedAt,
+      ),
+      at,
+      since: query.since ?? null,
+      recentEpisodes,
+      selfState: {
+        beliefs: atomsWithStatus(currentSnapshot, ['verified', 'trusted']),
+        uncertain: atomsWithStatus(currentSnapshot, ['candidate']),
+        distrusted: atomsWithStatus(currentSnapshot, ['deprecated', 'rejected']),
+        humanRequired: atomsWithStatus(currentSnapshot, ['sealed', 'human_required']),
+        statusesAt: currentSnapshot.statusesAt,
+      },
+      changedSince,
+    };
+  }
+
+  /**
    * Return the permission-guarded status timeline for one memory.
    *
    * @remarks
@@ -506,20 +644,18 @@ export class EpisodicTimeline {
       );
     }
 
-    const atom = await this.options.memoryStore.get(query.memoryId, permitted);
+    const scopedAtoms = await this.options.memoryStore.query({
+      statuses: ALL_STATUSES,
+      scope: query.scope,
+      permittedVisibilities: permitted,
+    });
+    const atom = scopedAtoms.find((candidate) => candidate.memoryId === query.memoryId) ?? null;
     if (atom === null) {
       return emptyMemoryTimeline(
-        failClosed('source_check_failed', 'memory is missing or not visible', emittedAt),
-      );
-    }
-
-    if (scopeKey(atom.scope) !== scopeKey(query.scope)) {
-      return emptyMemoryTimeline(
         failClosed(
-          'scope_outside_boundary',
-          scopeKey(query.scope),
+          'source_check_failed',
+          'memory is missing, not visible, or outside requested scope',
           emittedAt,
-          scopeKey(atom.scope),
         ),
       );
     }
@@ -657,33 +793,18 @@ export function episodeAnchorFromEvent(event: Event): EpisodeAnchor | null {
 }
 
 function failClosed(
-  kind: 'tuple_incomplete' | 'visibility_denied' | 'source_check_failed' | 'scope_outside_boundary',
+  kind: 'tuple_incomplete' | 'visibility_denied' | 'source_check_failed',
   detail: string,
   emittedAt: IsoTimestamp,
-  allowedScope?: string,
 ): Decision {
-  return decision(
-    'fetch_abstain',
-    [failClosedReason(kind, detail, allowedScope)],
-    [],
-    [],
-    emittedAt,
-  );
+  return decision('fetch_abstain', [failClosedReason(kind, detail)], [], [], emittedAt);
 }
 
 function failClosedReason(
-  kind: 'tuple_incomplete' | 'visibility_denied' | 'source_check_failed' | 'scope_outside_boundary',
+  kind: 'tuple_incomplete' | 'visibility_denied' | 'source_check_failed',
   detail: string,
-  allowedScope?: string,
 ) {
   if (kind === 'tuple_incomplete') return { kind, missingFields: [detail] };
-  if (kind === 'scope_outside_boundary') {
-    return {
-      kind,
-      requestedScope: detail,
-      allowedScope: allowedScope ?? 'unknown',
-    };
-  }
   return { kind, detail };
 }
 
@@ -735,6 +856,27 @@ function emptySelfState(at: IsoTimestamp, decisionValue: Decision): SelfStateSna
     distrusted: [],
     humanRequired: [],
     statusHistory: [],
+  };
+}
+
+function emptyContinuityBrief(
+  at: IsoTimestamp,
+  since: IsoTimestamp | null,
+  decisionValue: Decision,
+): ContinuityBrief {
+  return {
+    decision: decisionValue,
+    at,
+    since,
+    recentEpisodes: [],
+    selfState: {
+      beliefs: [],
+      uncertain: [],
+      distrusted: [],
+      humanRequired: [],
+      statusesAt: [],
+    },
+    changedSince: null,
   };
 }
 
@@ -806,6 +948,49 @@ function atomsWithStatus(
 
 function uniqueMemoryIds(memoryIds: readonly MemoryId[]): readonly MemoryId[] {
   return [...new Set(memoryIds)];
+}
+
+function diffSnapshots(
+  fromSnapshot: {
+    readonly atoms: readonly MemoryAtom[];
+    readonly statusesAt: readonly MemoryStatusAt[];
+  },
+  toSnapshot: {
+    readonly atoms: readonly MemoryAtom[];
+    readonly statusesAt: readonly MemoryStatusAt[];
+  },
+): ContinuityChangeSet {
+  const fromById = new Map(fromSnapshot.statusesAt.map((status) => [status.memoryId, status]));
+  const toById = new Map(toSnapshot.statusesAt.map((status) => [status.memoryId, status]));
+  const fromIds = new Set(fromById.keys());
+  const toIds = new Set(toById.keys());
+  const addedMemoryIds = sortMemoryIds([...toIds].filter((memoryId) => !fromIds.has(memoryId)));
+  const removedMemoryIds = sortMemoryIds([...fromIds].filter((memoryId) => !toIds.has(memoryId)));
+  const persistedMemoryIds = sortMemoryIds([...toIds].filter((memoryId) => fromIds.has(memoryId)));
+  const statusChanged = persistedMemoryIds.flatMap((memoryId) => {
+    const fromStatus = fromById.get(memoryId)?.status;
+    const toStatus = toById.get(memoryId)?.status;
+    if (fromStatus === undefined || toStatus === undefined || fromStatus === toStatus) {
+      return [];
+    }
+    return [{ memoryId, fromStatus, toStatus }];
+  });
+
+  return {
+    addedMemoryIds,
+    removedMemoryIds,
+    persistedMemoryIds,
+    statusChanged,
+  };
+}
+
+function takeLast<T>(items: readonly T[], limit: number): readonly T[] {
+  if (limit <= 0) return [];
+  return items.slice(Math.max(items.length - limit, 0));
+}
+
+function sortMemoryIds(memoryIds: readonly MemoryId[]): readonly MemoryId[] {
+  return [...memoryIds].sort((a, b) => a.localeCompare(b));
 }
 
 function minIso(values: readonly IsoTimestamp[]): IsoTimestamp {

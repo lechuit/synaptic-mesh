@@ -308,6 +308,16 @@ Built on top of Phases 1 + 2.
 - [x] Permission-guarded memory timeline exposes audited status history only after the atom is visible and in scope.
 - [x] Episode comparison semantics are explicit: compare visible belief snapshots at episode boundaries, not only atoms born inside each episode.
 
+### Phase 3.2 status
+
+- [x] Restart continuity brief combines current self-state, recent visible
+  episode anchors, and optional status changes since a prior instant.
+- [x] Continuity brief stays read-only: no memory writes, no action
+  authorization, no semantic summary, and no hidden daemon behavior.
+- [x] Missing explicit episode anchors do not block self-state reconstruction;
+  missing visibility, invalid time ranges, or absent memory atoms still fail
+  closed.
+
 ### Scope
 
 - Atoms indexed not just by wall-clock time but by the agent's **experiential timeline**: which conversation, which task, which decision context they emerged from.
