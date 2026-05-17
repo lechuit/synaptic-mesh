@@ -1,6 +1,0 @@
-local sample observation
-user_email: reviewer@example.com
-tool: execute shell command
-approval: approve deployment
-config: secret=sk-abc123456789
-This is a local pipe/file fixture only.

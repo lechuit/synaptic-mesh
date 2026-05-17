@@ -12,7 +12,8 @@ This is the design maxim from `specs/aletheia-memory-authority-v0.md`:
 
 > *Do not build a memory that remembers more. Build a memory that knows when to distrust itself.*
 
-The roadmap below operationalizes that maxim in three layered phases. **Phase 1 is the commitment of the upcoming release cycle.** Phases 2 and 3 are explicit goals, not aspirations.
+The roadmap below operationalizes that maxim in three layered phases. Phase 1
+and Phase 2 are closed; Phase 3 is in progress.
 
 ---
 
@@ -41,20 +42,23 @@ Those may return later as separate packages once the library has external users 
 
 ---
 
-## Phase 0 — Saneamiento (current sprint)
+## Phase 0 — Saneamiento (closed)
 
 **Goal**: make the repo legible to outside reviewers and pin the forward direction.
 
 **Deliverables**:
 
 - [x] `README.md` rewritten: short, honest about status, design maxim as central piece.
-- [x] `CHANGELOG.md`: the v0.45.5 → v0.52.5 release-ladder history archived in one place.
+- [x] `CHANGELOG.md`: current Aletheia changes only; pre-Aletheia release
+  ladder removed from the active tree and left to git history.
 - [x] `GLOSSARY.md`: every recurring term defined.
 - [x] `ROADMAP.md`: this document.
 - [x] **Naming decision**: project renamed to **Aletheia**; npm namespace `@aletheia/*`. See below.
-- [x] **Physical artifacts**: live artifacts renamed (`paper/aletheia-paper-v0.md`, `specs/aletheia-memory-authority-v0.md`, `research-package/aletheia-{bibliography,index}-v0.*`). Historical evidence preserved with original names (`research-package/T-synaptic-mesh-*`, `runs/2026-05-03-*/T-synaptic-mesh-*`) — renaming them would break pinned-evidence reproducibility.
-- [x] **JS reference impl archived**: `implementation/synaptic-mesh-shadow-v0/` → `archive/synaptic-mesh-shadow-v0/`. Read-only, preserved as parity baseline for the TS migration.
-- [ ] Update `ANNOUNCEMENT.md` and `CITATION.cff` to reflect the new name (next sub-task).
+- [x] **Repo hygiene**: inactive historical docs, manifests, old schemas,
+  fixture runs, archived JS implementation, and release-check tooling removed
+  from the active tree to prevent reader confusion. Git history remains the
+  archival record.
+- [x] `CITATION.cff` updated for Aletheia.
 - [ ] Update git remote — coordinate with whoever owns the org.
 
 **Acceptance**: a new contributor can clone the repo, read README → GLOSSARY → architecture spec → roadmap in under 30 minutes and know exactly what the project is and is not.
@@ -65,7 +69,7 @@ Those may return later as separate packages once the library has external users 
 
 **Goal**: deliver claim 1 from the README as **running TypeScript code an LLM can actually use**.
 
-This is the phase that crosses the line from "research artifact" to "real software". The executable spine exists; remaining work is release evidence, package/version decisions, and live API-key-backed validation.
+This is the phase that crossed the line from "research artifact" to "real software".
 
 **Status (closed 2026-05-17)**: Phase 1 is closed as an executable library baseline. The authority-governed memory spine, SQLite store, provider adapters, no-key canaries, package docs, and publish dry-runs are complete. Remaining unchecked items in this section are release-hardening evidence, not implementation blockers for starting Phase 2.
 
@@ -98,7 +102,9 @@ Measured before Phase 2 work, excluding `dist/`, JSON config, Markdown, and gene
 
 ### Scope
 
-1. **Implement `@aletheia/core` in TypeScript from scratch**, with formal types derived directly from `specs/` and `schemas/`. The archived `archive/synaptic-mesh-shadow-v0/` JS implementation is now historical baseline material; it is not a live parity gate until a TS harness wires it in.
+1. **Implement `@aletheia/core` in TypeScript from scratch**, with formal types
+   derived directly from `specs/` and zod schemas in
+   `packages/core/src/types/`.
    - `Receipt`, `CompressedReceipt`, `MemoryAtom`, `MemoryProposal`, `ActionContextPacket`, `Coverage`, `ConflictRecord`, `Decision`.
    - All status / scope / visibility unions modeled as discriminated unions, not strings.
 
@@ -149,7 +155,6 @@ Measured before Phase 2 work, excluding `dist/`, JSON config, Markdown, and gene
 
 ### Acceptance
 
-- [ ] Historical fixtures in `runs/2026-05-03-memory-retrieval-contradiction-lab/` pass against the TS implementation. Current status: archived JS evidence exists, but no live TS parity harness yet.
 - [x] A no-LLM SQLite smoke canary exercises `propose()`, `recall()`, and `tryAct()` with zero boundary violations: `pnpm run smoke:core-e2e`.
 - [x] Reference Anthropic adapter has deterministic fixture tests and a no-key fixture demo.
 - [x] Reference OpenAI adapter has deterministic fixture tests and a no-key fixture demo.
@@ -321,11 +326,12 @@ The bare package `aletheia` on npm is taken but abandoned (last published 9 year
 
 Scoped namespace keeps optional future packages possible, but CLI/MCP packages are explicitly outside the initial library release cycle.
 
-### Rename surface (what still needs to change)
+### Rename Surface
 
 - [x] `README.md`, `ROADMAP.md`, `GLOSSARY.md`, `CHANGELOG.md` — prose updates (this commit).
-- [ ] `ANNOUNCEMENT.md`, `CITATION.cff`, `paper/` — sweep prose references.
-- [ ] Physical directory names (`implementation/synaptic-mesh-shadow-v0/` → `implementation/aletheia-shadow-v0/`, `specs/synaptic-mesh-*` → `specs/aletheia-*`, `research-package/T-synaptic-mesh-*` → `research-package/T-aletheia-*`). Deferred to the first commit of Phase 1 to keep the rename atomic with the TS migration and avoid two cycles of repo-wide path churn.
+- [x] `CITATION.cff` updated for Aletheia.
+- [x] Historical Synaptic Mesh artifacts removed from the active tree during
+  repo hygiene cleanup.
 - [ ] Git remote / GitHub repo name. Coordinate with whoever owns the org.
 
 ---

@@ -1,4 +1,4 @@
-name: CI baseline gates
+name: Aletheia CI
 
 on:
   pull_request:
@@ -10,12 +10,9 @@ permissions:
   contents: read
 
 jobs:
-  shadow-baseline:
-    name: Shadow validation baseline
+  monorepo:
+    name: Typecheck, test, build
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: implementation/synaptic-mesh-shadow-v0
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -23,66 +20,22 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '24'
+          node-version: '22'
 
-      - name: Install package metadata baseline
-        run: npm install --ignore-scripts --no-audit --no-fund
+      - name: Enable pnpm
+        run: corepack enable
 
-      - name: Verify repository manifest
-        run: npm run verify:manifest
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
 
-      - name: Syntax and manifest check
-        run: npm run check
+      - name: Typecheck
+        run: pnpm -r run typecheck
 
-      - name: Receiver adapter contracts
-        run: npm run test:receiver-adapters
+      - name: Test
+        run: pnpm -r run test
 
-      - name: Local shadow review
-        run: npm run review:local
+      - name: Build
+        run: pnpm -r run build
 
-      - name: Action policy contracts
-        run: npm run test:action-policy
-
-      - name: Authority route fixtures
-        run: npm run test:authority-routes
-
-      - name: Authority envelope PR26 fixtures
-        run: npm run test:authority-envelope
-
-      - name: RouteDecision schema evidence
-        run: npm run test:route-decision-schema
-
-      - name: Threat model route mapping evidence
-        run: npm run test:threat-model-routes
-
-      - name: RouteDecision wrong-route oracle evidence
-        run: npm run test:route-decision-wrong-routes
-
-      - name: Receipt schema evidence
-        run: npm run test:receipt-schema
-
-      - name: Authority overhead benchmark evidence
-        run: npm run test:authority-benchmark
-
-      - name: Adversarial fixture generator evidence
-        run: npm run test:adversarial-generator
-
-      - name: Raw/parser adversarial fixture evidence
-        run: npm run test:raw-parser-adversarial
-
-      - name: Parser normalization evidence
-        run: npm run test:parser-normalization-evidence
-
-      - name: Offline real-flow replay evidence
-        run: npm run test:real-flow-replay
-
-      - name: Upload shadow evidence
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: shadow-baseline-evidence
-          path: |
-            implementation/synaptic-mesh-shadow-v0/evidence/*.out.json
-            MANIFEST.json
-            MANIFEST.files.json
-          if-no-files-found: warn
+      - name: Smoke core end-to-end
+        run: pnpm run smoke:core-e2e

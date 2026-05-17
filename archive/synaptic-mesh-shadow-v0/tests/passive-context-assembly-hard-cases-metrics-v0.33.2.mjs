@@ -1,8 +1,0 @@
-import assert from 'node:assert/strict';
-import { mkdirSync, writeFileSync } from 'node:fs';
-import { canonicalInput } from './passive-context-assembly-hard-cases-fixtures.mjs';
-import { scorePassiveContextAssemblyHardCases } from '../src/passive-context-assembly-hard-cases.mjs';
-const out=scorePassiveContextAssemblyHardCases(canonicalInput()); const m=out.metrics;
-assert.deepEqual({hardCaseCount:m.hardCaseCount,activeRulePreferredCount:m.activeRulePreferredCount,partialContradictionFlagCount:m.partialContradictionFlagCount,sourceBoundDecisionCarryForwardCount:m.sourceBoundDecisionCarryForwardCount,staleCautionPreservedCount:m.staleCautionPreservedCount,temptingNoiseSuppressedCount:m.temptingNoiseSuppressedCount,sourceBoundHardCaseRatio:m.sourceBoundHardCaseRatio,humanReviewOnlyRatio:m.humanReviewOnlyRatio,minimalContextRatio:m.minimalContextRatio,noPromotionWithoutHumanRatio:m.noPromotionWithoutHumanRatio,hardCaseCoverageRatio:m.hardCaseCoverageRatio,boundaryViolationCount:m.boundaryViolationCount,policyDecision:m.policyDecision},{hardCaseCount:5,activeRulePreferredCount:1,partialContradictionFlagCount:1,sourceBoundDecisionCarryForwardCount:1,staleCautionPreservedCount:1,temptingNoiseSuppressedCount:1,sourceBoundHardCaseRatio:1,humanReviewOnlyRatio:1,minimalContextRatio:1,noPromotionWithoutHumanRatio:1,hardCaseCoverageRatio:1,boundaryViolationCount:0,policyDecision:null});
-assert.equal(out.recommendation,'ADVANCE_OBSERVATION_ONLY');
-mkdirSync('evidence',{recursive:true}); writeFileSync('evidence/passive-context-assembly-hard-cases-metrics-v0.33.2.out.json', JSON.stringify({recommendation:out.recommendation,metrics:m},null,2)+'\n');

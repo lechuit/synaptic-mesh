@@ -1,11 +1,12 @@
-# Synaptic Mesh Memory Authority v0
+# Aletheia Memory Authority v0
 
-Status: public spec draft v0 / not runtime-ready  
-Generated: 2026-05-06T16:42Z
+Status: protocol spec draft v0 / executable TypeScript baseline exists
 
 ## Purpose
 
-Synaptic Mesh is a proposed multi-agent memory authority protocol. It treats memories as claims with evidence, scope, authority, conflict state, and effect boundaries — not as stored truth.
+Aletheia is a multi-agent memory authority protocol and TypeScript library. It
+treats memories as claims with evidence, scope, authority, conflict state, and
+effect boundaries, not as stored truth.
 
 ## Design maxim
 

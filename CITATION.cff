@@ -1,10 +1,9 @@
 cff-version: 1.2.0
 message: "If you use this work, please cite it as below."
-title: "Synaptic Mesh: Multi-Agent Memory Authority Protocol"
-version: "0.1.2"
+title: "Aletheia: Memory as Governance for LLM Agents"
+version: "0.0.0"
 authors:
   - family-names: "Peña"
     given-names: "Gabriel"
-repository-code: "https://github.com/lechuit/synaptic-mesh"
-date-released: "2026-05-07"
+date-released: "2026-05-17"
 license: "Apache-2.0 AND CC-BY-4.0"

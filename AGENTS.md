@@ -63,11 +63,13 @@ The roadmap has three phases: (1) authority-governed memory executable in TS,
 - `packages/core/src/runtime/` — WriteGate, RetrievalRouter, ActionAuthorizer,
   and the `AletheiaAuthority` facade in `authority-engine.ts`.
 - `packages/store-sqlite/` — SQLite implementation of storage interfaces.
+- `packages/dynamics/` — deterministic decay, promotion evidence, sleep-cycle
+  reports, and human-confirmed reconsolidation.
+- `packages/episodic/` — subjective-time projections and continuity snapshots.
+- `examples/` — executable demos and live-provider wiring.
+- `evidence/live-llm-e2e/` — live provider evidence intentionally kept in
+  the active tree.
 - `specs/` — protocol specs (the source of truth when in doubt).
-- `archive/synaptic-mesh-shadow-v0/` — JS reference impl, read-only historical
-  baseline. Do not call it a live parity gate until a TS harness wires it in.
-- `runs/2026-05-03-memory-retrieval-contradiction-lab/` — fixture lab, used as
-  historical regression material and parity targets when touching old behavior.
 - `CHANGELOG.md`, `GLOSSARY.md`, `ROADMAP.md` — read these first.
 
 ## Working style
@@ -79,8 +81,9 @@ The roadmap has three phases: (1) authority-governed memory executable in TS,
   to confirm.
 - Tests are spec executable, not afterthought. Write the failing test, then
   the implementation, then check it passes.
-- Use the existing fixtures in `runs/2026-05-03-*` as historical behavior
-  targets. If a change depends on parity, add or run an explicit parity harness.
+- Keep the active tree legible for external readers. Historical research
+  artifacts that are not part of the library surface belong in git history, not
+  in the current repo root.
 
 ## What NOT to do
 
