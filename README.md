@@ -23,6 +23,7 @@ This repo is in **Phase 3.1: executable authority memory with dynamics and episo
 - `@aletheia/core`: strict TypeScript authority types, storage interfaces, WriteGate, RetrievalRouter, ActionAuthorizer, and `AletheiaAuthority`
 - `@aletheia/store-sqlite`: SQLite-backed event, memory, and conflict stores
 - `@aletheia/adapters-anthropic`: Anthropic-compatible reference LLM adapter
+- `@aletheia/adapters-openai`: OpenAI Responses-compatible reference LLM adapter
 - `@aletheia/dynamics`: deterministic lifecycle dynamics, explicit sleep-cycle reports, and human-confirmed reconsolidation apply
 - `@aletheia/episodic`: subjective-time projections, episode catalog, historical timelines, and restart self-state reconstruction
 - `pnpm run smoke:core-e2e`: no-LLM SQLite canary for propose/recall/tryAct boundaries
@@ -32,6 +33,7 @@ What does **not** exist yet:
 - published npm packages
 - a live API-key-backed Claude/GPT validation run captured as release evidence
 - a TS harness that runs the archived JS fixture lab as an automated parity gate
+- a version strategy beyond `0.0.0`
 
 See `ROADMAP.md` for the phase breakdown.
 
@@ -52,6 +54,7 @@ packages/               TypeScript monorepo (pnpm workspaces) — the live syste
   ├── core/             @aletheia/core — types, write gate, memory store, retrieval router
   ├── store-sqlite/     @aletheia/store-sqlite — SQLite storage implementations
   ├── adapters-anthropic/ @aletheia/adapters-anthropic — Claude-compatible bridge
+  ├── adapters-openai/  @aletheia/adapters-openai — OpenAI Responses-compatible bridge
   ├── dynamics/         @aletheia/dynamics — decay, promotion, conflict revisit, sleep cycles
   └── episodic/         @aletheia/episodic — subjective time and continuity projections
 examples/               quickstart wiring and reproducibility notes

@@ -123,9 +123,9 @@ This is the phase that crosses the line from "research artifact" to "real softwa
 - [ ] Historical fixtures in `runs/2026-05-03-memory-retrieval-contradiction-lab/` pass against the TS implementation. Current status: archived JS evidence exists, but no live TS parity harness yet.
 - [x] A no-LLM SQLite smoke canary exercises `propose()`, `recall()`, and `tryAct()` with zero boundary violations: `pnpm run smoke:core-e2e`.
 - [x] Reference Anthropic adapter has deterministic fixture tests and a no-key fixture demo.
-- [ ] Reference OpenAI adapter has deterministic fixture tests and a no-key fixture demo.
+- [x] Reference OpenAI adapter has deterministic fixture tests and a no-key fixture demo.
 - [ ] Live Claude/OpenAI run with a user-provided API key is captured as release evidence.
-- [ ] `@aletheia/core` and `@aletheia/store-sqlite` pass build plus publish dry-run for the initial package target.
+- [x] `@aletheia/core` and `@aletheia/store-sqlite` pass build plus publish dry-run for the initial package target.
 - [ ] Package version strategy is decided (`0.1.0` research-ready vs `0.0.1` dev) before publish.
 
 ### Phase 1.4/1.5 library closure status
@@ -137,9 +137,10 @@ This is the phase that crosses the line from "research artifact" to "real softwa
 - [x] Answer path calls the model only after governed `recall()` and receiver-side `tryAct()` both allow local/shadow use.
 - [x] Fixture tests validate malformed model JSON, recall fail-closed, sensitive-action ask-human, and local allowed answer behavior.
 - [x] `examples/anthropic-e2e/README.md` documents live Claude wiring with a user-provided API key.
-- [ ] `@aletheia/adapters-openai` pending; it should accept a caller-provided authenticated client, not implement OAuth.
+- [x] `@aletheia/adapters-openai` accepts a caller-provided Responses-compatible client and does not implement OAuth.
+- [x] OpenAI fixture demo runs without an API key after build: `pnpm -F @aletheia/adapters-openai run demo:fixture`.
 - [ ] Live Anthropic/OpenAI API run pending operator-provided key and explicit approval.
-- [ ] Publish dry-run pending for `@aletheia/core` and `@aletheia/store-sqlite`.
+- [x] Publish dry-run passed for `@aletheia/core` and `@aletheia/store-sqlite`.
 
 ---
 
@@ -244,6 +245,7 @@ The bare package `aletheia` on npm is taken but abandoned (last published 9 year
 - `@aletheia/core` — the authority engine (Phase 1).
 - `@aletheia/store-sqlite` — the SQLite-backed MemoryStore (Phase 1).
 - `@aletheia/adapters-anthropic` — reference LLM integration (Phase 1).
+- `@aletheia/adapters-openai` — OpenAI Responses-compatible reference LLM integration (Phase 1).
 - `@aletheia/dynamics` — deterministic lifecycle dynamics (Phase 2).
 - `@aletheia/episodic` — subjective-time projections and continuity snapshots (Phase 3).
 
