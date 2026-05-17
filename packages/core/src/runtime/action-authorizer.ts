@@ -44,11 +44,28 @@ export class ActionAuthorizer {
   private readonly visibilityPolicy: VisibilityPolicy;
   private readonly clock: Clock;
 
+  /**
+   * Create a receiver-side action guard.
+   *
+   * @remarks
+   * Hosts provide the same memory/conflict stores used for recall plus a
+   * visibility policy. The guard has no knowledge of provider tokens, tools,
+   * or real-world permissions.
+   */
   constructor(private readonly options: ActionAuthorizerOptions) {
     this.visibilityPolicy = options.visibilityPolicy ?? DENY_ALL_VISIBILITY_POLICY;
     this.clock = options.clock ?? SYSTEM_CLOCK;
   }
 
+  /**
+   * Decide whether a proposed action may use cited memory as authority.
+   *
+   * @remarks
+   * Use this after recall and before executing any effect. The implementation
+   * parses the action/context, asks human for sensitive actions, denies unknown
+   * non-local effects, reloads cited atoms with visibility filtering, checks
+   * scope/freshness/status, and blocks unresolved conflicts.
+   */
   async tryAct(action: ProposedAction, context: ActionContext): Promise<ActionAuthorizationResult> {
     const emittedAt = this.clock.now();
 

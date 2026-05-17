@@ -40,12 +40,30 @@ export interface MultiCycleReport {
 }
 
 export interface SleepCycleEngine {
+  /**
+   * Run a lifecycle tick for a single explicit cycle input.
+   */
   tick(input: DynamicsTickInput): Promise<DynamicsTickResult>;
 }
 
 export class SleepCycleRunner {
+  /**
+   * Wrap a dynamics-compatible engine with report formatting helpers.
+   *
+   * @remarks
+   * The runner is an orchestrator, not a scheduler. It only runs when the host
+   * calls `run()` or `runMany()`.
+   */
   constructor(private readonly engine: SleepCycleEngine) {}
 
+  /**
+   * Run one explicit sleep cycle and return an audit-friendly report.
+   *
+   * @remarks
+   * The report mirrors the underlying `DynamicsEngine.tick()` result while
+   * grouping memory IDs by applied/planned/rejected/skipped outcome for logs,
+   * dashboards, or tests.
+   */
   async run(input: SleepCycleInput): Promise<SleepCycleReport> {
     const result = await this.engine.tick(input);
     const cycleId = input.cycleId ?? `sleep:${input.now}:${scopeKey(input.scope)}`;
@@ -70,6 +88,13 @@ export class SleepCycleRunner {
     };
   }
 
+  /**
+   * Run a host-provided sequence of explicit cycles in order.
+   *
+   * @remarks
+   * This is deterministic orchestration only. It does not retry, schedule,
+   * sleep, or watch the store; hosts decide when each cycle input exists.
+   */
   async runMany(inputs: readonly SleepCycleInput[]): Promise<MultiCycleReport> {
     const reports: SleepCycleReport[] = [];
     for (const input of inputs) {

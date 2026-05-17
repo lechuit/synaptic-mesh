@@ -19,6 +19,7 @@ export interface SqliteStores {
   readonly eventLedger: SqliteEventLedger;
   readonly memoryStore: SqliteMemoryStore;
   readonly conflictRegistry: SqliteConflictRegistry;
+  /** Close the shared SQLite connection backing all returned stores. */
   readonly close: () => void;
 }
 
@@ -27,6 +28,11 @@ export interface SqliteStores {
  * the same connection. Convenience wrapper for the common case.
  *
  * For tests, pass `:memory:`.
+ *
+ * @remarks
+ * Use this as the default composition helper for examples and small hosts.
+ * It applies migrations, enables SQLite pragmas through `openConnection()`,
+ * and returns one shared `close()` hook for all three stores.
  */
 export function openSqliteStores(path: string): SqliteStores {
   const conn: AletheiaConnection = openConnection({ path });

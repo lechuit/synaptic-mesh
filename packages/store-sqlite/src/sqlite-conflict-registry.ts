@@ -40,6 +40,13 @@ export class SqliteConflictRegistry implements ConflictRegistry {
   private readonly insertResolution: Database.Statement;
   private readonly resolutionHistoryStmt: Database.Statement<[string]>;
 
+  /**
+   * Create a ConflictRegistry backed by an existing SQLite connection.
+   *
+   * @remarks
+   * The constructor prepares all statements up front. Use `openSqliteStores()`
+   * unless a host needs direct control over connection ownership.
+   */
   constructor(private readonly db: Database.Database) {
     this.insertConflict = db.prepare(`
       INSERT INTO conflicts (
@@ -74,6 +81,13 @@ export class SqliteConflictRegistry implements ConflictRegistry {
     );
   }
 
+  /**
+   * Record a new first-class conflict and index all touched memory IDs.
+   *
+   * @remarks
+   * Conflict rows are append-only by ID. The join table is maintained inside
+   * the same transaction so `touchingMemoryIds` queries stay deterministic.
+   */
   async record(conflict: ConflictRecord): Promise<ConflictRecord> {
     const validated = ConflictRecordSchema.parse(conflict);
     const row = conflictToRow(validated);
@@ -97,6 +111,13 @@ export class SqliteConflictRegistry implements ConflictRegistry {
     return validated;
   }
 
+  /**
+   * Retrieve one conflict if conflict access is permitted.
+   *
+   * @remarks
+   * Phase 1 conflict visibility is coarse: an empty permitted set fails closed;
+   * action paths still re-check the visibility of cited memory atoms before use.
+   */
   async get(
     conflictId: ConflictId,
     permittedVisibilities: readonly Visibility[],
@@ -111,6 +132,13 @@ export class SqliteConflictRegistry implements ConflictRegistry {
     return rowToConflict(row);
   }
 
+  /**
+   * Query conflicts by status, scope, and touched memory IDs.
+   *
+   * @remarks
+   * Returns an empty list when no visibility planes are permitted. This mirrors
+   * the fail-closed behavior of the other stores.
+   */
   async query(filter: ConflictQuery): Promise<readonly ConflictRecord[]> {
     if (filter.permittedVisibilities.length === 0) {
       return [];
@@ -147,6 +175,13 @@ export class SqliteConflictRegistry implements ConflictRegistry {
     return rows.map(rowToConflict);
   }
 
+  /**
+   * Resolve a conflict and append a resolution-history row.
+   *
+   * @remarks
+   * Resolution is the only mutation path for conflicts. A repeated transition
+   * to the current status returns the existing row without adding history.
+   */
   async resolve(
     conflictId: ConflictId,
     nextStatus: Exclude<ConflictStatus, 'unresolved'>,
@@ -181,6 +216,9 @@ export class SqliteConflictRegistry implements ConflictRegistry {
     return rowToConflict(updated);
   }
 
+  /**
+   * Return the audited resolution history for one conflict.
+   */
   async resolutionHistory(conflictId: ConflictId): Promise<
     readonly {
       at: IsoTimestamp;

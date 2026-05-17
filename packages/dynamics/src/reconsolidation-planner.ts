@@ -92,8 +92,24 @@ export interface ReconsolidationApplyResult {
 }
 
 export class ReconsolidationPlanner {
+  /**
+   * Create a reconsolidation planner over existing authority stores.
+   *
+   * @remarks
+   * The planner is read-only. It validates visibility, source events, scope,
+   * status, and conflict state before producing a successor draft.
+   */
   constructor(private readonly stores: ReconsolidationPlannerStores) {}
 
+  /**
+   * Plan a candidate successor atom and prior-atom deprecation.
+   *
+   * @remarks
+   * Use this when new evidence should update the meaning of an existing atom.
+   * The plan never mutates storage and never upgrades authority: successor
+   * drafts start as `candidate` and carry `supersedes` lineage back to the
+   * previous atom.
+   */
   async plan(input: ReconsolidationPlanInput): Promise<ReconsolidationPlan> {
     if (input.permittedVisibilities.length === 0) {
       return abstain('no_permitted_visibilities', null, [], []);
@@ -201,10 +217,26 @@ export class ReconsolidationPlanner {
 export class ReconsolidationApplier {
   private readonly planner: ReconsolidationPlanner;
 
+  /**
+   * Create a human-confirmed reconsolidation applier.
+   *
+   * @remarks
+   * This wraps `ReconsolidationPlanner` and adds the explicit mutation path.
+   * Hosts should call `plan()` directly when they only need a preview.
+   */
   constructor(private readonly stores: ReconsolidationPlannerStores) {
     this.planner = new ReconsolidationPlanner(stores);
   }
 
+  /**
+   * Apply a reconsolidation plan after human confirmation.
+   *
+   * @remarks
+   * The method fails closed with `ask_human` without valid confirmation. When
+   * confirmed, it inserts the successor candidate first and then applies
+   * planned deprecations through `MemoryStore.transitionStatus()`. If successor
+   * insertion fails, no prior atom is deprecated.
+   */
   async apply(input: ReconsolidationApplyInput): Promise<ReconsolidationApplyResult> {
     const plan = await this.planner.plan(input);
     if (plan.outcome !== 'plan' || plan.successorDraft === null) {

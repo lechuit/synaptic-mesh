@@ -26,6 +26,14 @@ export interface DynamicsEvidenceContext {
 }
 
 export interface DynamicsEvidenceProvider {
+  /**
+   * Return explicit promotion evidence for one atom at a lifecycle instant.
+   *
+   * @remarks
+   * Evidence is not model confidence. Implementations should derive these
+   * values from auditable host signals such as repeated source-consistent
+   * recalls or operator-confirmed evidence.
+   */
   evidenceFor(atom: MemoryAtom, context: DynamicsEvidenceContext): Promise<DynamicsEvidence>;
 }
 
@@ -100,6 +108,13 @@ export class DynamicsEngine {
   private readonly policy: DynamicsPolicy;
   private readonly evidenceProvider: DynamicsEvidenceProvider;
 
+  /**
+   * Create a deterministic lifecycle engine over explicit stores and policy.
+   *
+   * @remarks
+   * The engine owns no scheduler and starts no background work. Hosts trigger
+   * lifecycle passes by calling `tick()` or by wrapping it with `SleepCycleRunner`.
+   */
   constructor(options: DynamicsEngineOptions) {
     this.memoryStore = options.stores.memoryStore;
     this.conflictRegistry = options.stores.conflictRegistry;
@@ -107,6 +122,17 @@ export class DynamicsEngine {
     this.evidenceProvider = options.evidenceProvider ?? NO_EVIDENCE_PROVIDER;
   }
 
+  /**
+   * Plan or apply one lifecycle pass over visible atoms in a scope.
+   *
+   * @remarks
+   * The implementation first validates the logical clock and permitted
+   * visibilities. It then queries by permission/scope/status but intentionally
+   * does not pass `validAt`, because expired or malformed validity windows must
+   * remain visible to the lifecycle pass so they can be deprecated. Mutations
+   * happen only when `applyTransitions` is true, and only via
+   * `MemoryStore.transitionStatus()`.
+   */
   async tick(input: DynamicsTickInput): Promise<DynamicsTickResult> {
     const nowMs = timestampMs(input.now);
     if (nowMs === null) {

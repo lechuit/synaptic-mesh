@@ -99,16 +99,41 @@ export class WriteGate {
   private readonly clock: Clock;
   private readonly memoryIdForProposal: (proposal: MemoryProposal) => MemoryId;
 
+  /**
+   * Create a proposal gate over explicit storage ports.
+   *
+   * @remarks
+   * The gate is intentionally storage-agnostic. Implementations supply the
+   * event ledger, memory store, conflict registry, visibility policy, and
+   * optional deterministic clock.
+   */
   constructor(private readonly options: WriteGateOptions) {
     this.visibilityPolicy = options.visibilityPolicy ?? DENY_ALL_VISIBILITY_POLICY;
     this.clock = options.clock ?? SYSTEM_CLOCK;
     this.memoryIdForProposal = options.memoryIdForProposal ?? defaultMemoryIdForProposal;
   }
 
+  /**
+   * Evaluate and persist a proposal when it passes the source/scope boundary.
+   *
+   * @remarks
+   * This is the consumer-facing alias for `evaluate()`. It records auditable
+   * human-required/conflicted atoms when the source evidence is valid but the
+   * proposal cannot become actionable yet.
+   */
   async propose(proposal: MemoryProposal): Promise<WriteGateResult> {
     return this.evaluate(proposal);
   }
 
+  /**
+   * Run the full WriteGate pipeline for one proposal.
+   *
+   * @remarks
+   * Implementation order is deliberate: parse proposal, derive permitted
+   * visibility, verify write visibility, load source events, validate scope,
+   * query conflict state, construct a zod-validated atom, then insert. Model
+   * confidence, consensus, prose, and chain metadata never grant authority.
+   */
   async evaluate(proposal: MemoryProposal): Promise<WriteGateResult> {
     const emittedAt = this.clock.now();
     const proposalResult = MemoryProposalSchema.safeParse(proposal);

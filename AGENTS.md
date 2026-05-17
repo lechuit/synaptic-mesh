@@ -52,6 +52,9 @@ The roadmap has three phases: (1) authority-governed memory executable in TS,
   history table.
 - Migrations are versioned + idempotent + embedded as strings (no
   filesystem at runtime).
+- Public library methods/classes/interfaces must carry TSDoc that explains
+  usage, fail-closed behavior, and implementation boundaries. Prefer `@remarks`
+  for design/architecture notes; keep comments truthful and close to the code.
 
 ## Repo layout
 

@@ -24,6 +24,14 @@ export class SqliteEventLedger implements EventLedger {
   private readonly insertStmt: Database.Statement;
   private readonly getStmt: Database.Statement<[string]>;
 
+  /**
+   * Create an EventLedger backed by an existing `better-sqlite3` connection.
+   *
+   * @remarks
+   * Callers normally use `openSqliteStores()` instead. Direct construction is
+   * useful when a host owns connection lifecycle or wants to compose stores
+   * manually.
+   */
   constructor(private readonly db: Database.Database) {
     this.insertStmt = db.prepare(`
       INSERT INTO events (
@@ -40,6 +48,14 @@ export class SqliteEventLedger implements EventLedger {
     this.getStmt = db.prepare<[string], EventRow>('SELECT * FROM events WHERE event_id = ?');
   }
 
+  /**
+   * Append one validated event to SQLite.
+   *
+   * @remarks
+   * Implementation uses plain INSERT and lets the primary key enforce
+   * append-only semantics. Duplicate IDs throw instead of replacing or ignoring
+   * existing evidence.
+   */
   async append(event: Event): Promise<EventId> {
     // Validate before persisting. The schema enforces shape; SQLite enforces uniqueness.
     const validated = EventSchema.parse(event);
@@ -58,6 +74,13 @@ export class SqliteEventLedger implements EventLedger {
     return validated.eventId;
   }
 
+  /**
+   * Load one event if the caller can see its visibility plane.
+   *
+   * @remarks
+   * A missing row and a hidden row both return `null` so callers cannot infer
+   * the existence of inaccessible evidence.
+   */
   async get(eventId: EventId, permittedVisibilities: readonly Visibility[]): Promise<Event | null> {
     const row = this.getStmt.get(eventId) as EventRow | undefined;
     if (!row) return null;
@@ -71,6 +94,13 @@ export class SqliteEventLedger implements EventLedger {
     return rowToEvent(row);
   }
 
+  /**
+   * Query visible events in deterministic chronological order.
+   *
+   * @remarks
+   * The SQL WHERE clause always starts with the permission predicate generated
+   * by `permittedClause()`, preserving permission-before-selection.
+   */
   async query(filter: EventQuery): Promise<readonly Event[]> {
     const where: string[] = [];
     const params: unknown[] = [];
@@ -109,6 +139,12 @@ export class SqliteEventLedger implements EventLedger {
     return rows.map(rowToEvent);
   }
 
+  /**
+   * Count visible events matching the same filters as `query()`.
+   *
+   * @remarks
+   * Use this for coverage/audit summaries without materializing rows.
+   */
   async count(filter: EventQuery): Promise<number> {
     const where: string[] = [];
     const params: unknown[] = [];
