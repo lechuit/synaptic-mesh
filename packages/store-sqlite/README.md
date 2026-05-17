@@ -2,33 +2,118 @@
 
 SQLite-backed implementations of the storage interfaces declared in `@aletheia/core`.
 
-> **Status**: Phase 1.2 — initial implementation.
+> **Status**: Phase 1.5. Event, memory, conflict, migrations, and audit-history paths are live. Package version is still `0.0.0` until the first release version is chosen.
+
+## Quickstart
+
+```bash
+pnpm add @aletheia/core @aletheia/store-sqlite
+```
+
+```ts
+import { AletheiaAuthority, staticVisibilityPolicy } from '@aletheia/core';
+import { openSqliteStores } from '@aletheia/store-sqlite';
+
+const stores = openSqliteStores('./aletheia.sqlite');
+const authority = new AletheiaAuthority({
+  eventLedger: stores.eventLedger,
+  memoryStore: stores.memoryStore,
+  conflictRegistry: stores.conflictRegistry,
+  visibilityPolicy: staticVisibilityPolicy([{ kind: 'private:user' }]),
+});
+```
+
+For an in-memory database in tests or demos:
+
+```ts
+const stores = openSqliteStores(':memory:');
+```
+
+Always call `stores.close()` when the host is done.
 
 ## What this package provides
 
 - `SqliteEventLedger` — append-only event log, with permission-filtered queries.
-- `SqliteMemoryStore` — atom storage with strict status-transition enforcement and an audit history.
+- `SqliteMemoryStore` — atom storage with strict status-transition enforcement and audit history.
 - `SqliteConflictRegistry` — conflicts as first-class records with resolution history.
-- `openSqliteStores(path)` — convenience that opens a database, runs migrations, and hands back all three implementations sharing the same connection.
+- `openSqliteStores(path)` — convenience wrapper that opens one database connection, runs migrations, and returns all three stores with a shared `close()`.
+- `openConnection(options)` — lower-level connection helper for custom wiring.
+- `MIGRATIONS` / `applyMigrations` — embedded, idempotent SQL migrations.
 
-## Design choices
+## Storage contract
 
-- **`better-sqlite3`** as the driver: synchronous, in-process, no FFI surprises. The async surface of the interfaces is preserved (the methods return Promises) so future async backends remain drop-in compatible.
-- **Migrations are embedded SQL strings** loaded into the `schema_migrations` table. No file-system loading at runtime — the package works the same when bundled.
-- **Permission filtering is done in SQL** via the `visibility_key` index, not in TypeScript. The store never serializes a row a caller cannot see.
-- **Status transitions go through `transitionStatus`** — there is no `UPDATE` path. The status-history table is the audit log.
+- Events are append-only.
+- Memory atoms are immutable by ID. Duplicate `memoryId` insertions throw.
+- Content, scope, visibility, source links, and lineage do not have UPDATE paths.
+- Status changes go through `transitionStatus()` and are recorded in `memory_status_history`.
+- Conflict resolution goes through `resolve()` and is recorded in `conflict_resolution_history`.
+- Visibility filtering happens in SQL before rows are decoded.
+- Reads decode through zod-backed codecs; corrupt persisted data becomes a parse error instead of a silent value.
 
-## Quickstart
+## Example
 
 ```ts
+import { EventSchema } from '@aletheia/core';
 import { openSqliteStores } from '@aletheia/store-sqlite';
 
-const { eventLedger, memoryStore, conflictRegistry, close } =
-  await openSqliteStores('./aletheia.sqlite');
+const stores = openSqliteStores(':memory:');
 
-// ... use them ...
+await stores.eventLedger.append(
+  EventSchema.parse({
+    eventId: 'evt-1',
+    kind: 'observation',
+    agentId: 'agent-1',
+    occurredAt: '2026-05-17T12:00:00Z',
+    payload: { note: 'source event' },
+    scope: { kind: 'project', projectId: 'demo' },
+    visibility: { kind: 'private:user' },
+  }),
+);
 
-close();
+const events = await stores.eventLedger.query({
+  permittedVisibilities: [{ kind: 'private:user' }],
+  scope: { kind: 'project', projectId: 'demo' },
+  limit: 10,
+});
+
+console.log(events.length);
+stores.close();
 ```
 
-For an in-memory database (testing / ephemeral demos), pass `':memory:'`.
+## What this package does NOT do
+
+- No LLM calls.
+- No semantic retrieval, embeddings, vector index, or ranking.
+- No authorization service or OAuth.
+- No background daemon, watcher, or scheduler.
+- No automatic memory promotion beyond the status transition requested by the host.
+
+## Stability
+
+Public surface for the initial library cycle:
+
+- `openSqliteStores(path)`
+- `openConnection(options)`
+- `SqliteEventLedger`
+- `SqliteMemoryStore`
+- `SqliteConflictRegistry`
+- migration exports
+
+The SQL schema is versioned through `schema_migrations`. Future changes that alter persisted rows or zod codecs need both SQL migration and data compatibility notes, because existing SQLite files may fail to decode if the TypeScript schema changes without a migration path.
+
+## Development
+
+From the repo root:
+
+```bash
+pnpm install
+pnpm -F @aletheia/store-sqlite typecheck
+pnpm -F @aletheia/store-sqlite test
+pnpm -F @aletheia/store-sqlite build
+```
+
+Publish dry-run:
+
+```bash
+pnpm -F @aletheia/store-sqlite publish --dry-run --no-git-checks
+```

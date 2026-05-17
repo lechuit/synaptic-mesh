@@ -1,5 +1,5 @@
 /**
- * Small facade over the Phase 1.3 runtime components.
+ * Small facade over the Phase 1.5 runtime components.
  *
  * Hosts can wire the components individually, or use this class when they want
  * the roadmap-shaped API: propose(), recall(), tryAct().

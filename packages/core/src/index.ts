@@ -3,8 +3,8 @@
  *
  * Memory as governance for LLM agents.
  *
- * Phase 1.3 — domain types, storage interfaces, WriteGate, RetrievalRouter,
- * and receiver-side action authorization are live.
+ * Phase 1.5 — domain types, storage interfaces, WriteGate, RetrievalRouter,
+ * ActionAuthorizer, and AletheiaAuthority are live.
  *
  * Design maxim:
  *   "Do not build a memory that remembers more.
