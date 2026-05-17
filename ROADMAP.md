@@ -109,7 +109,7 @@ Built on top of Phase 1.
 - [x] Sealed and human-required atoms are skipped by the dynamics engine.
 - [x] `SleepCycleRunner` produces deterministic dry-run/apply reports over host-provided stores.
 - [x] SQLite-backed sleep-cycle tests verify apply mode and logical transition timestamps.
-- [ ] Reconsolidation with successor atoms and `supersedes` lineage.
+- [ ] Reconsolidation with successor atoms and `supersedes` lineage. See `docs/phase-2-reconsolidation-design-note.md` for the current design blocker.
 - [ ] Long-running multi-cycle harness over a SQLite store.
 
 ### Scope
