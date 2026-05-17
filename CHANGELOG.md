@@ -24,6 +24,8 @@ Releases are listed newest first.
 - Extended `@aletheia/episodic` with a visible episode catalog and permission-guarded single-memory timelines for audited status history.
 - Added `@aletheia/adapters-anthropic`, a Claude-compatible reference adapter that routes model-drafted memory through `propose()` and calls the model for answers only after `recall()` + `tryAct()` allow local/shadow use.
 - Added `pnpm run smoke:core-e2e`, a no-LLM SQLite canary that exercises sealed proposal, verified recall, sensitive action, and safe local action boundaries.
+- Added `@aletheia/adapters-openai`, an OpenAI Responses-compatible adapter that accepts caller-provided clients and preserves the same governed `propose()` / `recall()` / `tryAct()` boundaries.
+- Captured publish dry-run evidence for `@aletheia/core` and `@aletheia/store-sqlite`.
 
 ---
 
