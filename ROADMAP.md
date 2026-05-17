@@ -91,7 +91,7 @@ This is the phase that crosses the line from "research artifact" to "real softwa
    ```
    Every call returns a structured decision with reasons, never a raw bag of strings.
 
-4. **End-to-end demo with a live LLM** (Claude via API):
+4. **End-to-end demo with live provider adapters** (Anthropic/OpenAI via caller-provided clients):
    - Session A: a short conversation where the agent proposes some memories.
    - Session B (separate process, same store): the agent tries to act on those memories. The system surfaces stale/unverified ones and blocks action where appropriate.
    - This is the moment the repo earns the phrase "memory real".
@@ -124,8 +124,8 @@ This is the phase that crosses the line from "research artifact" to "real softwa
 - [x] A no-LLM SQLite smoke canary exercises `propose()`, `recall()`, and `tryAct()` with zero boundary violations: `pnpm run smoke:core-e2e`.
 - [x] Reference Anthropic adapter has deterministic fixture tests and a no-key fixture demo.
 - [x] Reference OpenAI adapter has deterministic fixture tests and a no-key fixture demo.
-- [ ] Live Claude/OpenAI run with a user-provided API key is captured as release evidence.
-- [x] `@aletheia/core` and `@aletheia/store-sqlite` pass build plus publish dry-run for the initial package target.
+- [ ] Live Anthropic/OpenAI run with a user-provided API key is captured as release evidence.
+- [x] Phase 1 package set passes build plus publish dry-run: `@aletheia/core`, `@aletheia/store-sqlite`, `@aletheia/adapters-anthropic`, `@aletheia/adapters-openai`.
 - [ ] Package version strategy is decided (`0.1.0` research-ready vs `0.0.1` dev) before publish.
 
 ### Phase 1.4/1.5 library closure status
@@ -139,8 +139,9 @@ This is the phase that crosses the line from "research artifact" to "real softwa
 - [x] `examples/anthropic-e2e/README.md` documents live Claude wiring with a user-provided API key.
 - [x] `@aletheia/adapters-openai` accepts a caller-provided Responses-compatible client and does not implement OAuth.
 - [x] OpenAI fixture demo runs without an API key after build: `pnpm -F @aletheia/adapters-openai run demo:fixture`.
+- [x] Publish dry-run passed for `@aletheia/core`, `@aletheia/store-sqlite`, `@aletheia/adapters-anthropic`, and `@aletheia/adapters-openai`.
+- [x] No-key closure canaries pass with `boundaryViolations: []`: core SQLite smoke, Anthropic fixture demo, OpenAI fixture demo.
 - [ ] Live Anthropic/OpenAI API run pending operator-provided key and explicit approval.
-- [x] Publish dry-run passed for `@aletheia/core` and `@aletheia/store-sqlite`.
 
 ---
 
