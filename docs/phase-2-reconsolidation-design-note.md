@@ -1,6 +1,6 @@
 # Phase 2 Reconsolidation Design Note
 
-Status: blocked pending explicit design decision.
+Status: planner implemented; mutating apply path blocked pending explicit design decision.
 
 Phase 2.0 and 2.1 now cover lifecycle dynamics: decay, promotion planning, conflict revisits, deterministic sleep-cycle reports, and auditable status transitions. The next roadmap item is reconsolidation:
 
@@ -29,7 +29,7 @@ That sentence is directionally clear, but the current executable contract is not
 
 ## Safe Next Implementation
 
-The conservative next step is a planner, not a mutator:
+The conservative next step was a planner, not a mutator:
 
 - `ReconsolidationPlanner.plan(input)` returns a proposed successor shape plus required transitions.
 - It never inserts atoms and never transitions status.
@@ -37,4 +37,4 @@ The conservative next step is a planner, not a mutator:
 - It requires explicit new source events and an existing visible atom.
 - It emits `fetch_abstain` when the previous atom or new evidence is missing, invisible, out-of-scope, or conflicted.
 
-Only after that planner is reviewed should we add an apply path that calls `WriteGate` or a dedicated gate.
+That planner now exists in `@aletheia/dynamics`. Only after it is reviewed should we add an apply path that calls `WriteGate` or a dedicated gate.
