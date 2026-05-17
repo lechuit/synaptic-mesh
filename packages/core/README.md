@@ -2,9 +2,9 @@
 
 The core authority engine of Aletheia — memory as governance for LLM agents.
 
-> **Status**: Phase 1.4. Domain types, storage interfaces, WriteGate, RetrievalRouter, receiver-side action authorization, and a separate Anthropic adapter are live.
+> **Status**: Phase 1.5. Domain types, storage interfaces, WriteGate, RetrievalRouter, receiver-side action authorization, `AletheiaAuthority`, a no-LLM SQLite smoke canary, and a separate Anthropic adapter are live.
 
-## What this package does (when complete)
+## What this package does
 
 - **Types** for the receipt protocol: `Receipt`, `MemoryAtom`, `ActionContextPacket`, `Coverage`, `ConflictRecord`, `Decision`, discriminated unions for status / scope / visibility.
 - **WriteGate** — runs `SourceCheck → IntentCheck → ConflictCheck → PrivacyCheck → PromotionDecision` over memory proposals.
@@ -28,6 +28,7 @@ pnpm install
 pnpm -F @aletheia/core build
 pnpm -F @aletheia/core test
 pnpm -F @aletheia/core typecheck
+pnpm -F @aletheia/core smoke:e2e
 ```
 
 ## Specs

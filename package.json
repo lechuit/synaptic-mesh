@@ -13,6 +13,7 @@
     "build": "pnpm -r run build",
     "test": "pnpm -r run test",
     "typecheck": "pnpm -r run typecheck",
+    "smoke:core-e2e": "pnpm -F @aletheia/core run smoke:e2e",
     "lint": "biome check .",
     "format": "biome format --write .",
     "clean": "pnpm -r exec rm -rf dist node_modules .turbo"

@@ -36,26 +36,27 @@ The roadmap below operationalizes that maxim in three layered phases. **Phase 1 
 
 ---
 
-## Phase 1 — Authority-governed memory, executable (next major cycle)
+## Phase 1 — Authority-governed memory, executable
 
 **Goal**: deliver claim 1 from the README as **running TypeScript code an LLM can actually use**.
 
-This is the phase that crosses the line from "research artifact" to "real software". It does not innovate algorithms; it implements with discipline what the specs already define.
+This is the phase that crosses the line from "research artifact" to "real software". The executable spine exists; remaining work is release evidence, package/version decisions, and live API-key-backed validation.
 
 ### Scope
 
-1. **Implement `@aletheia/core` in TypeScript from scratch**, with formal types derived directly from `specs/` and `schemas/`. The archived `archive/synaptic-mesh-shadow-v0/` JS implementation serves as a parity reference — every fixture that passed there must pass against the TS implementation.
+1. **Implement `@aletheia/core` in TypeScript from scratch**, with formal types derived directly from `specs/` and `schemas/`. The archived `archive/synaptic-mesh-shadow-v0/` JS implementation is now historical baseline material; it is not a live parity gate until a TS harness wires it in.
    - `Receipt`, `CompressedReceipt`, `MemoryAtom`, `MemoryProposal`, `ActionContextPacket`, `Coverage`, `ConflictRecord`, `Decision`.
    - All status / scope / visibility unions modeled as discriminated unions, not strings.
 
-2. **Build the layers that today only exist in specs**:
+2. **Build the executable layers from the specs**:
    - `EventLedger` — append-only, SQLite-backed.
    - `MemoryProposalLayer` — agent surface to propose.
    - `WriteGate` — runs the SourceCheck → IntentCheck → ConflictCheck → PrivacyCheck → PromotionDecision chain.
    - `MemoryStore` — atoms, with status transitions, lineage links, validity windows.
    - `ConflictRegistry` — first-class contradictions, queryable.
    - `RetrievalRouter` — **not semantic**. Routes by receipt + status + scope, in the order specified in the architecture doc.
-   - `ActionContextPacketBuilder` — assembles a handoff packet from the above.
+   - `ActionAuthorizer` — receiver-side `tryAct()` guard; context packets are evidence, not permission.
+   - `AletheiaAuthority` — facade exposing the consumer API over WriteGate, RetrievalRouter, and ActionAuthorizer.
 
 3. **Consumer API** for an LLM to use:
    ```ts
@@ -87,17 +88,22 @@ This is the phase that crosses the line from "research artifact" to "real softwa
 
 ### Acceptance
 
-- All existing fixtures in `runs/2026-05-03-memory-retrieval-contradiction-lab/` pass against the TS implementation.
-- An external developer can `npm install` the package, follow a 5-minute quickstart, and run the end-to-end demo with their own Claude API key.
-- Zero boundary violations in the demo, validated by an automated reproducibility check.
+- [ ] Historical fixtures in `runs/2026-05-03-memory-retrieval-contradiction-lab/` pass against the TS implementation. Current status: archived JS evidence exists, but no live TS parity harness yet.
+- [x] A no-LLM SQLite smoke canary exercises `propose()`, `recall()`, and `tryAct()` with zero boundary violations: `pnpm run smoke:core-e2e`.
+- [x] Reference Anthropic adapter has deterministic fixture tests and a no-key fixture demo.
+- [ ] Live Claude/GPT run with a user-provided API key is captured as release evidence.
+- [ ] Package version strategy is decided (`0.1.0` research-ready vs `0.0.1` dev) before publish.
 
 ### Phase 1.4/1.5 status
 
+- [x] `AletheiaAuthority` facade exposes the roadmap-shaped consumer API: `propose()`, `recall()`, `tryAct()`.
+- [x] `packages/core/examples/end-to-end.ts` opens a SQLite store and verifies sealed proposal -> recall abstain, verified recall -> allow, sensitive action -> ask human, and safe local action -> allow.
 - [x] `@aletheia/adapters-anthropic` added as a separate SDK-compatible adapter package; `@aletheia/core` remains SDK-free.
 - [x] Anthropic-compatible bridge records conversation events, asks the model only for proposal drafts, and routes drafts through `AletheiaAuthority.propose()`.
 - [x] Answer path calls the model only after governed `recall()` and receiver-side `tryAct()` both allow local/shadow use.
 - [x] Fixture tests validate malformed model JSON, recall fail-closed, sensitive-action ask-human, and local allowed answer behavior.
 - [x] `examples/anthropic-e2e/README.md` documents live Claude wiring with a user-provided API key.
+- [ ] Live Anthropic API run pending operator-provided key and explicit approval.
 
 ---
 
