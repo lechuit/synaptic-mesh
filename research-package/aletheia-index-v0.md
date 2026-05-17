@@ -55,7 +55,7 @@ synaptic-mesh/
 
 | Artifact | Role | Status |
 |---|---|---|
-| `paper/synaptic-mesh-paper-v0.md` | Integrated local paper draft v0.1 | Complete public release-candidate integration; not runtime-ready. |
+| `paper/aletheia-paper-v0.md` | Integrated local paper draft v0.1 | Complete public release-candidate integration; not runtime-ready. |
 | `research-package/T-synaptic-mesh-paper-skeleton-v0.md` | Paper skeleton receipt | Complete. |
 | `research-package/T-synaptic-mesh-paper-draft-integration-v0.md` | Paper integration receipt | Complete. |
 | `research-package/T-synaptic-mesh-related-work-citation-plan-v0.md` | Related-work plan | Complete. |
