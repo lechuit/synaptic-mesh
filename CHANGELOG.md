@@ -8,7 +8,7 @@ Releases are listed newest first.
 
 ---
 
-## Unreleased — Aletheia Phase 2/3 memory dynamics and episodic continuity
+## Unreleased — Aletheia executable memory, dynamics, episodic continuity, and adapter demo
 
 - Added `@aletheia/dynamics`, a deterministic sleep-cycle engine for memory decay, candidate promotion, and unresolved-conflict revisits.
 - Dynamics plans transitions by default and applies them only through `MemoryStore.transitionStatus`, preserving the append-only atom model and audit history.
@@ -21,6 +21,7 @@ Releases are listed newest first.
 - Added explicit multi-cycle sleep runs: hosts provide each cycle clock/input; Aletheia aggregates deterministic reports without a daemon or hidden scheduler.
 - Added `@aletheia/episodic`, a Phase 3.0 projection package for explicit episodic anchors, historical belief snapshots from status history, episode comparisons, and restart self-state reconstruction.
 - Extended `@aletheia/episodic` with a visible episode catalog and permission-guarded single-memory timelines for audited status history.
+- Added `@aletheia/adapters-anthropic`, a Claude-compatible reference adapter that routes model-drafted memory through `propose()` and calls the model for answers only after `recall()` + `tryAct()` allow local/shadow use.
 
 ---
 

@@ -2,7 +2,7 @@
 
 The core authority engine of Aletheia — memory as governance for LLM agents.
 
-> **Status**: Phase 1.3. Domain types, storage interfaces, WriteGate, RetrievalRouter, and receiver-side action authorization are live.
+> **Status**: Phase 1.4. Domain types, storage interfaces, WriteGate, RetrievalRouter, receiver-side action authorization, and a separate Anthropic adapter are live.
 
 ## What this package does (when complete)
 
