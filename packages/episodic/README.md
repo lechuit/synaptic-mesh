@@ -2,14 +2,16 @@
 
 Subjective time and episodic continuity projections for Aletheia.
 
-> **Status**: Phase 3.0. Episodic timeline projections are live; they read from existing event and memory stores and do not add authority by themselves.
+> **Status**: Phase 3.1. Episodic timeline projections are live; they read from existing event and memory stores and do not add authority by themselves.
 
 ## What this package does
 
 - Extracts explicit episodic anchors from event payloads.
+- Lists visible episodes by conversation, task, decision context, or session.
 - Finds memories formed during a visible conversation, task, session, or decision context.
 - Reconstructs belief snapshots at a historical instant from visible atoms plus audited status history.
-- Compares two visible episodes to show added, removed, persisted, and status-changed beliefs.
+- Compares visible belief snapshots at two episode boundaries to show added, removed, persisted, and status-changed beliefs.
+- Exposes a permission-guarded timeline for one visible memory's audited status history.
 - Builds a self-state snapshot so a restarted agent can recover what it currently believes, doubts, distrusts, or must route to a human.
 
 ## Non-goals

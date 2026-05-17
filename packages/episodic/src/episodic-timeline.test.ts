@@ -55,6 +55,68 @@ describe('EpisodicTimeline', () => {
     expect(snapshot.atoms).toEqual([]);
   });
 
+  it('lists only visible in-scope explicit episodes in chronological order', async () => {
+    await stores.eventLedger.append(
+      event({
+        eventId: 'evt-session-later' as EventId,
+        episodeId: 'session-b',
+        episodeKind: 'session',
+        occurredAt: '2026-05-12T00:00:00Z' as IsoTimestamp,
+      }),
+    );
+    await stores.eventLedger.append(
+      event({
+        eventId: 'evt-conversation-earlier' as EventId,
+        episodeId: 'conversation-a',
+        occurredAt: '2026-05-10T00:00:00Z' as IsoTimestamp,
+      }),
+    );
+    await stores.eventLedger.append(
+      event({
+        eventId: 'evt-conversation-hidden' as EventId,
+        episodeId: 'conversation-hidden',
+        visibility: HIDDEN_VISIBILITY,
+        occurredAt: '2026-05-09T00:00:00Z' as IsoTimestamp,
+      }),
+    );
+    await stores.eventLedger.append(
+      event({
+        eventId: 'evt-conversation-other-scope' as EventId,
+        episodeId: 'conversation-other-scope',
+        scope: OTHER_SCOPE,
+        occurredAt: '2026-05-08T00:00:00Z' as IsoTimestamp,
+      }),
+    );
+    await stores.eventLedger.append({
+      ...event({
+        eventId: 'evt-malformed-catalog' as EventId,
+        episodeId: 'conversation-malformed',
+      }),
+      payload: { episodic: { episodeId: 'conversation-malformed' } },
+    });
+
+    const catalog = await timeline().listEpisodes({
+      agentId: AGENT,
+      scope: SCOPE,
+    });
+    const conversations = await timeline().listEpisodes({
+      agentId: AGENT,
+      scope: SCOPE,
+      kind: 'conversation',
+    });
+
+    expect(catalog.decision.outcome).toBe('allow_local_shadow');
+    expect(catalog.episodes.map((episode) => episode.episodeId)).toEqual([
+      'conversation-a',
+      'session-b',
+    ]);
+    expect(catalog.events.map((episodeEvent) => episodeEvent.event.eventId)).toEqual([
+      'evt-conversation-earlier',
+      'evt-session-later',
+    ]);
+    expect(conversations.episodes.map((episode) => episode.episodeId)).toEqual(['conversation-a']);
+  });
+
   it('projects memories from a visible episode without leaking hidden or out-of-scope anchors', async () => {
     const visibleEvent = event({
       eventId: 'evt-visible' as EventId,
@@ -157,6 +219,63 @@ describe('EpisodicTimeline', () => {
       },
     ]);
     expect(current.distrusted.map((atom) => atom.memoryId)).toEqual(['mem-changing-belief']);
+  });
+
+  it('returns a permission-guarded timeline for one visible memory', async () => {
+    const memory = atom({
+      memoryId: 'mem-timeline' as MemoryId,
+      status: 'candidate',
+    });
+    await stores.memoryStore.insert(memory);
+    await stores.memoryStore.transitionStatus(
+      memory.memoryId,
+      'verified',
+      { actor: AGENT, rationale: 'first confirmation' },
+      { at: '2026-05-02T00:00:00Z' as IsoTimestamp },
+    );
+    await stores.memoryStore.transitionStatus(
+      memory.memoryId,
+      'deprecated',
+      { actor: AGENT, rationale: 'later correction' },
+      { at: '2026-05-12T00:00:00Z' as IsoTimestamp },
+    );
+
+    const result = await timeline().memoryTimeline({
+      agentId: AGENT,
+      scope: SCOPE,
+      memoryId: memory.memoryId,
+      until: '2026-05-10T00:00:00Z' as IsoTimestamp,
+    });
+
+    expect(result.decision.outcome).toBe('allow_local_shadow');
+    expect(result.atom?.memoryId).toBe('mem-timeline');
+    expect(result.history.map((entry) => entry.toStatus)).toEqual(['verified']);
+  });
+
+  it('does not leak a visible memory timeline across scope boundaries', async () => {
+    await stores.memoryStore.insert(
+      atom({
+        memoryId: 'mem-other-scope-timeline' as MemoryId,
+        scope: OTHER_SCOPE,
+      }),
+    );
+
+    const result = await timeline().memoryTimeline({
+      agentId: AGENT,
+      scope: SCOPE,
+      memoryId: 'mem-other-scope-timeline' as MemoryId,
+    });
+
+    expect(result.decision.outcome).toBe('fetch_abstain');
+    expect(result.decision.reasons).toEqual([
+      {
+        kind: 'scope_outside_boundary',
+        requestedScope: 'project:aletheia',
+        allowedScope: 'project:other',
+      },
+    ]);
+    expect(result.atom).toBeNull();
+    expect(result.history).toEqual([]);
   });
 
   it('excludes atoms with no audited status at the requested historical time', async () => {
