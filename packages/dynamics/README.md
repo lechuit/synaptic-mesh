@@ -2,7 +2,7 @@
 
 Deterministic memory dynamics for Aletheia.
 
-> **Status**: Phase 2.2. Dynamics engine, deterministic sleep-cycle reports, and planner-only reconsolidation are live.
+> **Status**: Phase 2.3. Dynamics engine, deterministic sleep-cycle reports, planner-only reconsolidation, and explicit multi-cycle runs are live.
 
 ## What this package does
 
@@ -12,6 +12,7 @@ Deterministic memory dynamics for Aletheia.
 - Applies transitions only through `MemoryStore.transitionStatus`.
 - Treats unresolved conflicts that touch an atom as authority blockers.
 - Provides `SleepCycleRunner` for deterministic dry-run/apply reports over a host-provided store.
+- Runs explicit multi-cycle sleep sequences when the host provides each cycle input; no hidden scheduler is started.
 - Provides `ReconsolidationPlanner` for successor drafts with `supersedes` lineage and planned transitions, without mutating the store.
 - Keeps `@aletheia/core` SDK-free and free of background scheduling.
 

@@ -95,7 +95,7 @@ This is the phase that crosses the line from "research artifact" to "real softwa
 
 ## Phase 2 — Memory as a process, not an index
 
-**Goal**: deliver claim 2 — memories that **evolve on their own**, not on query.
+**Goal**: deliver claim 2 — memories that evolve through explicit, auditable lifecycle passes, not only when queried.
 
 Built on top of Phase 1.
 
@@ -110,14 +110,14 @@ Built on top of Phase 1.
 - [x] `SleepCycleRunner` produces deterministic dry-run/apply reports over host-provided stores.
 - [x] SQLite-backed sleep-cycle tests verify apply mode and logical transition timestamps.
 - [x] Reconsolidation planner with successor drafts, `sourceMemoryIds`, `supersedes` lineage, and planned deprecation transitions. Mutating apply path remains blocked pending the gate decision in `docs/phase-2-reconsolidation-design-note.md`.
-- [ ] Long-running multi-cycle harness over a SQLite store.
+- [x] Explicit multi-cycle sleep harness over a SQLite store, without daemon/scheduler behavior.
 
 ### Scope
 
 - **Status transitions driven by use/disuse**: candidate → verified after repeated source-consistent recall; verified → deprecated after contradicting evidence or staleness threshold.
 - **Decay curves**: explicit per-status decay, not a single TTL. Sealed memories never decay; trusted memories decay slower than candidates.
 - **Reconsolidation**: when new evidence enters that bears on an existing atom, the atom re-enters the Write Gate. This is *not* an overwrite — it produces a successor atom and a `supersedes` link.
-- **"Sleep cycle"**: a background pass that walks the store and runs consolidation/decay/conflict-revisit. Inspired by — not literally modeling — biological memory consolidation.
+- **"Sleep cycle"**: an explicit host-triggered lifecycle pass that walks the store and runs consolidation/decay/conflict-revisit. Inspired by — not literally modeling — biological memory consolidation. No hidden daemon is started by default.
 
 ### What's genuinely novel here
 
@@ -125,7 +125,7 @@ Most memory libraries treat memory as read-mostly storage. Treating it as a cont
 
 ### Acceptance (sketch)
 
-- A memory store left running for N hours, with no queries, visibly evolves in observable, deterministic ways.
+- A memory store subjected to explicit scheduled lifecycle passes, with no queries, visibly evolves in observable, deterministic ways.
 - Reconsolidation produces lineage chains the user can inspect.
 - A simulated agent's beliefs over time can be reconstructed from the store alone.
 
