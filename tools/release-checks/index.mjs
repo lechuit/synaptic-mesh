@@ -43,6 +43,7 @@ import { passiveLiveMemoryCoherenceRuntimeContextInjectionDryRunSuite } from './
 import { passiveLiveMemoryCoherenceRuntimeContextInjectionRehearsalSuite } from './passive-live-memory-coherence-runtime-context-injection-rehearsal.mjs';
 import { passiveLiveMemoryCoherenceReceiverRuntimeTestHarnessConsumptionRehearsalSuite } from './passive-live-memory-coherence-receiver-runtime-test-harness-consumption-rehearsal.mjs';
 import { passiveLiveMemoryCoherenceReceiverRuntimeInvocationShimRehearsalSuite } from './passive-live-memory-coherence-receiver-runtime-invocation-shim-rehearsal.mjs';
+import { passiveLiveMemoryCoherenceBoundedNoEffectReceiverRuntimeAdapterFixtureSuite } from './passive-live-memory-coherence-bounded-no-effect-receiver-runtime-adapter-fixture-suite.mjs';
 
 export const releaseCheckSuites = Object.freeze([
   passiveLiveShadowCanarySuite,
@@ -90,4 +91,5 @@ export const releaseCheckSuites = Object.freeze([
   passiveLiveMemoryCoherenceRuntimeContextInjectionRehearsalSuite,
   passiveLiveMemoryCoherenceReceiverRuntimeTestHarnessConsumptionRehearsalSuite,
   passiveLiveMemoryCoherenceReceiverRuntimeInvocationShimRehearsalSuite,
+  passiveLiveMemoryCoherenceBoundedNoEffectReceiverRuntimeAdapterFixtureSuite,
 ]);

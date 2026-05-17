@@ -1,11 +1,11 @@
 {
   "bundle": "synaptic-mesh",
-  "version": "0.51.5",
+  "version": "0.52.5",
   "generated": "2026-05-16T15:17:00Z",
-  "status": "v0.51.5_passive_live_memory_coherence_receiver_runtime_invocation_shim_rehearsal_local_reversible_shim_invocation_no_effects_no_runtime_integration_no_memory_writes",
+  "status": "v0.52.5_passive_live_memory_coherence_bounded_no_effect_receiver_runtime_adapter_fixture_suite_local_fixture_no_effects_no_runtime_integration_no_memory_writes",
   "repository": "https://github.com/lechuit/synaptic-mesh",
   "license": "Apache-2.0 for code; CC BY 4.0 for docs/prose unless otherwise noted",
-  "reproducibility": "v0.51.5 local_reversible_receiver_runtime_invocation_shim_rehearsal PASSIVE_LIVE_MEMORY_COHERENCE_RECEIVER_RUNTIME_INVOCATION_SHIM_REHEARSAL_COMPLETE localShimInvocationCount_4 shimOutputCount_4 contextHandoffResultCount_1 invokedConsumedBlockCount_4 effectsBlockedCount_10 sourceBoundInvocationRatio_1 boundaryViolationCount_0 local_receiver_runtime_invocation_shim_rehearsal_only no_tool_execution no_network_fetch no_memory_writes no_config_writes no_runtime_integration",
+  "reproducibility": "v0.52.5 bounded_no_effect_receiver_runtime_adapter_fixture_suite PASSIVE_LIVE_MEMORY_COHERENCE_BOUNDED_NO_EFFECT_RECEIVER_RUNTIME_ADAPTER_FIXTURE_SUITE_COMPLETE fixtureScenarioCount_5 adapterInvocationCount_5 fixturePassCount_5 fixtureFailClosedCount_1 effectsBlockedCount_10 sourceBoundOutputRatio_1 boundaryViolationCount_0 no_tool_execution no_network_fetch no_memory_writes no_config_writes no_runtime_integration",
   "rawSourceCache": "excluded",
-  "runtimeBoundary": "v0.51.5 local_reversible_receiver_runtime_invocation_shim_rehearsal deterministic_local_receiver_runtime_invocation_shim no_effect_context_handoff_result no_network no_tool_execution no_config_writes no_memory_writes no_authorization_enforcement no_allow_block_decisions no_production_runtime_integration rollback_no_persist"
+  "runtimeBoundary": "v0.52.5 bounded_no_effect_receiver_runtime_adapter_fixture_suite deterministic_local_no_effect_receiver_runtime_adapter_fixture malformed_boundary_violation_fail_closed no_network no_tool_execution no_config_writes no_memory_writes no_authorization_enforcement no_allow_block_decisions no_production_runtime_integration rollback_no_persist"
 }

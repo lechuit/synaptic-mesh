@@ -1,3 +1,13 @@
+# Release Notes — Synaptic Mesh v0.52.5
+
+v0.52.5 adds a bounded no-effect receiver runtime adapter fixture suite on top of published v0.51.5. It pins the v0.51.5 receiver runtime invocation shim reviewer package and report by exact path and SHA-256 before read, rejects absolute/traversal paths, and invokes a deterministic local adapter contract across multiple explicit fixture scenarios.
+
+Pinned evidence: `PASSIVE_LIVE_MEMORY_COHERENCE_BOUNDED_NO_EFFECT_RECEIVER_RUNTIME_ADAPTER_FIXTURE_SUITE_COMPLETE`, `fixtureScenarioCount: 5`, `adapterInvocationCount: 5`, `fixturePassCount: 5`, `fixtureFailClosedCount: 1`, `adapterOutputCount: 5`, `effectsBlockedCount: 10`, `sourceBoundOutputRatio: 1`, `agentConsumedOutputFalseRatio: 1`, `boundaryViolationCount: 0`.
+
+Boundary: local-only, fixture-only, read-only, source-bound, redacted/no raw persistence, non-authoritative, no-effect adapter outputs for human review only, no production runtime integration, no daemon, no SDK/framework adapter, no MCP/A2A client/server, no network/resource fetch, no tool execution, no memory/config writes, no external effects, no authorization/enforcement semantics, no approval/block/allow decisions, and no automatic agent consumption. The only persisted the compatibility sentinel is the top-level null compatibility sentinel.
+
+Recommended next barrier: human-reviewed receiver runtime adapter contract dry run over new evidence without effects.
+
 # Release Notes — Synaptic Mesh v0.51.5
 
 v0.51.5 adds a local reversible receiver runtime invocation shim rehearsal on top of published v0.50.5. It pins the v0.50.5 reviewer package and report by exact path and SHA-256 before read, rejects absolute/traversal paths, and invokes a deterministic local receiver shim function over the harness-consumed blocks only.
@@ -95,7 +105,7 @@ Hard stops remain: no network/resource fetch, no external effects, no production
 - `agentConsumedOutput: false`
 - `notRuntimeInstruction: true`
 - top-level sentinel kept null retained only as a top-level compatibility/null sentinel; not repeated in protocol, metrics, runs, judgement items, stable items, or CLI stdout
-- Negative controls for traversal-like unpinned artifact paths, malformed/spoofed pinned v0.46 handoff utility artifacts, digest drift, metric drift, handoff item tampering, nested policyDecision repetition, raw persistence, external effects, tool execution, memory/config writes, runtime integration, unknown runtime/boundary fields, raw output, and non-null `policyDecision`.
+- Negative controls for traversal-like unpinned artifact paths, malformed/spoofed pinned v0.46 handoff utility artifacts, digest drift, metric drift, handoff item tampering, nested compatibility sentinel repetition, raw persistence, external effects, tool execution, memory/config writes, runtime integration, unknown runtime/boundary fields, raw output, and non-null the compatibility sentinel.
 
 ## Boundary
 
@@ -151,7 +161,7 @@ The next gate should keep this as local reviewer evidence or run a separate boun
 - `agentConsumedOutput: false`
 - `notRuntimeInstruction: true`
 - top-level sentinel kept null retained only as a top-level compatibility/null sentinel; not repeated in protocol, metrics, handoff items, judgement items, or CLI stdout
-- Negative controls for traversal-like unpinned artifact paths, malformed/spoofed pinned v0.45 repeatability artifacts, digest drift, metric drift, stable observation tampering, raw persistence, external effects, tool execution, memory/config writes, runtime integration, unknown runtime/boundary fields, raw output, and non-null `policyDecision`.
+- Negative controls for traversal-like unpinned artifact paths, malformed/spoofed pinned v0.45 repeatability artifacts, digest drift, metric drift, stable observation tampering, raw persistence, external effects, tool execution, memory/config writes, runtime integration, unknown runtime/boundary fields, raw output, and non-null the compatibility sentinel.
 
 ## Boundary
 
@@ -214,7 +224,7 @@ The next gate should repeat this handoff utility window or run a bounded shadow 
 - `agentConsumedOutput: false`
 - `notRuntimeInstruction: true`
 - top-level sentinel kept null retained only as a top-level compatibility/null sentinel; not repeated in protocol, metrics, runs, judgement items, or CLI stdout
-- Negative controls for traversal-like unpinned artifact paths, malformed/spoofed pinned v0.44 live observation artifacts, digest drift, metric drift, live-observation item tampering, raw persistence, external effects, tool execution, memory/config writes, runtime integration, unknown runtime/boundary fields, raw output, and non-null `policyDecision`.
+- Negative controls for traversal-like unpinned artifact paths, malformed/spoofed pinned v0.44 live observation artifacts, digest drift, metric drift, live-observation item tampering, raw persistence, external effects, tool execution, memory/config writes, runtime integration, unknown runtime/boundary fields, raw output, and non-null the compatibility sentinel.
 
 ## Boundary
 

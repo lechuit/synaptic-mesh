@@ -21,7 +21,7 @@ These specs are local research documentation only. They do not authorize:
 | Spec | Purpose | Status |
 |---|---|---|
 | `memory-authority-receipt-v0.md` | Common receipt semantics and fail-closed interpretation rules | draft stable local spec |
-| `synaptic-mesh-memory-authority-v0.md` | System-level architecture: Event Ledger, Proposal Layer, Write Gate, MemoryAtom, Conflict Registry, Retrieval Router, Action Context Packet | draft stable local spec |
+| `aletheia-memory-authority-v0.md` | System-level architecture: Event Ledger, Proposal Layer, Write Gate, MemoryAtom, Conflict Registry, Retrieval Router, Action Context Packet | draft stable local spec |
 | `compressed-temporal-receipt-v0.md` | Compact cross-source handoff tuple and receiver validation order | draft stable local spec |
 | `../schemas/receipt.schema.json` | Strict local-shadow structured Receipt shape for fixture/evidence validation | schema evidence only; not semantic proof or runtime authorization |
 
