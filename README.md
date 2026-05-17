@@ -102,8 +102,9 @@ ANTHROPIC_API_KEY=... pnpm run demo:live-llm:adversarial
 1. `GLOSSARY.md`
 2. `ROADMAP.md`
 3. `specs/aletheia-memory-authority-v0.md`
-4. `specs/memory-authority-receipt-v0.md`
-5. package READMEs under `packages/*/README.md`
+4. `specs/memory-dynamics-v0.md`
+5. `specs/memory-authority-receipt-v0.md`
+6. package READMEs under `packages/*/README.md`
 
 ## Boundaries
 

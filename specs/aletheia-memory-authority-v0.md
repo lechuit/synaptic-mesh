@@ -234,7 +234,14 @@ receiver algorithm.
 ## Dynamics contract
 
 `@aletheia-labs/dynamics` implements memory-as-process without introducing a daemon
-or hidden mutation.
+or hidden mutation. Its detailed contract is
+`specs/memory-dynamics-v0.md`; this section states how dynamics fits the
+authority protocol.
+
+Dynamics is downstream of Phase 1 gates. It does not accept raw model prose as
+authority and it does not authorize action. It can only compute effective
+ranking values, plan/apply status transitions, and create human-confirmed
+reconsolidation successors.
 
 ### Authority decay
 
@@ -257,6 +264,8 @@ remain visible to the lifecycle pass so they can be deprecated.
 
 The engine can run in dry-run mode or apply mode. Apply mode mutates only
 through `MemoryStore.transitionStatus()` using the configured policy actor.
+The logical timestamp comes from the host so tests, audits, and replays can
+reproduce the same decisions.
 
 Allowed automatic transitions are operational:
 
@@ -268,6 +277,10 @@ Allowed automatic transitions are operational:
 
 Automatic dynamics do not promote to `trusted` or `sealed`.
 
+Candidate promotion to `verified` requires explicit operational evidence plus
+configured metadata thresholds. Confidence, consensus, CHAIN labels, prose, or
+model self-assessment never count as evidence.
+
 ### Reconsolidation
 
 Reconsolidation does not overwrite. It plans a successor atom with a
@@ -277,11 +290,19 @@ Reconsolidation does not overwrite. It plans a successor atom with a
 explicit human confirmation before inserting the successor and deprecating the
 prior atom. If successor insertion fails, the prior atom is not deprecated.
 
+This is the only Phase 2 path that creates new memory content, and it creates
+candidate content only. It does not bypass the action receiver or promote the
+successor to `verified`, `trusted`, or `sealed`.
+
 ### Sleep cycle
 
 `SleepCycleRunner` is an orchestrator, not a scheduler. The host supplies each
 cycle input and logical timestamp. Given the same store state, policy, and
 timestamp, the reported decisions are deterministic.
+
+Sleep-cycle reports are audit records, not permission tokens. A host may log
+or inspect them, but acting on memory still requires governed recall and
+`tryAct()`.
 
 ## Episodic contract
 
