@@ -13,6 +13,7 @@ import {
   type MemoryStore,
   type ResolveReason,
   type Scope,
+  type StatusTransitionOptions,
   type StatusTransitionReason,
   type StatusTransitionResult,
   type Visibility,
@@ -594,6 +595,7 @@ class FakeMemoryStore implements MemoryStore {
     memoryId: MemoryId,
     nextStatus: MemoryStatus,
     reason: StatusTransitionReason,
+    options?: StatusTransitionOptions,
   ): Promise<StatusTransitionResult> {
     if (this.options.rejectTransitions === true) {
       return { kind: 'rejected', reason: 'forced rejection' };
@@ -617,7 +619,7 @@ class FakeMemoryStore implements MemoryStore {
     this.atoms.set(memoryId, updated);
     const history = this.histories.get(memoryId) ?? [];
     history.push({
-      at: NOW,
+      at: options?.at ?? NOW,
       fromStatus: atomValue.status,
       toStatus: nextStatus,
       reason,

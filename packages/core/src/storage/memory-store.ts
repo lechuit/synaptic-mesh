@@ -28,6 +28,14 @@ export interface StatusTransitionReason {
   readonly conflictId?: string;
 }
 
+export interface StatusTransitionOptions {
+  /**
+   * Effective transition timestamp. Deterministic runners pass their logical
+   * clock here; stores default to their local clock when omitted.
+   */
+  readonly at?: IsoTimestamp;
+}
+
 export interface MemoryQuery {
   /** Filter to atoms of these statuses. */
   readonly statuses?: readonly MemoryStatus[];
@@ -81,6 +89,7 @@ export interface MemoryStore {
     memoryId: MemoryId,
     nextStatus: MemoryStatus,
     reason: StatusTransitionReason,
+    options?: StatusTransitionOptions,
   ): Promise<StatusTransitionResult>;
 
   /**

@@ -107,8 +107,10 @@ Built on top of Phase 1.
 - [x] Candidate promotion requires explicit source-consistent recall evidence; confidence/consensus do not authorize promotion.
 - [x] Unresolved conflicts touching an atom block candidate promotion and deprecate previously actionable verified/trusted claims.
 - [x] Sealed and human-required atoms are skipped by the dynamics engine.
+- [x] `SleepCycleRunner` produces deterministic dry-run/apply reports over host-provided stores.
+- [x] SQLite-backed sleep-cycle tests verify apply mode and logical transition timestamps.
 - [ ] Reconsolidation with successor atoms and `supersedes` lineage.
-- [ ] Long-running sleep-cycle harness over a SQLite store.
+- [ ] Long-running multi-cycle harness over a SQLite store.
 
 ### Scope
 

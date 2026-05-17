@@ -106,6 +106,47 @@ describe('SqliteMemoryStore — status transitions', () => {
     expect(hist[1]?.toStatus).toBe('verified');
   });
 
+  it('uses an explicit transition timestamp when provided', async () => {
+    const a = makeAtom();
+    await stores.memoryStore.insert(a);
+
+    const at = '2026-05-17T03:00:00Z';
+    const result = await stores.memoryStore.transitionStatus(
+      a.memoryId,
+      'verified',
+      {
+        rationale: 'deterministic sleep-cycle tick',
+        actor: 'agent-reviewer' as AgentId,
+      },
+      { at },
+    );
+
+    expect(result.kind).toBe('applied');
+
+    const hist = await stores.memoryStore.statusHistory(a.memoryId);
+    const transition = hist.find(
+      (entry) => entry.reason.rationale === 'deterministic sleep-cycle tick',
+    );
+    expect(transition?.at).toBe(at);
+  });
+
+  it('rejects invalid explicit transition timestamps', async () => {
+    const a = makeAtom();
+    await stores.memoryStore.insert(a);
+
+    await expect(
+      stores.memoryStore.transitionStatus(
+        a.memoryId,
+        'verified',
+        {
+          rationale: 'bad clock',
+          actor: 'agent-reviewer' as AgentId,
+        },
+        { at: 'not-a-date' },
+      ),
+    ).rejects.toThrow(/must be ISO-8601/);
+  });
+
   it('rejects an illegal transition (rejected → trusted)', async () => {
     const a = makeAtom({ status: 'rejected' });
     await stores.memoryStore.insert(a);

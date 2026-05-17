@@ -14,6 +14,8 @@ Releases are listed newest first.
 - Dynamics plans transitions by default and applies them only through `MemoryStore.transitionStatus`, preserving the append-only atom model and audit history.
 - Candidate promotion requires explicit source-consistent recall evidence plus evidence/authority/stability scores; `confidence` and `consensus` remain metadata, not authority.
 - Added tests for fail-closed no-permission behavior, stale deprecation, promotion evidence, trusted-vs-verified decay windows, unresolved conflict handling, sealed/human-required skipping, and deterministic dry-run output.
+- Added `SleepCycleRunner`, with SQLite-backed tests for deterministic dry-run reports, explicit apply mode, fail-closed no-permission reports, and logical transition timestamps.
+- Extended `MemoryStore.transitionStatus` with an optional deterministic `at` timestamp so sleep-cycle audit history can be replayed from the cycle clock instead of the process clock.
 
 ---
 
