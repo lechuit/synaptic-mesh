@@ -59,7 +59,7 @@ In short: **The current proving ground is the included local shadow package; the
 
 Included:
 
-- paper draft: `paper/synaptic-mesh-paper-v0.md`
+- paper draft: `paper/aletheia-paper-v0.md`
 - specs: `specs/`
 - docs: [`reason-codes.md`](reason-codes.md), [`coverage-matrix.md`](coverage-matrix.md), and live-shadow design/schema docs stabilize review vocabulary and coverage status
 - local shadow/reference implementation: `implementation/synaptic-mesh-shadow-v0/`
