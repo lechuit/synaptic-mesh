@@ -67,6 +67,35 @@ Those may return later as separate packages once the library has external users 
 
 This is the phase that crosses the line from "research artifact" to "real software". The executable spine exists; remaining work is release evidence, package/version decisions, and live API-key-backed validation.
 
+**Status (closed 2026-05-17)**: Phase 1 is closed as an executable library baseline. The authority-governed memory spine, SQLite store, provider adapters, no-key canaries, package docs, and publish dry-runs are complete. Remaining unchecked items in this section are release-hardening evidence, not implementation blockers for starting Phase 2.
+
+### Phase 1 closure metrics (2026-05-17)
+
+Measured before Phase 2 work, excluding `dist/`, JSON config, Markdown, and generated artifacts.
+
+- **Publishable packages**: 4
+  - `@aletheia/core`
+  - `@aletheia/store-sqlite`
+  - `@aletheia/adapters-anthropic`
+  - `@aletheia/adapters-openai`
+- **Implementation source**: 39 TypeScript source files, 4,706 LOC under Phase 1 package `src/`, excluding `*.test.ts`.
+  - `@aletheia/core`: 28 files, 2,643 LOC
+  - `@aletheia/store-sqlite`: 7 files, 1,154 LOC
+  - `@aletheia/adapters-anthropic`: 2 files, 450 LOC
+  - `@aletheia/adapters-openai`: 2 files, 459 LOC
+- **Executable test surface**: 103 package tests plus 1 no-LLM smoke test.
+  - `@aletheia/core`: 62 package tests
+  - `@aletheia/store-sqlite`: 27 package tests
+  - `@aletheia/adapters-anthropic`: 6 package tests
+  - `@aletheia/adapters-openai`: 8 package tests
+  - `packages/core/examples/end-to-end.ts`: 1 smoke canary
+- **Canary evidence**: 3 executable closure canaries report `boundaryViolations: []`.
+  - `pnpm run smoke:core-e2e`
+  - `node examples/anthropic-e2e/fixture-demo.mjs`
+  - `pnpm -F @aletheia/adapters-openai run demo:fixture`
+- **Publish dry-runs**: all 4 Phase 1 packages pass `pnpm -F <package> publish --dry-run --no-git-checks`.
+- **Code/test/demo footprint**: 7,418 TS/MJS LOC across Phase 1 implementation, tests, and executable demos.
+
 ### Scope
 
 1. **Implement `@aletheia/core` in TypeScript from scratch**, with formal types derived directly from `specs/` and `schemas/`. The archived `archive/synaptic-mesh-shadow-v0/` JS implementation is now historical baseline material; it is not a live parity gate until a TS harness wires it in.
