@@ -67,6 +67,13 @@ ROADMAP.md                phase plan and scope decisions
 Historical pre-Aletheia research artifacts were removed from the active tree to
 keep the repo legible. They remain available through git history.
 
+## Package Requirements
+
+- Node 20+.
+- ESM-only packages. Add `"type": "module"` to your `package.json`, use
+  `.mjs`, or use a build tool/runtime that handles ESM. CommonJS `require()`
+  is not shipped in `0.1.x`.
+
 ## Quick Commands
 
 ```sh

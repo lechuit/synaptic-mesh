@@ -4,6 +4,13 @@ The core authority engine of Aletheia: memory as governance for LLM agents.
 
 > **Status**: `0.1.0` public baseline. The consumer facade (`AletheiaAuthority`) and strict TypeScript domain/storage/runtime contracts are live.
 
+## Requirements
+
+- Node 20+.
+- ESM-only. Add `"type": "module"` to your `package.json`, use `.mjs`, or use
+  a build tool/runtime that handles ESM. CommonJS `require()` is not shipped in
+  `0.1.x`.
+
 ## Quickstart
 
 ```bash

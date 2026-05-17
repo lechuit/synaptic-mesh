@@ -4,6 +4,13 @@ Subjective time and episodic continuity projections for Aletheia.
 
 > **Status**: `0.1.0` experimental public baseline. Episodic timeline projections are live; they read from existing event and memory stores and do not add authority by themselves.
 
+## Requirements
+
+- Node 20+.
+- ESM-only. Add `"type": "module"` to your `package.json`, use `.mjs`, or use
+  a build tool/runtime that handles ESM. CommonJS `require()` is not shipped in
+  `0.1.x`.
+
 ## Quickstart
 
 ```bash
