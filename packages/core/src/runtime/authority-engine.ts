@@ -30,6 +30,7 @@ export interface AletheiaAuthorityOptions extends WriteGateStores {
   readonly clock?: Clock;
   readonly memoryIdForProposal?: WriteGateOptions['memoryIdForProposal'];
   readonly topicMatcher?: RetrievalRouterOptions['topicMatcher'];
+  readonly authorityScorer?: RetrievalRouterOptions['authorityScorer'];
 }
 
 export class AletheiaAuthority {
@@ -70,6 +71,9 @@ export class AletheiaAuthority {
         : {}),
       ...(options.clock !== undefined ? { clock: options.clock } : {}),
       ...(options.topicMatcher !== undefined ? { topicMatcher: options.topicMatcher } : {}),
+      ...(options.authorityScorer !== undefined
+        ? { authorityScorer: options.authorityScorer }
+        : {}),
     };
     this.retrievalRouter = new RetrievalRouter(sharedRouterOptions);
 

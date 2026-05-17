@@ -83,7 +83,7 @@ Every call returns a structured decision. Memory text, receipts, model prose, co
 - **Storage interfaces**: `EventLedger`, `MemoryStore`, and `ConflictRegistry`. Implementations live in other packages.
 - **WriteGate**: validates source events, scope, visibility, risk, and conflict boundaries before memory insertion.
 - **Proposal safety guard**: deterministic checks for credential-like claims, permission-bypass policies, and destructive durable instructions before a proposal can become actionable memory.
-- **RetrievalRouter**: non-semantic recall by visibility, scope, status, type, freshness, and conflict state.
+- **RetrievalRouter**: non-semantic recall by visibility, scope, status, type, freshness, optional receipt-derived authority scoring, and conflict state.
 - **ActionAuthorizer**: receiver-side `tryAct()` guard. Sensitive actions always ask human.
 - **AletheiaAuthority**: small facade exposing `propose()`, `recall()`, and `tryAct()`.
 
@@ -113,7 +113,8 @@ or scope those source events appropriately.
 
 ## What this package does NOT do
 
-- No embeddings, vector store, semantic retrieval, or ranking.
+- No embeddings, vector store, semantic retrieval, or semantic ranking.
+- Optional authority scoring is receipt-derived and runs only after hard visibility/scope/status/freshness filters.
 - No LLM SDK dependency. Use `@aletheia/adapters-anthropic`, `@aletheia/adapters-openai`, or your own adapter.
 - No OAuth, CLI, MCP server, daemon, watcher, or terminal UX.
 - No authorization service. Aletheia classifies memory authority; your host still owns real-world permissions.

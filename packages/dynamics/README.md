@@ -38,6 +38,7 @@ Use `applyTransitions: true` only when the host wants audited status transitions
 
 ## What this package does
 
+- Computes pure decayed authority scores for recall ranking without mutating memory status.
 - Walks visible memory atoms in a caller-provided scope.
 - Scans lifecycle candidates without `validAt` filtering so expired or corrupt validity windows can be decommissioned.
 - Plans status transitions from explicit policy and evidence.
@@ -48,6 +49,30 @@ Use `applyTransitions: true` only when the host wants audited status transitions
 - Provides `ReconsolidationPlanner` for successor drafts with `supersedes` lineage and planned transitions.
 - Provides `ReconsolidationApplier` for explicit human-confirmed successor insertion plus audited prior-atom deprecation.
 - Keeps `@aletheia/core` SDK-free and free of background scheduling.
+
+## Decayed Recall Ranking
+
+Memory ages. `decayedAuthority(atom, now)` returns an effective authority score
+for ranking atoms that have already passed core visibility, scope, status, and
+freshness filters. It is not a permission check and it never mutates status.
+
+```ts
+import { AletheiaAuthority } from '@aletheia/core';
+import { decayedAuthority } from '@aletheia/dynamics';
+
+const authority = new AletheiaAuthority({
+  eventLedger,
+  memoryStore,
+  conflictRegistry,
+  visibilityPolicy,
+  clock,
+  authorityScorer: (atom, now) => decayedAuthority(atom, now),
+});
+```
+
+Defaults decay candidates fastest, verified memories over weeks, and trusted
+memories over months. Sealed memory does not decay; rejected, deprecated, and
+human-required memory scores zero.
 
 ## What this package does NOT do
 
@@ -64,6 +89,9 @@ Use `applyTransitions: true` only when the host wants audited status transitions
 Public surface for the initial library cycle:
 
 - `createDynamicsPolicy`
+- `decayedAuthority`
+- `DEFAULT_AUTHORITY_DECAY_POLICY`
+- `AuthorityDecayPolicy` and `AuthorityDecayPolicyOverrides`
 - `DynamicsEngine`
 - `SleepCycleRunner`
 - `ReconsolidationPlanner`

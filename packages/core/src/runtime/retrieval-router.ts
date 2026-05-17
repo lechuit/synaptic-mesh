@@ -10,6 +10,7 @@ import type { ConflictRegistry, MemoryStore } from '../storage/index.js';
 import type {
   ConflictRecord,
   DecisionReason,
+  IsoTimestamp,
   MemoryAtom,
   MemoryStatus,
   RecallQuery,
@@ -21,11 +22,23 @@ import type { Clock } from './decision-helpers.js';
 import { SYSTEM_CLOCK, decision } from './decision-helpers.js';
 import { DENY_ALL_VISIBILITY_POLICY, type VisibilityPolicy } from './visibility-policy.js';
 
+export type RetrievalAuthorityScorer = (atom: MemoryAtom, now: IsoTimestamp) => number;
+
 export interface RetrievalRouterOptions {
   readonly memoryStore: MemoryStore;
   readonly conflictRegistry: ConflictRegistry;
   readonly visibilityPolicy?: VisibilityPolicy;
   readonly topicMatcher?: (atom: MemoryAtom, topic: string) => boolean;
+  /**
+   * Optional authority ranking hook applied only after visibility, scope,
+   * status, freshness, type, and topic filters.
+   *
+   * @remarks
+   * This hook is for receipt-derived ranking within already-authorized
+   * candidates. It must not grant permission, perform semantic retrieval, or
+   * treat confidence/consensus/prose as authority.
+   */
+  readonly authorityScorer?: RetrievalAuthorityScorer;
   readonly clock?: Clock;
 }
 
@@ -36,6 +49,10 @@ export interface RetrievalResult {
 }
 
 const DEFAULT_RECALL_STATUSES: readonly MemoryStatus[] = ['verified', 'trusted'];
+
+type LoadAtomsResult =
+  | { readonly ok: true; readonly atoms: readonly MemoryAtom[] }
+  | { readonly ok: false; readonly reason: DecisionReason };
 
 export class RetrievalRouter {
   private readonly visibilityPolicy: VisibilityPolicy;
@@ -121,7 +138,16 @@ export class RetrievalRouter {
       };
     }
 
-    const atoms = await this.loadAtoms(validQuery, permitted);
+    const loadedAtoms = await this.loadAtoms(validQuery, permitted, emittedAt);
+    if (!loadedAtoms.ok) {
+      return {
+        decision: decision('fetch_abstain', [loadedAtoms.reason], [], [], emittedAt),
+        atoms: [],
+        conflicts: [],
+      };
+    }
+
+    const atoms = loadedAtoms.atoms;
     if (atoms.length === 0) {
       return {
         decision: decision(
@@ -192,12 +218,13 @@ export class RetrievalRouter {
   private async loadAtoms(
     query: RecallQuery,
     permittedVisibilities: readonly Visibility[],
-  ): Promise<readonly MemoryAtom[]> {
+    validAt: IsoTimestamp,
+  ): Promise<LoadAtomsResult> {
     const atoms = await this.options.memoryStore.query({
       statuses: query.requiredStatus ?? DEFAULT_RECALL_STATUSES,
       scope: query.scope,
       permittedVisibilities,
-      validAt: this.clock.now(),
+      validAt,
     });
 
     const filtered = atoms.filter((atom) => {
@@ -210,8 +237,60 @@ export class RetrievalRouter {
       return true;
     });
 
-    return query.limit !== undefined ? filtered.slice(0, query.limit) : filtered;
+    const rankedResult =
+      this.options.authorityScorer === undefined
+        ? { ok: true as const, atoms: filtered }
+        : rankByAuthority(filtered, this.options.authorityScorer, validAt);
+
+    if (!rankedResult.ok) {
+      return {
+        ok: false,
+        reason: {
+          kind: 'promotion_boundary_blocked',
+          detail: `authority scorer failed: ${rankedResult.error}`,
+        },
+      };
+    }
+
+    const limited =
+      query.limit !== undefined ? rankedResult.atoms.slice(0, query.limit) : rankedResult.atoms;
+    return { ok: true, atoms: limited };
   }
+}
+
+function rankByAuthority(
+  atoms: readonly MemoryAtom[],
+  scorer: RetrievalAuthorityScorer,
+  now: IsoTimestamp,
+):
+  | { readonly ok: true; readonly atoms: readonly MemoryAtom[] }
+  | { readonly ok: false; readonly error: string } {
+  const ranked: { readonly atom: MemoryAtom; readonly index: number; readonly score: number }[] =
+    [];
+  for (const [index, atom] of atoms.entries()) {
+    try {
+      ranked.push({ atom, index, score: finiteScore(scorer(atom, now)) });
+    } catch (err) {
+      return {
+        ok: false,
+        error: err instanceof Error ? err.message : 'unknown scorer error',
+      };
+    }
+  }
+
+  return {
+    ok: true,
+    atoms: ranked
+      .sort((left, right) => {
+        const byScore = right.score - left.score;
+        return byScore !== 0 ? byScore : left.index - right.index;
+      })
+      .map((item) => item.atom),
+  };
+}
+
+function finiteScore(value: number): number {
+  return Number.isFinite(value) ? value : 0;
 }
 
 function firstNonActionableReason(
