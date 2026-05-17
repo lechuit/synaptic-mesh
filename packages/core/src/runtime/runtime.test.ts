@@ -417,6 +417,58 @@ describe('WriteGate', () => {
     expect(await memoryStore.query({ permittedVisibilities: ALLOW_CORE })).toHaveLength(0);
   });
 
+  it('denies common credential formats before storing an atom', async () => {
+    const privateKeyHeader = ['-----BEGIN', 'PRIVATE', 'KEY-----'].join(' ');
+    const privateKeyFooter = ['-----END', 'PRIVATE', 'KEY-----'].join(' ');
+    const credentialClaims = [
+      `Remember AWS access key ${['AKIA', 'ABCDEFGHIJKLMNOP'].join('')}.`,
+      `Remember GitHub token ${['ghp', 'abcdefghijklmnopqrstuvwx'].join('_')}.`,
+      `Remember JWT ${['eyJabcdefghijkl', 'eyJmnopqrstuvwxyz', 'eyJ0123456789ab'].join('.')}.`,
+      [privateKeyHeader, 'synthetic-test-key-body', privateKeyFooter].join('\n'),
+      'Remember token: synthetic-secret-value-0000.',
+    ];
+
+    for (const [index, claim] of credentialClaims.entries()) {
+      const { authority, eventLedger, memoryStore } = makeRuntime();
+      await eventLedger.append(event());
+
+      const result = await authority.propose(
+        proposal({
+          proposalId: `prop-credential-${index}` as MemoryProposal['proposalId'],
+          claim,
+        }),
+      );
+
+      expect(result.decision.outcome).toBe('deny');
+      expect(result.atom).toBeNull();
+      expect(await memoryStore.query({ permittedVisibilities: ALLOW_CORE })).toHaveLength(0);
+    }
+  });
+
+  it('does not reject innocuous strings that resemble short token names', async () => {
+    const { authority, eventLedger } = makeRuntime();
+    await eventLedger.append(event());
+
+    const harmlessClaims = [
+      'The model family is named sk-1.5 in this paper.',
+      'The library version is sk-2.0 in the migration note.',
+      'The fixture id is sk-12345 in a benchmark table.',
+      'The user mentions the chess piece pk-12345 in a test fixture.',
+    ];
+
+    for (const [index, claim] of harmlessClaims.entries()) {
+      const result = await authority.propose(
+        proposal({
+          proposalId: `prop-harmless-${index}` as MemoryProposal['proposalId'],
+          claim,
+        }),
+      );
+
+      expect(result.decision.outcome).toBe('allow_local_shadow');
+      expect(result.atom?.status).toBe('candidate');
+    }
+  });
+
   it('routes durable permission-bypass policies to human_required memory', async () => {
     const { authority, eventLedger } = makeRuntime();
     await eventLedger.append(event());
