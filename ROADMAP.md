@@ -318,6 +318,16 @@ Built on top of Phases 1 + 2.
   missing visibility, invalid time ranges, or absent memory atoms still fail
   closed.
 
+### Phase 3.3 status
+
+- [x] Experience index maps visible scoped episode anchors to the visible atoms
+  grounded in those source events.
+- [x] The join order is explicit: event visibility/scope first, memory
+  visibility/scope/status/freshness second, then source-event matching.
+- [x] Historical belief queries remain non-semantic: `beliefsAt()` and
+  `experienceIndex()` can filter by literal content only after authority
+  filters have already run.
+
 ### Scope
 
 - Atoms indexed not just by wall-clock time but by the agent's **experiential timeline**: which conversation, which task, which decision context they emerged from.

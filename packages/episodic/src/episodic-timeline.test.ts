@@ -119,6 +119,216 @@ describe('EpisodicTimeline', () => {
     expect(conversations.episodes.map((episode) => episode.episodeId)).toEqual(['conversation-a']);
   });
 
+  it('indexes visible atoms by the experiences that produced them', async () => {
+    const conversationEvent = event({
+      eventId: 'evt-experience-conversation' as EventId,
+      episodeId: 'conversation-indexed',
+      episodeKind: 'conversation',
+      occurredAt: '2026-05-10T10:00:00Z' as IsoTimestamp,
+    });
+    const taskEvent = event({
+      eventId: 'evt-experience-task' as EventId,
+      episodeId: 'task-indexed',
+      episodeKind: 'task',
+      occurredAt: '2026-05-11T10:00:00Z' as IsoTimestamp,
+    });
+    const hiddenEvent = event({
+      eventId: 'evt-experience-hidden' as EventId,
+      episodeId: 'conversation-hidden-indexed',
+      visibility: HIDDEN_VISIBILITY,
+      occurredAt: '2026-05-12T10:00:00Z' as IsoTimestamp,
+    });
+    const outOfScopeEvent = event({
+      eventId: 'evt-experience-other-scope' as EventId,
+      episodeId: 'conversation-other-scope-indexed',
+      scope: OTHER_SCOPE,
+      occurredAt: '2026-05-13T10:00:00Z' as IsoTimestamp,
+    });
+    await stores.eventLedger.append(conversationEvent);
+    await stores.eventLedger.append(taskEvent);
+    await stores.eventLedger.append(hiddenEvent);
+    await stores.eventLedger.append(outOfScopeEvent);
+
+    const conversationMemory = atom({
+      memoryId: 'mem-experience-conversation' as MemoryId,
+      status: 'candidate',
+      content: 'The user prefers quiet review sessions.',
+      sourceEventIds: [conversationEvent.eventId],
+    });
+    const taskMemory = atom({
+      memoryId: 'mem-experience-task' as MemoryId,
+      status: 'candidate',
+      content: 'The release task should keep npm packages ESM-only.',
+      sourceEventIds: [taskEvent.eventId],
+    });
+    await stores.memoryStore.insert(conversationMemory);
+    await stores.memoryStore.insert(taskMemory);
+    await stores.memoryStore.insert(
+      atom({
+        memoryId: 'mem-experience-hidden' as MemoryId,
+        sourceEventIds: [hiddenEvent.eventId],
+      }),
+    );
+    await stores.memoryStore.insert(
+      atom({
+        memoryId: 'mem-experience-other-scope' as MemoryId,
+        scope: OTHER_SCOPE,
+        sourceEventIds: [outOfScopeEvent.eventId],
+      }),
+    );
+    await stores.memoryStore.transitionStatus(
+      conversationMemory.memoryId,
+      'verified',
+      { actor: AGENT, rationale: 'conversation belief' },
+      { at: '2026-05-10T11:00:00Z' as IsoTimestamp },
+    );
+    await stores.memoryStore.transitionStatus(
+      conversationMemory.memoryId,
+      'trusted',
+      { actor: AGENT, rationale: 'later trust upgrade after indexed instant' },
+      { at: '2026-05-16T11:00:00Z' as IsoTimestamp },
+    );
+    await stores.memoryStore.transitionStatus(
+      taskMemory.memoryId,
+      'verified',
+      { actor: AGENT, rationale: 'task belief' },
+      { at: '2026-05-11T11:00:00Z' as IsoTimestamp },
+    );
+
+    const fullIndex = await timeline().experienceIndex({
+      agentId: AGENT,
+      scope: SCOPE,
+      asOf: '2026-05-15T00:00:00Z' as IsoTimestamp,
+    });
+    const conversationOnly = await timeline().experienceIndex({
+      agentId: AGENT,
+      scope: SCOPE,
+      kind: 'conversation',
+      asOf: '2026-05-15T00:00:00Z' as IsoTimestamp,
+      contentIncludes: 'quiet',
+    });
+
+    expect(fullIndex.decision.outcome).toBe('allow_local_shadow');
+    expect(fullIndex.entries.map((entry) => entry.episode.episodeId)).toEqual([
+      'conversation-indexed',
+      'task-indexed',
+    ]);
+    expect(fullIndex.entries.flatMap((entry) => entry.episode.memoryIds)).toEqual([
+      'mem-experience-conversation',
+      'mem-experience-task',
+    ]);
+    expect(conversationOnly.entries.map((entry) => entry.episode.episodeId)).toEqual([
+      'conversation-indexed',
+    ]);
+    expect(conversationOnly.entries[0]?.statusesAt).toEqual([
+      {
+        memoryId: 'mem-experience-conversation',
+        status: 'verified',
+        at: '2026-05-15T00:00:00Z',
+      },
+    ]);
+  });
+
+  it('does not let contentIncludes match hidden or out-of-scope experience atoms', async () => {
+    const visibleEvent = event({
+      eventId: 'evt-visible-filter' as EventId,
+      episodeId: 'conversation-visible-filter',
+      occurredAt: '2026-05-10T10:00:00Z' as IsoTimestamp,
+    });
+    const hiddenEvent = event({
+      eventId: 'evt-hidden-filter' as EventId,
+      episodeId: 'conversation-hidden-filter',
+      visibility: HIDDEN_VISIBILITY,
+      occurredAt: '2026-05-11T10:00:00Z' as IsoTimestamp,
+    });
+    const otherScopeEvent = event({
+      eventId: 'evt-other-scope-filter' as EventId,
+      episodeId: 'conversation-other-filter',
+      scope: OTHER_SCOPE,
+      occurredAt: '2026-05-12T10:00:00Z' as IsoTimestamp,
+    });
+    await stores.eventLedger.append(visibleEvent);
+    await stores.eventLedger.append(hiddenEvent);
+    await stores.eventLedger.append(otherScopeEvent);
+    await stores.memoryStore.insert(
+      atom({
+        memoryId: 'mem-visible-filter' as MemoryId,
+        content: 'Visible content without the protected needle.',
+        sourceEventIds: [visibleEvent.eventId],
+      }),
+    );
+    await stores.memoryStore.insert(
+      atom({
+        memoryId: 'mem-hidden-filter' as MemoryId,
+        content: 'Hidden memory contains protected-needle.',
+        visibility: HIDDEN_VISIBILITY,
+        sourceEventIds: [hiddenEvent.eventId],
+      }),
+    );
+    await stores.memoryStore.insert(
+      atom({
+        memoryId: 'mem-other-filter' as MemoryId,
+        content: 'Other scope memory contains protected-needle.',
+        scope: OTHER_SCOPE,
+        sourceEventIds: [otherScopeEvent.eventId],
+      }),
+    );
+
+    const result = await timeline().experienceIndex({
+      agentId: AGENT,
+      scope: SCOPE,
+      asOf: '2026-05-15T00:00:00Z' as IsoTimestamp,
+      contentIncludes: 'protected-needle',
+    });
+
+    expect(result.decision.outcome).toBe('fetch_abstain');
+    expect(result.decision.reasons).toEqual([
+      { kind: 'tuple_incomplete', missingFields: ['experienceAtoms'] },
+    ]);
+    expect(result.entries).toEqual([]);
+  });
+
+  it('fails closed when experience indexing has visible episodes but no visible atoms', async () => {
+    await stores.eventLedger.append(
+      event({
+        eventId: 'evt-empty-experience' as EventId,
+        episodeId: 'conversation-empty-index',
+      }),
+    );
+
+    const result = await timeline().experienceIndex({
+      agentId: AGENT,
+      scope: SCOPE,
+      asOf: '2026-05-15T00:00:00Z' as IsoTimestamp,
+    });
+
+    expect(result.decision.outcome).toBe('fetch_abstain');
+    expect(result.decision.reasons).toEqual([
+      { kind: 'tuple_incomplete', missingFields: ['experienceAtoms'] },
+    ]);
+    expect(result.entries).toEqual([]);
+  });
+
+  it('fails closed before reading stores when experience index visibility is denied', async () => {
+    const result = await new EpisodicTimeline({
+      eventLedger: throwingEventLedger(),
+      memoryStore: throwingMemoryStore(),
+    }).experienceIndex({
+      agentId: AGENT,
+      scope: SCOPE,
+      asOf: '2026-05-15T00:00:00Z' as IsoTimestamp,
+    });
+
+    expect(result.decision.outcome).toBe('fetch_abstain');
+    expect(result.decision.reasons).toEqual([
+      {
+        kind: 'visibility_denied',
+        detail: 'caller has no permitted visibility planes',
+      },
+    ]);
+    expect(result.entries).toEqual([]);
+  });
+
   it('projects memories from a visible episode without leaking hidden or out-of-scope anchors', async () => {
     const visibleEvent = event({
       eventId: 'evt-visible' as EventId,

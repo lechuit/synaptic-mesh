@@ -46,6 +46,8 @@ The timeline only projects what the caller can already see through visibility an
 
 - Extracts explicit episodic anchors from event payloads.
 - Lists visible episodes by conversation, task, decision context, or session.
+- Indexes visible atoms by the conversation, task, session, or decision context
+  events that produced them.
 - Finds memories formed during a visible conversation, task, session, or decision context.
 - Reconstructs belief snapshots at a historical instant from visible atoms plus audited status history.
 - Compares visible belief snapshots at two episode boundaries to show added, removed, persisted, and status-changed beliefs.
@@ -80,12 +82,31 @@ Events can opt into subjective time by carrying an `episodic` object:
 
 Supported `kind` values are `conversation`, `task`, `decision_context`, and `session`.
 
+Use `experienceIndex()` to map visible episodes to visible atoms:
+
+```ts
+const index = await timeline.experienceIndex({
+  agentId,
+  scope: { kind: 'project', projectId: 'demo' },
+  kind: 'conversation',
+  asOf: '2026-05-17T00:00:00Z',
+});
+```
+
+The join is receipt-based: event visibility/scope first, memory visibility,
+scope, status, and freshness second, then source-event matching. By default,
+`experienceIndex()` includes every memory status because it is an audit
+projection; pass `statusesAt: ['verified', 'trusted']` when you only want
+belief-state entries. `contentIncludes` is case-sensitive literal matching and
+only runs as a post-filter inside the already-authorized set.
+
 ## Stability
 
 Public surface for the initial library cycle:
 
 - `EpisodicTimeline`
 - episode catalog/projection/comparison types
+- experience index types
 - belief snapshot and self-state snapshot types
 - continuity brief and continuity change-set types
 - memory timeline types
