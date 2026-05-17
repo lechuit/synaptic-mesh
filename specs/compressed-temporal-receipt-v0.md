@@ -1,6 +1,6 @@
 # Compressed Temporal Receipt v0
 
-Status: protocol spec draft v0 / executable TypeScript baseline exists
+Status: executable compressed-receipt contract for the `0.1.0` release line.
 
 ## Purpose
 
@@ -20,10 +20,10 @@ Optional audit/readability fields:
 CTRID, RB, CHAIN, CONF, PROSE
 ```
 
-The historical fixture line reduced field count from 16 to 11 while preserving
-zero unsafe allows and zero false rejects in local tests. The fixture artifacts
-are no longer part of the active tree; the tuple contract is preserved here as
-the spec surface.
+The historical fixture line reduced field count from 16 to 11 in local tests.
+Those fixture artifacts are no longer part of the active tree, so the active
+release guarantee is the executable tuple contract preserved here and in
+`CompressedReceiptSchema`.
 
 ## Field definitions
 

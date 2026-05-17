@@ -1,6 +1,7 @@
 # Framework Adapter Matrix v0
 
-Status: draft / contract-only / not runtime-ready
+Status: contract map for future framework adapters. Core provider adapters are
+implemented as BYO-client library packages in `0.1.0`.
 
 ## Purpose
 

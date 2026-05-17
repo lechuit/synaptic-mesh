@@ -2,7 +2,7 @@
 
 Subjective time and episodic continuity projections for Aletheia.
 
-> **Status**: Phase 3.1. Episodic timeline projections are live; they read from existing event and memory stores and do not add authority by themselves. Package version is still `0.0.0` until the first release version is chosen.
+> **Status**: `0.1.0` experimental public baseline. Episodic timeline projections are live; they read from existing event and memory stores and do not add authority by themselves.
 
 ## Quickstart
 
@@ -78,7 +78,7 @@ Public surface for the initial library cycle:
 - memory timeline types
 - explicit `EpisodeAnchor` payload convention
 
-Everything else is projection plumbing and may change before the first `0.1.0` release. Episodic outputs are audit context, not permission tokens; callers must still route actions through `tryAct()`.
+Everything else is projection plumbing and may change during the `0.x` line. Episodic outputs are audit context, not permission tokens; callers must still route actions through `tryAct()`.
 
 ## Development
 

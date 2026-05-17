@@ -2,7 +2,7 @@
 
 SQLite-backed implementations of the storage interfaces declared in `@aletheia/core`.
 
-> **Status**: Phase 1.5. Event, memory, conflict, migrations, and audit-history paths are live. Package version is still `0.0.0` until the first release version is chosen.
+> **Status**: `0.1.0` public baseline. Event, memory, conflict, migrations, and audit-history paths are live.
 
 ## Quickstart
 

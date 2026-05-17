@@ -2,7 +2,7 @@
 
 OpenAI Responses-compatible adapter for Aletheia authority-governed memory.
 
-> **Status**: Phase 1.5. Reference OpenAI integration is live as a narrow library adapter. It does not own OAuth, API keys, terminal UX, tools, publication, or provider account state. Package version is still `0.0.0` until the first release version is chosen.
+> **Status**: `0.1.0` public baseline. Reference OpenAI integration is live as a narrow library adapter. It does not own OAuth, API keys, terminal UX, tools, publication, or provider account state.
 
 ## Quickstart
 
@@ -86,7 +86,7 @@ Public surface for the initial library cycle:
 - `ConversationIngestionResult`
 - `AnswerWithRecallResult`
 
-Everything else is adapter plumbing and may change before the first `0.1.0` release.
+Everything else is adapter plumbing and may change during the `0.x` line.
 
 ## Development
 

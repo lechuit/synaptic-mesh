@@ -2,7 +2,7 @@
 
 The core authority engine of Aletheia: memory as governance for LLM agents.
 
-> **Status**: Phase 1.5. The public consumer facade (`AletheiaAuthority`) and strict TypeScript domain/storage/runtime contracts are live. Package version is still `0.0.0` until the first release version is chosen.
+> **Status**: `0.1.0` public baseline. The consumer facade (`AletheiaAuthority`) and strict TypeScript domain/storage/runtime contracts are live.
 
 ## Quickstart
 
@@ -79,7 +79,7 @@ Every call returns a structured decision. Memory text, receipts, model prose, co
 
 ## What this package does
 
-- **Domain schemas and types**: `Receipt`, `CompressedReceipt`, `MemoryAtom`, `MemoryProposal`, `ActionContextPacket`, `Coverage`, `ConflictRecord`, `Decision`, and discriminated unions for status/scope/visibility.
+- **Domain schemas and types**: `HumanReadableReceipt`, `CompressedReceipt`, `MemoryAtom`, `MemoryProposal`, `ActionContextPacket`, `CoverageReceipt`, `ConflictRecord`, `Decision`, and discriminated unions for status/scope/visibility.
 - **Storage interfaces**: `EventLedger`, `MemoryStore`, and `ConflictRegistry`. Implementations live in other packages.
 - **WriteGate**: validates source events, scope, visibility, risk, and conflict boundaries before memory insertion.
 - **Proposal safety guard**: deterministic checks for credential-like claims, permission-bypass policies, and destructive durable instructions before a proposal can become actionable memory.
@@ -130,7 +130,7 @@ Public surface for the initial library cycle:
 - zod schemas and inferred types from `@aletheia/core` or `@aletheia/core/types`
 - decision outcomes and reason shapes
 
-Still pre-`0.1.0`: breaking changes are possible while the release shape is pinned. After `0.1.0`, changes to `propose()`, `recall()`, `tryAct()`, exported schemas, storage interfaces, or decision unions should be treated as semver-relevant.
+In the `0.x` line, breaking changes are possible but semver-relevant: changes to `propose()`, `recall()`, `tryAct()`, exported schemas, storage interfaces, or decision unions should ship with an explicit version bump and migration notes.
 
 Schema changes matter operationally: changing `MemoryAtomSchema` or receipt schemas can affect persisted stores and should be paired with migration/replay guidance.
 

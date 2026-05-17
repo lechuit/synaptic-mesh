@@ -1,7 +1,7 @@
 {
   "name": "aletheia-workspace",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Aletheia — memory as governance for LLM agents. Workspace root.",
   "license": "Apache-2.0",
   "engines": {

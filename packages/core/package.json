@@ -1,6 +1,6 @@
 {
   "name": "@aletheia/core",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Aletheia core — types and runtime for memory as governance in LLM agents.",
   "license": "Apache-2.0",
   "type": "module",

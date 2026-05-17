@@ -42,6 +42,34 @@ Those may return later as separate packages once the library has external users 
 
 ---
 
+## 0.1.0 release baseline (2026-05-17)
+
+The initial public release target is `0.1.0` across six packages:
+
+- `@aletheia/core`
+- `@aletheia/store-sqlite`
+- `@aletheia/adapters-anthropic`
+- `@aletheia/adapters-openai`
+- `@aletheia/dynamics`
+- `@aletheia/episodic`
+
+Measured at release prep:
+
+- **Publishable packages**: 6.
+- **Implementation source**: 50 TypeScript source files, 7,014 LOC under
+  `packages/*/src`, excluding `*.test.ts`.
+- **Executable package tests**: 19 test files, 183 tests.
+- **Live evidence**: Anthropic happy-path and adversarial runs under
+  `evidence/live-llm-e2e/`.
+- **Specs**: `aletheia-memory-authority-v0.md` and
+  `memory-authority-receipt-v0.md` aligned to the executable package surface.
+
+`@aletheia/episodic` is included in `0.1.0` as an experimental public baseline:
+it is useful enough to ship, but its projection APIs remain more likely to
+move during the `0.x` line than the Phase 1 authority spine.
+
+---
+
 ## Phase 0 — Saneamiento (closed)
 
 **Goal**: make the repo legible to outside reviewers and pin the forward direction.
@@ -161,7 +189,8 @@ Measured before Phase 2 work, excluding `dist/`, JSON config, Markdown, and gene
 - [x] Live Anthropic happy-path run with a user-provided API key is captured as release evidence: `evidence/live-llm-e2e/anthropic.json`.
 - [x] Live Anthropic adversarial run is captured as release evidence: `evidence/live-llm-e2e/anthropic-adversarial.json`.
 - [x] Phase 1 package set passes build plus publish dry-run: `@aletheia/core`, `@aletheia/store-sqlite`, `@aletheia/adapters-anthropic`, `@aletheia/adapters-openai`.
-- [ ] Package version strategy is decided (`0.1.0` research-ready vs `0.0.1` dev) before publish.
+- [x] Package version strategy is decided: `0.1.0` is the initial public
+  research-ready release line.
 
 ### Phase 1.4/1.5 library closure status
 

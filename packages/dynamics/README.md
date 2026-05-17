@@ -2,7 +2,7 @@
 
 Deterministic memory dynamics for Aletheia.
 
-> **Status**: Phase 2. Dynamics engine, deterministic sleep-cycle reports, explicit multi-cycle runs, and human-confirmed reconsolidation apply are live. Package version is still `0.0.0` until the first release version is chosen.
+> **Status**: `0.1.0` public baseline. Dynamics engine, deterministic sleep-cycle reports, explicit multi-cycle runs, and human-confirmed reconsolidation apply are live.
 
 ## Quickstart
 
@@ -155,7 +155,7 @@ Public surface for the initial library cycle:
 - `LineageTracer`
 - policy, decision, report, and evidence-provider types
 
-Everything else is lifecycle plumbing and may change before the first `0.1.0` release. Dynamics can change persisted memory status, so hosts should treat policy changes as operationally significant even when TypeScript signatures stay stable.
+Everything else is lifecycle plumbing and may change during the `0.x` line. Dynamics can change persisted memory status, so hosts should treat policy changes as operationally significant even when TypeScript signatures stay stable.
 
 ## Development
 

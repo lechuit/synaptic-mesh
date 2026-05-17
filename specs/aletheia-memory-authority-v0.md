@@ -1,238 +1,332 @@
 # Aletheia Memory Authority v0
 
-Status: protocol spec draft v0 / executable TypeScript baseline exists
+Status: executable TypeScript baseline for the `0.1.0` release line.
 
 ## Purpose
 
-Aletheia is a multi-agent memory authority protocol and TypeScript library. It
-treats memories as claims with evidence, scope, authority, conflict state, and
-effect boundaries, not as stored truth.
+Aletheia is a TypeScript library for memory as governance for LLM agents. It
+does not treat memory as stored truth or as better retrieval. It treats each
+memory as an auditable claim with source, scope, visibility, status, lineage,
+freshness, conflict state, and effect boundary.
 
-## Design maxim
+Design maxim:
 
 > Do not build a memory that remembers more. Build a memory that knows when to distrust itself.
+
+## Public package surface
+
+The `0.1.0` release line is a library surface, not an application:
+
+- `@aletheia/core`: zod domain schemas, storage ports, runtime gates, and the
+  `AletheiaAuthority` facade.
+- `@aletheia/store-sqlite`: SQLite implementation of the core storage ports.
+- `@aletheia/adapters-anthropic`: BYO Anthropic client adapter that drafts
+  proposals and answers after governed recall.
+- `@aletheia/adapters-openai`: BYO OpenAI client adapter with the same boundary.
+- `@aletheia/dynamics`: lifecycle policies, authority decay, sleep-cycle
+  orchestration, recall evidence, and reconsolidation helpers.
+- `@aletheia/episodic`: read-only subjective-time projections over events and
+  memory status history.
+
+Core has no native database dependency and no provider SDK dependency. Storage,
+provider authentication, scheduling, and real-world permission systems are host
+responsibilities.
 
 ## System flow
 
 ```text
-User / Environment
-  ↓
-Event Ledger
-  ↓
-Memory Proposal Layer
-  ↓
-Write Gate
-  ↓
-Private Memory / Team Memory / Global Memory
-  ↓
-Conflict Registry
-  ↓
-Retrieval Router
-  ↓
-Action Context Packet
-  ↓
-Action Proposal / Agent Work
+Host / Provider Adapter
+  |
+  v
+EventLedger.append()                 append-only source evidence
+  |
+  v
+AletheiaAuthority.propose()
+  |
+  v
+WriteGate                            source, visibility, scope, safety, conflict
+  |
+  v
+MemoryStore.insert()                 append-only atom content
+  |
+  +--> ConflictRegistry.record()
+  |
+  v
+AletheiaAuthority.recall()
+  |
+  v
+RetrievalRouter                      permission before ranking
+  |
+  v
+AletheiaAuthority.tryAct()
+  |
+  v
+ActionAuthorizer                     receiver-side action classification
 ```
 
-## Components
+Phase 2 lifecycle work is explicit and host-triggered:
 
-### 1. Event Ledger
-
-Append-only record of raw events: conversations, tool outputs, documents, observations, decisions, and artifact changes.
-
-Rules:
-
-- events are evidence, not memory authority by themselves;
-- summaries never replace original events;
-- rollback/debug requires source events;
-- external/untrusted text is remembered as “source X claims Y”, not as instruction.
-
-### 2. Memory Proposal Layer
-
-Agents propose memory changes rather than writing directly into shared memory.
-
-Recommended proposal fields:
-
-```json
-{
-  "proposalId": "prop_001",
-  "proposedBy": "AgentPlanner",
-  "proposedAt": "2026-05-06T16:42:00Z",
-  "candidateType": "preference | decision | policy | claim | warning | skill | task_state",
-  "claim": "...",
-  "sourceEventIds": ["event_123"],
-  "intendedScope": "local | project | user | team | global",
-  "intendedVisibility": "private:agent | private:user | team:<name> | global:safe | sealed:sensitive",
-  "riskLevel": "low | medium | high",
-  "knownConflicts": []
-}
+```text
+SleepCycleRunner.run()
+  |
+  v
+DynamicsEngine.tick(now)             deterministic plan/apply pass
+  |
+  v
+MemoryStore.transitionStatus()       audited status transition only
 ```
 
-### 3. Write Gate
+Phase 3 subjective-time work is read-only:
 
-The Write Gate decides whether a proposal becomes candidate, verified, trusted, deprecated, rejected, sealed, or human-required.
-
-Checks:
-
-1. SourceCheck — evidence exists and is in scope.
-2. IntentCheck — user/operator intent supports this memory class.
-3. ConflictCheck — contradiction and supersession state is known.
-4. PrivacyCheck — visibility is allowed before ranking/search.
-5. PromotionDecision — determines status and scope.
-
-Default rules:
-
-- low-risk local/team candidates may be cheap;
-- global/trusted memory requires stronger evidence and clearance;
-- durable memory promotion requires explicit human confirmation in this project;
-- sensitive or sealed memory is not retrievable without special authorization.
-
-### 4. MemoryAtom
-
-Smallest actionable memory unit.
-
-Recommended shape:
-
-```json
-{
-  "memoryId": "mem_123",
-  "memoryType": "observation | claim | preference | policy | decision | task_state | warning | skill",
-  "content": "...",
-  "sourceAgentId": "AgentReviewer",
-  "sourceEventIds": ["event_901"],
-  "sourceMemoryIds": [],
-  "scope": { "kind": "project", "projectId": "example" },
-  "visibility": "team:research",
-  "status": "candidate | verified | trusted | deprecated | rejected | sealed | human_required",
-  "scores": {
-    "confidence": 0.0,
-    "evidence": 0.0,
-    "authority": 0.0,
-    "freshness": 0.0,
-    "stability": 0.0,
-    "consensus": 0.0
-  },
-  "validFrom": "2026-05-06T00:00:00Z",
-  "validUntil": null,
-  "lastConfirmedAt": null,
-  "links": [
-    { "relation": "supports | contradicts | supersedes | derived_from", "targetMemoryId": "mem_045" }
-  ]
-}
+```text
+EpisodicTimeline                     episodes, beliefsAt, memoryTimeline, selfState
 ```
 
-No single score is authoritative. `confidence` cannot override weak evidence, stale freshness, wrong scope, or missing permission.
+## Non-negotiable invariants
 
-### 5. Memory Planes
+1. Fail closed: unverifiable authority returns `fetch_abstain`, `ask_human`,
+   `deny`, or `block_local`.
+2. Permission before semantics: visibility and scope filtering happen before
+   type/topic filtering, scoring, ranking, or model prose.
+3. Receipts are evidence, not permission tokens. The receiver always
+   re-classifies the proposed action.
+4. Sensitive actions always return `ask_human`.
+5. Unresolved conflicts block action and local use.
+6. Confidence, consensus, CHAIN labels, and prose are never authority.
+7. No semantic retrieval, embeddings, or vector store.
+8. Content, scope, visibility, and links are append-only. Status changes go
+   through `transitionStatus()` and must be auditable.
 
-| Plane | Meaning |
-|---|---|
-| `private:agent` | Usable only by one agent. |
-| `private:user` | User-private, highly restricted. |
-| `team:<team>` | Shared within a named team. |
-| `global:safe` | Safe cross-agent memory after strong checks. |
-| `sealed:sensitive` | Not retrievable without special authorization. |
-| `ephemeral` | Expires or is never promoted. |
+## Domain objects
 
-Hard rule: permission filtering happens before semantic ranking.
+### Event
 
-### 6. Conflict Registry
+An `Event` is raw source evidence: conversation text, tool output, document
+observation, model draft, operator decision, or host fact. Events are
+append-only. They do not become authority by themselves.
 
-Contradictions are first-class records, not overwritten summaries.
+Event reads are visibility-filtered. If a source event is missing, invisible,
+or outside the proposal scope, `WriteGate` refuses to create actionable memory.
 
-Recommended conflict record:
+### MemoryProposal
 
-```json
-{
-  "conflictId": "conf_001",
-  "topic": "...",
-  "scope": { "kind": "project", "projectId": "example" },
-  "claims": [
-    { "memoryId": "mem_a", "value": "A", "authority": 0.7, "freshness": "current" },
-    { "memoryId": "mem_b", "value": "B", "authority": 0.9, "freshness": "current" }
-  ],
-  "status": "unresolved | resolved | superseded | requires_human",
-  "decisionPolicy": "surface_conflict | prefer_latest_authoritative | ask_human | abstain"
-}
-```
+A `MemoryProposal` is an agent or adapter request to store a claim. It includes:
 
-Rules:
+- proposer identity and timestamp;
+- memory type and claim text;
+- source event ids;
+- intended scope and visibility;
+- risk level;
+- known conflicts.
 
-- unresolved current-source conflicts preserve candidate claims;
-- summaries must not hide conflicts;
-- later restrictive events override older optimistic receipts;
-- tombstones/rejections remain non-actionable through summaries.
+Proposals are not memory. They must pass the `WriteGate`.
 
-### 7. Retrieval Router
+### MemoryAtom
 
-Retrieval order:
+A `MemoryAtom` is the smallest actionable memory unit. It includes:
 
-1. Permission and visibility.
-2. Source/evidence availability.
-3. Freshness and temporal precedence.
-4. Scope and promotion boundary.
-5. Conflict/tombstone/rejection state.
-6. Decision impact and risk.
-7. Semantic relevance.
+- typed content;
+- source event ids and optional source memory ids;
+- scope and visibility;
+- status;
+- scores;
+- validity window;
+- lineage links such as `contradicts`, `supports`, `derived_from`, and
+  `supersedes`.
 
-Outputs:
+Scores are routing metadata. They do not grant permission. A high authority
+score cannot override stale validity, wrong scope, missing visibility,
+candidate status, or unresolved conflict.
 
-- `allow_local_shadow_packet`;
-- `conflict_boundary_packet`;
-- `fetch_more`;
-- `ask_human`;
-- `abstain`;
-- `deny`.
+### Status
 
-### 8. Action Context Packet
+`candidate` means recorded but not actionable by default. `verified` and
+`trusted` are the normal recall statuses. `sealed`, `human_required`,
+`deprecated`, and `rejected` are non-actionable in ordinary recall/action paths.
 
-A handoff packet for the acting agent. It must include:
+`trusted` and `sealed` are human/operator-level states. The dynamics package
+does not automatically promote to them.
 
-- allowed action boundary;
-- source references;
-- freshness;
-- conflicts/gaps;
-- forbidden effects;
-- promotion boundary;
-- receiver instructions for fail-closed behavior.
+## WriteGate contract
 
-It is not a permission token; the receiver still classifies the proposed action.
+`WriteGate` and `AletheiaAuthority.propose()` implement proposal-to-atom
+governance.
 
-## Safety invariants
+Order of checks:
 
-1. Memory claims are proposals/evidence, not authority by themselves.
-2. Permission filtering precedes semantic ranking.
-3. Local/shadow continuity does not imply durable/global memory promotion.
-4. Relevance does not authorize action.
-5. Sender labels do not authorize action.
-6. Later restrictive events override older optimistic receipts.
-7. Sensitive effects ask human.
-8. Missing or ambiguous authority fetches/abstains.
-9. Summaries must carry receipts or trigger source fetch.
+1. Parse the proposal through zod.
+2. Resolve permitted visibilities for the proposer.
+3. Verify requested write visibility is allowed.
+4. Load all source events under the same visibility boundary.
+5. Verify each source event is in the proposal scope.
+6. Evaluate deterministic proposal safety.
+7. Query conflict state.
+8. Build and zod-validate a memory atom.
+9. Insert the atom or return a structured refusal.
 
-## Allowed local use now
+The proposal safety guard can deny or escalate claims that look like secrets,
+permission-bypass policies, or destructive durable instructions. It is not a
+general DLP system and never grants authority.
 
-- local paper specs;
-- local fixtures;
-- local Node simulations;
-- local package/index/docs;
-- local shadow implementation planning after specs/repro manifest.
+Human-required or conflicted proposals may be stored as non-actionable audit
+atoms. They are not returned as ordinary actionable recall.
 
-## Not authorized
+## Storage contract
 
-- runtime parser/enforcement;
-- config changes;
-- automatic durable memory writes or promotions;
-- external sends/publication;
-- approval bypass;
-- using receipts as real permission tokens;
-- canary/enforcement/production/L2+ use.
+`@aletheia/core` defines storage ports only:
 
-## Open questions before implementation
+- `EventLedger`;
+- `MemoryStore`;
+- `ConflictRegistry`.
 
-1. Conflict-merge semantics for contradictory receipts.
-2. Source spoofing and nested handoff validation.
-3. Human-required effect split: prepare vs send.
-4. Ordinary workload overhead and ceremony fatigue.
-5. Scaling over large messy memory stores.
-6. UX of Action Context Packets.
+`@aletheia/store-sqlite` implements those ports with embedded idempotent
+migrations, WAL, foreign keys, zod decode on read, append-only inserts, and
+status/history tables.
+
+`MemoryStore.query()` is a low-level port and can intentionally omit
+`validAt` for scanners such as dynamics. Agent-facing recall must pass the
+current `validAt` through `RetrievalRouter`.
+
+## RetrievalRouter contract
+
+`RetrievalRouter` and `AletheiaAuthority.recall()` implement authority-first
+recall. This is not semantic search.
+
+Order of checks:
+
+1. Parse the query.
+2. Resolve caller visibility.
+3. Fail closed if a topic query is supplied without a host exact matcher.
+4. Query the store by permitted visibility, scope, status, and `validAt=now`.
+5. Apply optional memory-type and exact topic filters.
+6. Collapse superseded atoms from the result set.
+7. Apply optional authority scoring only within the already-authorized set.
+8. Query unresolved or human-required conflicts.
+9. Return `allow_local_shadow`, `conflict_boundary_packet`, or
+   `fetch_abstain`.
+
+The optional authority scorer is a ranking hook, not a permission hook. It must
+not call embeddings, perform semantic retrieval, or use confidence/prose as
+authority.
+
+## ActionAuthorizer contract
+
+`ActionAuthorizer` and `AletheiaAuthority.tryAct()` are receiver-side guards.
+They re-check action authority immediately before a host uses memory for an
+effect.
+
+Order of checks:
+
+1. Parse action and action context.
+2. Sensitive action classes return `ask_human`.
+3. Unknown or non-local actions return `deny` or `ask_human`.
+4. Empty citations fail closed.
+5. Resolve actor visibility.
+6. Reload cited atoms under visibility filtering.
+7. Verify scope and current validity.
+8. Verify status is actionable.
+9. Query unresolved or human-required conflicts.
+10. Return `allow_local_shadow` only after all checks pass.
+
+The action context packet is not a permission token. It is evidence for the
+receiver algorithm.
+
+## Dynamics contract
+
+`@aletheia/dynamics` implements memory-as-process without introducing a daemon
+or hidden mutation.
+
+### Authority decay
+
+`decayedAuthority(atom, now, policy)` is pure. It never mutates the atom and
+never changes status. It returns an effective ranking score:
+
+- `candidate` decays quickly;
+- `verified` decays moderately;
+- `trusted` decays slowly;
+- `sealed` keeps its stored authority;
+- `deprecated`, `rejected`, and `human_required` score zero.
+
+Decay can influence ranking after hard filters. It never grants permission.
+
+### Lifecycle tick
+
+`DynamicsEngine.tick(input)` scans visible atoms in a scope. It intentionally
+does not pass `validAt` to `MemoryStore.query()` because expired atoms must
+remain visible to the lifecycle pass so they can be deprecated.
+
+The engine can run in dry-run mode or apply mode. Apply mode mutates only
+through `MemoryStore.transitionStatus()` using the configured policy actor.
+
+Allowed automatic transitions are operational:
+
+- stale or expired memories can become `deprecated`;
+- candidates with explicit source-consistent recall evidence can become
+  `verified`;
+- unresolved conflicts keep candidates non-actionable and can deprecate
+  already verified/trusted atoms.
+
+Automatic dynamics do not promote to `trusted` or `sealed`.
+
+### Reconsolidation
+
+Reconsolidation does not overwrite. It plans a successor atom with a
+`supersedes` link to the prior atom. The successor starts as `candidate`.
+
+`ReconsolidationPlanner` is read-only. `ReconsolidationApplier` requires
+explicit human confirmation before inserting the successor and deprecating the
+prior atom. If successor insertion fails, the prior atom is not deprecated.
+
+### Sleep cycle
+
+`SleepCycleRunner` is an orchestrator, not a scheduler. The host supplies each
+cycle input and logical timestamp. Given the same store state, policy, and
+timestamp, the reported decisions are deterministic.
+
+## Episodic contract
+
+`@aletheia/episodic` implements subjective-time projections over explicit
+event anchors and memory status history. It is read-only.
+
+It can:
+
+- list visible episodes;
+- project memories for one episode;
+- reconstruct beliefs at a historical instant;
+- compare two episodes;
+- return memory status timelines;
+- produce a self-state snapshot grouped into beliefs, uncertain, distrusted,
+  and human-required memory.
+
+Episode membership is audit context, not permission. Hosts still need governed
+recall and `tryAct()` before acting.
+
+## Provider adapter contract
+
+Provider adapters are BYO-client. Aletheia does not own OAuth flows, API keys,
+CLI sessions, or provider accounts.
+
+Adapters may ask an LLM to draft memory proposals or answer using recalled
+context. All proposal writes still go through `AletheiaAuthority.propose()`.
+All answer-context retrieval still goes through governed recall. Model prose is
+never authority.
+
+## Out of scope for v0
+
+- OAuth flows, CLI UX, MCP server, daemon, watcher, or background scheduler.
+- Production authorization service.
+- Secret scanning guarantees beyond the deterministic proposal safety guard.
+- Semantic retrieval, embeddings, vector stores, or model-ranked recall.
+- Automatic promotion to `trusted` or `sealed`.
+- Runtime enforcement outside the decisions returned by the library.
+
+## Open design questions
+
+1. How should richer host evidence prove that repeated recall was
+   source-consistent?
+2. Which reconsolidation cases should remain human-only after `0.1.x`?
+3. How much receipt detail can be compressed without over-abstaining normal
+   developer workflows?
+4. How should framework-specific action vocabularies map into the fixed
+   receiver-side action classes?
+5. Which API shapes should be stabilized before `1.0.0`?

@@ -1,66 +1,124 @@
 # Memory Authority Receipt v0
 
-Status: public spec draft v0 / not runtime-ready  
-Generated: 2026-05-06T16:42Z
+Status: executable receipt contract for the `0.1.0` release line.
 
 ## Purpose
 
-A Memory Authority Receipt is a compact evidence/authority contract attached to memory-derived context. It tells a receiving agent what source, status, boundary, lineage, and action constraints survived transformation.
+A Memory Authority Receipt is a compact evidence contract attached to
+memory-derived context. It preserves the source, freshness, status, lineage,
+and effect boundary that survived transformation. Scope is represented by the
+compressed receipt and action context packet surfaces, not by every
+human-readable receipt field.
 
-It is **not** a permission token and **not** runtime enforcement. It is a local protocol object that receivers must check before treating memory-derived content as permission, readiness, or durable truth.
+It is not a permission token. A receiver must always classify the proposed
+action independently before acting.
 
 ## Problem addressed
 
-Agent summaries can launder authority. A source may say “local-only”, “stale”, “denied”, “human required”, or “do not promote”, but a later summary may preserve the useful text and drop the boundary. The receipt preserves the boundary.
+Summaries can launder authority. A source may be stale, local-only, denied,
+human-required, or non-promotable, while a later summary preserves only the
+useful prose. Receipts keep the boundary attached to the claim.
 
-## Receipt classes
+## Implemented receipt classes
 
-| Class | Use |
-|---|---|
-| Human-readable receipt | Explicit markdown/YAML block for audits and handoffs. |
-| Compact temporal receipt | Short tuple for cross-source compressed handoff. |
-| Coverage receipt | Shows which high-boundary/must-surface claims were retrieved or missing. |
-| Handoff receipt | Root/local handoff authority boundary between cycles or agents. |
+| Class | TypeScript schema | Use |
+|---|---|---|
+| Human-readable receipt | `HumanReadableReceiptSchema` | Verbose audit and handoff form. |
+| Compressed temporal receipt | `CompressedReceiptSchema` | Compact cross-source tuple. |
+| Coverage receipt | `CoverageReceiptSchema` | Retrieved vs required coverage. |
+| Action context packet | `ActionContextPacketSchema` | Receiver-side action context. |
 
-## Canonical human-readable fields v0
+The zod schemas in `@aletheia/core` are the executable source of truth for the
+library. This document explains the semantics those schemas preserve.
 
-```yaml
-sourceArtifactId: <source evidence identity>
-sourceArtifactPath: <path or lane to source evidence>
-producedAt: <ISO timestamp>
-receiverFreshness: <current|stale|unknown>
-targetStatus: <candidate|partial|experiment_ready|pass_closed|blocked|requires_human>
-readinessBoundary: <paper_only|fixture_only|research_ready_not_implementation_ready|implementation_ready>
-effectBoundary: <local_only|no_runtime_effect|external_send_requires_human|config_change_forbidden>
-promotionBoundary: <no_memory_write|no_durable_promotion|human_confirmation_required>
-lineageCompleteness: <complete|partial|unknown>
-riskTier: <low_local|medium_local|sensitive>
-nextAllowedAction:
-  action: <specific verb>
-  target: <exact next target>
-  successorOf: <source target>
-  redoAllowed: <true|false>
-validation: <how the claim was checked>
-safetyResult: <local/shadow/no external effects status>
+## Human-readable receipt fields
+
+Required fields:
+
+- `sourceArtifactId`;
+- `sourceArtifactPath`;
+- `producedAt`;
+- `receiverFreshness`;
+- `targetStatus`;
+- `readinessBoundary`;
+- `effectBoundary`;
+- `promotionBoundary`;
+- `lineageCompleteness`;
+- `riskTier`;
+- `nextAllowedAction`;
+- `validation`;
+- `safetyResult`.
+
+`nextAllowedAction` must be exact. Generic instructions such as "continue" are
+not authority.
+
+## Compressed temporal receipt fields
+
+Authority-critical tuple keys:
+
+```text
+SRC, SRCPATH, SRCDIGEST, PROD, FRESH, SCOPE, PB, NO, LRE, TOK, ACT
 ```
+
+Optional audit/readability keys:
+
+```text
+CTRID, RB, CHAIN, CONF, PROSE
+```
+
+The optional fields never authorize by themselves. In particular, `CONF`,
+`CHAIN`, and `PROSE` are audit context only.
 
 ## Authority-critical semantics
 
 | Field family | Required meaning |
 |---|---|
-| Source identity | Which source artifact/lane produced the claim. |
-| Source path/lane | The source must be fetchable or registry-bound, not prose-only. |
-| Produced/freshness | Currentness must be explicit; stale/unknown fails closed. |
-| Status/readiness | A candidate or research-ready claim is not implementation-ready. |
-| Scope/effect boundary | Local/shadow permission does not authorize external/runtime/config/publication effects. |
-| Promotion boundary | Local continuity does not authorize durable/global memory promotion. |
+| Source identity | Which source artifact, event, or lane produced the claim. |
+| Source path/lane | Source must be fetchable or registry-bound, not prose-only. |
+| Produced/freshness | Currentness must be explicit; stale or unknown fails closed. |
+| Status/readiness | Candidate or research-ready is not action authority. |
+| Scope/effect boundary | Local/shadow permission does not authorize nonlocal effects. |
+| Promotion boundary | Local continuity does not authorize durable/global promotion. |
 | Lineage completeness | Partial/unknown lineage cannot promote or authorize sensitive action. |
-| Risk tier | Helps route, but does not override effect/promotion boundaries. |
-| Next allowed action | Must be exact; generic “continue” is not authority. |
+| Risk tier | Helps routing; does not override hard boundaries. |
+| Proposed action | Must be classified by the receiver. |
+
+## Receiver algorithm
+
+1. Parse the receipt or packet.
+2. Verify required authority fields are present and non-ambiguous.
+3. Verify source identity and source path/lane when available.
+4. Require current freshness.
+5. Check status/readiness boundary.
+6. Check effect and promotion boundaries.
+7. Check lineage completeness.
+8. Interpret `NO` as a prohibition lane, not a grant.
+9. Independently classify the proposed action.
+10. Decide:
+    - `allow_local_shadow` only for complete, current, local, non-sensitive
+      action boundaries;
+    - `fetch_abstain` for missing, stale, invisible, incomplete, or ambiguous
+      evidence;
+    - `ask_human` for sensitive, external, runtime, config, publication,
+      durable-promotion, delete, production, or unknown actions.
+
+## Fail-closed requirements
+
+A receiver must fail closed when:
+
+- source artifact is missing, unknown, invisible, or prose-only;
+- source path/lane does not match expectations;
+- freshness is stale or unknown;
+- a later restrictive event exists or cannot be ruled out;
+- boundary is partial, local-only but action is nonlocal, or promotion is
+  human-required;
+- receipt fields are truncated, duplicated, or missing;
+- action is sensitive or unknown;
+- sender labels claim safety without receiver-side classification.
 
 ## Non-authority fields
 
-The following can help auditability, but never authorize by themselves:
+The following can help auditability but never authorize by themselves:
 
 - confidence;
 - consensus;
@@ -71,49 +129,27 @@ The following can help auditability, but never authorize by themselves:
 - summary quality;
 - model self-assessment.
 
-## Receiver algorithm v0
+## Relationship to `AletheiaAuthority`
 
-1. Parse the receipt.
-2. Verify required fields are present.
-3. Verify source identity/path/lane when available.
-4. Check freshness/currentness.
-5. Check status/readiness.
-6. Check effect and promotion boundaries.
-7. Check lineage completeness.
-8. Classify proposed action independently.
-9. Decide:
-   - `allow_local_shadow` only for complete, current, local L0/L1, non-sensitive actions;
-   - `fetch_abstain` for missing/stale/unknown/incomplete evidence;
-   - `ask_human` for sensitive, external, runtime, config, publication, durable-memory, delete, canary/enforcement, production, L2+, or unknown actions.
+`AletheiaAuthority.propose()` creates memory only after source, visibility,
+scope, safety, and conflict checks. `AletheiaAuthority.recall()` returns memory
+only after visibility, scope, status, freshness, and conflict checks.
+`AletheiaAuthority.tryAct()` re-checks cited memory and action class.
 
-## Fail-closed requirements
+Receipts and packets carry evidence between those steps. They never bypass the
+steps.
 
-A receiver must fail closed when:
+## Boundary
 
-- source artifact is missing, unknown, or prose-only;
-- source path/lane does not match registry expectations;
-- freshness is stale or unknown;
-- later restrictive event exists or is ambiguous;
-- boundary is partial, local-only but action is nonlocal, or promotion is human-required;
-- receipt fields are truncated or missing;
-- action is sensitive or unknown;
-- sender labels claim safety without receiver-side classification.
-
-## Local-only approval boundary
-
-This spec permits only local research interpretation. It does not authorize implementation, enforcement, runtime hooks, config changes, durable memory writes, external sends, publication, deletion, or paused-project work.
-
-## Known repairs incorporated
-
-- Sender labels are not authority; receiver classifies action independently.
-- Exact boundary checks are required before local allow.
-- Forbidden words inside `NO` are prohibitions, not grants.
-- Missing blockers in retrieval are absence-of-retrieval, not permission.
+This spec describes receipt semantics in the library. It does not authorize
+provider account access, host config changes, external sends, deletion,
+production deployment, or runtime enforcement outside the structured decisions
+returned by Aletheia APIs.
 
 ## Open questions
 
-1. How small can a receipt be before ordinary work over-abstains?
-2. How should conflicting receipts merge?
-3. How should prepare-vs-send external effects be represented?
-4. How should source spoofing be detected across nested handoffs?
-5. What usability threshold avoids ceremony fatigue?
+1. How should conflicting receipts merge without hiding unresolved conflict?
+2. How compact can a receipt be before ordinary work over-abstains?
+3. How should source spoofing be detected across nested handoffs?
+4. How should prepare-vs-send human-required effects be represented?
+5. Which receipt fields should become stable wire format before `1.0.0`?

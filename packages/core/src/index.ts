@@ -12,7 +12,7 @@
  */
 
 export const PACKAGE_NAME = '@aletheia/core';
-export const PACKAGE_VERSION = '0.0.0';
+export const PACKAGE_VERSION = '0.1.0';
 
 // Domain types and schemas — the public protocol surface.
 export * from './types/index.js';

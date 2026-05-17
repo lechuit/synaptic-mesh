@@ -13,8 +13,8 @@ authority cannot be verified.
 
 ## Status
 
-This repo is in **Phase 3.1: executable authority memory with dynamics and
-episodic continuity**.
+This repo is preparing the **0.1.0 public library release**: executable
+authority memory with dynamics and episodic continuity.
 
 What exists today:
 
@@ -32,10 +32,9 @@ What exists today:
 
 What does **not** exist yet:
 
-- published npm packages;
-- a stable version strategy beyond `0.0.0`;
 - production-runtime integration;
-- a CLI, MCP server, daemon, watcher, or OAuth flow.
+- a CLI, MCP server, daemon, watcher, or OAuth flow;
+- `1.0.0` API stability.
 
 ## Novel Claim
 
