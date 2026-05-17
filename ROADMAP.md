@@ -146,6 +146,12 @@ Built on top of Phases 1 + 2.
 - [x] Episode comparison reports added, removed, persisted, and status-changed beliefs across session boundaries.
 - [x] Restart self-state reconstruction categorizes visible atoms into beliefs, uncertain, distrusted, and human-required memory.
 
+### Phase 3.1 status
+
+- [x] Visible episode catalog lists conversation/task/session/decision-context anchors after visibility and scope filtering.
+- [x] Permission-guarded memory timeline exposes audited status history only after the atom is visible and in scope.
+- [x] Episode comparison semantics are explicit: compare visible belief snapshots at episode boundaries, not only atoms born inside each episode.
+
 ### Scope
 
 - Atoms indexed not just by wall-clock time but by the agent's **experiential timeline**: which conversation, which task, which decision context they emerged from.

@@ -12,7 +12,7 @@ This is not RAG. It is not semantic memory. It is the substrate underneath both.
 
 ## Status (honest)
 
-This repo is in **Phase 3.0: executable authority memory with dynamics and episodic projections**. What exists today:
+This repo is in **Phase 3.1: executable authority memory with dynamics and episodic continuity**. What exists today:
 
 - a paper draft (`paper/aletheia-paper-v0.md`)
 - protocol specifications (`specs/`)
@@ -23,7 +23,7 @@ This repo is in **Phase 3.0: executable authority memory with dynamics and episo
 - `@aletheia/core`: strict TypeScript authority types, storage interfaces, WriteGate, RetrievalRouter, and ActionAuthorizer
 - `@aletheia/store-sqlite`: SQLite-backed event, memory, and conflict stores
 - `@aletheia/dynamics`: deterministic lifecycle dynamics and explicit sleep-cycle reports
-- `@aletheia/episodic`: subjective-time projections, historical belief snapshots, and restart self-state reconstruction
+- `@aletheia/episodic`: subjective-time projections, episode catalog, historical timelines, and restart self-state reconstruction
 
 What does **not** exist yet:
 

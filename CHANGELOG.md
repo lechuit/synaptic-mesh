@@ -20,6 +20,7 @@ Releases are listed newest first.
 - Added `ReconsolidationPlanner`, a planner-only Phase 2.2 surface that drafts candidate successors with `supersedes` lineage and planned deprecation transitions without inserting or mutating memory.
 - Added explicit multi-cycle sleep runs: hosts provide each cycle clock/input; Aletheia aggregates deterministic reports without a daemon or hidden scheduler.
 - Added `@aletheia/episodic`, a Phase 3.0 projection package for explicit episodic anchors, historical belief snapshots from status history, episode comparisons, and restart self-state reconstruction.
+- Extended `@aletheia/episodic` with a visible episode catalog and permission-guarded single-memory timelines for audited status history.
 
 ---
 

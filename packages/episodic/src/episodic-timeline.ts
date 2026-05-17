@@ -12,9 +12,11 @@ import {
   type MemoryStatus,
   type MemoryStore,
   type Scope,
+  type StatusTransitionReason,
   type Visibility,
   type VisibilityPolicy,
   decision,
+  scopeKey,
 } from '@aletheia/core';
 
 export type EpisodeKind = 'conversation' | 'task' | 'decision_context' | 'session';
@@ -42,10 +44,29 @@ export interface EpisodeSummary {
   readonly memoryIds: readonly MemoryId[];
 }
 
+export interface EpisodeCatalog {
+  readonly decision: Decision;
+  readonly episodes: readonly EpisodeSummary[];
+  readonly events: readonly EpisodeEvent[];
+}
+
 export interface MemoryStatusAt {
   readonly memoryId: MemoryId;
   readonly status: MemoryStatus;
   readonly at: IsoTimestamp;
+}
+
+export interface MemoryTimelineEntry {
+  readonly at: IsoTimestamp;
+  readonly fromStatus: MemoryStatus | null;
+  readonly toStatus: MemoryStatus;
+  readonly reason: StatusTransitionReason;
+}
+
+export interface MemoryTimeline {
+  readonly decision: Decision;
+  readonly atom: MemoryAtom | null;
+  readonly history: readonly MemoryTimelineEntry[];
 }
 
 export interface EpisodeProjection {
@@ -109,6 +130,13 @@ export interface EpisodeQuery extends EpisodicQueryBase {
   readonly asOf?: IsoTimestamp;
 }
 
+export interface EpisodeCatalogQuery extends EpisodicQueryBase {
+  readonly kind?: EpisodeKind;
+  readonly since?: IsoTimestamp;
+  readonly until?: IsoTimestamp;
+  readonly limit?: number;
+}
+
 export interface BeliefsAtQuery extends EpisodicQueryBase {
   readonly asOf: IsoTimestamp;
   readonly statusesAt?: readonly MemoryStatus[];
@@ -124,6 +152,11 @@ export interface CompareEpisodesQuery extends EpisodicQueryBase {
 
 export interface SelfStateQuery extends EpisodicQueryBase {
   readonly at?: IsoTimestamp;
+}
+
+export interface MemoryTimelineQuery extends EpisodicQueryBase {
+  readonly memoryId: MemoryId;
+  readonly until?: IsoTimestamp;
 }
 
 const ALL_STATUSES: readonly MemoryStatus[] = [
@@ -149,6 +182,44 @@ export class EpisodicTimeline {
   constructor(private readonly options: EpisodicTimelineOptions) {
     this.visibilityPolicy = options.visibilityPolicy ?? DENY_ALL_VISIBILITY_POLICY;
     this.clock = options.clock ?? SYSTEM_CLOCK;
+  }
+
+  async listEpisodes(query: EpisodeCatalogQuery): Promise<EpisodeCatalog> {
+    const emittedAt = this.clock.now();
+    const permitted = this.permittedFor(query.agentId);
+    if (permitted.length === 0) {
+      return emptyCatalog(
+        failClosed('visibility_denied', 'caller has no permitted visibility planes', emittedAt),
+      );
+    }
+
+    const events = await this.loadAnchoredEvents(query, permitted);
+    const matchingEvents =
+      query.kind !== undefined
+        ? events.filter((event) => event.anchor.kind === query.kind)
+        : events;
+    const episodes = summarizeEpisodes(matchingEvents);
+    const limitedEpisodes = query.limit !== undefined ? episodes.slice(0, query.limit) : episodes;
+    const limitedEpisodeIds = new Set(limitedEpisodes.map((episode) => episode.episodeId));
+    const limitedEvents = matchingEvents.filter((event) =>
+      limitedEpisodeIds.has(event.anchor.episodeId),
+    );
+
+    if (limitedEpisodes.length === 0) {
+      return emptyCatalog(failClosed('tuple_incomplete', 'episodeAnchors', emittedAt));
+    }
+
+    return {
+      decision: decision(
+        'allow_local_shadow',
+        [{ kind: 'all_checks_passed', citedMemoryIds: [] }],
+        [],
+        [],
+        emittedAt,
+      ),
+      episodes: limitedEpisodes,
+      events: limitedEvents,
+    };
   }
 
   async episodeMemories(query: EpisodeQuery): Promise<EpisodeProjection> {
@@ -372,6 +443,56 @@ export class EpisodicTimeline {
     };
   }
 
+  async memoryTimeline(query: MemoryTimelineQuery): Promise<MemoryTimeline> {
+    const emittedAt = this.clock.now();
+    const permitted = this.permittedFor(query.agentId);
+    if (permitted.length === 0) {
+      return emptyMemoryTimeline(
+        failClosed('visibility_denied', 'caller has no permitted visibility planes', emittedAt),
+      );
+    }
+
+    const atom = await this.options.memoryStore.get(query.memoryId, permitted);
+    if (atom === null) {
+      return emptyMemoryTimeline(
+        failClosed('source_check_failed', 'memory is missing or not visible', emittedAt),
+      );
+    }
+
+    if (scopeKey(atom.scope) !== scopeKey(query.scope)) {
+      return emptyMemoryTimeline(
+        failClosed(
+          'scope_outside_boundary',
+          scopeKey(query.scope),
+          emittedAt,
+          scopeKey(atom.scope),
+        ),
+      );
+    }
+
+    const fullHistory = await this.options.memoryStore.statusHistory(atom.memoryId);
+    const until = query.until;
+    const history =
+      until !== undefined ? fullHistory.filter((entry) => entry.at <= until) : fullHistory;
+    if (history.length === 0) {
+      return emptyMemoryTimeline(
+        failClosed('tuple_incomplete', `statusHistory:${atom.memoryId}`, emittedAt),
+      );
+    }
+
+    return {
+      decision: decision(
+        'allow_local_shadow',
+        [{ kind: 'all_checks_passed', citedMemoryIds: [atom.memoryId] }],
+        [atom.memoryId],
+        [],
+        emittedAt,
+      ),
+      atom,
+      history,
+    };
+  }
+
   private permittedFor(agentId: AgentId): readonly Visibility[] {
     return this.visibilityPolicy.permittedVisibilitiesForAgent(agentId);
   }
@@ -380,14 +501,27 @@ export class EpisodicTimeline {
     query: EpisodicQueryBase & { readonly episodeId: string },
     permitted: readonly Visibility[],
   ): Promise<readonly EpisodeEvent[]> {
+    const events = await this.loadAnchoredEvents(query, permitted);
+    return events.filter((event) => event.anchor.episodeId === query.episodeId);
+  }
+
+  private async loadAnchoredEvents(
+    query: EpisodicQueryBase & {
+      readonly since?: IsoTimestamp;
+      readonly until?: IsoTimestamp;
+    },
+    permitted: readonly Visibility[],
+  ): Promise<readonly EpisodeEvent[]> {
     const events = await this.options.eventLedger.query({
       scope: query.scope,
       permittedVisibilities: permitted,
+      ...(query.since !== undefined ? { since: query.since } : {}),
+      ...(query.until !== undefined ? { until: query.until } : {}),
     });
     return events
       .map((event) => {
         const anchor = episodeAnchorFromEvent(event);
-        return anchor !== null && anchor.episodeId === query.episodeId ? { event, anchor } : null;
+        return anchor !== null ? { event, anchor } : null;
       })
       .filter((event): event is EpisodeEvent => event !== null);
   }
@@ -461,17 +595,42 @@ export function episodeAnchorFromEvent(event: Event): EpisodeAnchor | null {
 }
 
 function failClosed(
-  kind: 'tuple_incomplete' | 'visibility_denied',
+  kind: 'tuple_incomplete' | 'visibility_denied' | 'source_check_failed' | 'scope_outside_boundary',
   detail: string,
   emittedAt: IsoTimestamp,
+  allowedScope?: string,
 ): Decision {
   return decision(
     'fetch_abstain',
-    [kind === 'tuple_incomplete' ? { kind, missingFields: [detail] } : { kind, detail }],
+    [failClosedReason(kind, detail, allowedScope)],
     [],
     [],
     emittedAt,
   );
+}
+
+function failClosedReason(
+  kind: 'tuple_incomplete' | 'visibility_denied' | 'source_check_failed' | 'scope_outside_boundary',
+  detail: string,
+  allowedScope?: string,
+) {
+  if (kind === 'tuple_incomplete') return { kind, missingFields: [detail] };
+  if (kind === 'scope_outside_boundary') {
+    return {
+      kind,
+      requestedScope: detail,
+      allowedScope: allowedScope ?? 'unknown',
+    };
+  }
+  return { kind, detail };
+}
+
+function emptyCatalog(decisionValue: Decision): EpisodeCatalog {
+  return {
+    decision: decisionValue,
+    episodes: [],
+    events: [],
+  };
 }
 
 function emptyEpisodeProjection(decisionValue: Decision): EpisodeProjection {
@@ -515,6 +674,38 @@ function emptySelfState(at: IsoTimestamp, decisionValue: Decision): SelfStateSna
     humanRequired: [],
     statusHistory: [],
   };
+}
+
+function emptyMemoryTimeline(decisionValue: Decision): MemoryTimeline {
+  return {
+    decision: decisionValue,
+    atom: null,
+    history: [],
+  };
+}
+
+function summarizeEpisodes(events: readonly EpisodeEvent[]): readonly EpisodeSummary[] {
+  const grouped = new Map<string, EpisodeEvent[]>();
+  for (const event of events) {
+    const key = `${event.anchor.kind}:${event.anchor.episodeId}`;
+    const existing = grouped.get(key);
+    if (existing !== undefined) {
+      existing.push(event);
+    } else {
+      grouped.set(key, [event]);
+    }
+  }
+
+  return [...grouped.values()]
+    .map((episodeEvents) =>
+      summarizeEpisode(episodeEvents[0]?.anchor.episodeId ?? '', episodeEvents, []),
+    )
+    .sort((a, b) => {
+      if (a.firstOccurredAt !== b.firstOccurredAt) {
+        return a.firstOccurredAt.localeCompare(b.firstOccurredAt);
+      }
+      return a.episodeId.localeCompare(b.episodeId);
+    });
 }
 
 function summarizeEpisode(
