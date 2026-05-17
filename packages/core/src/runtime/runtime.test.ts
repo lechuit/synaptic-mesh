@@ -26,7 +26,7 @@ import type {
   Visibility,
 } from '../types/index.js';
 import { SENSITIVE_ACTIONS, scopeKey, visibilityKey } from '../types/index.js';
-import { AletheiaAuthority } from './authority-engine.js';
+import { AletheiaAuthority, type AletheiaAuthorityOptions } from './authority-engine.js';
 import type { Clock } from './decision-helpers.js';
 import { staticVisibilityPolicy } from './visibility-policy.js';
 
@@ -214,7 +214,10 @@ class InMemoryConflictRegistry implements ConflictRegistry {
   }
 }
 
-function makeRuntime(permittedVisibilities: readonly Visibility[] = ALLOW_CORE) {
+function makeRuntime(
+  permittedVisibilities: readonly Visibility[] = ALLOW_CORE,
+  options: Pick<AletheiaAuthorityOptions, 'authorityScorer'> = {},
+) {
   const eventLedger = new InMemoryEventLedger();
   const memoryStore = new InMemoryMemoryStore();
   const conflictRegistry = new InMemoryConflictRegistry();
@@ -224,6 +227,7 @@ function makeRuntime(permittedVisibilities: readonly Visibility[] = ALLOW_CORE) 
     conflictRegistry,
     visibilityPolicy: staticVisibilityPolicy(permittedVisibilities),
     clock: CLOCK,
+    ...(options.authorityScorer !== undefined ? { authorityScorer: options.authorityScorer } : {}),
   });
 
   return { authority, eventLedger, memoryStore, conflictRegistry };
@@ -619,6 +623,72 @@ describe('RetrievalRouter', () => {
 
     expect(result.decision.outcome).toBe('allow_local_shadow');
     expect(result.atoms.map((a) => a.memoryId)).toEqual(['mem-claim-older']);
+  });
+
+  it('applies authority scoring after filters and before recall limits', async () => {
+    const scoredMemoryIds: MemoryId[] = [];
+    const { authority, memoryStore } = makeRuntime(ALLOW_CORE, {
+      authorityScorer: (memory, now) => {
+        expect(now).toBe(NOW);
+        scoredMemoryIds.push(memory.memoryId);
+        return memory.memoryId === 'mem-older-higher-authority' ? 10 : 1;
+      },
+    });
+
+    await memoryStore.insert(
+      atom({
+        memoryId: 'mem-newer-lower-authority' as MemoryId,
+        memoryType: 'claim',
+        validFrom: '2026-05-16T12:20:00Z',
+      }),
+    );
+    await memoryStore.insert(
+      atom({
+        memoryId: 'mem-older-higher-authority' as MemoryId,
+        memoryType: 'claim',
+        validFrom: '2026-05-16T12:10:00Z',
+      }),
+    );
+    await memoryStore.insert(
+      atom({
+        memoryId: 'mem-outside-scope' as MemoryId,
+        memoryType: 'claim',
+        scope: { kind: 'project', projectId: 'outside' },
+        validFrom: '2026-05-16T12:25:00Z',
+      }),
+    );
+
+    const result = await authority.recall({
+      agentId: 'agent-1' as AgentId,
+      scope: { kind: 'local' },
+      memoryTypes: ['claim'],
+      limit: 1,
+    });
+
+    expect(result.decision.outcome).toBe('allow_local_shadow');
+    expect(result.atoms.map((a) => a.memoryId)).toEqual(['mem-older-higher-authority']);
+    expect(scoredMemoryIds).toEqual(['mem-newer-lower-authority', 'mem-older-higher-authority']);
+  });
+
+  it('fails closed when an authority scorer throws', async () => {
+    const { authority, memoryStore } = makeRuntime(ALLOW_CORE, {
+      authorityScorer: () => {
+        throw new Error('decay policy unavailable');
+      },
+    });
+    await memoryStore.insert(atom({ memoryId: 'mem-scorer-error' as MemoryId }));
+
+    const result = await authority.recall({
+      agentId: 'agent-1' as AgentId,
+      scope: { kind: 'local' },
+    });
+
+    expect(result.decision.outcome).toBe('fetch_abstain');
+    expect(result.decision.reasons[0]).toEqual({
+      kind: 'promotion_boundary_blocked',
+      detail: 'authority scorer failed: decay policy unavailable',
+    });
+    expect(result.atoms).toEqual([]);
   });
 
   it('does not recall atoms with future validFrom', async () => {

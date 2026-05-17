@@ -197,6 +197,14 @@ Built on top of Phase 1.
 - [x] Explicit multi-cycle sleep harness over a SQLite store, without daemon/scheduler behavior.
 - [x] Human-confirmed reconsolidation apply path inserts only `candidate` successors and deprecates previous atoms through audited `transitionStatus`.
 
+### Phase 2.1 — Decay model status
+
+- [x] Pure `decayedAuthority(atom, now)` helper exported from `@aletheia/dynamics`.
+- [x] Configurable half-life curves: candidates decay fastest, verified memories over weeks, trusted memories over months, sealed memories do not decay, and non-actionable terminal statuses score zero.
+- [x] `RetrievalRouter` accepts an optional `authorityScorer` hook that runs only after visibility, scope, status, freshness, type, and topic filters, and before recall limits.
+- [x] `AletheiaAuthority` passes the optional scorer through without making `@aletheia/core` depend on `@aletheia/dynamics`.
+- [x] Deterministic tests cover status-specific decay, advancing logical time, future/expired validity windows, and filtered recall ranking.
+
 ### Scope
 
 - **Status transitions driven by use/disuse**: candidate → verified after repeated source-consistent recall; verified → deprecated after contradicting evidence or staleness threshold.

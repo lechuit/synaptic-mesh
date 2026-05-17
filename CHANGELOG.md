@@ -11,6 +11,7 @@ Releases are listed newest first.
 ## Unreleased — Aletheia executable memory, dynamics, episodic continuity, and adapter demo
 
 - Added `@aletheia/dynamics`, a deterministic sleep-cycle engine for memory decay, candidate promotion, and unresolved-conflict revisits.
+- Added `decayedAuthority()` plus an optional `RetrievalRouter` authority scorer hook so hosts can rank already-authorized recall results by effective authority after hard permission/scope/status/freshness filters.
 - Dynamics plans transitions by default and applies them only through `MemoryStore.transitionStatus`, preserving the append-only atom model and audit history.
 - Candidate promotion requires explicit source-consistent recall evidence plus evidence/authority/stability scores; `confidence` and `consensus` remain metadata, not authority.
 - Added tests for fail-closed no-permission behavior, stale deprecation, promotion evidence, trusted-vs-verified decay windows, unresolved conflict handling, sealed/human-required skipping, and deterministic dry-run output.
